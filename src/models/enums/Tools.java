@@ -1,10 +1,15 @@
 package models.enums;
 
+<<<<<<< HEAD
 import models.FishingPole;
 import models.Tool;
 
 public enum Tools {
     FISHING_POLE(new FishingPole()),
+=======
+public enum Tools {
+    FISHING_POLE(),
+>>>>>>> main
     HOE(),
     PICKAXE(),
     AXE(),
