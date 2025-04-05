@@ -4,6 +4,9 @@ import models.Tool;
 
 public enum Tools {
     HOE(),
+    PICKAXE(),
+    AXE(),
+
 
     ;
 
