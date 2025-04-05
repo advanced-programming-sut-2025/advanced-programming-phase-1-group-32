@@ -1,10 +1,7 @@
 package models.enums;
 
-import models.FishingPole;
-import models.Tool;
-
 public enum Tools {
-    FISHING_POLE(new FishingPole()),
+    FISHING_POLE(),
     HOE(),
     PICKAXE(),
     AXE(),
