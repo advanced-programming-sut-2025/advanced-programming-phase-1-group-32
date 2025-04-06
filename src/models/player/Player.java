@@ -1,9 +1,12 @@
 package models.player;
 
 import models.Map;
+import models.NPC.Character;
 import models.enums.SkillType;
 import models.items.BackPack;
 import models.items.Item;
+import models.player.friendship.NpcFriendship;
+import models.player.friendship.PlayerFriendship;
 
 public class Player {
     private final Energy energy;
@@ -11,6 +14,8 @@ public class Player {
     private final Map<SkillType, Skill> skills;
     private int trashcanLevel;
     private final BackPack backPack;
+    private final Map<Character, NpcFriendship> npcFriendships;
+    private final Map<Player, PlayerFriendship> playerFriendships;
 
     public int getTrashcanLevel() {
         return trashcanLevel;
