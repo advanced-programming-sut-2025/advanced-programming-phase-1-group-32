@@ -1,10 +1,8 @@
-package views.shop;
-
-import views.AppMenu;
+package views;
 
 import java.util.Scanner;
 
-public class BlacksmithMenu implements AppMenu {
+public class ShopMenu implements AppMenu{
     @Override
     public void checker(Scanner scanner) {
 
