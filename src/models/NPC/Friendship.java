@@ -1,4 +1,4 @@
 package models.NPC;
 
-public class Friendship {
+public class Friendship implements Comparable{
 }

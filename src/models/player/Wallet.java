@@ -1,4 +1,4 @@
-package models;
+package models.player;
 
 public class Wallet {
     private int amount;

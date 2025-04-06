@@ -31,4 +31,8 @@ public class Date {
     public void addDay() {
 
     }
+
+    public void addSeason() {
+
+    }
 }

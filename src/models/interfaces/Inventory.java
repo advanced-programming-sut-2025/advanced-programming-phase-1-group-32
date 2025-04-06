@@ -1,8 +1,7 @@
-package models.items;
+package models.interfaces;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
+import models.items.Item;
+
 import java.util.List;
 
 public interface Inventory {

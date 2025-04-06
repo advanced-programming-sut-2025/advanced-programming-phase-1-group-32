@@ -4,5 +4,7 @@ import models.enums.Material;
 import models.items.Item;
 
 abstract public class Tool extends Item {
-    private Material material ;
+    protected Material material ;
+    protected int baseCost;
+
 }
