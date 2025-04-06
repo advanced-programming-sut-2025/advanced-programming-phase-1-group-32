@@ -1,9 +1,9 @@
 package models.player.friendship;
 
-public class Friendship{
-    private int amount;
-    private int level;
-    public void changeAmount(int amount){
+import java.util.ArrayList;
 
-    }
+abstract public class Friendship{
+    protected int amount;
+    protected int level;
+    abstract void channgeAmount(int amount);
 }
