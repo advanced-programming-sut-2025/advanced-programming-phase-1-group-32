@@ -1,6 +1,8 @@
 package models.items;
 
-abstract public class Item {
+import models.interfaces.Placable;
+
+abstract public class Item implements Placable {
     abstract public void useItem();
 
 }

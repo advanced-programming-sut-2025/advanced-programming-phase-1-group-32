@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/models/items/interfaces/Inventory.java
 package models.items.interfaces;
+========
+package models.interfaces;
+>>>>>>>> main:src/models/interfaces/Inventory.java
 
 import models.items.Item;
 

@@ -1,5 +1,5 @@
 package models;
 
-public class Vector2 {
+public class Position {
     private float x, y;
 }

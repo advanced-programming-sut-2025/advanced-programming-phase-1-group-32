@@ -45,6 +45,7 @@ public class GameMenuController {
 
     public void checkTurn() {
         //TODO
+        //ghash
     }
 
     public void updatePerHour() {
