@@ -8,6 +8,4 @@ public class AnimalHouse {
     private AnimalHouseType animalHouseType;
     private Material;
     ArrayList<Animal> animals;
-
-
 }

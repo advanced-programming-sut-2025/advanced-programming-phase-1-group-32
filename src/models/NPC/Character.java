@@ -1,6 +1,6 @@
 package models.NPC;
 
-import Quest.Quest;
+import models.Quest.Quest;
 import models.Position;
 import models.player.Player;
 

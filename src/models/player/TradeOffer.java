@@ -13,4 +13,5 @@ public class TradeOffer {
     private final ArrayList<Item> givenItems;
     private final Date date;
     private boolean accepted;
+    private boolean seen;
 }

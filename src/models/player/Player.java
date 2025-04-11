@@ -1,6 +1,6 @@
 package models.player;
 
-import Quest.Quest;
+import models.Quest.Quest;
 import models.Map;
 import models.NPC.Character;
 import models.enums.SkillType;
@@ -10,7 +10,6 @@ import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class Player {
     private final Energy energy;
@@ -22,9 +21,6 @@ public class Player {
     private final Map<Player, PlayerFriendship> playerFriendships;
     private Player spouce;
     private final ArrayList<Quest> quests;
-    private final Stack<Gift> unseenGifts;
-    private final Stack<TradeOffer> unseenTradeoffers;
-    private final Stack<Message> unseenMessages;
     private final ArrayList<Gift> giftLog;
     private final ArrayList<Message> messageLog;
     private final ArrayList<TradeOffer> tradeOfferLog;

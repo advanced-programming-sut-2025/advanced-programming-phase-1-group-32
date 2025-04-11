@@ -1,8 +1,22 @@
 package models.items.workstations;
 
+import models.interfaces.Placable;
+import models.interfaces.Updatable;
 import models.items.Item;
-import models.items.interfaces.Placeable;
 
-public class WorkStation extends Item implements Placeable {
+import java.util.ArrayList;
+
+public class WorkStation extends Item, Placable, Updatable {
+    private ItemProcess currentProcess;
+
+    private void startProcess(){
+
+    }
+    private boolean processDone(){
+        return false;
+    }
+    private Item getProducts(){
+        return null;
+    }
 
 }

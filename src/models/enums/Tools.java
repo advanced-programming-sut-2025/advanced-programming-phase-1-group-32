@@ -9,11 +9,7 @@ public enum Tools {
     SCYTHE(),
     MILK_PAIL(),
     SHEAR(),
-    BACKPACK(),
-
-    
-
-    ;
+    BACKPACK();
 
     private final Tool tool;
 

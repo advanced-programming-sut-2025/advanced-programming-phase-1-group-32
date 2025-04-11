@@ -7,4 +7,5 @@ public class Message {
     private final Player reciever;
     private final String message;
     private final Date date;
+    private boolean seen;
 }

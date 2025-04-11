@@ -1,7 +1,8 @@
 package models.shop;
 
 import models.Buildings.Building;
-import models.Map;
+import models.GameMap;
+import models.GameMap;
 import models.Position;
 import models.items.Item;
 
@@ -16,7 +17,7 @@ public class Shop extends Building{
     private final HashMap<Item, Integer> itemIntegerHashMap;
     private HashMap<Item, Integer> itemsSoldToday;
 
-    public Shop(Position position, int width, int height, Map map) {
+    public Shop(Position position, int width, int height, GameMap map) {
         super(position, width, height, map);
     }
 }
