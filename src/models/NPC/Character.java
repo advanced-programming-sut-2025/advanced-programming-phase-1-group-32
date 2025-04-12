@@ -15,4 +15,7 @@ public class Character {
     public void giveQuestToPlayer(Player player){
 
     }
+    public String talk(Player player){
+
+    }
 }

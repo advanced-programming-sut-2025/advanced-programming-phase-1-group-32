@@ -1,7 +1,8 @@
 package models.enums;
 
-public enum Cookings {
+import models.crafting.Recipe;
 
+public enum FoodType {
     FRIED_EGG,
     BAKED_FISH,
     SALAD,
@@ -26,4 +27,8 @@ public enum Cookings {
     SEAFORM_PUDDING,
     MINER_TREAT,
     ;
+    private final Recipe recipe;
+    FoodType(Recipe recipe){
+        this.recipe = recipe;
+    }
 }

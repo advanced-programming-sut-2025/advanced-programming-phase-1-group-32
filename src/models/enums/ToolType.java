@@ -1,6 +1,6 @@
 package models.enums;
 
-public enum Tools {
+public enum ToolType {
     FISHING_POLE(),
     HOE(),
     PICKAXE(),
@@ -11,13 +11,8 @@ public enum Tools {
     SHEAR(),
     BACKPACK();
 
-    private final Tool tool;
+    public void use(){
 
-    Tools(Tool tool) {
-        this.tool = tool;
     }
 
-    public void use() {
-        this.tool.useTool();
-    }
 }

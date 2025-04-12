@@ -1,6 +1,6 @@
 package models.enums;
 
-public enum Craftings {
+public enum CraftingType {
     CHERRY_BOMB,
     BOMB,
     MEGA_BOMB,
@@ -21,7 +21,6 @@ public enum Craftings {
     DEHYDRATOR,
     FISH_SMOKER,
     MYSTIC_TREE_SEED,
-
     ;
 
 

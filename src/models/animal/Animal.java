@@ -12,6 +12,7 @@ import java.util.Map;
 
 public abstract class Animal implements Sellable, Updatable {
     private HashMap<Player, AnimalFriendship> friendshipHashMap;
+    private Map<AnimalProduct, Integer>       timeLeftTillProduction;
     private final AnimalType type;
     private Player   owner;
     private String   name;

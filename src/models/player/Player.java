@@ -3,6 +3,7 @@ package models.player;
 import models.Quest.Quest;
 import models.Map;
 import models.NPC.Character;
+import models.crafting.Recipe;
 import models.enums.SkillType;
 import models.items.BackPack;
 import models.items.Item;
@@ -24,6 +25,7 @@ public class Player {
     private final ArrayList<Gift> giftLog;
     private final ArrayList<Message> messageLog;
     private final ArrayList<TradeOffer> tradeOfferLog;
+    private final ArrayList<Recipe> unlockedRecipes;
 
     public int getTrashcanLevel() {
         return trashcanLevel;

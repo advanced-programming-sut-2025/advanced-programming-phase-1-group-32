@@ -15,13 +15,11 @@ public enum AnimalType {
 
     private final ArrayList<AnimalProduct>    products;
     private final AnimalHouseType             animalHouseType;
-    private final Map<AnimalProduct, Integer> timeTillNextProduct;
     private final int                         cost;
 
-    AnimalType(ArrayList<AnimalProduct> products, AnimalHouseType animalHouseType, Map<AnimalProduct, Integer> timeTillNextProduct, int cost) {
+    AnimalType(ArrayList<AnimalProduct> products, AnimalHouseType animalHouseType, int cost) {
         this.cost                = cost;
         this.products            = products;
         this.animalHouseType     = animalHouseType;
-        this.timeTillNextProduct = timeTillNextProduct;
     }
 }

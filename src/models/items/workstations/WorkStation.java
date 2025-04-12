@@ -6,7 +6,7 @@ import models.items.Item;
 
 import java.util.ArrayList;
 
-public class WorkStation extends Item, Placable, Updatable {
+public class WorkStation extends Item implements Placable, Updatable {
     private ItemProcess currentProcess;
 
     private void startProcess(){
@@ -18,5 +18,4 @@ public class WorkStation extends Item, Placable, Updatable {
     private Item getProducts(){
         return null;
     }
-
 }

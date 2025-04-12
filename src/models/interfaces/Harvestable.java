@@ -1,6 +1,6 @@
 package models.interfaces;
 
-import models.items.tools.Tool;
+import models.items.Tool;
 import models.player.Player;
 
 public interface Harvestable {

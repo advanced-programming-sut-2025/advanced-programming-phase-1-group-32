@@ -6,7 +6,7 @@ import models.interfaces.Placable;
 public class Tile{
     private TileType type;
     final private Position position;
-    Placable content;
+    private Placable content;
 
     public Tile(Position position) {
         this.position = position;
