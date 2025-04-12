@@ -1,4 +1,6 @@
 package controllers.inGame;
 
-public class QuestMenuController {
+import controllers.Controller;
+
+public class QuestMenuController implements Controller {
 }

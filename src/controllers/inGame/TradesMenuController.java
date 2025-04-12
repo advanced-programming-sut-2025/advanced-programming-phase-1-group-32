@@ -1,4 +1,7 @@
 package controllers.inGame;
 
-public class TradesMenuController {
+import controllers.Controller;
+
+public class TradesMenuController implements Controller {
+
 }

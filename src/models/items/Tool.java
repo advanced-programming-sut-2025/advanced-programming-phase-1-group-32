@@ -1,7 +1,6 @@
 package models.items;
 
 import models.enums.Material;
-import models.enums.ToolType;
 
 public class Tool extends Item {
     protected Material material ;

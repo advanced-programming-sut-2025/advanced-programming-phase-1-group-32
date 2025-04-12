@@ -1,4 +1,4 @@
-package models.enums;
+package models.crafting;
 
 public enum CraftingType {
     CHERRY_BOMB,

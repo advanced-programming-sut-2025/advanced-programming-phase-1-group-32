@@ -1,4 +1,4 @@
-package models.enums;
+package models.items;
 
 public enum ToolType {
     FISHING_POLE(),

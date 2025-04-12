@@ -1,5 +1,4 @@
 package models.crafting;
-
 public class Cooking {
     private FoodType foodType;
     private Recipe recipe;

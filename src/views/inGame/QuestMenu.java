@@ -1,4 +1,4 @@
 package views.inGame;
 
-public class QuestMenu {
+public class QuestMenu implements {
 }

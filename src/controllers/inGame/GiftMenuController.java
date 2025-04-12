@@ -1,4 +1,6 @@
 package controllers.inGame;
 
-public class GiftMenuController {
+import controllers.Controller;
+
+public class GiftMenuController implements Controller {
 }

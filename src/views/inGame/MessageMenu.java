@@ -1,4 +1,6 @@
 package views.inGame;
 
-public class MessageMenu {
+import views.AppMenu;
+
+public class MessageMenu implements AppMenu {
 }

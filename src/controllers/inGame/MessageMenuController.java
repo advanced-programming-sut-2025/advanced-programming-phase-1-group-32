@@ -1,4 +1,6 @@
 package controllers.inGame;
 
-public class MessageMenuController {
+import controllers.Controller;
+
+public class MessageMenuController implements Controller {
 }

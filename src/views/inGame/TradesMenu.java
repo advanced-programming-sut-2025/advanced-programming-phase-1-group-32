@@ -1,4 +1,7 @@
 package views.inGame;
 
-public class TradesMenu {
+import views.AppMenu;
+
+public class TradesMenu implements AppMenu {
+
 }

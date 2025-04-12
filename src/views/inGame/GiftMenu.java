@@ -1,4 +1,6 @@
 package views.inGame;
 
-public class GiftMenu {
+import views.AppMenu;
+
+public class GiftMenu implements AppMenu {
 }
