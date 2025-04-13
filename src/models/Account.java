@@ -1,6 +1,6 @@
 package models;
 
-import models.enums.Gender;
+import models.game.enums.Gender;
 
 public class Account {
     private String username;

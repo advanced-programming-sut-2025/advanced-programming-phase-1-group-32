@@ -1,6 +1,6 @@
 package models;
 
-import models.plant.Crop;
+import models.game.plant.Crop;
 
 import java.util.ArrayList;
 
