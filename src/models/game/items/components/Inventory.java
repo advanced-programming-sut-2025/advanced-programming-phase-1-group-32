@@ -11,6 +11,7 @@ public class Inventory extends ItemComponent{
     private int capacity;
 
     public Inventory(int capacity){
+        super(ItemComponentType.INVENTORY);
         this.capacity = capacity;
     }
 

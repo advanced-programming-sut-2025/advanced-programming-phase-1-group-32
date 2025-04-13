@@ -4,6 +4,7 @@ import models.game.Position;
 import models.game.enums.Season;
 import models.game.interfaces.Placable;
 import models.game.interfaces.Updatable;
+import models.game.items.Item;
 
 import java.util.ArrayList;
 
@@ -12,8 +13,8 @@ public class Plant implements Updatable, Placable {
     protected ArrayList<Season> growingSeasons;
     protected boolean wateredToday;
     protected boolean oneTime;
-    protected final Fruit fruit;
-    protected final Seed seed;
+    protected final Item fruit;
+    protected final Item seed;
     protected final ArrayList<Integer> stages;
     protected int regrowthTime;
 
