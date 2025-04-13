@@ -26,5 +26,8 @@ public class TradesMenuController implements Controller {
     }
 
 
-
+    @Override
+    public Result changeMenu() {
+        return null;
+    }
 }

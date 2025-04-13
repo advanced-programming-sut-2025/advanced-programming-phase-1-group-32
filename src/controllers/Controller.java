@@ -10,5 +10,6 @@ public interface Controller {
 
     default Result showCurrentMenu() {
         //TODO
+        return null;
     }
 }

@@ -31,4 +31,8 @@ public class ShopMenuController implements Controller {
     }
 
 
+    @Override
+    public Result changeMenu() {
+        return null;
+    }
 }
