@@ -1,4 +1,4 @@
-package models.game.crafting;
+package models.game.enums;
 
 import models.game.items.Item;
 import models.game.items.workstations.WorkStation;
@@ -10,6 +10,7 @@ import java.util.Map;
 public enum Recipe {
     ;
     private final Item output;
+    private final RecipeType type;
     private final int productionTime;
     private final WorkStation workStation;
     private final ArrayList<Item> ingredients;

@@ -4,7 +4,6 @@ import models.game.Position;
 import models.game.enums.Season;
 import models.game.interfaces.Placable;
 import models.game.interfaces.Updatable;
-import models.game.items.Fruit;
 
 import java.util.ArrayList;
 
