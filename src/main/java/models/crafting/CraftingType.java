@@ -1,0 +1,29 @@
+package main.java.models.crafting;
+
+public enum CraftingType {
+    CHERRY_BOMB,
+    BOMB,
+    MEGA_BOMB,
+    SPRINKLER,
+    QUALITY_SPRINKLER,
+    IRIDIUM_SPRINKLER,
+    CHARCOAL_KLIN,
+    FURNACE,
+    SCARECROW,
+    DELUXE_SCARECROW,
+    BEE_HOUSE,
+    CHEESE_PRESS,
+    KEG,
+    LOOM,
+    MAYONNAISE_MACHINE,
+    OIL_MAKER,
+    PRESERVES_JAR,
+    DEHYDRATOR,
+    FISH_SMOKER,
+    MYSTIC_TREE_SEED,
+    ;
+
+
+
+
+}
