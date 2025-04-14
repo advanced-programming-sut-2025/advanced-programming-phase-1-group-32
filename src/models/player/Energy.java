@@ -15,4 +15,5 @@ public class Energy {
     public void toggleUnlimited(){
 
     }
+    //ghash
 }
