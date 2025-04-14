@@ -1,4 +1,4 @@
-package main.java.models.player.friendship;
+package src.main.java.models.player.friendship;
 
 public class NpcFriendship extends Friendship {
     @Override

@@ -1,6 +1,6 @@
-package models;
+package src.main.java.models;
 
-import main.java.models.enums.Weather;
+import src.main.java.models.enums.Weather;
 
 public class Game {
     private Weather todayWeather;

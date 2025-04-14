@@ -1,4 +1,4 @@
-package main.java.models.animal;
+package src.main.java.models.animal;
 
 import java.util.ArrayList;
 

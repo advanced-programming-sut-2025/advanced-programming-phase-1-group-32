@@ -1,4 +1,4 @@
-package main.java.models.crafting;
+package src.main.java.models.crafting;
 
 public enum CraftingType {
     CHERRY_BOMB,

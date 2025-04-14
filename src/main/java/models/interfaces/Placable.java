@@ -1,6 +1,6 @@
-package main.java.models.interfaces;
+package src.main.java.models.interfaces;
 
-import main.java.models.Position;
+import src.main.java.models.Position;
 
 public interface Placable {
     public Position getPosition() ;

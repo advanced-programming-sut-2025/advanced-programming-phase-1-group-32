@@ -1,7 +1,7 @@
-package main.java.models.crafting;
+package src.main.java.models.crafting;
 
-import main.java.models.Position;
-import main.java.models.items.Item;
+import src.main.java.models.Position;
+import src.main.java.models.items.Item;
 
 public class Artisan extends Item {
     @Override

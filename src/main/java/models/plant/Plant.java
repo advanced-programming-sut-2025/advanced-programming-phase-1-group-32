@@ -1,10 +1,10 @@
-package main.java.models.plant;
+package src.main.java.models.plant;
 
-import main.java.models.Position;
-import main.java.models.enums.Season;
-import main.java.models.interfaces.Placable;
-import main.java.models.interfaces.Updatable;
-import main.java.models.items.Fruit;
+import src.main.java.models.Position;
+import src.main.java.models.enums.Season;
+import src.main.java.models.interfaces.Placable;
+import src.main.java.models.interfaces.Updatable;
+import src.main.java.models.items.Fruit;
 
 import java.util.ArrayList;
 
@@ -13,9 +13,9 @@ public class Plant implements Updatable, Placable {
     protected ArrayList<Season> growingSeasons;
     protected boolean wateredToday;
     protected boolean oneTime;
-    protected final Fruit fruit;
-    protected final Seed seed;
-    protected final ArrayList<Integer> stages;
+    protected final Fruit fruit = null;
+    protected final Seed seed = null;
+    protected final ArrayList<Integer> stages = null;
     protected int regrowthTime;
 
 

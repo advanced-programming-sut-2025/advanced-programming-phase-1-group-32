@@ -1,6 +1,7 @@
-package main.java.models.items;
+package src.main.java.models.items;
 
-import main.java.models.interfaces.Inventory;
+import src.main.java.models.Position;
+import src.main.java.models.interfaces.Inventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +37,25 @@ public class BackPack extends Item implements Inventory {
     @Override
     public List<Item> getItems() {
         return List.of();
+    }
+
+    @Override
+    public void useItem() {
+
+    }
+
+    @Override
+    public Position getPosition() {
+        return null;
+    }
+
+    @Override
+    public void setPosition() {
+
+    }
+
+    @Override
+    public void placeOnGround() {
+
     }
 }

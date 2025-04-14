@@ -1,8 +1,8 @@
-package main.java.views;
+package src.main.java.views;
 
 public class AppView {
     public void run() {
-        while () {
+        while (true) {
 
         }
 

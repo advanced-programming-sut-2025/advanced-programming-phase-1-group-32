@@ -1,6 +1,6 @@
-package main.java.models.items.workstations;
+package src.main.java.models.items.workstations;
 
-import main.java.models.items.Item;
+import src.main.java.models.items.Item;
 
 import java.util.ArrayList;
 

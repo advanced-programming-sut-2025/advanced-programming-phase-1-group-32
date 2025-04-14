@@ -1,4 +1,4 @@
-package main.java.models.game.shop;
+package src.main.java.models.shop;
 
 public abstract class ShopProduct {
 

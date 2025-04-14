@@ -1,7 +1,7 @@
-package main.java.models.items;
+package src.main.java.models.items;
 
-import main.java.models.Position;
-import main.java.models.interfaces.Sellable;
+import src.main.java.models.Position;
+import src.main.java.models.interfaces.Sellable;
 
 public class Fruit extends Item implements Sellable {
     public boolean isEdible;

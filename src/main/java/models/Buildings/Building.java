@@ -1,8 +1,7 @@
-package main.java.models.Buildings;
+package src.main.java.models.Buildings;
 
-import main.java.models.GameMap;
-import main.java.models.Map;
-import main.java.models.Position;
+import src.main.java.models.GameMap;
+import src.main.java.models.Position;
 
 abstract public class Building {
     protected final Position position;

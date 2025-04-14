@@ -1,14 +1,14 @@
-package main.java.models.Quest;
+package src.main.java.models.Quest;
 
-import main.java.models.items.Item;
+import src.main.java.models.items.Item;
 
 import java.util.ArrayList;
 
 abstract public class Quest {
-    protected final String name;
-    protected final String description;
-    protected final Character owner;
-    protected final ArrayList<Item> rewards;
+    protected final String name = null;
+    protected final String description = null;
+    protected final Character owner = null;
+    protected final ArrayList<Item> rewards = null;
     protected boolean isCompleted;
 
     abstract void onComplete();

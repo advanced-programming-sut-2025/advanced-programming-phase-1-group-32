@@ -1,4 +1,4 @@
-package main.java.models.crafting;
+package src.main.java.models.crafting;
 public class Cooking {
     private FoodType foodType;
     private Recipe recipe;
@@ -10,7 +10,7 @@ public class Cooking {
     }
 
     public boolean checkSource() {
-
+        return false;
     }
 
 }

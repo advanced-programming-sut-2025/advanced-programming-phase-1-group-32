@@ -1,4 +1,4 @@
-package main.java.models.enums;
+package src.main.java.models.enums;
 
 public enum Weather {
     //TODO

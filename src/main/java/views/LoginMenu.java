@@ -1,7 +1,7 @@
-package main.java.views;
+package src.main.java.views;
 
-import main.java.controllers.LoginMenuController;
-import main.java.models.Result;
+import src.main.java.controllers.LoginMenuController;
+import src.main.java.models.Result;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class LoginMenu implements AppMenu {
 
     @Override
     public void checker(Scanner scanner) {
-        if(/*register*/) {
+        if(true) {
             Result result = controller.register();
             System.out.println();
             if(result.isSuccessful()) {

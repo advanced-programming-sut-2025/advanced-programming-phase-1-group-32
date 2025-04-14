@@ -1,12 +1,12 @@
-package main.java.models.enums;
+package src.main.java.models.enums;
 
 public enum Season {
-    SPRING{
-
-    },
+    SPRING,
     SUMMER,
     FALL,
     WINTER;
 
-    public void updatePlant()
+    public void updatePlant(){
+
+    };
 }

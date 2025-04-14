@@ -1,4 +1,4 @@
-package main.java.models.animal;
+package src.main.java.models.animal;
 
 import java.util.ArrayList;
 
@@ -20,5 +20,8 @@ public enum AnimalType {
         this.cost                = cost;
         this.products            = products;
         this.animalHouseType     = animalHouseType;
+    }
+    AnimalType(){
+        this(null, null, 0);
     }
 }

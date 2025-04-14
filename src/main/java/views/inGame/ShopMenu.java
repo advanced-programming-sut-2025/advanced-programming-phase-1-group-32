@@ -1,6 +1,6 @@
-package main.java.views.inGame;
+package src.main.java.views.inGame;
 
-import main.java.views.AppMenu;
+import src.main.java.views.AppMenu;
 
 import java.util.Scanner;
 

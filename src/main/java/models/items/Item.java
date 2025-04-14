@@ -1,6 +1,6 @@
-package main.java.models.items;
+package src.main.java.models.items;
 
-import main.java.models.interfaces.Placable;
+import src.main.java.models.interfaces.Placable;
 
 abstract public class Item implements Placable {
     abstract public void useItem();

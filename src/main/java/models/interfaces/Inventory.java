@@ -1,6 +1,6 @@
-package main.java.models.interfaces;
+package src.main.java.models.interfaces;
 
-import main.java.models.items.Item;
+import src.main.java.models.items.Item;
 
 import java.util.List;
 

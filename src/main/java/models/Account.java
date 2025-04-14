@@ -1,8 +1,8 @@
-package models;
+package src.main.java.models;
 
-import main.java.models.enums.Gender;
+import src.main.java.models.enums.Gender;
 
-import models.Result;
+import src.main.java.models.Result;
 import java.util.ResourceBundle;
 
 public class Account {

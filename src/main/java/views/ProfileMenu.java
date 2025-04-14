@@ -1,4 +1,10 @@
-package main.java.views;
+package src.main.java.views;
+
+import java.util.Scanner;
 
 public class ProfileMenu implements AppMenu{
+    @Override
+    public void checker(Scanner scanner) {
+
+    }
 }

@@ -1,4 +1,4 @@
-package main.java.models.player;
+package src.main.java.models.player;
 
 public class Energy {
     private int amount;
@@ -7,7 +7,7 @@ public class Energy {
     private boolean isUnlimited;
 
     public int getEnergy(){
-
+        return 0;
     }
     public void changeEnergy(){
 
@@ -15,5 +15,4 @@ public class Energy {
     public void toggleUnlimited(){
 
     }
-    //ghash
 }

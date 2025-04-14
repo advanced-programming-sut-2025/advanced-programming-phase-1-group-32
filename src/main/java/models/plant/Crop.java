@@ -1,4 +1,4 @@
-package main.java.models.plant;
+package src.main.java.models.plant;
 
 public class Crop extends Plant {
     private boolean canBecomeGiant;

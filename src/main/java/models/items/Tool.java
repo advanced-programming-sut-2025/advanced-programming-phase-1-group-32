@@ -1,6 +1,7 @@
-package main.java.models.items;
+package src.main.java.models.items;
 
-import main.java.models.enums.Material;
+import src.main.java.models.Position;
+import src.main.java.models.enums.Material;
 
 public class Tool extends Item {
     protected Material material ;
@@ -11,5 +12,25 @@ public class Tool extends Item {
     }
     public void use(){
         this.type.use();
+    }
+
+    @Override
+    public void useItem() {
+
+    }
+
+    @Override
+    public Position getPosition() {
+        return null;
+    }
+
+    @Override
+    public void setPosition() {
+
+    }
+
+    @Override
+    public void placeOnGround() {
+
     }
 }

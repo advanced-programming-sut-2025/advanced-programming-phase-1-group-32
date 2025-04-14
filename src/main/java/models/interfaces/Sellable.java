@@ -1,4 +1,4 @@
-package main.java.models.interfaces;
+package src.main.java.models.interfaces;
 
 public interface Sellable {
     public double getPrice();

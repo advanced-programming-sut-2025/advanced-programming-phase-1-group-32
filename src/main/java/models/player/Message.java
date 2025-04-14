@@ -1,11 +1,11 @@
-package main.java.models.player;
+package src.main.java.models.player;
 
-import main.java.models.Date;
+import src.main.java.models.Date;
 
 public class Message {
-    private final Player sender;
-    private final Player reciever;
-    private final String message;
-    private final Date date;
+    private final Player sender = null;
+    private final Player reciever = null;
+    private final String message = null;
+    private final Date date = null;
     private boolean seen;
 }

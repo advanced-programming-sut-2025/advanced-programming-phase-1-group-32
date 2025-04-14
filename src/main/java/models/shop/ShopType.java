@@ -1,7 +1,7 @@
-package main.java.models.shop;
+package src.main.java.models.shop;
 
 public enum ShopType {
-    BLACKSMITH(new Shop()),
+    BLACKSMITH(),
     JOJAMART(),
     GENERAL_STROE(),
     CARPENTERS_SHOP(),
@@ -15,5 +15,9 @@ public enum ShopType {
 
     ShopType(Shop shop) {
         this.shop = shop;
+        //TODO
+    }
+    ShopType(){
+        this(null);
     }
 }

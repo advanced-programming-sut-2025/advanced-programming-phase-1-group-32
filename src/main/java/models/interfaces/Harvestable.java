@@ -1,7 +1,7 @@
-package main.java.models.interfaces;
+package src.main.java.models.interfaces;
 
-import main.java.models.items.Tool;
-import main.java.models.player.Player;
+import src.main.java.models.items.Tool;
+import src.main.java.models.player.Player;
 
 public interface Harvestable {
     public boolean canHarvest(Player player, Tool tool);

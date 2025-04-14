@@ -1,4 +1,4 @@
-package main.java.views;
+package src.main.java.views;
 
 import java.util.Scanner;
 

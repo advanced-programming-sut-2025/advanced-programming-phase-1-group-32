@@ -1,7 +1,7 @@
-package main.java.models;
+package src.main.java.models;
 
-import main.java.models.enums.TileType;
-import main.java.models.interfaces.Placable;
+import src.main.java.models.enums.TileType;
+import src.main.java.models.interfaces.Placable;
 
 public class Tile{
     private TileType type;
