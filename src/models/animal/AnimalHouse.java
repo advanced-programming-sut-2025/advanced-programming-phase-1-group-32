@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public class AnimalHouse {
     private AnimalHouseType animalHouseType;
-    private Material;
+    private AnimalHouseLevel animalHouseLevel;
     ArrayList<Animal> animals;
 }

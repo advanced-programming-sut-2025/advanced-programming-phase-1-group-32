@@ -2,7 +2,12 @@ package controllers;
 
 import models.Result;
 
-public class GameMenuController {
+public class GameMenuController implements Controller {
+    @Override
+    public Result changeMenu() {
+        return null;
+    }
+
     public Result gameMap() {
         //TODO
         return null;

@@ -2,8 +2,12 @@ package models.shop;
 
 public enum ShopType {
     BLACKSMITH(new Shop()),
-
-
+    JOJAMART(),
+    GENERAL_STROE(),
+    CARPENTERS_SHOP(),
+    FISH_SHOP(),
+    RANCH(),
+    SALOON(),
     ;
 
 

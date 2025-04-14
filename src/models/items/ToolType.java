@@ -11,8 +11,12 @@ public enum ToolType {
     SHEAR(),
     BACKPACK();
 
+    private int useCost;
+
+
     public void use(){
 
     }
+
 
 }
