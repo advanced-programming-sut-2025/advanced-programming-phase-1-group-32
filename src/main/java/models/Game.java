@@ -1,4 +1,4 @@
-package main.java.models;
+package models;
 
 import main.java.models.enums.Weather;
 

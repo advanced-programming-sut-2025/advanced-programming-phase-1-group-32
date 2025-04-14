@@ -1,6 +1,9 @@
-package main.java.models;
+package models;
 
 import main.java.models.enums.Gender;
+
+import models.Result;
+import java.util.ResourceBundle;
 
 public class Account {
     private String username;
@@ -15,6 +18,23 @@ public class Account {
         this.nickname = nickname;
         this.password = password;
         this.username = username;
+    }
+
+    public static Result isUsernameValid(String username) { //check all username conditions
+        return new Result(true, null);
+        // TODO
+    }
+    public static Result isPasswordValid(String password) { //check all username conditions
+        return new Result(true, null);
+        // TODO
+    }
+    public static Result isEmailValid(String email) { //check all username conditions
+        return new Result(true, null);
+        // TODO
+    }
+    public static Result isNicknameValid(String nickname) { //check all username conditions
+        return new Result(true, null);
+        // TODO
     }
 
     public String getUsername() {
@@ -52,4 +72,6 @@ public class Account {
     public Gender getGender() {
         return gender;
     }
+
+
 }
