@@ -1,6 +1,6 @@
-package src.main.java.models.Quest;
+package models.Quest;
 
-import src.main.java.models.items.Item;
+import models.items.Item;
 
 import java.util.ArrayList;
 

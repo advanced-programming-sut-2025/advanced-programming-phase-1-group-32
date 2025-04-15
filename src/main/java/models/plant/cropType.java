@@ -1,4 +1,4 @@
-package src.main.java.models.plant;
+package models.plant;
 
 public enum cropType {
 }

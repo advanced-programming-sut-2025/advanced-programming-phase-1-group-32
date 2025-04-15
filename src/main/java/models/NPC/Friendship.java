@@ -1,4 +1,4 @@
-package src.main.java.models.NPC;
+package models.NPC;
 
 public class Friendship{
 

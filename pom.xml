@@ -3,8 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.group32</groupId>
     <artifactId>stardew-valley</artifactId>
@@ -14,7 +12,12 @@
     <name>Stardew Valley</name>
 
     <dependencies>
-<!--      TODO  -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -27,11 +30,16 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>src.main.java.Main</mainClass>
+                    <mainClass>Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,6 +1,6 @@
-package src.main.java.models.enums;
+package models.enums;
 
-import src.main.java.models.plant.Crop;
+import models.plant.Crop;
 
 public enum Plants {
     ;

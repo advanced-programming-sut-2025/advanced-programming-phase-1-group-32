@@ -1,7 +1,7 @@
-package src.main.java.views;
+package views;
 
-import src.main.java.controllers.LoginMenuController;
-import src.main.java.models.Result;
+import controllers.LoginMenuController;
+import models.Result;
 
 import java.util.Scanner;
 

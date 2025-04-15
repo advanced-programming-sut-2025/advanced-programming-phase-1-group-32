@@ -1,4 +1,4 @@
-package src.main.java.models.interfaces;
+package models.interfaces;
 
 public interface Updatable {
     public void updatePerHour();

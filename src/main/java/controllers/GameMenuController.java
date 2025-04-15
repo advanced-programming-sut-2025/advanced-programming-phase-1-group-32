@@ -1,7 +1,7 @@
-package src.main.java.controllers;
+package controllers;
 
-import src.main.java.models.Result;
-import src.main.java.controllers.Controller;
+import models.Result;
+import controllers.Controller;
 
 public class GameMenuController implements Controller {
     @Override

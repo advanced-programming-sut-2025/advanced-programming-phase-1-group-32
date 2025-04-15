@@ -1,7 +1,7 @@
-package src.main.java.models;
+package models;
 
-import src.main.java.models.enums.WeekDay;
-import src.main.java.models.enums.Season;
+import models.enums.WeekDay;
+import models.enums.Season;
 
 public class Date {
     private Season season;

@@ -1,9 +1,9 @@
-package src.main.java.models.shop;
+package models.shop;
 
-import src.main.java.models.Buildings.Building;
-import src.main.java.models.GameMap;
-import src.main.java.models.Position;
-import src.main.java.models.items.Item;
+import models.Buildings.Building;
+import models.GameMap;
+import models.Position;
+import models.items.Item;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package src.main.java.models.crafting;
+package models.crafting;
 
 public class Crafting {
     private int price;

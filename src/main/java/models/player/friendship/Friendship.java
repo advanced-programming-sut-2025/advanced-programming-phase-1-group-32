@@ -1,4 +1,4 @@
-package src.main.java.models.player.friendship;
+package models.player.friendship;
 
 abstract public class Friendship{
     protected int amount;

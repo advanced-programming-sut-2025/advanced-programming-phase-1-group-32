@@ -1,13 +1,13 @@
-package src.main.java.models.player;
+package models.player;
 
-import src.main.java.models.Quest.Quest;
-import src.main.java.models.NPC.Character;
-import src.main.java.models.crafting.Recipe;
-import src.main.java.models.enums.SkillType;
-import src.main.java.models.items.BackPack;
-import src.main.java.models.items.Item;
-import src.main.java.models.player.friendship.NpcFriendship;
-import src.main.java.models.player.friendship.PlayerFriendship;
+import models.Quest.Quest;
+import models.NPC.Character;
+import models.crafting.Recipe;
+import models.enums.SkillType;
+import models.items.BackPack;
+import models.items.Item;
+import models.player.friendship.NpcFriendship;
+import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
 import java.util.Map;

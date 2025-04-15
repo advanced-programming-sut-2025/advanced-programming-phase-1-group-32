@@ -1,6 +1,6 @@
-package src.main.java.models.items;
+package models.items;
 
-import src.main.java.models.Position;
+import models.Position;
 
 public class Foraging extends Item{
     @Override

@@ -1,7 +1,7 @@
-package src.main.java.models.items;
+package models.items;
 
-import src.main.java.models.Position;
-import src.main.java.models.enums.Material;
+import models.Position;
+import models.enums.Material;
 
 public class Tool extends Item {
     protected Material material ;

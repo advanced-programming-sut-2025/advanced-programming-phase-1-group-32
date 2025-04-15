@@ -1,4 +1,4 @@
-package src.main.java.models.enums;
+package models.enums;
 
 public enum SkillType {
     ;

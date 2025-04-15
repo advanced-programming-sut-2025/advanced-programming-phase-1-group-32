@@ -1,8 +1,8 @@
-package src.main.java.models.items;
+package models.items;
 
-import src.main.java.models.Position;
-import src.main.java.models.interfaces.Consumable;
-import src.main.java.models.interfaces.Sellable;
+import models.Position;
+import models.interfaces.Consumable;
+import models.interfaces.Sellable;
 
 public class Food extends Item implements Consumable, Sellable {
     @Override

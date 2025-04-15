@@ -1,4 +1,4 @@
-package src.main.java.models.shop;
+package models.shop;
 
 public enum ShopType {
     BLACKSMITH(),

@@ -1,11 +1,11 @@
-package src.main.java.models.plant;
+package models.plant;
 
-import src.main.java.models.Position;
-import src.main.java.models.interfaces.Harvestable;
-import src.main.java.models.interfaces.Placable;
-import src.main.java.models.items.Item;
-import src.main.java.models.items.Tool;
-import src.main.java.models.player.Player;
+import models.Position;
+import models.interfaces.Harvestable;
+import models.interfaces.Placable;
+import models.items.Item;
+import models.items.Tool;
+import models.player.Player;
 
 public class Mineral implements Harvestable, Placable {
     private Item resource;

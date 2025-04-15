@@ -1,9 +1,9 @@
-package src.main.java.models.items.workstations;
+package models.items.workstations;
 
-import src.main.java.models.Position;
-import src.main.java.models.interfaces.Placable;
-import src.main.java.models.interfaces.Updatable;
-import src.main.java.models.items.Item;
+import models.Position;
+import models.interfaces.Placable;
+import models.interfaces.Updatable;
+import models.items.Item;
 
 public class WorkStation extends Item implements Placable, Updatable {
     private ItemProcess currentProcess;

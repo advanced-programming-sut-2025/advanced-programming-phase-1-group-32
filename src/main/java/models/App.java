@@ -1,6 +1,6 @@
-package src.main.java.models;
+package models;
 
-import src.main.java.models.Account;
+import models.Account;
 
 import java.util.ArrayList;
 

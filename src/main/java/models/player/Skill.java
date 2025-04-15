@@ -1,4 +1,4 @@
-package src.main.java.models.player;
+package models.player;
 
 public class Skill {
     protected int experience;

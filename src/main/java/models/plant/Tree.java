@@ -1,8 +1,8 @@
-package src.main.java.models.plant;
+package models.plant;
 
-import src.main.java.models.interfaces.Harvestable;
-import src.main.java.models.items.Tool;
-import src.main.java.models.player.Player;
+import models.interfaces.Harvestable;
+import models.items.Tool;
+import models.player.Player;
 
 public class Tree extends Plant implements Harvestable {
     @Override

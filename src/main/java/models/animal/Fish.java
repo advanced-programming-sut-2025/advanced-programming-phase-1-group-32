@@ -1,6 +1,6 @@
-package src.main.java.models.animal;
+package models.animal;
 
-import src.main.java.models.enums.Season;
+import models.enums.Season;
 
 public class Fish {
     private Season season;

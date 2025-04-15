@@ -1,10 +1,10 @@
-package src.main.java.models.animal;
+package models.animal;
 
-import src.main.java.models.Position;
-import src.main.java.models.interfaces.Sellable;
-import src.main.java.models.interfaces.Updatable;
-import src.main.java.models.player.Player;
-import src.main.java.models.player.friendship.AnimalFriendship;
+import models.Position;
+import models.interfaces.Sellable;
+import models.interfaces.Updatable;
+import models.player.Player;
+import models.player.friendship.AnimalFriendship;
 
 import java.util.HashMap;
 import java.util.Map;

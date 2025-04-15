@@ -1,7 +1,7 @@
-package src.main.java.models.plant;
+package models.plant;
 
-import src.main.java.models.Position;
-import src.main.java.models.items.Item;
+import models.Position;
+import models.items.Item;
 
 public class Seed extends Item {
     @Override

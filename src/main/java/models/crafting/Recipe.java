@@ -1,7 +1,7 @@
-package src.main.java.models.crafting;
+package models.crafting;
 
-import src.main.java.models.items.Item;
-import src.main.java.models.items.workstations.WorkStation;
+import models.items.Item;
+import models.items.workstations.WorkStation;
 
 import java.util.ArrayList;
 

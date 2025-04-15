@@ -1,4 +1,4 @@
-package src.main.java.models.player;
+package models.player;
 
 public class Wallet {
     private int amount;

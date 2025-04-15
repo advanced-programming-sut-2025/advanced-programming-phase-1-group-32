@@ -1,6 +1,6 @@
-package src.main.java.models.player;
+package models.player;
 
-import src.main.java.models.Date;
+import models.Date;
 
 public class Message {
     private final Player sender = null;

@@ -1,4 +1,4 @@
-package src.main.java.models.crafting;
+package models.crafting;
 public class Cooking {
     private FoodType foodType;
     private Recipe recipe;

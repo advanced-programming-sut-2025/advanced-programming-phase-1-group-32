@@ -1,4 +1,4 @@
-package src.main.java.models.items;
+package models.items;
 
 public enum ToolType {
     FISHING_POLE(),

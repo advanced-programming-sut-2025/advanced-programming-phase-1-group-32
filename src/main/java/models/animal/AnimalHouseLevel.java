@@ -1,4 +1,4 @@
-package src.main.java.models.animal;
+package models.animal;
 
 public enum AnimalHouseLevel {
 

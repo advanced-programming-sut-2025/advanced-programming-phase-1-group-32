@@ -1,6 +1,6 @@
-package src.main.java.controllers;
+package controllers;
 
-import src.main.java.models.Result;
+import models.Result;
 
 public class ProfileMenuController implements Controller{
     @Override

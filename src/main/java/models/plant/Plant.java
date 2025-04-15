@@ -1,10 +1,10 @@
-package src.main.java.models.plant;
+package models.plant;
 
-import src.main.java.models.Position;
-import src.main.java.models.enums.Season;
-import src.main.java.models.interfaces.Placable;
-import src.main.java.models.interfaces.Updatable;
-import src.main.java.models.items.Fruit;
+import models.Position;
+import models.enums.Season;
+import models.interfaces.Placable;
+import models.interfaces.Updatable;
+import models.items.Fruit;
 
 import java.util.ArrayList;
 

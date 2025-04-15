@@ -1,7 +1,7 @@
-package src.main.java.controllers.inGame;
+package controllers.inGame;
 
-import src.main.java.controllers.Controller;
-import src.main.java.models.Result;
+import controllers.Controller;
+import models.Result;
 
 public class TradesMenuController implements Controller {
 

@@ -1,6 +1,6 @@
-package src.main.java.models.animal;
+package models.animal;
 
-import src.main.java.models.items.Item;
+import models.items.Item;
 
 public class AnimalProduct {
     private final Item    item;

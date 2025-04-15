@@ -1,7 +1,7 @@
-package src.main.java.models.items;
+package models.items;
 
-import src.main.java.models.Position;
-import src.main.java.models.interfaces.Inventory;
+import models.Position;
+import models.interfaces.Inventory;
 
 import java.util.ArrayList;
 import java.util.List;
