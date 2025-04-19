@@ -1,11 +1,12 @@
 package controllers;
 
+import models.App;
 import models.Result;
 
 public interface Controller {
     public Result changeMenu();
     default void exit() {
-        //TODO
+        App.shouldTerminate = true;
     }
 
     default Result showCurrentMenu() {

@@ -1,8 +1,7 @@
+import views.AppView;
 
 public class Main {
     public static void main(String[] args) {
-        while(true){
-            System.out.println("balls");
-        }
+        (new AppView()).run();
     }
 }
