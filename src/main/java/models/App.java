@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class App {
     private final static ArrayList<Account> accountList = new ArrayList<>();
+    private static Account loggedInAccount;
 
 
     /***
@@ -22,5 +23,13 @@ public class App {
 
     public static boolean doesUsernameExist(String username){
         return getUserByUsername(username) != null;
+    }
+
+    public static Account getLoggedInAccount() {
+        return loggedInAccount;
+    }
+
+    public static void setLoggedInAccount(Account loggedInAccount) {
+        App.loggedInAccount = loggedInAccount;
     }
 }

@@ -6,8 +6,8 @@ import models.Result;
 import models.enums.Gender;
 import models.enums.SecurityQuestions;
 
-import java.util.Queue;
-import java.util.Random;
+import java.security.SecureRandom;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +44,8 @@ public class LoginMenuController implements Controller{
 
         Account account = new Account(genderEnum, email,name, password, username);
 
+        //TODO: add account to json file and Account list
+
         StringBuilder message = new StringBuilder("Account registered successfully! now you can choose a security question:");
         message.append("\n").append(SecurityQuestions.getQuestionList());
         return new Result(true, message.toString());
@@ -69,10 +71,24 @@ public class LoginMenuController implements Controller{
                 "this username? \"" + newUsername.toString() + "\"\ntype \"yes\" if you want to continue!");
     }
 
-    public Result pickQuestion() {
-        //TODO
-        return null;
+    public Result pickQuestion(int number, String answer,String answerConfirm) {
+        SecurityQuestions question = SecurityQuestions.getQuestion(number);
+        if (question == null) {
+            return new Result(false, "Invalid question!");
+        }
+
+        if (App.getLoggedInAccount().securityAnswers.containsKey(question)) {
+            return new Result(false, "You are already answered this question!");
+        }
+
+        if (!answer.equals(answerConfirm)) {
+            return new Result(false, "answers do not match!");
+        }
+
+        App.getLoggedInAccount().securityAnswers.put(question, answer);
+        return new Result(true, "You are answered question number " + number + "successfully!");
     }
+
 
     public Result login() {
         //TODO
@@ -86,13 +102,36 @@ public class LoginMenuController implements Controller{
 
 
 
-    private String randomPassword() {
-        //TODO
-        return null;
+
+    public static String generatePassword() {
+        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lower = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "0123456789";
+        String special = "?>,<\"';:/\\|][}{+=)(*&^%$#!";
+
+        SecureRandom random = new SecureRandom();
+        List<Character> passwordChars = new ArrayList<>();
+        int length = random.nextInt(8) + 8;
+
+        passwordChars.add(upper.charAt(random.nextInt(upper.length())));
+        passwordChars.add(lower.charAt(random.nextInt(lower.length())));
+        passwordChars.add(digits.charAt(random.nextInt(digits.length())));
+        passwordChars.add(special.charAt(random.nextInt(special.length())));
+
+        String allChars = upper + lower + digits + special;
+        for (int i = 4; i < length; i++) {
+            passwordChars.add(allChars.charAt(random.nextInt(allChars.length())));
+        }
+
+        Collections.shuffle(passwordChars, random);
+
+        StringBuilder password = new StringBuilder();
+        for (char c : passwordChars) {
+            password.append(c);
+        }
+
+        return password.toString();
     }
-
-
-
 
 
 }

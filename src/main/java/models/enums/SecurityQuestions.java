@@ -23,7 +23,7 @@ public enum SecurityQuestions {
         return questionNumber;
     }
 
-    public SecurityQuestions getQuestion(int questionNumber) {
+    public static SecurityQuestions getQuestion(int questionNumber) {
         for (SecurityQuestions question : SecurityQuestions.values()) {
             if (questionNumber == question.questionNumber) {
                 return question;

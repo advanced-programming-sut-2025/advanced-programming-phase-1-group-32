@@ -66,36 +66,6 @@ public class Account {
         return new Result(true, "");
     }
 
-    public static String generatePassword() {
-        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lower = "abcdefghijklmnopqrstuvwxyz";
-        String digits = "0123456789";
-        String special = "?>,<\"';:/\\|][}{+=)(*&^%$#!";
-
-        SecureRandom random = new SecureRandom();
-        List<Character> passwordChars = new ArrayList<>();
-        int length = random.nextInt(8) + 8;
-
-        passwordChars.add(upper.charAt(random.nextInt(upper.length())));
-        passwordChars.add(lower.charAt(random.nextInt(lower.length())));
-        passwordChars.add(digits.charAt(random.nextInt(digits.length())));
-        passwordChars.add(special.charAt(random.nextInt(special.length())));
-
-        String allChars = upper + lower + digits + special;
-        for (int i = 4; i < length; i++) {
-            passwordChars.add(allChars.charAt(random.nextInt(allChars.length())));
-        }
-
-        Collections.shuffle(passwordChars, random);
-
-        StringBuilder password = new StringBuilder();
-        for (char c : passwordChars) {
-            password.append(c);
-        }
-
-        return password.toString();
-    }
-
     public static Result isEmailValid(String email) {
         if(email.isEmpty()){
             return new Result(false, "email should not be empty");

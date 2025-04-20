@@ -36,11 +36,11 @@ public class LoginMenu implements AppMenu {
 
             // suggest password if user wanted random
             if (password.equalsIgnoreCase("random")) {
-                password = Account.generatePassword();
+                password = controller.generatePassword();
                 System.out.println("Your password is: " + password + "\n type \"random\" for another password");
                 String answer = scanner.nextLine();
                 while (answer.equalsIgnoreCase("random")) {
-                    password = Account.generatePassword();
+                    password = controller.generatePassword();
                     System.out.println("Your password is: " + password + "\n type \"random\" for another password");
                     answer = scanner.nextLine();
                 }
@@ -50,6 +50,12 @@ public class LoginMenu implements AppMenu {
 
             System.out.println(controller.register(username, password, passwordConfirm, name, email, gender));
 
+        } else if ((matcher = LoginMenuCommands.PICK_QUESTION.getMatcher(input)) != null) {
+            int questionNumber = Integer.parseInt(matcher.group("number"));
+            String answer = matcher.group("answer");
+            String answerConfirm = matcher.group("answerConfirm");
+
+            System.out.println(controller.pickQuestion(questionNumber, answer, answerConfirm));
         }
 
     }
