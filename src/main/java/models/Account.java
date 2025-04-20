@@ -3,7 +3,10 @@ package models;
 import models.enums.Gender;
 
 import models.Result;
-import java.util.ResourceBundle;
+import models.enums.SecurityQuestions;
+
+import java.security.SecureRandom;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +22,7 @@ public class Account {
     private String nickname;
     private String email;
     private final Gender gender;
+    public Map<SecurityQuestions, String> securityAnswers;
 
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
@@ -37,10 +41,61 @@ public class Account {
         }
         return new Result(true, "");
     }
+
     public static Result isPasswordValid(String password) { //check all username conditions
-        return new Result(true, null);
-        // TODO
+        if (password.length() < 8) {
+            return new Result(false, "Password must be at least 8 characters");
+        }
+
+        if (!password.matches(".*[a-z].*")) {
+            return new Result(false, "Password must contain at least one lowercase letter");
+        }
+
+        if (!password.matches(".*[A-z].*")) {
+            return new Result(false, "Password must contain at least one uppercase letter");
+        }
+
+        if (!password.matches(".*[0-9].*")) {
+            return new Result(false, "Password must contain at least one digit");
+        }
+
+        if (!password.matches(".*[?><,\"';:/\\\\|\\]\\[\\}\\{\\+=)\\(\\*&\\^%\\$#!].*")){
+            return new Result(false, "Password must contain at least one special character");
+        }
+
+        return new Result(true, "");
     }
+
+    public static String generatePassword() {
+        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lower = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "0123456789";
+        String special = "?>,<\"';:/\\|][}{+=)(*&^%$#!";
+
+        SecureRandom random = new SecureRandom();
+        List<Character> passwordChars = new ArrayList<>();
+        int length = random.nextInt(8) + 8;
+
+        passwordChars.add(upper.charAt(random.nextInt(upper.length())));
+        passwordChars.add(lower.charAt(random.nextInt(lower.length())));
+        passwordChars.add(digits.charAt(random.nextInt(digits.length())));
+        passwordChars.add(special.charAt(random.nextInt(special.length())));
+
+        String allChars = upper + lower + digits + special;
+        for (int i = 4; i < length; i++) {
+            passwordChars.add(allChars.charAt(random.nextInt(allChars.length())));
+        }
+
+        Collections.shuffle(passwordChars, random);
+
+        StringBuilder password = new StringBuilder();
+        for (char c : passwordChars) {
+            password.append(c);
+        }
+
+        return password.toString();
+    }
+
     public static Result isEmailValid(String email) {
         if(email.isEmpty()){
             return new Result(false, "email should not be empty");
