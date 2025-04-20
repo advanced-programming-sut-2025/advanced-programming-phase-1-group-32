@@ -6,10 +6,11 @@ import models.Result;
 import models.enums.Menu;
 import models.enums.Gender;
 import models.enums.SecurityQuestions;
+import views.AppView;
+
+import java.security.KeyPair;
 import java.security.SecureRandom;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LoginMenuController implements Controller{
     @Override
@@ -72,12 +73,6 @@ public class LoginMenuController implements Controller{
     }
 
     public Result login(String username, String password, boolean stayLogged) {
-        if (username.isEmpty()) {
-            return new Result(false, "username should not be empty");
-        }
-        if (password.isEmpty()) {
-            return new Result(false, "password should not be empty");
-        }
         Account account = App.getUserByUsername(username);
 
         if (account == null) {
@@ -89,7 +84,7 @@ public class LoginMenuController implements Controller{
         }
 
         App.setStayLoggedIn(stayLogged);
-        App.setCurrentAccount(account);
+        App.setLoggedInAccount(account);
         App.setCurrentMenu(Menu.LOGIN_MENU);
 
         return new Result(true, "logged in successfully");
@@ -100,7 +95,7 @@ public class LoginMenuController implements Controller{
             return new Result(false, "Invalid question!");
         }
 
-        if (App.getLoggedInAccount().securityAnswers.containsKey(question)) {
+        if (App.getLoggedInAccount().getSecurityAnswers().containsKey(question)) {
             return new Result(false, "You are already answered this question!");
         }
 
@@ -108,13 +103,61 @@ public class LoginMenuController implements Controller{
             return new Result(false, "answers do not match!");
         }
 
-        App.getLoggedInAccount().securityAnswers.put(question, answer);
+        App.getLoggedInAccount().getSecurityAnswers().put(question, answer);
         return new Result(true, "You are answered question number " + number + "successfully!");
     }
 
-    public Result forgetPassword() {
-        //TODO
-        return null;
+    public Result forgetPassword(String username) {
+        Account account = App.getUserByUsername(username);
+
+        if(account == null){
+            return new Result(false, "username doesn't exist!");
+        }
+
+        App.getView().log("answer the questions one by one");
+
+        Map<SecurityQuestions, String> questions = App.getLoggedInAccount().getSecurityAnswers();
+
+        for (Map.Entry<SecurityQuestions, String> q : questions.entrySet()){
+            String answer = App.getView().inputWithPrompt(q.getKey().getQuestion());
+            if(!answer.equals(q.getValue())){
+                return new Result(false, "wrong answer");
+            }
+        }
+
+        App.getView().log("the answers were correct");
+
+        String newPassword;
+        for(int i = 0;; i++){
+            if(i==0){
+                newPassword = App.getView().inputWithPrompt("enter a new password (enter \"random\" for a random password):");
+            }else{
+                newPassword = App.getView().inputWithPrompt("please retry:");
+            }
+
+            if(newPassword.equalsIgnoreCase("random")){
+                newPassword = generatePassword();
+                String confirm = App.getView().inputWithPrompt("Do you confirm your new password to be \"" + newPassword + "\"? (y/n)");
+
+                if(confirm.equalsIgnoreCase("y")){
+                    break;
+                }else{
+                    continue;
+                }
+            }
+
+            Result validationResult;
+            if(!(validationResult = Account.isPasswordValid(newPassword)).isSuccessful()){
+                App.getView().log(validationResult.message());
+            }
+
+            String reEnteredPassword = App.getView().inputWithPrompt("re-enter the password:");
+            if(reEnteredPassword.equals(newPassword)){
+                break;
+            }
+            App.getView().log("passwords don't match.");
+        }
+        return new Result(true, "your new password is \"" + newPassword + "\"");
     }
 
     public static String generatePassword() {
@@ -146,6 +189,4 @@ public class LoginMenuController implements Controller{
 
         return password.toString();
     }
-
-
 }

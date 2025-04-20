@@ -2,9 +2,12 @@ package views;
 
 import controllers.LoginMenuController;
 import models.Account;
+import models.App;
 import models.Result;
 import models.enums.LoginMenuCommands;
+import models.enums.SecurityQuestions;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -63,6 +66,10 @@ public class LoginMenu implements AppMenu {
             boolean stayLogged = matcher.group("stayLogged") != null;
 
             System.out.println(this.controller.login(username, password, stayLogged));
+        }else if((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null){
+            String username = matcher.group("username");
+
+            Result forgotPasswordResult = controller.forgetPassword(username);
         }else if((matcher = LoginMenuCommands.EXIT.getMatcher(input)) != null){
             this.controller.exit();
         }

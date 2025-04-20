@@ -2,14 +2,9 @@ package models;
 
 import models.enums.Gender;
 
-<<<<<<< HEAD
-=======
-import models.Result;
 import models.enums.SecurityQuestions;
 
-import java.security.SecureRandom;
 import java.util.*;
->>>>>>> main
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,10 +14,6 @@ public class Account {
     private static final Pattern validMailCharacters     = Pattern.compile("^[a-zA-Z0-9._-]+$");
     private static final Pattern validDomainCharacters   = Pattern.compile("^[a-zA-Z0-9.-]+$");
     private static final Pattern validPasswordCharacters = Pattern.compile("^[0-9A-Za-z?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$#!]+$");
-    private static final Pattern hasDigitPattern = Pattern.compile(".*[0-9].*");
-    private static final Pattern hasLowerCasePattern = Pattern.compile(".*[a-z].*");
-    private static final Pattern hasUpperCasePattern = Pattern.compile(".*[A-Z].*");
-    private static final Pattern hasSpecialCharactersPattern = Pattern.compile(".*[?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$#!]+.*");
 
 
     private String username;
@@ -30,7 +21,7 @@ public class Account {
     private String nickname;
     private String email;
     private final Gender gender;
-    public Map<SecurityQuestions, String> securityAnswers;
+    private Map<SecurityQuestions, String> securityAnswers;
 
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
@@ -50,8 +41,7 @@ public class Account {
         return new Result(true, "");
     }
 
-    public static Result isPasswordValid(String password) { //check all username conditions
-<<<<<<< HEAD
+    public static Result isPasswordValid(String password) {
         if(password.isEmpty()){
             return new Result(false, "password should not be empty");
         }
@@ -61,23 +51,6 @@ public class Account {
         if(!validPasswordCharacters.matcher(password).matches()){
             return new Result(false, "password contains invalid characters");
         }
-        if(!hasLowerCasePattern.matcher(password).matches()){
-            return new Result(false, "password should contain at least one lowercase");
-        }
-        if(!hasUpperCasePattern.matcher(password).matches()){
-            return new Result(false, "password should contain at least one uppercase");
-        }
-        if(!hasDigitPattern.matcher(password).matches()){
-            return new Result(false, "password should contain at least one digit");
-        }
-        if(!hasSpecialCharactersPattern.matcher(password).matches()){
-            return new Result(false, "password should contain at least one special character (?<>,\"';:/\\|[]{}+=()*&^%$#!)");
-        }
-=======
-        if (password.length() < 8) {
-            return new Result(false, "Password must be at least 8 characters");
-        }
-
         if (!password.matches(".*[a-z].*")) {
             return new Result(false, "Password must contain at least one lowercase letter");
         }
@@ -90,11 +63,9 @@ public class Account {
             return new Result(false, "Password must contain at least one digit");
         }
 
-        if (!password.matches(".*[?><,\"';:/\\\\|\\]\\[\\}\\{\\+=)\\(\\*&\\^%\\$#!].*")){
+        if (!password.matches(".*[?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$#!]+.*")){
             return new Result(false, "Password must contain at least one special character");
         }
-
->>>>>>> main
         return new Result(true, "");
     }
 
@@ -174,4 +145,11 @@ public class Account {
     }
 
 
+    public Map<SecurityQuestions, String> getSecurityAnswers() {
+        return securityAnswers;
+    }
+
+    public void setSecurityAnswers(Map<SecurityQuestions, String> securityAnswers) {
+        this.securityAnswers = securityAnswers;
+    }
 }

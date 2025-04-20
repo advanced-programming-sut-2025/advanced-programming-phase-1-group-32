@@ -1,20 +1,17 @@
 package models;
 
 import models.enums.Menu;
+import views.AppView;
 
 import java.util.ArrayList;
 
 public class App {
     private final static ArrayList<Account> accountList = new ArrayList<>();
-<<<<<<< HEAD
-    private static Account currentAccount = null;
+    private static Account loggedInAccount = null;
     private static boolean stayLoggedIn   = false;
     private static Menu currentMenu = Menu.LOGIN_MENU;
+    private static final AppView view = new AppView();
     public static boolean shouldTerminate = false;
-=======
-    private static Account loggedInAccount;
-
->>>>>>> main
 
     /***
      * Returns null if the username doesn't exist.
@@ -26,14 +23,6 @@ public class App {
             }
         }
         return null;
-    }
-
-    public static Account getCurrentAccount() {
-        return currentAccount;
-    }
-
-    public static void setCurrentAccount(Account currentAccount) {
-        App.currentAccount = currentAccount;
     }
 
     public static boolean getStayLoggedIn() {
@@ -62,5 +51,13 @@ public class App {
 
     public static void setLoggedInAccount(Account loggedInAccount) {
         App.loggedInAccount = loggedInAccount;
+    }
+
+    public static void start(){
+        view.run();
+    }
+
+    public static AppView getView(){
+        return view;
     }
 }
