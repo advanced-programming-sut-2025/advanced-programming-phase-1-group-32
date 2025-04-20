@@ -1,6 +1,7 @@
 package views;
 
 import controllers.LoginMenuController;
+import models.Account;
 import models.Result;
 import models.enums.LoginMenuCommands;
 
@@ -14,7 +15,49 @@ public class LoginMenu implements AppMenu {
     public void checker(Scanner scanner) {
         Matcher matcher;
         String input = scanner.nextLine();
-        if((matcher = LoginMenuCommands.LOGIN.getMatcher(input)) != null){
+
+        if ((matcher = LoginMenuCommands.REGISTER.getMatcher(input)) != null) {
+            String username = matcher.group("username");
+            String password = matcher.group("password");
+            String passwordConfirm = matcher.group("passwordConfirm");
+            String name = matcher.group("name");
+            String email = matcher.group("email");
+            String gender = matcher.group("gender");
+
+            // check if username is new and suggest new one
+            Result isNewUsername = controller.suggestUsername(username);
+            if (!isNewUsername.isSuccessful()) {
+                username = isNewUsername.message();
+                System.out.println("you should choose a new username, do you want to continue with" +
+                        "this username? \"" + username + "\"\ntype \"yes\" if you want to continue!");
+
+                String answer = scanner.nextLine();
+                if (!answer.equalsIgnoreCase("yes")) return;
+            }
+
+            // suggest password if user wanted random
+            if (password.equalsIgnoreCase("random")) {
+                password = controller.generatePassword();
+                System.out.println("Your password is: " + password + "\n type \"random\" for another password");
+                String answer = scanner.nextLine();
+                while (answer.equalsIgnoreCase("random")) {
+                    password = controller.generatePassword();
+                    System.out.println("Your password is: " + password + "\n type \"random\" for another password");
+                    answer = scanner.nextLine();
+                }
+
+                passwordConfirm = password;
+            }
+
+            System.out.println(controller.register(username, password, passwordConfirm, name, email, gender));
+
+        } else if ((matcher = LoginMenuCommands.PICK_QUESTION.getMatcher(input)) != null) {
+            int questionNumber = Integer.parseInt(matcher.group("number"));
+            String answer = matcher.group("answer");
+            String answerConfirm = matcher.group("answerConfirm");
+
+            System.out.println(controller.pickQuestion(questionNumber, answer, answerConfirm));
+        } else if((matcher = LoginMenuCommands.LOGIN.getMatcher(input)) != null){
             String username = matcher.group("username");
             String password = matcher.group("password");
             boolean stayLogged = matcher.group("stayLogged") != null;
@@ -24,7 +67,7 @@ public class LoginMenu implements AppMenu {
             this.controller.exit();
         }
 
-        if(matcher == null){
+        if(matcher == null) {
             System.out.println("invalid command");
         }
     }

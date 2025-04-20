@@ -6,10 +6,15 @@ import java.util.ArrayList;
 
 public class App {
     private final static ArrayList<Account> accountList = new ArrayList<>();
+<<<<<<< HEAD
     private static Account currentAccount = null;
     private static boolean stayLoggedIn   = false;
     private static Menu currentMenu = Menu.LOGIN_MENU;
     public static boolean shouldTerminate = false;
+=======
+    private static Account loggedInAccount;
+
+>>>>>>> main
 
     /***
      * Returns null if the username doesn't exist.
@@ -49,5 +54,13 @@ public class App {
 
     public static boolean doesUsernameExist(String username){
         return getUserByUsername(username) != null;
+    }
+
+    public static Account getLoggedInAccount() {
+        return loggedInAccount;
+    }
+
+    public static void setLoggedInAccount(Account loggedInAccount) {
+        App.loggedInAccount = loggedInAccount;
     }
 }

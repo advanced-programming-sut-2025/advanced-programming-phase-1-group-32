@@ -2,6 +2,14 @@ package models;
 
 import models.enums.Gender;
 
+<<<<<<< HEAD
+=======
+import models.Result;
+import models.enums.SecurityQuestions;
+
+import java.security.SecureRandom;
+import java.util.*;
+>>>>>>> main
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,6 +30,7 @@ public class Account {
     private String nickname;
     private String email;
     private final Gender gender;
+    public Map<SecurityQuestions, String> securityAnswers;
 
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
@@ -40,7 +49,9 @@ public class Account {
         }
         return new Result(true, "");
     }
+
     public static Result isPasswordValid(String password) { //check all username conditions
+<<<<<<< HEAD
         if(password.isEmpty()){
             return new Result(false, "password should not be empty");
         }
@@ -62,8 +73,31 @@ public class Account {
         if(!hasSpecialCharactersPattern.matcher(password).matches()){
             return new Result(false, "password should contain at least one special character (?<>,\"';:/\\|[]{}+=()*&^%$#!)");
         }
+=======
+        if (password.length() < 8) {
+            return new Result(false, "Password must be at least 8 characters");
+        }
+
+        if (!password.matches(".*[a-z].*")) {
+            return new Result(false, "Password must contain at least one lowercase letter");
+        }
+
+        if (!password.matches(".*[A-z].*")) {
+            return new Result(false, "Password must contain at least one uppercase letter");
+        }
+
+        if (!password.matches(".*[0-9].*")) {
+            return new Result(false, "Password must contain at least one digit");
+        }
+
+        if (!password.matches(".*[?><,\"';:/\\\\|\\]\\[\\}\\{\\+=)\\(\\*&\\^%\\$#!].*")){
+            return new Result(false, "Password must contain at least one special character");
+        }
+
+>>>>>>> main
         return new Result(true, "");
     }
+
     public static Result isEmailValid(String email) {
         if(email.isEmpty()){
             return new Result(false, "email should not be empty");
