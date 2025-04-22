@@ -9,52 +9,113 @@
 ## Ilia Yazdani
 #### 403110636
 ---
+# Tasks
 
-#Tasks
 <details>
-    <summary>Signup Menu</summary>
-    - [ ] create new user  
-    - [ ] check errors
-    - [ ] security questions
-    - [ ] random password
-</details>
-<details>
-    <summary>Login Menu</summary>
-    - [ ] Success login  
-    - [ ] check errors
-    - [ ] stay logged in  
-    - [ ] forget password
+  <summary>Signup Menu</summary>
+
+- [ ] Create new user
+- [ ] Check errors
+- [ ] Security questions
+- [ ] Random password
 </details>
 
 <details>
-    <summary>Main Menu</summary>
-    - [ ] new game
-    - [ ] show menus 
-    - [ ] go to menus
-    - [ ] exit
+  <summary>Login Menu</summary>
+
+- [ ] Success login
+- [ ] Check errors
+- [ ] Stay logged in
+- [ ] Forget password
 </details>
 
 <details>
-    <summary>Profile Menu</summary>
-    - [ ] change fields
-    - [ ] check errors
-    - [ ] show user data
+  <summary>Main Menu</summary>
+
+- [ ] New game
+- [ ] Show menus
+- [x] Go to menus
+- [x] Logout
+- [x] Show menus
 </details>
 
 <details>
-    <summary>Game Menu</summary>
-    - [ ] choose map
-    - [ ] load game (not now)
-    - [ ] exit game
-    - [ ] check errors
-    - [ ] change turn
+  <summary>Profile Menu</summary>
+
+- [x] Change fields
+- [x] Check errors
+- [x] Show user data
 </details>
 
 <details>
-    <summary>Date & Time</summary>
-    - [ ] choose map
-    - [ ] load game (not now)
-    - [ ] exit game
-    - [ ] check errors
-    - [ ] change turn
+  <summary>Game Menu</summary>
+
+- [ ] Choose map
+- [ ] Load game (not now)
+- [ ] Exit game
+- [ ] Check errors
+- [ ] Change turn
+</details>
+
+<details>
+  <summary>Date & Time</summary>
+
+- [ ] Show date 
+- [ ] Set hour
+- [ ] Set date
+</details>
+
+<details>
+    <summary>Weather</summary>
+
+- [ ] Change Season
+- [ ] Show Weather
+- [ ] Change Weather [cheat]
+- [ ] Weather effect ??
+- [ ] Thor (Cheat)
+</details>
+
+<details>
+    <summary>GreenHouse</summary>
+
+- [ ] build
+- [ ] works
+</details>
+
+<details>
+    <summary>next day</summary>
+
+- [ ] change hour
+- [ ] walk home
+- [ ] effects
+</details>
+
+<details>
+    <summary>Map</summary>
+
+- [ ] fixed elements
+- [ ] random elements
+- [ ] place farms and villages in map
+- [ ] print map
+- [ ] map hint
+- [ ] **[EXTRA]** color map
+</details>
+
+<details>
+    <summary>movement</summary>
+
+- [ ] walk
+- [ ] calculate energy
+- [ ] **[EXTRA]** complex energy formula
+- [ ] **[EXTRA]** ghash
+</details>
+
+<details>
+    <summary>Energy</summary>
+
+- [ ] show energy
+- [ ] energy maximum
+- [ ] ghash
+- [ ] set energy [cheat]
+
 </details>
