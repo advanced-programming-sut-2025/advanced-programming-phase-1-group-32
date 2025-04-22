@@ -4,13 +4,12 @@ import models.App;
 import models.Result;
 
 public interface Controller {
-    public Result changeMenu();
+    public Result changeMenu(String menuName);
     default void exit() {
         App.shouldTerminate = true;
     }
 
     default Result showCurrentMenu() {
-        //TODO
-        return null;
+        return new Result(true, App.getCurrentMenu().toString());
     }
 }

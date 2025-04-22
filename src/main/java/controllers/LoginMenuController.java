@@ -6,15 +6,13 @@ import models.Result;
 import models.enums.Menu;
 import models.enums.Gender;
 import models.enums.SecurityQuestions;
-import views.AppView;
 
-import java.security.KeyPair;
 import java.security.SecureRandom;
 import java.util.*;
 
 public class LoginMenuController implements Controller{
     @Override
-    public Result changeMenu() {
+    public Result changeMenu(String menuName) {
         //TODO
         return null;
     }
@@ -79,7 +77,7 @@ public class LoginMenuController implements Controller{
             return new Result(false, "username doesnt exist");
         }
 
-        if (!account.getPassword().equals(password)) {
+        if (!account.isPasswordCorrect(password)) {
             return new Result(false, "incorrect password");
         }
 

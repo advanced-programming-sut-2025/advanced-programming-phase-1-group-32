@@ -22,6 +22,7 @@ public class Account {
     private String email;
     private final Gender gender;
     private Map<SecurityQuestions, String> securityAnswers;
+    private final ArrayList<Game> playedGames = new ArrayList<>();
 
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
@@ -116,8 +117,8 @@ public class Account {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean isPasswordCorrect(String password) { /* !! don't use getPassword because of SHA-256 */
+        return this.password.equals(password);
     }
 
     public void setPassword(String password) {
@@ -152,4 +153,14 @@ public class Account {
     public void setSecurityAnswers(Map<SecurityQuestions, String> securityAnswers) {
         this.securityAnswers = securityAnswers;
     }
+
+    public long getMaximumMoneyEarned() {
+        // TODO: implement later
+        return 0;
+    }
+
+    public int gamesCount() {
+        return playedGames.size();
+    }
+
 }

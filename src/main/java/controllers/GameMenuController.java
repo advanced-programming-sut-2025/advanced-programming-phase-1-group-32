@@ -5,7 +5,7 @@ import controllers.Controller;
 
 public class GameMenuController implements Controller {
     @Override
-    public Result changeMenu() {
+    public Result changeMenu(String menuName) {
         return null;
     }
 
