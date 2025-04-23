@@ -1,8 +1,12 @@
 package controllers;
 
+import models.Account;
 import models.App;
+import models.Game;
 import models.Result;
 import models.enums.Menu;
+import models.player.Player;
+import views.GameMenu;
 
 public class MainMenuController implements Controller{
     @Override
@@ -34,9 +38,34 @@ public class MainMenuController implements Controller{
         return new Result(true, sb.toString());
     }
 
-    public Result newGame() {
-        //TODO
-        return null;
+    public Result newGame(String input) {
+        String[] usernames = input.split("\\s");
+        if(usernames.length == 0)
+            return new Result(false, "you should enter at least  1 username");
+        if(usernames.length > 3)
+            return new Result(false, "You can't play with more than players");
+        Account[] accounts = new Account[usernames.length + 1];
+        accounts[0] = App.getLoggedInAccount();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < usernames.length; i++) {
+
+            accounts[i + 1] = App.getUserByUsername(usernames[i]);
+            if (accounts[i + 1] == null)
+                sb.append("username ").append(usernames[i]).append(" doesn't exist\n");
+        }
+        if(!sb.isEmpty())
+            return new Result(false, sb.deleteCharAt(sb.length() - 1).toString());
+
+        Game game = new Game();
+        for (Account account : accounts) {
+            if(account.getActiveGame() != null)
+                return new Result(false, "user " + account.getUsername() + " is already in a game.");
+            game.addPlayer(new Player());
+            account.setActiveGame(game);
+        }
+        App.setCurrentMenu(Menu.GAME_MENU);
+        return new Result(true, "Game started!, You are in Game Menu now!");
+
     }
 
     public Result loadGame() {

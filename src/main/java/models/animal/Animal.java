@@ -15,7 +15,7 @@ public abstract class Animal implements Sellable, Updatable {
     private final AnimalType type;
     private Player   owner;
     private String   name;
-    private Position position = new Position();
+    private Position position;
 
     public Animal(AnimalType type, String name, Player owner) {
         this.type  = type;

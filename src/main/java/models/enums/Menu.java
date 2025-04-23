@@ -1,9 +1,6 @@
 package models.enums;
 
-import views.AppMenu;
-import views.LoginMenu;
-import views.MainMenu;
-import views.ProfileMenu;
+import views.*;
 
 import java.util.Scanner;
 
@@ -11,6 +8,7 @@ public enum Menu {
     PROFILE_MENU(new ProfileMenu()),
     LOGIN_MENU(new LoginMenu()),
     MAIN_MENU(new MainMenu()),
+    GAME_MENU(new GameMenu()),
     ;
     private final AppMenu menu;
     Menu(AppMenu menu){

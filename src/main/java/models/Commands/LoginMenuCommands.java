@@ -1,9 +1,7 @@
-package models.enums;
-
-import java.util.regex.Matcher;
+package models.Commands;
 
 public enum LoginMenuCommands implements Commands{
-    REGISTER("register\\s+-u\\s+(?<username>\\w+    )\\s+-p\\s+(?<password>\\S+)\\s+(?<passwordConfirm>\\S+)\\s+" +
+    REGISTER("register\\s+-u\\s+(?<username>\\w+)\\s+-p\\s+(?<password>\\S+)\\s+(?<passwordConfirm>\\S+)\\s+" +
             "-n\\s+(?<name>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-g\\s+(?<gender>\\S+)\\s*"),
     PICK_QUESTION("\\s*pick\\s+question\\s+-q\\s+(?<number>\\d+)\\s+-a\\s+(?<answer>.+)\\s+-c\\s+(?<answerConfirm>.+)"),
     FORGOT_PASSWORD ("^\\s*forgot\\s+password\\s+-u" +

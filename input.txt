@@ -1,0 +1,2 @@
+register -u AliAlm -p AliPass123@ AliPass123@ -n AliAlm -e Aliiii@gmail.com -g male
+pick question -q 1 -a meow -c meow

@@ -1,5 +1,6 @@
 package models.player;
 
+import models.Account;
 import models.Quest.Quest;
 import models.NPC.Character;
 import models.crafting.Recipe;

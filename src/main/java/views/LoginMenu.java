@@ -1,13 +1,9 @@
 package views;
 
 import controllers.LoginMenuController;
-import models.Account;
-import models.App;
 import models.Result;
-import models.enums.LoginMenuCommands;
-import models.enums.SecurityQuestions;
+import models.Commands.LoginMenuCommands;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 

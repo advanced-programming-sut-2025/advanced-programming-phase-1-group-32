@@ -1,7 +1,7 @@
 package views;
 
 import controllers.ProfileMenuController;
-import models.enums.ProfileMenuCommands;
+import models.Commands.ProfileMenuCommands;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

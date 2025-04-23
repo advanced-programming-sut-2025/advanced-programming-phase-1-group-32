@@ -13,7 +13,7 @@ public class Account {
     private static final Pattern emailGroupingPattern    = Pattern.compile("^(?<mail>\\S+)@(?<domain>\\S+)\\.(?<tld>\\S+)$");
     private static final Pattern validMailCharacters     = Pattern.compile("^[a-zA-Z0-9._-]+$");
     private static final Pattern validDomainCharacters   = Pattern.compile("^[a-zA-Z0-9.-]+$");
-    private static final Pattern validPasswordCharacters = Pattern.compile("^[0-9A-Za-z?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$#!]+$");
+    private static final Pattern validPasswordCharacters = Pattern.compile("^[0-9A-Za-z?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$@#!]+$");
 
 
     private String username;
@@ -22,6 +22,7 @@ public class Account {
     private String email;
     private final Gender gender;
     private Map<SecurityQuestions, String> securityAnswers;
+    private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
     public Account(Gender gender, String email, String nickname, String password, String username) {
@@ -64,7 +65,7 @@ public class Account {
             return new Result(false, "Password must contain at least one digit");
         }
 
-        if (!password.matches(".*[?<>,\"';:/\\\\|\\[\\]{}+=()*&^%$#!]+.*")){
+        if (!password.matches(".*[?<>,\"';:/\\\\|\\[\\]{}+=()*&^%@$#!]+.*")){
             return new Result(false, "Password must contain at least one special character");
         }
         return new Result(true, "");
@@ -163,4 +164,11 @@ public class Account {
         return playedGames.size();
     }
 
+    public Game getActiveGame() {
+        return activeGame;
+    }
+
+    public void setActiveGame(Game activeGame) {
+        this.activeGame = activeGame;
+    }
 }

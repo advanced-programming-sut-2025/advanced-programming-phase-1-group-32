@@ -18,6 +18,13 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- Jline for get input without enter-->
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline</artifactId>
+            <version>3.21.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

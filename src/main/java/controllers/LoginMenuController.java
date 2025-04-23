@@ -83,7 +83,7 @@ public class LoginMenuController implements Controller{
 
         App.setStayLoggedIn(stayLogged);
         App.setLoggedInAccount(account);
-        App.setCurrentMenu(Menu.LOGIN_MENU);
+        App.setCurrentMenu(Menu.MAIN_MENU);
 
         return new Result(true, "logged in successfully");
     }

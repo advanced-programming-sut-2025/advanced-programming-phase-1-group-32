@@ -1,4 +1,4 @@
-package models.enums;
+package models.Commands;
 
 public enum ProfileMenuCommands implements Commands{
     MENU_ENTER("^menu\\s+enter\\s+(?<menuName>.+)"),

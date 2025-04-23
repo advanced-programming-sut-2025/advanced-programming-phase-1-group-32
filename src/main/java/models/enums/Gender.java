@@ -5,13 +5,13 @@ public enum Gender {
     FEMALE;
 
     public static Gender getGender(String input) {
-        Gender gender;
+        Gender gender = null;
         if (input.toLowerCase().equals("male")) {
             gender = Gender.MALE;
         } else if (input.toLowerCase().equals("female")) {
             gender = Gender.FEMALE;
         }
 
-        return null;
+        return gender;
     }
 }

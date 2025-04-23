@@ -1,7 +1,7 @@
 package views;
 
 import controllers.MainMenuController;
-import models.enums.MainMenuCommands;
+import models.Commands.MainMenuCommands;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -19,6 +19,10 @@ public class MainMenu implements AppMenu {
         } else if ((matcher = MainMenuCommands.USER_LOGOUT.getMatcher(input)) != null) {
             System.out.println(controller.logout());
         } else if ((matcher = MainMenuCommands.SHOW_MENUS.getMatcher(input)) != null) {
+            System.out.println(controller.showMenus());
+        } else if ((matcher = MainMenuCommands.NEW_GAME.getMatcher(input)) != null) {
+            System.out.println(controller.showMenus());
+        } else if ((matcher = MainMenuCommands.LOAD_GAME.getMatcher(input)) != null) {
             System.out.println(controller.showMenus());
         } else {
             System.out.println("invalid command");
