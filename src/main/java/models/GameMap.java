@@ -1,7 +1,5 @@
 package models;
 
-import models.interfaces.Placable;
-
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
