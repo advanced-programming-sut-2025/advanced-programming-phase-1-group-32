@@ -1,18 +1,15 @@
 package models;
 
+import models.entities.Entity;
 import models.enums.TileType;
-import models.interfaces.Placable;
-import views.inGame.Color;
 
 public class Tile{
     private TileType type;
     final private Position position;
-    private Color color;
-    private Placable content;
+    private Entity content;
 
     public Tile(Position position) {
         this.position = position;
-        color = new Color(255, 0, 0);
     }
 
     public TileType getType() {
@@ -23,23 +20,11 @@ public class Tile{
         this.type = type;
     }
 
-    public Placable getContent() {
+    public Entity getContent() {
         return content;
     }
 
-    public void setContent(Placable content) {
+    public void setContent(Entity content) {
         this.content = content;
-    }
-
-    public int getRow() {
-        return position.getRow();
-    }
-
-    public int getCol() {
-        return position.getCol();
-    }
-
-    public Color getColor() {
-        return color;
     }
 }

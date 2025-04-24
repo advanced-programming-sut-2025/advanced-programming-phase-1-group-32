@@ -1,7 +1,6 @@
 package models.animal;
 
 import models.Position;
-import models.interfaces.Sellable;
 import models.interfaces.Updatable;
 import models.player.Player;
 import models.player.friendship.AnimalFriendship;
@@ -9,7 +8,7 @@ import models.player.friendship.AnimalFriendship;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Animal implements Sellable, Updatable {
+public abstract class Animal implements Updatable {
     private HashMap<Player, AnimalFriendship> friendshipHashMap;
     private Map<AnimalProduct, Integer>       timeLeftTillProduction;
     private final AnimalType type;
