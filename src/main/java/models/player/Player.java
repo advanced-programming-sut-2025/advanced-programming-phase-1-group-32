@@ -4,9 +4,8 @@ import models.Account;
 import models.Quest.Quest;
 import models.NPC.Character;
 import models.crafting.Recipe;
+import models.entities.Entity;
 import models.enums.SkillType;
-import models.items.BackPack;
-import models.items.Item;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
@@ -18,7 +17,7 @@ public class Player {
     private final Wallet wallet = null;
     private final Map<SkillType, Skill> skills = null;
     private int trashcanLevel;
-    private final BackPack backPack = null;
+    private final Entity backPack = null;
     private final Map<Character, NpcFriendship> npcFriendships = null;
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private Player spouce;
@@ -36,7 +35,7 @@ public class Player {
         //TODO
     }
 
-    public void trashItem(Item item) {
+    public void trashItem(Entity item) {
 
     }
 

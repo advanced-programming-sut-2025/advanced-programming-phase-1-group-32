@@ -1,12 +1,11 @@
 package models.crafting;
 
-import models.items.Item;
-import models.items.workstations.WorkStation;
+import models.entities.Entity;
 
 import java.util.ArrayList;
 
 public class Recipe {
-    ArrayList<Item> ingredients;
+    ArrayList<Entity> ingredients;
     private boolean isUnlocked;
-    private WorkStation workStation;
+    private Entity workStation;
 }
