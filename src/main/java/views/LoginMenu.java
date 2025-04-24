@@ -28,22 +28,28 @@ public class LoginMenu implements AppMenu {
             if (!isNewUsername.isSuccessful()) {
                 username = isNewUsername.message();
                 System.out.println("you should choose a new username, do you want to continue with" +
-                        "this username? \"" + username + "\"\ntype \"yes\" if you want to continue!");
+                        "this username? \"" + username + "\"\ntype \"go\" if you want to continue!");
 
                 String answer = scanner.nextLine();
-                if (!answer.equalsIgnoreCase("yes")) return;
+                if (!answer.equalsIgnoreCase("go")) return;
             }
 
             // suggest password if user wanted random
             if (password.equalsIgnoreCase("random")) {
-                password = controller.generatePassword();
-                System.out.println("Your password is: " + password + "\n type \"random\" for another password");
-                String answer = scanner.nextLine();
-                while (answer.equalsIgnoreCase("random")) {
+                String answer;
+                do {
                     password = controller.generatePassword();
-                    System.out.println("Your password is: " + password + "\n type \"random\" for another password");
+                    System.out.println("Your password is: " + password + "\n type \"random\" for another password\n" +
+                            "type \"go\" if you want to continue");
+
+                    // get answers until valid one
                     answer = scanner.nextLine();
-                }
+                    while (!answer.equalsIgnoreCase("go") && !answer.equalsIgnoreCase("random")) {
+                        answer = scanner.nextLine();
+                    }
+
+
+                } while (!answer.equalsIgnoreCase("go"));
 
                 passwordConfirm = password;
             }
@@ -62,6 +68,7 @@ public class LoginMenu implements AppMenu {
             boolean stayLogged = matcher.group("stayLogged") != null;
 
             System.out.println(this.controller.login(username, password, stayLogged));
+
         }else if((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null){
             String username = matcher.group("username");
 

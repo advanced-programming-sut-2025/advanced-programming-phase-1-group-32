@@ -42,8 +42,9 @@ public class LoginMenuController implements Controller{
         
 
         Account account = new Account(genderEnum, email,name, password, username);
-
-        //TODO: add account to json file and Account list
+        App.setRegisteredAccount(account);
+        App.addAccount(account);
+        //TODO: add account to jason file
 
         StringBuilder message = new StringBuilder("Account registered successfully! now you can choose a security question:");
         message.append("\n").append(SecurityQuestions.getQuestionList());
@@ -66,8 +67,7 @@ public class LoginMenuController implements Controller{
             }
         }
 
-        return new Result(false, "you should choose a new username, do you want to continue with" +
-                "this username? \"" + newUsername.toString() + "\"\ntype \"yes\" if you want to continue!");
+        return new Result(false, newUsername.toString());
     }
 
     public Result login(String username, String password, boolean stayLogged) {
@@ -87,13 +87,18 @@ public class LoginMenuController implements Controller{
 
         return new Result(true, "logged in successfully");
     }
+
     public Result pickQuestion(int number, String answer,String answerConfirm) {
         SecurityQuestions question = SecurityQuestions.getQuestion(number);
         if (question == null) {
             return new Result(false, "Invalid question!");
         }
 
-        if (App.getLoggedInAccount().getSecurityAnswers().containsKey(question)) {
+        if (App.getRegisteredAccount() == null) {
+            return new Result(false, "you should signup first!");
+        }
+
+        if (App.getRegisteredAccount().getSecurityAnswers().containsKey(question)) {
             return new Result(false, "You are already answered this question!");
         }
 
@@ -101,8 +106,8 @@ public class LoginMenuController implements Controller{
             return new Result(false, "answers do not match!");
         }
 
-        App.getLoggedInAccount().getSecurityAnswers().put(question, answer);
-        return new Result(true, "You are answered question number " + number + "successfully!");
+        App.getRegisteredAccount().getSecurityAnswers().put(question, answer);
+        return new Result(true, "You answered question number " + number + " successfully!");
     }
 
     public Result forgetPassword(String username) {
@@ -114,7 +119,7 @@ public class LoginMenuController implements Controller{
 
         App.getView().log("answer the questions one by one");
 
-        Map<SecurityQuestions, String> questions = App.getLoggedInAccount().getSecurityAnswers();
+        Map<SecurityQuestions, String> questions = account.getSecurityAnswers();
 
         for (Map.Entry<SecurityQuestions, String> q : questions.entrySet()){
             String answer = App.getView().inputWithPrompt(q.getKey().getQuestion());
@@ -158,7 +163,7 @@ public class LoginMenuController implements Controller{
         return new Result(true, "your new password is \"" + newPassword + "\"");
     }
 
-    public static String generatePassword() {
+    public String generatePassword() {
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String digits = "0123456789";

@@ -21,7 +21,7 @@ public class Account {
     private String nickname;
     private String email;
     private final Gender gender;
-    private Map<SecurityQuestions, String> securityAnswers;
+    private Map<SecurityQuestions, String> securityAnswers = new HashMap<>();
     private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class Account {
             return new Result(false, "Password must contain at least one lowercase letter");
         }
 
-        if (!password.matches(".*[A-z].*")) {
+        if (!password.matches(".*[A-Z].*")) {
             return new Result(false, "Password must contain at least one uppercase letter");
         }
 

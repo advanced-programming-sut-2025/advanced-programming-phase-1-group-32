@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class App {
     private final static ArrayList<Account> accountList = new ArrayList<>();
     private static Account loggedInAccount = null;
+    private static Account registeredAccount = null;
     private static boolean stayLoggedIn   = false;
     private static Menu currentMenu = Menu.LOGIN_MENU;
     private static final AppView view = new AppView();
@@ -59,5 +60,17 @@ public class App {
 
     public static AppView getView(){
         return view;
+    }
+
+    public static Account getRegisteredAccount() {
+        return registeredAccount;
+    }
+
+    public static void setRegisteredAccount(Account registeredAccount) {
+        App.registeredAccount = registeredAccount;
+    }
+
+    public static void addAccount(Account account){
+        accountList.add(account);
     }
 }
