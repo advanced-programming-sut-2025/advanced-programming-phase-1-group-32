@@ -1,7 +1,7 @@
-package models.game.items.components;
+package models.items.components;
 
-import models.game.enums.Material;
-import models.game.items.ToolType;
+import models.enums.Material;
+import models.items.ToolType;
 
 public class Tool extends ItemComponent{
     private ToolType type;

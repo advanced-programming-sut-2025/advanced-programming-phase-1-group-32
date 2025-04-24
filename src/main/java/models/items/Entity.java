@@ -4,7 +4,7 @@ import models.items.components.EntityComponent;
 
 import java.util.ArrayList;
 
-abstract public class Entity implements Placable {
+abstract public class Entity {
     private final ArrayList<EntityComponent> components = new ArrayList<>();
 
     public <T extends EntityComponent> T getComponent(Class<T> componentClass) {

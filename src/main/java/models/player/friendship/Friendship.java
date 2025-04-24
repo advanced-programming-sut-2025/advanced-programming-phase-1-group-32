@@ -1,5 +1,5 @@
 <<<<<<<< HEAD:src/models/game/player/friendship/Friendship.java
-package models.game.player.friendship;
+package models.player.friendship;
 ========
 package models.player.friendship;
 >>>>>>>> main:src/main/java/models/player/friendship/Friendship.java

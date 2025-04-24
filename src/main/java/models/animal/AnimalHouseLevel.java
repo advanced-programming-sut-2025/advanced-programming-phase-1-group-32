@@ -1,4 +1,4 @@
-package models.game.animal;
+package models.animal;
 
 public enum AnimalHouseLevel {
 

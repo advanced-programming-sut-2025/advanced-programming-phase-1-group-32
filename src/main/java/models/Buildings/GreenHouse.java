@@ -1,9 +1,9 @@
-package models.game.Buildings;
+package models.Buildings;
 
 <<<<<<<< HEAD:src/models/game/Buildings/GreenHouse.java
-import models.game.interfaces.Updatable;
+import models.interfaces.Updatable;
 ========
-import models.GameMap;
+import modelsMap;
 import models.Position;
 import models.interfaces.Updatable;
 >>>>>>>> main:src/main/java/models/Buildings/GreenHouse.java

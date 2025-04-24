@@ -1,11 +1,11 @@
-package models.game.animal;
+package models.animal;
 
 <<<<<<<< HEAD:src/models/game/animal/Animal.java
-import models.game.Position;
-import models.game.interfaces.Sellable;
-import models.game.interfaces.Updatable;
-import models.game.player.Player;
-import models.game.player.friendship.AnimalFriendship;
+import models.Position;
+import models.interfaces.Sellable;
+import models.interfaces.Updatable;
+import models.player.Player;
+import models.player.friendship.AnimalFriendship;
 ========
 import models.Position;
 import models.interfaces.Updatable;

@@ -1,4 +1,4 @@
-package models.game.interfaces;
+package models.interfaces;
 
 public interface Updatable {
     public void updatePerHour();

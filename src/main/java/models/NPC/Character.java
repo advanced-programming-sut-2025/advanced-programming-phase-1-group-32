@@ -1,8 +1,8 @@
-package models.game.NPC;
+package models.NPC;
 
-import models.game.Quest.Quest;
-import models.game.Position;
-import models.game.player.Player;
+import models.Quest.Quest;
+import models.Position;
+import models.player.Player;
 
 import java.util.ArrayList;
 import java.util.Map;

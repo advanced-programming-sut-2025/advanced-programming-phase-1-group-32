@@ -1,8 +1,8 @@
-package models.game.enums;
+package models.enums;
 
-import models.game.items.Item;
-import models.game.items.workstations.WorkStation;
-import models.game.player.Skill;
+import models.items.Item;
+import models.items.workstations.WorkStation;
+import models.player.Skill;
 
 import java.util.ArrayList;
 import java.util.Map;

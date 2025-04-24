@@ -1,4 +1,4 @@
-package models.game.plant;
+package models.plant;
 
 public enum cropType {
 }

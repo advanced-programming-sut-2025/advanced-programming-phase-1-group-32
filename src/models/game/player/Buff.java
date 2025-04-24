@@ -1,4 +1,4 @@
-package models.game.player;
+package models.player;
 
 public class Buff {
 }

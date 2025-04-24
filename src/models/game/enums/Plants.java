@@ -1,6 +1,6 @@
-package models.game.enums;
+package models.enums;
 
-import models.game.plant.Crop;
+import models.plant.Crop;
 
 public enum Plants {
     ;

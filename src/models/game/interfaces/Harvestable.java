@@ -1,7 +1,7 @@
-package models.game.interfaces;
+package models.interfaces;
 
-import models.game.items.Item;
-import models.game.player.Player;
+import models.items.Item;
+import models.player.Player;
 
 public interface Harvestable {
     public boolean canHarvest(Player player, Item tool);

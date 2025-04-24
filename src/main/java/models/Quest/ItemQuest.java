@@ -1,7 +1,7 @@
-package models.game.Quest;
+package models.Quest;
 
 <<<<<<<< HEAD:src/models/game/Quest/ItemQuest.java
-import models.game.items.Item;
+import models.items.Item;
 ========
 import models.items.Entity;
 >>>>>>>> main:src/main/java/models/Quest/ItemQuest.java

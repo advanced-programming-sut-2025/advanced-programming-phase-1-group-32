@@ -1,14 +1,14 @@
-package models.game.player;
+package models.player;
 
 <<<<<<<< HEAD:src/models/game/player/Player.java
-import models.game.Quest.Quest;
+import models.Quest.Quest;
 import models.Map;
-import models.game.NPC.Character;
-import models.game.enums.Recipe;
-import models.game.enums.SkillType;
-import models.game.items.Item;
-import models.game.player.friendship.NpcFriendship;
-import models.game.player.friendship.PlayerFriendship;
+import models.NPC.Character;
+import models.enums.Recipe;
+import models.enums.SkillType;
+import models.items.Item;
+import models.player.friendship.NpcFriendship;
+import models.player.friendship.PlayerFriendship;
 ========
 import models.Quest.Quest;
 import models.NPC.Character;

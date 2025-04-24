@@ -1,6 +1,6 @@
-package models.game.items.components;
+package models.items.components;
 
-import models.game.player.Buff;
+import models.player.Buff;
 
 public class Edible extends ItemComponent{
     private int energy;

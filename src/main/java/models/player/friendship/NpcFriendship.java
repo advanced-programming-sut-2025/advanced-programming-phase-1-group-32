@@ -1,4 +1,4 @@
-package models.game.player.friendship;
+package models.player.friendship;
 
 public class NpcFriendship extends Friendship {
     @Override

@@ -1,6 +1,6 @@
-package models.game;
+package models;
 
-import models.game.enums.Weather;
+import models.enums.Weather;
 
 public class World {
     private Weather todayWeather;

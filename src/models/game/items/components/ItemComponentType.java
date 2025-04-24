@@ -1,4 +1,4 @@
-package models.game.items.components;
+package models.items.components;
 
 public enum ItemComponentType {
     INVENTORY,

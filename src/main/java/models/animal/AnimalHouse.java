@@ -1,7 +1,7 @@
-package models.game.animal;
+package models.animal;
 
 <<<<<<<< HEAD:src/models/game/animal/AnimalHouse.java
-import models.game.enums.Material;
+import models.enums.Material;
 
 ========
 >>>>>>>> main:src/main/java/models/animal/AnimalHouse.java

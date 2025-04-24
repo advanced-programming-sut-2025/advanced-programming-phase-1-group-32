@@ -1,4 +1,4 @@
-package models.game.enums;
+package models.enums;
 
 public enum RecipeType {
     CRAFTING,

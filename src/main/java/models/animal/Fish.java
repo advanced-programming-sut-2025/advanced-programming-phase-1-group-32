@@ -1,6 +1,6 @@
-package models.game.animal;
+package models.animal;
 
-import models.game.enums.Season;
+import models.enums.Season;
 
 public class Fish {
     private Season season;

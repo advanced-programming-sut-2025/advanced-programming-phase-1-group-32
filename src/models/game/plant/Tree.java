@@ -1,6 +1,6 @@
-package models.game.plant;
+package models.plant;
 
-import models.game.interfaces.Harvestable;
+import models.interfaces.Harvestable;
 
 public class Tree extends Plant implements Harvestable {
 }

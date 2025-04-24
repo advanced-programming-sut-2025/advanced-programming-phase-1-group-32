@@ -1,6 +1,6 @@
-package models.game.items;
+package models.items;
 
-import models.game.items.components.*;
+import models.items.components.*;
 
 import java.util.Map;
 

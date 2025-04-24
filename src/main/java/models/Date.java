@@ -1,7 +1,7 @@
-package models.game;
+package models;
 
-import models.game.enums.WeekDay;
-import models.game.enums.Season;
+import models.enums.WeekDay;
+import models.enums.Season;
 
 public class Date {
     private Season season;

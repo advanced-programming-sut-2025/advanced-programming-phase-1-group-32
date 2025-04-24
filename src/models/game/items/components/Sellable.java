@@ -1,4 +1,4 @@
-package models.game.items.components;
+package models.items.components;
 
 public class Sellable extends ItemComponent{
     private final double price;

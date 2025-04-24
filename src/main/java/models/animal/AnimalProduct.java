@@ -1,7 +1,7 @@
-package models.game.animal;
+package models.animal;
 
 <<<<<<<< HEAD:src/models/game/animal/AnimalProduct.java
-import models.game.items.Item;
+import models.items.Item;
 ========
 import models.items.Entity;
 >>>>>>>> main:src/main/java/models/animal/AnimalProduct.java

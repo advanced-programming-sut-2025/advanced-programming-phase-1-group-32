@@ -1,7 +1,7 @@
-package models.game;
+package models;
 
-import models.game.enums.Weather;
-import models.game.player.Player;
+import models.enums.Weather;
+import models.player.Player;
 
 import java.util.ArrayList;
 

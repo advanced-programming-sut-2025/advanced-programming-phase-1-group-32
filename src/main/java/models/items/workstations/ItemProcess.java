@@ -1,7 +1,7 @@
-package models.game.items.workstations;
+package models.items.workstations;
 
 <<<<<<<< HEAD:src/models/game/items/workstations/ItemProcess.java
-import models.game.items.Item;
+import models.items.Item;
 ========
 import models.items.Entity;
 >>>>>>>> main:src/main/java/models/items/workstations/ItemProcess.java

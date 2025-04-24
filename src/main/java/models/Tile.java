@@ -1,8 +1,8 @@
-package models.game;
+package models;
 
 <<<<<<<< HEAD:src/models/game/Tile.java
-import models.game.enums.TileType;
-import models.game.interfaces.Placable;
+import models.enums.TileType;
+import models.interfaces.Placable;
 ========
 import models.enums.TileType;
 import models.items.Entity;

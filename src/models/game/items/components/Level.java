@@ -1,6 +1,6 @@
-package models.game.items.components;
+package models.items.components;
 
-import models.game.enums.Material;
+import models.enums.Material;
 
 public class Level extends ItemComponent{
     private final Material material;

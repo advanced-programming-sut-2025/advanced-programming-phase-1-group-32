@@ -1,11 +1,11 @@
-package models.game.Buildings;
+package models.Buildings;
 
 <<<<<<<< HEAD:src/models/game/Buildings/Building.java
-import models.game.GameMap;
-import models.Map;
-import models.game.Position;
-========
 import models.GameMap;
+import models.Map;
+import models.Position;
+========
+import modelsMap;
 import models.Position;
 >>>>>>>> main:src/main/java/models/Buildings/Building.java
 

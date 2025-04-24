@@ -1,8 +1,8 @@
-package models.game.plant;
+package models.plant;
 
-import models.game.interfaces.Harvestable;
-import models.game.interfaces.Placable;
-import models.game.items.Item;
+import models.interfaces.Harvestable;
+import models.interfaces.Placable;
+import models.items.Item;
 
 public class Mineral implements Harvestable, Placable {
     private Item resource;

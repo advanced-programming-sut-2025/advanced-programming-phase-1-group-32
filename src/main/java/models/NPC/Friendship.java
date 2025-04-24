@@ -1,4 +1,4 @@
-package models.game.NPC;
+package models.NPC;
 
 public class Friendship{
 

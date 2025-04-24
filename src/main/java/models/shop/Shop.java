@@ -1,13 +1,13 @@
-package models.game.shop;
+package models.shop;
 
 <<<<<<<< HEAD:src/models/game/shop/Shop.java
-import models.game.Buildings.Building;
-import models.game.GameMap;
-import models.game.Position;
-import models.game.items.Item;
-========
 import models.Buildings.Building;
 import models.GameMap;
+import models.Position;
+import models.items.Item;
+========
+import models.Buildings.Building;
+import modelsMap;
 import models.Position;
 import models.items.Entity;
 >>>>>>>> main:src/main/java/models/shop/Shop.java

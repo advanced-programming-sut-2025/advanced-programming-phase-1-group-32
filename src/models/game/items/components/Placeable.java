@@ -1,6 +1,6 @@
-package models.game.items.components;
+package models.items.components;
 
-import models.game.Position;
+import models.Position;
 
 public class Placeable extends ItemComponent{
     private Position position;

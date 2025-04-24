@@ -1,4 +1,4 @@
-package models.game.items.components;
+package models.items.components;
 
 public abstract class ItemComponent {
     protected final ItemComponentType type;
