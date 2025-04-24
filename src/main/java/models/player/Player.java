@@ -4,8 +4,7 @@ import models.Quest.Quest;
 import models.NPC.Character;
 import models.crafting.Recipe;
 import models.enums.SkillType;
-import models.items.BackPack;
-import models.items.Item;
+import models.items.Entity;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
@@ -35,7 +34,7 @@ public class Player {
         //TODO
     }
 
-    public void trashItem(Item item) {
+    public void trashItem(Entity entity) {
 
     }
 

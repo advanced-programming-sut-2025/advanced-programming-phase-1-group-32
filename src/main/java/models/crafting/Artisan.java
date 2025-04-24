@@ -1,9 +1,9 @@
 package models.crafting;
 
 import models.Position;
-import models.items.Item;
+import models.items.Entity;
 
-public class Artisan extends Item {
+public class Artisan extends Entity {
     @Override
     public void useItem() {
 

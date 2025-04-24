@@ -1,12 +1,12 @@
 package models;
 
 import models.enums.TileType;
-import models.interfaces.Placable;
+import models.items.Entity;
 
 public class Tile{
     private TileType type;
     final private Position position;
-    private Placable content;
+    private Entity content;
 
     public Tile(Position position) {
         this.position = position;

@@ -1,7 +1,6 @@
 package models.animal;
 
 import models.Position;
-import models.interfaces.Sellable;
 import models.interfaces.Updatable;
 import models.player.Player;
 import models.player.friendship.AnimalFriendship;

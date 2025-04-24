@@ -1,11 +1,8 @@
 package models.items.workstations;
 
-import models.Position;
-import models.interfaces.Placable;
-import models.interfaces.Updatable;
-import models.items.Item;
+import models.items.Entity;
 
-public class WorkStation extends Item implements Placable, Updatable {
+public class WorkStation extends Entity {
     private ItemProcess currentProcess;
 
     private void startProcess(){
@@ -14,37 +11,7 @@ public class WorkStation extends Item implements Placable, Updatable {
     private boolean processDone(){
         return false;
     }
-    private Item getProducts(){
+    private Entity getProducts(){
         return null;
-    }
-
-    @Override
-    public void useItem() {
-
-    }
-
-    @Override
-    public Position getPosition() {
-        return null;
-    }
-
-    @Override
-    public void setPosition() {
-
-    }
-
-    @Override
-    public void placeOnGround() {
-
-    }
-
-    @Override
-    public void updatePerHour() {
-
-    }
-
-    @Override
-    public void updatePerDay() {
-
     }
 }
