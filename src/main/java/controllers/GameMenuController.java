@@ -4,6 +4,7 @@ import models.App;
 import models.Date;
 import models.Result;
 import controllers.Controller;
+import models.enums.Weather;
 
 public class GameMenuController implements Controller {
     @Override
@@ -84,8 +85,8 @@ public class GameMenuController implements Controller {
     }
 
     public Result showWeather() {
-        //TODO
-        return null;
+        Weather weather = App.getLoggedInAccount().getActiveGame().getTodayWeather();
+        return new Result(true, weather.toString().toLowerCase());
     }
 
     public Result weatherForecast() {

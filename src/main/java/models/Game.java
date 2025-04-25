@@ -23,7 +23,8 @@ public class Game {
 
     }
 
-    public void initGame(){
+    public void initGame() {
+
     }
 
     public GameMap getActiveMap() {
@@ -36,5 +37,21 @@ public class Game {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Weather getTodayWeather() {
+        return todayWeather;
+    }
+
+    public void setTodayWeather(Weather todayWeather) {
+        this.todayWeather = todayWeather;
+    }
+
+    public Weather getTomorrowWeather() {
+        return tomorrowWeather;
+    }
+
+    public void setTomorrowWeather(Weather tomorrowWeather) {
+        this.tomorrowWeather = tomorrowWeather;
     }
 }

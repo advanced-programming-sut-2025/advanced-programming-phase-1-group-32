@@ -5,6 +5,9 @@ public enum GameMenuCommands implements Commands {
     DATE("\\s*date\\s*"),
     DATETIME("\\s*datetime\\s*"),
     DAT_OF_THE_WEEK("\\s*date\\s+of\\s+the\\s+week\\s*"),
+    WEATHER("\\s*weather\\s*"),
+    WEATHER_FORECAST("\\s*weather\\s*forecast\\s*"),
+
     ;
 
     private final String pattern;

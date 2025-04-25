@@ -32,6 +32,10 @@ public class GameMenu implements AppMenu{
             System.out.println(controller.getTime());
         } else if (GameMenuCommands.DAT_OF_THE_WEEK.getMatcher(input) != null) {
             System.out.println(controller.getDayOfTheWeek());
+        } else if (GameMenuCommands.WEATHER.getMatcher(input) != null) {
+            System.out.println(controller.showWeather());
+        } else if (GameMenuCommands.WEATHER_FORECAST.getMatcher(input) != null) {
+            System.out.println(controller.weatherForecast());
         }
 
 

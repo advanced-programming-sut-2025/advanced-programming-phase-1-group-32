@@ -1,6 +1,9 @@
 package models.enums;
 
 public enum Weather {
-    //TODO
+    SUNNY,
+    RAINY,
+    STORMY,
+    SNOWY
     ;
 }

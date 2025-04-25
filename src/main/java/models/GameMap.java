@@ -34,6 +34,7 @@ public class GameMap {
     public Tile[][] getTiles() {
         return tiles.clone();
     }
+
     public void printMap() {
         //TODO
     }
