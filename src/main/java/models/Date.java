@@ -17,8 +17,10 @@ public class Date {
     }
 
     public WeekDay getWeekDay() {
+        WeekDay weekDay;
+        weekDay = WeekDay.getWeekDay(date % 7);
 
-        return null;
+        return weekDay;
     }
 
     public int getHour() {
