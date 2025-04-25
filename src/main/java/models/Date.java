@@ -17,7 +17,7 @@ public class Date {
     }
 
     public WeekDay getWeekDay() {
-        //TODO
+
         return null;
     }
 

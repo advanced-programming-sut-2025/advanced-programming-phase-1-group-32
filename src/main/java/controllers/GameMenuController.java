@@ -1,5 +1,7 @@
 package controllers;
 
+import models.App;
+import models.Date;
 import models.Result;
 import controllers.Controller;
 
@@ -30,23 +32,27 @@ public class GameMenuController implements Controller {
     }
 
     public Result getTime() {
-        //TODO
-        return null;
+        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+
+        return new Result(true, String.valueOf(currentDate.getHour()));
     }
 
     public Result getDate() {
-        //TODO
-        return null;
+        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+
+        return new Result(true, String.valueOf(currentDate.getDate()));
     }
 
     public Result getDateTime() {
-        //TODO
-        return null;
+        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        return new Result(true, "Date: " + currentDate.getDate() +
+                "\tHour: " + currentDate.getHour());
     }
 
     public Result getDayOfTheWeek() {
-        //TODO
-        return null;
+        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+
+        return new Result(true, currentDate.getWeekDay().toString().toLowerCase());
     }
 
     public Result advanceTime() {
@@ -296,10 +302,6 @@ public class GameMenuController implements Controller {
         //TODO
         return null;
     }
-
-
-
-
 
 
     private void saveGame() {

@@ -29,4 +29,12 @@ public class Game {
     public GameMap getActiveMap() {
         return activeMap;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
