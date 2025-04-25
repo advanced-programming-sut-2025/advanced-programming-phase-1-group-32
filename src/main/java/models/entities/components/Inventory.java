@@ -10,18 +10,20 @@ import java.util.Arrays;
 public class Inventory extends EntityComponent{
     @JsonProperty("items")
     @JsonIdentityReference(alwaysAsId = true)
-    private final ArrayList<Entity> items;
+    private final ArrayList<Entity> items = new ArrayList<>();
     @JsonProperty("capacity")
     private int capacity;
 
-    public Inventory(@JsonProperty("capacity") int capacity, @JsonProperty("items") ArrayList<Entity> items){
-        this.items = items;
+    public Inventory(int capacity, ArrayList<Entity> items){
+        this.items.addAll(items);
         this.capacity = capacity;
     }
     public Inventory(int capacity, Entity... items){
         this(capacity, new ArrayList<>(Arrays.asList(items)));
     }
-    public Inventory(@JsonProperty("capacity") int capacity) {
+    public Inventory(int capacity) {
         this(capacity, new ArrayList<>());
+    }
+    public Inventory(){
     }
 }

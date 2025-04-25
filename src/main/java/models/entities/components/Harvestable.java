@@ -20,10 +20,23 @@ public class Harvestable extends EntityComponent{
         return null;
     }
 
-    public Harvestable(@JsonProperty("resource") String resource, @JsonProperty("amount") int amount,
-                       @JsonProperty("material")Material material) {
+    public Harvestable(String resource, int amount, Material material) {
         this.resource = resource;
         this.amount = amount;
         this.material = material;
+    }
+
+    public Harvestable() {
+        this.material = null;
+        this.resource = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Harvestable{" +
+                "material=" + material +
+                ", resource='" + resource + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }

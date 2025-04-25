@@ -6,8 +6,11 @@ public class Edible extends EntityComponent{
     @JsonProperty("energy")
     private int energy;
 
-    public Edible(@JsonProperty("energy")  int energy) {
+    public Edible(int energy) {
         this.energy = energy;
+    }
+
+    public Edible() {
     }
 
     @Override

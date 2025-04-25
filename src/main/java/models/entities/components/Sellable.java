@@ -6,7 +6,10 @@ public class Sellable extends EntityComponent{
     @JsonProperty("price")
     private int price;
 
-    public Sellable(@JsonProperty("price") int price) {
+    public Sellable(int price) {
         this.price = price;
+    }
+    public Sellable(){
+        this(0);
     }
 }
