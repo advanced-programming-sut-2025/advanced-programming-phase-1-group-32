@@ -1,0 +1,31 @@
+{
+  "common components" : [
+    {
+      "type" : "Pickable"
+    }
+  ],
+  "required components" : [
+    {
+      "type" : "Sellable"
+    }
+  ],
+  "entities" : [
+    {
+      "name" : "Gold",
+      "components" : [
+        {
+          "type" : "Sellable",
+          "price" : 100
+        }
+      ]
+    },{
+      "name" : "Coal",
+      "components" : [
+        {
+          "type" : "Sellable",
+          "price" : 10
+        }
+      ]
+    }
+  ]
+}

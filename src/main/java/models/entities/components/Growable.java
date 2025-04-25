@@ -19,10 +19,14 @@ public class Growable extends EntityComponent{
     private boolean oneTime;
     private boolean wateredToday;
 
-    public Growable(@JsonProperty("seasons") ArrayList<Season> growingSeasons,@JsonProperty("fruit") String fruit,
-                    @JsonProperty("seed")String seed) {
+    public Growable(ArrayList<Season> growingSeasons, String fruit, String seed) {
         this.growingSeasons = growingSeasons;
         this.fruit = fruit;
         this.seed = seed;
+    }
+
+    public Growable() {
+        this.seed = null;
+        this.fruit = null;
     }
 }

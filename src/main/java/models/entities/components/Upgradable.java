@@ -8,7 +8,7 @@ public class Upgradable extends EntityComponent{
     @JsonProperty("level")
     int level;
 
-    public Upgradable(@JsonProperty("xp") int xp, @JsonProperty("level") int level) {
+    public Upgradable(int xp,int level) {
         this.xp = xp;
         this.level = level;
     }
