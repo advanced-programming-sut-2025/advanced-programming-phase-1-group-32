@@ -3,7 +3,9 @@ package models.entities;
 import models.Result;
 
 public enum UseFunction {
-
+    CHOP_TREE,
+    WATER_GROUND,
+    FISH,
     ;
     public Result canUse(){
         return null;

@@ -1,5 +1,6 @@
 package models;
 
+import models.entities.EntityRegistry;
 import models.enums.Menu;
 import views.AppView;
 
@@ -13,6 +14,7 @@ public class App {
     private static Menu currentMenu = Menu.LOGIN_MENU;
     private static final AppView view = new AppView();
     public static boolean shouldTerminate = false;
+    public static EntityRegistry entityRegistry = new EntityRegistry();
 
     /***
      * Returns null if the username doesn't exist.

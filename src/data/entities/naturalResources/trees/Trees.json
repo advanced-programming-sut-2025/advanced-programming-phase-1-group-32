@@ -1,0 +1,43 @@
+{
+  "common components" : [
+    {
+      "type" : "Placeable",
+      "isACollider" : true
+    }
+  ],
+  "required components" : [
+    {
+      "type" : "Harvestable"
+    }
+  ],
+  "entities" : [
+    {
+      "name" : "Pine Tree",
+      "components" : [
+        {
+          "type" : "Harvestable",
+          "resource" : "wood",
+          "material" : "STONE"
+        }
+      ]
+    },{
+      "name" : "Birch Tree",
+      "components" : [
+        {
+          "type" : "Harvestable",
+          "resource" : "wood",
+          "material" : "STONE"
+        }
+      ]
+    },{
+      "name" : "Apple Tree",
+      "components" : [
+        {
+          "type" : "Harvestable",
+          "resource" : "wood",
+          "material" : "STONE"
+        }
+      ]
+    }
+  ]
+}

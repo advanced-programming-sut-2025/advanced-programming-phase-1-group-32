@@ -1,0 +1,46 @@
+{
+  "common components" : [
+    {
+      "type" : "Pickable"
+    }
+  ],
+  "required components" : [
+    {
+      "type" : "Useable"
+    }
+  ],
+  "entities" : [
+    {
+      "name" : "Axe",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "CHOP_TREE"
+          ]
+        }
+      ]
+    },{
+      "name" : "Fishing pole",
+      "components" : [
+        {
+          "type" : "Useable"
+        }
+      ]
+    },{
+      "name" : "Seyth",
+      "components" : [
+        {
+          "type" : "Useable"
+        }
+      ]
+    },{
+      "name" : "Shear",
+      "components" : [
+        {
+          "type" : "Useable"
+        }
+      ]
+    }
+  ]
+}

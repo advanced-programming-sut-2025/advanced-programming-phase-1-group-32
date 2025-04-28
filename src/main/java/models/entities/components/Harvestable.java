@@ -1,12 +1,16 @@
 package models.entities.components;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.Result;
 import models.entities.Entity;
 import models.enums.Material;
 
-public class Harvestable {
+public class Harvestable extends EntityComponent{
+    @JsonProperty("material")
     private final Material material;
-    private final Entity resource;
+    @JsonProperty("resource")
+    private final String resource;
+    @JsonProperty("amount")
     private int amount;
 
     public Result canHarvest(){
@@ -16,9 +20,23 @@ public class Harvestable {
         return null;
     }
 
-    public Harvestable(Entity resource, int amount, Material material) {
+    public Harvestable(String resource, int amount, Material material) {
         this.resource = resource;
         this.amount = amount;
         this.material = material;
+    }
+
+    public Harvestable() {
+        this.material = null;
+        this.resource = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Harvestable{" +
+                "material=" + material +
+                ", resource='" + resource + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }
