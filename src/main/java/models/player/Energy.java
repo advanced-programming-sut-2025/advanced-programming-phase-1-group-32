@@ -12,7 +12,31 @@ public class Energy {
     public void changeEnergy(){
 
     }
-    public void toggleUnlimited(){
 
+    public Energy() {
+        this.amount = 200;
+        this.modifierDaysLeft = 0;
+        isUnlimited = false;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isUnlimited() {
+        return isUnlimited;
+    }
+
+    public int getAmount() {
+        // TODO: check modifier effects
+        return amount;
+    }
+
+    public void updateEnergy(){
+        // TODO: for daily updates
+    }
+
+    public void toggleUnlimited(){
+        isUnlimited = !isUnlimited;
     }
 }

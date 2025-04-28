@@ -3,6 +3,8 @@ package controllers;
 import models.*;
 import models.entities.components.EntityComponent;
 import models.enums.Weather;
+import models.player.Energy;
+import models.player.Player;
 
 import java.util.concurrent.TimeoutException;
 
@@ -130,8 +132,31 @@ public class GameMenuController implements Controller {
     }
 
     public Result energyShow() {
-        //TODO
-        return null;
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        Energy energy = player.getEnergy();
+
+
+        return new Result(true, "energy left: " + energy.getAmount());
+    }
+
+    public Result energySet(int amount) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        Energy energy = player.getEnergy();
+
+        energy.setAmount(amount);
+        return new Result(true, "energy set to " + energy.getAmount());
+    }
+
+    public Result energyUnlimited() {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        Energy energy = player.getEnergy();
+
+        energy.toggleUnlimited();
+
+        return new Result(true, "energy unlimited: " + energy.isUnlimited());
     }
 
     public Result showInventory() {

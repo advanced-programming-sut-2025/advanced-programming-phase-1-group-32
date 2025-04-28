@@ -10,7 +10,8 @@ public class Game {
     private Weather tomorrowWeather;
     private Date date;
     private GameMap activeMap;
-    private final ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
+    private Player currentPlayer;
 
     public Game() {
         this.date = new Date();
@@ -22,8 +23,20 @@ public class Game {
         players.add(player);
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
     public void initGame() {
 
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 
     public GameMap getActiveMap() {

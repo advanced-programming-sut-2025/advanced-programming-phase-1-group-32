@@ -1,6 +1,5 @@
 package models.player;
 
-import models.Account;
 import models.Quest.Quest;
 import models.NPC.Character;
 import models.crafting.Recipe;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Player {
-    private final Energy energy = null;
+    private Energy energy = new Energy();
     private final Wallet wallet = null;
     private final Map<SkillType, Skill> skills = null;
     private int trashcanLevel;
@@ -37,6 +36,30 @@ public class Player {
 
     public void trashItem(Entity item) {
 
+    }
+
+    public Energy getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(Energy energy) {
+        this.energy = energy;
+    }
+
+    public Wallet getWallet() {
+        return this.wallet;
+    }
+
+    public Entity getBackPack() {
+        return backPack;
+    }
+
+    public Player getSpouse() {
+        return spouce;
+    }
+
+    public void setSpouce(Player spouce) {
+        this.spouce = spouce;
     }
 
     public Skill getSkill(SkillType type){
