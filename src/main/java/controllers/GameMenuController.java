@@ -118,6 +118,7 @@ public class GameMenuController implements Controller {
 
     public Result walk() {
         Tile tile = new Tile(new Position(10, 10));
+//        App.getLoggedInAccount().getActiveGame().getCurrentPlayer().
         return null;
     }
 
