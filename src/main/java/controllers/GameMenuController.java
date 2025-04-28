@@ -1,11 +1,14 @@
 package controllers;
 
 import models.*;
+import models.Date;
 import models.entities.components.EntityComponent;
+import models.entities.components.Placeable;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
 
+import java.util.*;
 import java.util.concurrent.TimeoutException;
 
 public class GameMenuController implements Controller {
@@ -116,10 +119,82 @@ public class GameMenuController implements Controller {
         return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
-    public Result walk() {
-        Tile tile = new Tile(new Position(10, 10));
-//        App.getLoggedInAccount().getActiveGame().getCurrentPlayer().
-        return null;
+    public Result walk(int x, int y) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        GameMap map = game.getActiveMap();
+        int initialEnergyAmount = player.getEnergy().getAmount();
+        Tile start = map.getTileByPosition(
+                game.getCurrentPlayer().getPlayerPosition()
+        );
+        Tile goal = map.getTileByPosition(new Position(y, x));
+        if(start.equals(goal))
+            return new Result(false, "you are already in <" + x + ", " + y + "> ");
+        int distance = shortestPath(goal, start, map.getTiles()).size();
+        if(distance == 0)
+            return new Result(false, "you can't reach <" + x + ", " + y + "> ");
+
+        String input = App.getView().inputWithPrompt(
+                distance / 20 + " energy need to walk to <" + x + ", " + y + "> do you want to continue? <y or n>"
+        ).trim();
+        if(input.equals("yes")) {
+            player.setPlayerPosition(new Position(goal.getRow(), goal.getCol()));
+            player.getEnergy().setAmount(initialEnergyAmount - distance / 20);
+        }
+        return new Result(false, "walk canceled");
+
+    }
+
+    private List<Tile> shortestPath(Tile destination, Tile src, Tile[][] tiles) {
+        int rows = tiles.length;
+        int cols = tiles[0].length;
+
+        Queue<Tile> queue = new LinkedList<>();
+        Map<Tile, Tile> cameFrom = new HashMap<>();
+        queue.add(src);
+        cameFrom.put(src, null);
+
+        int[][] directions = {
+                {0,1}, {1,0}, {0, -1}, {0, 1}
+                , {1,-1}, {1,1}, {-1,1}, {-1,-1} /* Comment this line to walk vertically and horizontally only*/
+        };
+
+        while (!queue.isEmpty()) {
+            Tile current = queue.poll();
+
+            if(current.equals(destination))
+                break;
+
+
+            for (int[] dir : directions) {
+                int newRow = current.getRow() + dir[0];
+                int newCol = current.getCol() + dir[1];
+
+                if(newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
+                    Tile neighbor = tiles[newRow][newCol];
+                    if(neighbor.getContent().getComponent(Placeable.class).isWalkable())
+                        if(!cameFrom.containsKey(neighbor)) {
+                            queue.add(neighbor);
+                            cameFrom.put(neighbor, current);
+                        }
+                }
+            }
+
+        }
+        if(!cameFrom.containsKey(destination)) {
+            return Collections.emptyList();
+        }
+
+        List<Tile> path = new ArrayList<>();
+        Tile current = destination;
+        while(current != null) {
+            path.add(current);
+            current = cameFrom.get(current);
+        }
+        Collections.reverse(path);
+        return path;
+
+
     }
 
     public Result printMap() {

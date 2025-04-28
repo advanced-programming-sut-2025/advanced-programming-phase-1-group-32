@@ -93,5 +93,7 @@ public class Player {
         this.playerPosition = position;
     }
 
-//    public Position
+    public Position getPlayerPosition() {
+        return playerPosition;
+    }
 }
