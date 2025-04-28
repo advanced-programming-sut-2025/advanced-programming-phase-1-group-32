@@ -13,7 +13,9 @@ public class Game {
     private final ArrayList<Player> players = new ArrayList<>();
 
     public Game() {
-
+        this.date = new Date();
+        this.todayWeather = Weather.SUNNY;
+        this.tomorrowWeather = Weather.SUNNY;
     }
 
     public void addPlayer(Player player) {

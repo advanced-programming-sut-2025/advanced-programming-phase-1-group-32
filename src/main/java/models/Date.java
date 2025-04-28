@@ -8,6 +8,12 @@ public class Date {
     private int day;
     private int hour;
 
+    public Date() {
+        this.season = Season.SPRING;
+        this.day = 1;
+        this.hour = 0;
+    }
+
     public Season getSeason() {
         return season;
     }

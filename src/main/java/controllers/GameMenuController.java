@@ -74,7 +74,7 @@ public class GameMenuController implements Controller {
         // this function will update data about game.Date
         date.addDay(amount, game);
         game.setDate(date);
-        return null;
+        return new Result(true, "We've traveled through time for " + amount + " days");
     }
 
     public Result showSeason() {
@@ -104,7 +104,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result setWeather(String weatherString) {
-        Weather weather = Weather.valueOf(weatherString);
+        Weather weather = Weather.getweather(weatherString);
         if (weather == null) {
             return new Result(false, "Weather not found");
         }

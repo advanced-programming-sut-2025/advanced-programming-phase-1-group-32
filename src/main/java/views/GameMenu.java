@@ -33,7 +33,7 @@ public class GameMenu implements AppMenu{
         } else if (GameMenuCommands.TIME.getMatcher(input) != null) {
             System.out.println(controller.getTime());
 
-        } else if (GameMenuCommands.DAT_OF_THE_WEEK.getMatcher(input) != null) {
+        } else if (GameMenuCommands.DAY_OF_THE_WEEK.getMatcher(input) != null) {
             System.out.println(controller.getDayOfTheWeek());
 
         } else if ((matcher = GameMenuCommands.ADVANCE_TIME.getMatcher(input)) != null) {
