@@ -11,7 +11,7 @@ import views.inGame.Renderer;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class GameMenu implements AppMenu{
+public class GameMenu implements AppMenu {
 
     @Override
     public void checker(Scanner scanner) {
@@ -59,21 +59,21 @@ public class GameMenu implements AppMenu{
             System.out.println("Invalid Command!");
         }
 
-
     }
 
     public void printMap(GameMap map) {
-        Renderer renderer = new Renderer();
         Tile[][] tiles = map.getTiles();
+        App.getView().getRenderer().clear();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 char ch = '1';
                 Tile tile = tiles[i][j];
-                renderer.clear();
-                renderer.mvAddchColored(tile.getCol(), tile.getRow(), 'A', tile.getColor());
+
+                App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), ch, tile.getColor());
 
             }
         }
+        App.getView().getRenderer().render();
 
     }
 }

@@ -25,6 +25,14 @@ build() {
 
 run_app() {
     if [ $# -eq 1 ]; then
+        (cat "$1"; cat -) | mvn exec:java
+    else
+        mvn exec:java
+    fi
+}
+
+run_app2() {
+    if [ $# -eq 1 ]; then
         (cat "$1"; cat -) | java -jar "${JAR_FILE}"
     else
         java -jar "${JAR_FILE}"

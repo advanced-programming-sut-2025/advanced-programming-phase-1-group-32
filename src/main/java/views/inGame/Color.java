@@ -1,32 +1,36 @@
 package views.inGame;
 
 public class Color {
-    private double[] bg = {1, 1, 1};
-    private double[] fg = {1, 1, 1};
+    private int[] bg = {255, 255, 255};
+    private int[] fg = {255, 255, 255};
 
-    public double[] getBg() {
+    public int[] getBg() {
         return bg;
     }
 
-    public void setBg(double[] bg) {
+    public void setBg(int[] bg) {
         this.bg = bg;
     }
 
-    public double[] getFg() {
+    public int[] getFg() {
         return fg;
     }
 
-    public void setFg(double[] fg) {
+    public void setFg(int[] fg) {
         this.fg = fg;
     }
 
-    public Color(double[] fg, double[] bg){
+    public Color(int[] fg){
         this.fg = fg;
-        this.bg = bg;
     }
-    public Color(double r, double g, double b){
+    public Color(int r, int g, int b){
         this.fg[0] = r;
         this.fg[1] = g;
         this.fg[2] = b;
+    }
+
+    public boolean equals(Color c2) {
+        if(c2 == null) return false;
+        return (this.fg[0] == c2.fg[0]) && (this.fg[1] == c2.fg[1]) && (this.fg[2] == c2.fg[2]);
     }
 }

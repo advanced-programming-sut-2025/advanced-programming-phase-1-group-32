@@ -1,23 +1,96 @@
 package views.inGame;
 
+import models.App;
+import views.AppView;
+
+import java.util.Arrays;
+
+
 public class Renderer {
     private final String resetCode    = "\u001B[0m";
     private final String fgColorCode  = "\u001B[38;2;%d;%d;%dm";
     private final String bgColorCode  = "\u001B[48;2;%d;%d;%dm";
     private final String positionCode = "\u001B[%d;%dH";
+    private CharacterTexture frameBuffer;
+    private final AppView view;
 
+    public Renderer(AppView view){
+        this.view = view;
+        this.frameBuffer = new CharacterTexture(view.getTerminalWidth(), view.getTerminalHeight());
+        this.updateSize();
+    }
+    public void updateSize(){
+        this.frameBuffer.updateSize(view.getTerminalWidth(), view.getTerminalHeight());
+    }
     public void clear(){
-        System.out.print("\u001B[2J"); // Clear screen
-        System.out.print("\u001B[H");  // Move cursor to top-left
-        System.out.flush();
+        this.frameBuffer.reset();
     }
     public void mvAddch(int x, int y, int character){
         System.out.printf(positionCode + character + resetCode, y, x);
     }
-    public void mvAddchColored(int x, int y, int character, Color color){
-        double[] fg = color.getFg();
-        double[] bg = color.getBg();
-        System.out.printf(positionCode + fgColorCode + character + resetCode, y, x,
-                         (int) (fg[0] * 256), (int) (fg[1] * 256), (int) (fg[2] * 256));
+    public void mvAddchColored(int x, int y, char character, Color color){
+        if(x < 0 || x >= view.getTerminalWidth() || y < 0 || y >= view.getTerminalHeight()){
+            return;
+        }
+        int[] fg = color.getFg();
+        this.frameBuffer.setCharacter(x, y, character, color);
+    }
+    public void renderTexture(int x, int y, CharacterTexture texture){
+        int x1, x2, y1, y2;
+
+        x1 = Math.max(0, x);
+        x2 = Math.min(frameBuffer.width-1, x + texture.width);
+        y1 = Math.max(0, y);
+        y2 = Math.min(frameBuffer.height-1, y + texture.height);
+
+        if(x1 > x2 || y1 > y2) return;
+
+        int xOffset = x1 - x, yOffset = y1 - y;
+        x1 = x1 - x;
+        x2 = x2 - x;
+        y1 = y1 - y;
+        y2 = y2 - y;
+
+        for(int i = x1 ; i < x2; i++){
+            for(int j = y1; j < y2; j++){
+                this.frameBuffer.data[y + j][x + i] = texture.data[j][i];
+            }
+        }
+    }
+    public void render(){
+        StringBuilder output = new StringBuilder();
+        StyledCharacter tmp;
+        Color prevColor = null;
+        int[] curColor = null;
+        output.append("\033[H");
+        for(int i = 0 ; i < frameBuffer.height; i++){
+            if(i != 0){
+                output.append(String.format(resetCode + ""));
+            }
+            for(int j = 0; j < frameBuffer.width; j++){
+                tmp = frameBuffer.data[i][j];
+                if(tmp == null){
+                    output.append(" ");
+                }else{
+                    if(tmp.color == null){
+                        if(prevColor == null){
+                            output.append( tmp.character);
+                        }else{
+                            output.append(resetCode + tmp.character);
+                            prevColor = null;
+                        }
+                    }else{
+                        curColor = tmp.color.getFg();
+                        if((prevColor != null) && prevColor.equals(tmp.color)){
+                            output.append(String.format(fgColorCode + tmp.character, curColor[0],  curColor[1],  curColor[2]));
+                        }else {
+                            prevColor = tmp.color;
+                            output.append(String.format(resetCode + fgColorCode + tmp.character, curColor[0],  curColor[1],  curColor[2]));
+                        }
+                    }
+                }
+            }
+        }
+        System.out.print(output);
     }
 }
