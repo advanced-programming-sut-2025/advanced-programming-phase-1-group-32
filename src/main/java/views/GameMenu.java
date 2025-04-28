@@ -11,7 +11,7 @@ import views.inGame.Renderer;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class GameMenu implements AppMenu{
+public class GameMenu implements AppMenu {
 
     @Override
     public void checker(Scanner scanner) {
@@ -60,15 +60,16 @@ public class GameMenu implements AppMenu{
 
     public void printMap(GameMap map) {
         Tile[][] tiles = map.getTiles();
+        App.getView().getRenderer().clear();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 char ch = '#';
                 Tile tile = tiles[i][j];
-                App.getView().getRenderer().clear();
                 App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), ch, tile.getColor());
 
             }
         }
+        App.getView().getRenderer().render();
 
     }
 }
