@@ -19,7 +19,7 @@ public class GameMenu implements AppMenu {
         //
         String input = scanner.nextLine().trim();
 
-//        printMap(activeGame.getActiveMap());
+        printMap(activeGame.getActiveMap());
 
         Matcher matcher;
         GameMenuController controller = new GameMenuController();
@@ -68,9 +68,7 @@ public class GameMenu implements AppMenu {
             for (int j = 0; j < tiles[i].length; j++) {
                 char ch = '1';
                 Tile tile = tiles[i][j];
-
                 App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), ch, tile.getColor());
-
             }
         }
         App.getView().getRenderer().render();
