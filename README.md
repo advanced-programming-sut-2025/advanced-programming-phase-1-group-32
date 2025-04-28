@@ -34,17 +34,17 @@
 
 - [ ] New game
 - [ ] Show menus
-- [col] Go to menus
-- [col] Logout
-- [col] Show menus
+- [x] Go to menus
+- [x] Logout
+- [x] Show menus
 </details>
 
 <details>
   <summary>Profile Menu</summary>
 
-- [col] Change fields
-- [col] Check errors
-- [col] Show user data
+- [x] Change fields
+- [x] Check errors
+- [x] Show user data
 </details>
 
 <details>

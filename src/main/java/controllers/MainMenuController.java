@@ -1,9 +1,6 @@
 package controllers;
 
-import models.Account;
-import models.App;
-import models.Game;
-import models.Result;
+import models.*;
 import models.enums.Menu;
 import models.player.Player;
 import views.GameMenu;
@@ -13,11 +10,13 @@ public class MainMenuController implements Controller{
     public Result changeMenu(String menuName) {
         Menu menu = Menu.getMenu(menuName);
         if(menu == null)
-            return new Result(false, "this menu doesn't exist");
+            return new Result(false, "This menu doesn't exist");
         if (menu.equals(Menu.MAIN_MENU))
             return new Result(false, "you are already in Main Menu");
+        if (menu.equals(Menu.GAME_MENU))
+            return new Result(false, "Use \"game new -u <username1> [username2] [username3]\"\n to enter this menu");
         App.setCurrentMenu(menu);
-        return new Result(false, "you are in " + menu + " now");
+        return new Result(false, "You are in " + menu + " now");
     }
 
     public Result logout() {
@@ -58,9 +57,10 @@ public class MainMenuController implements Controller{
 
         Game game = new Game();
         for (Account account : accounts) {
-            if(account.getActiveGame() != null)
-                return new Result(false, "user " + account.getUsername() + " is already in a game.");
+//            if(account.getActiveGame() != null)
+//                return new Result(false, "user " + account.getUsername() + " is already in a game.");
             game.addPlayer(new Player());
+            game.setActiveMap(new GameMap(20, 20));
             account.setActiveGame(game);
         }
         App.setCurrentMenu(Menu.GAME_MENU);

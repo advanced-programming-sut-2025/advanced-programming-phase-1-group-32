@@ -17,9 +17,10 @@ public class GameMenu implements AppMenu{
     public void checker(Scanner scanner) {
         Game activeGame = App.getLoggedInAccount().getActiveGame();
         //
-        printMap(activeGame.getActiveMap());
-
         String input = scanner.nextLine().trim();
+
+//        printMap(activeGame.getActiveMap());
+
         Matcher matcher;
         GameMenuController controller = new GameMenuController();
 
@@ -54,6 +55,8 @@ public class GameMenu implements AppMenu{
 
         } else if ((matcher = GameMenuCommands.SET_WEATHER.getMatcher(input)) != null) {
             System.out.println(controller.setWeather(matcher.group("type")));
+        } else {
+            System.out.println("Invalid Command!");
         }
 
 
@@ -64,10 +67,10 @@ public class GameMenu implements AppMenu{
         Tile[][] tiles = map.getTiles();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                char ch = '#';
+                char ch = '1';
                 Tile tile = tiles[i][j];
                 renderer.clear();
-                renderer.mvAddchColored(tile.getCol(), tile.getRow(), ch, tile.getColor());
+                renderer.mvAddchColored(tile.getCol(), tile.getRow(), 'A', tile.getColor());
 
             }
         }

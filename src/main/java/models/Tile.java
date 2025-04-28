@@ -12,7 +12,7 @@ public class Tile{
 
     public Tile(Position position) {
         this.position = position;
-        color = new Color(255, 0, 0);
+        color = new Color(0.5, 0, 0);
     }
 
     public TileType getType() {

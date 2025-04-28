@@ -21,9 +21,9 @@ public class MainMenu implements AppMenu {
         } else if ((matcher = MainMenuCommands.SHOW_MENUS.getMatcher(input)) != null) {
             System.out.println(controller.showMenus());
         } else if ((matcher = MainMenuCommands.NEW_GAME.getMatcher(input)) != null) {
-            System.out.println(controller.showMenus());
+            System.out.println(controller.newGame(matcher.group("usernames")));
         } else if ((matcher = MainMenuCommands.LOAD_GAME.getMatcher(input)) != null) {
-            System.out.println(controller.showMenus());
+            System.out.println(controller.loadGame());
         } else {
             System.out.println("invalid command");
         }

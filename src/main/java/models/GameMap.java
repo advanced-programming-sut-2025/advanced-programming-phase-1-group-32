@@ -26,7 +26,7 @@ public class GameMap {
     private void initializeMap() {
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                tiles[i][j] = new Tile(new Position(i, j));
+                tiles[i][j] = (new Tile(new Position(i, j)));
             }
         }
     }

@@ -1,10 +1,10 @@
 package controllers;
 
-import models.App;
-import models.Date;
-import models.Game;
-import models.Result;
+import models.*;
+import models.entities.components.EntityComponent;
 import models.enums.Weather;
+
+import java.util.concurrent.TimeoutException;
 
 public class GameMenuController implements Controller {
     @Override
@@ -115,7 +115,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result walk() {
-        //TODO
+        Tile tile = new Tile(new Position(10, 10));
         return null;
     }
 

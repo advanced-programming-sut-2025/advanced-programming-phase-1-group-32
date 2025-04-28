@@ -62,4 +62,10 @@ public class Game {
         // this function should update things related to game
         //TODO
     }
+
+    public void setActiveMap(GameMap map) {
+        this.activeMap = map;
+    }
+
+
 }

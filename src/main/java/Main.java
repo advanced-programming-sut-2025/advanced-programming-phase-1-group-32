@@ -4,7 +4,7 @@ import views.inGame.Renderer;
 
 import java.util.Scanner;
 
-public class Main {
+public class    Main {
     public static void main(String[] args) {
         (new AppView()).run();
         int x = 1, y = 1;

@@ -7,3 +7,7 @@ pick question -q 1 -a meow -c meow
 register -u Female -p AliPass123@ AliPass123@ -n Female -e female@gmail.com -g female
 pick question -q 1 -a meow -c meow
 login -u Ilia -p AliPass123@
+show current menu
+show menus
+menu enter Game Menu
+game new -u Ilia
