@@ -11,6 +11,10 @@ public enum GameMenuCommands implements Commands {
     WEATHER("\\s*weather\\s*"),
     WEATHER_FORECAST("\\s*weather\\s*forecast\\s*"),
     SET_WEATHER("cheat\\s+weather\\s*set\\s*(?<type>\\S+)\\s*"),
+    ENERGY_SHOW("\\s*energy\\s+show\\s*"),
+    ENERGY_SET("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
+    ENERGY_UNLIMITED("\\s*energy\\s+unlimited\\s*"),
+    INVENTORY_SHOW("\\s*inventory\\s+show\\s*"),
 
     ;
 
