@@ -1,5 +1,6 @@
 package models.player;
 
+import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
 import models.crafting.Recipe;
@@ -25,6 +26,9 @@ public class Player {
     private final ArrayList<Message> messageLog = null;
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
+
+    //TODO: this should change. Position will become a component
+    private final Position position = new Position(0, 0);
 
     public int getTrashcanLevel() {
         return trashcanLevel;
@@ -85,5 +89,12 @@ public class Player {
     }
     public void addMessage(){
 
+    }
+    public void changePosition(int x, int y){
+        this.position.change(x, y);
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

@@ -29,6 +29,12 @@ public class Renderer {
         System.out.printf(positionCode + character + resetCode, y, x);
     }
     public void mvAddchColored(int x, int y, char character, Color color){
+        this.mvAddchColored(x, y, character, color, view.getTerminalWidth() / 2, view.getTerminalHeight() / 2);
+    }
+    public void mvAddchColored(int x, int y, char character, Color color, int x0, int y0){
+        x = x - (x0 - (view.getTerminalWidth() / 2));
+        y = y - (y0 - (view.getTerminalHeight() / 2));
+
         if(x < 0 || x >= view.getTerminalWidth() || y < 0 || y >= view.getTerminalHeight()){
             return;
         }
@@ -91,6 +97,6 @@ public class Renderer {
                 }
             }
         }
-        System.out.print(output);
+        System.out.print(output + resetCode);
     }
 }

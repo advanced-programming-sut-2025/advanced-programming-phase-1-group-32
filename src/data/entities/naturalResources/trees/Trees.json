@@ -3,13 +3,19 @@
     {
       "type" : "Placeable",
       "isACollider" : true
+    },{
+      "type" : "Renderable",
+      "char" : "T",
+      "color" : [0, 255, 0]
     }
   ],
+
   "required components" : [
     {
       "type" : "Harvestable"
     }
   ],
+
   "entities" : [
     {
       "name" : "Pine Tree",

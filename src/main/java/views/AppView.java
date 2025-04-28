@@ -1,6 +1,7 @@
 package views;
 
 import models.App;
+import org.jline.terminal.Attributes;
 import org.jline.terminal.Size;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
@@ -15,6 +16,8 @@ public class AppView {
     private final Terminal terminal;
     private Size terminalSize;
     private final Renderer renderer;
+    //false is the typical terminal mode
+    private boolean rawMode = false;
 
     public AppView(){
         try{
@@ -40,6 +43,25 @@ public class AppView {
             App.getCurrentMenu().checker(scanner);
         }
     }
+
+    public boolean isRawMode() {
+        return rawMode;
+    }
+
+    public void switchInputType() {
+        try{
+            if(this.rawMode){
+                Attributes attributes = terminal.getAttributes();
+                this.terminal.close();
+            }else{
+                terminal.enterRawMode();
+            }
+            this.rawMode = !this.rawMode;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public String inputWithPrompt(String prompt){
         System.out.println(prompt);
         return scanner.nextLine();

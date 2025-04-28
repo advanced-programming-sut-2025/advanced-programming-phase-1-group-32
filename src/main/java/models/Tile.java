@@ -7,12 +7,11 @@ import views.inGame.Color;
 public class Tile{
     private TileType type;
     final private Position position;
-    private Color color;
     private Entity content;
 
-    public Tile(Position position) {
+    public Tile(Position position, TileType type) {
         this.position = position;
-        color = new Color(255, 0, 0);
+        this.type = type;
     }
 
     public TileType getType() {
@@ -40,6 +39,9 @@ public class Tile{
     }
 
     public Color getColor() {
-        return color;
+        return this.type.color;
+    }
+    public char getCharacter(){
+        return this.type.character;
     }
 }

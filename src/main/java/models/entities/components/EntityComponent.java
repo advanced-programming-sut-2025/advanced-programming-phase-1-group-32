@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Upgradable.class, name = "Upgradable"),
         @JsonSubTypes.Type(value = Useable.class, name = "Useable"),
         @JsonSubTypes.Type(value = Pickable.class, name = "Pickable"),
+        @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
 })
 abstract public class EntityComponent {
 }

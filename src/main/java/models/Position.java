@@ -16,4 +16,9 @@ public class Position {
     public int getRow() {
         return row;
     }
+
+    public void change(int x, int y){
+        this.col += x;
+        this.row += y;
+    }
 }

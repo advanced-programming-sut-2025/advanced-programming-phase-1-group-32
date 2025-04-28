@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import models.entities.components.EntityComponent;
+import models.enums.TileType;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
@@ -117,7 +118,6 @@ public class GameMenuController implements Controller {
     }
 
     public Result walk() {
-        Tile tile = new Tile(new Position(10, 10));
         return null;
     }
 
@@ -347,6 +347,35 @@ public class GameMenuController implements Controller {
 
     private void saveGame() {
         //TODO
+    }
+
+    public Result switchInputType(){
+        App.getView().switchInputType();
+        if(App.getView().isRawMode()){
+            return new Result(true, "You are in raw mode");
+        }else{
+            return new Result(true, "You are in normal mode");
+        }
+    }
+    public Result handleRawInput(char c){
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        switch (c){
+            case 'a':
+                player.changePosition(-1, 0);
+                break;
+            case 's':
+                player.changePosition(0, 1);
+                break;
+            case 'w':
+                player.changePosition(0, -1);
+                break;
+            case 'd':
+                player.changePosition(1, 0);
+                break;
+            default:
+                break;
+        }
+        return null;
     }
 
 }

@@ -1,5 +1,7 @@
 package models;
 
+import models.enums.TileType;
+
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,26 +18,21 @@ public class GameMap {
     SecureRandom random = new SecureRandom();
 
     private void generateRandomElements(int min ,int max) { //inclusive
-        int allRandomElementsNumber; //TODO: fix this
-        int numOfElements = random.nextInt(max - min + 1) + min;
-        for (int i = 0; i < numOfElements; i++) {
-            //TODO: need an enum of Placables?
-        }
+        //TODO
     }
 
     private void initializeMap() {
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                tiles[i][j] = (new Tile(new Position(i, j)));
+                tiles[i][j] = new Tile(new Position(i, j), Math.random() > 0.6 ? TileType.GRASS : TileType.HOED_GROUND);
+                if(Math.random() > 0.6){
+                    tiles[i][j].setContent(App.entityRegistry.makeEntity("Birch Tree"));
+                }
             }
         }
     }
 
     public Tile[][] getTiles() {
         return tiles.clone();
-    }
-
-    public void printMap() {
-        //TODO
     }
 }
