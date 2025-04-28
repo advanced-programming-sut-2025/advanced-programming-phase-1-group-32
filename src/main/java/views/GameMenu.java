@@ -56,7 +56,6 @@ public class GameMenu implements AppMenu{
             System.out.println(controller.setWeather(matcher.group("type")));
         }
 
-
     }
 
     public void printMap(GameMap map) {

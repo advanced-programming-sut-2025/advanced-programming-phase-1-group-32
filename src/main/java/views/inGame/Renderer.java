@@ -1,5 +1,7 @@
 package views.inGame;
 
+import models.App;
+
 public class Renderer {
     private final String resetCode    = "\u001B[0m";
     private final String fgColorCode  = "\u001B[38;2;%d;%d;%dm";
@@ -15,6 +17,9 @@ public class Renderer {
         System.out.printf(positionCode + character + resetCode, y, x);
     }
     public void mvAddchColored(int x, int y, int character, Color color){
+        if(x < 0 || x > App.getView().getTerminalWidth() || y < 0 || y > App.getView().getTerminalHeight()){
+            return;
+        }
         double[] fg = color.getFg();
         double[] bg = color.getBg();
         System.out.printf(positionCode + fgColorCode + character + resetCode, y, x,

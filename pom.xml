@@ -24,7 +24,6 @@
             <artifactId>jline</artifactId>
             <version>3.21.0</version>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
