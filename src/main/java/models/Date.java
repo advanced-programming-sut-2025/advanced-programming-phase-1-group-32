@@ -5,20 +5,20 @@ import models.enums.Season;
 
 public class Date {
     private Season season;
-    private int date;
+    private int day;
     private int hour;
 
     public Season getSeason() {
         return season;
     }
 
-    public int getDate() {
-        return date;
+    public int getDay() {
+        return day;
     }
 
     public WeekDay getWeekDay() {
         WeekDay weekDay;
-        weekDay = WeekDay.getWeekDay(date % 7);
+        weekDay = WeekDay.getWeekDay(day % 7);
 
         return weekDay;
     }
@@ -27,15 +27,28 @@ public class Date {
         return hour;
     }
 
-    public void addHour() {
-
+    public void addHour(int amount, Game game) {
+        for (int i = 0 ; i < amount ; i++) {
+            game.updateGamePerHour();
+            if (hour == 23) {
+                hour = 0;
+                addDay(1, game);
+            } else {
+                hour++;
+            }
+        }
     }
 
-    public void addDay() {
-
+    public void addDay(int amount, Game game) {
+        for (int i = 0 ; i < amount ; i++) {
+            game.updateGamePerDay();
+            if (day == 28)  {
+                day = 1;
+                this.season = Season.nextSeason(this.season);
+            } else {
+                day++;
+            }
+        }
     }
 
-    public void addSeason() {
-
-    }
 }

@@ -9,4 +9,23 @@ public enum Season {
     public void updatePlant(){
 
     };
+
+    public static Season nextSeason(Season season) {
+        switch (season) {
+            case SPRING -> {
+                return SUMMER;
+            }
+            case SUMMER -> {
+                return FALL;
+            }
+            case FALL -> {
+                return WINTER;
+            }
+            case WINTER -> {
+                return SPRING;
+            }
+        }
+
+        return null;
+    }
 }

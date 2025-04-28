@@ -19,9 +19,6 @@ public class Game {
     public void addPlayer(Player player) {
         players.add(player);
     }
-    public void setWeather(){
-
-    }
 
     public void initGame() {
 
@@ -53,5 +50,16 @@ public class Game {
 
     public void setTomorrowWeather(Weather tomorrowWeather) {
         this.tomorrowWeather = tomorrowWeather;
+    }
+
+    public void updateGamePerHour() {
+        // this function should update things related to game
+        //TODO
+
+    }
+
+    public void updateGamePerDay() {
+        // this function should update things related to game
+        //TODO
     }
 }

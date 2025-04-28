@@ -8,7 +8,6 @@ import models.GameMap;
 import models.Tile;
 import views.inGame.Renderer;
 
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -26,16 +25,35 @@ public class GameMenu implements AppMenu{
 
         if (GameMenuCommands.DATE.getMatcher(input) != null) {
             System.out.println(controller.getDate());
+
         } else if (GameMenuCommands.DATETIME.getMatcher(input) != null) {
             System.out.println(controller.getDateTime());
+
         } else if (GameMenuCommands.TIME.getMatcher(input) != null) {
             System.out.println(controller.getTime());
+
         } else if (GameMenuCommands.DAT_OF_THE_WEEK.getMatcher(input) != null) {
             System.out.println(controller.getDayOfTheWeek());
+
+        } else if ((matcher = GameMenuCommands.ADVANCE_TIME.getMatcher(input)) != null) {
+            int amount = Integer.parseInt(matcher.group(1));
+            System.out.println(controller.advanceTime(amount));
+
+        } else if ((matcher = GameMenuCommands.ADVANCE_DATE.getMatcher(input)) != null) {
+            int amount = Integer.parseInt(matcher.group(1));
+            System.out.println(controller.advanceDate(amount));
+
+        } else if (GameMenuCommands.SEASON.getMatcher(input) != null) {
+            System.out.println(controller.showSeason());
+
         } else if (GameMenuCommands.WEATHER.getMatcher(input) != null) {
             System.out.println(controller.showWeather());
+
         } else if (GameMenuCommands.WEATHER_FORECAST.getMatcher(input) != null) {
             System.out.println(controller.weatherForecast());
+
+        } else if ((matcher = GameMenuCommands.SET_WEATHER.getMatcher(input)) != null) {
+            System.out.println(controller.setWeather(matcher.group("type")));
         }
 
 

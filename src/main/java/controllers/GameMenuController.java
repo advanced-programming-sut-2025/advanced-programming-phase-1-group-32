@@ -2,8 +2,8 @@ package controllers;
 
 import models.App;
 import models.Date;
+import models.Game;
 import models.Result;
-import controllers.Controller;
 import models.enums.Weather;
 
 public class GameMenuController implements Controller {
@@ -41,12 +41,12 @@ public class GameMenuController implements Controller {
     public Result getDate() {
         Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
 
-        return new Result(true, String.valueOf(currentDate.getDate()));
+        return new Result(true, String.valueOf(currentDate.getDay()));
     }
 
     public Result getDateTime() {
         Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
-        return new Result(true, "Date: " + currentDate.getDate() +
+        return new Result(true, "Date: " + currentDate.getDay() +
                 "\tHour: " + currentDate.getHour());
     }
 
@@ -56,27 +56,35 @@ public class GameMenuController implements Controller {
         return new Result(true, currentDate.getWeekDay().toString().toLowerCase());
     }
 
-    public Result advanceTime() {
-        //TODO
+    public Result advanceTime(int amount) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Date date = game.getDate();
+
+        // this function will update data about game.Date
+        date.addHour(amount, game);
+        game.setDate(date);
+
+        return new Result(true, "We've traveled through time for " + amount + " hours!");
+    }
+
+    public Result advanceDate(int amount) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Date date = game.getDate();
+
+        // this function will update data about game.Date
+        date.addDay(amount, game);
+        game.setDate(date);
         return null;
     }
 
-    public Result advanceDate() {
-        //TODO
-        return null;
+    public Result showSeason() {
+        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        return new Result(true, currentDate.getSeason().name().toLowerCase());
     }
 
     public void checkTurn() {
         //TODO
         //ghash
-    }
-
-    public void updatePerHour() {
-        //TODO
-    }
-
-    public void updatePerDay() {
-        //TODO
     }
 
     public Result thor() {
@@ -90,13 +98,20 @@ public class GameMenuController implements Controller {
     }
 
     public Result weatherForecast() {
-        //TODO
-        return null;
+        Weather weather = App.getLoggedInAccount().getActiveGame().getTomorrowWeather();
+
+        return new Result(true, weather.toString().toLowerCase());
     }
 
-    public Result setWeather() {
-        //TODO
-        return null;
+    public Result setWeather(String weatherString) {
+        Weather weather = Weather.valueOf(weatherString);
+        if (weather == null) {
+            return new Result(false, "Weather not found");
+        }
+
+        Game game = App.getLoggedInAccount().getActiveGame();
+        game.setTomorrowWeather(weather);
+        return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
     public Result walk() {
