@@ -4,14 +4,17 @@ import models.App;
 import org.jline.terminal.Size;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
+import views.inGame.Renderer;
 
 import java.io.IOException;
+import java.util.Observable;
 import java.util.Scanner;
 
 public class AppView {
     private final Scanner scanner;
     private final Terminal terminal;
     private Size terminalSize;
+    private final Renderer renderer;
 
     public AppView(){
         try{
@@ -22,6 +25,7 @@ public class AppView {
                 @Override
                 public void handle(Terminal.Signal signal) {
                     terminalSize = terminal.getSize();
+                    renderer.updateSize();
                 }
             });
             terminalSize = terminal.getSize();
@@ -29,6 +33,7 @@ public class AppView {
             throw new RuntimeException(e);
         }
         scanner = new Scanner(System.in);
+        renderer = new Renderer(this);
     }
     public void run() {
         while(!App.shouldTerminate) {
@@ -50,5 +55,9 @@ public class AppView {
     }
     public Terminal getTerminal(){
         return terminal;
+    }
+
+    public Renderer getRenderer() {
+        return renderer;
     }
 }

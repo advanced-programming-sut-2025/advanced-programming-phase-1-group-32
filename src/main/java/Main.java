@@ -1,23 +1,34 @@
 import models.App;
 import views.AppView;
+import views.inGame.CharacterTexture;
 import views.inGame.Color;
 import views.inGame.Renderer;
+import views.inGame.StyledCharacter;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //App.start();
         int x = 1, y = 1;
-        Renderer renderer = new Renderer();
         Scanner scanner = new Scanner(System.in);
 
         App.getView().getTerminal().enterRawMode();
+        CharacterTexture map = new CharacterTexture(200, 50);
+        for (int i = 0; i < 200; i++){
+            for (int j = 0 ; j < 50; j++){
+                if(Math.random() > 0.9){
+                    map.data[j][i] = new StyledCharacter('A', new Color((int)(((double)i / 200) * 255), (int)(((double)j / 50) * 255), 0));
+                }else{
+                    map.data[j][i] = new StyledCharacter('A', null);
+                }
+            }
+        }
         while (true){
             int c = 0;
             try {
-                if(App.getView().getTerminal().reader().peek(100) > 0){
+                if(App.getView().getTerminal().reader().peek(1000) > 0){
                     c = App.getView().getTerminal().reader().read();
                 }
             } catch (IOException e) {
@@ -39,13 +50,9 @@ public class Main {
                 default:
                     break;
             }
-            renderer.clear();
-            System.out.println("" + App.getView().getTerminalWidth() + " " + App.getView().getTerminalHeight());
-            for (int i = 0; i < 20; i++){
-                for (int j = 0 ; j < 20; j++){
-                    renderer.mvAddchColored(i + x, j + y, 'A', new Color(((double) i) / 20, ((double) j) / 20, 0.5));
-                }
-            }
+            App.getView().getRenderer().clear();
+            App.getView().getRenderer().renderTexture(x, y, map);
+            App.getView().getRenderer().render();
         }
     }
 }
