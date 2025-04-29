@@ -66,6 +66,7 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.SET_WEATHER.getMatcher(input)) != null) {
                 System.out.println(controller.setWeather(matcher.group("type")));
 
+<<<<<<< HEAD
             } else if (GameMenuCommands.ENERGY_SHOW.getMatcher(input) != null) {
                 System.out.println(controller.energyShow());
 
@@ -80,6 +81,22 @@ public class GameMenu implements AppMenu {
             } else {
                 System.out.println("Invalid Command!");
             }
+=======
+        } else if ((matcher = GameMenuCommands.SET_WEATHER.getMatcher(input)) != null) {
+            System.out.println(controller.setWeather(matcher.group("type")));
+
+        } else if (GameMenuCommands.ENERGY_SHOW.getMatcher(input) != null) {
+            System.out.println(controller.energyShow());
+
+        } else if ((matcher = GameMenuCommands.ENERGY_SET.getMatcher(input)) != null) {
+            System.out.println(controller.energySet(Integer.parseInt(matcher.group(1))));
+
+        } else if (GameMenuCommands.ENERGY_UNLIMITED.getMatcher(input) != null) {
+            System.out.println(controller.energyUnlimited());
+
+        } else {
+            System.out.println("Invalid Command!");
+>>>>>>> Ali
         }
 
     }

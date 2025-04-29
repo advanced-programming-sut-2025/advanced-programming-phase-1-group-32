@@ -26,9 +26,8 @@ public class Player {
     private final ArrayList<Message> messageLog = null;
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
-
     //TODO: this should change. Position will become a component
-    private final Position position = new Position(0, 0);
+    private Position position = new Position(0, 0);
 
     public int getTrashcanLevel() {
         return trashcanLevel;
@@ -95,6 +94,14 @@ public class Player {
     }
 
     public Position getPosition() {
+        return position;
+    }
+
+    public void setPlayerPosition(Position position) {
+        this.position = position;
+    }
+
+    public Position getPlayerPosition() {
         return position;
     }
 }

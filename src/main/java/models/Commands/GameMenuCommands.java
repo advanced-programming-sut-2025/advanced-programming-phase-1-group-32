@@ -15,7 +15,11 @@ public enum GameMenuCommands implements Commands {
     ENERGY_SET("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
     ENERGY_UNLIMITED("\\s*energy\\s+unlimited\\s*"),
     INVENTORY_SHOW("\\s*inventory\\s+show\\s*"),
+<<<<<<< HEAD
     CHANGE_INPUT_TYPE("^\\s*change\\s+input\\s+type\\s*$"),
+=======
+
+>>>>>>> Ali
     ;
 
     private final String pattern;
