@@ -3,11 +3,8 @@ package controllers;
 import models.*;
 import models.Date;
 import models.entities.components.EntityComponent;
-<<<<<<< HEAD
 import models.enums.TileType;
-=======
 import models.entities.components.Placeable;
->>>>>>> Ali
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
@@ -123,10 +120,6 @@ public class GameMenuController implements Controller {
         return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
-<<<<<<< HEAD
-    public Result walk() {
-        return null;
-=======
     public Result walk(int x, int y) {
         Game game = App.getLoggedInAccount().getActiveGame();
         Player player = game.getCurrentPlayer();
@@ -203,7 +196,6 @@ public class GameMenuController implements Controller {
         return path;
 
 
->>>>>>> Ali
     }
 
     public Result printMap() {
