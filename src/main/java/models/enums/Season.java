@@ -1,10 +1,45 @@
 package models.enums;
 
 public enum Season {
-    SPRING,
-    SUMMER,
-    FALL,
-    WINTER;
+    SPRING {
+        @Override
+        public Weather getWeather() {
+            int random = (int) (Math.random() * 3);
+            return switch (random) {
+                case 0 -> Weather.SUNNY;
+                case 1 -> Weather.RAINY;
+                default -> Weather.STORMY;
+            };
+        }
+    },
+    SUMMER {
+        @Override
+        public Weather getWeather() {
+            int random = (int) (Math.random() * 3);
+            return switch (random) {
+                case 0 -> Weather.SUNNY;
+                case 1 -> Weather.RAINY;
+                default -> Weather.STORMY;
+            };
+        }
+    },
+    FALL {
+        @Override
+        public Weather getWeather() {
+            int random = (int) (Math.random() * 3);
+            return switch (random) {
+                case 0 -> Weather.SUNNY;
+                case 1 -> Weather.RAINY;
+                default -> Weather.STORMY;
+            };
+        }
+    },
+    WINTER {
+        @Override
+        public Weather getWeather() {
+            return Weather.SNOWY;
+        }
+    };
 
     public void updatePlant(){
 
@@ -28,4 +63,6 @@ public enum Season {
 
         return null;
     }
+
+    public abstract Weather getWeather();
 }
