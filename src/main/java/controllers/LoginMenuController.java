@@ -2,7 +2,7 @@ package controllers;
 
 import models.Account;
 import models.App;
-import models.Result;
+import records.Result;
 import models.enums.Menu;
 import models.enums.Gender;
 import models.enums.SecurityQuestions;

@@ -97,11 +97,8 @@ public class Player {
         return position;
     }
 
-    public void setPlayerPosition(Position position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
-    public Position getPlayerPosition() {
-        return position;
-    }
 }

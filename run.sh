@@ -25,9 +25,9 @@ build() {
 
 run_app() {
     if [ $# -eq 1 ]; then
-        (cat "$1"; cat -) | mvn exec:java
+        (cat "$1"; cat -) | mvn exec:java 2>&1
     else
-        mvn exec:java
+        mvn exec:java 2>&1
     fi
 }
 

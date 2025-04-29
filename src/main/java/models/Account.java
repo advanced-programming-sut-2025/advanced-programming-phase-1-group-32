@@ -3,6 +3,7 @@ package models;
 import models.enums.Gender;
 
 import models.enums.SecurityQuestions;
+import records.Result;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

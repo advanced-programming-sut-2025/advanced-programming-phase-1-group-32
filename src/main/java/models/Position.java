@@ -21,4 +21,9 @@ public class Position {
         this.col += x;
         this.row += y;
     }
+
+    @Override
+    public String toString() {
+        return "<" + col + ", " + row + ">";
+    }
 }

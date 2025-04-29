@@ -1,8 +1,7 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import models.Result;
-import models.entities.Entity;
+import records.Result;
 import models.enums.Material;
 
 public class Harvestable extends EntityComponent{

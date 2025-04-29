@@ -2,15 +2,14 @@ package controllers;
 
 import models.*;
 import models.Date;
-import models.entities.components.EntityComponent;
-import models.enums.TileType;
 import models.entities.components.Placeable;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
+import records.Result;
+import records.WalkProposal;
 
 import java.util.*;
-import java.util.concurrent.TimeoutException;
 
 public class GameMenuController implements Controller {
     @Override
@@ -120,30 +119,40 @@ public class GameMenuController implements Controller {
         return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
-    public Result walk(int x, int y) {
+    public WalkProposal proposeWalk(int x, int y) {
         Game game = App.getLoggedInAccount().getActiveGame();
         Player player = game.getCurrentPlayer();
         GameMap map = game.getActiveMap();
-        int initialEnergyAmount = player.getEnergy().getAmount();
         Tile start = map.getTileByPosition(
-                game.getCurrentPlayer().getPlayerPosition()
+                game.getCurrentPlayer().getPosition()
         );
         Tile goal = map.getTileByPosition(new Position(y, x));
         if(start.equals(goal))
-            return new Result(false, "you are already in <" + x + ", " + y + "> ");
+            return new WalkProposal(
+                    false,
+                    "you are already in " + goal.getPosition(),
+                    0, x, y
+            );
         int distance = shortestPath(goal, start, map.getTiles()).size();
         if(distance == 0)
-            return new Result(false, "you can't reach <" + x + ", " + y + "> ");
+            return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x ,y);
+        return new WalkProposal(true, "OK", distance / 20, x, y);
 
-        String input = App.getView().inputWithPrompt(
-                distance / 20 + " energy need to walk to <" + x + ", " + y + "> do you want to continue? <y or n>"
-        ).trim();
-        if(input.equals("yes")) {
-            player.setPlayerPosition(new Position(goal.getRow(), goal.getCol()));
-            player.getEnergy().setAmount(initialEnergyAmount - distance / 20);
+
+    }
+
+    public Result executeWalk(WalkProposal p) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        int initialEnergyAmount = player.getEnergy().getAmount();
+
+        if(!p.isAllowed()) {
+            return new Result(false, "No walk was proposed");
         }
-        return new Result(false, "walk canceled");
-
+        player.setPosition(new Position(p.y(), p.x()));
+        player.getEnergy().setAmount(initialEnergyAmount - p.energyCost());
+        return new Result(true, "you walked to "
+                + player.getPosition()
+                + " (-" + p.energyCost() + " energy)");
     }
 
     private List<Tile> shortestPath(Tile destination, Tile src, Tile[][] tiles) {

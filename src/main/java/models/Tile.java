@@ -30,6 +30,10 @@ public class Tile{
         this.content = content;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public int getRow() {
         return position.getRow();
     }

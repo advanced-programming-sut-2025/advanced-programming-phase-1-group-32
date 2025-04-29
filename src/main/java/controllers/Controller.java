@@ -1,7 +1,7 @@
 package controllers;
 
 import models.App;
-import models.Result;
+import records.Result;
 
 public interface Controller {
     public Result changeMenu(String menuName);

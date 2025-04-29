@@ -1,4 +1,4 @@
-package models;
+package records;
 
 public record Result(boolean isSuccessful, String message) {
     @Override

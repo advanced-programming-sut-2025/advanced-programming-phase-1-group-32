@@ -1,7 +1,7 @@
 package controllers.inGame;
 
 import controllers.Controller;
-import models.Result;
+import records.Result;
 
 public class QuestMenuController implements Controller {
 
