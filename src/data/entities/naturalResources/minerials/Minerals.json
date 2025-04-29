@@ -2,7 +2,7 @@
   "common components" : [
     {
       "type" : "Placeable",
-      "isACollider" : true
+      "isWalkable" : false
     }
   ],
   "required components" : [
