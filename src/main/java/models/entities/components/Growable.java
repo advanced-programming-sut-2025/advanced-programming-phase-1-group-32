@@ -36,6 +36,11 @@ public class Growable extends EntityComponent{
         this.seed = null;
         this.fruit = null;
     }
+    public Growable(Growable other){
+        this.fruit = null;
+        this.seed = null;
+        //TODO
+    }
 
     public int getTotalHarvestTime() {
         return totalHarvestTime;
@@ -91,5 +96,10 @@ public class Growable extends EntityComponent{
 
     public void setCanBecomeGiant(boolean canBecomeGiant) {
         this.canBecomeGiant = canBecomeGiant;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Growable(this);
     }
 }

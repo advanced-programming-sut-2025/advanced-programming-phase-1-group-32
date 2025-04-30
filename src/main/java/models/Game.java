@@ -12,6 +12,7 @@ public class Game {
     private GameMap activeMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
+    private boolean mapVisible = true;
 
     public Game() {
         this.date = new Date();
@@ -88,5 +89,10 @@ public class Game {
         this.activeMap = map;
     }
 
-
+    public void toggleMapVisibility(){
+        mapVisible = !mapVisible;
+    }
+    public boolean isMapVisible(){
+        return mapVisible;
+    }
 }

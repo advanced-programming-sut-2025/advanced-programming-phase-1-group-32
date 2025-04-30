@@ -1,6 +1,7 @@
 package models.entities.components;
 import com.fasterxml.jackson.annotation.*;
 import models.entities.Entity;
+import models.entities.components.inventory.Inventory;
 
 /***
  * this helps jackson find child classes
@@ -24,9 +25,9 @@ import models.entities.Entity;
         @JsonSubTypes.Type(value = Pickable.class, name = "Pickable"),
         @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
 })
-abstract public class EntityComponent {
+abstract public class EntityComponent implements Cloneable {
     @JsonIgnore()
-    protected Entity entity;
+    protected Entity entity = null;
 
     // It's useful for components to have a reference to their owning entity,
     // since they may need to access other components on the same entity.
@@ -35,4 +36,6 @@ abstract public class EntityComponent {
     public void setEntity(Entity entity){
         this.entity = entity;
     }
+
+    public abstract EntityComponent clone();
 }

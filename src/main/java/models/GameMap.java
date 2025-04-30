@@ -9,9 +9,12 @@ import java.util.Random;
 
 public class GameMap {
     private Tile[][] tiles;
+    int width, height;
 
-    public GameMap(int m, int n) {
-        this.tiles = new Tile[m][n];
+    public GameMap(int height, int width) {
+        this.width = width;
+        this.height = height;
+        this.tiles = new Tile[height][width];
         initializeMap();
     }
 
@@ -22,8 +25,8 @@ public class GameMap {
     }
 
     private void initializeMap() {
-        for (int i = 0; i < tiles.length; i++) {
-            for (int j = 0; j < tiles[i].length; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 tiles[i][j] = new Tile(new Position(i, j), Math.random() > 0.6 ? TileType.GRASS : TileType.HOED_GROUND);
                 if(Math.random() > 0.6){
                     tiles[i][j].setContent(App.entityRegistry.makeEntity("Birch Tree"));

@@ -85,13 +85,19 @@ public class EntityRegistry {
         Entity entity = this.registry.get(entityName);
         return entity != null;
     }
-
     public Entity makeEntity(String name){
         Entity entity = this.registry.get(name);
         if(entity == null){
             throw new RuntimeException("no entity found with the name " + name);
         }
         return entity.clone();
+    }
+    public Entity getEntityDetails(String name){
+        Entity entity = this.registry.get(name);
+        if(entity == null){
+            throw new RuntimeException("no entity found with the name " + name);
+        }
+        return entity;
     }
     public void listEntities(){
         for(Map.Entry<String, Entity> e : this.registry.entrySet()){

@@ -13,6 +13,17 @@ public class Edible extends EntityComponent{
     public Edible() {
     }
 
+    private Edible(Edible other){
+        this.energy = other.energy;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
     @Override
     public String toString() {
         return "Edible{" +
@@ -20,11 +31,10 @@ public class Edible extends EntityComponent{
                 '}';
     }
 
-    public int getEnergy() {
-        return energy;
-    }
 
-    public void setEnergy(int energy) {
-        this.energy = energy;
+
+    @Override
+    public EntityComponent clone() {
+        return new Edible(this);
     }
 }

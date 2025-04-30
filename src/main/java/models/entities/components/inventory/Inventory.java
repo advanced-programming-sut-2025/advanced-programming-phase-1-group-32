@@ -1,50 +1,19 @@
-package models.entities.components;
+package models.entities.components.inventory;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.Result;
 import models.entities.Entity;
-import models.entities.EntityObserver;
+import models.entities.components.EntityComponent;
+import models.entities.components.Pickable;
+import models.enums.EntityTag;
 
 import java.util.ArrayList;
 
-/***
- * when you remove an item from inventory, the capacity shouldn't change. So you cant use arrayList.remove. java doesn't have
- * pointers so you cant give the pointer to a slot to remove the item in that slot. so I made this class.
- * it just holds an entity. plus, in the future, slots may hold more information.
- */
-class InventorySlot implements EntityObserver{
-    @JsonProperty("entity")
-    private Entity entity;
-    public InventorySlot(Entity entity){
-        this.setEntity(entity);
-    }
-    public InventorySlot(){
-        this(null);
-    }
-    public void setEntity(Entity entity){
-        if(this.entity != null){
-            this.entity.removeObserveer(this);
-        }
-        this.entity = entity;
-        if(entity != null){
-            entity.addObserver(this);
-        }
-    }
-    public Entity getEntity(){
-        return entity;
-    }
-
-    @Override
-    public void onDelete(Entity entity) {
-        this.setEntity(null);
-    }
-}
-
-public class Inventory extends EntityComponent{
+public class Inventory extends EntityComponent {
     @JsonProperty("slots")
     @JsonIdentityReference(alwaysAsId = true)
-    private ArrayList<InventorySlot> slots;
+    private ArrayList<InventorySlot> slots = new ArrayList<>();
     @JsonProperty("capacity")
     private int capacity;
 
@@ -54,19 +23,22 @@ public class Inventory extends EntityComponent{
     * "entities" : [12, 5, null, 2, null, 3, 10, null, null]
     * but its like this :
     * "entities" : [{"entity" : 12},{"entity" : 5}{}{"entity" : 2}... */
-    public Inventory(int capacity, ArrayList<InventorySlot> slots){
-        this.slots = new ArrayList<>(capacity);
+    public Inventory(int capacity){
+        this.slots = new ArrayList<>();
         for(int i = 0 ; i < capacity; i++){
-            if(slots.get(i) != null){
-                this.slots.set(i, slots.get(i));
-            }else{
-                this.slots.set(i, new InventorySlot());
-            }
+            this.slots.add(new InventorySlot());
         }
         this.capacity = capacity;
     }
-    public Inventory(int capacity) {
-        this(capacity, new ArrayList<>(capacity));
+    public Inventory(ArrayList<InventorySlot> slots) {
+        this.slots.addAll(slots);
+        this.capacity = slots.size();
+    }
+    private Inventory(Inventory other){
+        this.capacity = other.capacity;
+        for(int i = 0 ; i < capacity; i++){
+            this.slots.add(new InventorySlot());
+        }
     }
     public Inventory(){
         this(0);
@@ -132,9 +104,9 @@ public class Inventory extends EntityComponent{
         return result;
     }
     /***
-     * This function is used when you don't care about the destination slot, and just want to add an item to the inventory
+     * This function is used when you don't care about the destination slot and just want to add an item to the inventory
      * @param entity the entity you want to add. the stack size of the entity could be more than its maximum stack size
-     * @return returns successful result if the entity was completely taken.
+     * @return returns successful result if the entity was completely added
      */
     public Result addItem(Entity entity){
         Pickable pickable = entity.getComponent(Pickable.class);
@@ -145,7 +117,7 @@ public class Inventory extends EntityComponent{
         //add to existing stacks of the same item if possible
         for(InventorySlot s : this.slots){
             Entity entity2 = s.getEntity();
-            if(entity2.getName().equals(entity.getName())){
+            if(entity2 != null && entity2.getName().equals(entity.getName())){
                 Pickable pickable2 = entity2.getComponent(Pickable.class);
                 int leftSpace = pickable2.getMaxStack() - pickable2.getStackSize();
                 int picked = Math.min(leftSpace, pickable.getStackSize());
@@ -166,7 +138,6 @@ public class Inventory extends EntityComponent{
                 if(s.getEntity() == null){
                     if(pickable.getStackSize() > pickable.getMaxStack()){
                         s.setEntity(pickable.split(pickable.getMaxStack()));
-                        pickable.changeStackSize(pickable.getMaxStack());
                     }else{
                         s.setEntity(entity);
                         entityAdded = true;
@@ -249,5 +220,38 @@ public class Inventory extends EntityComponent{
             }
         }
         return out;
+    }
+
+    public ArrayList<Entity> getItemsByTag(EntityTag tag){
+        ArrayList<Entity> out = new ArrayList<>(slots.size());
+        for(InventorySlot s : slots){
+            if(s.getEntity()!=null && s.getEntity().hasTag(tag)){
+                out.add(s.getEntity());
+            }
+        }
+        return out;
+    }
+
+    public boolean doesItemWithTagExist(EntityTag tag){
+        return !this.getItemsByTag(tag).isEmpty();
+    }
+
+
+    public Entity getItem(String name){
+        ArrayList<Entity> out = new ArrayList<>(slots.size());
+        for(InventorySlot s : slots){
+            if(s.getEntity()!=null && s.getEntity().getName().equals(name)){
+                return s.getEntity();
+            }
+        }
+        return null;
+    }
+    public boolean doesHaveItem(String name){
+        return this.getItem(name) != null;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Inventory(this);
     }
 }

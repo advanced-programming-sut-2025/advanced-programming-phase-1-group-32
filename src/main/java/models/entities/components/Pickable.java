@@ -16,6 +16,10 @@ public class Pickable extends EntityComponent{
     public Pickable(int maxStack){
         this(maxStack, 0);
     }
+    private Pickable(Pickable other){
+        this.maxStack = other.maxStack;
+        this.stackSize = other.stackSize;
+    }
     public Pickable(){
         this(1, 0);
     }
@@ -38,9 +42,14 @@ public class Pickable extends EntityComponent{
         if(amount > stackSize) throw new RuntimeException("Splitting more than the stack size in " + entity.getName());
         if(amount == stackSize) throw new RuntimeException("Splitting the same amount as the stack size in" + entity.getName());
 
-        Entity copyEntity = entity.clone();
-        copyEntity.getComponent(Pickable.class).setStackSize(amount);
+        Entity copiedEntity = entity.clone();
+        copiedEntity.getComponent(Pickable.class).setStackSize(amount);
         this.changeStackSize(-amount);
-        return copyEntity;
+        return copiedEntity;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Pickable(this);
     }
 }

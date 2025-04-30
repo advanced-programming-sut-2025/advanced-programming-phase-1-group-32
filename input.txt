@@ -11,3 +11,6 @@ show current menu
 show menus
 menu enter Game Menu
 game new -u Ilia
+toggle map
+cheat give item "Axe" 1
+cheat give item "Axe" 2

@@ -64,11 +64,6 @@ public class Entity implements Cloneable{
     private Entity(Builder b) {
         this(b.name, b.components, b.tags, b.id);
     }
-
-    public String getName() {
-        return name;
-    }
-
     public ArrayList<EntityComponent> getComponents(){
         return components;
     }
@@ -87,6 +82,11 @@ public class Entity implements Cloneable{
         }
         this.components.add(component);
     }
+
+    public String getName() {
+        return name;
+    }
+
     public void addTag(EntityTag tag){
         tags.add(tag);
     }
@@ -112,8 +112,16 @@ public class Entity implements Cloneable{
         }
         return out;
     }
-    public Entity clone(){
-        return new Entity(this.name, this.components, this.tags, 0);
+
+    @Override
+    public Entity clone() {
+        Entity entity = new Builder().name(this.name).id(0).tags(this.tags).build();
+        for(EntityComponent c : this.components){
+            EntityComponent clonedComponent = c.clone();
+            clonedComponent.setEntity(entity);
+            entity.addComponent(clonedComponent);
+        }
+        return entity;
     }
 
     /***
@@ -122,11 +130,11 @@ public class Entity implements Cloneable{
      */
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder{
-        String name;
-        String address;
-        int id;
-        ArrayList<EntityComponent> components = new ArrayList<>();
-        HashSet<EntityTag> tags = new HashSet<>();
+        private String name;
+        private String address;
+        private int id;
+        private ArrayList<EntityComponent> components = new ArrayList<>();
+        private HashSet<EntityTag> tags = new HashSet<>();
 
         private void reset(){
             this.id = 0;
@@ -138,7 +146,7 @@ public class Entity implements Cloneable{
         public Builder name(String n)            { this.name = n; return this; }
         public Builder id(int n)                 { this.id = n; return this; }
         public Builder components(ArrayList<EntityComponent> c) { this.components.addAll(c); return this; }
-        public Builder tags(ArrayList<EntityTag> t) {this.tags.addAll(t); return this;}
+        public Builder tags(HashSet<EntityTag> t) {this.tags.addAll(t); return this;}
 
         public Entity build(){
             Entity entity = new Entity(this);

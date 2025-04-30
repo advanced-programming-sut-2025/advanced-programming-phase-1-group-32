@@ -13,6 +13,10 @@ public class Renderable extends EntityComponent{
         this.character = character;
         this.color = color;
     }
+    private Renderable(Renderable other){
+        this.character = other.character;
+        this.color = other.color;
+    }
     public Renderable(){
         this(' ', null);
     }
@@ -20,8 +24,12 @@ public class Renderable extends EntityComponent{
     public char getCharacter() {
         return character;
     }
-
     public Color getColor() {
         return color;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Renderable(this);
     }
 }

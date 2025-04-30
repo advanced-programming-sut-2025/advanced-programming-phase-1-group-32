@@ -9,6 +9,9 @@ public class Placeable extends EntityComponent{
     public Placeable(boolean isWalkable) {
         this.isWalkable = isWalkable;
     }
+    private Placeable(Placeable other){
+        this.isWalkable = other.isWalkable;
+    }
     public Placeable(){
         this(false);
     }
@@ -22,5 +25,10 @@ public class Placeable extends EntityComponent{
         return "Placeable{" +
                 "isWalkable=" + isWalkable +
                 '}';
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Placeable(this);
     }
 }

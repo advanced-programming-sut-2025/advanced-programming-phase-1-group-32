@@ -59,7 +59,7 @@ public class MainMenuController implements Controller{
         for (Account account : accounts) {
 //            if(account.getActiveGame() != null)
 //                return new Result(false, "user " + account.getUsername() + " is already in a game.");
-            game.addPlayer(new Player());
+            game.addPlayer(new Player(account));
             game.setActiveMap(new GameMap(1000, 1000));
             account.setActiveGame(game);
         }

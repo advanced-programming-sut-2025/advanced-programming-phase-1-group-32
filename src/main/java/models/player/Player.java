@@ -1,13 +1,12 @@
 package models.player;
 
+import models.Account;
 import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
-import models.Result;
 import models.crafting.Recipe;
 import models.entities.Entity;
-import models.entities.components.Inventory;
-import models.entities.components.Pickable;
+import models.entities.components.inventory.Inventory;
 import models.enums.SkillType;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
@@ -29,9 +28,12 @@ public class Player extends Entity{
     private final ArrayList<Message> messageLog = null;
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
+    private final Account account;
 
-    public Player(){
+    public Player(Account account){
         super("Player", new Inventory(12));
+
+        this.account = account;
     }
 
     //TODO: this should change. Position will become a component
@@ -109,4 +111,7 @@ public class Player extends Entity{
         this.position = position;
     }
 
+    public Account getAccount() {
+        return account;
+    }
 }

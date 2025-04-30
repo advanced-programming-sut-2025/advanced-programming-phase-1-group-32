@@ -16,9 +16,11 @@ public enum GameMenuCommands implements Commands {
     ENERGY_SHOW("\\s*energy\\s+show\\s*"),
     ENERGY_SET("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
     ENERGY_UNLIMITED("\\s*energy\\s+unlimited\\s*"),
-    INVENTORY_SHOW("\\s*inventory\\s+show\\s*"),
+    SHOW_INVENTORY("\\s*show\\s+inventory\\s*"),
     CHANGE_INPUT_TYPE("^\\s*change\\s+input\\s+type\\s*$"),
     CRAFTINFO("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
+    TOGGLE_MAP("^\\s*toggle\\s+map\\s*$"),
+    CHEAT_GIVE_ITEM("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
     ;
 
     private final String pattern;

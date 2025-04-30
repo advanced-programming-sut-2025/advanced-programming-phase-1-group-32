@@ -4,10 +4,13 @@ import controllers.GameMenuController;
 import models.*;
 import models.Commands.GameMenuCommands;
 import models.entities.Entity;
+import models.entities.components.Pickable;
+import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
-import records.Result;
+import models.entities.components.inventory.InventorySlot;
 import records.WalkProposal;
 import views.inGame.Color;
+import views.inGame.Renderer;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -88,7 +91,14 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.CRAFTINFO.getMatcher(input)) != null) {
                 System.out.println(controller.craftInfo(matcher.group(1).trim()));
 
-            } else {
+            } else if ((matcher = GameMenuCommands.TOGGLE_MAP.getMatcher(input)) != null) {
+                System.out.println(controller.toggleMap());
+
+            } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
+                showInventory(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+            } else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
+                System.out.println(controller.cheatGiveItem(matcher.group("name"), Integer.parseInt(matcher.group("quantity"))));
+                } else {
                 System.out.println("Invalid Command!");
             }
         }
@@ -96,15 +106,18 @@ public class GameMenu implements AppMenu {
     }
     public void renderGame(){
         Game activeGame = App.getLoggedInAccount().getActiveGame();
-        printMap(activeGame.getActiveMap());
-        Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
-        App.getView().getRenderer().mvAddchColored(App.getView().getTerminalWidth() / 2, App.getView().getTerminalHeight() / 2, '@', new Color(255, 255, 50));
-        App.getView().getRenderer().render();
+        if(activeGame.isMapVisible()){
+            printMap(activeGame.getActiveMap());
+            Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+            App.getView().getRenderer().mvAddchColored(App.getView().getTerminalWidth() / 2, App.getView().getTerminalHeight() / 2, '@', new Color(255, 255, 50));
+            App.getView().getRenderer().render();
+        }
     }
     public void printMap(GameMap map) {
         Tile[][] tiles = map.getTiles();
         App.getView().getRenderer().clear();
         Position position = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+        Renderer renderer = App.getView().getRenderer();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 Tile tile = tiles[i][j];
@@ -114,9 +127,9 @@ public class GameMenu implements AppMenu {
                     if(component == null){
                         throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
                     }
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
+                    renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
                 }else{
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
+                    renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
                 }
             }
         }
@@ -138,6 +151,20 @@ public class GameMenu implements AppMenu {
         }
         else {
             System.out.println("Walk cancelled");
+        }
+    }
+
+    public void showInventory(Inventory inventory){
+        int i = 1;
+        for(InventorySlot s : inventory.getSlots()){
+            Entity entity = s.getEntity();
+            System.out.printf("%-2d: ", i);
+            if(entity != null){
+                System.out.printf("%s \t%d\n", entity.getName(), entity.getComponent(Pickable.class).getStackSize());
+            }else{
+                System.out.print("-\n");
+            }
+            i++;
         }
     }
 }

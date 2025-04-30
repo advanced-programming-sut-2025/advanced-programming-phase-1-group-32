@@ -9,6 +9,9 @@ public class Sellable extends EntityComponent{
     public Sellable(int price) {
         this.price = price;
     }
+    private Sellable(Sellable other){
+        this.price = other.price;
+    }
     public Sellable(){
         this(0);
     }
@@ -16,8 +19,12 @@ public class Sellable extends EntityComponent{
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Sellable(this);
     }
 }

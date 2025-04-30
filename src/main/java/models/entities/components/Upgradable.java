@@ -12,6 +12,10 @@ public class Upgradable extends EntityComponent{
         this.xp = xp;
         this.level = level;
     }
+    private Upgradable(Upgradable other){
+        this.xp = other.xp;
+        this.level = other.level;
+    }
     public Upgradable(){
         this(0, 0);
     }
@@ -19,8 +23,12 @@ public class Upgradable extends EntityComponent{
     public int getXp() {
         return xp;
     }
-
     public int getLevel() {
         return level;
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Upgradable(this);
     }
 }

@@ -20,16 +20,16 @@ public class Renderer {
         this.frameBuffer = new CharacterTexture(view.getTerminalWidth(), view.getTerminalHeight());
         this.updateSize();
     }
+    public CharacterTexture getFrameBuffer(){
+        return frameBuffer;
+    }
     public void updateSize(){
         this.frameBuffer.updateSize(view.getTerminalWidth(), view.getTerminalHeight());
     }
     public void clear(){
         this.frameBuffer.reset();
     }
-    
-    public void mvAddch(int x, int y, int character){
-        System.out.printf(positionCode + character + resetCode, y, x);
-    }
+
     public void mvAddchColored(int x, int y, char character, Color color){
         this.mvAddchColored(x, y, character, color, view.getTerminalWidth() / 2, view.getTerminalHeight() / 2);
     }

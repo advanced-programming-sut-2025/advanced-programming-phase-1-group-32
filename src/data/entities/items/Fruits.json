@@ -1,0 +1,29 @@
+{
+  "common components" : [
+    {
+      "type" : "Pickable",
+      "maxStack" : 16
+    }
+  ],
+  "required components" : [
+  ],
+  "entities" : [
+    {
+      "name" : "Apple",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 10
+        }
+      ]
+    },{
+      "name" : "Orange",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 15
+        }
+      ]
+    }
+  ]
+}

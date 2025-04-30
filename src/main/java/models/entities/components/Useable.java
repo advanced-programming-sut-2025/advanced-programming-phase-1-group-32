@@ -13,6 +13,9 @@ public class Useable extends EntityComponent{
     public Useable(ArrayList<UseFunction> functions) {
         this.functions.addAll(functions);
     }
+    private Useable(Useable other){
+        this.functions.addAll(other.functions);
+    }
     public Useable(){
     }
 
@@ -21,5 +24,10 @@ public class Useable extends EntityComponent{
         return "Useable{" +
                 "functions=" + functions +
                 '}';
+    }
+
+    @Override
+    public EntityComponent clone() {
+        return new Useable(this);
     }
 }
