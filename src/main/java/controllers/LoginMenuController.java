@@ -166,7 +166,7 @@ public class LoginMenuController implements Controller{
         return new Result(true, "your new password is \"" + newPassword + "\"");
     }
 
-    public String generatePassword() {
+    public static String generatePassword() {
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String digits = "0123456789";

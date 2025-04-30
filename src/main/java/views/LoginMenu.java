@@ -1,5 +1,6 @@
 package views;
 
+import controllers.ForgotPasswordFlow;
 import controllers.LoginMenuController;
 import records.Result;
 import models.Commands.LoginMenuCommands;
@@ -70,9 +71,13 @@ public class LoginMenu implements AppMenu {
             System.out.println(this.controller.login(username, password, stayLogged));
 
         }else if((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null){
-            String username = matcher.group("username");
-
-            Result forgotPasswordResult = controller.forgetPassword(username);
+            ForgotPasswordFlow forgotPasswordFlow = new ForgotPasswordFlow();
+            Result result = forgotPasswordFlow.handle(matcher.group("username"));
+            while(result.isSuccessful()){
+                System.out.println(result);
+                result = forgotPasswordFlow.handle(scanner.nextLine());
+            }
+            System.out.println(result);
         }else if((matcher = LoginMenuCommands.EXIT.getMatcher(input)) != null){
             this.controller.exit();
         }

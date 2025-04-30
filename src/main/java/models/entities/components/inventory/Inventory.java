@@ -2,11 +2,11 @@ package models.entities.components.inventory;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import models.Result;
 import models.entities.Entity;
 import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.EntityTag;
+import records.Result;
 
 import java.util.ArrayList;
 
@@ -86,7 +86,7 @@ public class Inventory extends EntityComponent {
      */
     public Result addItem(Entity entity, ArrayList<Entity> sourceList){
         Result result = this.addItem(entity);
-        if(result.success()){
+        if(result.isSuccessful()){
             sourceList.remove(entity);
         }
         return result;
