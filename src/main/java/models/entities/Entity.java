@@ -8,10 +8,7 @@ import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /***
  * ignoreUnknown is for fields which are in json but are not in the class. this tells jackson to ignore them
@@ -33,6 +30,7 @@ public class Entity implements Cloneable{
     private final ArrayList<EntityComponent> components = new ArrayList<>();
     @JsonProperty("tags")
     private final HashSet<EntityTag> tags = new HashSet<>();
+    private final Set<EntityObserver> observers = new HashSet<>();
 
     public Entity(String name, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id){
         if(name == null){
@@ -146,6 +144,19 @@ public class Entity implements Cloneable{
             Entity entity = new Entity(this);
             reset();
             return entity;
+        }
+    }
+
+    public void addObserver(EntityObserver observer){
+        this.observers.add(observer);
+    }
+    public void removeObserveer(EntityObserver observer){
+        this.observers.remove(observer);
+    }
+
+    public void delete(){
+        for(EntityObserver observer : observers){
+            observer.onDelete(this);
         }
     }
 }

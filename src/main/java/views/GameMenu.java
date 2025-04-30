@@ -18,7 +18,7 @@ public class GameMenu implements AppMenu {
     @Override
     public void checker(Scanner scanner) {
 
-//        renderGame();
+        renderGame();
 
         if(App.getView().isRawMode()){
             int c = 0;

@@ -37,15 +37,6 @@ public class Player extends Entity{
     //TODO: this should change. Position will become a component
     private Position position = new Position(0, 0);
 
-    public void addItemToInventory(Entity entity){
-        Pickable pickableComponent = entity.getComponent(Pickable.class);
-        if(pickableComponent == null){
-            return;
-        }
-        Result result = this.getComponent(Inventory.class).addItem(entity);
-
-    }
-
     public int getTrashcanLevel() {
         return trashcanLevel;
     }
