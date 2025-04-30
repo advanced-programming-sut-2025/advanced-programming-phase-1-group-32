@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import models.entities.components.*;
+import models.enums.EntityTag;
 import models.enums.Material;
 
 import javax.swing.*;
@@ -44,18 +45,28 @@ public class EntityRegistry {
                                                                                                   EntityComponent[].class);
                             EntityComponent[] requiredComponents = mapper.treeToValue(jsonRoot.get("required components"),
                                                                                                     EntityComponent[].class);
-
+                            EntityTag[] commonTags = mapper.treeToValue(jsonRoot.get("common tags"),
+                                                                                    EntityTag[].class);
                             if(entities == null){
                                 throw new RuntimeException("The structure of entity data file is invalid! (" + path.toString() + ")");
                             }
                             for(Entity e : entities){
-                                for(EntityComponent c : commonComponents){
-                                    e.addComponent(c);
+                                if(commonComponents != null){
+                                    for(EntityComponent c : commonComponents){
+                                        e.addComponent(c);
+                                    }
                                 }
-                                for(EntityComponent c : requiredComponents){
-                                    if(e.getComponent(c.getClass()) == null){
-                                        throw new RuntimeException("The entity \"" + e.getName() +"\n in the data file " + path + " doesn't have the" +
-                                                "required component: " + c.getClass());
+                                if(requiredComponents != null){
+                                    for(EntityComponent c : requiredComponents){
+                                        if(e.getComponent(c.getClass()) == null){
+                                            throw new RuntimeException("The entity \"" + e.getName() +"\n in the data file " + path + " doesn't have the" +
+                                                    "required component: " + c.getClass());
+                                        }
+                                    }
+                                }
+                                if(commonTags != null){
+                                    for(EntityTag t : commonTags){
+                                        e.addTag(t);
                                     }
                                 }
                                 this.registry.putIfAbsent(e.getName(), e);
@@ -68,6 +79,11 @@ public class EntityRegistry {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public boolean doesEntityExist(String entityName){
+        Entity entity = this.registry.get(entityName);
+        return entity != null;
     }
 
     public Entity makeEntity(String name){

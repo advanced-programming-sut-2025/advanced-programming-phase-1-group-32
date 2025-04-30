@@ -3,8 +3,11 @@ package models.player;
 import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
+import models.Result;
 import models.crafting.Recipe;
 import models.entities.Entity;
+import models.entities.components.Inventory;
+import models.entities.components.Pickable;
 import models.enums.SkillType;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
@@ -12,7 +15,7 @@ import models.player.friendship.PlayerFriendship;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Player {
+public class Player extends Entity{
     private Energy energy = new Energy();
     private final Wallet wallet = null;
     private final Map<SkillType, Skill> skills = null;
@@ -27,8 +30,21 @@ public class Player {
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
 
+    public Player(){
+        super("Player", new Inventory(12));
+    }
+
     //TODO: this should change. Position will become a component
-    private final Position position = new Position(0, 0);
+    private Position position = new Position(0, 0);
+
+    public void addItemToInventory(Entity entity){
+        Pickable pickableComponent = entity.getComponent(Pickable.class);
+        if(pickableComponent == null){
+            return;
+        }
+        Result result = this.getComponent(Inventory.class).addItem(entity);
+
+    }
 
     public int getTrashcanLevel() {
         return trashcanLevel;
@@ -97,4 +113,9 @@ public class Player {
     public Position getPosition() {
         return position;
     }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
 }

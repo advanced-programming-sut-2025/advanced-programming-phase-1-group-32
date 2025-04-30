@@ -19,4 +19,12 @@ public class Edible extends EntityComponent{
                 "energy=" + energy +
                 '}';
     }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
 }

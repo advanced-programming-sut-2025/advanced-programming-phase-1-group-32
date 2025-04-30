@@ -1,6 +1,7 @@
 package views.inGame;
 
 import models.App;
+import models.Position;
 import views.AppView;
 
 import java.util.Arrays;
@@ -25,6 +26,7 @@ public class Renderer {
     public void clear(){
         this.frameBuffer.reset();
     }
+    
     public void mvAddch(int x, int y, int character){
         System.out.printf(positionCode + character + resetCode, y, x);
     }
@@ -41,7 +43,22 @@ public class Renderer {
         int[] fg = color.getFg();
         this.frameBuffer.setCharacter(x, y, character, color);
     }
-    public void renderTexture(int x, int y, CharacterTexture texture){
+
+    /***
+     *
+     * @param cameraPos The center of the camera with respect to world origin. It'll probably be the position of the player, but it could be anything.
+     */
+    public void mvAddchColored(int x, int y, char character, Color color, Position cameraPos){
+        x = x - (cameraPos.getCol() - (view.getTerminalWidth() / 2));
+        y = y - (cameraPos.getRow() - (view.getTerminalHeight() / 2));
+
+        if(x < 0 || x >= view.getTerminalWidth() || y < 0 || y >= view.getTerminalHeight()){
+            return;
+        }
+        int[] fg = color.getFg();
+        this.frameBuffer.setCharacter(x, y, character, color);
+    }
+    private void renderTexture(int x, int y, CharacterTexture texture){
         int x1, x2, y1, y2;
 
         x1 = Math.max(0, x);

@@ -44,6 +44,8 @@ public class Color {
         if(c2 == null) return false;
         return (this.fg[0] == c2.fg[0]) && (this.fg[1] == c2.fg[1]) && (this.fg[2] == c2.fg[2]);
     }
+
+
 }
 class ColorDeserializer extends JsonDeserializer<Color> {
     @Override

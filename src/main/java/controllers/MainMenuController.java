@@ -3,7 +3,7 @@ package controllers;
 import models.*;
 import models.enums.Menu;
 import models.player.Player;
-import views.GameMenu;
+import records.Result;
 
 public class MainMenuController implements Controller{
     @Override

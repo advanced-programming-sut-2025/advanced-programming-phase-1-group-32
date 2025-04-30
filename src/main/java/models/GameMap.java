@@ -35,4 +35,9 @@ public class GameMap {
     public Tile[][] getTiles() {
         return tiles.clone();
     }
+
+    public Tile getTileByPosition(Position position) {
+        return tiles[position.getRow()][position.getCol()];
+    }
+
 }

@@ -4,11 +4,10 @@ import controllers.GameMenuController;
 import models.*;
 import models.Commands.GameMenuCommands;
 import models.entities.Entity;
-import models.entities.components.EntityComponent;
 import models.entities.components.Renderable;
-import models.player.Player;
+import records.Result;
+import records.WalkProposal;
 import views.inGame.Color;
-import views.inGame.Renderer;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,7 +18,7 @@ public class GameMenu implements AppMenu {
     @Override
     public void checker(Scanner scanner) {
 
-        renderGame();
+//        renderGame();
 
         if(App.getView().isRawMode()){
             int c = 0;
@@ -66,6 +65,14 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.SET_WEATHER.getMatcher(input)) != null) {
                 System.out.println(controller.setWeather(matcher.group("type")));
 
+            } else if ((matcher = GameMenuCommands.GREEN_HOUSE_BUILD.getMatcher(input)) != null) {
+                System.out.println(/*TODO*/);
+
+            } else if ((matcher = GameMenuCommands.WALK.getMatcher(input)) != null) {
+                int x = Integer.parseInt(matcher.group("x"));
+                int y = Integer.parseInt(matcher.group("y"));
+                handleWalk(x, y, scanner);
+
             } else if (GameMenuCommands.ENERGY_SHOW.getMatcher(input) != null) {
                 System.out.println(controller.energyShow());
 
@@ -77,6 +84,10 @@ public class GameMenu implements AppMenu {
 
             } else if (GameMenuCommands.CHANGE_INPUT_TYPE.getMatcher(input) != null) {
                 System.out.println(controller.switchInputType());
+
+            } else if ((matcher = GameMenuCommands.CRAFTINFO.getMatcher(input)) != null) {
+                System.out.println(controller.craftInfo(matcher.group(1).trim()));
+
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -103,11 +114,30 @@ public class GameMenu implements AppMenu {
                     if(component == null){
                         throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
                     }
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position.getCol(), position.getRow());
+                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
                 }else{
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position.getCol(), position.getRow());
+                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
                 }
             }
+        }
+    }
+
+    private void handleWalk(int x, int y, Scanner scanner) {
+        WalkProposal proposal = controller.proposeWalk(x, y);
+        if(!proposal.isAllowed()) {
+            System.out.println(proposal.message());
+            return;
+        }
+        System.out.printf(
+                "It will cost %d energy, Proceed? (y/n)%n",
+                proposal.energyCost()
+        );
+        String ans = scanner.nextLine().trim().toLowerCase();
+        if(ans.startsWith("y")) {
+            controller.executeWalk(proposal);
+        }
+        else {
+            System.out.println("Walk cancelled");
         }
     }
 }

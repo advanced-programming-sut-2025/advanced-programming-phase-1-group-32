@@ -1,8 +1,8 @@
 package models;
 
-public record Result(boolean isSuccessful, String message) {
+public record Result(Boolean success, String message) {
     @Override
     public String toString() {
-        return this.message;
+        return message;
     }
 }

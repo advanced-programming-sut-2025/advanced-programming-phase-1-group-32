@@ -75,7 +75,13 @@ public class Game {
 
     public void updateGamePerDay() {
         // this function should update things related to game
+
+        // handling weather changes
+        todayWeather = tomorrowWeather;
+        tomorrowWeather = this.date.getSeason().getWeather();
+
         //TODO
+
     }
 
     public void setActiveMap(GameMap map) {

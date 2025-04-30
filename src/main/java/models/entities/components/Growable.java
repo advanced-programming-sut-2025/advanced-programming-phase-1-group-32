@@ -13,20 +13,83 @@ public class Growable extends EntityComponent{
     private final String fruit;
     @JsonProperty("seed")
     private final String seed;
-
+    @JsonProperty("stages")
     private final ArrayList<Integer> stages = null;
+    @JsonProperty("totalHarvestTime")
+    private int totalHarvestTime;
+    @JsonProperty("regrowthTime")
     private int regrowthTime;
+    @JsonProperty("oneTime")
     private boolean oneTime;
     private boolean wateredToday;
+    @JsonProperty("canBecomeGiant")
+    private boolean canBecomeGiant;
 
-    public Growable(ArrayList<Season> growingSeasons, String fruit, String seed) {
+    public Growable(ArrayList<Season> growingSeasons, String fruit, String seed, int totalHarvestTime) {
         this.growingSeasons = growingSeasons;
         this.fruit = fruit;
         this.seed = seed;
+        this.totalHarvestTime = totalHarvestTime;
     }
 
     public Growable() {
         this.seed = null;
         this.fruit = null;
+    }
+
+    public int getTotalHarvestTime() {
+        return totalHarvestTime;
+    }
+
+    public ArrayList<Season> getGrowingSeasons() {
+        return growingSeasons;
+    }
+
+    public void setGrowingSeasons(ArrayList<Season> growingSeasons) {
+        this.growingSeasons = growingSeasons;
+    }
+
+    public String getFruit() {
+        return fruit;
+    }
+
+    public String getSeed() {
+        return seed;
+    }
+
+    public ArrayList<Integer> getStages() {
+        return stages;
+    }
+
+    public int getRegrowthTime() {
+        return regrowthTime;
+    }
+
+    public void setRegrowthTime(int regrowthTime) {
+        this.regrowthTime = regrowthTime;
+    }
+
+    public boolean isOneTime() {
+        return oneTime;
+    }
+
+    public void setOneTime(boolean oneTime) {
+        this.oneTime = oneTime;
+    }
+
+    public boolean isWateredToday() {
+        return wateredToday;
+    }
+
+    public void setWateredToday(boolean wateredToday) {
+        this.wateredToday = wateredToday;
+    }
+
+    public boolean isCanBecomeGiant() {
+        return canBecomeGiant;
+    }
+
+    public void setCanBecomeGiant(boolean canBecomeGiant) {
+        this.canBecomeGiant = canBecomeGiant;
     }
 }

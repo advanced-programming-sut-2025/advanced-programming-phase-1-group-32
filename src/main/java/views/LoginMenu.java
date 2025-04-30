@@ -1,7 +1,7 @@
 package views;
 
 import controllers.LoginMenuController;
-import models.Result;
+import records.Result;
 import models.Commands.LoginMenuCommands;
 
 import java.util.Scanner;

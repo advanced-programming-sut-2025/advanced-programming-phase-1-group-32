@@ -1,7 +1,6 @@
 package models.entities.components;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
+import models.entities.Entity;
 
 /***
  * this helps jackson find child classes
@@ -26,4 +25,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
 })
 abstract public class EntityComponent {
+    @JsonIgnore()
+    protected Entity entity;
+
+    // It's useful for components to have a reference to their owning entity,
+    // since they may need to access other components on the same entity.
+    // Avoid assigning the entity reference in the constructor, as it can
+    // complicate serialization (e.g., when saving/loading from JSON).
+    public void setEntity(Entity entity){
+        this.entity = entity;
+    }
 }

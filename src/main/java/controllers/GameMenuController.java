@@ -1,13 +1,20 @@
 package controllers;
 
 import models.*;
-import models.entities.components.EntityComponent;
-import models.enums.TileType;
+import models.Date;
+import models.entities.Entity;
+import models.entities.EntityRegistry;
+import models.entities.components.Edible;
+import models.entities.components.Growable;
+import models.entities.components.Placeable;
+import models.entities.components.Sellable;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
+import records.Result;
+import records.WalkProposal;
 
-import java.util.concurrent.TimeoutException;
+import java.util.*;
 
 public class GameMenuController implements Controller {
     @Override
@@ -117,8 +124,92 @@ public class GameMenuController implements Controller {
         return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
-    public Result walk() {
-        return null;
+    public WalkProposal proposeWalk(int x, int y) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        GameMap map = game.getActiveMap();
+        Tile start = map.getTileByPosition(
+                game.getCurrentPlayer().getPosition()
+        );
+        Tile goal = map.getTileByPosition(new Position(y, x));
+        if(start.equals(goal))
+            return new WalkProposal(
+                    false,
+                    "you are already in " + goal.getPosition(),
+                    0, x, y
+            );
+        int distance = shortestPath(goal, start, map.getTiles()).size();
+        if(distance == 0)
+            return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x ,y);
+        return new WalkProposal(true, "OK", distance / 20, x, y);
+
+
+    }
+
+    public Result executeWalk(WalkProposal p) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        int initialEnergyAmount = player.getEnergy().getAmount();
+
+        if(!p.isAllowed()) {
+            return new Result(false, "No walk was proposed");
+        }
+        player.setPosition(new Position(p.y(), p.x()));
+        player.getEnergy().setAmount(initialEnergyAmount - p.energyCost());
+        return new Result(true, "you walked to "
+                + player.getPosition()
+                + " (-" + p.energyCost() + " energy)");
+    }
+
+    private List<Tile> shortestPath(Tile destination, Tile src, Tile[][] tiles) {
+        int rows = tiles.length;
+        int cols = tiles[0].length;
+
+        Queue<Tile> queue = new LinkedList<>();
+        Map<Tile, Tile> cameFrom = new HashMap<>();
+        queue.add(src);
+        cameFrom.put(src, null);
+
+        int[][] directions = {
+                {0,1}, {1,0}, {0, -1}, {0, 1}
+                , {1,-1}, {1,1}, {-1,1}, {-1,-1} /* Comment this line to walk vertically and horizontally only*/
+        };
+
+        while (!queue.isEmpty()) {
+            Tile current = queue.poll();
+
+            if(current.equals(destination))
+                break;
+
+
+            for (int[] dir : directions) {
+                int newRow = current.getRow() + dir[0];
+                int newCol = current.getCol() + dir[1];
+
+                if(newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
+                    Tile neighbor = tiles[newRow][newCol];
+                    if(neighbor.getContent().getComponent(Placeable.class).isWalkable())
+                        if(!cameFrom.containsKey(neighbor)) {
+                            queue.add(neighbor);
+                            cameFrom.put(neighbor, current);
+                        }
+                }
+            }
+
+        }
+        if(!cameFrom.containsKey(destination)) {
+            return Collections.emptyList();
+        }
+
+        List<Tile> path = new ArrayList<>();
+        Tile current = destination;
+        while(current != null) {
+            path.add(current);
+            current = cameFrom.get(current);
+        }
+        Collections.reverse(path);
+        return path;
+
+
     }
 
     public Result printMap() {
@@ -189,9 +280,45 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result craftInfo() {
-        //TODO
-        return null;
+    public Result craftInfo(String name) {
+        if(!App.entityRegistry.doesEntityExist(name)) {
+            return new Result(false, "There is no crop with name" + name);
+        }
+        Entity crop = App.entityRegistry.makeEntity(name);
+        //TODO: check if its crop not other entities
+        Growable growable = crop.getComponent(Growable.class);
+        Edible edible = crop.getComponent(Edible.class);
+        Sellable sellable = crop.getComponent(Sellable.class);
+
+        StringBuilder message = new StringBuilder();
+        message.append("Name: ").append(crop.getName()).append("\n").
+                append("Source: ").append(growable.getSeed()).append("\n")
+                .append("Stages: ").append(growable.getStages()).append("\n")
+                .append("Total Harvest Time: ").append(growable.getTotalHarvestTime()).append("\n")
+                .append("One Time: ").append(growable.isOneTime()).append("\n");
+
+        if (growable.getRegrowthTime() > 0) {
+            message.append("Regrowth Time: ").append(growable.getRegrowthTime()).append("\n");
+        } else {
+            message.append("Regrowth Time:\n");
+        }
+
+        message.append("Base Sell Price: ").append(sellable.getPrice()).append("\n");
+
+        if (edible != null) {
+            message.append("""
+                    Is Edible: false
+                    Base Energy: 0
+                    """);
+        } else {
+            message.append("Is Edible: true\n" + "Base Energy: ").append(edible.getEnergy()).append("\n");
+        }
+
+        message.append("Season: ").append(growable.getGrowingSeasons()).append("\n")
+                .append("Can Become Giant: ").append(growable.isCanBecomeGiant());
+
+
+        return new Result(true, message.toString());
     }
 
     public Result plant() {

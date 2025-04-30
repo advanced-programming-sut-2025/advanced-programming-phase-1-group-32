@@ -1,6 +1,6 @@
 package models.entities;
 
-import models.Result;
+import records.Result;
 
 public enum UseFunction {
     CHOP_TREE,

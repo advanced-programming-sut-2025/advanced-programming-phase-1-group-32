@@ -2,7 +2,7 @@
   "common components" : [
     {
       "type" : "Placeable",
-      "isACollider" : true
+      "isWalkable" : false
     },{
       "type" : "Renderable",
       "char" : "T",
@@ -15,6 +15,9 @@
       "type" : "Harvestable"
     }
   ],
+  "common tags": [
+    "TREE"
+  ],
 
   "entities" : [
     {
@@ -25,6 +28,10 @@
           "resource" : "wood",
           "material" : "STONE"
         }
+      ],
+      "tags" : [
+        "TREE",
+        "PLANT"
       ]
     },{
       "name" : "Birch Tree",

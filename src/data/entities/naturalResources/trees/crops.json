@@ -1,0 +1,46 @@
+{
+  "common components" : [
+    {
+      "type": "Placeable",
+      "isWalkable": true
+    }
+  ],
+
+  "required components" : [
+    {
+      "type" : "Growable"
+    }
+  ],
+
+
+  "entities": [
+    {
+      "name": "Blue Jazz",
+      "components": [
+          {
+            "type": "Growable",
+            "seed": "Jazz Seeds",
+            "regrowthTime": 0,
+            "oneTime": true,
+            "seasons": [
+              "SPRING"
+            ],
+            "stages": [
+              1,
+              2,
+              2,
+              2
+            ],
+            "totalHarvestTime": 7,
+            "canBecomeGiant": false
+          },{
+            "type": "Edible",
+            "energy": 45
+          },{
+            "type": "Sellable",
+            "price": 50
+          }
+      ]
+    }
+  ]
+}
