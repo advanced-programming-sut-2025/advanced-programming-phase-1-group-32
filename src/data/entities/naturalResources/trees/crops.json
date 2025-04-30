@@ -10,6 +10,9 @@
       "type": "Growable"
     }
   ],
+  "common tags": [
+    "PLANT"
+  ],
   "entities": [
     {
       "name": "Blue Jazz",
