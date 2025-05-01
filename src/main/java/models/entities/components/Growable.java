@@ -1,7 +1,6 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import models.entities.Entity;
 import models.enums.Season;
 
 import java.util.ArrayList;
@@ -17,13 +16,11 @@ public class Growable extends EntityComponent{
     private final ArrayList<Integer> stages = null;
     @JsonProperty("totalHarvestTime")
     private int totalHarvestTime;
-    @JsonProperty("regrowthTime")
-    private int regrowthTime;
-    @JsonProperty("oneTime")
-    private boolean oneTime;
     private boolean wateredToday;
     @JsonProperty("canBecomeGiant")
     private boolean canBecomeGiant;
+    private int daysPastFromPlant;
+    private boolean isFertilized;
 
     public Growable(ArrayList<Season> growingSeasons, String fruit, String seed, int totalHarvestTime) {
         this.growingSeasons = growingSeasons;
@@ -32,7 +29,7 @@ public class Growable extends EntityComponent{
         this.totalHarvestTime = totalHarvestTime;
     }
 
-    public Growable() {
+    public Growable(Growable growable) {
         this.seed = null;
         this.fruit = null;
     }
@@ -59,22 +56,6 @@ public class Growable extends EntityComponent{
 
     public ArrayList<Integer> getStages() {
         return stages;
-    }
-
-    public int getRegrowthTime() {
-        return regrowthTime;
-    }
-
-    public void setRegrowthTime(int regrowthTime) {
-        this.regrowthTime = regrowthTime;
-    }
-
-    public boolean isOneTime() {
-        return oneTime;
-    }
-
-    public void setOneTime(boolean oneTime) {
-        this.oneTime = oneTime;
     }
 
     public boolean isWateredToday() {

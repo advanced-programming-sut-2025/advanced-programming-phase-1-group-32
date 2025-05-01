@@ -287,20 +287,23 @@ public class GameMenuController implements Controller {
             return new Result(false, "There is no crop with name" + name);
         }
         Entity crop = App.entityRegistry.makeEntity(name);
-        //TODO: check if its crop not other entities
+        if (!crop.hasTag(EntityTag.CROP)) {
+            return new Result(false, "There is no crop with name" + name);
+        }
         Growable growable = crop.getComponent(Growable.class);
         Edible edible = crop.getComponent(Edible.class);
         Sellable sellable = crop.getComponent(Sellable.class);
+        Harvestable harvestable = crop.getComponent(Harvestable.class);
 
         StringBuilder message = new StringBuilder();
         message.append("Name: ").append(crop.getName()).append("\n").
                 append("Source: ").append(growable.getSeed()).append("\n")
                 .append("Stages: ").append(growable.getStages()).append("\n")
                 .append("Total Harvest Time: ").append(growable.getTotalHarvestTime()).append("\n")
-                .append("One Time: ").append(growable.isOneTime()).append("\n");
+                .append("One Time: ").append(harvestable.isOneTime()).append("\n");
 
-        if (growable.getRegrowthTime() > 0) {
-            message.append("Regrowth Time: ").append(growable.getRegrowthTime()).append("\n");
+        if (harvestable.getRegrowthTime() > 0) {
+            message.append("Regrowth Time: ").append(harvestable.getRegrowthTime()).append("\n");
         } else {
             message.append("Regrowth Time:\n");
         }

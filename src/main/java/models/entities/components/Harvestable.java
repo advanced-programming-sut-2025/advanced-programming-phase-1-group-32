@@ -11,6 +11,11 @@ public class Harvestable extends EntityComponent{
     private final String resource;
     @JsonProperty("amount")
     private int amount;
+    @JsonProperty("regrowthTime")
+    private int regrowthTime;
+    @JsonProperty("oneTime")
+    private boolean oneTime;
+
 
     public Result canHarvest(){
         return null;
