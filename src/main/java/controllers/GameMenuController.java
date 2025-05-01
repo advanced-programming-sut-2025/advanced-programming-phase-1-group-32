@@ -326,14 +326,31 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result plant() {
+    public Result plant(String seedString, String direction) {
         //TODO
         return null;
     }
 
-    public Result showPlant() {
-        //TODO
-        return null;
+    public Result showPlant(int col, int row) {
+        Position position = new Position(row, col);
+        Game game = App.getLoggedInAccount().getActiveGame();
+        GameMap gameMap = game.getActiveMap();
+        Tile tile = gameMap.getTileByPosition(position);
+
+        if (tile == null) {
+            return new Result(false, "No tile found");
+        }
+
+        if (tile.getType() != TileType.PLANTED_GROUND) {
+            return new Result(false, "Tile is not a planted ground");
+        }
+
+        Entity plantedEntity = tile.getContent();
+
+        StringBuilder message = new StringBuilder();
+        message.append("Name: ").append(plantedEntity.getName()).append("\n");
+        message.append(plantedEntity.getComponent(Growable.class).getInfo());
+        return new Result(true, message.toString());
     }
 
     public Result fertilize() {
