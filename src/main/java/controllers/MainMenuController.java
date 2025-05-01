@@ -58,6 +58,7 @@ public class MainMenuController implements Controller{
 
         Game game = new Game(accounts);
         App.setActiveGame(game);
+        accounts[0].setActiveGame(game);
 
         App.setCurrentMenu(Menu.GAME_MENU);
         return new Result(true, "Game started!, You are in Game Menu now!");

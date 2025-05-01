@@ -29,7 +29,7 @@ public class GameMap {
             for (int j = 0; j < width; j++) {
                 tiles[i][j] = new Tile(new Position(i, j), Math.random() > 0.6 ? TileType.GRASS : TileType.HOED_GROUND);
                 if(Math.random() > 0.6){
-//                    tiles[i][j].setContent(App.entityRegistry.makeEntity("Birch Tree"));
+                    tiles[i][j].setContent(App.entityRegistry.makeEntity("Pine Tree"));
                 }
             }
         }
@@ -42,5 +42,4 @@ public class GameMap {
     public Tile getTileByPosition(Position position) {
         return tiles[position.getRow()][position.getCol()];
     }
-
 }

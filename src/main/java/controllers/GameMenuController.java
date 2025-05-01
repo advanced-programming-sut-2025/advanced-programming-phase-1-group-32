@@ -541,6 +541,8 @@ public class GameMenuController implements Controller {
             case 'd':
                 player.changePosition(1, 0);
                 break;
+            case 'x':
+                switchInputType();
             default:
                 break;
         }

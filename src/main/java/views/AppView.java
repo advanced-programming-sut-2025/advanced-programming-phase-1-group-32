@@ -82,4 +82,8 @@ public class AppView {
     public Renderer getRenderer() {
         return renderer;
     }
+
+    public Scanner getScanner(){
+        return scanner;
+    }
 }
