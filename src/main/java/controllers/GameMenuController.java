@@ -7,6 +7,7 @@ import models.entities.EntityRegistry;
 import models.entities.components.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
+import models.enums.EntityTag;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
@@ -276,11 +277,24 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsShowCurrent() {
-        //TODO
-        return null;
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Entity active = player.getActiveSlot().getEntity();
+        if(active == null || !active.hasTag(EntityTag.TOOL))
+            return new Result(false, "This is not a tool");
+        return new Result(true, active.getName());
+
     }
 
     public Result toolsShowAvailable() {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        ArrayList<Entity> tools = player.getComponent(Inventory.class).getItemsByTag(EntityTag.TOOL);
+        if (tools.isEmpty())
+            return new Result(false, "There is no tool in Backpack");
+        StringBuilder sb  = new StringBuilder("Tools available:");
+        for (Entity tool : tools) {
+            sb.append("\n").append(tool.getName());
+        }
+        return new Result(true, sb.toString());
 
     }
 
