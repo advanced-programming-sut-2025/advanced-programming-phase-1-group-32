@@ -348,7 +348,14 @@ public class GameMenuController implements Controller {
         //TODO: check if its available in inventory
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
+        if (tile.getType() != TileType.PLANTED_GROUND) tile.setType(TileType.HOED_GROUND);
 
+        if (tile == null || !tile.getType().equals(TileType.HOED_GROUND)) {
+            return new Result(false, "tile is unavailable for planting");
+        }
+
+
+        tile.plant(seed);
         return new Result(true, "planted succusfully");
     }
 

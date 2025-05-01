@@ -13,6 +13,10 @@ public class SeedComponent extends EntityComponent{
     public SeedComponent() {
     }
 
+    public SeedComponent(SeedComponent other) {
+        this.growingPlants.addAll(other.growingPlants);
+    }
+
     public Entity getGrowingPlant(){
         int random = (int) (growingPlants.size() * Math.random());
         return App.entityRegistry.makeEntity(growingPlants.get(random));
@@ -20,6 +24,6 @@ public class SeedComponent extends EntityComponent{
 
     @Override
     public EntityComponent clone() {
-        return null;
+        return new SeedComponent(this);
     }
 }

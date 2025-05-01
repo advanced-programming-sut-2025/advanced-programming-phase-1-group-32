@@ -16,3 +16,5 @@ cheat give item "Axe" 1
 cheat give item "Axe" 2
 show inventory
 cheat give item "Apple" 20
+plant -s Jazz Seeds -d down
+showplant -l <0,1>

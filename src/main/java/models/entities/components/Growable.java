@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class Growable extends EntityComponent{
     @JsonProperty("seasons")
-    private ArrayList<Season> growingSeasons;
+    private ArrayList<Season> growingSeasons = new ArrayList<>();
     @JsonProperty("fruit")
     private final String fruit;
     @JsonProperty("seed")
     private final String seed;
     @JsonProperty("stages")
-    private final ArrayList<Integer> stages = null;
+    private ArrayList<Integer> stages = new ArrayList<>();
     @JsonProperty("totalHarvestTime")
     private int totalHarvestTime;
     private boolean wateredToday;
@@ -30,8 +30,15 @@ public class Growable extends EntityComponent{
     }
 
     public Growable(Growable other) {
-        this.seed = null;
-        this.fruit = null;
+        this.growingSeasons.addAll(other.growingSeasons);
+        this.fruit = other.fruit;
+        this.seed = other.seed;
+        this.totalHarvestTime = other.totalHarvestTime;
+        this.wateredToday = other.wateredToday;
+        this.canBecomeGiant = other.canBecomeGiant;
+        this.daysPastFromPlant = other.daysPastFromPlant;
+        this.isFertilized = other.isFertilized;
+
     }
 
     public Growable() {
