@@ -1,5 +1,6 @@
 package models;
 
+import models.entities.Entity;
 import models.enums.Weather;
 import models.player.Player;
 
@@ -31,6 +32,14 @@ public class Game {
 
     public void initGame() {
 
+    }
+
+    public ArrayList<Entity> getPlantedEntities() {
+        return plantedEntities;
+    }
+
+    public void setPlantedEntities(ArrayList<Entity> plantedEntities) {
+        this.plantedEntities = plantedEntities;
     }
 
     public Player getCurrentPlayer() {

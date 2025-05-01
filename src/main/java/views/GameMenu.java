@@ -20,7 +20,7 @@ public class GameMenu implements AppMenu {
     @Override
     public void checker(Scanner scanner) {
 
-        renderGame();
+//        renderGame();
 
         if(App.getView().isRawMode()){
             int c = 0;
@@ -94,7 +94,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.toggleMap());
 
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
-                showInventory(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+                controller.showInventory();
             } else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
                 System.out.println(controller.cheatGiveItem(matcher.group("name"), Integer.parseInt(matcher.group("quantity"))));
             } else if ((matcher = GameMenuCommands.PLANT_SEED.getMatcher(input)) != null) {

@@ -46,7 +46,7 @@ public class Harvestable extends EntityComponent{
 
     @Override
     public EntityComponent clone() {
-        return new Harvestable(this);
+        return new Harvestable();
     }
 
     public Material getMaterial() {

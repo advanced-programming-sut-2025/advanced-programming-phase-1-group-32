@@ -327,8 +327,29 @@ public class GameMenuController implements Controller {
     }
 
     public Result plant(String seedString, String direction) {
-        //TODO
-        return null;
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+        if (!App.entityRegistry.doesEntityExist(seedString)) {
+            return new Result(false, "There is no seed with name" + seedString);
+        }
+
+        Entity seed = App.entityRegistry.makeEntity(seedString);
+
+        if (!seed.hasTag(EntityTag.SEED)) {
+            return new Result(false, "There is no seed with name" + seedString);
+        }
+
+        Position position = player.getPosition().changeByDirection(direction);
+        if (position == null) {
+            return new Result(false, "type a valid direction");
+        }
+
+
+        //TODO: check if its available in inventory
+
+        Tile tile = game.getActiveMap().getTileByPosition(position);
+
+        return new Result(true, "planted succusfully");
     }
 
     public Result showPlant(int col, int row) {
@@ -527,4 +548,11 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    public boolean toggleMap() {
+        return true;
+    }
+
+    public boolean cheatGiveItem(String name, int quantity) {
+        return true;
+    }
 }
