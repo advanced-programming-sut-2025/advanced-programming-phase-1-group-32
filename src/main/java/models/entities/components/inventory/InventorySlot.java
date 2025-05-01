@@ -12,22 +12,22 @@ import models.entities.EntityObserver;
 public class InventorySlot implements EntityObserver, Cloneable{
     @JsonProperty("entity")
     private Entity entity;
-    public InventorySlot(Entity entity){
+    public InventorySlot(Entity entity) {
         this.setEntity(entity);
     }
     public InventorySlot(){
         this(null);
     }
     public void setEntity(Entity entity){
-        if(this.entity != null){
+        if(this.entity != null) {
             this.entity.removeObserveer(this);
         }
         this.entity = entity;
-        if(entity != null){
+        if(entity != null) {
             entity.addObserver(this);
         }
     }
-    public Entity getEntity(){
+    public Entity getEntity() {
         return entity;
     }
 

@@ -6,6 +6,7 @@ import models.entities.Entity;
 import models.entities.EntityRegistry;
 import models.entities.components.*;
 import models.entities.components.inventory.Inventory;
+import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
@@ -263,15 +264,24 @@ public class GameMenuController implements Controller {
         //TODO
         return null;
     }
+    /* ---------------------------------- Tools ---------------------------------- */
+    public Result toolsEquip(String toolName) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        InventorySlot slot = player.getComponent(Inventory.class).getSlot(toolName);
+        if(slot == null)
+            return new Result(false, "This tool doesn't exist in inventory");
+        player.setActiveSlot(slot);
+        return new Result(true, "Tool equipped successfully");
 
-    public Result toolsEquip() {
+    }
+
+    public Result toolsShowCurrent() {
         //TODO
         return null;
     }
 
-    public Result showTools() {
-        //TODO
-        return null;
+    public Result toolsShowAvailable() {
+
     }
 
     public Result toolsUpgrade() {
@@ -283,6 +293,7 @@ public class GameMenuController implements Controller {
         //TODO
         return null;
     }
+    /* --------------------------------------  -------------------------------------- */
 
     public Result craftInfo(String name) {
         if(!App.entityRegistry.doesEntityExist(name)) {

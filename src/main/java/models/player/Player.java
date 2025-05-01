@@ -7,6 +7,7 @@ import models.NPC.Character;
 import models.crafting.Recipe;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
+import models.entities.components.inventory.InventorySlot;
 import models.enums.SkillType;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
@@ -29,6 +30,7 @@ public class Player extends Entity{
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
     private final Account account;
+    private InventorySlot activeSlot;
 
     public Player(Account account){
         super("Player", new Inventory(12));
@@ -113,5 +115,13 @@ public class Player extends Entity{
 
     public Account getAccount() {
         return account;
+    }
+
+    public InventorySlot getActiveSlot() {
+        return activeSlot;
+    }
+
+    public void setActiveSlot(InventorySlot activeSlot) {
+        this.activeSlot = activeSlot;
     }
 }

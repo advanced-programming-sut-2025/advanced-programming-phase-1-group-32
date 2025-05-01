@@ -9,6 +9,9 @@
       "type" : "Useable"
     }
   ],
+  "common tags": [
+    "TOOL"
+  ],
   "entities" : [
     {
       "name" : "Axe",

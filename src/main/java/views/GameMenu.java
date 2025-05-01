@@ -8,6 +8,7 @@ import models.entities.components.Pickable;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
+import models.player.Player;
 import records.WalkProposal;
 import views.inGame.Color;
 import views.inGame.Renderer;
@@ -98,7 +99,9 @@ public class GameMenu implements AppMenu {
                 showInventory(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
             } else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
                 System.out.println(controller.cheatGiveItem(matcher.group("name"), Integer.parseInt(matcher.group("quantity"))));
-                } else {
+            } else if (input.startsWith("tools")) {
+                toolsCommandParser(input);
+            } else {
                 System.out.println("Invalid Command!");
             }
         }
@@ -165,6 +168,24 @@ public class GameMenu implements AppMenu {
                 System.out.print("-\n");
             }
             i++;
+        }
+    }
+
+    public void toolsCommandParser(String input) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Matcher matcher;
+        if((matcher = GameMenuCommands.TOOLS_EQUIP.getMatcher(input)) != null) {
+
+        } else if((matcher = GameMenuCommands.TOOLS_SHOW.getMatcher(input)) != null) {
+
+        } else if((matcher = GameMenuCommands.TOOLS_AVAILABLE.getMatcher(input)) != null) {
+
+        } else if((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
+
+        } else if((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
+
+        } else {
+            System.out.println("Invalid Command!");
         }
     }
 }

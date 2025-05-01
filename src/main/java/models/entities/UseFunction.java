@@ -8,11 +8,12 @@ public enum UseFunction {
     HOE {
         @Override
         public Result use(Tile tile) {
+            //TODO: check functionality
             Result result = super.use(tile);
             if(!result.isSuccessful())
                 return result;
             tile.setType(TileType.HOED_GROUND);
-            return new Result(true, "")
+            return new Result(true, "");
         }
     },
     PICKAXE {
