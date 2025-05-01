@@ -36,6 +36,9 @@ public class Pickable extends EntityComponent{
     public void changeStackSize(int amount){
         this.stackSize += amount;
 
+        if(stackSize == 0){
+            entity.delete();
+        }
         if(stackSize < 0) throw new RuntimeException("The stackSize of " + entity.getName() + " became negative");
     }
     public Entity split(int amount){

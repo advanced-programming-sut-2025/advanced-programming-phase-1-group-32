@@ -236,7 +236,6 @@ public class Inventory extends EntityComponent {
         return !this.getItemsByTag(tag).isEmpty();
     }
 
-
     public Entity getItem(String name){
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for(InventorySlot s : slots){
