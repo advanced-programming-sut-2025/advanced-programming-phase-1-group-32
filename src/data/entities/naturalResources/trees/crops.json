@@ -3,6 +3,11 @@
     {
       "type": "Placeable",
       "isWalkable": true
+    },
+    {
+      "type" : "Renderable",
+      "char" : "C",
+      "color" : [30, 220, 40]
     }
   ],
   "required components": [

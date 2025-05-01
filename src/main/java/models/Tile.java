@@ -15,12 +15,11 @@ public class Tile{
         this.type = type;
     }
 
-
     public void plant(Entity seed) {
         Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
         this.content = plant;
         this.type = TileType.PLANTED_GROUND;
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         game.getPlantedEntities().add(content);
     }
 

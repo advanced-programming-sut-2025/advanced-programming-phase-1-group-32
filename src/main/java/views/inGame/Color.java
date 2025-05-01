@@ -47,7 +47,8 @@ public class Color {
 
 
 }
-class ColorDeserializer extends JsonDeserializer<Color> {
+class
+ColorDeserializer extends JsonDeserializer<Color> {
     @Override
     public Color deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         int[] rgb = p.readValueAs(int[].class);

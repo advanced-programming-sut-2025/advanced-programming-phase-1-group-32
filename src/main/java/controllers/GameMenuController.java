@@ -40,36 +40,38 @@ public class GameMenuController implements Controller {
     }
 
     public Result nextTurn() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+
+        game.nextTurn();
+        return new Result(true, "You are playing as " + game.getCurrentPlayer().getAccount().getNickname());
     }
 
     public Result getTime() {
-        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        Date currentDate = App.getActiveGame().getDate();
 
         return new Result(true, String.valueOf(currentDate.getHour()));
     }
 
     public Result getDate() {
-        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        Date currentDate = App.getActiveGame().getDate();
 
         return new Result(true, String.valueOf(currentDate.getDay()));
     }
 
     public Result getDateTime() {
-        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        Date currentDate = App.getActiveGame().getDate();
         return new Result(true, "Date: " + currentDate.getDay() +
                 "\tHour: " + currentDate.getHour());
     }
 
     public Result getDayOfTheWeek() {
-        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        Date currentDate = App.getActiveGame().getDate();
 
         return new Result(true, currentDate.getWeekDay().toString().toLowerCase());
     }
 
     public Result advanceTime(int amount) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Date date = game.getDate();
 
         // this function will update data about game.Date
@@ -80,7 +82,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result advanceDate(int amount) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Date date = game.getDate();
 
         // this function will update data about game.Date
@@ -90,7 +92,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result showSeason() {
-        Date currentDate = App.getLoggedInAccount().getActiveGame().getDate();
+        Date currentDate = App.getActiveGame().getDate();
         return new Result(true, currentDate.getSeason().name().toLowerCase());
     }
 
@@ -105,12 +107,12 @@ public class GameMenuController implements Controller {
     }
 
     public Result showWeather() {
-        Weather weather = App.getLoggedInAccount().getActiveGame().getTodayWeather();
+        Weather weather = App.getActiveGame().getTodayWeather();
         return new Result(true, weather.toString().toLowerCase());
     }
 
     public Result weatherForecast() {
-        Weather weather = App.getLoggedInAccount().getActiveGame().getTomorrowWeather();
+        Weather weather = App.getActiveGame().getTomorrowWeather();
 
         return new Result(true, weather.toString().toLowerCase());
     }
@@ -121,13 +123,13 @@ public class GameMenuController implements Controller {
             return new Result(false, "Weather not found");
         }
 
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         game.setTomorrowWeather(weather);
         return new Result(true, "Tomorrow's weather changed to " + weather.name().toLowerCase());
     }
 
     public WalkProposal proposeWalk(int x, int y) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player player = game.getCurrentPlayer();
         GameMap map = game.getActiveMap();
         Tile start = map.getTileByPosition(
@@ -149,7 +151,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result executeWalk(WalkProposal p) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         int initialEnergyAmount = player.getEnergy().getAmount();
 
         if(!p.isAllowed()) {
@@ -214,18 +216,13 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result printMap() {
-        //TODO
-        return null;
-    }
-
     public Result helpReadingMap() {
         //TODO
         return null;
     }
 
     public Result energyShow() {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player player = game.getCurrentPlayer();
         Energy energy = player.getEnergy();
 
@@ -234,7 +231,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result energySet(int amount) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player player = game.getCurrentPlayer();
         Energy energy = player.getEnergy();
 
@@ -243,18 +240,13 @@ public class GameMenuController implements Controller {
     }
 
     public Result energyUnlimited() {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player player = game.getCurrentPlayer();
         Energy energy = player.getEnergy();
 
         energy.toggleUnlimited();
 
         return new Result(true, "energy unlimited: " + energy.isUnlimited());
-    }
-
-    public Result showInventory() {
-        //TODO
-        return null;
     }
 
     public Result inventoryTrash() {
@@ -327,7 +319,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result plant(String seedString, String direction) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player player = game.getCurrentPlayer();
         if (!App.entityRegistry.doesEntityExist(seedString)) {
             return new Result(false, "There is no seed with name" + seedString);
@@ -361,7 +353,7 @@ public class GameMenuController implements Controller {
 
     public Result showPlant(int col, int row) {
         Position position = new Position(row, col);
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         GameMap gameMap = game.getActiveMap();
         Tile tile = gameMap.getTileByPosition(position);
 
@@ -535,7 +527,7 @@ public class GameMenuController implements Controller {
         }
     }
     public Result handleRawInput(char c){
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         switch (c){
             case 'a':
                 player.changePosition(-1, 0);
@@ -556,11 +548,11 @@ public class GameMenuController implements Controller {
     }
 
     public Result toggleMap(){
-        App.getLoggedInAccount().getActiveGame().toggleMapVisibility();
+        App.getActiveGame().toggleMapVisibility();
         return null;
     }
     public Result cheatGiveItem(String name, int quantity){
-        Player currentPlayer = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player currentPlayer = App.getActiveGame().getCurrentPlayer();
         if(!App.entityRegistry.doesEntityExist(name)){
             return new Result(false, "entity doesnt exist");
         }
@@ -570,6 +562,7 @@ public class GameMenuController implements Controller {
         }
         entity.getComponent(Pickable.class).changeStackSize(quantity);
         currentPlayer.getComponent(Inventory.class).addItem(entity);
-        return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") + " were given to " + currentPlayer.getAccount().getNickname());
+        return new Result(true, quantity + " " + name + (quantity > 1 ? "s were" : " was") + " given to " + currentPlayer.getAccount().getNickname());
     }
+
 }

@@ -9,15 +9,26 @@ import java.util.ArrayList;
 public class Game {
     private Weather todayWeather;
     private Weather tomorrowWeather;
-    private Date date;
+    private Date date = new Date();
     private GameMap activeMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
     private boolean mapVisible = true;
 
-    public Game() {
-        this.date = new Date();
+    public Game(Account[] accounts) {
+        for (Account account : accounts) {
+            addPlayer(new Player(account));
+        }
+
+        initGame();
+    }
+
+    public void initGame() {
+        setCurrentPlayer(players.get(0));
+
+        setActiveMap(new GameMap(1000, 1000));
+
         this.todayWeather = Weather.SUNNY;
         this.tomorrowWeather = Weather.SUNNY;
     }
@@ -30,8 +41,11 @@ public class Game {
         return players;
     }
 
-    public void initGame() {
-
+    public void nextTurn(){
+        Player tmp = currentPlayer;
+        players.remove(0);
+        players.add(tmp);
+        setCurrentPlayer(players.get(0));
     }
 
     public ArrayList<Entity> getPlantedEntities() {
@@ -81,7 +95,6 @@ public class Game {
     public void updateGamePerHour() {
         // this function should update things related to game
         //TODO
-
     }
 
     public void updateGamePerDay() {
@@ -92,7 +105,6 @@ public class Game {
         tomorrowWeather = this.date.getSeason().getWeather();
 
         //TODO
-
     }
 
     public void setActiveMap(GameMap map) {

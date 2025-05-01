@@ -15,6 +15,7 @@ public class App {
     private static final AppView view = new AppView();
     public static boolean shouldTerminate = false;
     public static EntityRegistry entityRegistry = new EntityRegistry();
+    public static Game activeGame = null;
 
     /***
      * Returns null if the username doesn't exist.
@@ -76,4 +77,11 @@ public class App {
         accountList.add(account);
     }
 
+    public static Game getActiveGame() {
+        return activeGame;
+    }
+
+    public static void setActiveGame(Game activeGame) {
+        App.activeGame = activeGame;
+    }
 }

@@ -15,7 +15,6 @@ public class ForgotPasswordFlow {
     int state = 0;
     int currentQuestion = 0;
 
-
     public Result handle(String input){
         switch (state){
             case 0:
@@ -73,7 +72,7 @@ public class ForgotPasswordFlow {
                     state = 3;
                     return new Result(true, "enter a password:");
                 }
-                return new Result(true, "passwords dont match. re-enter your new password: (enter back to go back)");
+                return new Result(true, "passwords don't match. re-enter your new password: (enter back to go back)");
             default:
                 return null;
         }

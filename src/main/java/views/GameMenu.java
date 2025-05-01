@@ -8,6 +8,7 @@ import models.entities.components.Pickable;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
+import models.player.Player;
 import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
@@ -20,8 +21,7 @@ public class GameMenu implements AppMenu {
     private final GameMenuController controller = new GameMenuController();
     @Override
     public void checker(Scanner scanner) {
-
-//        renderGame();
+        renderGame();
 
         if(App.getView().isRawMode()){
             int c = 0;
@@ -95,7 +95,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.toggleMap());
 
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
-                showInventory(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+                showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
             }else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
                 System.out.println(controller.cheatGiveItem(matcher.group("name"), Integer.parseInt(matcher.group("quantity"))));
             } else if ((matcher = GameMenuCommands.PLANT_SEED.getMatcher(input)) != null) {
@@ -104,7 +104,8 @@ public class GameMenu implements AppMenu {
                 int x = Integer.parseInt(matcher.group(1));
                 int y = Integer.parseInt(matcher.group(2));
                 System.out.println(controller.showPlant(x, y));
-
+            } else if ((matcher = GameMenuCommands.NEXT_TURN.getMatcher(input)) != null) {
+                System.out.println(controller.nextTurn());
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -112,18 +113,20 @@ public class GameMenu implements AppMenu {
 
     }
     public void renderGame(){
-        Game activeGame = App.getLoggedInAccount().getActiveGame();
+        Game activeGame = App.getActiveGame();
         if(activeGame.isMapVisible()){
             printMap(activeGame.getActiveMap());
-            Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
-            App.getView().getRenderer().mvAddchColored(App.getView().getTerminalWidth() / 2, App.getView().getTerminalHeight() / 2, '@', new Color(255, 255, 50));
+            Position playerPosition = App.getActiveGame().getCurrentPlayer().getPosition();
+            for(Player p : activeGame.getPlayers()){
+                App.getView().getRenderer().mvAddchColored(p.getPosition().getCol(), p.getPosition().getRow(), '@', new Color(255, 255, 50), playerPosition);
+            }
             App.getView().getRenderer().render();
         }
     }
     public void printMap(GameMap map) {
         Tile[][] tiles = map.getTiles();
         App.getView().getRenderer().clear();
-        Position position = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+        Position position = App.getActiveGame().getCurrentPlayer().getPosition();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 Tile tile = tiles[i][j];

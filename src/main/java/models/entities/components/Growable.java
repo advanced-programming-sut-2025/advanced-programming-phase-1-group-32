@@ -38,7 +38,6 @@ public class Growable extends EntityComponent{
         this.canBecomeGiant = other.canBecomeGiant;
         this.daysPastFromPlant = other.daysPastFromPlant;
         this.isFertilized = other.isFertilized;
-
     }
 
     public Growable() {
