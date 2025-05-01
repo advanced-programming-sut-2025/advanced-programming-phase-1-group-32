@@ -548,11 +548,21 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public boolean toggleMap() {
-        return true;
+    public Result toggleMap(){
+        App.getLoggedInAccount().getActiveGame().toggleMapVisibility();
+        return null;
     }
-
-    public boolean cheatGiveItem(String name, int quantity) {
-        return true;
+    public Result cheatGiveItem(String name, int quantity){
+        Player currentPlayer = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        if(!App.entityRegistry.doesEntityExist(name)){
+            return new Result(false, "entity doesnt exist");
+        }
+        Entity entity = App.entityRegistry.makeEntity(name);
+        if(entity.getComponent(Pickable.class) == null){
+            return new Result(false, "entity isn't pickable");
+        }
+        entity.getComponent(Pickable.class).changeStackSize(quantity);
+        currentPlayer.getComponent(Inventory.class).addItem(entity);
+        return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") + " were given to " + currentPlayer.getAccount().getNickname());
     }
 }

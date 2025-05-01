@@ -35,6 +35,12 @@ public class Harvestable extends EntityComponent{
         this.resource = null;
     }
 
+    private Harvestable(Harvestable other){
+        this.resource = other.resource;
+        this.material = other.material;
+        this.amount = other.amount;
+    }
+
     @Override
     public String toString() {
         return "Harvestable{" +

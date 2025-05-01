@@ -99,5 +99,10 @@ public class Game {
         this.activeMap = map;
     }
 
-
+    public void toggleMapVisibility(){
+        mapVisible = !mapVisible;
+    }
+    public boolean isMapVisible(){
+        return mapVisible;
+    }
 }

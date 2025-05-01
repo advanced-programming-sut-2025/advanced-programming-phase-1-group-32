@@ -29,7 +29,7 @@ public class Growable extends EntityComponent{
         this.totalHarvestTime = totalHarvestTime;
     }
 
-    public Growable(Growable growable) {
+    public Growable(Growable other) {
         this.seed = null;
         this.fruit = null;
     }
