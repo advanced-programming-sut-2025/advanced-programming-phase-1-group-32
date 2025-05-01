@@ -20,21 +20,46 @@
           ]
         }
       ]
-    },{
+    },
+    {
+      "name" : "Hoe",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "PLOW"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Pickaxe",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            ""
+          ]
+        }
+      ]
+    },
+    {
       "name" : "Fishing pole",
       "components" : [
         {
           "type" : "Useable"
         }
       ]
-    },{
+    },
+    {
       "name" : "Seyth",
       "components" : [
         {
           "type" : "Useable"
         }
       ]
-    },{
+    },
+    {
       "name" : "Shear",
       "components" : [
         {
