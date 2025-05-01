@@ -26,4 +26,46 @@ public class Position {
     public String toString() {
         return "<" + col + ", " + row + ">";
     }
+
+    public Position changeByDirection(String direction){
+        Position position = new Position(row, col);
+        switch(direction){
+            case "left":
+                position.col -= 1;
+                return position;
+
+            case "right":
+                position.col += 1;
+                return position;
+
+            case "up":
+                position.row -= 1;
+                return position;
+
+            case "down":
+                position.row += 1;
+                return position;
+
+            case "upleft":
+                position.col -= 1;
+                position.row -= 1;
+                return position;
+
+            case "upright":
+                position.col += 1;
+                position.row -= 1;
+                return position;
+
+            case "downleft":
+                position.col -= 1;
+                position.row += 1;
+                return position;
+
+            case "downright":
+                position.col += 1;
+                position.row += 1;
+                return position;
+        }
+        return null;
+    }
 }

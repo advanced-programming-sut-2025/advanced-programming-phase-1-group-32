@@ -12,27 +12,22 @@ public class Harvestable extends EntityComponent{
     @JsonProperty("amount")
     private int amount;
 
+    public Result canHarvest(){
+        return null;
+    }
+    public Result harvest(){
+        return null;
+    }
 
     public Harvestable(String resource, int amount, Material material) {
         this.resource = resource;
         this.amount = amount;
         this.material = material;
     }
-    private Harvestable(Harvestable other){
-        this.resource = other.resource;
-        this.material = other.material;
-        this.amount = other.amount;
-    }
+
     public Harvestable() {
         this.material = null;
         this.resource = null;
-    }
-
-    public Result canHarvest(){
-        return null;
-    }
-    public Result harvest(){
-        return null;
     }
 
     @Override
@@ -47,5 +42,37 @@ public class Harvestable extends EntityComponent{
     @Override
     public EntityComponent clone() {
         return new Harvestable(this);
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isOneTime() {
+        return oneTime;
+    }
+
+    public void setOneTime(boolean oneTime) {
+        this.oneTime = oneTime;
+    }
+
+    public int getRegrowthTime() {
+        return regrowthTime;
+    }
+
+    public void setRegrowthTime(int regrowthTime) {
+        this.regrowthTime = regrowthTime;
     }
 }

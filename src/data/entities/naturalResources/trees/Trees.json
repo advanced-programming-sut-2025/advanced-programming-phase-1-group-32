@@ -30,26 +30,7 @@
         }
       ],
       "tags" : [
-        "TREE",
-        "PLANT"
-      ]
-    },{
-      "name" : "Birch Tree",
-      "components" : [
-        {
-          "type" : "Harvestable",
-          "resource" : "wood",
-          "material" : "STONE"
-        }
-      ]
-    },{
-      "name" : "Apple Tree",
-      "components" : [
-        {
-          "type" : "Harvestable",
-          "resource" : "wood",
-          "material" : "STONE"
-        }
+        "TREE"
       ]
     }
   ]

@@ -36,11 +36,6 @@ public class Growable extends EntityComponent{
         this.seed = null;
         this.fruit = null;
     }
-    public Growable(Growable other){
-        this.fruit = null;
-        this.seed = null;
-        //TODO
-    }
 
     public int getTotalHarvestTime() {
         return totalHarvestTime;
@@ -101,5 +96,28 @@ public class Growable extends EntityComponent{
     @Override
     public EntityComponent clone() {
         return new Growable(this);
+    }
+
+    public String getInfo() {
+        StringBuilder message = new StringBuilder();
+        message.append("Days left to harvest: ").append(totalHarvestTime - daysPastFromPlant).append("\n");
+        message.append("Stage: ").append(getStage()).append("\n");
+        message.append("IsWateredToday: ").append(wateredToday).append("\n");
+        message.append("IsFertilized: ").append(isFertilized).append("");
+
+        return message.toString();
+    }
+
+    public int getStage() {
+        int count = 0;
+        int stage = 0;
+        for (Integer i : stages) {
+            count += i;
+            stage++;
+            if (count >= totalHarvestTime) {
+                return stage;
+            }
+        }
+        return stage;
     }
 }

@@ -1,0 +1,30 @@
+{
+  "common components": [
+    {
+      "type": "Placeable",
+      "isWalkable": true
+    }
+  ],
+
+  "required components": [
+    {
+      "type": "SeedComponent"
+    }
+  ],
+  "common tags": [
+    "SEED"
+  ],
+
+  "entities": [
+    {
+      "name": "Jazz Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Blue Jazz"]
+        }
+      ]
+    }
+  ]
+
+}

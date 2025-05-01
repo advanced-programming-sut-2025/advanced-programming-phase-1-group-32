@@ -16,6 +16,7 @@ import models.entities.components.inventory.Inventory;
         @JsonSubTypes.Type(value = Useable.class, name = "Useable"),
         @JsonSubTypes.Type(value = Harvestable.class, name = "Harvestable"),
         @JsonSubTypes.Type(value = Growable.class, name = "Growable"),
+        @JsonSubTypes.Type(value = SeedComponent.class, name = "SeedComponent"),
         @JsonSubTypes.Type(value = Inventory.class, name = "Inventory"),
         @JsonSubTypes.Type(value = Placeable.class, name = "Placeable"),
         @JsonSubTypes.Type(value = Processor.class, name = "Processor"),

@@ -21,6 +21,8 @@ public enum GameMenuCommands implements Commands {
     CRAFTINFO("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
     TOGGLE_MAP("^\\s*toggle\\s+map\\s*$"),
     CHEAT_GIVE_ITEM("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
+    PLANT_SEED("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+    SHOW_PLANT("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
     ;
 
     private final String pattern;

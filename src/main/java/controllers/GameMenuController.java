@@ -3,6 +3,9 @@ package controllers;
 import models.*;
 import models.Date;
 import models.entities.Entity;
+import models.entities.components.*;
+import models.enums.EntityTag;
+import models.enums.TileType;
 import models.entities.EntityRegistry;
 import models.entities.components.*;
 import models.entities.components.inventory.Inventory;
@@ -249,11 +252,6 @@ public class GameMenuController implements Controller {
         return new Result(true, "energy unlimited: " + energy.isUnlimited());
     }
 
-    public Result toggleMap(){
-        App.getLoggedInAccount().getActiveGame().toggleMapVisibility();
-        return null;
-    }
-
     public Result showInventory() {
         //TODO
         return null;
@@ -480,8 +478,6 @@ public class GameMenuController implements Controller {
         //TODO
     }
 
-
-
     public Result switchInputType(){
         App.getView().switchInputType();
         if(App.getView().isRawMode()){
@@ -509,20 +505,6 @@ public class GameMenuController implements Controller {
                 break;
         }
         return null;
-    }
-
-    public Result cheatGiveItem(String name, int quantity){
-        Player currentPlayer = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
-        if(!App.entityRegistry.doesEntityExist(name)){
-            return new Result(false, "entity doesnt exist");
-        }
-        Entity entity = App.entityRegistry.makeEntity(name);
-        if(entity.getComponent(Pickable.class) == null){
-            return new Result(false, "entity isn't pickable");
-        }
-        entity.getComponent(Pickable.class).changeStackSize(quantity);
-        currentPlayer.getComponent(Inventory.class).addItem(entity);
-        return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") + " were given to " + currentPlayer.getAccount().getNickname());
     }
 
 }

@@ -1,6 +1,7 @@
 package models;
 
 import models.entities.Entity;
+import models.entities.components.SeedComponent;
 import models.enums.TileType;
 import views.inGame.Color;
 
@@ -12,6 +13,15 @@ public class Tile{
     public Tile(Position position, TileType type) {
         this.position = position;
         this.type = type;
+    }
+
+
+    public void plant(Entity seed) {
+        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+        this.content = plant;
+        this.type = TileType.PLANTED_GROUND;
+        Game game = App.getLoggedInAccount().getActiveGame();
+        game.getPlantedEntities().add(content);
     }
 
     public TileType getType() {
