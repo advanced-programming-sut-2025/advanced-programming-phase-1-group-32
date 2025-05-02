@@ -24,6 +24,14 @@ public enum GameMenuCommands implements Commands {
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
+
+    /* ------------------------------------------ Tools commands ------------------------------------------ */
+    TOOLS_EQUIP("^tools\\s+equip\\s+(?<toolName>.+)$"), //TODO: check name
+    TOOLS_SHOW_CURRENT("^tools\\s+show\\s+current$"),
+    TOOLS_AVAILABLE("^tools\\s+show\\s+available$"),
+    TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
+    TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
+    /* -------------------------------------------------- -------------------------------------------------- */
     ;
 
     private final String pattern;

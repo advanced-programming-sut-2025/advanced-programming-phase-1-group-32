@@ -9,11 +9,14 @@ import models.enums.TileType;
 import models.entities.EntityRegistry;
 import models.entities.components.*;
 import models.entities.components.inventory.Inventory;
+import models.entities.components.inventory.InventorySlot;
+import models.enums.EntityTag;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
+import views.GameMenu;
 import views.inGame.Renderer;
 
 import java.util.*;
@@ -151,14 +154,12 @@ public class GameMenuController implements Controller {
     }
 
     public Result executeWalk(WalkProposal p) {
-        Player player = App.getActiveGame().getCurrentPlayer();
-        int initialEnergyAmount = player.getEnergy().getAmount();
-
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
         if(!p.isAllowed()) {
             return new Result(false, "No walk was proposed");
         }
         player.setPosition(new Position(p.y(), p.x()));
-        player.getEnergy().setAmount(initialEnergyAmount - p.energyCost());
+        player.reduceEnergy(p.energyCost());
         return new Result(true, "you walked to "
                 + player.getPosition()
                 + " (-" + p.energyCost() + " energy)");
@@ -253,26 +254,61 @@ public class GameMenuController implements Controller {
         //TODO
         return null;
     }
+    /* ---------------------------------- Tools ---------------------------------- */
+    public Result toolsEquip(String toolName) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        InventorySlot slot = player.getComponent(Inventory.class).getSlot(toolName);
+        if(slot == null)
+            return new Result(false, "This tool doesn't exist in inventory");
+        player.setActiveSlot(slot);
+        return new Result(true, "Tool equipped successfully");
 
-    public Result toolsEquip() {
-        //TODO
-        return null;
     }
 
-    public Result showTools() {
-        //TODO
-        return null;
+    public Result toolsShowCurrent() {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Entity active = player.getActiveSlot().getEntity();
+        if(active == null || !active.hasTag(EntityTag.TOOL))
+            return new Result(false, "This is not a tool");
+        return new Result(true, active.getName());
+
+    }
+
+    public Result toolsShowAvailable() {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        ArrayList<Entity> tools = player.getComponent(Inventory.class).getItemsByTag(EntityTag.TOOL);
+        if (tools.isEmpty())
+            return new Result(false, "There is no tool in Backpack");
+        StringBuilder sb  = new StringBuilder("Tools available:");
+        for (Entity tool : tools) {
+            sb.append("\n").append(tool.getName());
+        }
+        return new Result(true, sb.toString());
+
     }
 
     public Result toolsUpgrade() {
-        //TODO
+        //TODO: workshop needed
         return null;
     }
 
-    public Result toolsUse() {
-        //TODO
-        return null;
+    public Result toolsUse(int[] dir) {
+        Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+        GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
+        Entity tool = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot().getEntity();
+
+        if(
+                dir == null
+                || playerPosition.getRow() + dir[0] > map.getHeight() || playerPosition.getRow() + dir[0] < 0
+                || playerPosition.getCol() + dir[1] > map.getWidth() || playerPosition.getCol() + dir[1] < 0
+        )
+            return new Result(false, "Invalid Direction");
+        Position position = new Position(playerPosition.getRow() + dir[0], playerPosition.getCol() + dir[1]);
+        if(!tool.getTags().contains(EntityTag.TOOL))
+            return  new Result(false, "You should equip a tool first");
+        return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
     }
+    /* --------------------------------------  -------------------------------------- */
 
     public Result craftInfo(String name) {
         if(!App.entityRegistry.doesEntityExist(name)) {
@@ -564,7 +600,8 @@ public class GameMenuController implements Controller {
         }
         entity.getComponent(Pickable.class).changeStackSize(quantity);
         currentPlayer.getComponent(Inventory.class).addItem(entity);
-        return new Result(true, quantity + " " + name + (quantity > 1 ? "s were" : " was") + " given to " + currentPlayer.getAccount().getNickname());
+        return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
+                " were given to " + currentPlayer.getAccount().getNickname());
     }
 
 }

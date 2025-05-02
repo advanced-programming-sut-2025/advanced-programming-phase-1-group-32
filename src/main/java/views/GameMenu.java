@@ -14,6 +14,7 @@ import records.WalkProposal;
 import views.inGame.Color;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -106,6 +107,8 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showPlant(x, y));
             } else if ((matcher = GameMenuCommands.NEXT_TURN.getMatcher(input)) != null) {
                 System.out.println(controller.nextTurn());
+            } else if (input.startsWith("tools")) {
+                toolsCommandParser(input);
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -173,6 +176,38 @@ public class GameMenu implements AppMenu {
                 System.out.print("-\n");
             }
             i++;
+        }
+    }
+
+    public void toolsCommandParser(String input) {
+        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Matcher matcher;
+        if((matcher = GameMenuCommands.TOOLS_EQUIP.getMatcher(input)) != null) {
+            System.out.println(controller.toolsEquip(matcher.group("toolName")));
+        } else if((matcher = GameMenuCommands.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
+            System.out.println(controller.toolsShowCurrent());
+        } else if((matcher = GameMenuCommands.TOOLS_AVAILABLE.getMatcher(input)) != null) {
+            System.out.println(controller.toolsShowAvailable());
+        } else if((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
+            System.out.println(controller.toolsUpgrade(/*TODO*/));
+        } else if((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
+
+            Map<String, int[]> directions = Map.of(
+                    "1", new int[]{1, -1},/*{dy, dx}*/
+                    "2", new int[]{1,0},
+                    "3", new int[]{1,1},
+                    "4", new int[]{0,-1},
+                    "6", new int[]{0,1},
+                    "7", new int[]{-1,-1},
+                    "8", new int[]{-1,0},
+                    "9", new int[]{-1,1}
+            );
+            int[] dir = directions.get(matcher.group("direction"));
+            //TODO: handle direction (for now should input direction with numPad)
+            System.out.println(controller.toolsUse(dir));
+
+        } else {
+            System.out.println("Invalid Command!");
         }
     }
 }

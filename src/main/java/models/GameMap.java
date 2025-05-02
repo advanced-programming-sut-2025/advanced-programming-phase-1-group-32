@@ -42,4 +42,12 @@ public class GameMap {
     public Tile getTileByPosition(Position position) {
         return tiles[position.getRow()][position.getCol()];
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }
