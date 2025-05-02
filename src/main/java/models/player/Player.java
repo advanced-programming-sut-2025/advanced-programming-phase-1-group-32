@@ -60,6 +60,11 @@ public class Player extends Entity{
     public void setEnergy(Energy energy) {
         this.energy = energy;
     }
+    public void reduceEnergy(int energyCost) {
+        this.energy.setAmount(energy.getAmount() - energyCost);
+        if(energy.getAmount() < 0)
+            energy.setAmount(0);
+    }
 
     public Wallet getWallet() {
         return this.wallet;

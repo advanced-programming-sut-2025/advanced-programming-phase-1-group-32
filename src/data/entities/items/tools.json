@@ -19,7 +19,7 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            "HOE"
+            "PLOW"
           ],
           "energyCost" : 5
         }
@@ -31,7 +31,9 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-
+            "MINING",
+            "DE_PLOW",
+            "DESTROY_ITEMS"
           ],
           "energyCost" : 5
         }
@@ -43,7 +45,21 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            "CHOP_TREE"
+            "CHOP_TREE",
+            "DESTROY_BRANCHES"
+          ],
+          "energyCost" : 5
+        }
+      ]
+    },
+    {
+      "name" : "Watering can",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "WATER_GROUND",
+            "FILL_WATER"
           ],
           "energyCost" : 5
         }
@@ -66,9 +82,22 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-
+            "CUT_GRASS",
+            "HARVEST_CROPS"
           ],
           "energyCost" : 2
+        }
+      ]
+    },
+    {
+      "name" : "Milk pail",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "EXTRACT_MILK"
+          ],
+          "energyCost" : 4
         }
       ]
     },
@@ -78,9 +107,9 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-
+            "COLLECT_WOOL"
           ],
-          "energyCost" : 2
+          "energyCost" : 4
         }
       ]
     }

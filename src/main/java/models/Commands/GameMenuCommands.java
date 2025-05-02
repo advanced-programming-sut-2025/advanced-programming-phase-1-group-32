@@ -24,7 +24,7 @@ public enum GameMenuCommands implements Commands {
 
     /* ------------------------------------------ Tools commands ------------------------------------------ */
     TOOLS_EQUIP("^tools\\s+equip\\s+(?<toolName>.+)$"), //TODO: check name
-    TOOLS_SHOW("^tools\\s+show\\s+current$"),
+    TOOLS_SHOW_CURRENT("^tools\\s+show\\s+current$"),
     TOOLS_AVAILABLE("^tools\\s+show\\s+available$"),
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO

@@ -43,4 +43,11 @@ public class GameMap {
         return tiles[position.getRow()][position.getCol()];
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

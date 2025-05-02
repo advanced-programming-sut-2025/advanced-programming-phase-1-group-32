@@ -32,6 +32,7 @@ public class Harvestable extends EntityComponent{
         return null;
     }
     public Result harvest(){
+        //TODO
         return null;
     }
 
