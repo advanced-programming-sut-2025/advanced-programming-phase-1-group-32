@@ -1,6 +1,8 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import models.entities.UseFunction;
 
 import java.util.ArrayList;
@@ -9,6 +11,9 @@ import java.util.Arrays;
 public class Useable extends EntityComponent{
     @JsonProperty("useFunctions")
     private final ArrayList<UseFunction> functions = new ArrayList<>();
+
+    @JsonProperty("energyCost")
+    private int energyCost;
 
     public Useable(ArrayList<UseFunction> functions) {
         this.functions.addAll(functions);
@@ -29,5 +34,17 @@ public class Useable extends EntityComponent{
     @Override
     public EntityComponent clone() {
         return new Useable(this);
+    }
+
+    public ArrayList<UseFunction> getFunctions() {
+        return functions;
+    }
+
+    public int getEnergyCost() {
+        return energyCost;
+    }
+
+    public void setEnergyCost(int energyCost) {
+        this.energyCost = energyCost;
     }
 }

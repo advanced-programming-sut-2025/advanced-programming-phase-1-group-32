@@ -299,12 +299,12 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsUpgrade() {
-        //TODO
+        //TODO: workshop needed
         return null;
     }
 
     public Result toolsUse() {
-        //TODO
+
         return null;
     }
     /* --------------------------------------  -------------------------------------- */

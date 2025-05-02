@@ -24,6 +24,9 @@ public enum UseFunction {
     FISH,
 
     ;
+
+
+    
     public Result canUse(){
         return null;
     }

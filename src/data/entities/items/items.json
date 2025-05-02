@@ -14,24 +14,14 @@
   ],
   "entities" : [
     {
-      "name" : "Axe",
-      "components" : [
-        {
-          "type" : "Useable",
-          "useFunctions" : [
-            "CHOP_TREE"
-          ]
-        }
-      ]
-    },
-    {
       "name" : "Hoe",
       "components" : [
         {
           "type" : "Useable",
           "useFunctions" : [
-            "PLOW"
-          ]
+            "HOE"
+          ],
+          "energyCost" : 5
         }
       ]
     },
@@ -41,8 +31,21 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            ""
-          ]
+
+          ],
+          "energyCost" : 5
+        }
+      ]
+    },
+    {
+      "name" : "Axe",
+      "components" : [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "CHOP_TREE"
+          ],
+          "energyCost" : 5
         }
       ]
     },
@@ -50,7 +53,10 @@
       "name" : "Fishing pole",
       "components" : [
         {
-          "type" : "Useable"
+          "type" : "Useable",
+          "useFunctions" : [
+
+          ]
         }
       ]
     },
@@ -58,7 +64,11 @@
       "name" : "Seyth",
       "components" : [
         {
-          "type" : "Useable"
+          "type" : "Useable",
+          "useFunctions" : [
+
+          ],
+          "energyCost" : 2
         }
       ]
     },
@@ -66,7 +76,11 @@
       "name" : "Shear",
       "components" : [
         {
-          "type" : "Useable"
+          "type" : "Useable",
+          "useFunctions" : [
+
+          ],
+          "energyCost" : 2
         }
       ]
     }
