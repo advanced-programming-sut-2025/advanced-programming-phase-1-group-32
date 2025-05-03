@@ -5,6 +5,8 @@ import models.enums.Menu;
 import models.player.Player;
 import records.Result;
 
+import java.util.Arrays;
+
 public class MainMenuController implements Controller{
     @Override
     public Result changeMenu(String menuName) {
@@ -49,6 +51,8 @@ public class MainMenuController implements Controller{
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < usernames.length; i++) {
+            if (Arrays.asList(accounts).contains(App.getUserByUsername(usernames[i])))
+                return new Result(false, "you should enter different users");
             accounts[i + 1] = App.getUserByUsername(usernames[i]);
             if (accounts[i + 1] == null)
                 sb.append("username ").append(usernames[i]).append(" doesn't exist\n");
