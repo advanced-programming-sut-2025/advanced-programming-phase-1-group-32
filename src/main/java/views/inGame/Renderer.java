@@ -5,6 +5,7 @@ import models.Position;
 import views.AppView;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public class Renderer {
@@ -14,6 +15,7 @@ public class Renderer {
     private final String positionCode = "\u001B[%d;%dH";
     private CharacterTexture frameBuffer;
     private final AppView view;
+    private int curX = 0, curY = 0;
 
     public Renderer(AppView view){
         this.view = view;
@@ -29,6 +31,7 @@ public class Renderer {
     public void clear(){
         this.frameBuffer.reset();
     }
+
 
     public void mvAddchColored(int x, int y, char character, Color color){
         this.mvAddchColored(x, y, character, color, view.getTerminalWidth() / 2, view.getTerminalHeight() / 2);
@@ -79,6 +82,9 @@ public class Renderer {
                 this.frameBuffer.data[y + j][x + i] = texture.data[j][i];
             }
         }
+    }
+    public void moveCurser(int x, int y){
+        System.out.printf(positionCode, x, y);
     }
     public void render(){
         StringBuilder output = new StringBuilder();

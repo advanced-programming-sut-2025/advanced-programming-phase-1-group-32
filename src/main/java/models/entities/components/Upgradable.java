@@ -1,30 +1,31 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.enums.Material;
 
 public class Upgradable extends EntityComponent{
     @JsonProperty("xp")
     int xp;
     @JsonProperty("level")
-    int level;
+    Material material;
 
-    public Upgradable(int xp,int level) {
+    public Upgradable(int xp, Material material) {
         this.xp = xp;
-        this.level = level;
+        this.material = material;
     }
     private Upgradable(Upgradable other){
         this.xp = other.xp;
-        this.level = other.level;
+        this.material = other.material;
     }
     public Upgradable(){
-        this(0, 0);
+        this(0, Material.STONE);
     }
 
     public int getXp() {
         return xp;
     }
-    public int getLevel() {
-        return level;
+    public Material getMaterial() {
+        return material;
     }
 
     @Override

@@ -16,4 +16,8 @@ public enum Material {
     Material(int level) {
         this.level = level;
     }
+
+    public int getLevel() {
+        return level;
+    }
 }

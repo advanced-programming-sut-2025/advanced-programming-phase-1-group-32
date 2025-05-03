@@ -63,7 +63,7 @@ public class Entity implements Cloneable{
     public Entity(String name, EntityComponent... components){
         this(name, null, components);
     }
-    private Entity(Builder b) {
+    private Entity(Builder b){
         this(b.name, b.components, b.tags, b.id);
     }
     public ArrayList<EntityComponent> getComponents(){
