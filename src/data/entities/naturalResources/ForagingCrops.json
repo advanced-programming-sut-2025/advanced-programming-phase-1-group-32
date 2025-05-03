@@ -7,9 +7,6 @@
   ],
 
   "required components": [
-    {
-      "type": "Harvestable"
-    }
   ],
   "common tags": [
     "FORAGING_CROP"
@@ -26,8 +23,6 @@
         {
           "type": "Edible",
           "energy": 0
-        },{
-          "type": "Harvestable"
         },
         {
           "type": "Growable",

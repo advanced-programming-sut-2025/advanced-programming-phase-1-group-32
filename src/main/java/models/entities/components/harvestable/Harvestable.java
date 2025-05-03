@@ -1,6 +1,11 @@
 package models.entities.components.harvestable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.App;
@@ -9,9 +14,9 @@ import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.Material;
 
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-
 
 
 public class Harvestable extends EntityComponent {
@@ -28,9 +33,6 @@ public class Harvestable extends EntityComponent {
         this.material = material;
         this.resources.add(new HarvestableResource.Builder().min(amount).entity(entity).probability(probability).build());
     }
-//    public Harvestable(Material material, @JsonProperty("entity") String entity,@JsonProperty("amount") int amount){
-//        this(material, entity, amount, 1f);
-//    }
     public Harvestable(Harvestable other){
         this.resources.addAll(other.resources);
         this.material = other.material;
