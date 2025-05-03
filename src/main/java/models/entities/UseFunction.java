@@ -48,7 +48,6 @@ public enum UseFunction {
             if(!entity.hasTag(EntityTag.TREE)) // TODO: shakhe
                 return new Result(false, "there is no tree");
             Harvestable harvestable = entity.getComponent(Harvestable.class);
-            //TODO: claim materials? (or in harvest())
             return harvestable.harvest();
         }
     },
