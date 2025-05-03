@@ -13,10 +13,10 @@ public class Message {
     private final Date date;
     private boolean seen;
 
-    public Message(Date date, String message, Player reciever, Player sender) {
+    public Message(Date date, String message, Player receiver, Player sender) {
         this.date = date;
         this.message = message;
-        this.receiver = reciever;
+        this.receiver = receiver;
         this.sender = sender;
 
         seen = false;
@@ -48,7 +48,7 @@ public class Message {
 
     public static String buildMessageHistory(Player currentPlayer, Player talkedPlayer, ArrayList<Message> messages) {
         StringBuilder output = new StringBuilder();
-        output.append("Your message history with").append(talkedPlayer.getAccount().getUsername()).append(":\n\n");
+        output.append("Your message history with ").append(talkedPlayer.getUsername()).append(":\n\n");
 
         for (Message message : messages) {
             output.append(Message.buildMessageDetails(message));
@@ -61,7 +61,7 @@ public class Message {
         Game game = App.getActiveGame();
 
         StringBuilder result = new StringBuilder();
-        result.append("Sender: ").append(message.getSender().getAccount().getUsername()).append("\n");
+        result.append("Sender: ").append(message.getSender().getUsername()).append("\n");
         result.append("Receiver: ").append(message.getReceiver().getAccount().getUsername()).append("\n");
         result.append("Message: ").append(message.getMessage()).append("\n");
         result.append(message.getDate().toString()).append("\n");

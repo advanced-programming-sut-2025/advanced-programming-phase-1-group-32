@@ -10,7 +10,7 @@ login -u Ilia -p AliPass123@
 show current menu
 show menus
 menu enter Game Menu
-game new -u Ilia
+game new -u Ilia AliAlm
 toggle map
 cheat give item "Axe" 1
 cheat give item "Axe" 2
@@ -18,5 +18,6 @@ show inventory
 cheat give item "Apple" 20
 plant -s Jazz Seeds -d down
 showplant -l <0,1>
-talk -u Ilia -m salam
-talk history -u Ilia
+talk -u AliAlm -m salam
+talk history -u AliAlm
+friendships

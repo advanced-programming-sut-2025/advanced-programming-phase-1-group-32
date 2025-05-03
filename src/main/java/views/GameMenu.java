@@ -119,6 +119,9 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.TALK_HISTORY.getMatcher(input)) != null) {
                 System.out.println(controller.talkHistory(matcher.group(1).trim()));
 
+            } else if (GameMenuCommands.FRIENDSHIPS.getMatcher(input) != null) {
+                System.out.println(controller.friendship());
+
             } else {
                 System.out.println("Invalid Command!");
             }

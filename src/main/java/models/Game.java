@@ -3,6 +3,7 @@ package models;
 import models.entities.Entity;
 import models.enums.Weather;
 import models.player.Player;
+import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
+    private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private boolean mapVisible = true;
 
     public Game(Account[] accounts) {
@@ -31,6 +33,13 @@ public class Game {
 
         this.todayWeather = Weather.SUNNY;
         this.tomorrowWeather = Weather.SUNNY;
+
+        // init player's friendships
+        for (int i = 0; i < players.size(); i++) {
+            for (int j = i + 1; j < players.size(); j++) {
+                this.playerFriendships.add(new PlayerFriendship(players.get(i), players.get(j)));
+            }
+        }
     }
 
     public void addPlayer(Player player) {
@@ -104,6 +113,10 @@ public class Game {
         todayWeather = tomorrowWeather;
         tomorrowWeather = this.date.getSeason().getWeather();
 
+        for (PlayerFriendship playerFriendship : playerFriendships) {
+            playerFriendship.updateDaily();
+        }
+
         //TODO
     }
 
@@ -126,6 +139,27 @@ public class Game {
             }
         }
 
+        return null;
+    }
+
+    public ArrayList<PlayerFriendship> getCurrentPlayerFriendships() {
+        ArrayList<PlayerFriendship> friendships = new ArrayList<>();
+        for (PlayerFriendship playerFriendships : playerFriendships) {
+            if (playerFriendships.getFriends().contains(currentPlayer)) {
+                friendships.add(playerFriendships);
+            }
+        }
+
+        return friendships;
+    }
+
+    public PlayerFriendship getFriendshipWith(Player friend) {
+        for (PlayerFriendship playerFriendship : playerFriendships) {
+            if (playerFriendship.getFriends().contains(friend) &&
+            playerFriendship.getFriends().contains(currentPlayer)) {
+                return playerFriendship;
+            }
+        }
         return null;
     }
 }

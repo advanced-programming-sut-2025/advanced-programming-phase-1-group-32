@@ -154,4 +154,8 @@ public class Player extends Entity{
             }
         }
     }
+
+    public String getUsername() {
+        return account.getUsername();
+    }
 }

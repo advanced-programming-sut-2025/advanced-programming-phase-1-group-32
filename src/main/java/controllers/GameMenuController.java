@@ -6,19 +6,15 @@ import models.entities.Entity;
 import models.entities.components.*;
 import models.enums.EntityTag;
 import models.enums.TileType;
-import models.entities.EntityRegistry;
-import models.entities.components.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
-import models.enums.EntityTag;
 import models.enums.Weather;
 import models.player.Energy;
 import models.player.Message;
 import models.player.Player;
+import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
-import views.GameMenu;
-import views.inGame.Renderer;
 
 import java.util.*;
 
@@ -547,8 +543,11 @@ public class GameMenuController implements Controller {
     }
 
     public Result friendship() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        ArrayList<PlayerFriendship> playerFriendships = game.getCurrentPlayerFriendships();
+        String message = PlayerFriendship.buildFriendshipMessage(game.getCurrentPlayer(), playerFriendships);
+
+        return new Result(true, message);
     }
 
     public Result talk(String receiverPlayerName, String messageString) {
@@ -561,12 +560,18 @@ public class GameMenuController implements Controller {
             return new Result(false, "Player with name " + receiverPlayerName + " not found");
         }
 
-        Message message = new Message(game.getDate(), messageString, currentPlayer, receiverPlayer);
+        Message message = new Message(game.getDate(), messageString, receiverPlayer, currentPlayer);
         currentPlayer.getMessageLog().add(message);
         receiverPlayer.getMessageLog().add(message);
         receiverPlayer.setHaveNewMessage(true);
 
-        //TODO: add to player's friendship
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(receiverPlayer);
+
+        if (!playerFriendship.isHadMessageToday()) {
+            playerFriendship.setHadMessageToday(true);
+            playerFriendship.addXp(20);
+        }
 
         return new Result(true, "Your message has been sent successfully!");
     }
