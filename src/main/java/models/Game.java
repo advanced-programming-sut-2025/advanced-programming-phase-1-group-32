@@ -117,4 +117,4 @@ public class Game {
     public boolean isMapVisible(){
         return mapVisible;
     }
-}
+    }
