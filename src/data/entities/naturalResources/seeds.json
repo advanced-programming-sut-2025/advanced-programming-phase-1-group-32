@@ -3,6 +3,8 @@
     {
       "type": "Placeable",
       "isWalkable": true
+    },{
+      "type": "Pickable"
     }
   ],
 

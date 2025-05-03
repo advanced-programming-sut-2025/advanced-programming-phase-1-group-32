@@ -23,14 +23,15 @@ public class Player extends Entity{
     private final Entity backPack = null;
     private final Map<Character, NpcFriendship> npcFriendships = null;
     private final Map<Player, PlayerFriendship> playerFriendships = null;
-    private Player spouce;
+    private Player spouse;
     private final ArrayList<Quest> quests = null;
     private final ArrayList<Gift> giftLog = null;
-    private final ArrayList<Message> messageLog = null;
+    private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
     private final Account account;
     private InventorySlot activeSlot;
+    private boolean haveNewMessage = false;
 
     public Player(Account account){
         super("Player", new Inventory(12));
@@ -75,11 +76,11 @@ public class Player extends Entity{
     }
 
     public Player getSpouse() {
-        return spouce;
+        return spouse;
     }
 
-    public void setSpouce(Player spouce) {
-        this.spouce = spouce;
+    public void setSpouse(Player spouse) {
+        this.spouse = spouse;
     }
 
     public Skill getSkill(SkillType type){
@@ -128,5 +129,29 @@ public class Player extends Entity{
 
     public void setActiveSlot(InventorySlot activeSlot) {
         this.activeSlot = activeSlot;
+    }
+
+    public ArrayList<Message> getMessageLog() {
+        return messageLog;
+    }
+
+    public void setMessageLog(ArrayList<Message> messageLog) {
+        this.messageLog = messageLog;
+    }
+
+    public boolean doesHaveNewMessage() {
+        return haveNewMessage;
+    }
+
+    public void setHaveNewMessage(boolean haveNewMessage) {
+        this.haveNewMessage = haveNewMessage;
+    }
+
+    public void makeMessagesSeen() {
+        for(Message message : messageLog){
+            if (message.getReceiver() == this){
+                message.setSeen(true);
+            }
+        }
     }
 }

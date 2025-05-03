@@ -58,4 +58,8 @@ public class Date {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Day: " + day + "  Hour: " + hour + "  Season: " + season;
+    }
 }

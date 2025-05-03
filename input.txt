@@ -18,3 +18,5 @@ show inventory
 cheat give item "Apple" 20
 plant -s Jazz Seeds -d down
 showplant -l <0,1>
+talk -u Ilia -m salam
+talk history -u Ilia

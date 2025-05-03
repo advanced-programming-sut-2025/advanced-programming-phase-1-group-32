@@ -114,7 +114,18 @@ public class Game {
     public void toggleMapVisibility(){
         mapVisible = !mapVisible;
     }
+
     public boolean isMapVisible(){
         return mapVisible;
+    }
+
+    public Player findPlayer(String playerName) {
+        for (Player player : players) {
+            if (player.getAccount().getUsername().equals(playerName)) {
+                return player;
+            }
+        }
+
+        return null;
     }
 }

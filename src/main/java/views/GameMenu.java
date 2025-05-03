@@ -113,6 +113,12 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.FERTILIZE.getMatcher(input)) != null ){
                 System.out.println(controller.fertilize(matcher.group(1).trim(),matcher.group(2) ));
 
+            } else if ((matcher = GameMenuCommands.TALK.getMatcher(input)) != null ) {
+                System.out.println(controller.talk(matcher.group(1).trim(), matcher.group(2).trim()));
+
+            } else if ((matcher = GameMenuCommands.TALK_HISTORY.getMatcher(input)) != null) {
+                System.out.println(controller.talkHistory(matcher.group(1).trim()));
+
             } else {
                 System.out.println("Invalid Command!");
             }

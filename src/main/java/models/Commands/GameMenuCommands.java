@@ -4,10 +4,12 @@ public enum GameMenuCommands implements Commands {
     WALK              ("^\\s*walk\\s+-l\\s+<\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>\\s*$"),
     TIME              ("\\s*time\\s*"),
     DATE              ("\\s*date\\s*"),
+    TALK              ("\\s*talk\\s+-u\\s+(?<name>.+)\\s+-m\\s+(?<message>.+)\\s*"),
     SEASON            ("\\s*season\\s*"),
     WEATHER           ("\\s*weather\\s*"),
     DATETIME          ("\\s*datetime\\s*"),
     CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
+    FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     NEXT_TURN         ("^\\s*next\\s+turn\\s*$"),
     TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
@@ -24,6 +26,8 @@ public enum GameMenuCommands implements Commands {
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
+    TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),
+
 
     /* ------------------------------------------ Tools commands ------------------------------------------ */
     TOOLS_EQUIP("^tools\\s+equip\\s+(?<toolName>.+)$"), //TODO: check name
@@ -32,7 +36,7 @@ public enum GameMenuCommands implements Commands {
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
     /* -------------------------------------------------- -------------------------------------------------- */
-    FERTILIZE("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+
 
     ;
 

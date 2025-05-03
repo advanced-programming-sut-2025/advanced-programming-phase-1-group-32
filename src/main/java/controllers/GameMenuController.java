@@ -13,6 +13,7 @@ import models.entities.components.inventory.InventorySlot;
 import models.enums.EntityTag;
 import models.enums.Weather;
 import models.player.Energy;
+import models.player.Message;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
@@ -550,14 +551,44 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result talk() {
-        //TODO
-        return null;
+    public Result talk(String receiverPlayerName, String messageString) {
+        Game game = App.getActiveGame();
+        Player receiverPlayer = game.findPlayer(receiverPlayerName);
+        Player currentPlayer = game.getCurrentPlayer();
+
+        // check player existence
+        if (receiverPlayer == null) {
+            return new Result(false, "Player with name " + receiverPlayerName + " not found");
+        }
+
+        Message message = new Message(game.getDate(), messageString, currentPlayer, receiverPlayer);
+        currentPlayer.getMessageLog().add(message);
+        receiverPlayer.getMessageLog().add(message);
+        receiverPlayer.setHaveNewMessage(true);
+
+        //TODO: add to player's friendship
+
+        return new Result(true, "Your message has been sent successfully!");
     }
 
-    public Result talkHistory() {
-        //TODO
-        return null;
+    public Result talkHistory(String playerName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        currentPlayer.makeMessagesSeen();
+        Player talkedPlayer = game.findPlayer(playerName);
+        currentPlayer.setHaveNewMessage(false);
+
+        if (talkedPlayer == null) {
+            return new Result(false, "Player with name " + playerName + " not found");
+        }
+
+        ArrayList<Message> commonMessages = new ArrayList<>(currentPlayer.getMessageLog());
+        commonMessages.retainAll(talkedPlayer.getMessageLog());
+
+        String outcomeMessage = Message.buildMessageHistory(currentPlayer, talkedPlayer, commonMessages);
+
+        return new Result(true, outcomeMessage);
+
     }
 
     public Result meetNPC(){
