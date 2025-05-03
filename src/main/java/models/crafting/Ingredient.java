@@ -1,5 +1,7 @@
 package models.crafting;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
@@ -12,17 +14,19 @@ import java.util.List;
 import java.util.Map;
 
 public class Ingredient {
-    @JsonProperty("contents")
     private List<String> contents;
-    @JsonProperty("validTags")
     private List<EntityTag> validTags;
-    @JsonProperty("amount")
     int amount;
 
-    private Ingredient(List<String> contents, List<EntityTag> validTags, int amount) {
-        this.contents = contents;
-        this.validTags = validTags;
+    @JsonCreator
+    private Ingredient(
+            @JsonProperty("contents") List<String> contents,
+            @JsonProperty("validTags") List<EntityTag> validTags,
+            @JsonProperty("amount") int amount) {
+        this.contents = contents != null ? new ArrayList<>(contents) : new ArrayList<>();
+        this.validTags = validTags != null ? new ArrayList<>(validTags) : new ArrayList<>();
         this.amount = amount;
+
         for (String content : contents) {
             App.entityRegistry.getEntityDetails(content);
         }

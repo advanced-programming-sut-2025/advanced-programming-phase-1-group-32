@@ -75,6 +75,7 @@ public class EntityRegistry {
                                 this.registry.putIfAbsent(e.getName(), e);
                             }
                         } catch (IOException e) {
+                            System.err.println(path);
                             throw new RuntimeException(e);
                         }
                     });

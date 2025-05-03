@@ -29,8 +29,8 @@ public class RecipeRegistry {
 
         try (Stream<Path> files = Files.walk(root)) {
             files.filter(p -> p.toString().endsWith(".json")).forEach(path -> {
-                String regAddress = root.relativize(path).toString().replace(File.separator, ":");
-                regAddress = regAddress.substring(0, regAddress.lastIndexOf(":"));
+//                String regAddress = root.relativize(path).toString().replace(File.separator, ":");
+//                regAddress = regAddress.substring(0, regAddress.lastIndexOf(":"));
 
                 try {
                     JsonNode jsonRoot = mapper.readTree(path.toFile());

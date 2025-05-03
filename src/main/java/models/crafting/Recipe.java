@@ -49,7 +49,7 @@ public class Recipe {
 
 
     @JsonPOJOBuilder(withPrefix = "")
-    @JsonIgnoreProperties(ignoreUnknown = true)
+    //@JsonIgnoreProperties(ignoreUnknown = true)
     public static class Builder {
         private String name;
         private ArrayList<Ingredient> ingredients = new ArrayList<>();

@@ -32,6 +32,44 @@
         }
       ]
 
+    },
+    {
+      "name" : "Milk",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 38
+        }
+      ]
+    },
+    {
+      "name" : "Large Milk",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 50
+        }
+      ]
+    },
+    {
+      "name" : "Goat Milk",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy":  63
+        }
+      ]
+    },
+    {
+      "name" : "Large Goat Milk",
+      "components": [
+        {
+          "type": "Edible",
+          "energy": 88
+        }
+      ]
     }
+
+
   ]
 }
