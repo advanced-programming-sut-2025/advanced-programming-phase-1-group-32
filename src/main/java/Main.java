@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         App.entityRegistry.loadEntities("./src/data/entities");
+        App.recipeRegistry.loadRecipes("./src/data/recipes");
 //        App.entityRegistry.listEntities();
         App.start();
         int x = 1, y = 1;

@@ -1,10 +1,13 @@
 {
   "common components" : [
     {
-      "type" : "Pickable"
+      "type" : "Pickable",
+      "maxStack" : 1
     },
     {
-      "type" : "Upgradable"
+      "type" : "Upgradable",
+      "xp" : 0,
+      "level" : 0
     }
 
   ],

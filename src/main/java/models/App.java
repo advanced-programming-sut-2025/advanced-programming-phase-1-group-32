@@ -1,5 +1,6 @@
 package models;
 
+import models.crafting.RecipeRegistry;
 import models.entities.EntityRegistry;
 import models.enums.Menu;
 import views.AppView;
@@ -15,6 +16,7 @@ public class App {
     private static final AppView view = new AppView();
     public static boolean shouldTerminate = false;
     public static EntityRegistry entityRegistry = new EntityRegistry();
+    public static RecipeRegistry recipeRegistry = new RecipeRegistry();
     public static Game activeGame = null;
 
     /***

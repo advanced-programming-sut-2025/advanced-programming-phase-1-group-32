@@ -1,0 +1,37 @@
+{
+  "common components" : [
+    {
+      "type" : "Pickable",
+      "maxStack" : 16
+    }
+  ],
+  "required components" : [
+    {
+      "type" : "Edible"
+    }
+  ],
+  "common tags" : [
+    "FOOD"
+  ],
+  "entities" : [
+    {
+      "name" : "Fried egg",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 50
+        }
+      ]
+    },
+    {
+      "name" : "Baked Fish",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 75
+        }
+      ]
+
+    }
+  ]
+}

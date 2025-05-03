@@ -1,0 +1,34 @@
+{
+  "recipes" : [
+    {
+      "name" : "Honey",
+      "ingredients" : [
+
+      ],
+      "isUnlocked" : true
+    },
+    {
+      "name" : "Cheese",
+      "hour" : 3,
+      "ingredients" : [
+        {
+          "contents" : [
+            "Milk", "Large Milk"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Goat Cheese",
+      "hour" : 3,
+      "ingredients" : [
+        {
+          "contents" : [
+            "Goat Milk", "Large Goat Milk"
+          ]
+        }
+      ]
+    }
+
+  ]
+}

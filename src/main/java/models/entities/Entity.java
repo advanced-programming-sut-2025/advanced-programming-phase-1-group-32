@@ -169,4 +169,5 @@ public class Entity implements Cloneable{
             observer.onDelete(this);
         }
     }
+
 }

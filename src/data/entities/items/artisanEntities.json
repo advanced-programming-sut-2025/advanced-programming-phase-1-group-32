@@ -1,0 +1,31 @@
+{
+  "entities" : [
+    {
+      "name" : "Honey",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 75
+        }
+      ]
+    },
+    {
+      "name" : "Cheese",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 100
+        }
+      ]
+    },
+    {
+      "name" : "Goat Cheese",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 100
+        }
+      ]
+    }
+  ]
+}
