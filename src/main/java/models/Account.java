@@ -33,7 +33,7 @@ public class Account {
         this.gender = gender;
         this.email = email;
         this.nickname = nickname;
-        this.password = password;
+        this.password = hashPassword(password);
         this.username = username;
     }
 
@@ -75,7 +75,7 @@ public class Account {
         return new Result(true, "");
     }
 
-    public static String hashPassword(String password) {
+    private static String hashPassword(String password) {
 
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -143,11 +143,11 @@ public class Account {
     }
 
     public boolean isPasswordCorrect(String password) { /* !! don't use getPassword because of SHA-256 */
-        return this.password.equals(password);
+        return this.password.equals(hashPassword(password));
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = hashPassword(password);
     }
 
     public String getNickname() {

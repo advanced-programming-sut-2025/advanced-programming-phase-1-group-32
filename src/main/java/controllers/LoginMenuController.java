@@ -40,10 +40,9 @@ public class LoginMenuController implements Controller{
             return new Result(false, "Invalid gender! type \"male\" or \"female\" for gender!");
         }
 
-        String hashedPassword = Account.hashPassword(password);
         
 
-        Account account = new Account(genderEnum, email,name, hashedPassword, username);
+        Account account = new Account(genderEnum, email,name, password, username);
         App.setRegisteredAccount(account);
         App.addAccount(account);
         //TODO: add account to jason file
@@ -79,8 +78,7 @@ public class LoginMenuController implements Controller{
             return new Result(false, "username doesnt exist");
         }
 
-        String hashedPassword = Account.hashPassword(password);
-        if (!account.isPasswordCorrect(hashedPassword)) {
+        if (!account.isPasswordCorrect(password)) {
             return new Result(false, "incorrect password");
         }
 
