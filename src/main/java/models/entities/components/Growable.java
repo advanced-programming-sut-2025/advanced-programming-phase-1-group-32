@@ -81,6 +81,26 @@ public class Growable extends EntityComponent{
         return canBecomeGiant;
     }
 
+    public void setTotalHarvestTime(int totalHarvestTime) {
+        this.totalHarvestTime = totalHarvestTime;
+    }
+
+    public int getDaysPastFromPlant() {
+        return daysPastFromPlant;
+    }
+
+    public void setDaysPastFromPlant(int daysPastFromPlant) {
+        this.daysPastFromPlant = daysPastFromPlant;
+    }
+
+    public boolean isFertilized() {
+        return isFertilized;
+    }
+
+    public void setFertilized(boolean fertilized) {
+        isFertilized = fertilized;
+    }
+
     public void setCanBecomeGiant(boolean canBecomeGiant) {
         this.canBecomeGiant = canBecomeGiant;
     }

@@ -38,6 +38,7 @@ public class Date {
             game.updateGamePerHour();
             if (hour == 23) {
                 hour = 0;
+                game.updateGamePerDay();
                 addDay(1, game);
             } else {
                 hour++;

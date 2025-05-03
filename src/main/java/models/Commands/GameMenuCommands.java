@@ -32,6 +32,8 @@ public enum GameMenuCommands implements Commands {
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
     /* -------------------------------------------------- -------------------------------------------------- */
+    FERTILIZE("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+
     ;
 
     private final String pattern;
