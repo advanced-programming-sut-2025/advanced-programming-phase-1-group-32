@@ -274,6 +274,18 @@ public class Inventory extends EntityComponent {
         return this.getItem(name) != null;
     }
 
+    public int getItemCount(String name){
+        int count = 0;
+        for(InventorySlot s : slots){
+            if(s.getEntity() != null){
+                if(s.getEntity().getName().equals(name)){
+                    count += s.getEntity().getComponent(Pickable.class).getStackSize();
+                }
+            }
+        }
+        return count;
+    }
+
     @Override
     public EntityComponent clone() {
         return new Inventory(this);

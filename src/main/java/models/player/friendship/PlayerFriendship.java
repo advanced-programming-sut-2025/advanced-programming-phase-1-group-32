@@ -47,9 +47,11 @@ public class PlayerFriendship {
     public void addXp(int xp) {
         this.xp += xp;
         if (this.xp >= 100 * (level + 1)) {
-            if (level < 3) {
+            if (level < 2) {
                 level++;
                 xp -= 100 * level;
+            } else if (level == 2) {
+                xp = 300;
             } else if (level == 3) {
                 xp = 400;
             }

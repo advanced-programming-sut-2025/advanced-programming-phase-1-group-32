@@ -10,6 +10,7 @@ import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
 import models.player.Energy;
+import models.player.Gift;
 import models.player.Message;
 import models.player.Player;
 import models.player.friendship.PlayerFriendship;
@@ -550,6 +551,70 @@ public class GameMenuController implements Controller {
         return new Result(true, message);
     }
 
+    public Result giveGift(String playerName, String itemName, int amount) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player giftedPlayer = game.findPlayer(playerName);
+
+        if (giftedPlayer == null) {
+            return new Result(false, "Player not found");
+        }
+
+        if (giftedPlayer == currentPlayer) {
+            return new Result(false, "you can't gift yourself!");
+        }
+
+        if (!game.checkPlayerDistance(currentPlayer, giftedPlayer)) {
+            return new Result(false, giftedPlayer.getName() + " is out of distance");
+        }
+
+        if (!App.entityRegistry.doesEntityExist(itemName)) {
+            return new Result(false, "Item not found");
+        }
+
+        Entity item = App.entityRegistry.makeEntity(itemName);
+        item.getComponent(Pickable.class).setStackSize(amount);
+
+        //TODO: check is there enough of the item and reduce
+//        if (currentPlayer.getComponent(Inventory.class).doesHaveItem()) {}
+
+        Gift gift = new Gift(currentPlayer, giftedPlayer, item, game.getDate());
+        giftedPlayer.receiveGift(gift);
+
+
+        return null;
+    }
+
+    public Result giftList() {
+        //TODO
+        return null;
+    }
+
+    public Result giftRate() {
+        //TODO
+        return null;
+    }
+
+    public Result giftHistory() {
+        //TODO
+        return null;
+    }
+
+    public Result hug() {
+        //TODO
+        return null;
+    }
+
+    public Result flower() {
+        //TODO
+        return null;
+    }
+
+    public Result askMarriage(){
+        //TODO
+        return null;
+    }
+
     public Result talk(String receiverPlayerName, String messageString) {
         Game game = App.getActiveGame();
         Player receiverPlayer = game.findPlayer(receiverPlayerName);
@@ -559,6 +624,11 @@ public class GameMenuController implements Controller {
         if (receiverPlayer == null) {
             return new Result(false, "Player with name " + receiverPlayerName + " not found");
         }
+
+        // TODO: get this block out of comment
+//        if (!game.checkPlayerDistance(receiverPlayer, currentPlayer)) {
+//            return new Result(false, "Player is not next to you...");
+//        }
 
         Message message = new Message(game.getDate(), messageString, receiverPlayer, currentPlayer);
         currentPlayer.getMessageLog().add(message);
