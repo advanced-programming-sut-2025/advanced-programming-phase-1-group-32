@@ -105,6 +105,9 @@ public class GameMenu implements AppMenu {
                 int y = Integer.parseInt(matcher.group(2));
                 System.out.println(controller.showPlant(x, y));
 
+            } else if ((matcher = GameMenuCommands.FERTILIZE.getMatcher(input)) != null ){
+                System.out.println(controller.fertilize(matcher.group(1).trim(),matcher.group(2) ));
+
             } else {
                 System.out.println("Invalid Command!");
             }

@@ -23,6 +23,8 @@ public enum GameMenuCommands implements Commands {
     CHEAT_GIVE_ITEM("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
     PLANT_SEED("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     SHOW_PLANT("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
+    FERTILIZE("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+
     ;
 
     private final String pattern;

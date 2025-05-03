@@ -374,9 +374,35 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result fertilize() {
-        //TODO
-        return null;
+    public Result fertilize(String fertilizerString, String direction) {
+        // get the fertilizer
+        if (!App.entityRegistry.doesEntityExist(fertilizerString)) {
+            return new Result(false, "There is no fertilizer with name" + fertilizerString);
+        }
+        //TODO: get fertilizer
+
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player player = game.getCurrentPlayer();
+
+        // get the position
+        Position position = player.getPosition().changeByDirection(direction);
+        if (position == null) {
+            return new Result(false, "type a valid direction");
+        }
+        Tile tile = game.getActiveMap().getTileByPosition(position);
+        if (tile == null) {
+            return new Result(false, "No tile found");
+        }
+
+        // check existence of a plant
+        if (tile.getType() != TileType.PLANTED_GROUND) {
+            return new Result(false, "Tile is not a planted ground");
+        }
+
+        // Fertilize!
+        Entity plantedEntity = tile.getContent();
+        plantedEntity.getComponent(Growable.class).setFertilized(true);
+        return new Result(true, "fertilized successfully!");
     }
 
     public Result checkWater(){
@@ -527,6 +553,7 @@ public class GameMenuController implements Controller {
             return new Result(true, "You are in normal mode");
         }
     }
+
     public Result handleRawInput(char c){
         Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
         switch (c){
