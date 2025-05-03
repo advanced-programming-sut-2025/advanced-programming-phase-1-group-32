@@ -1,0 +1,40 @@
+{
+  "common components": [
+    {
+      "type": "Placeable",
+      "isWalkable": true
+    }
+  ],
+
+  "required components": [
+    {
+      "type": "Harvestable"
+    }
+  ],
+  "common tags": [
+    "FORAGING_CROP"
+  ],
+
+  "entities": [
+    {
+      "name": "Daffodil",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 30
+        },
+        {
+          "type": "Edible",
+          "energy": 0
+        },{
+          "type": "Harvestable"
+        },
+        {
+          "type": "Growable",
+          "seasons": ["SPRING"]
+        }
+      ]
+    }
+  ]
+
+}
