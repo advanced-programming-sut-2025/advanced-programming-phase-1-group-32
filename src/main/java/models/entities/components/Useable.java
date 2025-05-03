@@ -69,7 +69,7 @@ public class Useable extends EntityComponent{
     private Result applyFunctions(Tile targetTile) {
         StringBuilder errors = new StringBuilder();
         for (UseFunction function : functions) {
-            Result result = function.use(targetTile);
+            Result result = function.use(App.getLoggedInAccount().getActiveGame().getCurrentPlayer(), entity, targetTile);
             if(!result.isSuccessful())
                 errors.append(result).append("\n");
         }
