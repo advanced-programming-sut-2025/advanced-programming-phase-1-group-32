@@ -43,11 +43,20 @@ public class EntityRegistry {
                         try {
                             JsonNode jsonRoot = mapper.readTree(path.toFile());
 
-                            Entity[] entities = mapper.treeToValue(jsonRoot.get("entities"), Entity[].class);
+                            ArrayList<Entity> entities = new ArrayList<>();
+                            for(JsonNode n : jsonRoot.get("entities")){
+                                String name = n.get("name").toString();
+                                try {
+                                    entities.add(mapper.treeToValue(n, Entity.class));
+                                } catch (RuntimeException e) {
+                                    System.err.println(name);
+                                    throw new RuntimeException(e);
+                                }
+                            }
                             EntityComponent[] commonComponents = mapper.treeToValue(jsonRoot.get("common components"),
                                                                                                   EntityComponent[].class);
-                            EntityComponent[] requiredComponents = mapper.treeToValue(jsonRoot.get("required components"),
-                                                                                                    EntityComponent[].class);
+                            String[] requiredComponents = mapper.treeToValue(jsonRoot.get("required components"),
+                                                                                                    String[].class);
                             EntityTag[] commonTags = mapper.treeToValue(jsonRoot.get("common tags"),
                                                                                     EntityTag[].class);
                             if(entities == null){
@@ -60,8 +69,15 @@ public class EntityRegistry {
                                     }
                                 }
                                 if(requiredComponents != null){
-                                    for(EntityComponent c : requiredComponents){
-                                        if(e.getComponent(c.getClass()) == null){
+                                    for(String c : requiredComponents){
+                                        boolean found = false;
+                                        for(EntityComponent ec : e.getComponents()){
+                                            if(ec.getClass().getSimpleName().equalsIgnoreCase(c)){
+                                                found = true;
+                                                break;
+                                            }
+                                        }
+                                        if(!found){
                                             throw new RuntimeException("The entity \"" + e.getName() +"\n in the data file " + path + " doesn't have the" +
                                                     "required component: " + c.getClass());
                                         }
@@ -72,7 +88,7 @@ public class EntityRegistry {
                                         e.addTag(t);
                                     }
                                 }
-                                this.registry.putIfAbsent(e.getName(), e);
+                                this.registry.putIfAbsent(e.getName().toLowerCase(), e);
                             }
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -85,18 +101,18 @@ public class EntityRegistry {
     }
 
     public boolean doesEntityExist(String entityName){
-        Entity entity = this.registry.get(entityName);
+        Entity entity = this.getEntityDetails(entityName);
         return entity != null;
     }
     public Entity makeEntity(String name){
-        Entity entity = this.registry.get(name);
+        Entity entity = this.registry.get(name.toLowerCase());
         if(entity == null){
             throw new RuntimeException("no entity found with the name " + name);
         }
         return entity.clone();
     }
     public Entity getEntityDetails(String name){
-        Entity entity = this.registry.get(name);
+        Entity entity = this.registry.get(name.toLowerCase());
         if(entity == null){
             throw new RuntimeException("no entity found with the name " + name);
         }

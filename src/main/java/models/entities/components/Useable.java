@@ -62,14 +62,13 @@ public class Useable extends EntityComponent{
                         || Math.abs(player.getPosition().getRow() - targetTile.getRow()) > 2
         )
             return new Result(false, "You don't access this tile");
-        player.reduceEnergy(energyCost);
         return applyFunctions(targetTile);
     }
 
     private Result applyFunctions(Tile targetTile) {
         StringBuilder errors = new StringBuilder();
         for (UseFunction function : functions) {
-            Result result = function.use(App.getLoggedInAccount().getActiveGame().getCurrentPlayer(), entity, targetTile);
+            Result result = function.use(entity, targetTile);
             if(!result.isSuccessful())
                 errors.append(result).append("\n");
         }
@@ -78,6 +77,4 @@ public class Useable extends EntityComponent{
         errors.deleteCharAt(errors.length() - 1);
         return new Result(false, errors.toString());
     }
-
-
 }

@@ -9,9 +9,8 @@
 
   ],
   "required components" : [
-    {
-      "type" : "Useable"
-    }
+    "Useable"
+
   ],
   "common tags": [
     "TOOL"
@@ -49,10 +48,10 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            "CHOP_TREE",
-            "DESTROY_BRANCHES"
-          ],
-          "energyCost" : 5
+            "CHOP_TREE"
+          ]
+        },{
+          "type" : "Upgradable"
         }
       ]
     },

@@ -2,113 +2,148 @@ package models.entities;
 
 import models.App;
 import models.Tile;
-import models.entities.components.Harvestable;
+import models.entities.components.harvestable.Harvestable;
+import models.entities.components.Upgradable;
+import models.entities.components.inventory.Inventory;
 import models.enums.EntityTag;
 import models.enums.SkillType;
 import models.enums.TileType;
 import models.player.Player;
 import records.Result;
 
+import java.util.ArrayList;
+
+
 public enum UseFunction {
     //TODO: check functionalities
-    PLOW {
+    PLOW () {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
+        public Result use(Player player,Entity tool, Tile tile, Entity target) {
+            if(tile.getContent() != null){
+                return new Result(false, "The tile isn't empty");
+            }
             tile.setType(TileType.HOED_GROUND);
-            return new Result(true, "Ground converted to Hoed_ground");
+            int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+            energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            //TODO: weather effects?
+            player.reduceEnergy(Math.abs(energyCost));
+            player.addExperince(SkillType.FARMING, 5);
+            return new Result(true, "Ground converted to Hoed ground");
         }
     },
-    DE_PLOW {
+    DE_PLOW(){
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            if(tile.getType().equals(TileType.HOED_GROUND))
-                tile.setType(TileType.GRASS); //TODO: grass or something else?
-            return new Result(true, "");
+        public Result use(Player player,Entity tool, Tile tile, Entity target) {
+            if(tile.getContent() != null){
+                return new Result(false, "The tile isn't empty");
+            }
+            tile.setType(TileType.GRASS);
+            int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+            energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            //TODO: weather effects?
+            player.reduceEnergy(Math.abs(energyCost));
+            player.addExperince(SkillType.FARMING, 5);
+            return new Result(true, "Hoed Ground converted to Grass");
         }
     },
-    MINING {
+    MINING(){
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     DESTROY_ITEMS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     CHOP_TREE {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            player.getSkill(skill).addExperience(5);
-            Entity entity = tile.getContent();
-            if(!entity.hasTag(EntityTag.TREE)) // TODO: shakhe
-                return new Result(false, "there is no tree");
-            Harvestable harvestable = entity.getComponent(Harvestable.class);
-            return harvestable.harvest();
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+            Entity tree = tile.getContent();
+            if(tree == null){
+                return new Result(false, "No tree to chop!");
+            }
+
+            Harvestable harvestable = tree.getComponent(Harvestable.class);
+            int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+            energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            //TODO: weather effects?
+            player.reduceEnergy(Math.abs(energyCost));
+            if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
+                return new Result(false, "Your axe cant chop that tree. you need " + harvestable.getMaterial() + " axe.");
+            }
+            player.addExperince(SkillType.FORAGING, 5);
+
+            ArrayList<Entity> harvestedEntities = harvestable.harvest();
+            tree.delete();
+
+            for(Entity e : harvestedEntities){
+                player.getComponent(Inventory.class).addItem(e);
+            }
+            return new Result(true, "");
         }
     },
     DESTROY_BRANCHES {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     WATER_GROUND {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     FILL_WATER {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     FISH {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     CUT_GRASS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     HARVEST_CROPS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     EXTRACT_MILK {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /*TODO*/
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     COLLECT_WOOL {
         @Override
-        public Result use(Player player, Entity tool, Tile tile) {
-            /* TODO */
+        public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     ;
 
-    protected SkillType skill;
-    abstract public Result use(Player player, Entity tool, Tile tile);
+
+    abstract public Result use(Player player,Entity tool, Tile tile, Entity target);
+    public Result use(Entity tool, Tile tile, Entity target){
+        return this.use(App.getActiveGame().getCurrentPlayer(), tool, tile, target);
+    }
+    public Result use(Entity tool, Tile tile){
+        return this.use(App.getActiveGame().getCurrentPlayer(), tool, tile, null);
+    }
+    public Result use(Entity tool, Entity target){
+        return this.use(App.getActiveGame().getCurrentPlayer(), tool, null, target);
+    }
 }

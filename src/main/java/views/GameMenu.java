@@ -1,5 +1,6 @@
 package views;
 
+import com.fasterxml.jackson.databind.deser.impl.InnerClassProperty;
 import controllers.GameMenuController;
 import models.*;
 import models.Commands.GameMenuCommands;
@@ -8,6 +9,7 @@ import models.entities.components.Pickable;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
+import models.enums.Direction;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
@@ -137,6 +139,8 @@ public class GameMenu implements AppMenu {
                 App.getView().getRenderer().mvAddchColored(p.getPosition().getCol(), p.getPosition().getRow(), '@', new Color(255, 255, 50), playerPosition);
             }
             App.getView().getRenderer().render();
+            App.getView().getRenderer().moveCurser(0, 0);
+            showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
         }
     }
     public void printMap(GameMap map) {
@@ -204,20 +208,7 @@ public class GameMenu implements AppMenu {
         } else if((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
             System.out.println(controller.toolsUpgrade(/*TODO*/));
         } else if((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
-
-            Map<String, int[]> directions = Map.of(
-                    "1", new int[]{1, -1},/*{dy, dx}*/
-                    "2", new int[]{1,0},
-                    "3", new int[]{1,1},
-                    "4", new int[]{0,-1},
-                    "6", new int[]{0,1},
-                    "7", new int[]{-1,-1},
-                    "8", new int[]{-1,0},
-                    "9", new int[]{-1,1}
-            );
-            int[] dir = directions.get(matcher.group("direction"));
-            //TODO: handle direction (for now should input direction with numPad)
-            System.out.println(controller.toolsUse(dir));
+            System.out.println(controller.toolsUse(Direction.getDirection(Integer.parseInt(matcher.group("direction")))));
 
         } else {
             System.out.println("Invalid Command!");

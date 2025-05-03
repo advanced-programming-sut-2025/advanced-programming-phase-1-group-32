@@ -1,17 +1,13 @@
 {
   "common components": [
     {
-      "type": "Placeable",
-      "isWalkable": true
-    },{
-      "type": "Pickable"
+      "type": "Pickable",
+      "maxStack": 16
     }
   ],
 
   "required components": [
-    {
-      "type": "SeedComponent"
-    }
+    "SeedComponent"
   ],
   "common tags": [
     "SEED"
@@ -20,6 +16,14 @@
   "entities": [
     {
       "name": "Jazz Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Blue Jazz"]
+        }
+      ]
+    },{
+      "name": "Pine Seed",
       "components": [
         {
           "type": "SeedComponent",

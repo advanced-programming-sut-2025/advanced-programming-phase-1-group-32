@@ -12,6 +12,7 @@ show menus
 menu enter Game Menu
 game new -u Ilia AliAlm
 toggle map
+game new -u Ilia
 cheat give item "Axe" 1
 cheat give item "Axe" 2
 show inventory
@@ -21,3 +22,4 @@ showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
 friendships
+tools equip Axe

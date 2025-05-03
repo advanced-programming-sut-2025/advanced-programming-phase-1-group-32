@@ -11,9 +11,7 @@
     }
   ],
   "required components": [
-    {
-      "type": "Growable"
-    }
+    "Growable"
   ],
   "common tags": [
     "CROP"
@@ -44,11 +42,6 @@
         {
           "type": "Sellable",
           "price": 50
-        },
-        {
-          "type": "Harvestable",
-          "regrowthTime": 0,
-          "oneTime": true
         }
       ]
     }

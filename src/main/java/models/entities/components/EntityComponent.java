@@ -1,6 +1,7 @@
 package models.entities.components;
 import com.fasterxml.jackson.annotation.*;
 import models.entities.Entity;
+import models.entities.components.harvestable.Harvestable;
 import models.entities.components.inventory.Inventory;
 
 /***
