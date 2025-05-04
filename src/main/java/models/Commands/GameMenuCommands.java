@@ -71,7 +71,7 @@ public enum GameMenuCommands implements Commands {
     CRAFTING_SHOW_RECIPES("^crafting\\s+show\\s+recipes$"),
     CRAFTING_CRAFT("^crafting\\s+craft\\s+(?<itemName>.+)"),
     COOKING_SHOW_RECIPES("^cooking\\s+show\\s+recipes$"),
-    COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName.+)$"),
+    COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName>.+)$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
 

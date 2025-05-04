@@ -464,8 +464,20 @@ public class GameMenuController implements Controller {
     }
 
     public Result craft(String name){
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Recipe recipe = App.recipeRegistry.getRecipe(name);
+        if(recipe == null)
+            return new Result(false, "Invalid recipe name");
 
-        return null;
+        if(!player.hasRecipe(recipe))
+            return new Result(false, "You didn't unlocked this recipe");
+        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+            return new Result(false, "you don't have enough items");
+        Entity output = recipe.craft(player.getComponent(Inventory.class));
+        //TODO: if inventory is full drop output on ground
+        Result result = player.getComponent(Inventory.class).addItem(output);
+        return new Result(true, name + " added to your inventory successfully");
+
     }
 
     public Result placeItem() {

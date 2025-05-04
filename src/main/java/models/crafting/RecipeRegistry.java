@@ -65,6 +65,10 @@ public class RecipeRegistry {
         return result;
     }
 
+    public Recipe getRecipe(String name) {
+        return registry.get(name);
+    }
+
 
 
 }

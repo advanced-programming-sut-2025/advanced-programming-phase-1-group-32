@@ -205,4 +205,12 @@ public class Player extends Entity{
     public ArrayList<Recipe> getUnlockedRecipes() {
         return new ArrayList<>(unlockedRecipes);
     }
+
+    public boolean hasRecipe(String name) {
+        return hasRecipe(App.recipeRegistry.getRecipe(name));
+    }
+
+    public boolean hasRecipe(Recipe recipe) {
+        return unlockedRecipes.contains(recipe);
+    }
 }
