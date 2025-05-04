@@ -2,6 +2,7 @@ package models.entities;
 
 import models.App;
 import models.Tile;
+import models.entities.components.Growable;
 import models.entities.components.harvestable.Harvestable;
 import models.entities.components.Upgradable;
 import models.entities.components.inventory.Inventory;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 
 
 public enum UseFunction {
-    //TODO: check functionalities
     PLOW () {
         @Override
         public Result use(Player player,Entity tool, Tile tile, Entity target) {
@@ -46,7 +46,7 @@ public enum UseFunction {
             return new Result(true, "Hoed Ground converted to Grass");
         }
     },
-    MINING(){
+    MINE(){
         @Override
         public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
@@ -87,6 +87,7 @@ public enum UseFunction {
     },
     DESTROY_BRANCHES {
         @Override
+        //TODO
         public Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
@@ -118,7 +119,12 @@ public enum UseFunction {
     HARVEST_CROPS {
         @Override
         public Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+            Entity entity = tile.getContent();
+            Growable growable;
+            if(entity == null || (growable = entity.getComponent(Growable.class)) == null){
+                return new Result(false, "nothing to harvest in that tile");
+            }
+            return new Result(true, "havij");
         }
     },
     EXTRACT_MILK {

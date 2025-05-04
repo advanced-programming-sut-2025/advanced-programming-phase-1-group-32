@@ -12,7 +12,9 @@ show menus
 menu enter Game Menu
 game new -u AliAlm
 cheat give item "Axe" 1
-cheat give item "Axe" 2
+cheat give item "Pickaxe" 1
+cheat give item "Hoe" 1
+cheat give item "Scythe" 1
 show inventory
 cheat give item "Apple" 20
 plant -s Jazz Seeds -d down

@@ -32,4 +32,12 @@ public class Upgradable extends EntityComponent{
     public EntityComponent clone() {
         return new Upgradable(this);
     }
+
+    @Override
+    public boolean isTheSame(EntityComponent other) {
+        if(!(other instanceof Upgradable)) return false;
+
+        Upgradable otherUpgradable = (Upgradable) other;
+        return (this.material == otherUpgradable.material);
+    }
 }

@@ -37,4 +37,12 @@ public class Edible extends EntityComponent{
     public EntityComponent clone() {
         return new Edible(this);
     }
+
+    @Override
+    public boolean isTheSame(EntityComponent other) {
+        if(!(other instanceof Edible)) return false;
+
+        Edible otherEdible = (Edible) other;
+        return this.energy == otherEdible.energy;
+    }
 }

@@ -27,4 +27,12 @@ public class Sellable extends EntityComponent{
     public EntityComponent clone() {
         return new Sellable(this);
     }
+
+    @Override
+    public boolean isTheSame(EntityComponent other) {
+        if(!(other instanceof Sellable)) return false;
+
+        Sellable otherSellable = (Sellable) other;
+        return this.price == otherSellable.price;
+    }
 }
