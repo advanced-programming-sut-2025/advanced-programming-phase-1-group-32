@@ -170,4 +170,15 @@ public class Entity implements Cloneable{
         }
     }
 
+    public boolean isTheSameAs(Entity other){
+        if(!this.name.equals(other.name)) return false;
+
+        for(EntityComponent c : this.components){
+            EntityComponent c2 = other.getComponent(c.getClass());
+            if(c2 == null) return false;
+
+            if(!c2.isTheSame(c2))return false;
+        }
+        return true;
+    }
 }

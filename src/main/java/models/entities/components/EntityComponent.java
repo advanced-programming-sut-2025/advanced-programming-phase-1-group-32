@@ -40,4 +40,7 @@ abstract public class EntityComponent implements Cloneable {
     }
 
     public abstract EntityComponent clone();
+    public boolean isTheSame(EntityComponent other){
+        return true;
+    }
 }

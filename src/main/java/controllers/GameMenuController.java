@@ -362,7 +362,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "There is no seed with name" + seedString);
         }
 
-        Entity seed = App.entityRegistry.makeEntity(seedString);
+        Entity seed = App.entityRegistry.getEntityDetails(seedString);
 
         if (!seed.hasTag(EntityTag.SEED)) {
             return new Result(false, "There is no seed with name" + seedString);
@@ -374,7 +374,7 @@ public class GameMenuController implements Controller {
         }
 
 
-        //TODO: check if its available in inventory
+        Entity seed = player.getComponent(Inventory.class).tak
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
         if (tile.getType() != TileType.PLANTED_GROUND) tile.setType(TileType.HOED_GROUND);

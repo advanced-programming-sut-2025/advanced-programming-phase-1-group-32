@@ -13,38 +13,11 @@
   ],
   "required components" : [
     "Useable"
-
   ],
   "common tags": [
     "TOOL"
   ],
   "entities" : [
-    {
-      "name" : "Hoe",
-      "components" : [
-        {
-          "type" : "Useable",
-          "useFunctions" : [
-            "PLOW"
-          ],
-          "energyCost" : 5
-        }
-      ]
-    },
-    {
-      "name" : "Pickaxe",
-      "components" : [
-        {
-          "type" : "Useable",
-          "useFunctions" : [
-            "MINING",
-            "DE_PLOW",
-            "DESTROY_ITEMS"
-          ],
-          "energyCost" : 5
-        }
-      ]
-    },
     {
       "name" : "Axe",
       "components" : [
@@ -53,69 +26,36 @@
           "useFunctions" : [
             "CHOP_TREE"
           ]
-        },{
-          "type" : "Upgradable"
         }
       ]
-    },
-    {
-      "name" : "Watering can",
+    },{
+      "name" : "Hoe",
       "components" : [
         {
           "type" : "Useable",
           "useFunctions" : [
-            "WATER_GROUND",
-            "FILL_WATER"
-          ],
-          "energyCost" : 5
-        }
-      ]
-    },
-    {
-      "name" : "Fishing pole",
-      "components" : [
-        {
-          "type" : "Useable",
-          "useFunctions" : [
-
+            "PLOW"
           ]
         }
       ]
-    },
-    {
-      "name" : "Seyth",
+    },{
+      "name" : "Scythe",
       "components" : [
         {
           "type" : "Useable",
           "useFunctions" : [
-            "CUT_GRASS",
-            "HARVEST_CROPS"
-          ],
-          "energyCost" : 2
+            "CHOP_TREE"
+          ]
         }
       ]
-    },
-    {
-      "name" : "Milk pail",
+    },{
+      "name" : "Pickaxe",
       "components" : [
         {
           "type" : "Useable",
           "useFunctions" : [
-            "EXTRACT_MILK"
-          ],
-          "energyCost" : 4
-        }
-      ]
-    },
-    {
-      "name" : "Shear",
-      "components" : [
-        {
-          "type" : "Useable",
-          "useFunctions" : [
-            "COLLECT_WOOL"
-          ],
-          "energyCost" : 4
+            "DE_PLOW"
+          ]
         }
       ]
     }

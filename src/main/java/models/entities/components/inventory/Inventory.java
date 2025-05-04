@@ -61,7 +61,7 @@ public class Inventory extends EntityComponent {
         }
 
         Pickable pickable = entity.getComponent(Pickable.class);
-        if (entity2.getName().equals(entity.getName())) {
+        if (entity2.isTheSameAs(entity)) {
             Pickable pickable2 = entity2.getComponent(Pickable.class);
             int leftSpace = pickable2.getMaxStack() - pickable2.getStackSize();
             int picked = Math.min(leftSpace, pickable.getStackSize());
@@ -125,7 +125,7 @@ public class Inventory extends EntityComponent {
         //add to existing stacks of the same item if possible
         for (InventorySlot s : this.slots) {
             Entity entity2 = s.getEntity();
-            if (entity2 != null && entity2.getName().equals(entity.getName())) {
+            if (entity2 != null && entity2.isTheSameAs(entity)) {
                 Pickable pickable2 = entity2.getComponent(Pickable.class);
                 int leftSpace = pickable2.getMaxStack() - pickable2.getStackSize();
                 int picked = Math.min(leftSpace, pickable.getStackSize());
@@ -180,7 +180,7 @@ public class Inventory extends EntityComponent {
             return new Result(true, "");
         }
 
-        if (sourceEntity.getName().equals(destEntity.getName())) {
+        if (sourceEntity.isTheSameAs(destEntity)) {
             return new Result(false, "");
         }
 
@@ -270,6 +270,28 @@ public class Inventory extends EntityComponent {
 
     public boolean doesHaveItem(String name) {
         return this.getItem(name) != null;
+    }
+
+    public Entity takeFromInventory(Entity entity, int amount){
+        Entity takenEntity = entity.clone();
+        Pickable pickable = entity.getComponent(Pickable.class);
+        pickable.setStackSize(0);
+
+        for(InventorySlot s : slots){
+            Entity e = s.getEntity();
+            if(e == null) continue;
+            if(e.isTheSameAs(entity)){
+                int stackSize = e.getComponent(Pickable.class).getStackSize();
+                if(stackSize < amount){
+                    e.getComponent(Pickable.class).changeStackSize(-e.getComponent(Pickable.class).getStackSize());
+                }else{
+                    e.getComponent(Pickable.class).changeStackSize(-amount);
+                }
+                amount -= stackSize;
+                pickable.changeStackSize(stackSize);
+            }
+        }
+        return entity;
     }
 
     public boolean doesHaveItem(String name, int amount) {

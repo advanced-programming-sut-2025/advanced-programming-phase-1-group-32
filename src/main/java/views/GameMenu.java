@@ -208,10 +208,14 @@ public class GameMenu implements AppMenu {
             Entity entity = s.getEntity();
             System.out.printf("%-2d: ", i);
             if(entity != null){
-                System.out.printf("%s \t%d\n", entity.getName(), entity.getComponent(Pickable.class).getStackSize());
+                System.out.printf("%s \t%d", entity.getName(), entity.getComponent(Pickable.class).getStackSize());
             }else{
-                System.out.print("-\n");
+                System.out.print("-");
             }
+            if(App.getActiveGame().getCurrentPlayer().getActiveSlot() == s){
+                System.out.print(" <active>");
+            }
+            System.out.print("\n");
             i++;
         }
     }
