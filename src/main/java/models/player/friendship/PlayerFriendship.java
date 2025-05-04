@@ -9,8 +9,26 @@ public class PlayerFriendship {
     private final ArrayList<Player> friends;
     private int level;
     private int xp = 0;
+    private boolean hadContactToday = false;
     private boolean hadMessageToday = false;
+    private boolean hadHuggedToday = false;
 
+
+    public boolean isHadContactToday() {
+        return hadContactToday;
+    }
+
+    public void setHadContactToday(boolean hadContactToday) {
+        this.hadContactToday = hadContactToday;
+    }
+
+    public boolean isHadHuggedToday() {
+        return hadHuggedToday;
+    }
+
+    public void setHadHuggedToday(boolean hadHuggedToday) {
+        this.hadHuggedToday = hadHuggedToday;
+    }
 
     public boolean isHadMessageToday() {
         return hadMessageToday;
@@ -45,13 +63,30 @@ public class PlayerFriendship {
     }
 
     public void addXp(int xp) {
+        hadContactToday = true;
         this.xp += xp;
-        if (this.xp >= 100 * (level + 1)) {
-            if (level < 3) {
+        if (this.xp >= (100 * (level + 1))) {
+            if (level < 2) {
                 level++;
-                xp -= 100 * level;
+                this.xp -= 100 * level;
+            } else if (level == 2) {
+                this.xp = 300;
             } else if (level == 3) {
-                xp = 400;
+                this.xp = 400;
+            }
+        }
+    }
+
+    public void reduceXp(int xp) {
+        hadContactToday = true;
+        this.xp -= xp;
+        if (this.xp < 0) {
+            if (level == 0) {
+                xp = 0;
+            } else {
+                xp += 100 * level;
+                level--;
+                // TODO: I dont know what happen if they are married
             }
         }
     }
@@ -82,6 +117,11 @@ public class PlayerFriendship {
     }
 
     public void updateDaily() {
+        if (!hadContactToday) {
+            reduceXp(10);
+        }
         hadMessageToday = false;
+        hadHuggedToday = false;
+        hadContactToday = false;
     }
 }

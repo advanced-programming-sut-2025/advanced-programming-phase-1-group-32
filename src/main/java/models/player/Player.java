@@ -21,18 +21,19 @@ public class Player extends Entity{
     private final Wallet wallet = null;
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
-    private final Entity backPack = null;
     private final Map<Character, NpcFriendship> npcFriendships = null;
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private Player spouse;
     private final ArrayList<Quest> quests = null;
-    private final ArrayList<Gift> giftLog = null;
+    private ArrayList<Gift> giftLog = new ArrayList<>();
+    private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
     private final Account account;
     private InventorySlot activeSlot;
     private boolean haveNewMessage = false;
+    private boolean haveNewGift = false;
 
     public Player(Account account){
         super("Player", new Inventory(12));
@@ -55,6 +56,22 @@ public class Player extends Entity{
         //TODO
     }
 
+    public ArrayList<Gift> getGiftLog() {
+        return giftLog;
+    }
+
+    public void setGiftLog(ArrayList<Gift> giftLog) {
+        this.giftLog = giftLog;
+    }
+
+    public boolean isHaveNewGift() {
+        return haveNewGift;
+    }
+
+    public void setHaveNewGift(boolean haveNewGift) {
+        this.haveNewGift = haveNewGift;
+    }
+
     public void trashItem(Entity item) {
 
     }
@@ -66,6 +83,7 @@ public class Player extends Entity{
     public void setEnergy(Energy energy) {
         this.energy = energy;
     }
+
     public void reduceEnergy(int energyCost) {
         this.energy.setAmount(energy.getAmount() - energyCost);
         if(energy.getAmount() < 0)
@@ -74,10 +92,6 @@ public class Player extends Entity{
 
     public Wallet getWallet() {
         return this.wallet;
-    }
-
-    public Entity getBackPack() {
-        return backPack;
     }
 
     public Player getSpouse() {
@@ -158,6 +172,29 @@ public class Player extends Entity{
                 message.setSeen(true);
             }
         }
+    }
+
+    public void receiveGift(Gift gift) {
+        giftLog.add(gift);
+        gift.setId(giftId);
+        giftId++;
+        haveNewGift = true;
+        // TODO: add to box
+    }
+
+    public void receiveFlower() {
+
+
+    }
+
+
+    public Gift findGift(int giftId) {
+        for (Gift gift : giftLog) {
+            if (gift.getId() == giftId) {
+                return gift;
+            }
+        }
+        return null;
     }
 
     public String getUsername() {

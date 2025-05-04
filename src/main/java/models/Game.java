@@ -101,6 +101,16 @@ public class Game {
         this.tomorrowWeather = tomorrowWeather;
     }
 
+    public boolean checkPlayerDistance(Player player1, Player player2) {
+        Position position1 = player1.getPosition();
+        Position position2 = player2.getPosition();
+
+        int distance = (position1.getRow() - position2.getRow()) * (position1.getRow() - position2.getRow())
+                + (position1.getCol() - position2.getCol()) * (position1.getCol() - position2.getCol());
+
+        return distance < 3;
+    }
+
     public void updateGamePerHour() {
         // this function should update things related to game
         //TODO

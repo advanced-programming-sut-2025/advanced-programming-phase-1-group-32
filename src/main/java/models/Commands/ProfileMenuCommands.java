@@ -21,4 +21,5 @@ public enum ProfileMenuCommands implements Commands{
     public String getPattern() {
         return this.pattern;
     }
+
 }
