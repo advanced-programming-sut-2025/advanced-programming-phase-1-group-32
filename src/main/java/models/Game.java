@@ -3,6 +3,7 @@ package models;
 import models.entities.Entity;
 import models.enums.Weather;
 import models.gameMap.GameMap;
+import models.gameMap.GameMapType;
 import models.player.Player;
 import models.player.friendship.PlayerFriendship;
 
@@ -30,7 +31,7 @@ public class Game {
     public void initGame() {
         setCurrentPlayer(players.get(0));
 
-        setActiveMap(new GameMap(1000, 1000));
+        setActiveMap(new GameMap(GameMapType.DEFAULT));
 
         this.todayWeather = Weather.SUNNY;
         this.tomorrowWeather = Weather.SUNNY;
