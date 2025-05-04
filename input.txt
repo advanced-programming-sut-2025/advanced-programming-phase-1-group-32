@@ -26,3 +26,4 @@ talk history -u AliAlm
 
 tools equip Axe
 
+toggle map
