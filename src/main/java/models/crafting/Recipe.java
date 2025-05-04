@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe {
+public class Recipe{
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
@@ -26,6 +26,7 @@ public class Recipe {
         this.isUnlocked = builder.isUnlocked;
         this.day = builder.day;
         this.hour = builder.hour;
+        this.type = builder.type;
     }
 
     public String getName() {
@@ -36,7 +37,7 @@ public class Recipe {
         return new ArrayList<>(ingredients);
     }
 
-    public boolean isUnlocked() {
+    protected boolean isUnlocked() {
         return isUnlocked;
     }
 
@@ -48,13 +49,26 @@ public class Recipe {
         return hour;
     }
 
+    public RecipeType getType() {
+        return type;
+    }
+
     public void setType(RecipeType type) {
         this.type = type;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb
+                .append("---------------------------------------------------\n")
+                .append(name).append(" Recipe:\n");
+        for (Ingredient ingredient : ingredients) {
+            sb.append(ingredient.toString()).append("\n");
+        }
+        sb.append("---------------------------------------------------\n");
+        return sb.toString();
+    }
 
     @JsonPOJOBuilder(withPrefix = "")
     //@JsonIgnoreProperties(ignoreUnknown = true)
@@ -64,6 +78,7 @@ public class Recipe {
         private boolean isUnlocked;
         private int day;
         private int hour;
+        private RecipeType type;
 
         public Builder() {
         }
@@ -85,7 +100,7 @@ public class Recipe {
         }
 
         /**
-         * Unlock status
+         * is unlock at start of game
          */
         public Builder isUnlocked(boolean isUnlocked) {
             this.isUnlocked = isUnlocked;
@@ -105,6 +120,13 @@ public class Recipe {
         * */
         public Builder hour(int hour) {
             this.hour = hour;
+            return this;
+        }
+        /*
+        * Recipe type
+        * */
+        public Builder type(RecipeType type) {
+            this.type = type;
             return this;
         }
 

@@ -6,4 +6,11 @@ public enum RecipeType {
     ARTISAN
 ;
 
+    public static RecipeType fromName(String name) {
+        for (RecipeType value : RecipeType.values()) {
+            if(value.name().equalsIgnoreCase(name.trim()))
+                return value;
+        }
+        return null;
+    }
 }

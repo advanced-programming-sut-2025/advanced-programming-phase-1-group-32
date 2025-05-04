@@ -2,6 +2,8 @@ package controllers;
 
 import models.*;
 import models.Date;
+import models.crafting.Recipe;
+import models.crafting.RecipeType;
 import models.entities.Entity;
 import models.entities.components.*;
 import models.enums.Direction;
@@ -19,6 +21,7 @@ import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class GameMenuController implements Controller {
@@ -312,7 +315,7 @@ public class GameMenuController implements Controller {
     }
     /* --------------------------------------  -------------------------------------- */
 
-    public Result craftInfo(String name) {
+    public Result   craftInfo(String name) {
         if(!App.entityRegistry.doesEntityExist(name)) {
             return new Result(false, "There is no crop with name" + name);
         }
@@ -447,13 +450,21 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result showCratingRecipes() {
-        //TODO
-        return null;
+    public Result showRecipes(String recipeType) {
+        RecipeType type = RecipeType.fromName(recipeType);
+        Player activePlayer = App.getActiveGame().getCurrentPlayer();
+
+        ArrayList<Recipe> recipes = activePlayer.getUnlockedRecipes();
+        StringBuilder sb = new StringBuilder();
+        for (Recipe recipe : recipes) {
+            if(recipe.getType().equals(type))
+                sb.append(recipe);
+        }
+        return new Result(true, sb.toString());
     }
 
-    public Result craft(){
-        //TODO
+    public Result craft(String name){
+
         return null;
     }
 
@@ -467,10 +478,6 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result showCookingRecipes() {
-        //TODO
-        return null;
-    }
 
     public Result refrigerator() {
         //TODO
