@@ -4,13 +4,13 @@ import models.*;
 import models.Date;
 import models.entities.Entity;
 import models.entities.components.*;
-import models.entities.components.harvestable.Harvestable;
 import models.enums.Direction;
 import models.enums.EntityTag;
 import models.enums.TileType;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
+import models.gameMap.GameMap;
 import models.player.Energy;
 import models.player.Gift;
 import models.player.Message;
@@ -362,9 +362,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "There is no seed with name" + seedString);
         }
 
-        Entity seed = App.entityRegistry.getEntityDetails(seedString);
+        Entity seedDetails = App.entityRegistry.getEntityDetails(seedString);
 
-        if (!seed.hasTag(EntityTag.SEED)) {
+        if (!seedDetails.hasTag(EntityTag.SEED)) {
             return new Result(false, "There is no seed with name" + seedString);
         }
 
@@ -372,9 +372,11 @@ public class GameMenuController implements Controller {
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
+        if(!player.getComponent(Inventory.class).doesHaveItem(seedDetails)){
+            return new Result(false, "you don't have that seed");
+        }
 
-
-        Entity seed = player.getComponent(Inventory.class).tak
+        Entity seed = player.getComponent(Inventory.class).takeFromInventory(seedDetails, 1);
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
         if (tile.getType() != TileType.PLANTED_GROUND) tile.setType(TileType.HOED_GROUND);
@@ -382,7 +384,6 @@ public class GameMenuController implements Controller {
         if (tile == null || !tile.getType().equals(TileType.HOED_GROUND)) {
             return new Result(false, "tile is unavailable for planting");
         }
-
 
         tile.plant(seed);
         return new Result(true, "planted succusfully");

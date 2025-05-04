@@ -1,6 +1,6 @@
 package models.Buildings;
 
-import models.GameMap;
+import models.gameMap.GameMap;
 import models.Position;
 
 abstract public class Building {

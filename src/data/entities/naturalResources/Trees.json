@@ -23,7 +23,7 @@
       "components" : [
         {
           "type" : "Harvestable",
-
+          "material" : "STONE",
           "resources" : [
             {
               "entity" : "Wood",

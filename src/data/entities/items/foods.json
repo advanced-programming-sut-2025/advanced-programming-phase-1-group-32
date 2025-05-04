@@ -6,9 +6,7 @@
     }
   ],
   "required components" : [
-    {
-      "type" : "Edible"
-    }
+    "Edible"
   ],
   "common tags" : [
     "FOOD"
@@ -69,7 +67,5 @@
         }
       ]
     }
-
-
   ]
 }

@@ -71,6 +71,8 @@ public class Useable extends EntityComponent{
             Result result = function.use(entity, targetTile);
             if(!result.isSuccessful())
                 errors.append(result).append("\n");
+            else
+                return new Result(true, "");
         }
         if(errors.isEmpty())
             return new Result(true, "Tool used successfully");

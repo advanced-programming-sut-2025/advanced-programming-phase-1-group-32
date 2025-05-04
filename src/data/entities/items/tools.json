@@ -54,7 +54,8 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            "DE_PLOW"
+            "DE_PLOW",
+            "MINE"
           ]
         }
       ]

@@ -1,7 +1,7 @@
 package models.shop;
 
 import models.Buildings.Building;
-import models.GameMap;
+import models.gameMap.GameMap;
 import models.Position;
 import models.entities.Entity;
 

@@ -49,7 +49,28 @@ public enum UseFunction {
     MINE(){
         @Override
         public Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+            Entity mineral = tile.getContent();
+            if(mineral == null){
+                return new Result(false, "Nothing to mine!");
+            }
+
+            Harvestable harvestable = mineral.getComponent(Harvestable.class);
+            int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+            energyCost -= player.getSkill(SkillType.MINING).getLevel() == 4 ? 1 : 0;
+            //TODO: weather effects?
+            player.reduceEnergy(Math.abs(energyCost));
+            if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
+                return new Result(false, "Your pickaxe cant mine that mineral. you need " + harvestable.getMaterial() + " pickaxe.");
+            }
+            player.addExperince(SkillType.MINING, 5);
+
+            ArrayList<Entity> harvestedEntities = harvestable.harvest();
+            mineral.delete();
+
+            for(Entity e : harvestedEntities){
+                player.getComponent(Inventory.class).addItem(e);
+            }
+            return new Result(true, "");
         }
     },
     DESTROY_ITEMS {
@@ -68,7 +89,7 @@ public enum UseFunction {
 
             Harvestable harvestable = tree.getComponent(Harvestable.class);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
-            energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            energyCost -= player.getSkill(SkillType.FORAGING).getLevel() == 4 ? 1 : 0;
             //TODO: weather effects?
             player.reduceEnergy(Math.abs(energyCost));
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){

@@ -2,6 +2,7 @@ package models;
 
 import models.entities.Entity;
 import models.enums.Weather;
+import models.gameMap.GameMap;
 import models.player.Player;
 import models.player.friendship.PlayerFriendship;
 

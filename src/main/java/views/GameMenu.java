@@ -1,6 +1,5 @@
 package views;
 
-import com.fasterxml.jackson.databind.deser.impl.InnerClassProperty;
 import controllers.GameMenuController;
 import models.*;
 import models.Commands.GameMenuCommands;
@@ -10,13 +9,12 @@ import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Direction;
+import models.gameMap.GameMap;
 import models.player.Player;
-import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 

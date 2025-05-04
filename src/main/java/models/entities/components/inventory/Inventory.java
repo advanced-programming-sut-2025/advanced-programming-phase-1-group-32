@@ -254,6 +254,15 @@ public class Inventory extends EntityComponent {
         }
         return null;
     }
+    public Entity getItem(Entity entity) {
+        ArrayList<Entity> out = new ArrayList<>(slots.size());
+        for (InventorySlot s : slots) {
+            if (s.getEntity() != null && s.getEntity().isTheSameAs(entity)) {
+                return s.getEntity();
+            }
+        }
+        return null;
+    }
 
     public InventorySlot getSlot(String name) {
         for (InventorySlot s : slots) {
@@ -271,8 +280,12 @@ public class Inventory extends EntityComponent {
     public boolean doesHaveItem(String name) {
         return this.getItem(name) != null;
     }
+    public boolean doesHaveItem(Entity entity){
+        return this.getItem(entity) != null;
+    }
 
     public Entity takeFromInventory(Entity entity, int amount){
+        if(!this.doesHaveItem(entity)) return null;
         Entity takenEntity = entity.clone();
         Pickable pickable = entity.getComponent(Pickable.class);
         pickable.setStackSize(0);

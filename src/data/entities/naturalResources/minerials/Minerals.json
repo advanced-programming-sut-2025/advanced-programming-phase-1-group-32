@@ -3,10 +3,30 @@
     {
       "type" : "Placeable",
       "isWalkable" : false
+    },{
+      "type" : "Renderable",
+      "char" : "m",
+      "color" : [150, 150, 150]
     }
   ],
   "required components" : [
+    "Harvestable"
   ],
   "entities" : [
+    {
+      "name" : "Rock",
+      "components" : [
+        {
+          "type" : "Harvestable",
+          "resources" : [
+            {
+              "entity" : "stone",
+              "min" : 2,
+              "max" : 4
+            }
+          ]
+        }
+      ]
+    }
   ]
 }
