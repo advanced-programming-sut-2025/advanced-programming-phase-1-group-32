@@ -5,5 +5,6 @@ public enum EntityTag {
     TREE,
     CROP,
     SEED,
+    FOOD,
     FORAGING_CROP,
 }

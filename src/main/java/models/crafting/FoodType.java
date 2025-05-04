@@ -1,7 +1,9 @@
 package models.crafting;
 
+import java.util.Map;
+
 public enum FoodType {
-    FRIED_EGG(new Recipe(true, null)), /*TODO implement after workshops*/
+    FRIED_EGG(),
     BAKED_FISH(),
     SALAD(),
     OLMELET(),
