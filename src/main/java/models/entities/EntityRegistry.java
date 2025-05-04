@@ -2,6 +2,7 @@ package models.entities;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -41,27 +42,44 @@ public class EntityRegistry {
                         regAddress = regAddress.substring(0, regAddress.lastIndexOf(":"));
 
                         try {
-                            JsonNode jsonRoot = mapper.readTree(path.toFile());
+                            JsonNode jsonRoot;
+                            try {
+                                jsonRoot = mapper.readTree(path.toFile());
+                            } catch (IOException e) {
+                                System.err.println("there was a problem int the file " + path.toString());
+                                throw new RuntimeException(e);
+                            }
 
                             ArrayList<Entity> entities = new ArrayList<>();
+                            if(jsonRoot.get("entities") == null){
+                                throw new RuntimeException("The structure of entity data file is invalid! (" + path.toString() + ")");
+                            }
                             for(JsonNode n : jsonRoot.get("entities")){
-                                String name = n.get("name").toString();
+                                if(n.get("name") == null){
+                                    throw new RuntimeException("an entity in the file " + path.toString() + "has no name");
+                                }
+                                String name = n.get("name").asText();
                                 try {
                                     entities.add(mapper.treeToValue(n, Entity.class));
-                                } catch (RuntimeException e) {
-                                    System.err.println(name);
+                                }catch (JsonProcessingException e) {
+                                    System.err.println("there was a problem in the entity " + name + ", file " + path.toString() + "\n");
                                     throw new RuntimeException(e);
                                 }
                             }
-                            EntityComponent[] commonComponents = mapper.treeToValue(jsonRoot.get("common components"),
-                                                                                                  EntityComponent[].class);
-                            String[] requiredComponents = mapper.treeToValue(jsonRoot.get("required components"),
-                                                                                                    String[].class);
-                            EntityTag[] commonTags = mapper.treeToValue(jsonRoot.get("common tags"),
-                                                                                    EntityTag[].class);
-                            if(entities == null){
-                                throw new RuntimeException("The structure of entity data file is invalid! (" + path.toString() + ")");
+                            EntityTag[] commonTags              = null;
+                            String[] requiredComponents         = null;
+                            EntityComponent[] commonComponents  = null;
+
+                            if(jsonRoot.get("common components") != null){
+                                commonComponents = mapper.treeToValue(jsonRoot.get("common components"),EntityComponent[].class);
                             }
+                            if(jsonRoot.get("required components") != null){
+                                requiredComponents = mapper.treeToValue(jsonRoot.get("required components"), String[].class);
+                            }
+                            if(jsonRoot.get("common tags") != null){
+                                commonTags = mapper.treeToValue(jsonRoot.get("common tags"), EntityTag[].class);
+                            }
+
                             for(Entity e : entities){
                                 if(commonComponents != null){
                                     for(EntityComponent c : commonComponents){
@@ -91,6 +109,7 @@ public class EntityRegistry {
                                 this.registry.putIfAbsent(e.getName().toLowerCase(), e);
                             }
                         } catch (IOException e) {
+                            System.err.println(path.toString());
                             throw new RuntimeException(e);
                         }
                     });
