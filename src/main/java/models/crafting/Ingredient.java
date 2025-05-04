@@ -16,7 +16,7 @@ import java.util.Map;
 public class Ingredient {
     private List<String> contents;
     private List<EntityTag> validTags;
-    int amount;
+    private int amount = 1;
 
     @JsonCreator
     private Ingredient(
@@ -44,7 +44,11 @@ public class Ingredient {
         validTags.remove(tag);
     }
 
-    public boolean isInIngredients(Entity e, int availableAmount) {
+    public int getAmount() {
+        return amount;
+    }
+
+    public boolean isInIngredient(Entity e, int availableAmount) {
         if (!contents.isEmpty()) {
             return contents.contains(e.getName()) && availableAmount >= amount;
         }

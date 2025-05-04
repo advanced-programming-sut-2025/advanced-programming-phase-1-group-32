@@ -159,12 +159,14 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showRecipes("crafting"));
 
             } else if ((matcher = GameMenuCommands.CRAFTING_CRAFT.getMatcher(input)) != null) {
-                System.out.println();
+                System.out.println(controller.craftingCraft(matcher.group("itemName")));
 
             } else if ((matcher = GameMenuCommands.COOKING_SHOW_RECIPES.getMatcher(input)) != null) {
                 System.out.println(controller.showRecipes("cooking"));
 
             } else if ((matcher = GameMenuCommands.COOKING_PREPARE.getMatcher(input)) != null) {
+                System.out.println(controller.cookingPrepare(matcher.group("recipeName")));
+
                 System.out.println();
             }
             /* -------------------------------------------------- -------------------------------------------------- */

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import models.App;
 import models.entities.Entity;
+import models.entities.components.inventory.Inventory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe{
+public class Recipe {
+    /* TODO recipe name should be an Item too*/
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
@@ -30,7 +33,7 @@ public class Recipe{
     }
 
     public String getName() {
-        return name;
+    return name;
     }
 
     public ArrayList<Ingredient> getIngredients() {
@@ -55,6 +58,34 @@ public class Recipe{
 
     public void setType(RecipeType type) {
         this.type = type;
+    }
+
+    public boolean canCraft(Inventory inventory) {
+        for (Ingredient ingredient : ingredients) {
+            boolean innerCanCraft = false;
+            for (Entity entity : inventory.getEntities()) {
+                if(ingredient.isInIngredient(entity, inventory.getItemCount(entity)))
+                    innerCanCraft = true;
+            }
+            if(!innerCanCraft)
+                return false;
+        }
+        return true;
+    }
+
+    /*
+    *Should check can craft before it
+    **/
+    public Entity craft(Inventory inventory) {
+        for (Ingredient ingredient : ingredients) {
+            for (Entity entity : inventory.getEntities()) {
+                if(ingredient.isInIngredient(entity, inventory.getItemCount(entity))) {
+                    inventory.takeFromInventory(entity.getName(), ingredient.getAmount());
+                    break;
+                }
+            }
+        }
+        return App.entityRegistry.makeEntity(name);
     }
 
     @Override
@@ -100,7 +131,7 @@ public class Recipe{
         }
 
         /**
-         * is unlock at start of game
+         * is unlocked at start of game
          */
         public Builder isUnlocked(boolean isUnlocked) {
             this.isUnlocked = isUnlocked;

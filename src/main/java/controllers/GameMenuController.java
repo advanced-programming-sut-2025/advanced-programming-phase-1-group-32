@@ -21,7 +21,6 @@ import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class GameMenuController implements Controller {
@@ -463,9 +462,47 @@ public class GameMenuController implements Controller {
         return new Result(true, sb.toString());
     }
 
-    public Result craft(String name){
+    /*
+    private Result craftRecipe(String recipeName){
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
+        if(recipe == null)
+            return new Result(false, "Invalid recipe name");
 
-        return null;
+        if(!player.hasRecipe(recipe))
+            return new Result(false, "You didn't unlocked this recipe");
+        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+            return new Result(false, "you don't have enough items");
+        Entity output = recipe.craft(player.getComponent(Inventory.class));
+        //TODO: if inventory is full drop output on ground
+        Result result = player.getComponent(Inventory.class).addItem(output);
+        if(!result.isSuccessful())
+            return new Result(false, "something wrong happened!");
+        return new Result(true, recipeName + " added to your inventory successfully");
+
+    }
+    *
+     */
+
+    public Result craftingCraft(String recipeName) {
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
+        if(recipe == null)
+            return new Result(false, "Invalid recipe name");
+        if(!player.hasRecipe(recipe))
+            return new Result(false, "You didn't unlocked this recipe");
+        if(!recipe.getType().equals(RecipeType.CRAFTING))
+            return new Result(false, "this is not a crafting recipe!");
+        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+            return new Result(false, "you don't have enough items");
+        Entity output = recipe.craft(player.getComponent(Inventory.class));
+        //TODO: if inventory is full drop output on ground
+        Result result = player.getComponent(Inventory.class).addItem(output);
+        if(!result.isSuccessful())
+            return new Result(false, "something wrong happened!");
+
+        App.getActiveGame().getCurrentPlayer().reduceEnergy(2);
+        return new Result(true, recipeName + " crafted and added to your inventory successfully");
     }
 
     public Result placeItem() {
@@ -484,9 +521,28 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result cookingPrepare() {
-        //TODO
-        return null;
+    public Result cookingPrepare(String recipeName) {
+        //TODO: it should handle player inventory and refrigerator inventory
+
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
+        if(recipe == null)
+            return new Result(false, "Invalid recipe name");
+        if(!player.hasRecipe(recipe))
+            return new Result(false, "You didn't unlocked this recipe");
+        if(!recipe.getType().equals(RecipeType.COOKING))
+            return new Result(false, "this is not a cooking recipe!");
+        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+            return new Result(false, "you don't have enough items");
+        Entity output = recipe.craft(player.getComponent(Inventory.class));
+        //TODO: if inventory is full drop output on ground
+        Result result = player.getComponent(Inventory.class).addItem(output);
+        if(!result.isSuccessful())
+            return new Result(false, "something wrong happened!");
+
+        App.getActiveGame().getCurrentPlayer().reduceEnergy(3);
+        return new Result(true, recipeName + " cooked and added to your inventory successfully");
+
     }
 
     public Result eat() {
