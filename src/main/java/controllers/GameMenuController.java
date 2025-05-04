@@ -572,42 +572,166 @@ public class GameMenuController implements Controller {
             return new Result(false, "Item not found");
         }
 
+        if (game.getFriendshipWith(giftedPlayer).getLevel() == 0) {
+//            return new Result(false, "Don't be cousin too soon:)");
+        }
+
         Entity item = App.entityRegistry.makeEntity(itemName);
+        if (item.getComponent(Pickable.class) == null) {
+            return new Result(false, "You can't gift this item!");
+        }
         item.getComponent(Pickable.class).setStackSize(amount);
 
         //TODO: check is there enough of the item and reduce
-//        if (currentPlayer.getComponent(Inventory.class).doesHaveItem()) {}
+//        if (!currentPlayer.getComponent(Inventory.class).doesHaveItem(itemName, amount)) {
+//            return new Result(false, "You don't have " + amount + " items!");
+//        }
+//        currentPlayer.getComponent(Inventory.class).removeItem(itemName, amount);
 
         Gift gift = new Gift(currentPlayer, giftedPlayer, item, game.getDate());
         giftedPlayer.receiveGift(gift);
 
 
-        return null;
+        return new Result(true, "You gave gift to " + giftedPlayer.getUsername());
     }
 
     public Result giftList() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("Your gift list:\n");
+
+        for (Gift gift : currentPlayer.getGiftLog()) {
+            message.append(gift.toString());
+        }
+
+        return new Result(true, message.toString());
     }
 
-    public Result giftRate() {
-        //TODO
-        return null;
+    public Result giftRate(int giftNumber, int rating) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Gift gift = currentPlayer.findGift(giftNumber);
+
+        if (gift == null) {
+            return new Result(false, "Gift not found");
+        }
+
+        if (gift.getRating() != -1) {
+            return new Result(false, "You have already rated this gift.");
+        }
+
+        if (rating < 1 || rating > 5) {
+            return new Result(false, "Rating must be between 1 and 5");
+        }
+
+        gift.setRating(rating);
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(gift.getSender());
+        if (rating < 3) playerFriendship.reduceXp((3 - rating) * 30 - 15);
+        else playerFriendship.addXp((rating - 3) * 30 + 15);
+
+        return new Result(true, "Rated successfully!");
     }
 
-    public Result giftHistory() {
-        //TODO
-        return null;
+    public Result giftHistory(String username) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player giftedPlayer = game.findPlayer(username);
+        if (giftedPlayer == null) {
+            return new Result(false, "Player not found");
+        }
+
+        if (giftedPlayer == currentPlayer) {
+            return new Result(false, ":/");
+        }
+
+        StringBuilder message = new StringBuilder("Your gift history with ");
+        message.append(giftedPlayer.getUsername()).append(":\n");
+
+        ArrayList<Gift> gifts = new ArrayList<>();
+        for (Gift gift : currentPlayer.getGiftLog()) {
+            if (gift.getSender().equals(giftedPlayer)) {
+                gifts.add(gift);
+            }
+        }
+
+        for (Gift gift : giftedPlayer.getGiftLog()) {
+            if (gift.getSender().equals(giftedPlayer)) {
+                gifts.add(gift);
+            }
+        }
+
+        for (Gift gift : gifts) {
+            message.append(gift.getGiftDetail()).append("\n");
+        }
+
+
+        return new Result(true, message.toString());
     }
 
-    public Result hug() {
-        //TODO
-        return null;
+    public Result hug(String username) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player huggedPlayer = game.findPlayer(username);
+        if (huggedPlayer == null) {
+            return new Result(false, "Player not found");
+        }
+
+        if (huggedPlayer == currentPlayer) {
+            return new Result(false, "You can't hug yourself!");
+        }
+
+        if (!game.checkPlayerDistance(huggedPlayer, currentPlayer)) {
+            return new Result(false, "You can't hug from this distance!");
+        }
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(huggedPlayer);
+
+        if(playerFriendship.getLevel() < 2) {
+            return new Result(false, "too soon for a hug;)");
+        }
+
+
+        if (playerFriendship.isHadHuggedToday()) {
+            return new Result(false, "You have already hugged today!");
+        }
+
+        playerFriendship.setHadHuggedToday(true);
+        playerFriendship.addXp(60);
+
+        return new Result(true, "Hugged successfully!");
     }
 
-    public Result flower() {
-        //TODO
-        return null;
+    public Result flower(String username) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player floweredPlayer = game.findPlayer(username);
+
+        if (floweredPlayer == null) {
+            return new Result(false, "Player not found");
+        }
+
+        if (floweredPlayer == currentPlayer) {
+            return new Result(false, "You can't flower yourself!");
+        }
+
+        if (!game.checkPlayerDistance(floweredPlayer, currentPlayer)) {
+            return new Result(false, "You can't flower from this distance!");
+        }
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(floweredPlayer);
+        if (playerFriendship.getLevel() < 2 || playerFriendship.getXp() < 300) {
+            return new Result(false, "not time for flower");
+        }
+
+        // TODO: check inventory and reduce
+
+        if (playerFriendship.getLevel() == 2) {
+            playerFriendship.setLevel(3);
+            playerFriendship.setXp(0);
+        }
+
+        return new Result(true, "You have flowered " + floweredPlayer.getUsername() + "!");
     }
 
     public Result askMarriage(){

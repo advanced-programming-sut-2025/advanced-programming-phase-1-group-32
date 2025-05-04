@@ -122,6 +122,26 @@ public class GameMenu implements AppMenu {
             } else if (GameMenuCommands.FRIENDSHIPS.getMatcher(input) != null) {
                 System.out.println(controller.friendship());
 
+            } else if ((matcher = GameMenuCommands.GIFT.getMatcher(input)) != null) {
+                System.out.println(controller.giveGift(matcher.group(1).trim(), matcher.group(2).trim(),
+                        Integer.parseInt(matcher.group(3))));
+
+            } else if (GameMenuCommands.GIFT_LIST.getMatcher(input) != null) {
+                System.out.println(controller.giftList());
+
+            } else if ((matcher =GameMenuCommands.GIFT_RATE.getMatcher(input)) != null) {
+                System.out.println(controller.giftRate(Integer.parseInt(matcher.group(1)),
+                        Integer.parseInt(matcher.group(2))));
+
+            } else if ((matcher = GameMenuCommands.GIFT_HISTORY.getMatcher(input)) != null) {
+                System.out.println(controller.giftHistory(matcher.group(1).trim()));
+                
+            } else if ((matcher = GameMenuCommands.HUG.getMatcher(input)) != null) {
+                System.out.println(controller.hug(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.FLOWER.getMatcher(input)) != null) {
+                System.out.println(controller.flower(matcher.group(1).trim()));
+
             } else {
                 System.out.println("Invalid Command!");
             }

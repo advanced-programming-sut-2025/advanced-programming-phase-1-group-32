@@ -25,6 +25,7 @@ public class Player extends Entity{
     private Player spouse;
     private final ArrayList<Quest> quests = null;
     private ArrayList<Gift> giftLog = new ArrayList<>();
+    private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes = null;
@@ -170,8 +171,25 @@ public class Player extends Entity{
 
     public void receiveGift(Gift gift) {
         giftLog.add(gift);
+        gift.setId(giftId);
+        giftId++;
         haveNewGift = true;
         // TODO: add to box
+    }
+
+    public void receiveFlower() {
+
+
+    }
+
+
+    public Gift findGift(int giftId) {
+        for (Gift gift : giftLog) {
+            if (gift.getId() == giftId) {
+                return gift;
+            }
+        }
+        return null;
     }
 
     public String getUsername() {
