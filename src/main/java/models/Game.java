@@ -17,6 +17,7 @@ public class Game {
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private boolean mapVisible = true;
+    private int tradeId = 1000;
 
     public Game(Account[] accounts) {
         for (Account account : accounts) {
@@ -87,6 +88,12 @@ public class Game {
 
     public Weather getTodayWeather() {
         return todayWeather;
+    }
+
+    public int getTradeId() {
+        tradeId++;
+        return tradeId;
+
     }
 
     public void setTodayWeather(Weather todayWeather) {

@@ -28,12 +28,13 @@ public class Player extends Entity{
     private ArrayList<Gift> giftLog = new ArrayList<>();
     private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
-    private final ArrayList<TradeOffer> tradeOfferLog = null;
+    private ArrayList<TradeOffer> trades = new ArrayList<>();
     private final ArrayList<Recipe> unlockedRecipes = null;
     private final Account account;
     private InventorySlot activeSlot;
     private boolean haveNewMessage = false;
     private boolean haveNewGift = false;
+    private boolean haveNewTrade = false;
 
     public Player(Account account){
         super("Player", new Inventory(12));
@@ -58,6 +59,10 @@ public class Player extends Entity{
 
     public ArrayList<Gift> getGiftLog() {
         return giftLog;
+    }
+
+    public ArrayList<TradeOffer> getTrades() {
+        return trades;
     }
 
     public void setGiftLog(ArrayList<Gift> giftLog) {
@@ -162,8 +167,20 @@ public class Player extends Entity{
         return haveNewMessage;
     }
 
+    public boolean isHaveNewMessage() {
+        return haveNewMessage;
+    }
+
     public void setHaveNewMessage(boolean haveNewMessage) {
         this.haveNewMessage = haveNewMessage;
+    }
+
+    public boolean isHaveNewTrade() {
+        return haveNewTrade;
+    }
+
+    public void setHaveNewTrade(boolean haveNewTrade) {
+        this.haveNewTrade = haveNewTrade;
     }
 
     public void makeMessagesSeen() {
@@ -185,6 +202,15 @@ public class Player extends Entity{
     public void receiveFlower() {
 
 
+    }
+
+    public TradeOffer findTradeOffer(int id) {
+        for(TradeOffer tradeOffer : trades){
+            if(tradeOffer.getId() == id){
+                return tradeOffer;
+            }
+        }
+        return null;
     }
 
 

@@ -144,6 +144,9 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.FLOWER.getMatcher(input)) != null) {
                 System.out.println(controller.flower(matcher.group(1).trim()));
 
+            } else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
+                System.out.println(controller.startTrade());
+
             } else {
                 System.out.println("Invalid Command!");
             }

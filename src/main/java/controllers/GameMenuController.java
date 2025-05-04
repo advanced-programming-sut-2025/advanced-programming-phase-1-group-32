@@ -5,12 +5,9 @@ import models.Date;
 import models.entities.Entity;
 import models.entities.components.*;
 import models.entities.components.harvestable.Harvestable;
-import models.enums.Direction;
-import models.enums.EntityTag;
-import models.enums.TileType;
+import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
-import models.enums.Weather;
 import models.player.Energy;
 import models.player.Gift;
 import models.player.Message;
@@ -742,6 +739,13 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    public Result startTrade(){
+        App.setCurrentMenu(Menu.TRADE_MENU);
+        //TODO: set the message
+
+        return null;
+    }
+
     public Result talk(String receiverPlayerName, String messageString) {
         Game game = App.getActiveGame();
         Player receiverPlayer = game.findPlayer(receiverPlayerName);
@@ -860,6 +864,7 @@ public class GameMenuController implements Controller {
         App.getActiveGame().toggleMapVisibility();
         return null;
     }
+
     public Result cheatGiveItem(String name, int quantity){
         Player currentPlayer = App.getActiveGame().getCurrentPlayer();
         if(!App.entityRegistry.doesEntityExist(name)){

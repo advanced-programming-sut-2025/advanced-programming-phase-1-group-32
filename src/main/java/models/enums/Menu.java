@@ -1,6 +1,7 @@
 package models.enums;
 
 import views.*;
+import views.inGame.TradeMenu;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public enum Menu {
     LOGIN_MENU(new LoginMenu()),
     MAIN_MENU(new MainMenu()),
     GAME_MENU(new GameMenu()),
+    TRADE_MENU(new TradeMenu()),
     ;
     private final AppMenu menu;
     Menu(AppMenu menu){

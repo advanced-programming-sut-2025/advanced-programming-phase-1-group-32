@@ -4,7 +4,7 @@ import views.AppMenu;
 
 import java.util.Scanner;
 
-public class TradesMenu implements AppMenu {
+public class TradeMenu implements AppMenu {
     @Override
     public void checker(Scanner scanner) {
 
