@@ -14,7 +14,6 @@ public enum GameMenuCommands implements Commands {
     SET_WEATHER       ("cheat\\s+weather\\s*set\\s*(?<type>\\S+)\\s*"),
     ENERGY_SHOW       ("\\s*energy\\s+show\\s*"),
     SHOW_INVENTORY    ("\\s*show\\s+inventory\\s*"),
-    CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
     WEATHER_FORECAST  ("\\s*weather\\s*forecast\\s*"),
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
@@ -25,7 +24,7 @@ public enum GameMenuCommands implements Commands {
     /* --------------------------------------- Friendship commands ---------------------------------------- */
     TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),
     FRIENDSHIPS       ("\\s*friendships\\s*"),
-    GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+)\\s+-a\\s+(?<amount>\\d+)\\s*"),
+    GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>\\d+)\\s*"),
     GIFT_LIST         ("\\s*gift\\s+list\\s*"),
     GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
     GIFT_HISTORY     ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
@@ -53,6 +52,33 @@ public enum GameMenuCommands implements Commands {
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
     /* -------------------------------------------------- -------------------------------------------------- */
+
+
+    /* ------------------------------------------- Item Commands ------------------------------------------- */
+    PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
+    CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
+    REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
+
+
+
+
+    /* -------------------------------------------------- -------------------------------------------------- */
+
+
+
+
+    /* ------------------------------------------ Recipe Commands ------------------------------------------ */
+    CRAFTING_SHOW_RECIPES("^crafting\\s+show\\s+recipes$"),
+    CRAFTING_CRAFT("^crafting\\s+craft\\s+(?<itemName>.+)"),
+    COOKING_SHOW_RECIPES("^cooking\\s+show\\s+recipes$"),
+    COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName.+)$"),
+    /* -------------------------------------------------- -------------------------------------------------- */
+
+
+
+
+
+
 
 
     ;

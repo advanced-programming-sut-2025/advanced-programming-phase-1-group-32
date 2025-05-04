@@ -99,16 +99,24 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
                 showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+
             }else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
-                System.out.println(controller.cheatGiveItem(matcher.group("name"), Integer.parseInt(matcher.group("quantity"))));
+                System.out.println(controller.cheatGiveItem(
+                        matcher.group("name"),
+                        Integer.parseInt(matcher.group("quantity"))
+                ));
+
             } else if ((matcher = GameMenuCommands.PLANT_SEED.getMatcher(input)) != null) {
                 System.out.println(controller.plant(matcher.group(1), matcher.group(2)));
+
             } else if ((matcher = GameMenuCommands.SHOW_PLANT.getMatcher(input)) != null) {
                 int x = Integer.parseInt(matcher.group(1));
                 int y = Integer.parseInt(matcher.group(2));
                 System.out.println(controller.showPlant(x, y));
+
             } else if ((matcher = GameMenuCommands.NEXT_TURN.getMatcher(input)) != null) {
                 System.out.println(controller.nextTurn());
+
             } else if (input.startsWith("tools")) {
                 toolsCommandParser(input);
 
@@ -144,7 +152,23 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.FLOWER.getMatcher(input)) != null) {
                 System.out.println(controller.flower(matcher.group(1).trim()));
 
-            } else {
+            }
+            /* ------------------------------------------ Recipe Commands ------------------------------------------ */
+            else if ((matcher = GameMenuCommands.CRAFTING_SHOW_RECIPES.getMatcher(input)) != null) {
+                System.out.println();
+
+            } else if ((matcher = GameMenuCommands.CRAFTING_CRAFT.getMatcher(input)) != null) {
+                System.out.println();
+
+            } else if ((matcher = GameMenuCommands.COOKING_SHOW_RECIPES.getMatcher(input)) != null) {
+                System.out.println();
+
+            } else if ((matcher = GameMenuCommands.COOKING_PREPARE.getMatcher(input)) != null) {
+                System.out.println();   
+
+            }
+            /* -------------------------------------------------- -------------------------------------------------- */
+            else {
                 System.out.println("Invalid Command!");
             }
         }

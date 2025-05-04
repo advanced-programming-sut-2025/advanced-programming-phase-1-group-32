@@ -312,7 +312,7 @@ public class GameMenuController implements Controller {
     }
     /* --------------------------------------  -------------------------------------- */
 
-    public Result craftInfo(String name) {
+    public Result   craftInfo(String name) {
         if(!App.entityRegistry.doesEntityExist(name)) {
             return new Result(false, "There is no crop with name" + name);
         }
