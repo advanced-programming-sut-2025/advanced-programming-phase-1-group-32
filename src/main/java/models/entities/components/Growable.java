@@ -21,6 +21,10 @@ public class Growable extends EntityComponent{
     private boolean canBecomeGiant;
     private int daysPastFromPlant;
     private boolean isFertilized;
+    @JsonProperty("regrowthTime")
+    private int regrowthTime;
+    @JsonProperty("oneTime")
+    private boolean oneTime;
 
     public Growable(ArrayList<Season> growingSeasons, String fruit, String seed, int totalHarvestTime) {
         this.growingSeasons = growingSeasons;
@@ -38,6 +42,8 @@ public class Growable extends EntityComponent{
         this.canBecomeGiant = other.canBecomeGiant;
         this.daysPastFromPlant = other.daysPastFromPlant;
         this.isFertilized = other.isFertilized;
+        this.oneTime = other.oneTime;
+        this.regrowthTime = other.regrowthTime;
     }
 
     public Growable() {
@@ -118,6 +124,22 @@ public class Growable extends EntityComponent{
         message.append("IsFertilized: ").append(isFertilized).append("");
 
         return message.toString();
+    }
+
+    public int getRegrowthTime() {
+        return regrowthTime;
+    }
+
+    public void setRegrowthTime(int regrowthTime) {
+        this.regrowthTime = regrowthTime;
+    }
+
+    public boolean isOneTime() {
+        return oneTime;
+    }
+
+    public void setOneTime(boolean oneTime) {
+        this.oneTime = oneTime;
     }
 
     public int getStage() {

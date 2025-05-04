@@ -268,8 +268,6 @@ public class Inventory extends EntityComponent {
         return getSlot(e.getName());
     }
 
-
-
     public boolean doesHaveItem(String name) {
         return this.getItem(name) != null;
     }

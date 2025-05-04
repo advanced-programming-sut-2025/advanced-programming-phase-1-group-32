@@ -5,9 +5,7 @@
     }
   ],
   "required components" : [
-    {
-      "type" : "Sellable"
-    }
+    "Sellable"
   ],
   "entities" : [
     {

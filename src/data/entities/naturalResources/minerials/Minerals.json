@@ -6,29 +6,7 @@
     }
   ],
   "required components" : [
-    {
-      "type" : "Harvestable"
-    }
   ],
   "entities" : [
-    {
-      "name" : "Gold Deposit",
-      "components": [
-        {
-          "type" : "Harvestable",
-          "resource" : "Gold Ore",
-          "material" : "GOLD"
-        }
-      ]
-    },{
-      "name" : "Coal Deposit",
-      "components": [
-        {
-          "type" : "Harvestable",
-          "resource" : "Coal",
-          "material" : "COAL"
-        }
-      ]
-    }
   ]
 }

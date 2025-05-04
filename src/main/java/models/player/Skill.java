@@ -1,15 +1,23 @@
 package models.player;
 
 public class Skill {
-    protected int experience;
-    protected int level;
+    private int experience;
+    private int level;
 
-    public void addExperience() {
+    public Skill(){
+        level = 0;
+        experience = 0;
+    }
 
+    public void addExperience(int experience) {
+        this.experience += experience;
     }
 
     private void addLevel() {
 
     }
 
+    public int getLevel() {
+        return level;
+    }
 }

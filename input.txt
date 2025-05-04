@@ -21,3 +21,6 @@ showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
 
+
+tools equip Axe
+

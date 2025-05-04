@@ -4,6 +4,8 @@ import models.*;
 import models.Date;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.components.harvestable.Harvestable;
+import models.enums.Direction;
 import models.enums.EntityTag;
 import models.enums.TileType;
 import models.entities.components.inventory.Inventory;
@@ -260,7 +262,6 @@ public class GameMenuController implements Controller {
             return new Result(false, "This tool doesn't exist in inventory");
         player.setActiveSlot(slot);
         return new Result(true, "Tool equipped successfully");
-
     }
 
     public Result toolsShowCurrent() {
@@ -290,19 +291,22 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result toolsUse(int[] dir) {
+    public Result toolsUse(Direction dir) {
         Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
         GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
+        if(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null){
+            return new Result(false, "nothing equipped");
+        }
         Entity tool = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot().getEntity();
 
         if(
                 dir == null
-                || playerPosition.getRow() + dir[0] > map.getHeight() || playerPosition.getRow() + dir[0] < 0
-                || playerPosition.getCol() + dir[1] > map.getWidth() || playerPosition.getCol() + dir[1] < 0
+                || playerPosition.getRow() + dir.dy > map.getHeight() || playerPosition.getRow() + dir.dy < 0
+                || playerPosition.getCol() + dir.dx > map.getWidth() || playerPosition.getCol() + dir.dx < 0
         )
             return new Result(false, "Invalid Direction");
-        Position position = new Position(playerPosition.getRow() + dir[0], playerPosition.getCol() + dir[1]);
-        if(!tool.getTags().contains(EntityTag.TOOL))
+        Position position = new Position(playerPosition.getRow() + dir.dy, playerPosition.getCol() + dir.dx);
+        if(tool == null || (!tool.getTags().contains(EntityTag.TOOL)))
             return  new Result(false, "You should equip a tool first");
         return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
     }
@@ -319,17 +323,16 @@ public class GameMenuController implements Controller {
         Growable growable = crop.getComponent(Growable.class);
         Edible edible = crop.getComponent(Edible.class);
         Sellable sellable = crop.getComponent(Sellable.class);
-        Harvestable harvestable = crop.getComponent(Harvestable.class);
 
         StringBuilder message = new StringBuilder();
         message.append("Name: ").append(crop.getName()).append("\n").
                 append("Source: ").append(growable.getSeed()).append("\n")
                 .append("Stages: ").append(growable.getStages()).append("\n")
                 .append("Total Harvest Time: ").append(growable.getTotalHarvestTime()).append("\n")
-                .append("One Time: ").append(harvestable.isOneTime()).append("\n");
+                .append("One Time: ").append(growable.isOneTime()).append("\n");
 
-        if (harvestable.getRegrowthTime() > 0) {
-            message.append("Regrowth Time: ").append(harvestable.getRegrowthTime()).append("\n");
+        if (growable.getRegrowthTime() > 0) {
+            message.append("Regrowth Time: ").append(growable.getRegrowthTime()).append("\n");
         } else {
             message.append("Regrowth Time:\n");
         }
@@ -836,6 +839,17 @@ public class GameMenuController implements Controller {
                 break;
             case 'x':
                 switchInputType();
+                break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+                toolsUse(Direction.getDirection(c - '0'));
+                break;
             default:
                 break;
         }

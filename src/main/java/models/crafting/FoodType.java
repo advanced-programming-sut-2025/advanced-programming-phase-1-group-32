@@ -1,7 +1,7 @@
 package models.crafting;
 
 public enum FoodType {
-    FRIED_EGG(),
+    FRIED_EGG(new Recipe(true, null)), /*TODO implement after workshops*/
     BAKED_FISH(),
     SALAD(),
     OLMELET(),

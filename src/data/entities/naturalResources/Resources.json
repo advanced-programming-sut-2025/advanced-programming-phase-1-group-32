@@ -1,0 +1,16 @@
+{
+  "common components" : [
+    {
+      "type" : "Pickable",
+      "maxStack" : 64
+    }
+  ],
+  "entities" : [
+    {
+      "name" : "Wood",
+      "components" : [
+
+      ]
+    }
+  ]
+}

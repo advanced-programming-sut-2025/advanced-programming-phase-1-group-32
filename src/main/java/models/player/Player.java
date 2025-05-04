@@ -13,12 +13,13 @@ import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Player extends Entity{
     private Energy energy = new Energy();
     private final Wallet wallet = null;
-    private final Map<SkillType, Skill> skills = null;
+    private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
     private final Map<Character, NpcFriendship> npcFriendships = null;
     private final Map<Player, PlayerFriendship> playerFriendships = null;
@@ -36,6 +37,10 @@ public class Player extends Entity{
 
     public Player(Account account){
         super("Player", new Inventory(12));
+
+        for(SkillType s : SkillType.values()){
+            skills.put(s, new Skill());
+        }
 
         this.account = account;
     }
@@ -98,7 +103,7 @@ public class Player extends Entity{
     }
 
     public Skill getSkill(SkillType type){
-        return null;
+        return this.skills.get(type);
     }
 
     public void addExperince(SkillType type, int amount) {

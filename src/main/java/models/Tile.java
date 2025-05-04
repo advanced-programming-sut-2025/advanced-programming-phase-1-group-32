@@ -1,11 +1,12 @@
 package models;
 
 import models.entities.Entity;
+import models.entities.EntityObserver;
 import models.entities.components.SeedComponent;
 import models.enums.TileType;
 import views.inGame.Color;
 
-public class Tile{
+public class Tile implements EntityObserver {
     private TileType type;
     final private Position position;
     private Entity content;
@@ -36,7 +37,13 @@ public class Tile{
     }
 
     public void setContent(Entity content) {
+        if(this.content != null){
+            this.content.removeObserveer(this);
+        }
         this.content = content;
+        if(this.content != null){
+            this.content.addObserver(this);
+        }
     }
 
     public Position getPosition() {
@@ -56,5 +63,10 @@ public class Tile{
     }
     public char getCharacter(){
         return this.type.character;
+    }
+
+    @Override
+    public void onDelete(Entity entity) {
+        this.content = null;
     }
 }
