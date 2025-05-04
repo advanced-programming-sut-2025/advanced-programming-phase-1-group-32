@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe {
+public class Recipe implements Cloneable{
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
@@ -26,6 +26,7 @@ public class Recipe {
         this.isUnlocked = builder.isUnlocked;
         this.day = builder.day;
         this.hour = builder.hour;
+        this.type = builder.type;
     }
 
     public String getName() {
@@ -48,13 +49,25 @@ public class Recipe {
         return hour;
     }
 
+    public RecipeType getType() {
+        return type;
+    }
+
     public void setType(RecipeType type) {
         this.type = type;
     }
 
 
-
-
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Builder()
+                .name(this.name)
+                .ingredients(new ArrayList<>(this.ingredients))
+                .day(this.day)
+                .hour(this.hour)
+                .type(this.type)
+                .build();
+    }
 
     @JsonPOJOBuilder(withPrefix = "")
     //@JsonIgnoreProperties(ignoreUnknown = true)
@@ -64,6 +77,7 @@ public class Recipe {
         private boolean isUnlocked;
         private int day;
         private int hour;
+        private RecipeType type;
 
         public Builder() {
         }
@@ -105,6 +119,11 @@ public class Recipe {
         * */
         public Builder hour(int hour) {
             this.hour = hour;
+            return this;
+        }
+
+        public Builder type(RecipeType type) {
+            this.type = type;
             return this;
         }
 

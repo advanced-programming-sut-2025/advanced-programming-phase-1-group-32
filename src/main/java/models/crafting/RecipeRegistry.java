@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -45,15 +46,24 @@ public class RecipeRegistry {
                     }
                 } catch (IOException e) {
                     System.err.println("----------------------------------------------------------------------");
-                    System.err.println("Error in reading " + path + "\n logs:");
-                    System.err.println("----------------------------------------------------------------------");
+                    System.err.println("Error in reading " + path);
+                    System.err.println("----------------------------------------------------------------------\nlogs:");
                     throw new RuntimeException(e);
                 }
             });
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+    public ArrayList<Recipe> getRecipesByType(RecipeType type) {
+        ArrayList<Recipe> result = new ArrayList<>();
+        registry.forEach(((string, recipe) -> {
+            if(recipe.getType().equals(type))
+                result.add(recipe);
+        }));
+        return
+    }
+
+
 }

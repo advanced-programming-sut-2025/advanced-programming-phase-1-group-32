@@ -447,7 +447,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result showCratingRecipes() {
-        //TODO
+
         return null;
     }
 
