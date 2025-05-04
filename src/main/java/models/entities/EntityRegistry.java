@@ -29,9 +29,6 @@ public class EntityRegistry {
 
     public void loadEntities(String pathStr){
         Path root = Paths.get(pathStr);
-        if(root == null){
-            throw new RuntimeException("Failed to open the entities data folder! ("+pathStr+")");
-        }
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);

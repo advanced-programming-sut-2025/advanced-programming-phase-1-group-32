@@ -14,6 +14,9 @@ public class Tile implements EntityObserver {
     public Tile(Position position, TileType type) {
         this.position = position;
         this.type = type;
+        if(type == null){
+            throw new RuntimeException("Tile type can't be null");
+        }
     }
 
     public void plant(Entity seed) {
@@ -62,7 +65,11 @@ public class Tile implements EntityObserver {
         return this.type.color;
     }
     public char getCharacter(){
-        return this.type.character;
+        try {
+            return this.type.character;
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
