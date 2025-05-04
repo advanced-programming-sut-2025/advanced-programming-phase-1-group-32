@@ -29,21 +29,24 @@ public class RecipeRegistry {
 
         try (Stream<Path> files = Files.walk(root)) {
             files.filter(p -> p.toString().endsWith(".json")).forEach(path -> {
-//                String regAddress = root.relativize(path).toString().replace(File.separator, ":");
-//                regAddress = regAddress.substring(0, regAddress.lastIndexOf(":"));
 
                 try {
                     JsonNode jsonRoot = mapper.readTree(path.toFile());
 
+                    String typeName = jsonRoot.get("type").asText();
+                    RecipeType type = RecipeType.valueOf(typeName);
                     Recipe[] recipes = mapper.treeToValue(jsonRoot.get("recipes"), Recipe[].class);
                     if(recipes == null){
                         throw new RuntimeException("The structure of recipe data file is invalid! (" + path.toString() + ")");
                     }
                     for(Recipe e : recipes){
-
+                        e.setType(type);
                         this.registry.putIfAbsent(e.getName(), e);
                     }
                 } catch (IOException e) {
+                    System.err.println("----------------------------------------------------------------------");
+                    System.err.println("Error in reading " + path + "\n logs:");
+                    System.err.println("----------------------------------------------------------------------");
                     throw new RuntimeException(e);
                 }
             });

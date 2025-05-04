@@ -75,7 +75,9 @@ public class EntityRegistry {
                                 this.registry.putIfAbsent(e.getName(), e);
                             }
                         } catch (IOException e) {
-                            System.err.println(path);
+                            System.err.println("----------------------------------------------------------------------");
+                            System.err.println("Error in reading " + path);
+                            System.err.println("----------------------------------------------------------------------\nlogs:");
                             throw new RuntimeException(e);
                         }
                     });

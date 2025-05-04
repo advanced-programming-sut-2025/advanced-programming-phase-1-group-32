@@ -18,6 +18,7 @@ public class Recipe {
     private final boolean isUnlocked;
     private final int day;
     private final int hour;
+    private RecipeType type;
 
     private Recipe(Builder builder) {
         this.name = builder.name;
@@ -46,6 +47,13 @@ public class Recipe {
     public int getHour() {
         return hour;
     }
+
+    public void setType(RecipeType type) {
+        this.type = type;
+    }
+
+
+
 
 
     @JsonPOJOBuilder(withPrefix = "")
