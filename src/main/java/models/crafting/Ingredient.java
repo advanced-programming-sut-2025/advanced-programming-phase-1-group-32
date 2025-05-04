@@ -45,22 +45,38 @@ public class Ingredient {
     }
 
     public boolean isInIngredients(Entity e, int availableAmount) {
-        if(!contents.isEmpty()) {
+        if (!contents.isEmpty()) {
             return contents.contains(e.getName()) && availableAmount >= amount;
         }
 
-        if(!validTags.isEmpty()) {
+        if (!validTags.isEmpty()) {
             return e.getTags().stream().anyMatch(validTags::contains) && availableAmount >= amount;
         }
         return true;
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        if (!contents.isEmpty()) {
+            result.append("(");
+            for (String content : contents) {
+                result.append(content).append(" or ");
+            }
+            result.delete(result.length() - 3, result.length());
+            result.append(")");
+        }
+        if (!validTags.isEmpty()) {
+            result.append("(");
+            for (EntityTag tag : validTags) {
+                result.append(tag.toString().toLowerCase()).append(" or ");
+            }
+            result.delete(result.length() - 3, result.length());
+            result.append(")");
+        }
 
-
-
-
-
-
-
+        result.append(" x").append(amount);
+        return result.toString();
+    }
 }

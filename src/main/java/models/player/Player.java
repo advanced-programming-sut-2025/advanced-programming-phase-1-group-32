@@ -1,6 +1,7 @@
 package models.player;
 
 import models.Account;
+import models.App;
 import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
@@ -29,7 +30,7 @@ public class Player extends Entity{
     private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<TradeOffer> tradeOfferLog = null;
-    private final ArrayList<Recipe> unlockedRecipes = null;
+    private final ArrayList<Recipe> unlockedRecipes;
     private final Account account;
     private InventorySlot activeSlot;
     private boolean haveNewMessage = false;
@@ -37,7 +38,7 @@ public class Player extends Entity{
 
     public Player(Account account){
         super("Player", new Inventory(12));
-
+        unlockedRecipes = new ArrayList<>(App.recipeRegistry.getUnlockedRecipes());
         for(SkillType s : SkillType.values()){
             skills.put(s, new Skill());
         }
@@ -199,5 +200,9 @@ public class Player extends Entity{
 
     public String getUsername() {
         return account.getUsername();
+    }
+
+    public ArrayList<Recipe> getUnlockedRecipes() {
+        return new ArrayList<>(unlockedRecipes);
     }
 }

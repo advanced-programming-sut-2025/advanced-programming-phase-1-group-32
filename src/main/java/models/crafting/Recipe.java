@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe implements Cloneable{
+public class Recipe{
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
@@ -37,7 +37,7 @@ public class Recipe implements Cloneable{
         return new ArrayList<>(ingredients);
     }
 
-    public boolean isUnlocked() {
+    protected boolean isUnlocked() {
         return isUnlocked;
     }
 
@@ -57,16 +57,17 @@ public class Recipe implements Cloneable{
         this.type = type;
     }
 
-
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Builder()
-                .name(this.name)
-                .ingredients(new ArrayList<>(this.ingredients))
-                .day(this.day)
-                .hour(this.hour)
-                .type(this.type)
-                .build();
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb
+                .append("---------------------------------------------------\n")
+                .append(name).append(" Recipe:\n");
+        for (Ingredient ingredient : ingredients) {
+            sb.append(ingredient.toString()).append("\n");
+        }
+        sb.append("---------------------------------------------------\n");
+        return sb.toString();
     }
 
     @JsonPOJOBuilder(withPrefix = "")
@@ -99,7 +100,7 @@ public class Recipe implements Cloneable{
         }
 
         /**
-         * Unlock status
+         * is unlock at start of game
          */
         public Builder isUnlocked(boolean isUnlocked) {
             this.isUnlocked = isUnlocked;
@@ -121,7 +122,9 @@ public class Recipe implements Cloneable{
             this.hour = hour;
             return this;
         }
-
+        /*
+        * Recipe type
+        * */
         public Builder type(RecipeType type) {
             this.type = type;
             return this;

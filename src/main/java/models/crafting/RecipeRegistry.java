@@ -56,14 +56,15 @@ public class RecipeRegistry {
         }
     }
 
-    public ArrayList<Recipe> getRecipesByType(RecipeType type) {
+    public ArrayList<Recipe> getUnlockedRecipes() {
         ArrayList<Recipe> result = new ArrayList<>();
         registry.forEach(((string, recipe) -> {
-            if(recipe.getType().equals(type))
+            if(recipe.isUnlocked())
                 result.add(recipe);
         }));
-        return
+        return result;
     }
+
 
 
 }
