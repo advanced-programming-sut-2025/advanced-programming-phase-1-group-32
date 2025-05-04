@@ -12,9 +12,11 @@
 
   "required components" : [
       "Harvestable"
+
   ],
   "common tags": [
-    "TREE"
+    "TREE",
+    "BREAKABLE_WITH_AXE"
   ],
 
   "entities" : [

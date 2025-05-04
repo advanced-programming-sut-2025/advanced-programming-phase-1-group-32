@@ -382,12 +382,12 @@ public class GameMenuController implements Controller {
         Entity seed = player.getComponent(Inventory.class).takeFromInventory(seedDetails, 1);
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
-        if (tile.getType() != TileType.PLANTED_GROUND) tile.setType(TileType.HOED_GROUND);
 
         if (tile == null || !tile.getType().equals(TileType.HOED_GROUND)) {
             return new Result(false, "tile is unavailable for planting");
         }
 
+        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant())
         tile.plant(seed);
         return new Result(true, "planted succusfully");
     }
@@ -856,12 +856,11 @@ public class GameMenuController implements Controller {
             case '6':
             case '7':
             case '8':
-                toolsUse(Direction.getDirection(c - '0'));
-                break;
+                return toolsUse(Direction.getDirection(c - '0'));
             default:
                 break;
         }
-        return null;
+        return new Result(true, "");
     }
 
     public Result toggleMap(){

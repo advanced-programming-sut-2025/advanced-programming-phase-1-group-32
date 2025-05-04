@@ -19,20 +19,16 @@ public enum GameMenuCommands implements Commands {
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
 
-
-
     /* --------------------------------------- Friendship commands ---------------------------------------- */
     TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),
     FRIENDSHIPS       ("\\s*friendships\\s*"),
     GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>\\d+)\\s*"),
     GIFT_LIST         ("\\s*gift\\s+list\\s*"),
     GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
-    GIFT_HISTORY     ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
+    GIFT_HISTORY      ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
     HUG               ("\\s*hug\\s+-u\\s+(?<username>.+)\\s*"),
     FLOWER            ("\\s*flower\\s+-u\\s+(?<username>.+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
-
-
 
     /* ------------------------------------------ Date commands  ------------------------------------------ */
     DATE              ("\\s*date\\s*"),
@@ -44,7 +40,6 @@ public enum GameMenuCommands implements Commands {
     DAY_OF_THE_WEEK   ("\\s*day\\s+of\\s+the\\s+week\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
-
     /* ------------------------------------------ Tools commands ------------------------------------------ */
     TOOLS_EQUIP("^tools\\s+equip\\s+(?<toolName>.+)$"), //TODO: check name
     TOOLS_SHOW_CURRENT("^tools\\s+show\\s+current$"),
@@ -53,33 +48,18 @@ public enum GameMenuCommands implements Commands {
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
     /* -------------------------------------------------- -------------------------------------------------- */
 
-
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
     REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
-
-
-
-
     /* -------------------------------------------------- -------------------------------------------------- */
-
-
-
 
     /* ------------------------------------------ Recipe Commands ------------------------------------------ */
     CRAFTING_SHOW_RECIPES("^crafting\\s+show\\s+recipes$"),
     CRAFTING_CRAFT("^crafting\\s+craft\\s+(?<itemName>.+)"),
     COOKING_SHOW_RECIPES("^cooking\\s+show\\s+recipes$"),
-    COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName.+)$"),
+    COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName>.+)$"),
     /* -------------------------------------------------- -------------------------------------------------- */
-
-
-
-
-
-
-
 
     ;
 

@@ -9,15 +9,17 @@ import java.security.SecureRandom;
 
 public class GameMap {
     private Tile[][] tiles;
-    int width, height;
+    private int width, height;
+    private Environment environment;
 
     private GameMap(TileType[][] tileTypes){
 
     }
 
-    public GameMap(GameMapType type){
+    public GameMap(GameMapType type, Environment environment){
         MapData data = type.data;
         TileType[][] typeMap = data.getTypeMap();
+        this.environment = environment;
 
 
         this.height = typeMap.length;

@@ -12,12 +12,16 @@
   "required components" : [
     "Harvestable"
   ],
+  "common tags" : [
+    "BREAKABLE_WITH_PICKAXE"
+  ],
   "entities" : [
     {
       "name" : "Rock",
       "components" : [
         {
           "type" : "Harvestable",
+          "material" : "IRIDIUM",
           "resources" : [
             {
               "entity" : "stone",

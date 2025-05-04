@@ -11,6 +11,7 @@ import models.entities.components.inventory.InventorySlot;
 import models.enums.Direction;
 import models.gameMap.GameMap;
 import models.player.Player;
+import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
 
@@ -20,10 +21,12 @@ import java.util.regex.Matcher;
 
 public class GameMenu implements AppMenu {
     private final GameMenuController controller = new GameMenuController();
+    private Result previousResult = null;
     @Override
     public void checker(Scanner scanner) {
         renderGame();
 
+        previousResult = null;
         if(App.getView().isRawMode()){
             int c = 0;
             try {
@@ -33,7 +36,7 @@ public class GameMenu implements AppMenu {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            controller.handleRawInput((char) c);
+            previousResult = controller.handleRawInput((char) c);
         }else{
             String input = scanner.nextLine().trim();
             Matcher matcher;
@@ -162,8 +165,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showRecipes("cooking"));
 
             } else if ((matcher = GameMenuCommands.COOKING_PREPARE.getMatcher(input)) != null) {
-                System.out.println();   
-
+                System.out.println();
             }
             /* -------------------------------------------------- -------------------------------------------------- */
             else {
@@ -183,6 +185,10 @@ public class GameMenu implements AppMenu {
             App.getView().getRenderer().render();
             App.getView().getRenderer().moveCurser(0, 0);
             showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+
+            if(previousResult != null){
+                System.out.println(previousResult);
+            }
         }
     }
     public void printMap(GameMap map) {

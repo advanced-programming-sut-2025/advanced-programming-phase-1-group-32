@@ -10,6 +10,7 @@ import models.enums.TileType;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,7 @@ public class MapData{
     @JsonProperty("tilesets")
     public TileSet[] tileSets;
     public TileSet mainTileSet;
+    public ArrayList<MapRegion> regions;
 
     @JsonCreator
     public MapData(@JsonProperty("layers") MapLayer[] layers, @JsonProperty("tilesets") TileSet[] tileSets) {

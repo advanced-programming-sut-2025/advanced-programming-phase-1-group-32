@@ -24,7 +24,7 @@ public class SeedComponent extends EntityComponent{
 
     public Entity getGrowingPlant(){
         int random = (int) (growingPlants.size() * Math.random());
-        return App.entityRegistry.makeEntity(growingPlants.get(random));
+        return App.entityRegistry.getEntityDetails(growingPlants.get(random));
     }
 
     @Override

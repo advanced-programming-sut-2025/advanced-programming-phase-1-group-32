@@ -20,7 +20,7 @@ public class Tile implements EntityObserver {
     }
 
     public void plant(Entity seed) {
-        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).);
         this.setContent(plant);
         this.type = TileType.PLANTED_GROUND;
         Game game = App.getActiveGame();

@@ -37,6 +37,9 @@ public enum UseFunction {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
+            if(tile.getType() != TileType.HOED_GROUND){
+                return new Result(false, "not a valid for de-plowing");
+            }
             tile.setType(TileType.GRASS);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
@@ -52,6 +55,9 @@ public enum UseFunction {
             Entity mineral = tile.getContent();
             if(mineral == null){
                 return new Result(false, "Nothing to mine!");
+            }
+            if(!mineral.hasTag(EntityTag.BREAKABLE_WITH_PICKAXE)){
+                return new Result(false, "you can't use a pickaxe on " + mineral.getName());
             }
 
             Harvestable harvestable = mineral.getComponent(Harvestable.class);
@@ -85,6 +91,10 @@ public enum UseFunction {
             Entity tree = tile.getContent();
             if(tree == null){
                 return new Result(false, "No tree to chop!");
+            }
+
+            if(!tree.hasTag(EntityTag.BREAKABLE_WITH_AXE)){
+                return new Result(false, "you can't use an axe on " + tree.getName());
             }
 
             Harvestable harvestable = tree.getComponent(Harvestable.class);
