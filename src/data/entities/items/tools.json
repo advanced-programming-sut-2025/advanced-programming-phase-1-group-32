@@ -75,6 +75,19 @@
         }
 
       ]
+    },{
+      "name": "Milk pail",
+      "components": [
+        {
+          "type" : "Useable",
+          "useFunctions": [
+            "EXTRACT_MILK"
+          ]
+        },{
+          "type" : "Container",
+          "maxCharge": 1
+        }
+      ]
     }
   ]
 }

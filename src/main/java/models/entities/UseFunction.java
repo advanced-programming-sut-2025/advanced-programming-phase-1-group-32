@@ -2,6 +2,7 @@ package models.entities;
 
 import models.App;
 import models.Tile;
+import models.animal.Animal;
 import models.entities.components.Container;
 import models.entities.components.Growable;
 import models.entities.components.harvestable.Harvestable;
@@ -163,7 +164,7 @@ public enum UseFunction {
     },
     CUT_GRASS {
         @Override
-        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity targetEntity) {
             return null;
         }
     },
@@ -181,7 +182,17 @@ public enum UseFunction {
     EXTRACT_MILK {
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+
+            if(tool.getComponent(Container.class).getCharge() > 0)
+                return new Result(false, "milk pail is full");
+            player.reduceEnergy(4);// on success and fail
+            if(target == null || ! (target instanceof Animal))
+                return new Result(false, "you should select an animal");
+            if(false/*TODO: if its not cow or goat*/)
+                return new Result(false, target.getName() + " doesn't produce milk.");
+            tool.getComponent(Container.class).fillContainer();
+            //TODO: should it improve farming skill?
+            return new Result(true, "Milk extracted successfully");
         }
     },
     COLLECT_WOOL {
