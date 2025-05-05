@@ -12,6 +12,7 @@ hug -u AliAlm
 flower -u AliAlm
 
 start trade
+start trade
 trade -u Parsa -t offer -i Jazz Seeds -a 2 -p 2.3
 trade -u Parsa -t offer -i Jazz Seeds -a 2 -ti Jazz Seeds -ta 3
 back

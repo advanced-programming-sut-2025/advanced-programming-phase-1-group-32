@@ -171,11 +171,11 @@ public class TradeOffer {
                     return false;
                 }
 
-                //TODO: change item ownership
-//                Entity item1 = sender.getComponent(Inventory.class).removeItem();
-//                Entity item2 = receiver.getComponent(Inventory.class).removeItem();
-//                receiver.getComponent(Inventory.class).addItem(item1);
-//                sender.getComponent(Inventory.class).addItem(item2);
+                //TODO: check
+                Entity item1 = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount() );
+                Entity item2 = receiver.getComponent(Inventory.class).removeItem(getTargetItem(), getTargetItemAmount());
+                receiver.getComponent(Inventory.class).addItem(item1);
+                sender.getComponent(Inventory.class).addItem(item2);
 
             }
             case 2 -> {
@@ -188,9 +188,8 @@ public class TradeOffer {
                     return false;
                 }
 
-                //TODO: change item ownership
-//                Entity item = sender.getComponent(Inventory.class).removeItem();
-//                receiver.getComponent(Inventory.class).addItem(item);
+                Entity item = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount());
+                receiver.getComponent(Inventory.class).addItem(item);
                 receiver.getWallet().changeBalance(-price);
                 sender.getWallet().changeBalance(price);
 
@@ -207,9 +206,9 @@ public class TradeOffer {
 
                 sender.getWallet().changeBalance(-price);
                 receiver.getWallet().changeBalance(price);
-                //TODO: change item ownership
-//                Entity item = receiver.getComponent(Inventory.class).removeItem();
-//                sender.getComponent(Inventory.class).addItem(item);
+
+                Entity item = receiver.getComponent(Inventory.class).removeItem(getTargetItem(), getTargetItemAmount());
+                sender.getComponent(Inventory.class).addItem(item);
 
             }
         }
