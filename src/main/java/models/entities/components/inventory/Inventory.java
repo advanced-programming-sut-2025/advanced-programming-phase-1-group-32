@@ -265,6 +265,7 @@ public class Inventory extends EntityComponent {
         }
         return null;
     }
+
     public Entity getItem(Entity entity) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {

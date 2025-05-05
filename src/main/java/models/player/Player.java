@@ -32,7 +32,6 @@ public class Player extends Entity{
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes;
     private ArrayList<TradeOffer> trades = new ArrayList<>();
-    private final ArrayList<Recipe> unlockedRecipes = null;
     private final Account account;
     private InventorySlot activeSlot;
     private boolean haveNewMessage = false;
