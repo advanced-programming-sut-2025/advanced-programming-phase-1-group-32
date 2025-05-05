@@ -289,12 +289,6 @@ public class Inventory extends EntityComponent {
         return getSlot(e.getName());
     }
 
-    public boolean doesHaveItem(String name) {
-        return this.getItem(name) != null;
-    }
-    public boolean doesHaveItem(Entity entity){
-        return this.getItem(entity) != null;
-    }
 
     public Entity takeFromInventory(Entity entity, int amount){
         if(!this.doesHaveItem(entity)) return null;
@@ -349,6 +343,7 @@ public class Inventory extends EntityComponent {
             return null;
         return takenEntity;
     }
+
     public boolean doesHaveItem(String name, int amount) {
         Entity item = this.getItem(name);
         if (item == null) {
@@ -359,6 +354,12 @@ public class Inventory extends EntityComponent {
         }
 
         return true;
+    }
+    public boolean doesHaveItem(String name) {
+        return this.getItem(name) != null;
+    }
+    public boolean doesHaveItem(Entity entity){
+        return this.getItem(entity) != null;
     }
 
     public int getItemCount(String name){

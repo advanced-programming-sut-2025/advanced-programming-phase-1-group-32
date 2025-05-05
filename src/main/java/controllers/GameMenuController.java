@@ -548,9 +548,19 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result eat() {
-        //TODO
-        return null;
+    public Result eat(String foodName) {
+        //TODO: buff
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Inventory inventory = player.getComponent(Inventory.class);
+        Entity food = inventory.getItem(foodName);
+        if (food == null)
+            return new Result(false, "You don't have " + foodName);
+        Edible edible = food.getComponent(Edible.class);
+        if(edible == null)
+            return new Result(false, "This is not Edible");
+        player.reduceEnergy(-edible.getEnergy());
+        inventory.takeFromInventory(food, 1);
+        return new Result(true, "eated " + foodName + " successfully");
     }
 
     public Result buildAnimalHouse() {

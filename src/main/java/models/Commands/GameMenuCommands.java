@@ -19,6 +19,7 @@ public enum GameMenuCommands implements Commands {
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
+    EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
 
     /* --------------------------------------- Friendship commands ---------------------------------------- */
     TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),

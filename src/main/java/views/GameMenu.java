@@ -37,7 +37,7 @@ public class GameMenu implements AppMenu {
                 throw new RuntimeException(e);
             }
             previousResult = controller.handleRawInput((char) c);
-        }else{
+        }else {
             String input = scanner.nextLine().trim();
             Matcher matcher;
             if (GameMenuCommands.DATE.getMatcher(input) != null) {
@@ -152,6 +152,9 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.FLOWER.getMatcher(input)) != null) {
                 System.out.println(controller.flower(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.EAT_FOOD.getMatcher(input)) != null) {
+                System.out.println(controller.eat(matcher.group("foodName")));
 
             }
             /* ------------------------------------------ Recipe Commands ------------------------------------------ */
