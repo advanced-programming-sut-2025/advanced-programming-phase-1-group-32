@@ -3,14 +3,18 @@ package models.gameMap;
 import models.App;
 import models.Position;
 import models.Tile;
+import models.entities.Entity;
 import models.enums.TileType;
 
 import java.security.SecureRandom;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GameMap {
     private Tile[][] tiles;
     private int width, height;
     private Environment environment;
+    private final Set<Entity> entities = new HashSet<>();
 
     private GameMap(TileType[][] tileTypes){
 
@@ -20,7 +24,6 @@ public class GameMap {
         MapData data = type.data;
         TileType[][] typeMap = data.getTypeMap();
         this.environment = environment;
-
 
         this.height = typeMap.length;
         this.width = typeMap[0].length;
@@ -67,5 +70,12 @@ public class GameMap {
 
     public int getHeight() {
         return height;
+    }
+
+    public void addEntity(Entity entity){
+        this.entities.add(entity);
+    }
+    public void removeEntity(Entity entity){
+        this.entities.remove(entity);
     }
 }

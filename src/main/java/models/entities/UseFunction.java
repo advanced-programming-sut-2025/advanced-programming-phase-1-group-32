@@ -22,7 +22,10 @@ public enum UseFunction {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
-            tile.setType(TileType.HOED_GROUND);
+            if(tile.getType() != TileType.DIRT){
+                return new Result(false, "You can only plow dirt");
+            }
+            tile.setType(TileType.Plowed);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             //TODO: weather effects?
@@ -37,8 +40,8 @@ public enum UseFunction {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
-            if(tile.getType() != TileType.HOED_GROUND){
-                return new Result(false, "not a valid for de-plowing");
+            if(tile.getType() != TileType.Plowed){
+                return new Result(false, "you can only de_plow plowed ground");
             }
             tile.setType(TileType.GRASS);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
