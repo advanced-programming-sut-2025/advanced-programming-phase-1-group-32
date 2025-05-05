@@ -2,6 +2,7 @@ package models.entities;
 
 import models.App;
 import models.Tile;
+import models.entities.components.Container;
 import models.entities.components.Growable;
 import models.entities.components.harvestable.Harvestable;
 import models.entities.components.Upgradable;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public enum UseFunction {
     PLOW () {
         @Override
-        public Result use(Player player,Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player,Entity tool, Tile tile, Entity target) {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
@@ -36,7 +37,7 @@ public enum UseFunction {
     },
     DE_PLOW(){
         @Override
-        public Result use(Player player,Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player,Entity tool, Tile tile, Entity target) {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
@@ -54,7 +55,7 @@ public enum UseFunction {
     },
     MINE(){
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             Entity mineral = tile.getContent();
             if(mineral == null){
                 return new Result(false, "Nothing to mine!");
@@ -84,13 +85,13 @@ public enum UseFunction {
     },
     DESTROY_ITEMS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     CHOP_TREE {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             Entity tree = tile.getContent();
             if(tree == null){
                 return new Result(false, "No tree to chop!");
@@ -104,7 +105,7 @@ public enum UseFunction {
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FORAGING).getLevel() == 4 ? 1 : 0;
             //TODO: weather effects?
-            player.reduceEnergy(Math.abs(energyCost));
+            player.reduceEnergy(Math.max(energyCost, 0));
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
                 return new Result(false, "Your axe cant chop that tree. you need " + harvestable.getMaterial() + " axe.");
             }
@@ -122,37 +123,53 @@ public enum UseFunction {
     DESTROY_BRANCHES {
         @Override
         //TODO
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     WATER_GROUND {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+            Container container =  tool.getComponent(Container.class);
+            if(!tile.getType().equals(TileType.PLANTED_GROUND /* TODO: is it true?*/))
+                return new Result(false, "you can't water this ground");
+            tile.getContent().getComponent(Growable.class).setWateredToday(true);
+            int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+            energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            player.reduceEnergy(Math.max(energyCost, 0));
+            container.decreaseCharge();
+            return new Result(true, "tile watered successfully");
         }
     },
     FILL_WATER {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+            if(tile.getType().equals(TileType.WATER) /*TODO: or greenhouse water*/) {
+                tool.getComponent(Container.class).fillContainer();
+                int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
+                energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+                player.reduceEnergy(Math.max(0, energyCost));
+                return new Result(true, "watering can filled successfully");
+            }
+            else
+                return new Result(false, "Can't fill water with this tile");
         }
     },
     FISH {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     CUT_GRASS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     HARVEST_CROPS {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             Entity entity = tile.getContent();
             Growable growable;
             if(entity == null || (growable = entity.getComponent(Growable.class)) == null){
@@ -163,20 +180,20 @@ public enum UseFunction {
     },
     EXTRACT_MILK {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     COLLECT_WOOL {
         @Override
-        public Result use(Player player, Entity tool, Tile tile, Entity target) {
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
     ;
 
 
-    abstract public Result use(Player player,Entity tool, Tile tile, Entity target);
+    abstract protected Result use(Player player,Entity tool, Tile tile, Entity target);
     public Result use(Entity tool, Tile tile, Entity target){
         return this.use(App.getActiveGame().getCurrentPlayer(), tool, tile, target);
     }

@@ -59,6 +59,22 @@
           ]
         }
       ]
+    },{
+      "name" : "Watering can",
+      "components": [
+        {
+          "type" : "Useable",
+          "useFunctions" : [
+            "WATER_GROUND",
+            "FILL_WATER"
+          ]
+        },
+        {
+          "type" : "Container",
+          "maxCharge": 40
+        }
+
+      ]
     }
   ]
 }

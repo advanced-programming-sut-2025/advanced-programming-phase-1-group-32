@@ -26,6 +26,7 @@ import models.entities.components.inventory.Inventory;
         @JsonSubTypes.Type(value = Useable.class, name = "Useable"),
         @JsonSubTypes.Type(value = Pickable.class, name = "Pickable"),
         @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
+        @JsonSubTypes.Type(value = Container.class, name = "Container"),
 })
 abstract public class EntityComponent implements Cloneable {
     @JsonIgnore()
