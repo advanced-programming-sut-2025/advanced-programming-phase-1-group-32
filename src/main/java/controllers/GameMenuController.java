@@ -389,7 +389,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "tile is unavailable for planting");
         }
 
-        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant())
+//        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
         tile.plant(seed);
         return new Result(true, "planted succusfully");
     }
