@@ -16,7 +16,7 @@ public class Gift {
     public Gift(Player sender, Player receiver, Entity content, Date date) {
         this.sender = sender;
         this.receiver = receiver;
-        this.content = content;
+        this.content = content.clone();
         this.date = date;
         rating = -1;
     }

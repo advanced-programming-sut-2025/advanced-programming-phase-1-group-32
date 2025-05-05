@@ -18,6 +18,7 @@ public enum GameMenuCommands implements Commands {
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
+    START_TRADE       ("^\\s*start\\s+trade\\s*$"),
 
     /* --------------------------------------- Friendship commands ---------------------------------------- */
     TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),

@@ -170,7 +170,11 @@ public class GameMenu implements AppMenu {
                 System.out.println();
             }
             /* -------------------------------------------------- -------------------------------------------------- */
-            else {
+
+            else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
+                System.out.println(controller.startTrade());
+
+            } else {
                 System.out.println("Invalid Command!");
             }
         }

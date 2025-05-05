@@ -9,6 +9,8 @@ import models.entities.components.*;
 import models.enums.Direction;
 import models.enums.EntityTag;
 import models.enums.TileType;
+import models.entities.components.harvestable.Harvestable;
+import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
@@ -17,6 +19,7 @@ import models.player.Energy;
 import models.player.Gift;
 import models.player.Message;
 import models.player.Player;
+import models.player.*;
 import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
@@ -806,6 +809,22 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    public Result startTrade(){
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        App.setCurrentMenu(Menu.TRADE_MENU);
+        StringBuilder message = new StringBuilder("Welcome to TradeMenu!\nYour new offers: \n");
+
+        for (TradeOffer tradeOffer : currentPlayer.getTrades()) {
+            if (tradeOffer.getReceiver().equals(currentPlayer) && !tradeOffer.isSeen()) {
+                tradeOffer.setSeen(true);
+                message.append(tradeOffer.infoMessage(false));
+            }
+        }
+
+        return new Result(true, message.toString());
+    }
+
     public Result talk(String receiverPlayerName, String messageString) {
         Game game = App.getActiveGame();
         Player receiverPlayer = game.findPlayer(receiverPlayerName);
@@ -923,6 +942,7 @@ public class GameMenuController implements Controller {
         App.getActiveGame().toggleMapVisibility();
         return null;
     }
+
     public Result cheatGiveItem(String name, int quantity){
         Player currentPlayer = App.getActiveGame().getCurrentPlayer();
         if(!App.entityRegistry.doesEntityExist(name)){
