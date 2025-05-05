@@ -154,4 +154,10 @@ public class Growable extends EntityComponent{
         }
         return stage;
     }
+
+    public void updateDaily(Season season) {
+        if (daysPastFromPlant < totalHarvestTime && this.getGrowingSeasons().contains(season)) {
+            daysPastFromPlant++;
+        }
+    }
 }

@@ -9,7 +9,6 @@ import models.entities.components.*;
 import models.enums.Direction;
 import models.enums.EntityTag;
 import models.enums.TileType;
-import models.entities.components.harvestable.Harvestable;
 import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
@@ -109,9 +108,14 @@ public class GameMenuController implements Controller {
         //ghash
     }
 
-    public Result thor() {
-        //TODO
-        return null;
+    public Result thor(int x, int y) {
+        Position position = new Position(x, y);
+        Game game = App.getActiveGame();
+        Tile tile = game.getActiveMap().getTileByPosition(position);
+
+        game.thorTile(tile);
+
+        return new Result(true, "tile at position " + x + ", " + y + " thord successfully!");
     }
 
     public Result showWeather() {
@@ -259,6 +263,7 @@ public class GameMenuController implements Controller {
         //TODO
         return null;
     }
+
     /* ---------------------------------- Tools ---------------------------------- */
     public Result toolsEquip(String toolName) {
         Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
@@ -385,7 +390,7 @@ public class GameMenuController implements Controller {
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
 
-        if (tile == null || !tile.getType().equals(TileType.Plowed)) {
+        if (tile == null || !tile.getType().equals(TileType.PLOWED)) {
             return new Result(false, "tile is unavailable for planting");
         }
 

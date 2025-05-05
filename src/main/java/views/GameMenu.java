@@ -174,6 +174,10 @@ public class GameMenu implements AppMenu {
             else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
                 System.out.println(controller.startTrade());
 
+            } else if ((matcher = GameMenuCommands.CHEAT_THOR.getMatcher(input)) != null) {
+                System.out.println(controller.thor(Integer.parseInt(matcher.group(1)),
+                        Integer.parseInt(matcher.group(2))));
+
             } else {
                 System.out.println("Invalid Command!");
             }

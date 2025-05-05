@@ -40,6 +40,22 @@
           ]
         }
       ]
+    },
+    {
+      "name" : "Burned Tree",
+      "components" : [
+        {
+          "type" : "Harvestable",
+          "material" : "STONE",
+          "resources" : [
+            {
+              "entity" : "Coal",
+              "min" : 3,
+              "max" : 7
+            }
+          ]
+        }
+      ]
     }
   ]
 }

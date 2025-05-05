@@ -2,7 +2,6 @@ package models.Commands;
 
 public enum GameMenuCommands implements Commands {
     WALK              ("^\\s*walk\\s+-l\\s+<\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>\\s*$"),
-    TALK              ("\\s*talk\\s+-u\\s+(?<name>.+)\\s+-m\\s+(?<message>.+)\\s*"),
     WEATHER           ("\\s*weather\\s*"),
     CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
@@ -19,8 +18,10 @@ public enum GameMenuCommands implements Commands {
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
+    CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
 
     /* --------------------------------------- Friendship commands ---------------------------------------- */
+    TALK              ("\\s*talk\\s+-u\\s+(?<name>.+)\\s+-m\\s+(?<message>.+)\\s*"),
     TALK_HISTORY      ("^\\s*talk\\s+history\\s+-u\\s+(?<name>.+)\\s*"),
     FRIENDSHIPS       ("\\s*friendships\\s*"),
     GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>\\d+)\\s*"),
@@ -29,7 +30,7 @@ public enum GameMenuCommands implements Commands {
     GIFT_HISTORY      ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
     HUG               ("\\s*hug\\s+-u\\s+(?<username>.+)\\s*"),
     FLOWER            ("\\s*flower\\s+-u\\s+(?<username>.+)\\s*"),
-    /* -------------------------------------------------- -------------------------------------------------- */
+    /* ----------------------------------------------------------------------------------------------------- */
 
     /* ------------------------------------------ Date commands  ------------------------------------------ */
     DATE              ("\\s*date\\s*"),

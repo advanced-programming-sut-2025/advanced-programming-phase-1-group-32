@@ -1,6 +1,9 @@
 package models;
 
 import models.entities.Entity;
+import models.entities.components.Growable;
+import models.enums.EntityTag;
+import models.enums.TileType;
 import models.enums.Weather;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
@@ -137,8 +140,43 @@ public class Game {
             playerFriendship.updateDaily();
         }
 
+        for (Entity entity : plantedEntities) {
+            entity.getComponent(Growable.class).updateDaily(getDate().getSeason());
+        }
+
+
         //TODO
     }
+
+    public void dailyThor() {
+        if (!getTodayWeather().equals(Weather.STORMY)) {
+            return;
+        }
+
+        ArrayList<Tile> affectedTiles = new ArrayList<>();
+        // TODO: add tiles to effect
+
+        for (Tile tile : affectedTiles) {
+            thorTile(tile);
+        }
+
+
+    }
+
+    public void thorTile(Tile tile) {
+        if (tile.getContent() != null && tile.getContent().hasTag(EntityTag.CROP)) {
+            tile.setContent(null);
+            tile.setType(TileType.GRASS);
+        }
+
+        if (tile.getContent() != null &&tile.getContent().hasTag(EntityTag.TREE)) {
+//                tile.setContent(App.entityRegistry.makeEntity("Burned Tree"));
+            tile.setType(TileType.GRASS);
+            // TODO: change it to coal
+        }
+
+    }
+
 
     public void setActiveMap(GameMap map) {
         this.activeMap = map;
