@@ -119,9 +119,10 @@ public class EntityRegistry {
     }
 
     public boolean doesEntityExist(String entityName){
-        Entity entity = this.getEntityDetails(entityName);
+        Entity entity = this.registry.get(entityName.toLowerCase());
         return entity != null;
     }
+
     public Entity makeEntity(String name){
         Entity entity = this.registry.get(name.toLowerCase());
         if(entity == null){

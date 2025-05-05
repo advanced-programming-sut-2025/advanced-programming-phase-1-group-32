@@ -216,6 +216,17 @@ public class Inventory extends EntityComponent {
         return entity;
     }
 
+    public Entity removeItem(String entityName, int amount) {
+        // TODO: remove amount number of entity with entityName and return it
+        Entity entity = null;
+        for (InventorySlot s : slots) {
+            if (s.getEntity().getName().equals(entityName)) {
+                s.setEntity(null);
+            }
+        }
+        return entity;
+    }
+
     public ArrayList<InventorySlot> getSlots() {
         return this.slots;
     }
@@ -254,6 +265,7 @@ public class Inventory extends EntityComponent {
         }
         return null;
     }
+
     public Entity getItem(Entity entity) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
