@@ -1,6 +1,11 @@
 package models.player;
 
+import models.App;
 import models.Date;
+import models.Game;
+import models.entities.Entity;
+import models.entities.components.inventory.Inventory;
+import models.player.friendship.PlayerFriendship;
 
 public class TradeOffer {
     private final Player sender;
@@ -100,9 +105,9 @@ public class TradeOffer {
     public String infoMessage(boolean forHistory) {
         StringBuilder result = new StringBuilder();
         result.append("ID: ").append(id).append("\n");
-        result.append("Sender: ").append(sender).append("\n");
+        result.append("Sender: ").append(sender.getUsername()).append("\n");
         if (forHistory) {
-            result.append("Receiver: ").append(receiver).append("\n");
+            result.append("Receiver: ").append(receiver.getUsername()).append("\n");
         }
 
         switch (type) {
@@ -128,9 +133,9 @@ public class TradeOffer {
         if (forHistory) {
             result.append("Statue: ");
             if (isAccepted()) {
-                result.append("Accepted");
+                result.append("Accepted \n");
             } else {
-                result.append("Rejected");
+                result.append("Rejected \n");
             }
         }
 
@@ -141,10 +146,78 @@ public class TradeOffer {
     }
 
     public void reject() {
-        //TODO
+        Game game = App.getActiveGame();
+        setDecided(true);
+        setAccepted(false);
+        PlayerFriendship playerFriendship = game.getFriendshipWith(getSender());
+
+        playerFriendship.reduceXp(10);
     }
 
-    public void accept() {
-        //TODO
+    public boolean accept() {
+        Game game = App.getActiveGame();
+        setDecided(true);
+        Player sender = getSender();
+        Player receiver = getReceiver();
+
+        switch (getType()) {
+            case 1 -> {
+                if(!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
+                    setAccepted(false);
+                    return false;
+                }
+                if (!receiver.getComponent(Inventory.class).doesHaveItem(getTargetItem(), getTargetItemAmount())) {
+                    setAccepted(false);
+                    return false;
+                }
+
+                //TODO: change item ownership
+//                Entity item1 = sender.getComponent(Inventory.class).removeItem();
+//                Entity item2 = receiver.getComponent(Inventory.class).removeItem();
+//                receiver.getComponent(Inventory.class).addItem(item1);
+//                sender.getComponent(Inventory.class).addItem(item2);
+
+            }
+            case 2 -> {
+                if(!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
+                    setAccepted(false);
+                    return false;
+                }
+                if (receiver.getWallet().getBalance() < price) {
+                    setAccepted(false);
+                    return false;
+                }
+
+                //TODO: change item ownership
+//                Entity item = sender.getComponent(Inventory.class).removeItem();
+//                receiver.getComponent(Inventory.class).addItem(item);
+                receiver.getWallet().changeBalance(-price);
+                sender.getWallet().changeBalance(price);
+
+            }
+            case 3 -> {
+                if (!receiver.getComponent(Inventory.class).doesHaveItem(getTargetItem(), getTargetItemAmount())) {
+                    setAccepted(false);
+                    return false;
+                }
+                if (sender.getWallet().getBalance() < price) {
+                    setAccepted(false);
+                    return false;
+                }
+
+                sender.getWallet().changeBalance(-price);
+                receiver.getWallet().changeBalance(price);
+                //TODO: change item ownership
+//                Entity item = receiver.getComponent(Inventory.class).removeItem();
+//                sender.getComponent(Inventory.class).addItem(item);
+
+            }
+        }
+
+
+        setAccepted(true);
+        PlayerFriendship playerFriendship = game.getFriendshipWith(getSender());
+        playerFriendship.addXp(20);
+        return true;
     }
 }

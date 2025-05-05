@@ -5,17 +5,17 @@ import models.App;
 import models.Game;
 import models.entities.Entity;
 import models.entities.components.Pickable;
+import models.enums.Menu;
 import models.player.Player;
 import models.player.TradeOffer;
 import records.Result;
 
 public class TradeMenuController implements Controller {
 
-    public Result trade(String username, String type, String itemName, int amount, boolean isBuyByMoney
-            , double price, String targetItemName, int targetItemAmount) {
+    public Result trade(String username, String type, String itemName, int amount, boolean isBuyByMoney, double price, String targetItemName, int targetItemAmount) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
-        Player targetPlayer = game.findPlayer(targetItemName);
+        Player targetPlayer = game.findPlayer(username);
 
         if (targetPlayer == null || targetPlayer == currentPlayer) {
             return new Result(false, "Not valid player");
@@ -65,10 +65,6 @@ public class TradeMenuController implements Controller {
         return new Result(true, "trade request sent successfully");
     }
 
-    public Result tradeItem() {
-        return null;
-    }
-
     public Result tradeRespond(String response, int id) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
@@ -85,8 +81,11 @@ public class TradeMenuController implements Controller {
         }
 
         if (response.equalsIgnoreCase("accept")) {
-            tradeOffer.accept();
-            return new Result(true, "Trade accepted successfully!");
+            if(tradeOffer.accept()) {
+                return new Result(true, "Trade accepted successfully!");
+            } else {
+                return new Result(false, "Trade accept failed due to not enough resources.");
+            }
             
         } else if (response.equalsIgnoreCase("reject")) {
             tradeOffer.reject();
@@ -105,7 +104,7 @@ public class TradeMenuController implements Controller {
         StringBuilder message = new StringBuilder("Your not decided trade requests:\n\n");
 
         for (TradeOffer tradeOffer : currentPlayer.getTrades()) {
-            if (tradeOffer.getReceiver() == currentPlayer || !tradeOffer.isDecided()) {
+            if (tradeOffer.getReceiver() == currentPlayer && !tradeOffer.isDecided()) {
                 message.append(tradeOffer.infoMessage(false)).append("\n");
             }
         }
@@ -126,6 +125,11 @@ public class TradeMenuController implements Controller {
         }
 
         return new Result(true, message.toString());
+    }
+
+    public Result back() {
+        App.setCurrentMenu(Menu.GAME_MENU);
+        return new Result(true, "You are now in GameMenu");
     }
 
     private void addTradeOffer(TradeOffer tradeOffer) {

@@ -10,3 +10,13 @@ gift rate -i 1 -r 3
 gift history -u Ilia
 hug -u AliAlm
 flower -u AliAlm
+
+start trade
+trade -u Parsa -t offer -i Jazz Seeds -a 2 -p 2.3
+trade -u Parsa -t offer -i Jazz Seeds -a 2 -ti Jazz Seeds -ta 3
+back
+next turn
+start trade
+trade -reject -i 1001
+back
+start trade

@@ -8,10 +8,7 @@ import models.entities.components.harvestable.Harvestable;
 import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
-import models.player.Energy;
-import models.player.Gift;
-import models.player.Message;
-import models.player.Player;
+import models.player.*;
 import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
@@ -740,10 +737,19 @@ public class GameMenuController implements Controller {
     }
 
     public Result startTrade(){
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
         App.setCurrentMenu(Menu.TRADE_MENU);
-        //TODO: set the message
+        StringBuilder message = new StringBuilder("Welcome to TradeMenu!\nYour new offers: \n");
 
-        return null;
+        for (TradeOffer tradeOffer : currentPlayer.getTrades()) {
+            if (tradeOffer.getReceiver().equals(currentPlayer) && !tradeOffer.isSeen()) {
+                tradeOffer.setSeen(true);
+                message.append(tradeOffer.infoMessage(false));
+            }
+        }
+
+        return new Result(true, message.toString());
     }
 
     public Result talk(String receiverPlayerName, String messageString) {

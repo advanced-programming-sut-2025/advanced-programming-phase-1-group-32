@@ -104,6 +104,7 @@ public class EntityRegistry {
         Entity entity = this.getEntityDetails(entityName);
         return entity != null;
     }
+
     public Entity makeEntity(String name){
         Entity entity = this.registry.get(name.toLowerCase());
         if(entity == null){
