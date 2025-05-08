@@ -141,7 +141,7 @@ public class Game {
         }
 
         for (Entity entity : plantedEntities) {
-            entity.getComponent(Growable.class).updateDaily(getDate().getSeason());
+            entity.getComponent(Growable.class).updateDaily();
         }
 
 
@@ -170,7 +170,8 @@ public class Game {
         }
 
         if (tile.getContent() != null &&tile.getContent().hasTag(EntityTag.TREE)) {
-//                tile.setContent(App.entityRegistry.makeEntity("Burned Tree"));
+                tile.setContent(App.entityRegistry.makeEntity("Burned Tree"));
+//            tile.setContent(null);
             tile.setType(TileType.GRASS);
             // TODO: change it to coal
         }

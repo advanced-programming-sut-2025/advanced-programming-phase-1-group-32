@@ -1,11 +1,16 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.App;
+import models.Game;
+import models.entities.Entity;
+import models.enums.EntityTag;
 import models.enums.Season;
+import records.Result;
 
 import java.util.ArrayList;
 
-public class Growable extends EntityComponent{
+public class Growable extends EntityComponent {
     @JsonProperty("seasons")
     private ArrayList<Season> growingSeasons = new ArrayList<>();
     @JsonProperty("fruit")
@@ -17,14 +22,17 @@ public class Growable extends EntityComponent{
     @JsonProperty("totalHarvestTime")
     private int totalHarvestTime;
     private boolean wateredToday;
+    private int daysPastFromWatered;
     @JsonProperty("canBecomeGiant")
     private boolean canBecomeGiant;
     private int daysPastFromPlant;
     private boolean isFertilized;
     @JsonProperty("regrowthTime")
     private int regrowthTime;
+    private int daysPastFromRegrowth = 0;
     @JsonProperty("oneTime")
     private boolean oneTime;
+    private boolean grown;
 
     public Growable(ArrayList<Season> growingSeasons, String fruit, String seed, int totalHarvestTime) {
         this.growingSeasons = growingSeasons;
@@ -77,6 +85,34 @@ public class Growable extends EntityComponent{
 
     public boolean isWateredToday() {
         return wateredToday;
+    }
+
+    public void setStages(ArrayList<Integer> stages) {
+        this.stages = stages;
+    }
+
+    public int getDaysPastFromWatered() {
+        return daysPastFromWatered;
+    }
+
+    public void setDaysPastFromWatered(int daysPastFromWatered) {
+        this.daysPastFromWatered = daysPastFromWatered;
+    }
+
+    public int getDaysPastFromRegrowth() {
+        return daysPastFromRegrowth;
+    }
+
+    public void setDaysPastFromRegrowth(int daysPastFromRegrowth) {
+        this.daysPastFromRegrowth = daysPastFromRegrowth;
+    }
+
+    public boolean isGrown() {
+        return grown;
+    }
+
+    public void setGrown(boolean grown) {
+        this.grown = grown;
     }
 
     public void setWateredToday(boolean wateredToday) {
@@ -155,9 +191,62 @@ public class Growable extends EntityComponent{
         return stage;
     }
 
-    public void updateDaily(Season season) {
-        if (daysPastFromPlant < totalHarvestTime && this.getGrowingSeasons().contains(season)) {
-            daysPastFromPlant++;
+    public void updateDaily() {
+        Game game = App.getActiveGame();
+        Season season = game.getDate().getSeason();
+        if (this.getGrowingSeasons().contains(season)) {
+            if (daysPastFromPlant < totalHarvestTime) {
+                daysPastFromPlant++;
+                if (daysPastFromPlant == totalHarvestTime) {
+                    daysPastFromRegrowth = regrowthTime;
+                }
+            } else if (!isOneTime() && daysPastFromRegrowth < regrowthTime) {
+                daysPastFromRegrowth++;
+            }
+        }
+
+        if (!isWateredToday()) {
+            daysPastFromWatered++;
+        } else {
+            daysPastFromWatered = 0;
+        }
+
+        if (daysPastFromWatered >= 2) {
+            //TODO
         }
     }
+
+    public Result canCollectProduct() {
+        Game game = App.getActiveGame();
+        Season season = game.getDate().getSeason();
+
+        if (!this.getGrowingSeasons().contains(season)) {
+            return new Result(false, "You can't collect product form this plant in this season!");
+        }
+        if (isOneTime() && daysPastFromPlant < totalHarvestTime) {
+            return new Result(false, "Its not time to collect product");
+        }
+        if (!isOneTime() || regrowthTime < daysPastFromRegrowth) {
+            return new Result(false, "Its not time to collect product");
+        }
+
+        return new Result(true, "Collected successfully!");
+    }
+
+    public Entity collectFruit() {
+        if (!canCollectProduct().isSuccessful()) {
+            return null;
+        }
+
+        if (entity.hasTag(EntityTag.CROP)) {
+            Entity fruit = entity.clone();
+            return fruit;
+        } else if (entity.hasTag(EntityTag.TREE)) {
+            Entity fruit = App.entityRegistry.makeEntity(this.fruit);
+            return fruit;
+        }
+
+        return null;
+    }
+
 }

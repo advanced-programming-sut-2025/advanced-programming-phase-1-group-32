@@ -9,6 +9,28 @@
   ],
   "entities" : [
     {
+      "name": "Pine Tar",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Apricot",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 59
+        },
+        {
+          "type" : "Edible",
+          "energy" : 38
+        }
+      ]
+    },
+    {
       "name" : "Apple",
       "components" : [
         {

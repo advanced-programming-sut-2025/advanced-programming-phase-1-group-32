@@ -409,11 +409,12 @@ public class GameMenuController implements Controller {
             return new Result(false, "No tile found");
         }
 
-        if (tile.getType() != TileType.PLANTED_GROUND) {
+        Entity plantedEntity = tile.getContent();
+        if (plantedEntity == null ||
+                !(plantedEntity.hasTag(EntityTag.TREE) || plantedEntity.hasTag(EntityTag.CROP))) {
             return new Result(false, "Tile is not a planted ground");
         }
 
-        Entity plantedEntity = tile.getContent();
 
         StringBuilder message = new StringBuilder();
         message.append("Name: ").append(plantedEntity.getName()).append("\n");
