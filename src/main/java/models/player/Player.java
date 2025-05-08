@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Player extends Entity{
     private Energy energy = new Energy();
-    private final Wallet wallet = null;
+    private Wallet wallet = null;
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
     private final Map<Character, NpcFriendship> npcFriendships = null;
@@ -97,6 +97,10 @@ public class Player extends Entity{
 
     public Energy getEnergy() {
         return energy;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     public void setEnergy(Energy energy) {
@@ -253,5 +257,13 @@ public class Player extends Entity{
 
     public boolean hasRecipe(Recipe recipe) {
         return unlockedRecipes.contains(recipe);
+    }
+
+    public void marriageRequestReject() {
+        //TODO: Effects
+    }
+
+    public void updatePerDay() {
+        getEnergy().updatePerDay();
     }
 }

@@ -9,6 +9,7 @@ import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.gameMap.GameMapType;
 import models.player.Player;
+import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
@@ -141,7 +142,11 @@ public class Game {
         }
 
         for (Entity entity : plantedEntities) {
-            entity.getComponent(Growable.class).updateDaily();
+            entity.getComponent(Growable.class).updatePerDay();
+        }
+
+        for (Player player : players) {
+            player.updatePerDay();
         }
 
 
@@ -175,6 +180,22 @@ public class Game {
             tile.setType(TileType.GRASS);
             // TODO: change it to coal
         }
+
+    }
+
+    public void marry(Player girl, Player boy) {
+        // combining wallets
+        Wallet boyWallet = boy.getWallet();
+        Wallet girlWallet = girl.getWallet();
+        Wallet wallet = Wallet.combineWallets(boyWallet, girlWallet);
+
+        boy.setWallet(wallet);
+        girl.setWallet(wallet);
+
+        PlayerFriendship playerFriendship = getFriendshipBetween(girl, boy);
+        playerFriendship.setLevel(4);
+
+        //TODO: other effects
 
     }
 
@@ -216,6 +237,16 @@ public class Game {
         for (PlayerFriendship playerFriendship : playerFriendships) {
             if (playerFriendship.getFriends().contains(friend) &&
             playerFriendship.getFriends().contains(currentPlayer)) {
+                return playerFriendship;
+            }
+        }
+        return null;
+    }
+
+    public PlayerFriendship getFriendshipBetween(Player friend1, Player friend2) {
+        for (PlayerFriendship playerFriendship : playerFriendships) {
+            if (playerFriendship.getFriends().contains(friend1) &&
+                    playerFriendship.getFriends().contains(friend2)) {
                 return playerFriendship;
             }
         }

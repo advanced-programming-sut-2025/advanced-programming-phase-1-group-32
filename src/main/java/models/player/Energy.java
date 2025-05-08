@@ -23,6 +23,13 @@ public class Energy {
         this.amount = amount;
     }
 
+    public void addEnergy(int amount) {
+        this.amount += amount;
+        if (this.amount > 0) {
+            this.amount = 200;
+        }
+    }
+
     public boolean isUnlimited() {
         return isUnlimited;
     }
@@ -38,5 +45,16 @@ public class Energy {
 
     public void toggleUnlimited(){
         isUnlimited = !isUnlimited;
+    }
+
+    public void setModifier(float modifier, int daysLeft) {
+        this.modifier = modifier;
+        this.modifierDaysLeft = daysLeft;
+    }
+
+    public void updatePerDay() {
+        if (modifierDaysLeft > 0) {
+            modifierDaysLeft--;
+        }
     }
 }

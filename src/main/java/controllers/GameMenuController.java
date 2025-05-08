@@ -880,6 +880,41 @@ public class GameMenuController implements Controller {
         return new Result(true, "your request sent successfully!");
     }
 
+    public Result respond(String respond, String username) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player respondPlayer = game.findPlayer(username);
+        if (respondPlayer == null) {
+            return new Result(false, "Player not found!");
+        }
+
+        if (!currentPlayer.getSuitors().containsKey(respondPlayer)) {
+            return new Result(false, "Baa! He doesn't request you...");
+        }
+        Entity ring = currentPlayer.getSuitors().get(respondPlayer);
+
+        if (respond.equals("accept")) {
+            game.marry(currentPlayer, respondPlayer);
+            currentPlayer.getComponent(Inventory.class).addItem(ring);
+            return new Result(true, "lalalala mobarak bada!");
+        } else if (respond.equals("reject")) {
+            currentPlayer.getSuitors().remove(respondPlayer);
+            respondPlayer.getComponent(Inventory.class).addItem(ring);
+            //effects on friendship
+            game.getFriendshipWith(respondPlayer).setLevel(0);
+            game.getFriendshipWith(respondPlayer).setXp(0);
+
+            // effects on energy
+            respondPlayer.getEnergy().setModifier(0.5f, 7);
+
+            return new Result(true, "hala fekr kardi ki hasti??");
+        } else {
+            return new Result(false, "type \"accept\" or \"reject\" as a response...");
+        }
+
+
+    }
+
     public Result startTrade(){
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();

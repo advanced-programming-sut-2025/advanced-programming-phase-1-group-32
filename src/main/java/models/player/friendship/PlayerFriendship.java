@@ -63,6 +63,11 @@ public class PlayerFriendship {
     }
 
     public void addXp(int xp) {
+        if (!hadContactToday && level == 4) {
+            for (Player player : friends) {
+                player.getEnergy().addEnergy(50);
+            }
+        }
         hadContactToday = true;
         this.xp += xp;
         if (this.xp >= (100 * (level + 1))) {
@@ -118,7 +123,9 @@ public class PlayerFriendship {
 
     public void updateDaily() {
         if (!hadContactToday) {
-            reduceXp(10);
+            if (level < 4) {
+                reduceXp(10);
+            }
         }
         hadMessageToday = false;
         hadHuggedToday = false;

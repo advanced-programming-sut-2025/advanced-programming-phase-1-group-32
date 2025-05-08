@@ -191,7 +191,7 @@ public class Growable extends EntityComponent {
         return stage;
     }
 
-    public void updateDaily() {
+    public void updatePerDay() {
         Game game = App.getActiveGame();
         Season season = game.getDate().getSeason();
         if (this.getGrowingSeasons().contains(season)) {

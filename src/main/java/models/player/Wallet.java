@@ -2,13 +2,14 @@ package models.player;
 
 public class Wallet {
     private int amount;
-    public int getAmount(){
-        return 0;
-    }
     private double balance;
 
     public void changeAmount(){
 
+    }
+
+    public int getAmount(){
+        return 0;
     }
 
     public void setAmount(int amount) {
@@ -25,5 +26,13 @@ public class Wallet {
 
     public void changeBalance(double price){
         this.balance += price;
+    }
+
+    public static Wallet combineWallets(Wallet wallet1, Wallet wallet2) {
+        Wallet wallet = new Wallet();
+        wallet.setAmount(wallet1.getAmount() + wallet2.getAmount());
+        wallet.setBalance(wallet1.getBalance() + wallet2.getBalance());
+        return wallet;
+
     }
 }
