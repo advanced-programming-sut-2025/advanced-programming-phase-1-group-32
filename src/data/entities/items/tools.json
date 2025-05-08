@@ -44,7 +44,7 @@
         {
           "type" : "Useable",
           "useFunctions" : [
-            "CHOP_TREE"
+            "HARVEST_PLANTS"
           ]
         }
       ]

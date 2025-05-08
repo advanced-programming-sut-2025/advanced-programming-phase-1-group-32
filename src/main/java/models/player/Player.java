@@ -114,6 +114,7 @@ public class Player extends Entity{
     }
 
     public void addExperince(SkillType type, int amount) {
+        //TODO
 
     }
 

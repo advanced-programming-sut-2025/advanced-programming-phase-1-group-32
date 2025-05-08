@@ -27,7 +27,7 @@ public enum UseFunction {
             if(tile.getType() != TileType.DIRT){
                 return new Result(false, "You can only plow dirt");
             }
-            tile.setType(TileType.Plowed);
+            tile.setType(TileType.PLOWED);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             //TODO: weather effects?
@@ -42,7 +42,7 @@ public enum UseFunction {
             if(tile.getContent() != null){
                 return new Result(false, "The tile isn't empty");
             }
-            if(tile.getType() != TileType.Plowed){
+            if(tile.getType() != TileType.PLOWED){
                 return new Result(false, "you can only de_plow plowed ground");
             }
             tile.setType(TileType.GRASS);
@@ -168,7 +168,7 @@ public enum UseFunction {
             return null;
         }
     },
-    HARVEST_CROPS {
+    HARVEST_PLANTS {
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             Entity entity = tile.getContent();
@@ -176,7 +176,32 @@ public enum UseFunction {
             if(entity == null || (growable = entity.getComponent(Growable.class)) == null){
                 return new Result(false, "nothing to harvest in that tile");
             }
-            return new Result(true, "havij");
+
+            Result result = growable.canCollectProduct();
+            if (!result.isSuccessful()) {
+                return result;
+            }
+
+            Inventory inventory = player.getComponent(Inventory.class);
+
+            //TODO: make quality for fruits
+            if (growable.isOneTime()) {
+                tile.setContent(null);
+                tile.setType(TileType.DIRT);
+                inventory.addItem(entity);
+            } else {
+                growable.setDaysPastFromRegrowth(0);
+                Entity fruit = growable.collectFruit();
+                inventory.addItem(fruit);
+            }
+
+            player.addExperince(SkillType.FARMING, 5);
+
+            //TODO: reduce energy
+
+
+
+            return new Result(true, "harvested");
         }
     },
     EXTRACT_MILK {

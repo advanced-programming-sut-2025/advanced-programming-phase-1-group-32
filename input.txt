@@ -18,7 +18,7 @@ cheat give item "Hoe" 1
 cheat give item "Scythe" 1
 show inventory
 cheat give item "Apple" 20
-plant -s Jazz Seeds -d down
+plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
@@ -27,3 +27,4 @@ talk history -u AliAlm
 tools equip Axe
 
 toggle map
+change input type

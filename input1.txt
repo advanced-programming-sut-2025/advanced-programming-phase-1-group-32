@@ -21,3 +21,6 @@ start trade
 trade -reject -i 1001
 back
 start trade
+
+
+cheat Thor -l <0,8>

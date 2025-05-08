@@ -30,6 +30,15 @@
           "growingPlants": ["Pine Tree"]
         }
       ]
+    },
+    {
+      "name": "Apricot Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Apricot Tree"]
+        }
+      ]
     }
   ]
 
