@@ -24,6 +24,7 @@ public class Player extends Entity{
     private int trashcanLevel;
     private final Map<Character, NpcFriendship> npcFriendships = null;
     private final Map<Player, PlayerFriendship> playerFriendships = null;
+    private HashMap<Player, Entity> suitors = new HashMap<>();
     private Player spouse;
     private final ArrayList<Quest> quests = null;
     private ArrayList<Gift> giftLog = new ArrayList<>();
@@ -34,9 +35,12 @@ public class Player extends Entity{
     private ArrayList<TradeOffer> trades = new ArrayList<>();
     private final Account account;
     private InventorySlot activeSlot;
+
+    // boolean for messages
     private boolean haveNewMessage = false;
     private boolean haveNewGift = false;
     private boolean haveNewTrade = false;
+    private boolean haveNewSuitor = false;
 
     public Player(Account account){
         super("Player", new Inventory(12));
@@ -57,6 +61,14 @@ public class Player extends Entity{
 
     public void addTrashcanLevel(int trashcanLevel) {
         //TODO
+    }
+
+    public HashMap<Player, Entity> getSuitors() {
+        return suitors;
+    }
+
+    public void setSuitors(HashMap<Player, Entity> suitors) {
+        this.suitors = suitors;
     }
 
     public ArrayList<Gift> getGiftLog() {
@@ -118,8 +130,9 @@ public class Player extends Entity{
 
     }
 
-    public void proposePlayer(Player player){
-
+    public void addSuitor(Player suitor, Entity ring) {
+        this.suitors.put(suitor, ring);
+        haveNewSuitor = true;
     }
 
     public void addQuest(){

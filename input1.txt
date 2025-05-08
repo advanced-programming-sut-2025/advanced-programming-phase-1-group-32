@@ -2,6 +2,7 @@ cheat advance date 1d
 gift -u AliAlm -i Jazz Seeds -a 2
 talk -u AliAlm -m salam
 cheat advance date 1d
+
 friendships
 next turn
 next turn
@@ -21,6 +22,8 @@ start trade
 trade -reject -i 1001
 back
 start trade
+
+ask marriage -u Female -r ring
 
 
 cheat Thor -l <0,8>

@@ -322,7 +322,7 @@ public class GameMenuController implements Controller {
     }
     /* --------------------------------------  -------------------------------------- */
 
-    public Result   craftInfo(String name) {
+    public Result craftInfo(String name) {
         if(!App.entityRegistry.doesEntityExist(name)) {
             return new Result(false, "There is no crop with name" + name);
         }
@@ -447,6 +447,8 @@ public class GameMenuController implements Controller {
             return new Result(false, "Tile is not a planted ground");
         }
 
+        // TODO: its effects :)
+
         // Fertilize!
         Entity plantedEntity = tile.getContent();
         plantedEntity.getComponent(Growable.class).setFertilized(true);
@@ -492,7 +494,6 @@ public class GameMenuController implements Controller {
     }
     *
      */
-
     public Result craftingCraft(String recipeName) {
         Player player = App.getActiveGame().getCurrentPlayer();
         Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
@@ -820,9 +821,63 @@ public class GameMenuController implements Controller {
         return new Result(true, "You have flowered " + floweredPlayer.getUsername() + "!");
     }
 
-    public Result askMarriage(){
-        //TODO
-        return null;
+    public Result askMarriage(String username, String ringName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player marriagePlayer = game.findPlayer(username);
+
+
+        if (currentPlayer.getAccount().getGender().equals(Gender.FEMALE)) {
+            // equal to "sangin bash dokhtar"
+            return new Result(false, "Be heavy girl!");
+        }
+
+        if (marriagePlayer == null) {
+            return new Result(false, "Player not found! You can't marry with ghosts!");
+        }
+
+        if (marriagePlayer.getAccount().getGender().equals(Gender.MALE)) {
+            return new Result(false, "Astaghforrellah...");
+        }
+
+        if (currentPlayer.getSpouse() != null) {
+            if (currentPlayer.getSpouse().equals(marriagePlayer)) {
+                return new Result(false, "you cant cheat on your spouse!");
+            } else {
+                return new Result(false, "You are married bro!");
+            }
+        }
+
+        if (marriagePlayer.getSpouse() != null) {
+            return new Result(false, "She is married...");
+        }
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(marriagePlayer);
+        if (playerFriendship.getLevel() < 3 || playerFriendship.getXp() < 400) {
+            return new Result(false, "Your friendship is not at appropriate level!");
+        }
+
+        if (game.checkPlayerDistance(marriagePlayer, currentPlayer)) {
+            return new Result(false, "get closer to her!");
+        }
+
+        if (!App.entityRegistry.doesEntityExist(ringName)) {
+            return new Result(false, "Ring " + ringName + " doesn't exist!");
+        }
+        Entity ring = App.entityRegistry.makeEntity(ringName);
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+
+        //TODO: check that its ring preferably by tag
+
+        if (!inventory.doesHaveItem(ring)) {
+            return new Result(false, "You don't have this ring!");
+        }
+
+        // do all the stuff in this function
+        marriagePlayer.addSuitor(currentPlayer, ring);
+        inventory.removeItem(ring);
+
+        return new Result(true, "your request sent successfully!");
     }
 
     public Result startTrade(){

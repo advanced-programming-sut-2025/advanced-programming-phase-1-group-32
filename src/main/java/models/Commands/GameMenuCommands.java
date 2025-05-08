@@ -31,6 +31,8 @@ public enum GameMenuCommands implements Commands {
     GIFT_HISTORY      ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
     HUG               ("\\s*hug\\s+-u\\s+(?<username>.+)\\s*"),
     FLOWER            ("\\s*flower\\s+-u\\s+(?<username>.+)\\s*"),
+    ASK_MARRIAGE      ("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+)\\s+-r\\s+(?<ring>.+)\\s*$"),
+    RESPOND           ("\\s*respond\\s+-(?<respond>(accept|reject))\\s+-u\\s+(?<username>.+)\\s*"),
     /* ----------------------------------------------------------------------------------------------------- */
 
     /* ------------------------------------------ Date commands  ------------------------------------------ */

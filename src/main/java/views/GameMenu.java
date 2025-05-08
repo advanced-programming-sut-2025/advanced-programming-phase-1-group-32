@@ -181,6 +181,9 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.thor(Integer.parseInt(matcher.group(1)),
                         Integer.parseInt(matcher.group(2))));
 
+            } else if ((matcher = GameMenuCommands.ASK_MARRIAGE.getMatcher(input)) != null) {
+                System.out.println(controller.askMarriage(matcher.group(1).trim(), matcher.group(2).trim()));
+
             } else {
                 System.out.println("Invalid Command!");
             }
