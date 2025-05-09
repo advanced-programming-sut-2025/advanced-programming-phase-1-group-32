@@ -6,11 +6,11 @@ import models.entities.Entity;
 import java.util.ArrayList;
 
 public class ItemProcess{
-    private Entity outputs;
+    private Entity output;
     private Date startTime;
 
-    public ItemProcess(Entity outputs, Date startTime) {
-        this.outputs = outputs;
+    public ItemProcess(Entity output, Date startTime) {
+        this.output = output;
         this.startTime = startTime;
     }
 

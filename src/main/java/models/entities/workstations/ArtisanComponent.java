@@ -5,13 +5,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.crafting.Recipe;
 import models.entities.Entity;
+import models.entities.components.Edible;
 import models.entities.components.EntityComponent;
+import models.entities.components.Sellable;
+import models.entities.components.inventory.Inventory;
 import records.Result;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 
 public class ArtisanComponent extends EntityComponent {
+
+    /* Hard Codes :/ */
+    private static Map<String, Integer> ingredientToPrice = new HashMap<>();
+    private static Map<String, List<String>> materials = new HashMap<>();
+
+    static {
+        materials.put("Cheese", List.of("Milk", "Large Milk"));
+        materials.put("Goat Cheese", List.of("Goat Milk", "Large Goat Milk"));
+        materials.put("Mayonnaise", List.of("Large Egg", "Egg"));
+
+        ingredientToPrice.put("Milk", 230);
+        ingredientToPrice.put("Large Milk", 345);
+
+        ingredientToPrice.put("Goat Milk", 400);
+        ingredientToPrice.put("Large Goat Milk", 600);
+
+        ingredientToPrice.put("Egg", 190);
+        ingredientToPrice.put("Large Egg", 237);
+
+    }
+    /*-----------------------------------------------------------------------------*/
+
     private final List<Recipe> recipes = new ArrayList<>();
     private ItemProcess activeProcess;
 
@@ -42,14 +72,41 @@ public class ArtisanComponent extends EntityComponent {
         return activeProcess != null;
     }
 
-    public Entity addProcess(String name) {
+    public Result addProcess(String name) {
         for (Recipe recipe : recipes) {
             if(recipe.getName().equals(name)) {
+                Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
+                /* I hate this part :/ */
+                if(materials.get(name) != null) {
+                    List<String> ingredients = materials.get(name);
 
-                activeProcess = new ItemProcess()
+                    if(ingredients != null) {
+                        for (String string : ingredients) {
+                            if(inventory.doesHaveItem(string)) {
+                                inventory.takeFromInventory(string, 1);
+                                Entity product = App.entityRegistry.makeEntity(name);
+                                product.getComponent(Sellable.class).setPrice(ingredientToPrice.get(string));
+                                activeProcess = new ItemProcess(product, App.getActiveGame().getDate());
+                                return new Result(true, "Process added successfully");
+                            }
+                        }
+                        return new Result(false, "You don't have enough ingredients");
+                    }
+
+                }
+                /* --------------------------------- end of hardCode ---------------------------------*/
+
+                if(!recipe.canCraft(inventory))
+                    return new Result(false, "You don't have enough ingredients");
+                activeProcess = new ItemProcess(recipe.craft(inventory), App.getActiveGame().getDate());
+                return new Result(true, "Process added successfully");
             }
         }
+        return new Result(false, "This artisan doesn't have recipe with this name");
     }
+
+
+
 
 
 

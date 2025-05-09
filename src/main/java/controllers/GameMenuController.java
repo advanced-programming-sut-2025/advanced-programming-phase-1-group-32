@@ -348,11 +348,10 @@ public class GameMenuController implements Controller {
             if(tile == null) continue;
             if(tile.getContent().getName().equals(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
-                if(artisan.isInProcess())
+                if(artisan.isInProcess())/* TODO: should fix in phase2 (what if there is two artisan near player)*/
                     return new Result(false, "another recipe already in process");
-                Result result = artisan.addProcess(itemName);
+                return artisan.addProcess(itemName);
             }
-
         }
         return new Result(false, "There isn't any " + artisanName + " around you!");
     }
