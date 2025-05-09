@@ -226,35 +226,35 @@ public class GameMenu implements AppMenu {
         App.getView().getRenderer().clear();
         Position position = App.getActiveGame().getCurrentPlayer().getPosition();
         Renderer renderer = App.getView().getRenderer();
-        for (int i = 0; i < tiles.length; i++) {
-            for (int j = 0; j < tiles[i].length; j++) {
-                Tile tile = tiles[i][j];
-                Entity entity = tile.getContent();
-                if(entity != null){
-                    Renderable component = entity.getComponent(Renderable.class);
-                    if(component == null){
-                        throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
-                    }
-                    renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
-                }else{
-                    switch (mapRenderType){
-                        case DEFAULT -> {
+        switch (mapRenderType){
+            case DEFAULT -> {
+                for (Tile[] value : tiles) {
+                    for (Tile tile : value) {
+                        Entity entity = tile.getContent();
+                        if (entity != null) {
+                            Renderable component = entity.getComponent(Renderable.class);
+                            if (component == null) {
+                                throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
+                            }
+                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
+                        } else {
                             renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
-                        }
-                        case REGIONS -> {
-                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
                         }
                     }
                 }
             }
-        }
-
-        switch (mapRenderType){
             case REGIONS -> {
+                for (Tile[] value : tiles) {
+                    for (Tile tile : value) {
+                        renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
+                    }
+                }
                 for(MapRegion r : map.getRegions()){
                     renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow(), r.getName(), Color.WHITE, position);
                     if(r.getOwner() != null){
                         renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, r.getOwner().getAccount().getNickname(), Color.WHITE, position);
+                    }else{
+                        renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, "no owner", Color.WHITE, position);
                     }
                 }
             }
