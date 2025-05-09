@@ -842,9 +842,9 @@ public class GameMenuController implements Controller {
 
         if (currentPlayer.getSpouse() != null) {
             if (currentPlayer.getSpouse().equals(marriagePlayer)) {
-                return new Result(false, "you cant cheat on your spouse!");
+                return new Result(false, "You are married with her bro!");
             } else {
-                return new Result(false, "You are married bro!");
+                return new Result(false, "you cant cheat on your spouse!");
             }
         }
 
@@ -857,7 +857,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "Your friendship is not at appropriate level!");
         }
 
-        if (game.checkPlayerDistance(marriagePlayer, currentPlayer)) {
+        if (!game.checkPlayerDistance(marriagePlayer, currentPlayer)) {
             return new Result(false, "get closer to her!");
         }
 

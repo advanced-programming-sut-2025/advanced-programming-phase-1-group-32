@@ -24,6 +24,7 @@ back
 start trade
 
 ask marriage -u Female -r ring
+respond -accept -u Ilia
 
 
 cheat Thor -l <0,8>

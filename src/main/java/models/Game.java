@@ -184,6 +184,9 @@ public class Game {
     }
 
     public void marry(Player girl, Player boy) {
+        girl.setSpouse(boy);
+        boy.setSpouse(girl);
+
         // combining wallets
         Wallet boyWallet = boy.getWallet();
         Wallet girlWallet = girl.getWallet();
@@ -192,6 +195,7 @@ public class Game {
         boy.setWallet(wallet);
         girl.setWallet(wallet);
 
+        //set friendship
         PlayerFriendship playerFriendship = getFriendshipBetween(girl, boy);
         playerFriendship.setLevel(4);
 

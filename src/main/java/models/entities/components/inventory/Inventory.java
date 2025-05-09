@@ -117,6 +117,9 @@ public class Inventory extends EntityComponent {
      * @return returns successful result if the entity was completely added
      */
     public Result addItem(Entity entity) {
+        if (entity == null) {
+            return new Result(false, "entity is null");
+        }
         Pickable pickable = entity.getComponent(Pickable.class);
         if (pickable == null) {
             throw new RuntimeException("Tried to pick up " + entity.getName() + " which doesnt have a Pickable component");

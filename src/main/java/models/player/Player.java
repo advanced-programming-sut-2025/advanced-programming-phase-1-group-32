@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Player extends Entity{
     private Energy energy = new Energy();
-    private Wallet wallet = null;
+    private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
     private final Map<Character, NpcFriendship> npcFriendships = null;
