@@ -3,13 +3,10 @@
     {
       "type" : "Pickable",
       "maxStack" : 1
-    }
-    ,
+    },
     {
-      "type" : "Useable",
-      "useFunctions" : [
-        "ARTISAN_USE"
-      ]
+      "type" : "Placeable",
+      "isWalkable" : false
     }
 
   ],

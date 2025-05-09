@@ -6,6 +6,7 @@ import models.crafting.Recipe;
 import models.crafting.RecipeType;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.workstations.ArtisanComponent;
 import models.enums.Direction;
 import models.enums.EntityTag;
 import models.enums.TileType;
@@ -24,6 +25,7 @@ import records.Result;
 import records.WalkProposal;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class GameMenuController implements Controller {
     @Override
@@ -334,6 +336,31 @@ public class GameMenuController implements Controller {
             return  new Result(false, "You should equip a tool first");
         return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
     }
+
+    public Result useArtisan(String artisanName, String itemName) {
+        Game game = App.getActiveGame();
+        Player player = game.getCurrentPlayer();
+        int x = player.getPosition().getCol();
+        int y = player.getPosition().getRow();
+        int[][] directions = {{1,0}, {1,-1},{1,1}, {0,1}, {0,-1}, {-1,1}, {-1,0}, {-1,-1}};
+        for (int[] dir : directions) {
+            Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
+            if(tile == null) continue;
+            if(tile.getContent().getName().equals(artisanName)) {
+                ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
+                if(artisan.isInProcess())
+                    return new Result(false, "another recipe already in process");
+                Result result = artisan.addProcess(itemName);
+            }
+
+        }
+        return new Result(false, "There isn't any " + artisanName + " around you!");
+    }
+
+    public Result getArtisan() {
+        //TODO
+        return null;
+    }
     /* --------------------------------------  -------------------------------------- */
 
     public Result craftInfo(String name) {
@@ -634,15 +661,7 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result useArtisan() {
-        //TODO
-        return null;
-    }
 
-    public Result getArtisan() {
-        //TODO
-        return null;
-    }
 
     public Result friendship() {
         Game game = App.getActiveGame();

@@ -61,8 +61,15 @@ public class GameMap {
     }
 
     public Tile getTileByPosition(Position position) {
-        return tiles[position.getRow()][position.getCol()];
+        return getTileByPosition(position.getRow(), position.getCol());
     }
+
+    public Tile getTileByPosition(int row, int col) {
+        if(row > tiles.length || col > tiles[0].length)
+            return null;
+        return tiles[row][col];
+    }
+
 
     public int getWidth() {
         return width;

@@ -7,7 +7,129 @@
   ],
   "required components" : [
   ],
-  "entities" : [
+  "entities": [
+    {
+      "name": "Apricot",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 59
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Cherry",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Banana",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 150
+        },
+        {
+          "type": "Edible",
+          "energy": 75
+        }
+      ]
+    },
+    {
+      "name": "Mango",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 130
+        },
+        {
+          "type": "Edible",
+          "energy": 100
+        }
+      ]
+    },
+    {
+      "name": "Orange",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Peach",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 140
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Apple",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Pomegranate",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 140
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Oak Resin",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "name": "Maple Syrup",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 200
+        }
+      ]
+    },
     {
       "name": "Pine Tar",
       "components": [
@@ -18,34 +140,45 @@
       ]
     },
     {
-      "name": "Apricot",
+      "name": "Sap",
       "components": [
         {
           "type": "Sellable",
-          "price": 59
+          "price": 2
         },
         {
-          "type" : "Edible",
-          "energy" : 38
+          "type": "Edible",
+          "energy": -2
         }
       ]
     },
     {
-      "name" : "Apple",
-      "components" : [
+      "name": "Common Mushroom",
+      "components": [
         {
-          "type" : "Edible",
-          "energy" : 10
+          "type": "Sellable",
+          "price": 40
+        },
+        {
+          "type": "Edible",
+          "energy": 38
         }
       ]
-    },{
-      "name" : "Orange",
-      "components" : [
+    },
+    {
+      "name": "Mystic Syrup",
+      "components": [
         {
-          "type" : "Edible",
-          "energy" : 15
+          "type": "Sellable",
+          "price": 1000
+        },
+        {
+          "type": "Edible",
+          "energy": 500
         }
       ]
     }
   ]
+
+
 }

@@ -51,12 +51,14 @@ public enum GameMenuCommands implements Commands {
     TOOLS_AVAILABLE("^tools\\s+show\\s+available$"),
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
     TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
+    ARTISAN_USE("^artisan\\s+use\\s+\"(?<artisanName>.+)\"\\s+(?<itemName>.+)"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"(?<name>\\S+)\"\\s+(?<quantity>\\S+)\\s*$"),
     REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
+
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------ Recipe Commands ------------------------------------------ */

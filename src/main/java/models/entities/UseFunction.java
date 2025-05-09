@@ -220,19 +220,13 @@ public enum UseFunction {
             return new Result(true, "Milk extracted successfully");
         }
     },
-    COLLECT_WOOL {
+    COLLECT_WOOL{
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             return null;
         }
     },
 
-    ARTISAN_USE {
-        @Override
-        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
-        }
-    }
     ;
 
 

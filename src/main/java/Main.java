@@ -59,10 +59,14 @@ public class Main {
     }
 
     private static void loadDatas() {
+        App.getView().log("Loading Game...");
+        /* should load recipes first (because artisan has recipes) */
         App.recipeRegistry.loadRecipes("./src/data/recipes");
         App.entityRegistry.loadEntities("./src/data/entities");
         /* to check is Json entities ok or not */
         App.recipeRegistry.checkIngredients();
 //        App.entityRegistry.listEntities();
+
+        App.getView().log("Done.");
     }
 }
