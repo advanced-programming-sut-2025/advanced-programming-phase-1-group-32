@@ -59,7 +59,11 @@ public class GameMenuController implements Controller {
             game.setCurrentPlayer(players.get(index + 1));
         }
 
-        return new Result(true, "You are playing as " + game.getCurrentPlayer().getAccount().getNickname());
+        StringBuilder message = new StringBuilder();
+        message.append("You are playing as ").append(game.getCurrentPlayer().getAccount().getNickname());
+        message.append("\n").append(game.getCurrentPlayer().newMessages());
+
+        return new Result(true, message.toString());
     }
 
     public Result getTime() {

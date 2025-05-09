@@ -259,9 +259,32 @@ public class Player extends Entity{
         return unlockedRecipes.contains(recipe);
     }
 
-    public void marriageRequestReject() {
-        //TODO: Effects
+    public String newMessages() {
+        StringBuilder result = new StringBuilder();
+        if(haveNewMessage){
+            result.append("You have new Messages!\n");
+            haveNewMessage = false;
+        }
+        if(haveNewTrade){
+            result.append("You have new Trade offers!\n");
+            haveNewTrade = false;
+        }
+        if(haveNewGift){
+            result.append("You have new Gift!\n");
+            haveNewGift = false;
+        }
+        if(haveNewSuitor){
+            result.append("You have new Suitor! Your suitors:");
+            haveNewSuitor = false;
+            for (Map.Entry<Player, Entity> entry : suitors.entrySet()) {
+                result.append("Player: ").append(entry.getKey().getUsername());
+                result.append("Ring: ").append(entry.getValue()).append("\n");
+            }
+        }
+
+        return result.toString();
     }
+
 
     public void updatePerDay() {
         getEnergy().updatePerDay();
