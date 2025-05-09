@@ -46,6 +46,7 @@ public class Entity implements Cloneable{
                 this.components.add(c);
             }
         }
+
         if(tags != null){
             this.tags.addAll(tags);
         }

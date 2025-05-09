@@ -1,0 +1,34 @@
+{
+  "common components" :[
+    {
+      "type" : "Pickable",
+      "maxStack" : 1
+    }
+
+  ],
+
+  "required components" : [
+    "Useable", "ArtisanComponent"
+  ],
+
+  "common tags" : [
+    "TOOL", "ARTISAN"
+  ],
+
+  "entities" : [
+    {
+      "name" :"Bee House",
+      "components" : [
+        {
+          "type" : "ArtisanComponent",
+          "recipes" : [
+            "Honey"
+          ]
+        }
+      ]
+
+
+    }
+  ]
+
+}

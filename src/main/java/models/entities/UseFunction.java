@@ -226,6 +226,13 @@ public enum UseFunction {
             return null;
         }
     },
+
+    ARTISAN_USE {
+        @Override
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+            return null;
+        }
+    }
     ;
 
 

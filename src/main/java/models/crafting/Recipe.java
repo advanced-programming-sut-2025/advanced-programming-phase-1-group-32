@@ -19,7 +19,7 @@ public class Recipe {
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
-    private final int day;
+    private final int day; //day = 1 means next morning will be ready(not equal with 24 hours)
     private final int hour;
     private RecipeType type;
 

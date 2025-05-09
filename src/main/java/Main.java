@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        App.entityRegistry.loadEntities("./src/data/entities");
-        App.recipeRegistry.loadRecipes("./src/data/recipes");
-//        App.entityRegistry.listEntities();
+        /* load Jsons */
+        loadDatas();
+        /* Start game */
         App.start();
         int x = 1, y = 1;
         Scanner scanner = new Scanner(System.in);
@@ -56,5 +56,11 @@ public class Main {
             App.getView().getRenderer().clear();
             App.getView().getRenderer().render();
         }
+    }
+
+    private static void loadDatas() {
+        App.entityRegistry.loadEntities("./src/data/entities");
+        App.recipeRegistry.loadRecipes("./src/data/recipes");
+//      App.entityRegistry.listEntities();
     }
 }
