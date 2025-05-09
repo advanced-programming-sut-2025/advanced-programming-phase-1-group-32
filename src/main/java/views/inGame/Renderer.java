@@ -61,6 +61,11 @@ public class Renderer {
         int[] fg = color.getFg();
         this.frameBuffer.setCharacter(x, y, character, color);
     }
+    public void mvPrint(int x, int y, String str, Color color, Position cameraPos){
+        for(int i = 0 ; i < str.length(); i++){
+            mvAddchColored(x + i, y, str.charAt(i), color, cameraPos);
+        }
+    }
     private void renderTexture(int x, int y, CharacterTexture texture){
         int x1, x2, y1, y2;
 

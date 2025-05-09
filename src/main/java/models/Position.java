@@ -17,9 +17,19 @@ public class Position {
         return row;
     }
 
-    public void change(int x, int y){
+    public Position change(int x, int y){
         this.col += x;
         this.row += y;
+        return this;
+    }
+    public Position change(Position position){
+        this.change(position.col, position.row);
+        return this;
+    }
+    public Position multiply(double d){
+        col = (int) (d * col);
+        row = (int) (d * row);
+        return this;
     }
 
     @Override

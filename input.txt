@@ -27,4 +27,5 @@ talk history -u AliAlm
 tools equip Axe
 
 toggle map
+change map render
 change input type

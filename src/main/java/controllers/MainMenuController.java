@@ -66,7 +66,6 @@ public class MainMenuController implements Controller{
 
         App.setCurrentMenu(Menu.GAME_MENU);
         return new Result(true, "Game started!, You are in Game Menu now!");
-
     }
 
     public Result loadGame() {

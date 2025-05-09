@@ -5,11 +5,13 @@ import models.App;
 import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
+import models.Tile;
 import models.crafting.Recipe;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.SkillType;
+import models.gameMap.MapRegion;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
@@ -35,6 +37,7 @@ public class Player extends Entity{
     private ArrayList<TradeOffer> trades = new ArrayList<>();
     private final Account account;
     private InventorySlot activeSlot;
+    private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
 
     // boolean for messages
     private boolean haveNewMessage = false;
@@ -285,6 +288,30 @@ public class Player extends Entity{
         return result.toString();
     }
 
+    public boolean doesOwnTile(Tile tile){
+        //TODO: should this return true? what should the region of tiles be in a building? null?
+        if(tile.getRegion() == null) return true;
+
+        for(MapRegion r : ownedRegions){
+            if(r.hasTile(tile)) return true;
+        }
+
+        if(spouse == null) return false;
+
+        for(MapRegion r : spouse.ownedRegions){
+            if(r.hasTile(tile)) return true;
+        }
+
+        return false;
+    }
+
+    public void addRegion(MapRegion region){
+        this.ownedRegions.add(region);
+        region.setOwner(this);
+    }
+    public void removeRegion(MapRegion region){
+        this.ownedRegions.remove(region);
+    }
 
     public void updatePerDay() {
         getEnergy().updatePerDay();

@@ -4,16 +4,24 @@ import models.entities.Entity;
 import models.entities.EntityObserver;
 import models.entities.components.SeedComponent;
 import models.enums.TileType;
+import models.gameMap.MapRegion;
+import models.player.Player;
 import views.inGame.Color;
 
 public class Tile implements EntityObserver {
     private TileType type;
     final private Position position;
     private Entity content;
+    private final MapRegion region;
 
-    public Tile(Position position, TileType type) {
+    public Tile(Position position, TileType type, MapRegion region) {
         this.position = position;
         this.type = type;
+        this.region = region;
+        if(region != null){
+            region.addTile(this);
+        }
+
         if(type == null){
             throw new RuntimeException("Tile type can't be null");
         }
@@ -70,6 +78,13 @@ public class Tile implements EntityObserver {
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
+    }
+    public MapRegion getRegion() {
+        return region;
+    }
+
+    public Player getOwner(){
+        return this.region.getOwner();
     }
 
     @Override

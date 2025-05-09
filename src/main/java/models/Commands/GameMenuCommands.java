@@ -6,7 +6,6 @@ public enum GameMenuCommands implements Commands {
     CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     NEXT_TURN         ("^\\s*next\\s+turn\\s*$"),
-    TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
     ENERGY_SET        ("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
@@ -66,6 +65,10 @@ public enum GameMenuCommands implements Commands {
     COOKING_PREPARE("^cooking\\s+prepare\\s+(?<recipeName>.+)$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
+    /* ------------------------------------------ Render Commands ------------------------------------------ */
+    TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
+    CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
+    /* -------------------------------------------------- -------------------------------------------------- */
     ;
 
     private final String pattern;

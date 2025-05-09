@@ -7,6 +7,7 @@ import models.entities.Entity;
 import models.enums.TileType;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class GameMap {
     private int width, height;
     private Environment environment;
     private final Set<Entity> entities = new HashSet<>();
+    private final ArrayList<MapRegion> regions = new ArrayList<>();
 
     private GameMap(TileType[][] tileTypes){
 
@@ -23,7 +25,12 @@ public class GameMap {
     public GameMap(GameMapType type, Environment environment){
         MapData data = type.data;
         TileType[][] typeMap = data.getTypeMap();
+        MapRegion[][] regionMap = data.getRegionMap();
         this.environment = environment;
+
+        if(data.regions != null){
+            this.regions.addAll(data.regions);
+        }
 
         this.height = typeMap.length;
         this.width = typeMap[0].length;
@@ -31,7 +38,7 @@ public class GameMap {
 
         for(int i = 0 ; i < height ; i++){
             for(int j = 0 ; j < width ; j++){
-                tiles[i][j] = new Tile(new Position(i, j), typeMap[i][j]);
+                tiles[i][j] = new Tile(new Position(i, j), typeMap[i][j], regionMap[i][j]);
             }
         }
         initializeMap();
@@ -77,5 +84,9 @@ public class GameMap {
     }
     public void removeEntity(Entity entity){
         this.entities.remove(entity);
+    }
+
+    public ArrayList<MapRegion> getRegions() {
+        return regions;
     }
 }

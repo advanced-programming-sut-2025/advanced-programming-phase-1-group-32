@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import models.enums.TileType;
+import views.inGame.Color;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -16,13 +17,9 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class MapLayer{
-    @JsonProperty("name")
     public String name;
-    @JsonProperty("width")
     public int width;
-    @JsonProperty("height")
     public int height;
-    @JsonProperty("data")
     private final int[] data1d;
     public final int[][] data;
 
@@ -44,13 +41,16 @@ class MapLayer{
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MapData{
-    @JsonProperty("layers")
     public MapLayer[] layers;
     public MapLayer mainLayer = null;
-    @JsonProperty("tilesets")
+    public MapLayer regionsLayer = null;
     public TileSet[] tileSets;
     public TileSet mainTileSet;
-    public ArrayList<MapRegion> regions;
+    public TileSet regionTileSet;
+    public ArrayList<MapRegion> regions = new ArrayList<>();
+    public Map<Integer, MapRegion> regionMap = new HashMap<>();
+    public Map<Integer, TileType> typeMap = new HashMap<>();
+    public Map<Integer, TileData> tileMap = new HashMap<>();
 
     @JsonCreator
     public MapData(@JsonProperty("layers") MapLayer[] layers, @JsonProperty("tilesets") TileSet[] tileSets) {
@@ -59,7 +59,8 @@ public class MapData{
         for(MapLayer l : layers){
             if(l.name.equals("ground")){
                 this.mainLayer = l;
-                break;
+            } else if(l.name.equals("region")){
+                regionsLayer = l;
             }
         }
         if(mainLayer == null){
@@ -68,22 +69,58 @@ public class MapData{
         for(TileSet t : tileSets){
             if(t.name.equals("ground")){
                 this.mainTileSet = t;
-                break;
+            }else if(t.name.equals("region")){
+                this.regionTileSet = t;
+            }
+            for(TileData d : t.tiles){
+                this.tileMap.putIfAbsent(t.firstgid + d.id, d);
+                d.globalId = t.firstgid + d.id;
             }
         }
         if(mainTileSet == null){
             throw new RuntimeException("no tileset with the name \"ground\" was found in the tilesets. the map needs a ground tileset.");
         }
-    }
 
+        if(regionsLayer != null && regionTileSet == null){
+            throw new RuntimeException("the map has region layer, but no region tileset.");
+        }
+
+        for(TileData t : mainTileSet.tiles){
+            try {
+                TileType type = TileType.valueOf(t.type);
+                typeMap.putIfAbsent(t.globalId, type);
+            } catch (IllegalArgumentException e) {
+                throw new RuntimeException("tile type \"" + t.type + "\" doesn't exist");
+            }
+        }
+        if(regionsLayer != null){
+            for(TileData t : regionTileSet.tiles){
+                MapRegion region = new MapRegion(t.type, new Color(Math.random(), Math.random(), Math.random()));
+                regions.add(region);
+                regionMap.putIfAbsent(t.globalId, region);
+            }
+        }
+        MapRegion defaultRegion = new MapRegion("Default", new Color(0, 0, 0));
+        regions.add(defaultRegion);
+        regionMap.putIfAbsent(0, defaultRegion);
+    }
     public TileType[][] getTypeMap(){
         TileType[][] out = new TileType[mainLayer.height][mainLayer.width];
 
         for(int i = 0 ; i < mainLayer.height ; i++){
             for(int j = 0 ; j < mainLayer.width ; j++){
-                out[i][j] = mainTileSet.tileTypes.get(mainLayer.data[i][j]);
-                if(out[i][j] == null){
-                    throw new RuntimeException("null");
+                out[i][j] = typeMap.get(mainLayer.data[i][j]);
+            }
+        }
+        return out;
+    }
+    public MapRegion[][] getRegionMap(){
+        MapRegion[][] out = new MapRegion[mainLayer.height][mainLayer.width];
+
+        if(regionsLayer != null){
+            for(int i = 0 ; i < mainLayer.height ; i++){
+                for(int j = 0 ; j < mainLayer.width ; j++){
+                    out[i][j] = regionMap.get(regionsLayer.data[i][j]);
                 }
             }
         }
@@ -110,6 +147,7 @@ class TileData{
     public int id;
     @JsonProperty("type")
     public String type;
+    public int globalId;
 
     public TileData() {
     }
@@ -117,25 +155,15 @@ class TileData{
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class TileSet{
-    @JsonProperty("tiles")
-    private TileData[] tiles;
-    public Map<Integer, TileType> tileTypes = new HashMap<>();
-    @JsonProperty("name")
+    public TileData[] tiles;
     public String name;
+    public int firstgid;
 
     @JsonCreator
-    public TileSet(@JsonProperty("tiles")TileData[] tiles, @JsonProperty("name")String name) {
+    public TileSet(@JsonProperty("tiles")TileData[] tiles, @JsonProperty("name")String name, @JsonProperty("firstgid")int firstgid) {
         this.tiles = tiles;
         this.name = name;
-
-        for(TileData t : tiles){
-            try {
-                TileType type = TileType.valueOf(t.type);
-                tileTypes.putIfAbsent(t.id + 1, type);
-            } catch (IllegalArgumentException e) {
-                throw new RuntimeException("tile type \"" + t.type + "\" doesn't exist");
-            }
-        }
+        this.firstgid = firstgid;
     }
 }
 

@@ -10,10 +10,12 @@ import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Direction;
 import models.gameMap.GameMap;
+import models.gameMap.MapRegion;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
+import views.inGame.Renderer;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -22,6 +24,13 @@ import java.util.regex.Matcher;
 public class GameMenu implements AppMenu {
     private final GameMenuController controller = new GameMenuController();
     private Result previousResult = null;
+
+    private enum MapRenderType{
+        DEFAULT,
+        REGIONS
+    }
+    MapRenderType mapRenderType = MapRenderType.DEFAULT;
+
     @Override
     public void checker(Scanner scanner) {
         renderGame();
@@ -187,6 +196,8 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.RESPOND.getMatcher(input)) != null) {
                 System.out.println(controller.respond(matcher.group(1).trim(), matcher.group(2).trim()));
 
+            } else if ((matcher = GameMenuCommands.CHANGE_MAP_RENDER.getMatcher(input)) != null) {
+                this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -214,6 +225,7 @@ public class GameMenu implements AppMenu {
         Tile[][] tiles = map.getTiles();
         App.getView().getRenderer().clear();
         Position position = App.getActiveGame().getCurrentPlayer().getPosition();
+        Renderer renderer = App.getView().getRenderer();
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 Tile tile = tiles[i][j];
@@ -223,9 +235,27 @@ public class GameMenu implements AppMenu {
                     if(component == null){
                         throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
                     }
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
+                    renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
                 }else{
-                    App.getView().getRenderer().mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
+                    switch (mapRenderType){
+                        case DEFAULT -> {
+                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
+                        }
+                        case REGIONS -> {
+                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
+                        }
+                    }
+                }
+            }
+        }
+
+        switch (mapRenderType){
+            case REGIONS -> {
+                for(MapRegion r : map.getRegions()){
+                    renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow(), r.getName(), Color.WHITE, position);
+                    if(r.getOwner() != null){
+                        renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, r.getOwner().getAccount().getNickname(), Color.WHITE, position);
+                    }
                 }
             }
         }

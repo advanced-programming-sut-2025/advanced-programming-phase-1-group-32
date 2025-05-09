@@ -48,6 +48,11 @@ public class Game {
                 this.playerFriendships.add(new PlayerFriendship(players.get(i), players.get(j)));
             }
         }
+
+        //player farms
+        for(int i = 0 ; i < players.size(); i++){
+            players.get(i).addRegion(activeMap.getRegions().get(i));
+        }
     }
 
     public void addPlayer(Player player) {

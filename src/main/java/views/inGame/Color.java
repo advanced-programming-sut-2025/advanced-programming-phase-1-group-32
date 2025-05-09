@@ -11,6 +11,10 @@ import java.io.IOException;
 
 @JsonDeserialize(using = ColorDeserializer.class)
 public class Color {
+    public static final Color BLACK = new Color(0, 0, 0);
+    public static final Color WHITE = new Color(256, 256, 256);
+
+
     private int[] bg = {255, 255, 255};
     @JsonProperty("fg")
     private int[] fg = {255, 255, 255};
@@ -38,6 +42,12 @@ public class Color {
         this.fg[0] = r;
         this.fg[1] = g;
         this.fg[2] = b;
+    }
+    public Color(double r, double g, double b){
+        this.fg[0] = (int) (r * 256);
+        this.fg[1] = (int) (g * 256);
+        this.fg[2] = (int) (b * 256);
+
     }
 
     public boolean equals(Color c2) {
