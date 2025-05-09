@@ -59,10 +59,7 @@ public class Game {
     }
 
     public void nextTurn(){
-        Player tmp = currentPlayer;
-        players.remove(0);
-        players.add(tmp);
-        setCurrentPlayer(players.get(0));
+
     }
 
     public ArrayList<Entity> getPlantedEntities() {

@@ -48,8 +48,17 @@ public class GameMenuController implements Controller {
 
     public Result nextTurn() {
         Game game = App.getActiveGame();
+        ArrayList<Player> players = game.getPlayers();
+        Player currentPlayer = game.getCurrentPlayer();
+        int index = players.indexOf(game.getCurrentPlayer());
 
-        game.nextTurn();
+        if (index == game.getPlayers().size() - 1) {
+             game.setCurrentPlayer(players.get(0));
+            advanceTime(1);
+        } else {
+            game.setCurrentPlayer(players.get(index + 1));
+        }
+
         return new Result(true, "You are playing as " + game.getCurrentPlayer().getAccount().getNickname());
     }
 
@@ -77,6 +86,7 @@ public class GameMenuController implements Controller {
         return new Result(true, currentDate.getWeekDay().toString().toLowerCase());
     }
 
+    // dont add large number to this
     public Result advanceTime(int amount) {
         Game game = App.getActiveGame();
         Date date = game.getDate();

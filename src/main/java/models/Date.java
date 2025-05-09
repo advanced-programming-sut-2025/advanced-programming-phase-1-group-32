@@ -11,7 +11,7 @@ public class Date {
     public Date() {
         this.season = Season.SPRING;
         this.day = 1;
-        this.hour = 0;
+        this.hour = 9;
     }
 
     public Season getSeason() {
@@ -35,12 +35,12 @@ public class Date {
 
     public void addHour(int amount, Game game) {
         for (int i = 0 ; i < amount ; i++) {
-            game.updateGamePerHour();
-            if (hour == 23) {
-                hour = 0;
+            if (hour == 21) {
+                hour = 9;
                 game.updateGamePerDay();
                 addDay(1, game);
             } else {
+                game.updateGamePerHour();
                 hour++;
             }
         }

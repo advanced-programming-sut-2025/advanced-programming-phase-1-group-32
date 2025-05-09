@@ -1,4 +1,5 @@
 cheat advance date 1d
+cheat advance time 1h
 gift -u AliAlm -i Jazz Seeds -a 2
 talk -u AliAlm -m salam
 cheat advance date 1d
@@ -28,3 +29,10 @@ respond -accept -u Ilia
 
 
 cheat Thor -l <0,8>
+
+next turn
+next turn
+next turn
+next turn
+datetime
+season
