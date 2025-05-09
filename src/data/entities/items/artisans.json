@@ -4,11 +4,18 @@
       "type" : "Pickable",
       "maxStack" : 1
     }
+    ,
+    {
+      "type" : "Useable",
+      "useFunctions" : [
+        "ARTISAN_USE"
+      ]
+    }
 
   ],
 
   "required components" : [
-    "Useable", "ArtisanComponent"
+    "ArtisanComponent"
   ],
 
   "common tags" : [

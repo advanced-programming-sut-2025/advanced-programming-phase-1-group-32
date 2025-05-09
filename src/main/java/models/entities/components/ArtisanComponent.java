@@ -9,17 +9,28 @@ import models.crafting.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtisanComponent {
-    private List<Recipe> recipes;
+public class ArtisanComponent extends EntityComponent{
+    private final List<Recipe> recipes = new ArrayList<>();
 
     @JsonCreator
     ArtisanComponent(@JsonProperty("recipes")
                      ArrayList<String> recipes) {
+
         recipes.forEach(name -> this.recipes.add(App.recipeRegistry.getRecipe(name)));
     }
 
+    ArtisanComponent(List<Recipe> recipes) {
+        this.recipes.addAll(recipes);
+    }
 
 
+    @Override
+    public EntityComponent clone() {
+        return new ArtisanComponent(new ArrayList<>(this.recipes));
+    }
 
-
+    @Override
+    public String toString() {
+        return "recipes : " + recipes + "\n";
+    }
 }

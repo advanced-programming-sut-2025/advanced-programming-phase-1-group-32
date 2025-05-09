@@ -59,8 +59,10 @@ public class Main {
     }
 
     private static void loadDatas() {
-        App.entityRegistry.loadEntities("./src/data/entities");
         App.recipeRegistry.loadRecipes("./src/data/recipes");
-//      App.entityRegistry.listEntities();
+        App.entityRegistry.loadEntities("./src/data/entities");
+        /* to check is Json entities ok or not */
+        App.recipeRegistry.checkIngredients();
+//        App.entityRegistry.listEntities();
     }
 }
