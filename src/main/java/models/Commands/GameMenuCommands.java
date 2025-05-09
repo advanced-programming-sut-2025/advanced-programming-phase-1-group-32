@@ -50,8 +50,9 @@ public enum GameMenuCommands implements Commands {
     TOOLS_SHOW_CURRENT("^tools\\s+show\\s+current$"),
     TOOLS_AVAILABLE("^tools\\s+show\\s+available$"),
     TOOLS_UPGRADE("^tools\\s+upgrade\\s+(?<toolName>.+)$"),//TODO
-    TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)"),//TODO
-    ARTISAN_USE("^artisan\\s+use\\s+\"(?<artisanName>.+)\"\\s+(?<itemName>.+)"),
+    TOOLS_USE("^tools\\s+use\\s+-d\\s+(?<direction>.+)$"),//TODO
+    ARTISAN_USE("^artisan\\s+use\\s+\"(?<artisanName>.+)\"\\s+(?<itemName>.+)$"),
+    ARTISAN_GET("^artisan\\s+get\\s+(?<artisanName>.+)$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------- Item Commands ------------------------------------------- */
