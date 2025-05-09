@@ -62,7 +62,8 @@ public class Main {
         App.getView().log("Loading Game...");
         /* should load recipes first (because artisan has recipes) */
         App.recipeRegistry.loadRecipes("./src/data/recipes");
-        App.entityRegistry.loadEntities("./src/data/entities");
+        App.entityRegistry.load("./src/data/entities");
+        App.mapRegistry.load("src/data/maps");
         /* to check is Json entities ok or not */
         App.recipeRegistry.checkIngredients();
 //        App.entityRegistry.listEntities();
