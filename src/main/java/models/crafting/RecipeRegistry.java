@@ -3,6 +3,7 @@ package models.crafting;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import models.App;
 import models.entities.Entity;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
@@ -67,6 +68,14 @@ public class RecipeRegistry {
 
     public Recipe getRecipe(String name) {
         return registry.get(name);
+    }
+
+    public void checkIngredients() {
+        for(Recipe r : registry.values()){
+            for (Ingredient i : r.getIngredients()) {
+                i.checkIngredient();
+            }
+        }
     }
 
 

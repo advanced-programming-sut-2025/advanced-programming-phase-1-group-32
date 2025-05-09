@@ -2,6 +2,7 @@ package models.enums;
 
 public enum EntityTag {
     TOOL,
+    ARTISAN,
     TREE,
     CROP,
     SEED,

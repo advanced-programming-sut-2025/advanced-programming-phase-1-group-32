@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.App;
+import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
 
@@ -19,9 +20,11 @@ public class Recipe {
     private final String name;
     private final ArrayList<Ingredient> ingredients;
     private final boolean isUnlocked;
-    private final int day;
+    private final int day; //day = 1 means next morning will be ready(not equal with 24 hours)
     private final int hour;
     private RecipeType type;
+    private Vec2 energy;
+    private Vec2 price;
 
     private Recipe(Builder builder) {
         this.name = builder.name;
@@ -30,6 +33,8 @@ public class Recipe {
         this.day = builder.day;
         this.hour = builder.hour;
         this.type = builder.type;
+        this.energy = builder.energy;
+        this.price = builder.price;
     }
 
     public String getName() {
@@ -43,6 +48,7 @@ public class Recipe {
     protected boolean isUnlocked() {
         return isUnlocked;
     }
+
 
     public int getDay() {
         return day;
@@ -71,6 +77,7 @@ public class Recipe {
                 return false;
         }
         return true;
+
     }
 
     /*
@@ -110,6 +117,8 @@ public class Recipe {
         private int day;
         private int hour;
         private RecipeType type;
+        private Vec2 energy;
+        private Vec2 price;
 
         public Builder() {
         }
@@ -160,6 +169,18 @@ public class Recipe {
             this.type = type;
             return this;
         }
+
+        public Builder price(Vec2 price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder energy(Vec2 energy) {
+            this.energy = energy;
+            return this;
+        }
+
+
 
         public Recipe build() {
             return new Recipe(this);

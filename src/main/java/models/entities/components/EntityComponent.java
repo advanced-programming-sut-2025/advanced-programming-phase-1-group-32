@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.*;
 import models.entities.Entity;
 import models.entities.components.harvestable.Harvestable;
 import models.entities.components.inventory.Inventory;
+import models.entities.workstations.ArtisanComponent;
 
 /***
  * this helps jackson find child classes
@@ -20,13 +21,13 @@ import models.entities.components.inventory.Inventory;
         @JsonSubTypes.Type(value = SeedComponent.class, name = "SeedComponent"),
         @JsonSubTypes.Type(value = Inventory.class, name = "Inventory"),
         @JsonSubTypes.Type(value = Placeable.class, name = "Placeable"),
-        @JsonSubTypes.Type(value = Processor.class, name = "Processor"),
         @JsonSubTypes.Type(value = Sellable.class, name = "Sellable"),
         @JsonSubTypes.Type(value = Upgradable.class, name = "Upgradable"),
         @JsonSubTypes.Type(value = Useable.class, name = "Useable"),
         @JsonSubTypes.Type(value = Pickable.class, name = "Pickable"),
         @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
         @JsonSubTypes.Type(value = Container.class, name = "Container"),
+        @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent")
 })
 abstract public class EntityComponent implements Cloneable {
     @JsonIgnore()

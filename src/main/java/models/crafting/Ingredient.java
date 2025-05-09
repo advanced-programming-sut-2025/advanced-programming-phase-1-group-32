@@ -27,9 +27,7 @@ public class Ingredient {
         this.validTags = validTags != null ? new ArrayList<>(validTags) : new ArrayList<>();
         this.amount = amount;
 
-        for (String content : contents) {
-            App.entityRegistry.getEntityDetails(content);
-        }
+
     }
 
     public static Ingredient fromEntities(List<String> entities, int amount) {
@@ -82,5 +80,11 @@ public class Ingredient {
 
         result.append(" x").append(amount);
         return result.toString();
+    }
+
+    protected void checkIngredient() {
+        for (String content : contents) {
+            App.entityRegistry.getEntityDetails(content);
+        }
     }
 }
