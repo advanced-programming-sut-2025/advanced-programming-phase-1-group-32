@@ -1,5 +1,6 @@
 package models;
 
+import models.NPC.NPC;
 import models.entities.Entity;
 import models.entities.components.Growable;
 import models.enums.EntityTag;
@@ -23,6 +24,7 @@ public class Game {
     private Player currentPlayer;
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
+    private ArrayList<NPC> gameNPCs = new ArrayList<>();
     private boolean mapVisible = true;
     private int tradeId = 1000;
 
@@ -53,6 +55,21 @@ public class Game {
         for(int i = 0 ; i < players.size(); i++){
             players.get(i).addRegion(activeMap.getRegions().get(i));
         }
+
+        initNPCs();
+    }
+
+    public void initNPCs() {
+        //TODO
+    }
+
+    public NPC findNPC(String npcName) {
+        for (NPC npc : gameNPCs) {
+            if (npc.getName().equals(npcName)) {
+                return npc;
+            }
+        }
+        return null;
     }
 
     public void addPlayer(Player player) {

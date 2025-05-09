@@ -69,6 +69,16 @@ public enum GameMenuCommands implements Commands {
     TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
     CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
+
+    /* ------------------------------------------- NPC Commands -------------------------------------------- */
+    MEET_NPC ("\\s*meet\\s+NPC\\s+(?<npcName>.+)\\s*"),
+    GIFT_NPC ("\\s*gift\\s+NPC\\s+(?<npcName>.+)\\s+-i\\s+(?<item>.+)\\s*"),
+    FRIENDSHIP_NPC ("\\s*friendship\\s+NPC\\s+list\\s*"),
+    QUEST_LIST("\\s*quests\\s+list\\s+NPC\\s+(?<npcName>.+)\\s*"),
+    QUEST_FINISH("\\s*quests\\s+finish\\s+-i\\s+(?<index>\\d+)\\s*"),
+    /* -------------------------------------------------- -------------------------------------------------- */
+
+
     ;
 
     private final String pattern;

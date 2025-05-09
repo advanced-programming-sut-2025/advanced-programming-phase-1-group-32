@@ -183,6 +183,20 @@ public class GameMenu implements AppMenu {
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 
+            /* ------------------------------------------- NPC Commands -------------------------------------------- */
+            else if ((matcher = GameMenuCommands.MEET_NPC.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.GIFT_NPC.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.FRIENDSHIP_NPC.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.QUEST_LIST.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.QUEST_FINISH.getMatcher(input)) != null) {
+
+            }
+            /* -------------------------------------------------- -------------------------------------------------- */
+
             else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
                 System.out.println(controller.startTrade());
 

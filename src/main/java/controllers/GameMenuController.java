@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import models.Date;
+import models.NPC.NPC;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
 import models.entities.Entity;
@@ -539,7 +540,6 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-
     public Result refrigerator() {
         //TODO
         return null;
@@ -1001,8 +1001,32 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result giftNPC() {
-        //TODO
+    public Result giftNPC(String npcName, String itemName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        NPC npc = game.findNPC(npcName);
+        if (npc == null) {
+            return new Result(false, "NPC with name " + npcName + " not found");
+        }
+
+        if (!App.entityRegistry.doesEntityExist(itemName)) {
+            return new Result(false, "Item with name " + itemName + " does not exist");
+        }
+        Entity item = App.entityRegistry.makeEntity(itemName);
+
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (inventory.doesHaveItem(itemName)) {
+            return new Result(false, "You dont have this item");
+        }
+
+        if (item.hasTag(EntityTag.TOOL)) {
+            return new Result(false, "You can't gift tools to NPC!");
+        }
+
+        inventory.removeItem(itemName, 1);
+        currentPlayer.addFriendshipByGift(npc, item);
+
         return null;
     }
 
