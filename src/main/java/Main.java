@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        App.entityRegistry.loadEntities("./src/data/entities");
+        App.entityRegistry.load("./src/data/entities");
+        App.mapRegistry.load("src/data/maps");
         App.recipeRegistry.loadRecipes("./src/data/recipes");
 //        App.entityRegistry.listEntities();
         App.start();

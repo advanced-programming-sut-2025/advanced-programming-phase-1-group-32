@@ -34,76 +34,12 @@
  "tileheight":1,
  "tilesets":[
         {
-         "columns":4,
          "firstgid":1,
-         "image":"..\/..\/..\/pixil-frame-0.png",
-         "imageheight":4,
-         "imagewidth":4,
-         "margin":0,
-         "name":"ground",
-         "spacing":0,
-         "tilecount":16,
-         "tileheight":1,
-         "tiles":[
-                {
-                 "id":0,
-                 "type":"WATER"
-                }, 
-                {
-                 "id":1,
-                 "type":"GRASS"
-                }, 
-                {
-                 "id":2,
-                 "type":"DIRT"
-                }, 
-                {
-                 "id":3,
-                 "type":"WOOD"
-                }],
-         "tilewidth":1
+         "source":"..\/..\/..\/..\/Moz\/MapEditor\/Tile sets\/ground.tsx"
         }, 
         {
-         "columns":4,
          "firstgid":17,
-         "image":"..\/..\/..\/tileRegions.png",
-         "imageheight":4,
-         "imagewidth":4,
-         "margin":0,
-         "name":"region",
-         "spacing":0,
-         "tilecount":16,
-         "tileheight":1,
-         "tiles":[
-                {
-                 "id":0,
-                 "type":"Willowridge Farm"
-                }, 
-                {
-                 "id":1,
-                 "type":"Emberroot Farm"
-                }, 
-                {
-                 "id":2,
-                 "type":"Mistvale Farm"
-                }, 
-                {
-                 "id":3,
-                 "type":"Suncrest Farm"
-                }, 
-                {
-                 "id":4,
-                 "type":"Fernhollow Woods"
-                }, 
-                {
-                 "id":6,
-                 "type":"Sunmist Lake"
-                }, 
-                {
-                 "id":8,
-                 "type":"Oakspire"
-                }],
-         "tilewidth":1
+         "source":"..\/..\/..\/..\/Moz\/MapEditor\/Tile sets\/region.tsx"
         }],
  "tilewidth":1,
  "type":"map",

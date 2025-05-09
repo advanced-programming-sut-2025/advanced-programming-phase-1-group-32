@@ -1,13 +1,16 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.App;
+import models.Position;
 import views.inGame.Color;
 
 public class Renderable extends EntityComponent{
     @JsonProperty("char")
-    private char character;
+    protected char character;
     @JsonProperty("color")
-    private Color color;
+    protected Color color;
+
 
     public Renderable(char character, Color color) {
         this.character = character;
@@ -27,6 +30,10 @@ public class Renderable extends EntityComponent{
     public Color getColor() {
         return color;
     }
+
+    public void render(Position cameraPos){
+        //TODO: the fuck should i do with this
+    };
 
     @Override
     public EntityComponent clone() {

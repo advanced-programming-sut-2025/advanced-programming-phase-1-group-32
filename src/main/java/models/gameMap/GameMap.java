@@ -18,12 +18,15 @@ public class GameMap {
     private final Set<Entity> entities = new HashSet<>();
     private final ArrayList<MapRegion> regions = new ArrayList<>();
 
+    public Set<Entity> getEntities() {
+        return entities;
+    }
+
     private GameMap(TileType[][] tileTypes){
 
     }
 
-    public GameMap(GameMapType type, Environment environment){
-        MapData data = type.data;
+    public GameMap(MapData data, Environment environment){
         TileType[][] typeMap = data.getTypeMap();
         MapRegion[][] regionMap = data.getRegionMap();
         this.environment = environment;
@@ -68,7 +71,13 @@ public class GameMap {
     }
 
     public Tile getTileByPosition(Position position) {
-        return tiles[position.getRow()][position.getCol()];
+        return getTileByPosition(position.getRow(),position.getCol());
+    }
+    public Tile getTileByPosition(int x, int y) {
+        if (x >= width || x < 0 || y > height || y < 0){
+            return null;
+        }
+        return tiles[y][x];
     }
 
     public int getWidth() {

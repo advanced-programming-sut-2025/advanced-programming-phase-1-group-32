@@ -2,6 +2,8 @@ package controllers;
 
 import models.*;
 import models.Date;
+import models.building.Building;
+import models.building.BuildingData;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
 import models.entities.Entity;
@@ -13,6 +15,7 @@ import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
+import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.player.Energy;
 import models.player.Gift;
@@ -1077,5 +1080,10 @@ public class GameMenuController implements Controller {
         return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
                 " were given to " + currentPlayer.getAccount().getNickname());
     }
-
+    public Result cheatBuildBuilding(int x, int y, boolean force){
+        if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "can't place that there ma lord");
+        if(force) BuildingData.dummyBuilding.clearArea(x, y);
+        Building building = new Building(BuildingData.dummyBuilding, new Position(y, x));
+        return new Result(true, "placed");
+    }
 }
