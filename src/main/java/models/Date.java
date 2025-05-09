@@ -8,6 +8,10 @@ public class Date {
     private int day;
     private int hour;
 
+    public Date(int day, int hour) {
+        this.day = day;
+        this.hour = hour;
+    }
     public Date() {
         this.season = Season.SPRING;
         this.day = 1;

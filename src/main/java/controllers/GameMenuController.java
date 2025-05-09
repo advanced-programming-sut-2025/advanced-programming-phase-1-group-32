@@ -356,9 +356,29 @@ public class GameMenuController implements Controller {
         return new Result(false, "There isn't any " + artisanName + " around you!");
     }
 
-    public Result getArtisan() {
-        //TODO
-        return null;
+    public Result getArtisan(String artisanName) {
+        Game game = App.getActiveGame();
+        Player player = game.getCurrentPlayer();
+        int x = player.getPosition().getCol();
+        int y = player.getPosition().getRow();
+        int[][] directions = {{1,0}, {1,-1},{1,1}, {0,1}, {0,-1}, {-1,1}, {-1,0}, {-1,-1}};
+        for (int[] dir : directions) {
+            Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
+            if(tile == null) continue;
+
+            if(tile.getContent().getName().equals(artisanName)) {
+                ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
+                if(!artisan.isInProcess())
+                    return new Result(false, "This artisan is empty!");
+                Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
+                if(!artisan.isProcessFinished())
+                    return artisan.remainingTime();
+                Entity product = artisan.getProduct();
+                inventory.addItem(product);
+                return new Result(true, product.getName() + " added to your inventory successfully");
+            }
+        }
+        return new Result(false, "There isn't any " + artisanName + " around you!");
     }
     /* --------------------------------------  -------------------------------------- */
 
@@ -525,7 +545,7 @@ public class GameMenuController implements Controller {
         if(!recipe.canCraft(player.getComponent(Inventory.class)))
             return new Result(false, "you don't have enough items");
         Entity output = recipe.craft(player.getComponent(Inventory.class));
-        //TODO: if inventory is full drop output on ground
+        //TO.DO: if inventory is full drop output on ground
         Result result = player.getComponent(Inventory.class).addItem(output);
         if(!result.isSuccessful())
             return new Result(false, "something wrong happened!");
