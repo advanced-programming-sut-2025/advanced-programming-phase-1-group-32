@@ -7,7 +7,7 @@ import models.enums.TileType;
 import models.enums.Weather;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
-import models.gameMap.GameMapType;
+import models.gameMap.WorldMapType;
 import models.player.Player;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
@@ -19,6 +19,7 @@ public class Game {
     private Weather tomorrowWeather;
     private Date date = new Date();
     private GameMap activeMap;
+    private GameMap mainMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
@@ -37,7 +38,8 @@ public class Game {
     public void initGame() {
         setCurrentPlayer(players.get(0));
 
-        setActiveMap(new GameMap(GameMapType.DEFAULT, Environment.OUTDOOR));
+        setActiveMap(new GameMap(WorldMapType.DEFAULT.getData(), Environment.OUTDOOR));
+        mainMap = activeMap;
 
         this.todayWeather = Weather.SUNNY;
         this.tomorrowWeather = Weather.SUNNY;
@@ -257,5 +259,9 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public GameMap getMainMap() {
+        return mainMap;
     }
 }

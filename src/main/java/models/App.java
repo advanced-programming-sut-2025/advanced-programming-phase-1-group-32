@@ -3,6 +3,7 @@ package models;
 import models.crafting.RecipeRegistry;
 import models.entities.EntityRegistry;
 import models.enums.Menu;
+import models.gameMap.MapRegistry;
 import views.AppView;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class App {
     public static boolean shouldTerminate = false;
     public static EntityRegistry entityRegistry = new EntityRegistry();
     public static RecipeRegistry recipeRegistry = new RecipeRegistry();
+    public static MapRegistry mapRegistry = new MapRegistry();
     public static Game activeGame = null;
 
     /***

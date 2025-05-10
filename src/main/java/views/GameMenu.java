@@ -205,6 +205,9 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.CHANGE_MAP_RENDER.getMatcher(input)) != null) {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
+            } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
+                System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
+                                                                                    matcher.group("force") != null));
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -248,6 +251,9 @@ public class GameMenu implements AppMenu {
                             renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
                         }
                     }
+                }
+                for(Entity e : map.getEntities()){
+                    if(e.getComponent(Renderable.class) != null) e.getComponent(Renderable.class).render(position);
                 }
             }
             case REGIONS -> {

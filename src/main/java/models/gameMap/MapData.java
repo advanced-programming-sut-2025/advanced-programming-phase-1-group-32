@@ -1,13 +1,17 @@
 package models.gameMap;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import models.enums.TileType;
 import views.inGame.Color;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,7 +48,8 @@ public class MapData{
     public MapLayer[] layers;
     public MapLayer mainLayer = null;
     public MapLayer regionsLayer = null;
-    public TileSet[] tileSets;
+    public ArrayList<TileSet> tileSets = new ArrayList<>();
+    public TileSetReference[] tileSetReferences;
     public TileSet mainTileSet;
     public TileSet regionTileSet;
     public ArrayList<MapRegion> regions = new ArrayList<>();
@@ -53,7 +58,7 @@ public class MapData{
     public Map<Integer, TileData> tileMap = new HashMap<>();
 
     @JsonCreator
-    public MapData(@JsonProperty("layers") MapLayer[] layers, @JsonProperty("tilesets") TileSet[] tileSets) {
+    public MapData(@JsonProperty("layers") MapLayer[] layers, @JsonProperty("tilesets") TileSetReference[] tileSetReferences) {
         this.layers = layers;
         this.tileSets = tileSets;
         for(MapLayer l : layers){
@@ -65,6 +70,18 @@ public class MapData{
         }
         if(mainLayer == null){
             throw new RuntimeException("no layer with the name \"ground\" was found in the layers. the map needs a ground layer.");
+        }
+
+        XmlMapper mapper = new XmlMapper();
+
+        for(TileSetReference t : tileSetReferences){
+            try {
+                TileSet tileset = mapper.readValue(new File(t.path.substring(t.path.lastIndexOf("../") + 3)), TileSet.class);
+                tileset.firstgid = t.firstgid;
+                this.tileSets.add(tileset);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         for(TileSet t : tileSets){
             if(t.name.equals("ground")){
@@ -142,29 +159,30 @@ public class MapData{
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName = "tile")
 class TileData{
-    @JsonProperty("id")
+    @JacksonXmlProperty(isAttribute = true)
     public int id;
-    @JsonProperty("type")
+    @JacksonXmlProperty(isAttribute = true)
     public String type;
     public int globalId;
-
-    public TileData() {
-    }
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName = "tileset")
 class TileSet{
+    @JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlProperty(localName = "tile")
     public TileData[] tiles;
     public String name;
     public int firstgid;
+}
 
-    @JsonCreator
-    public TileSet(@JsonProperty("tiles")TileData[] tiles, @JsonProperty("name")String name, @JsonProperty("firstgid")int firstgid) {
-        this.tiles = tiles;
-        this.name = name;
-        this.firstgid = firstgid;
-    }
+class TileSetReference {
+    @JsonProperty("firstgid")
+    public int firstgid;
+    @JsonProperty("source")
+    public String path;
 }
 
 

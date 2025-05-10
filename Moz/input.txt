@@ -27,5 +27,6 @@ talk history -u AliAlm
 tools equip Axe
 
 toggle map
-change map render
-change input type
+
+cheat build building 10 10 -force
+
