@@ -43,6 +43,10 @@ public class Player extends Entity{
     private boolean haveNewTrade = false;
     private boolean haveNewSuitor = false;
 
+    private Player() {
+        this(null);
+    }
+
     public Player(Account account){
         super("Player", new Inventory(12));
         unlockedRecipes = new ArrayList<>(App.recipeRegistry.getUnlockedRecipes());

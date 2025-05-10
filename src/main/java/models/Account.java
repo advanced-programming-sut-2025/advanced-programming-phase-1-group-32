@@ -29,6 +29,9 @@ public class Account {
     private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
+    private Account(){
+        this(null,null,null,null,null);
+    }
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
         this.email = email;

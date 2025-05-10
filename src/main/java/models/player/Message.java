@@ -13,6 +13,7 @@ public class Message {
     private final Date date;
     private boolean seen;
 
+    private Message(){this(null, null, null, null);}
     public Message(Date date, String message, Player receiver, Player sender) {
         this.date = date;
         this.message = message;

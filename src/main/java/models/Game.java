@@ -39,6 +39,8 @@ public class Game {
     private ArrayList<Quest> quests = new ArrayList<>();
     private int tradeId = 1000;
 
+    private Game(){}
+
     public Game(Account[] accounts) {
         for (Account account : accounts) {
             addPlayer(new Player(account));

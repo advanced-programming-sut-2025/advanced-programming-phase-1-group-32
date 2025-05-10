@@ -37,6 +37,7 @@ public class MapRegion {
         return tiles;
     }
 
+    private MapRegion() {}
     public MapRegion(String name, Color color) {
         this.name = name;
         this.color = color;

@@ -13,6 +13,7 @@ public class Gift {
     private boolean seen;
     private int rating;
 
+    private Gift(){this(null, null, null, null);}
     public Gift(Player sender, Player receiver, Entity content, Date date) {
         this.sender = sender;
         this.receiver = receiver;

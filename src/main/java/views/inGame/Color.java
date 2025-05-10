@@ -34,6 +34,7 @@ public class Color {
     public void setFg(int[] fg) {
         this.fg = fg;
     }
+    private Color(){}
 
     public Color(int[] fg){
         this.fg = fg;

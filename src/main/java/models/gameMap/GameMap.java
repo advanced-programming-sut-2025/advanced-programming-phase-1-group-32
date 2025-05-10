@@ -22,6 +22,7 @@ public class GameMap {
         return entities;
     }
 
+    private GameMap(){}
     private GameMap(TileType[][] tileTypes){
 
     }

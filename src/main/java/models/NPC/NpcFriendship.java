@@ -8,6 +8,7 @@ public class NpcFriendship {
     private int level;
     private int xp;
 
+    private NpcFriendship(){}
     public boolean wasMetToday() {
         return wasMetToday;
     }

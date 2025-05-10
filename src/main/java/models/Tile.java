@@ -13,6 +13,7 @@ public class Tile implements EntityObserver {
     final private Position position;
     private Entity content;
     private final MapRegion region;
+    private Tile(){this(null, null, null);}
 
     public Tile(Position position, TileType type, MapRegion region) {
         this.position = position;

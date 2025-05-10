@@ -4,6 +4,8 @@ public class Position {
 //    private float col, row;
     private int col, row; //changed it to integer
 
+    private Position(){}
+
     public Position(int row, int col) {
         this.row = row;
         this.col = col;
