@@ -5,7 +5,6 @@ import models.gameMap.GameMap;
 public class Position extends Vec2{
     GameMap map;
 
-
     public Position(double x, double y) {
         super(x, y);
     }
