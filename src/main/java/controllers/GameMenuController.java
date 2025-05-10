@@ -167,7 +167,7 @@ public class GameMenuController implements Controller {
         Tile start = map.getTileByPosition(
                 game.getCurrentPlayer().getPosition()
         );
-        Tile goal = map.getTileByPosition(new Position(y, x));
+        Tile goal = map.getTileByPosition(new Position(x, y));
         if(goal == null){
             return new WalkProposal(false, "tile doesnt exist", 0, x, y);
         }
@@ -193,7 +193,7 @@ public class GameMenuController implements Controller {
 //        if(!p.isAllowed()) {
 //            return new Result(false, "No walk was proposed");
 //        }
-        player.setPosition(new Position(p.y(), p.x()));
+        player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
         Tile tile = App.activeGame.getActiveMap().getTileByPosition(p.y(), p.x());
@@ -349,7 +349,7 @@ public class GameMenuController implements Controller {
                 || playerPosition.getCol() + dir.dx > map.getWidth() || playerPosition.getCol() + dir.dx < 0
         )
             return new Result(false, "Invalid Direction");
-        Position position = new Position(playerPosition.getRow() + dir.dy, playerPosition.getCol() + dir.dx);
+        Position position = new Position(playerPosition.getCol() + dir.dx, playerPosition.getRow() + dir.dy);
         if(tool == null || (!tool.getTags().contains(EntityTag.TOOL)))
             return  new Result(false, "You should equip a tool first");
         return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
@@ -482,7 +482,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result showPlant(int col, int row) {
-        Position position = new Position(row, col);
+        Position position = new Position(col, row);
         Game game = App.getActiveGame();
         GameMap gameMap = game.getActiveMap();
         Tile tile = gameMap.getTileByPosition(position);
@@ -1145,7 +1145,7 @@ public class GameMenuController implements Controller {
     public Result cheatBuildBuilding(int x, int y, boolean force){
         if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "can't place that there ma lord");
         if(force) BuildingData.dummyBuilding.clearArea(x, y);
-        Building building = new Building(BuildingData.dummyBuilding, new Position(y, x));
+        Building building = new Building(BuildingData.dummyBuilding, new Position(x, y));
         return new Result(true, "placed");
     }
 }

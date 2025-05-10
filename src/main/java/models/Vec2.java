@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Vec2{
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
 
     @JsonCreator
     public Vec2(
@@ -23,14 +23,18 @@ public class Vec2{
         return y;
     }
     public int getCol(){
-        return (int) this.x;
+        return (int) Math.round(this.x);
     }
     public int getRow(){
-        return (int) this.y;
+        return (int) Math.round(this.y);
     }
 
     public void setX(double x) {
         this.x = x;
+    }
+    public void set(Vec2 v){
+        this.x = v.x;
+        this.y = v.y;
     }
 
     public void setY(double y) {

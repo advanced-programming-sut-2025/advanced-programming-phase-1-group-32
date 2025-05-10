@@ -57,6 +57,7 @@ public class Game {
         for(int i = 0 ; i < players.size(); i++){
             players.get(i).addRegion(mainMap.getRegions().get(i));
             players.get(i).setCurrentMap(mainMap);
+            players.get(i).addComponent(new PositionComponent(0, 0));
             players.get(i).getComponent(PositionComponent.class).setPosition(mainMap.getRegions().get(i).getCenter());
         }
     }

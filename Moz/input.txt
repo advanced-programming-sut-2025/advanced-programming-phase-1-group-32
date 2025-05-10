@@ -1,32 +1,32 @@
-    register -u AliAlm -p AliPass123@ AliPass123@ -n AliAlm -e Aliiii@gmail.com -g male
-    pick question -q 1 -a meow -c meow
-    register -u Ilia -p AliPass123@ AliPass123@ -n Ilia -e ilia@gmail.com -g male
-    pick question -q 1 -a meow -c meow
-    register -u Parsa -p AliPass123@ AliPass123@ -n Parsa -e parsa@gmail.com -g male
-    pick question -q 1 -a meow -c meow
-    register -u Female -p AliPass123@ AliPass123@ -n Female -e female@gmail.com -g female
-    pick question -q 1 -a meow -c meow
-    login -u Ilia -p AliPass123@
-    show current menu
-    show menus
-    menu enter Game Menu
-    game new -u Parsa AliAlm Female
-    toggle map
-    cheat give item "Axe" 1
-    cheat give item "Pickaxe" 1
-    cheat give item "Hoe" 1
-    cheat give item "Scythe" 1
-    show inventory
-    cheat give item "Apple" 20
-    plant -s Pine Seed -d right
-    showplant -l <0,1>
-    talk -u AliAlm -m salam
-    talk history -u AliAlm
+register -u AliAlm -p AliPass123@ AliPass123@ -n AliAlm -e Aliiii@gmail.com -g male
+pick question -q 1 -a meow -c meow
+register -u Ilia -p AliPass123@ AliPass123@ -n Ilia -e ilia@gmail.com -g male
+pick question -q 1 -a meow -c meow
+register -u Parsa -p AliPass123@ AliPass123@ -n Parsa -e parsa@gmail.com -g male
+pick question -q 1 -a meow -c meow
+register -u Female -p AliPass123@ AliPass123@ -n Female -e female@gmail.com -g female
+pick question -q 1 -a meow -c meow
+login -u Ilia -p AliPass123@
+show current menu
+show menus
+menu enter Game Menu
+game new -u Parsa AliAlm Female
+toggle map
+cheat give item "Axe" 1
+cheat give item "Pickaxe" 1
+cheat give item "Hoe" 1
+cheat give item "Scythe" 1
+show inventory
+cheat give item "Apple" 20
+plant -s Pine Seed -d right
+showplant -l <0,1>
+talk -u AliAlm -m salam
+talk history -u AliAlm
 
 
-    tools equip Axe
+tools equip Axe
 
-    toggle map
+toggle map
 
-    cheat build building 10 10 -force
+cheat build building 10 10 -force
 

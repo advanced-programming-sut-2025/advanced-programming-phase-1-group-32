@@ -74,7 +74,6 @@ public class Player extends Entity{
     }
 
     //TODO: this should change. Position will become a component
-    private Position position = new Position(0, 0);
     private GameMap currentMap;
 
     public int getTrashcanLevel() {
@@ -174,7 +173,7 @@ public class Player extends Entity{
 
     }
     public void changePosition(int x, int y){
-        this.position.change(x, y);
+        this.getPosition().add(x, y);
     }
 
     public Position getPosition() {
@@ -182,7 +181,7 @@ public class Player extends Entity{
     }
 
     public void setPosition(Position position) {
-        this.position = position;
+        this.getPosition().set(position);
     }
 
     public Account getAccount() {

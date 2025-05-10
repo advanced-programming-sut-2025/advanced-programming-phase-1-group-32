@@ -61,7 +61,7 @@ public class GameMap {
 
         for(int i = 0 ; i < height ; i++){
             for(int j = 0 ; j < width ; j++){
-                tiles[i][j] = new Tile(new Position(i, j), typeMap[i][j], regionMap[i][j], this);
+                tiles[i][j] = new Tile(new Position(j, i), typeMap[i][j], regionMap[i][j], this);
 
             }
         }

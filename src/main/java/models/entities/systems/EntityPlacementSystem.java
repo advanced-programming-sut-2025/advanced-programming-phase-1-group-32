@@ -13,7 +13,7 @@ public class EntityPlacementSystem {
             return new Result(false, "tile is full");
         }
 
-        EntityPlacementSystem.placeOnTile(entity, tile);
+        tile.setContent(entity);
         entity.addObserver(tile);
         tile.getMap().addEntity(entity);
 
