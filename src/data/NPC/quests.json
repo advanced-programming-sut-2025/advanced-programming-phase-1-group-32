@@ -1,0 +1,39 @@
+[
+  {
+    "npcName": "Robin",
+    "id": 1,
+    "requiredFriendship": 0,
+    "daysToUnlocked": 0,
+    "request": "Wood",
+    "requestNumber": 80,
+    "reward": "Gold",
+    "rewardNumber": 1000,
+    "completed": false,
+    "doneByPlayerName": null
+  },
+  {
+    "npcName": "Robin",
+    "id": 2,
+    "requiredFriendship": 1,
+    "daysToUnlocked": 0,
+    "request": "Iron",
+    "requestNumber": 10,
+    "reward": "hive",
+    "rewardNumber": 100,
+    "completed": false,
+    "doneByPlayerName": null
+  },
+  {
+    "npcName": "Robin",
+    "id": 3,
+    "requiredFriendship": 0,
+    "daysToUnlocked": 2,
+    "request": "wood",
+    "requestNumber": 1000,
+    "reward": "Gold",
+    "rewardNumber": 25000,
+    "completed": false,
+    "doneByPlayerName": null
+  }
+]
+

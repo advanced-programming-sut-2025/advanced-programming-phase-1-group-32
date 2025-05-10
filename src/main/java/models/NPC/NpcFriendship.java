@@ -1,7 +1,5 @@
 package models.NPC;
 
-import models.player.friendship.Friendship;
-
 public class NpcFriendship {
     private boolean wasMetToday;
     private boolean wasGiftedToday;
@@ -10,7 +8,7 @@ public class NpcFriendship {
     private int level;
     private int xp;
 
-    public boolean isWasMetToday() {
+    public boolean wasMetToday() {
         return wasMetToday;
     }
 
@@ -57,5 +55,10 @@ public class NpcFriendship {
         }
 
         level = xp / 200;
+    }
+
+    public void updatePerDay() {
+        wasMetToday = false;
+        wasGiftedToday = false;
     }
 }

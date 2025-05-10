@@ -23,7 +23,7 @@ public class Player extends Entity{
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
-    private final Map<NPC, NpcFriendship> npcFriendships = null;
+    private HashMap<NPC, NpcFriendship> npcFriendships = new HashMap<>();
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private HashMap<Player, Entity> suitors = new HashMap<>();
     private Player spouse;
@@ -313,6 +313,19 @@ public class Player extends Entity{
 
     public void updatePerDay() {
         getEnergy().updatePerDay();
+        for (NpcFriendship npcFriendship : npcFriendships.values()) {
+            npcFriendship.updatePerDay();
+        }
+    }
+
+    //NPC functions
+
+    public Map<NPC, NpcFriendship> getNpcFriendships() {
+        return npcFriendships;
+    }
+
+    public void setNpcFriendships(HashMap<NPC, NpcFriendship> npcFriendships) {
+        this.npcFriendships = npcFriendships;
     }
 
     public void addFriendshipByGift(NPC npc, Entity gift) {
@@ -326,4 +339,21 @@ public class Player extends Entity{
             npcFriendship.setWasGiftedToday(true);
         }
     }
+
+    public String npcFriendshipDetails() {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<NPC, NpcFriendship> entry : npcFriendships.entrySet()) {
+            NPC npc = entry.getKey();
+            NpcFriendship npcFriendship = entry.getValue();
+            result.append("Name: ").append(npc.getName()).append("\n");
+            result.append("Friendship points: ").append(npcFriendship.getXp()).append("\n");
+            result.append("Friendship level: ").append(npcFriendship.getLevel()).append("\n");
+            result.append("----------------------------------------------------------------\n");
+        }
+
+        return result.toString();
+    }
+
+
+
 }

@@ -3,6 +3,8 @@ package controllers;
 import models.*;
 import models.Date;
 import models.NPC.NPC;
+import models.NPC.NpcFriendship;
+import models.NPC.Quest;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
 import models.entities.Entity;
@@ -955,10 +957,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "Player with name " + receiverPlayerName + " not found");
         }
 
-        // TODO: get this block out of comment
-//        if (!game.checkPlayerDistance(receiverPlayer, currentPlayer)) {
-//            return new Result(false, "Player is not next to you...");
-//        }
+        if (!game.checkPlayerDistance(receiverPlayer, currentPlayer)) {
+            return new Result(false, "Player is not next to you...");
+        }
 
         Message message = new Message(game.getDate(), messageString, receiverPlayer, currentPlayer);
         currentPlayer.getMessageLog().add(message);
@@ -996,9 +997,31 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result meetNPC(){
+    public Result meetNPC(String npcName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        NPC npc = game.findNPC(npcName);
+        NpcFriendship npcFriendship = currentPlayer.getNpcFriendships().get(npc);
+
+        if (npc == null) {
+            return new Result(false, "NPC with name " + npcName + " not found");
+        }
+
+        //TODO: check distance
+
+        String message = npc.getCorrectDialogue(game.getDate().getSeason(), npcFriendship.getLevel(),
+                game.getTodayWeather(), game.getDate().getHour() < 16);
+        if (message == null) {
+            message = "not set yet!";
+        }
+
+        if (!npcFriendship.wasMetToday()) {
+            npcFriendship.setWasMetToday(true);
+            npcFriendship.addXp(20);
+        }
+
         //TODO
-        return null;
+        return new Result(true, message);
     }
 
     public Result giftNPC(String npcName, String itemName) {
@@ -1016,7 +1039,7 @@ public class GameMenuController implements Controller {
         Entity item = App.entityRegistry.makeEntity(itemName);
 
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
-        if (inventory.doesHaveItem(itemName)) {
+        if (!inventory.doesHaveItem(itemName)) {
             return new Result(false, "You dont have this item");
         }
 
@@ -1024,15 +1047,34 @@ public class GameMenuController implements Controller {
             return new Result(false, "You can't gift tools to NPC!");
         }
 
-        inventory.removeItem(itemName, 1);
+        inventory.takeFromInventory(itemName, 1);
         currentPlayer.addFriendshipByGift(npc, item);
 
-        return null;
+        return new Result(true, "Your gift has been sent successfully!");
+    }
+
+    public Result questList() {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("Available quests:\n");
+
+        for (Quest quest : game.getQuests()) {
+            if (quest.doesHaveAccess(currentPlayer).isSuccessful()) {
+                message.append(quest);
+            }
+
+        }
+        return new Result(true, message.toString());
     }
 
     public Result friendshipNPC() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("NPC Friendship: \n");
+
+        message.append(currentPlayer.npcFriendshipDetails());
+
+        return new Result(true, message.toString());
     }
 
 

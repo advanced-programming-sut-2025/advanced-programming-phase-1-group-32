@@ -1,6 +1,11 @@
 package models;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.NPC.Dialogue;
 import models.NPC.NPC;
+import models.NPC.NpcFriendship;
+import models.NPC.Quest;
 import models.entities.Entity;
 import models.entities.components.Growable;
 import models.enums.EntityTag;
@@ -13,7 +18,11 @@ import models.player.Player;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class Game {
     private Weather todayWeather;
@@ -26,6 +35,7 @@ public class Game {
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private ArrayList<NPC> gameNPCs = new ArrayList<>();
     private boolean mapVisible = true;
+    private ArrayList<Quest> quests = new ArrayList<>();
     private int tradeId = 1000;
 
     public Game(Account[] accounts) {
@@ -60,7 +70,69 @@ public class Game {
     }
 
     public void initNPCs() {
+        // create NPC
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            List<NPC> NPCs = mapper.readValue(
+                    new File("src/data/NPC/npcNames.json"),
+                    new TypeReference<List<NPC>>() {}
+            );
+            for (NPC npc : NPCs) {
+                gameNPCs.add(npc);
+                for (Player player : players) {
+                    player.getNpcFriendships().put(npc, new NpcFriendship());
+                }
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //init quests
+        try {
+            // TODO: Complete quests.jason
+            ObjectMapper mapper = new ObjectMapper();
+            List<Quest> quests = mapper.readValue(
+                    new File("src/data/NPC/quests.json"),
+                    new TypeReference<List<Quest>>() {}
+            );
+
+            for (Quest quest : quests) {
+                quest.setNpc(findNPC(quest.getNpcName()));
+                this.quests.add(quest);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        // Initialize dialogs
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            List<Dialogue> dialogues = mapper.readValue(
+                    new File("src/data/NPC/dialogues.json"),
+                    new TypeReference<List<Dialogue>>() {}
+            );
+
+            for (Dialogue dialogue : dialogues) {
+                NPC npc = findNPC(dialogue.getNpcName());
+                npc.getDialogues().add(dialogue);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace(); // Prints the reason for failure
+        }
+
         //TODO
+    }
+
+    public ArrayList<Quest> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(ArrayList<Quest> quests) {
+        this.quests = quests;
     }
 
     public NPC findNPC(String npcName) {
@@ -166,6 +238,10 @@ public class Game {
 
         for (Player player : players) {
             player.updatePerDay();
+        }
+
+        for (Quest quest : quests) {
+            quest.reduceDaysToUnlocked();
         }
 
 

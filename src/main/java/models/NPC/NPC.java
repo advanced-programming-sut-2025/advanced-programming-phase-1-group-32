@@ -1,20 +1,22 @@
 package models.NPC;
 
+import models.App;
+import models.Game;
 import models.entities.Entity;
+import models.enums.Season;
+import models.enums.Weather;
 import models.player.Player;
 
 import java.util.ArrayList;
 
 public class NPC {
-    private final String name;
-    private ArrayList<Entity> favorites;
-    private ArrayList<Quest> quests;
-    private ArrayList<String> dialogs;
+    private String name;
+    private ArrayList<Entity> favorites = new ArrayList<>();
+//    private ArrayList<Quest> quests = new ArrayList<>();
+    private ArrayList<Dialogue> dialogues = new ArrayList<>();
 
 
-    public NPC(String name) {
-        this.name = name;
-    }
+    public NPC() {};
 
     public String getName() {
         return name;
@@ -28,20 +30,13 @@ public class NPC {
         this.favorites = favorites;
     }
 
-    public ArrayList<Quest> getQuests() {
-        return quests;
+
+    public ArrayList<Dialogue> getDialogues() {
+        return dialogues;
     }
 
-    public void setQuests(ArrayList<Quest> quests) {
-        this.quests = quests;
-    }
-
-    public ArrayList<String> getDialogs() {
-        return dialogs;
-    }
-
-    public void setDialogs(ArrayList<String> dialogs) {
-        this.dialogs = dialogs;
+    public void setDialogues(ArrayList<Dialogue> dialogues) {
+        this.dialogues = dialogues;
     }
 
     public void giveQuestToPlayer(Player player){
@@ -50,6 +45,17 @@ public class NPC {
     public String talk(Player player){
         return null;
     }
+
+    public String getCorrectDialogue(Season season, int friendLevel, Weather weather, boolean isDay) {
+        for (Dialogue dialogue : dialogues) {
+            if (dialogue.checkConditions(season, friendLevel, weather, isDay)) {
+                return dialogue.getDialogue();
+            }
+        }
+
+        return null;
+    }
+
 
 
 }

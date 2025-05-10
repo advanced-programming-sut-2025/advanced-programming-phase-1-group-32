@@ -36,3 +36,11 @@ next turn
 next turn
 datetime
 season
+
+cheat give item "Apple" 20
+gift NPC Robin -i Apple
+show inventory
+cheat advance date 1d
+friendship NPC list
+meet NPC Lia
+quests list
