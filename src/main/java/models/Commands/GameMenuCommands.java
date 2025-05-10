@@ -75,7 +75,7 @@ public enum GameMenuCommands implements Commands {
     GIFT_NPC ("\\s*gift\\s+NPC\\s+(?<npcName>.+)\\s+-i\\s+(?<item>.+)\\s*"),
     FRIENDSHIP_NPC ("\\s*friendship\\s+NPC\\s+list\\s*"),
     QUEST_LIST("\\s*quests\\s+list\\s*"),
-    QUEST_FINISH("\\s*quests\\s+finish\\s+-i\\s+(?<index>\\d+)\\s*"),
+    QUEST_FINISH("\\s*quests\\s+finish\\s+-i\\s+(?<index>-?\\d+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
 

@@ -54,7 +54,7 @@ public class NpcFriendship {
             this.xp = 799;
         }
 
-        level = xp / 200;
+        this.level = (this.xp / 200);
     }
 
     public void updatePerDay() {

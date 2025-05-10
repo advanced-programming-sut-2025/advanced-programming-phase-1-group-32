@@ -140,6 +140,6 @@ public class Quest {
             return new Result(false, "This quest is completed by " + this.doneByPlayerName + "!");
         }
 
-        return new Result(true, "");
+        return new Result(true, ".");
     }
 }

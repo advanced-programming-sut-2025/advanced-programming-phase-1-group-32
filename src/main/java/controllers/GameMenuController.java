@@ -1067,6 +1067,56 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
+    public Result questFinish(int questId) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Quest quest = game.findQuest(questId);
+        if (quest == null) {
+            return new Result(false, "Quest with id " + questId + " not found");
+        }
+
+        Result haveAccess  = quest.doesHaveAccess(currentPlayer);
+        if (!haveAccess.isSuccessful()) {
+            return haveAccess;
+        }
+        if (!App.entityRegistry.doesEntityExist(quest.getRequest())) {
+            return new Result(false, "This item isnt set yet!");
+        }
+
+
+        Entity item = App.entityRegistry.makeEntity(quest.getRequest());
+        int itemAmount = quest.getRequestNumber();
+
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!inventory.doesHaveItem(item.getName(), itemAmount)) {
+            return new Result(false, "You dont have enough \"" + item.getName() + "\" items");
+        }
+
+        // TODO: check distance
+
+        inventory.takeFromInventory(item.getName(), itemAmount);
+
+        if (quest.getReward().equalsIgnoreCase("Gold")) {
+            currentPlayer.getWallet().changeBalance(quest.getRewardNumber());
+            return new Result(true, "Quest finished successfully!\n" +
+                    "You got: " + quest.getRewardNumber() + "Golds");
+        }
+
+
+        if (!App.entityRegistry.doesEntityExist(quest.getReward())) {
+            return new Result(false, "Item not have set yet");
+        }
+        Entity reward = App.entityRegistry.makeEntity(quest.getReward());
+        reward.getComponent(Pickable.class).setStackSize(quest.getRewardNumber());
+
+
+        inventory.addItem(reward);
+
+        return new Result(true, "Quest finished successfully!\n" +
+                "You got: " + quest.getRewardNumber() + item.getName());
+    }
+
+
     public Result friendshipNPC() {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();

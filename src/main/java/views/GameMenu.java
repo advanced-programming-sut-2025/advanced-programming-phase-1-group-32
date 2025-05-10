@@ -197,7 +197,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.questList());
 
             } else if ((matcher = GameMenuCommands.QUEST_FINISH.getMatcher(input)) != null) {
-//                System.out.println(controller.);
+                System.out.println(controller.questFinish(Integer.parseInt(matcher.group(1).trim())));
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 

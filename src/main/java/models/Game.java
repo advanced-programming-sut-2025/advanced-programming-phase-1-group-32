@@ -351,4 +351,14 @@ public class Game {
         }
         return null;
     }
+
+    public Quest findQuest(int questId) {
+        for (Quest quest : quests) {
+            if (quest.getId() == questId) {
+                return quest;
+            }
+        }
+
+        return null;
+    }
 }

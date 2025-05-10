@@ -44,3 +44,4 @@ cheat advance date 1d
 friendship NPC list
 meet NPC Lia
 quests list
+quests finish -i 1
