@@ -2,11 +2,13 @@ package models;
 
 import models.entities.Entity;
 import models.entities.components.Growable;
+import models.entities.systems.EntityPlacementSystem;
 import models.enums.EntityTag;
 import models.enums.TileType;
 import models.enums.Weather;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
+import models.gameMap.Tile;
 import models.gameMap.WorldMapType;
 import models.player.Player;
 import models.player.Wallet;
@@ -18,7 +20,6 @@ public class Game {
     private Weather todayWeather;
     private Weather tomorrowWeather;
     private Date date = new Date();
-    private GameMap activeMap;
     private GameMap mainMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
@@ -38,8 +39,8 @@ public class Game {
     public void initGame() {
         setCurrentPlayer(players.get(0));
 
-        setActiveMap(new GameMap(WorldMapType.DEFAULT.getData(), Environment.OUTDOOR));
-        mainMap = activeMap;
+        mainMap = new GameMap(WorldMapType.DEFAULT.getData(), Environment.GREEN_HOUSE);
+        setActiveMap(mainMap);
 
         this.todayWeather = Weather.SUNNY;
         this.tomorrowWeather = Weather.SUNNY;
@@ -53,7 +54,7 @@ public class Game {
 
         //player farms
         for(int i = 0 ; i < players.size(); i++){
-            players.get(i).addRegion(activeMap.getRegions().get(i));
+            players.get(i).addRegion(mainMap.getRegions().get(i));
         }
     }
 
@@ -86,7 +87,7 @@ public class Game {
     }
 
     public GameMap getActiveMap() {
-        return activeMap;
+        return currentPlayer.getCurrentMap();
     }
 
     public Date getDate() {
@@ -209,7 +210,7 @@ public class Game {
 
 
     public void setActiveMap(GameMap map) {
-        this.activeMap = map;
+        this.currentPlayer.setCurrentMap(map);
     }
 
     public void toggleMapVisibility(){

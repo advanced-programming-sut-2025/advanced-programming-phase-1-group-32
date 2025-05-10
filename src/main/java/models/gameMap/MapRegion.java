@@ -1,7 +1,6 @@
 package models.gameMap;
 
 import models.Position;
-import models.Tile;
 import models.player.Player;
 import views.inGame.Color;
 

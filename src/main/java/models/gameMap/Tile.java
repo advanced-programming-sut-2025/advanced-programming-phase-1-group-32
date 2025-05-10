@@ -1,10 +1,12 @@
-package models;
+package models.gameMap;
 
+import models.App;
+import models.Game;
+import models.Position;
 import models.entities.Entity;
 import models.entities.EntityObserver;
 import models.entities.components.SeedComponent;
 import models.enums.TileType;
-import models.gameMap.MapRegion;
 import models.player.Player;
 import views.inGame.Color;
 
@@ -13,11 +15,13 @@ public class Tile implements EntityObserver {
     final private Position position;
     private Entity content;
     private final MapRegion region;
+    private final GameMap map;
 
-    public Tile(Position position, TileType type, MapRegion region) {
+    public Tile(Position position, TileType type, MapRegion region, GameMap map) {
         this.position = position;
         this.type = type;
         this.region = region;
+        this.map = map;
         if(region != null){
             region.addTile(this);
         }

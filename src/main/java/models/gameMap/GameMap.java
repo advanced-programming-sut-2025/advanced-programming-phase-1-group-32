@@ -2,8 +2,9 @@ package models.gameMap;
 
 import models.App;
 import models.Position;
-import models.Tile;
 import models.entities.Entity;
+import models.entities.EntityList;
+import models.entities.components.EntityComponent;
 import models.enums.TileType;
 
 import java.security.SecureRandom;
@@ -15,11 +16,29 @@ public class GameMap {
     private Tile[][] tiles;
     private int width, height;
     private Environment environment;
-    private final Set<Entity> entities = new HashSet<>();
+    private final EntityList entities = new EntityList();
     private final ArrayList<MapRegion> regions = new ArrayList<>();
 
-    public Set<Entity> getEntities() {
+    public ArrayList<Entity> getEntities() {
         return entities;
+    }
+    public void addEntity(Entity entity){
+        if(entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getName() + " is getting " +
+                "added twice int the map.");
+
+        this.entities.add(entity);
+    }
+    public void removeEntity(Entity entity){
+        if(!entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getName() + " is getting " +
+                "removed from the map, but it doesnt exist on the map");
+        this.entities.remove(entity);
+    }
+    public ArrayList<Entity> getEntitiesWithComponent(Class<? extends EntityComponent> clazz){
+        ArrayList<Entity> out = new ArrayList<>();
+        for(Entity e : entities){
+            if(e.getComponent(clazz) != null) out.add(e);
+        }
+        return out;
     }
 
     private GameMap(TileType[][] tileTypes){
@@ -41,7 +60,8 @@ public class GameMap {
 
         for(int i = 0 ; i < height ; i++){
             for(int j = 0 ; j < width ; j++){
-                tiles[i][j] = new Tile(new Position(i, j), typeMap[i][j], regionMap[i][j]);
+                tiles[i][j] = new Tile(new Position(i, j), typeMap[i][j], regionMap[i][j], this);
+
             }
         }
         initializeMap();
@@ -75,7 +95,7 @@ public class GameMap {
     }
 
     public Tile getTileByPosition(int row, int col) {
-        if(row > tiles.length || col > tiles[0].length)
+        if(row >= tiles.length || row < 0 || col >= tiles[0].length || col < 0)
             return null;
         return tiles[row][col];
     }
@@ -87,13 +107,6 @@ public class GameMap {
 
     public int getHeight() {
         return height;
-    }
-
-    public void addEntity(Entity entity){
-        this.entities.add(entity);
-    }
-    public void removeEntity(Entity entity){
-        this.entities.remove(entity);
     }
 
     public ArrayList<MapRegion> getRegions() {

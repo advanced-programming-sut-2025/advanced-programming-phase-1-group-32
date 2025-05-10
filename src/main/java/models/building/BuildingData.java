@@ -3,7 +3,7 @@ package models.building;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Position;
-import models.Tile;
+import models.gameMap.Tile;
 import models.gameMap.Environment;
 
 public class BuildingData {

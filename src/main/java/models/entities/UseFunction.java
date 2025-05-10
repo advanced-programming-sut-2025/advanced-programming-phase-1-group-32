@@ -1,7 +1,7 @@
 package models.entities;
 
 import models.App;
-import models.Tile;
+import models.gameMap.Tile;
 import models.animal.Animal;
 import models.entities.components.Container;
 import models.entities.components.Growable;

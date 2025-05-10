@@ -1,16 +1,13 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import models.App;
-import models.Tile;
+import models.gameMap.Tile;
 import models.entities.UseFunction;
 import models.player.Player;
 import records.Result;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Useable extends EntityComponent{
     @JsonProperty("useFunctions")

@@ -6,6 +6,7 @@ import models.building.Building;
 import models.building.BuildingData;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
+import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
 import models.entities.workstations.ArtisanComponent;
@@ -16,8 +17,8 @@ import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
-import models.gameMap.Environment;
 import models.gameMap.GameMap;
+import models.gameMap.Tile;
 import models.player.Energy;
 import models.player.Gift;
 import models.player.Message;
@@ -28,7 +29,6 @@ import records.Result;
 import records.WalkProposal;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class GameMenuController implements Controller {
     @Override
@@ -167,6 +167,12 @@ public class GameMenuController implements Controller {
                 game.getCurrentPlayer().getPosition()
         );
         Tile goal = map.getTileByPosition(new Position(y, x));
+        if(goal == null){
+            return new WalkProposal(false, "tile doesnt exist", 0, x, y);
+        }
+        if(start == null){
+            return new WalkProposal(false, "you cant be there", 0, x, y);
+        }
         if(start.equals(goal))
             return new WalkProposal(
                     false,
@@ -182,12 +188,20 @@ public class GameMenuController implements Controller {
     }
 
     public Result executeWalk(WalkProposal p) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
-        if(!p.isAllowed()) {
-            return new Result(false, "No walk was proposed");
-        }
+        Player player = App.getActiveGame().getCurrentPlayer();
+//        if(!p.isAllowed()) {
+//            return new Result(false, "No walk was proposed");
+//        }
         player.setPosition(new Position(p.y(), p.x()));
         player.reduceEnergy(p.energyCost());
+        Entity entity = null;
+        Tile tile = App.activeGame.getActiveMap().getTileByPosition(p.y(), p.x());
+        if(tile != null && (entity = tile.getContent()) != null){
+            Placeable placeable = entity.getComponent(Placeable.class);
+            for(CollisionEvent c : placeable.getCollisionEvents()){
+                c.onEnter();
+            }
+        }
         return new Result(true, "you walked to "
                 + player.getPosition()
                 + " (-" + p.energyCost() + " energy)");
@@ -1068,18 +1082,23 @@ public class GameMenuController implements Controller {
 
     public Result handleRawInput(char c){
         Player player = App.getActiveGame().getCurrentPlayer();
+        WalkProposal p;
         switch (c){
             case 'a':
-                player.changePosition(-1, 0);
+                p = this.proposeWalk(player.getPosition().getCol() -1, player.getPosition().getRow());
+                executeWalk(p);
                 break;
             case 's':
-                player.changePosition(0, 1);
+                p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() + 1);
+                executeWalk(p);
                 break;
             case 'w':
-                player.changePosition(0, -1);
+                p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() - 1);
+                executeWalk(p);
                 break;
             case 'd':
-                player.changePosition(1, 0);
+                p = this.proposeWalk(player.getPosition().getCol() + 1, player.getPosition().getRow());
+                executeWalk(p);
                 break;
             case 'x':
                 switchInputType();

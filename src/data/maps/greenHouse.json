@@ -1,16 +1,16 @@
 { "compressionlevel":-1,
- "height":9,
+ "height":12,
  "infinite":false,
  "layers":[
         {
-         "data":[3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-         "height":9,
+         "data":[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 1, 1, 1, 3, 3, 5, 5, 3, 3, 3, 1, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5],
+         "height":12,
          "id":1,
          "name":"ground",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
-         "width":8,
+         "width":9,
          "x":0,
          "y":0
         }],
@@ -23,14 +23,14 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/..\/Moz\/MapEditor\/Tile sets\/ground.tsx"
+         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/ground.tsx"
         }, 
         {
          "firstgid":17,
-         "source":"..\/..\/..\/..\/Moz\/MapEditor\/Tile sets\/region.tsx"
+         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/region.tsx"
         }],
  "tilewidth":1,
  "type":"map",
  "version":"1.8",
- "width":8
+ "width":9
 }

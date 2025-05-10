@@ -31,10 +31,6 @@ public class Renderable extends EntityComponent{
         return color;
     }
 
-    public void render(Position cameraPos){
-        //TODO: the fuck should i do with this
-    };
-
     @Override
     public EntityComponent clone() {
         return new Renderable(this);

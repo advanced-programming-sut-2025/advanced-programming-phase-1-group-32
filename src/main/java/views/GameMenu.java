@@ -11,6 +11,7 @@ import models.entities.components.inventory.InventorySlot;
 import models.enums.Direction;
 import models.gameMap.GameMap;
 import models.gameMap.MapRegion;
+import models.gameMap.Tile;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
@@ -218,10 +219,6 @@ public class GameMenu implements AppMenu {
         Game activeGame = App.getActiveGame();
         if(activeGame.isMapVisible()){
             printMap(activeGame.getActiveMap());
-            Position playerPosition = App.getActiveGame().getCurrentPlayer().getPosition();
-            for(Player p : activeGame.getPlayers()){
-                App.getView().getRenderer().mvAddchColored(p.getPosition().getCol(), p.getPosition().getRow(), '@', new Color(255, 255, 50), playerPosition);
-            }
             App.getView().getRenderer().render();
             App.getView().getRenderer().moveCurser(0, 0);
             showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
@@ -253,6 +250,7 @@ public class GameMenu implements AppMenu {
                     }
                 }
                 for(Entity e : map.getEntities()){
+                    renderer.mvAddchColored(e.
                     if(e.getComponent(Renderable.class) != null) e.getComponent(Renderable.class).render(position);
                 }
             }
