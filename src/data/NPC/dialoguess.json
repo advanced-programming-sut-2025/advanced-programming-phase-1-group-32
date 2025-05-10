@@ -1,0 +1,261 @@
+[
+  {
+    "dialogue": "The spring breeze feels like a fresh start... I could sketch all day.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Rain on the roof is like music. Want to hear it with me?",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Storms make me anxious... I usually hide under the blankets with a book.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "The garden looks magical under the moonlight, don’t you think?",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Summer heat makes grapes sweeter. I’ll save you a few.",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Even the rain feels warm in summer... like the earth is sighing.",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Storms at night bring wild dreams. Do you get those too?",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "It’s so quiet out... just me, my thoughts, and the stars.",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Leaves falling remind me of time passing... bittersweet, isn’t it?",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I like to paint in the rain—muddy shoes and all.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I lit a candle to feel less alone. Storms can be scary.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "The stars are sharper in fall... they seem closer somehow.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Winter makes me crave warm salads—don’t laugh, it’s a thing!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "The snow muffles everything. It’s peaceful... and a little lonely.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I’ve been writing poems by candlelight. The storm outside inspires me.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "I saw my reflection in the snow tonight. It startled me.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+
+  {
+    "dialogue": "The cherry blossoms are starting to bloom. They make my heart feel light.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "The smell of wet earth brings back childhood memories... I used to play in puddles.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "If you listen carefully during storms, the trees whisper secrets.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "It’s late... but I couldn’t resist watching the fireflies near the pond.",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "I tried to paint the sunrise this morning. It faded too quickly.",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Raindrops on the lake look like little dancers. Want to come sketch them with me?",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I stayed up reading by lantern light. Storms somehow keep me awake.",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "There’s a sweet scent in the night air. Maybe wild grapes nearby?",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "The golden leaves always make me want to press them between pages.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I wore my oldest sweater today. Rainy fall days feel better with wool.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "The storm knocked over my easel. I hope the canvas is okay...",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "The owl is out tonight... they only hoot like that in autumn.",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "I baked some grape tarts this morning. Would you like one?",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Snowflakes landing on the window make me feel like I’m inside a storybook.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I hear the wind whistling through the cracks... it sings a lonely tune.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "I couldn’t sleep. The snow made everything glow outside my window.",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  }
+]
+
+

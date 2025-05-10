@@ -23,7 +23,7 @@ public class Player extends Entity{
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
-    private HashMap<NPC, NpcFriendship> npcFriendships = new HashMap<>();
+    private Map<NPC, NpcFriendship> npcFriendships = new HashMap<>();
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private HashMap<Player, Entity> suitors = new HashMap<>();
     private Player spouse;
@@ -313,25 +313,35 @@ public class Player extends Entity{
 
     public void updatePerDay() {
         getEnergy().updatePerDay();
-        for (NpcFriendship npcFriendship : npcFriendships.values()) {
-            npcFriendship.updatePerDay();
+        for (Map.Entry<NPC, NpcFriendship> npcFriendship : npcFriendships.entrySet()) {
+            npcFriendship.getValue().updatePerDay();
+            if (npcFriendship.getValue().getLevel() >= 3) {
+                NPC npc = npcFriendship.getKey();
+                String randomGift = npc.getRandomGift();
+                if (randomGift != null) {
+                    Entity gift = App.entityRegistry.makeEntity(randomGift);
+                    this.getComponent(Inventory.class).addItem(gift);
+                    System.out.println("gifted");
+                }
+
+            }
         }
+
     }
 
     //NPC functions
-
     public Map<NPC, NpcFriendship> getNpcFriendships() {
         return npcFriendships;
     }
 
-    public void setNpcFriendships(HashMap<NPC, NpcFriendship> npcFriendships) {
+    public void setNpcFriendships(Map<NPC, NpcFriendship> npcFriendships) {
         this.npcFriendships = npcFriendships;
     }
 
     public void addFriendshipByGift(NPC npc, Entity gift) {
         NpcFriendship npcFriendship = npcFriendships.get(npc);
         if(!npcFriendship.isWasGiftedToday()) {
-            if (npc.getFavorites().contains(gift)) {
+            if (npc.getFavorites().contains(gift.getName())) {
                 npcFriendship.addXp(200);
             } else {
                 npcFriendship.addXp(50);
@@ -339,6 +349,7 @@ public class Player extends Entity{
             npcFriendship.setWasGiftedToday(true);
         }
     }
+
 
     public String npcFriendshipDetails() {
         StringBuilder result = new StringBuilder();

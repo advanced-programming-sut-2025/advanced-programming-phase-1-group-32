@@ -26,7 +26,7 @@ public enum GameMenuCommands implements Commands {
     FRIENDSHIPS       ("\\s*friendships\\s*"),
     GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>\\d+)\\s*"),
     GIFT_LIST         ("\\s*gift\\s+list\\s*"),
-    GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
+    GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>(-)\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
     GIFT_HISTORY      ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
     HUG               ("\\s*hug\\s+-u\\s+(?<username>.+)\\s*"),
     FLOWER            ("\\s*flower\\s+-u\\s+(?<username>.+)\\s*"),

@@ -1138,11 +1138,17 @@ public class GameMenuController implements Controller {
         // TODO: check distance
 
         inventory.takeFromInventory(item.getName(), itemAmount);
+        int rewardNumber = quest.getRewardNumber();
+        NpcFriendship npcFriendship = currentPlayer.getNpcFriendships().get(quest.getNpc());
+        if (npcFriendship.getLevel() >= 2) {
+            rewardNumber *= 2;
+        }
+
 
         if (quest.getReward().equalsIgnoreCase("Gold")) {
-            currentPlayer.getWallet().changeBalance(quest.getRewardNumber());
+            currentPlayer.getWallet().changeBalance(rewardNumber);
             return new Result(true, "Quest finished successfully!\n" +
-                    "You got: " + quest.getRewardNumber() + "Golds");
+                    "You got: " + rewardNumber + "Golds");
         }
 
 
@@ -1150,13 +1156,13 @@ public class GameMenuController implements Controller {
             return new Result(false, "Item not have set yet");
         }
         Entity reward = App.entityRegistry.makeEntity(quest.getReward());
-        reward.getComponent(Pickable.class).setStackSize(quest.getRewardNumber());
+        reward.getComponent(Pickable.class).setStackSize(rewardNumber);
 
 
         inventory.addItem(reward);
 
         return new Result(true, "Quest finished successfully!\n" +
-                "You got: " + quest.getRewardNumber() + item.getName());
+                "You got: " + rewardNumber + item.getName());
     }
 
 
@@ -1231,7 +1237,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "Entity doesnt exist");
         }
         Entity entity = App.entityRegistry.makeEntity(name);
-        if(currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
+        if(!currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
             return new Result(false, "Your inventory doesn't have enough size");
         if(entity.getComponent(Pickable.class) == null){
             return new Result(false, "Entity isn't pickable");
