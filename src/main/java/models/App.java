@@ -1,5 +1,6 @@
 package models;
 
+import controllers.test.AppState;
 import models.crafting.RecipeRegistry;
 import models.entities.EntityRegistry;
 import models.enums.Menu;
@@ -33,7 +34,7 @@ public class App {
         return null;
     }
 
-    public static boolean getStayLoggedIn() {
+    public static boolean isStayLoggedIn() {
         return stayLoggedIn;
     }
 
@@ -88,4 +89,25 @@ public class App {
     public static void setActiveGame(Game activeGame) {
         App.activeGame = activeGame;
     }
+
+    public static ArrayList<Account> getAccountList() {
+        return accountList;
+    }
+
+    /* ---------------------------kasif------------------------- */
+    public static void loadState(AppState state) {
+        accountList.clear();
+        accountList.addAll(state.getAccountList());
+        loggedInAccount = state.getLoggedInAccount();
+        registeredAccount = state.getRegisteredAccount();
+        stayLoggedIn = state.isStayLoggedIn();
+        currentMenu = state.getCurrentMenu();
+        entityRegistry = state.entityRegistry;
+        recipeRegistry = state.recipeRegistry;
+        mapRegistry = state.mapRegistry;
+        activeGame = state.activeGame;
+    }
+
+    /*------------------------------------------------*/
+
 }

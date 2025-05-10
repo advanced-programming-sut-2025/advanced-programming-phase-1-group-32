@@ -205,7 +205,25 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.CHANGE_MAP_RENDER.getMatcher(input)) != null) {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
-            } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
+            }
+            /* ------------------------ temp -----------------------*/
+            else if ((matcher = GameMenuCommands.SAVE_GAME.getMatcher(input)) != null) {
+                try {
+                    System.out.println(controller.saveGame());
+
+                } catch (IOException e) {
+                    System.out.println("exception");
+                }
+            } else if ((matcher = GameMenuCommands.LOAD_GAME.getMatcher(input)) != null) {
+                try {
+                    System.out.println(controller.loadGame());
+
+                } catch (IOException e) {
+                    System.out.println("exception");
+                }
+            }
+            /*-------------------------------------------------------------*/
+            else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
                 System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
                                                                                     matcher.group("force") != null));
             } else {

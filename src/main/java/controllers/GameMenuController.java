@@ -1,5 +1,7 @@
 package controllers;
 
+import controllers.test.AppState;
+import controllers.test.GameDataBase;
 import models.*;
 import models.Date;
 import models.building.Building;
@@ -27,6 +29,7 @@ import models.player.friendship.PlayerFriendship;
 import records.Result;
 import records.WalkProposal;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -1055,9 +1058,6 @@ public class GameMenuController implements Controller {
     }
 
 
-    private void saveGame() {
-        //TODO
-    }
 
     public Result switchInputType(){
         App.getView().switchInputType();
@@ -1130,5 +1130,16 @@ public class GameMenuController implements Controller {
         if(force) BuildingData.dummyBuilding.clearArea(x, y);
         Building building = new Building(BuildingData.dummyBuilding, new Position(y, x));
         return new Result(true, "Placed");
+    }
+
+
+    public Result loadGame() throws IOException {
+        App.loadState(GameDataBase.loadGame("./test/moz.json"));
+        return new Result(false, "game loaded");
+    }
+
+    public Result saveGame() throws IOException {
+        GameDataBase.saveGame("./test/moz.json");
+        return new Result(true, "saved");
     }
 }

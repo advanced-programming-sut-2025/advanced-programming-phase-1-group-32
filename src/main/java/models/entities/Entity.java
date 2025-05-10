@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
+import models.player.Player;
 
 import java.awt.*;
 import java.util.*;
@@ -20,6 +21,10 @@ import java.util.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property  = "id")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Player.class, name = "player")
+})
 public class Entity implements Cloneable{
     private static int entityCounter = 1;
 

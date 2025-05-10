@@ -73,6 +73,15 @@ public enum GameMenuCommands implements Commands {
     CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
     CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<x>\\S+)\\s+(?<y>\\S+)(?:\\s+(?<force>-force))?\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
+
+    /* ------------------------------------------------ TEST ------------------------------------------------ */
+
+    SAVE_GAME("save\\s+game"),
+    LOAD_GAME("load\\s+game"),
+
+    /* -------------------------------------------------- -------------------------------------------------- */
+
+
     ;
 
     private final String pattern;
