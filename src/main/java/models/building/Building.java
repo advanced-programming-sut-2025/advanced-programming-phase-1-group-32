@@ -3,8 +3,10 @@ package models.building;
 import models.App;
 import models.Tile;
 import models.entities.Entity;
+import models.entities.components.EntityComponent;
 import models.entities.components.Placeable;
 import models.entities.components.Renderable;
+import models.enums.EntityTag;
 import models.enums.TileType;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
@@ -13,6 +15,8 @@ import views.inGame.Color;
 import views.inGame.Renderer;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Building extends Entity implements Serializable {
     private GameMap interior;
@@ -23,9 +27,16 @@ public class Building extends Entity implements Serializable {
     private final int width, height;
     private final Environment environment;
 
-    private Building(){
-        this(null, null);
+    public Building() {
+        super("", null, null, 0);
+        this.interiorMapName = "";
+        this.exteriorMapName = "";
+        this.position = null;
+        this.width = 0;
+        this.height = 0;
+        this.environment = null;
     }
+
     public Building(BuildingData data, Position position) {
         super("BUILDING", new Placeable(false));
         this.interiorMapName = data.interiorMap;

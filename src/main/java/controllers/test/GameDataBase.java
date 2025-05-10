@@ -2,8 +2,10 @@ package controllers.test;
 
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.esotericsoftware.kryo.serializers.FieldSerializer;
 import com.esotericsoftware.kryo.serializers.JavaSerializer;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -12,8 +14,7 @@ import models.App;
 
 import java.io.*;
 import java.security.SecureRandom;
-import java.sql.Connection;
-import java.sql.DriverManager;
+
 import com.esotericsoftware.kryo.Kryo;
 import models.Game;
 import models.Tile;
@@ -23,18 +24,21 @@ import models.gameMap.GameMap;
 import models.gameMap.MapRegion;
 import models.player.Player;
 
-import java.sql.SQLException;
-
 
 public class GameDataBase {
 
-//    private final static String savedPath = "./src/main/java/controllers/test/moz.json";
-    private final static String savedPath = "./src/main/java/controllers/test/moz.bin";
+    private final static String savedPath = "./src/main/java/controllers/test/moz.json";
+    private final static String binaryPath = "./src/main/java/controllers/test/moz.bin";
 //    private final static String savedPath = "./src/main/java/controllers/test/moz.ser";
     private final static Kryo kryo = new Kryo();
     static {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixIn(Object.class, IdentityMixIn.class);
 
+        kryo.setRegistrationRequired(false);
         kryo.register(SecureRandom.class, new JavaSerializer());
+//        kryo.register(Account.class, new JavaSerializer());
+        kryo.register(Account.class, new FieldSerializer<>(kryo, Account.class));
 
         kryo.setReferences(true);
 
@@ -120,30 +124,33 @@ public class GameDataBase {
     }
     */
 
-//    public static void saveGame () throws IOException {
+
+
+    public static void saveGame () throws IOException {
+
+
+        AppState state = new AppState("just for test");
+        mapper.writeValue(new File(savedPath), state);
+    }
+
+    public static AppState loadGame() throws IOException {
+        return mapper.readValue(new File(savedPath), AppState.class);
+    }
+
+//        public static void saveGame () throws IOException {
 //
-//        AppState state = new AppState("just for test");
-//        mapper.writeValue(new File(savedPath), state);
-//    }
+//            AppState state = new AppState("just for test");
 //
-//    public static AppState loadGame() throws IOException {
-//        return mapper.readValue(new File(savedPath), AppState.class);
-//    }
-
-        public static void saveGame () throws IOException {
-
-            AppState state = new AppState("just for test");
-
-            try (Output output = new Output(new FileOutputStream(savedPath))) {
-                kryo.writeObject(output, state);
-            }
-        }
-
-        public static AppState loadGame() throws IOException {
-            try (Input input = new Input(new FileInputStream(savedPath))) {
-                return kryo.readObject(input, AppState.class);
-            }
-        }
+//            try (Output output = new Output(new FileOutputStream(binaryPath))) {
+//                kryo.writeObject(output, state);
+//            }
+//        }
+//
+//        public static AppState loadGame() throws IOException {
+//            try (Input input = new Input(new FileInputStream(binaryPath))) {
+//                return kryo.readObject(input, AppState.class);
+//            }
+//        }
 
 //    public static void saveGame () throws IOException {
 //        AppState state = new AppState("test");
@@ -164,4 +171,10 @@ public class GameDataBase {
 //        return loaded;
 //    }
 
+
 }
+
+
+
+
+// Configure ObjectMapper

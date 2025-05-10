@@ -17,12 +17,8 @@ public class Tile implements EntityObserver, Serializable {
     private Entity content;
     @JsonBackReference
     private final MapRegion region;
-    private Tile(){this(null, null, null);}
+    private Tile(){this(null, TileType.PLANTED_GROUND, null);}
 
-    public Tile() {
-        position = null;
-        region = null;
-    }
 
     public Tile(Position position, TileType type, MapRegion region) {
         this.position = position;

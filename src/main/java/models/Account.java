@@ -1,6 +1,7 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.Gender;
 
 import models.enums.SecurityQuestions;
@@ -15,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Account implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static final Pattern validUsernameCharacters = Pattern.compile("^[a-zA-Z0-9-]*$");
     private static final Pattern emailGroupingPattern    = Pattern.compile("^(?<mail>\\S+)@(?<domain>\\S+)\\.(?<tld>\\S+)$");
     private static final Pattern validMailCharacters     = Pattern.compile("^[a-zA-Z0-9._-]+$");
@@ -23,6 +25,7 @@ public class Account implements Serializable {
 
 
     private String username;
+    @JsonProperty("password")
     private String password;
     private String nickname;
     private String email;
@@ -31,9 +34,8 @@ public class Account implements Serializable {
     private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
-    private Account(){
-        this(null,null,null,null,null);
-    }
+
+    private Account(){this.gender = null;}
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
         this.email = email;
@@ -200,4 +202,9 @@ public class Account implements Serializable {
     public void setActiveGame(Game activeGame) {
         this.activeGame = activeGame;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

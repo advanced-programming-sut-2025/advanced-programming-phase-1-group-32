@@ -27,9 +27,6 @@ public class GameMap implements Serializable {
     private GameMap(TileType[][] tileTypes){
 
     }
-    public GameMap(){
-
-    }
 
     public GameMap(MapData data, Environment environment){
         TileType[][] typeMap = data.getTypeMap();

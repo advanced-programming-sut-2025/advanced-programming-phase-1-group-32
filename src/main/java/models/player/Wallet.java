@@ -7,7 +7,7 @@ public class Wallet implements Serializable {
     private double balance;
 
 
-    private Wallet() {}
+    public Wallet() {}
 
 
     public void changeAmount(){
