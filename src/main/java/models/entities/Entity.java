@@ -9,6 +9,7 @@ import models.enums.EntityTag;
 import models.player.Player;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -21,11 +22,11 @@ import java.util.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property  = "id")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Player.class, name = "player")
 })
-public class Entity implements Cloneable{
+public class Entity implements Cloneable, Serializable {
     private static int entityCounter = 1;
 
     //jsonProperty tells jackson to serialize and deserialize according to these names

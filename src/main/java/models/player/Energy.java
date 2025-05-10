@@ -1,6 +1,8 @@
 package models.player;
 
-public class Energy {
+import java.io.Serializable;
+
+public class Energy implements Serializable {
     private int amount;
     private int modifierDaysLeft;
     private float modifier;

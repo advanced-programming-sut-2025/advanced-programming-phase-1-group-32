@@ -1,6 +1,8 @@
 package models.player;
 
-public class Wallet {
+import java.io.Serializable;
+
+public class Wallet implements Serializable {
     private int amount;
     private double balance;
 

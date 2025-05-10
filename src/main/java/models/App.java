@@ -7,9 +7,10 @@ import models.enums.Menu;
 import models.gameMap.MapRegistry;
 import views.AppView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class App {
+public class App implements Serializable {
     private final static ArrayList<Account> accountList = new ArrayList<>();
     private static Account loggedInAccount = null;
     private static Account registeredAccount = null;

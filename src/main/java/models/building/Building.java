@@ -12,7 +12,9 @@ import models.Position;
 import views.inGame.Color;
 import views.inGame.Renderer;
 
-public class Building extends Entity {
+import java.io.Serializable;
+
+public class Building extends Entity implements Serializable {
     private GameMap interior;
     private TileType[][] exterior;
     private final String interiorMapName;

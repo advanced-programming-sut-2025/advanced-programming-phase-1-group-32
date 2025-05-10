@@ -6,12 +6,13 @@ import models.Tile;
 import models.entities.Entity;
 import models.enums.TileType;
 
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GameMap {
+public class GameMap implements Serializable {
     private Tile[][] tiles;
     private int width, height;
     private Environment environment;
@@ -23,6 +24,9 @@ public class GameMap {
     }
 
     private GameMap(TileType[][] tileTypes){
+
+    }
+    public GameMap(){
 
     }
 

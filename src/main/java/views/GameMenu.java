@@ -212,7 +212,7 @@ public class GameMenu implements AppMenu {
                     System.out.println(controller.saveGame());
 
                 } catch (IOException e) {
-                    System.out.println("exception");
+                    throw new RuntimeException(e);
                 }
             } else if ((matcher = GameMenuCommands.LOAD_GAME.getMatcher(input)) != null) {
                 try {
@@ -220,6 +220,10 @@ public class GameMenu implements AppMenu {
 
                 } catch (IOException e) {
                     System.out.println("exception");
+                    throw new RuntimeException(e);
+
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
             }
             /*-------------------------------------------------------------*/

@@ -5,6 +5,7 @@ import controllers.LoginMenuController;
 import records.Result;
 import models.Commands.LoginMenuCommands;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -78,6 +79,14 @@ public class LoginMenu implements AppMenu {
                 result = forgotPasswordFlow.handle(scanner.nextLine());
             }
             System.out.println(result);
+        }else if((matcher = LoginMenuCommands.LOAD_GAME.getMatcher(input)) != null){
+            try {
+                System.out.println(controller.loadGame());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }else if((matcher = LoginMenuCommands.EXIT.getMatcher(input)) != null){
             this.controller.exit();
         }

@@ -3,7 +3,9 @@ package models;
 import models.enums.WeekDay;
 import models.enums.Season;
 
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable {
     private Season season;
     private int day;
     private int hour;

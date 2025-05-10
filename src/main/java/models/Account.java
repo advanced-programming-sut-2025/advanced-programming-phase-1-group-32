@@ -1,10 +1,12 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import models.enums.Gender;
 
 import models.enums.SecurityQuestions;
 import records.Result;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +14,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Account {
+public class Account implements Serializable {
     private static final Pattern validUsernameCharacters = Pattern.compile("^[a-zA-Z0-9-]*$");
     private static final Pattern emailGroupingPattern    = Pattern.compile("^(?<mail>\\S+)@(?<domain>\\S+)\\.(?<tld>\\S+)$");
     private static final Pattern validMailCharacters     = Pattern.compile("^[a-zA-Z0-9._-]+$");
@@ -29,6 +31,11 @@ public class Account {
     private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
+    public Account() {
+        this.gender = null;
+    }
+
+//    @JsonCreator
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
         this.email = email;

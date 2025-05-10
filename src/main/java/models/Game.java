@@ -12,9 +12,10 @@ import models.player.Player;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Serializable {
     private Weather todayWeather;
     private Weather tomorrowWeather;
     private Date date = new Date();
@@ -26,6 +27,9 @@ public class Game {
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private boolean mapVisible = true;
     private int tradeId = 1000;
+
+    public Game() {
+    }
 
     public Game(Account[] accounts) {
         for (Account account : accounts) {

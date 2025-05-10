@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.entities.Entity;
 import models.entities.EntityObserver;
 
+import java.io.Serializable;
+
 /***
  * when you remove an item from inventory, the capacity shouldn't change. So you cant use arrayList.remove. java doesn't have
  * pointers so you cant give the pointer to a slot to remove the item in that slot. so I made this class.
  * it just holds an entity. plus, in the future, slots may hold more information.
  */
-public class InventorySlot implements EntityObserver, Cloneable{
+public class InventorySlot implements EntityObserver, Cloneable {
     @JsonProperty("entity")
     private Entity entity;
     public InventorySlot(Entity entity) {

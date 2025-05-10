@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.test.GameDataBase;
 import models.Account;
 import models.App;
 import records.Result;
@@ -7,6 +8,7 @@ import models.enums.Menu;
 import models.enums.Gender;
 import models.enums.SecurityQuestions;
 
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.*;
 
@@ -192,5 +194,10 @@ public class LoginMenuController implements Controller{
         }
 
         return password.toString();
+    }
+
+    public Result loadGame() throws IOException, ClassNotFoundException {
+        App.loadState(GameDataBase.loadGame());
+        return new Result(false, "game loaded");
     }
 }

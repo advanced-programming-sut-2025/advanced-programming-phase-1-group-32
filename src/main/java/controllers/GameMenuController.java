@@ -1115,7 +1115,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "Entity doesnt exist");
         }
         Entity entity = App.entityRegistry.makeEntity(name);
-        if(currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
+        if(!currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
             return new Result(false, "Your inventory doesn't have enough size");
         if(entity.getComponent(Pickable.class) == null){
             return new Result(false, "Entity isn't pickable");
@@ -1133,13 +1133,13 @@ public class GameMenuController implements Controller {
     }
 
 
-    public Result loadGame() throws IOException {
-        App.loadState(GameDataBase.loadGame("./test/moz.json"));
+    public Result loadGame() throws IOException, ClassNotFoundException {
+        App.loadState(GameDataBase.loadGame());
         return new Result(false, "game loaded");
     }
 
     public Result saveGame() throws IOException {
-        GameDataBase.saveGame("./test/moz.json");
+        GameDataBase.saveGame();
         return new Result(true, "saved");
     }
 }

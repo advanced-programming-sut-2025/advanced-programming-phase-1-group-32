@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import models.entities.Entity;
 import models.entities.EntityObserver;
 import models.entities.components.SeedComponent;
@@ -8,11 +9,19 @@ import models.gameMap.MapRegion;
 import models.player.Player;
 import views.inGame.Color;
 
-public class Tile implements EntityObserver {
+import java.io.Serializable;
+
+public class Tile implements EntityObserver, Serializable {
     private TileType type;
     final private Position position;
     private Entity content;
+    @JsonBackReference
     private final MapRegion region;
+
+    public Tile() {
+        position = null;
+        region = null;
+    }
 
     public Tile(Position position, TileType type, MapRegion region) {
         this.position = position;

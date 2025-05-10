@@ -1,5 +1,6 @@
 package models.player;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import models.Account;
 import models.App;
 import models.Position;
@@ -15,11 +16,12 @@ import models.gameMap.MapRegion;
 import models.player.friendship.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends Entity{
+public class Player extends Entity implements Serializable {
     private Energy energy = new Energy();
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
@@ -37,6 +39,7 @@ public class Player extends Entity{
     private ArrayList<TradeOffer> trades = new ArrayList<>();
     private final Account account;
     private InventorySlot activeSlot;
+    @JsonManagedReference
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
 
     // boolean for messages

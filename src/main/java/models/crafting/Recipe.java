@@ -9,13 +9,14 @@ import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe {
+public class Recipe implements Serializable {
     /* TODO recipe name should be an Item too*/
     private final String name;
     private final ArrayList<Ingredient> ingredients;

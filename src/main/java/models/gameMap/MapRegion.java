@@ -1,15 +1,20 @@
 package models.gameMap;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import models.Position;
 import models.Tile;
 import models.player.Player;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MapRegion {
+public class MapRegion implements Serializable {
     String name;
+    @JsonBackReference
     Player owner;
+    @JsonManagedReference
     ArrayList<Tile> tiles = new ArrayList<>();
     Color color;
     Position center = new Position(0, 0);

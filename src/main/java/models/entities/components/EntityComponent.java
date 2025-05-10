@@ -5,6 +5,8 @@ import models.entities.components.harvestable.Harvestable;
 import models.entities.components.inventory.Inventory;
 import models.entities.workstations.ArtisanComponent;
 
+import java.io.Serializable;
+
 /***
  * this helps jackson find child classes
  */
@@ -29,7 +31,7 @@ import models.entities.workstations.ArtisanComponent;
         @JsonSubTypes.Type(value = Container.class, name = "Container"),
         @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent")
 })
-abstract public class EntityComponent implements Cloneable {
+abstract public class EntityComponent implements Cloneable , Serializable {
     @JsonIgnore()
     protected Entity entity = null;
 

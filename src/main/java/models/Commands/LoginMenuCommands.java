@@ -7,6 +7,10 @@ public enum LoginMenuCommands implements Commands{
                         "-n\\s+(?<name>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-g\\s+(?<gender>\\S+)\\s*"),
     PICK_QUESTION   ("\\s*pick\\s+question\\s+-q\\s+(?<number>\\d+)\\s+-a\\s+(?<answer>.+)\\s+-c\\s+(?<answerConfirm>.+)"),
     FORGOT_PASSWORD ("^\\s*forget\\s+password\\s+-u\\s+(?<username>\\S+)\\s*$"),
+
+    /* ---------------------test -------------------------------------------*/
+    LOAD_GAME("load\\s+game"),
+
     ;
 
     private final String pattern;

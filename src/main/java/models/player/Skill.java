@@ -1,6 +1,8 @@
 package models.player;
 
-public class Skill {
+import java.io.Serializable;
+
+public class Skill implements Serializable {
     private int experience;
     private int level;
 

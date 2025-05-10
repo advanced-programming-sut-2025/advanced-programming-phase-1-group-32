@@ -1,7 +1,7 @@
 package models.Commands;
 
 public enum GameMenuCommands implements Commands {
-    WALK              ("^\\s*walk\\s+-l\\s+<\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>\\s*$"),
+    WALK              ("^\\s*walk\\s*?(-l)\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>?\\s*$"),
     WEATHER           ("\\s*weather\\s*"),
     CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
@@ -56,7 +56,7 @@ public enum GameMenuCommands implements Commands {
 
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
-    CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+?)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
+    CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
     REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
