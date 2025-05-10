@@ -239,7 +239,7 @@ public class Inventory extends EntityComponent {
         // TODO: remove amount number of entity with entityName and return it
         Entity entity = null;
         for (InventorySlot s : slots) {
-            if (s.getEntity().getName().equals(entityName)) {
+            if (s.getEntity()!= null && s.getEntity().getName().equals(entityName)) {
                 s.setEntity(null);
             }
         }
@@ -352,7 +352,7 @@ public class Inventory extends EntityComponent {
                     pickable.changeStackSize(stackSize);
                 } else {
                     e.getComponent(Pickable.class).changeStackSize(-amount);
-                    pickable.changeStackSize(-amount);
+                    pickable.changeStackSize(amount);
                     amount = 0;
                     break;
                 }

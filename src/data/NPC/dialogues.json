@@ -1,0 +1,19 @@
+[
+  {
+    "dialogue": "Hi, Im Lia!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "I hate the rain...",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  }
+]
+

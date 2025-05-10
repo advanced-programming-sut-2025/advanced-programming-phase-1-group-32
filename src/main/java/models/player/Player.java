@@ -3,8 +3,7 @@ package models.player;
 import models.Account;
 import models.App;
 import models.Position;
-import models.Quest.Quest;
-import models.NPC.Character;
+import models.NPC.NPC;
 import models.Tile;
 import models.crafting.Recipe;
 import models.entities.Entity;
@@ -12,7 +11,7 @@ import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.SkillType;
 import models.gameMap.MapRegion;
-import models.player.friendship.NpcFriendship;
+import models.NPC.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
 
 import java.util.ArrayList;
@@ -24,11 +23,10 @@ public class Player extends Entity{
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
-    private final Map<Character, NpcFriendship> npcFriendships = null;
+    private HashMap<NPC, NpcFriendship> npcFriendships = new HashMap<>();
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private HashMap<Player, Entity> suitors = new HashMap<>();
     private Player spouse;
-    private final ArrayList<Quest> quests = null;
     private ArrayList<Gift> giftLog = new ArrayList<>();
     private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
@@ -315,5 +313,47 @@ public class Player extends Entity{
 
     public void updatePerDay() {
         getEnergy().updatePerDay();
+        for (NpcFriendship npcFriendship : npcFriendships.values()) {
+            npcFriendship.updatePerDay();
+        }
     }
+
+    //NPC functions
+
+    public Map<NPC, NpcFriendship> getNpcFriendships() {
+        return npcFriendships;
+    }
+
+    public void setNpcFriendships(HashMap<NPC, NpcFriendship> npcFriendships) {
+        this.npcFriendships = npcFriendships;
+    }
+
+    public void addFriendshipByGift(NPC npc, Entity gift) {
+        NpcFriendship npcFriendship = npcFriendships.get(npc);
+        if(!npcFriendship.isWasGiftedToday()) {
+            if (npc.getFavorites().contains(gift)) {
+                npcFriendship.addXp(200);
+            } else {
+                npcFriendship.addXp(50);
+            }
+            npcFriendship.setWasGiftedToday(true);
+        }
+    }
+
+    public String npcFriendshipDetails() {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<NPC, NpcFriendship> entry : npcFriendships.entrySet()) {
+            NPC npc = entry.getKey();
+            NpcFriendship npcFriendship = entry.getValue();
+            result.append("Name: ").append(npc.getName()).append("\n");
+            result.append("Friendship points: ").append(npcFriendship.getXp()).append("\n");
+            result.append("Friendship level: ").append(npcFriendship.getLevel()).append("\n");
+            result.append("----------------------------------------------------------------\n");
+        }
+
+        return result.toString();
+    }
+
+
+
 }

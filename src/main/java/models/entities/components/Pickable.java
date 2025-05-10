@@ -29,6 +29,9 @@ public class Pickable extends EntityComponent{
     }
     public void setStackSize(int amount){
         this.stackSize = amount;
+        if(stackSize == 0){
+            entity.delete();
+        }
     }
     public int getStackSize(){
         return stackSize;
