@@ -31,11 +31,9 @@ public class Account implements Serializable {
     private Game activeGame = null;
     private final ArrayList<Game> playedGames = new ArrayList<>();
 
-    public Account() {
-        this.gender = null;
+    private Account(){
+        this(null,null,null,null,null);
     }
-
-//    @JsonCreator
     public Account(Gender gender, String email, String nickname, String password, String username) {
         this.gender = gender;
         this.email = email;

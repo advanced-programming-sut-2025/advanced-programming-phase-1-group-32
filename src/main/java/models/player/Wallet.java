@@ -6,6 +6,10 @@ public class Wallet implements Serializable {
     private int amount;
     private double balance;
 
+
+    private Wallet() {}
+
+
     public void changeAmount(){
 
     }

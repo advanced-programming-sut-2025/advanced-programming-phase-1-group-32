@@ -6,6 +6,9 @@ import models.*;
 import models.Date;
 import models.building.Building;
 import models.building.BuildingData;
+import models.NPC.NPC;
+import models.NPC.NpcFriendship;
+import models.NPC.Quest;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
 import models.entities.Entity;
@@ -593,7 +596,6 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-
     public Result refrigerator() {
         //TODO
         return null;
@@ -1001,10 +1003,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "Player with name " + receiverPlayerName + " not found");
         }
 
-        // TODO: get this block out of comment
-//        if (!game.checkPlayerDistance(receiverPlayer, currentPlayer)) {
-//            return new Result(false, "Player is not next to you...");
-//        }
+        if (!game.checkPlayerDistance(receiverPlayer, currentPlayer)) {
+            return new Result(false, "Player is not next to you...");
+        }
 
         Message message = new Message(game.getDate(), messageString, receiverPlayer, currentPlayer);
         currentPlayer.getMessageLog().add(message);
@@ -1042,19 +1043,134 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result meetNPC(){
+    public Result meetNPC(String npcName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        NPC npc = game.findNPC(npcName);
+        NpcFriendship npcFriendship = currentPlayer.getNpcFriendships().get(npc);
+
+        if (npc == null) {
+            return new Result(false, "NPC with name " + npcName + " not found");
+        }
+
+        //TODO: check distance
+
+        String message = npc.getCorrectDialogue(game.getDate().getSeason(), npcFriendship.getLevel(),
+                game.getTodayWeather(), game.getDate().getHour() < 16);
+        if (message == null) {
+            message = "not set yet!";
+        }
+
+        if (!npcFriendship.wasMetToday()) {
+            npcFriendship.setWasMetToday(true);
+            npcFriendship.addXp(20);
+        }
+
         //TODO
-        return null;
+        return new Result(true, message);
     }
 
-    public Result giftNPC() {
-        //TODO
-        return null;
+    public Result giftNPC(String npcName, String itemName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        NPC npc = game.findNPC(npcName);
+        if (npc == null) {
+            return new Result(false, "NPC with name " + npcName + " not found");
+        }
+
+        if (!App.entityRegistry.doesEntityExist(itemName)) {
+            return new Result(false, "Item with name " + itemName + " does not exist");
+        }
+        Entity item = App.entityRegistry.makeEntity(itemName);
+
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!inventory.doesHaveItem(itemName)) {
+            return new Result(false, "You dont have this item");
+        }
+
+        if (item.hasTag(EntityTag.TOOL)) {
+            return new Result(false, "You can't gift tools to NPC!");
+        }
+
+        inventory.takeFromInventory(itemName, 1);
+        currentPlayer.addFriendshipByGift(npc, item);
+
+        return new Result(true, "Your gift has been sent successfully!");
     }
+
+    public Result questList() {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("Available quests:\n");
+
+        for (Quest quest : game.getQuests()) {
+            if (quest.doesHaveAccess(currentPlayer).isSuccessful()) {
+                message.append(quest);
+            }
+
+        }
+        return new Result(true, message.toString());
+    }
+
+    public Result questFinish(int questId) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Quest quest = game.findQuest(questId);
+        if (quest == null) {
+            return new Result(false, "Quest with id " + questId + " not found");
+        }
+
+        Result haveAccess  = quest.doesHaveAccess(currentPlayer);
+        if (!haveAccess.isSuccessful()) {
+            return haveAccess;
+        }
+        if (!App.entityRegistry.doesEntityExist(quest.getRequest())) {
+            return new Result(false, "This item isnt set yet!");
+        }
+
+
+        Entity item = App.entityRegistry.makeEntity(quest.getRequest());
+        int itemAmount = quest.getRequestNumber();
+
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!inventory.doesHaveItem(item.getName(), itemAmount)) {
+            return new Result(false, "You dont have enough \"" + item.getName() + "\" items");
+        }
+
+        // TODO: check distance
+
+        inventory.takeFromInventory(item.getName(), itemAmount);
+
+        if (quest.getReward().equalsIgnoreCase("Gold")) {
+            currentPlayer.getWallet().changeBalance(quest.getRewardNumber());
+            return new Result(true, "Quest finished successfully!\n" +
+                    "You got: " + quest.getRewardNumber() + "Golds");
+        }
+
+
+        if (!App.entityRegistry.doesEntityExist(quest.getReward())) {
+            return new Result(false, "Item not have set yet");
+        }
+        Entity reward = App.entityRegistry.makeEntity(quest.getReward());
+        reward.getComponent(Pickable.class).setStackSize(quest.getRewardNumber());
+
+
+        inventory.addItem(reward);
+
+        return new Result(true, "Quest finished successfully!\n" +
+                "You got: " + quest.getRewardNumber() + item.getName());
+    }
+
 
     public Result friendshipNPC() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("NPC Friendship: \n");
+
+        message.append(currentPlayer.npcFriendshipDetails());
+
+        return new Result(true, message.toString());
     }
 
 

@@ -23,6 +23,7 @@ public class GameMap implements Serializable {
         return entities;
     }
 
+    private GameMap(){}
     private GameMap(TileType[][] tileTypes){
 
     }

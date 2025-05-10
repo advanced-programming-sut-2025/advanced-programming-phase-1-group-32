@@ -23,6 +23,9 @@ public class Building extends Entity implements Serializable {
     private final int width, height;
     private final Environment environment;
 
+    private Building(){
+        this(null, null);
+    }
     public Building(BuildingData data, Position position) {
         super("BUILDING", new Placeable(false));
         this.interiorMapName = data.interiorMap;

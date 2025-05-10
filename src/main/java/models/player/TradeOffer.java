@@ -24,6 +24,9 @@ public class TradeOffer {
     private boolean seen = false;
 
 
+    public TradeOffer(){
+        this(null, null, 0, 0, null,
+                0, null, 0,null, 0);}
     public TradeOffer(Player sender, Player receiver, int type, double price, String targetItem, int targetItemAmount,
                       String givenItem, int givenItemAmount, Date date, int id) {
         this.sender = sender;

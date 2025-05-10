@@ -6,6 +6,7 @@ public class Skill implements Serializable {
     private int experience;
     private int level;
 
+
     public Skill(){
         level = 0;
         experience = 0;

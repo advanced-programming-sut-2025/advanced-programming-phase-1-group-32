@@ -42,6 +42,7 @@ public class MapRegion implements Serializable {
         return tiles;
     }
 
+    private MapRegion() {}
     public MapRegion(String name, Color color) {
         this.name = name;
         this.color = color;

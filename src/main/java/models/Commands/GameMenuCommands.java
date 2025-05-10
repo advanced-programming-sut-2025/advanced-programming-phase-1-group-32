@@ -78,7 +78,16 @@ public enum GameMenuCommands implements Commands {
 
     SAVE_GAME("save\\s+game"),
     LOAD_GAME("load\\s+game"),
+    
+    /* -------------------------------------------------- -------------------------------------------------- */
 
+
+    /* ------------------------------------------- NPC Commands -------------------------------------------- */
+    MEET_NPC ("\\s*meet\\s+NPC\\s+(?<npcName>.+)\\s*"),
+    GIFT_NPC ("\\s*gift\\s+NPC\\s+(?<npcName>.+)\\s+-i\\s+(?<item>.+)\\s*"),
+    FRIENDSHIP_NPC ("\\s*friendship\\s+NPC\\s+list\\s*"),
+    QUEST_LIST("\\s*quests\\s+list\\s*"),
+    QUEST_FINISH("\\s*quests\\s+finish\\s+-i\\s+(?<index>-?\\d+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
 
