@@ -1,5 +1,6 @@
 package models.player;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import models.App;
 import models.Date;
 import models.Game;
@@ -8,7 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Message implements Serializable {
+    @JsonBackReference
     private final Player sender;
+    @JsonBackReference
     private final Player receiver;
     private final String message;
     private final Date date;

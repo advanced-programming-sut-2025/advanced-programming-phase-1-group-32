@@ -1,6 +1,7 @@
 package models.player;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.Account;
 import models.App;
 import models.Position;
@@ -31,6 +32,7 @@ public class Player extends Entity implements Serializable {
     private Player spouse;
     private ArrayList<Gift> giftLog = new ArrayList<>();
     private int giftId = 1;
+    @JsonManagedReference
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes;

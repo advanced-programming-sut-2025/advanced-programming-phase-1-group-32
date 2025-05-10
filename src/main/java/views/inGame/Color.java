@@ -1,15 +1,21 @@
 package views.inGame;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.IOException;
 import java.io.Serializable;
 
+
+@JsonSerialize(using = ColorSerializer.class)
 @JsonDeserialize(using = ColorDeserializer.class)
 public class Color implements Serializable {
     public static final Color BLACK = new Color(0, 0, 0);
@@ -68,5 +74,21 @@ ColorDeserializer extends JsonDeserializer<Color> {
             throw new IOException("Expected 3 integers for color [r, g, b], got " + rgb.length);
         }
         return new Color(rgb[0], rgb[1], rgb[2]);
+    }
+}
+class ColorSerializer extends JsonSerializer<Color> {
+    @Override
+    public void serialize(Color value, JsonGenerator gen, SerializerProvider serializers)
+            throws IOException {
+        if (value == null) {
+            gen.writeNull();
+            return;
+        }
+        // write [r, g, b]
+        gen.writeStartArray();
+        gen.writeNumber(value.getFg()[0]);
+        gen.writeNumber(value.getFg()[1]);
+        gen.writeNumber(value.getFg()[2]);
+        gen.writeEndArray();
     }
 }

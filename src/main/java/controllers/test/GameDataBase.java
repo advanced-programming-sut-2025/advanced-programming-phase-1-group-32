@@ -27,13 +27,16 @@ import models.player.Player;
 
 public class GameDataBase {
 
+    private final static ObjectMapper mapper = new ObjectMapper()
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     private final static String savedPath = "./src/main/java/controllers/test/moz.json";
     private final static String binaryPath = "./src/main/java/controllers/test/moz.bin";
 //    private final static String savedPath = "./src/main/java/controllers/test/moz.ser";
     private final static Kryo kryo = new Kryo();
     static {
-        ObjectMapper mapper = new ObjectMapper();
         mapper.addMixIn(Object.class, IdentityMixIn.class);
+        mapper.addMixIn(Entity.Builder.class, NoIdentityMixIn.class);
 
         kryo.setRegistrationRequired(false);
         kryo.register(SecureRandom.class, new JavaSerializer());
@@ -99,7 +102,7 @@ public class GameDataBase {
         kryo.register(models.player.friendship.PlayerFriendship.class);
         kryo.register(models.enums.Weather.class);
         kryo.register(models.enums.Menu.class);
-        
+
 
 
 
@@ -108,9 +111,6 @@ public class GameDataBase {
 
     }
 
-    private final static ObjectMapper mapper = new ObjectMapper()
-            .enable(SerializationFeature.INDENT_OUTPUT)
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     /*
     private static void save() {

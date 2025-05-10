@@ -20,8 +20,9 @@ import java.util.*;
 @JsonDeserialize(builder = Entity.Builder.class)
 //@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property  = "id")
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property  = "@ref"                // you can choose any property name
+)
 //@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Player.class, name = "player")
