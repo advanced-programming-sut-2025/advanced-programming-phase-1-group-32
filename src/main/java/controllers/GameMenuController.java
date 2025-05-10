@@ -524,6 +524,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result showRecipes(String recipeType) {
+        //TODO: should be in house
         RecipeType type = RecipeType.fromName(recipeType);
         Player activePlayer = App.getActiveGame().getCurrentPlayer();
 
@@ -558,6 +559,7 @@ public class GameMenuController implements Controller {
     *
      */
     public Result craftingCraft(String recipeName) {
+        //TODO: should be in house
         Player player = App.getActiveGame().getCurrentPlayer();
         Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
         if(recipe == null)
@@ -1106,12 +1108,17 @@ public class GameMenuController implements Controller {
 
     public Result cheatGiveItem(String name, int quantity){
         Player currentPlayer = App.getActiveGame().getCurrentPlayer();
+        if(quantity <= 0) {
+            return new Result(false, "You should enter positive number!");
+        }
         if(!App.entityRegistry.doesEntityExist(name)){
-            return new Result(false, "entity doesnt exist");
+            return new Result(false, "Entity doesnt exist");
         }
         Entity entity = App.entityRegistry.makeEntity(name);
+        if(currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
+            return new Result(false, "Your inventory doesn't have enough size");
         if(entity.getComponent(Pickable.class) == null){
-            return new Result(false, "entity isn't pickable");
+            return new Result(false, "Entity isn't pickable");
         }
         entity.getComponent(Pickable.class).changeStackSize(quantity);
         currentPlayer.getComponent(Inventory.class).addItem(entity);
@@ -1119,9 +1126,9 @@ public class GameMenuController implements Controller {
                 " were given to " + currentPlayer.getAccount().getNickname());
     }
     public Result cheatBuildBuilding(int x, int y, boolean force){
-        if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "can't place that there ma lord");
+        if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
         if(force) BuildingData.dummyBuilding.clearArea(x, y);
         Building building = new Building(BuildingData.dummyBuilding, new Position(y, x));
-        return new Result(true, "placed");
+        return new Result(true, "Placed");
     }
 }

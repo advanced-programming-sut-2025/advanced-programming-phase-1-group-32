@@ -205,6 +205,7 @@ public enum UseFunction {
         }
     },
     EXTRACT_MILK {
+
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
 

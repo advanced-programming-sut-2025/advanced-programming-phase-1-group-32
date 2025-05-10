@@ -111,6 +111,22 @@ public class Inventory extends EntityComponent {
         return result;
     }
 
+    public boolean canAddItem(Entity item, int amount) {
+        for (InventorySlot slot : slots) {
+            if(slot.getEntity() != null && slot.getEntity().isTheSameAs(item)) {
+                Pickable slotPickable = slot.getEntity().getComponent(Pickable.class);
+                amount -= slotPickable.getMaxStack() - slotPickable.getStackSize();
+            }
+        }
+        for (InventorySlot slot : slots) {
+            if(slot.getEntity() == null) {
+                amount -= item.getComponent(Pickable.class).getMaxStack();
+            }
+        }
+        return amount <= 0;
+    }
+
+
     /***
      * This function is used when you don't care about the destination slot and just want to add an item to the inventory
      * @param entity the entity you want to add. the stack size of the entity could be more than its maximum stack size
