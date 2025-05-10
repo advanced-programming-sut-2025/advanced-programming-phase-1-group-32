@@ -85,6 +85,14 @@ public class Entity implements Cloneable{
         }
         this.components.add(component);
     }
+    public <T extends EntityComponent> void removeComponent(Class<T> componentClass) {
+        for (EntityComponent c : components) {
+            if (componentClass.isInstance(c)) {
+                components.remove(c);
+                break;
+            }
+        }
+    }
 
     public String getName() {
         return name;

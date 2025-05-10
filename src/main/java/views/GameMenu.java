@@ -5,6 +5,7 @@ import models.*;
 import models.Commands.GameMenuCommands;
 import models.entities.Entity;
 import models.entities.components.Pickable;
+import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
 import models.entities.components.inventory.InventorySlot;
@@ -250,8 +251,14 @@ public class GameMenu implements AppMenu {
                     }
                 }
                 for(Entity e : map.getEntities()){
-                    renderer.mvAddchColored(e.
-                    if(e.getComponent(Renderable.class) != null) e.getComponent(Renderable.class).render(position);
+                    PositionComponent positionComponent = e.getComponent(PositionComponent.class);
+
+                    if(e.getComponent(Renderable.class) != null){
+                        renderer.mvAddchColored(positionComponent.getCol(), positionComponent.getRow(),
+                                                e.getComponent(Renderable.class).getCharacter(),
+                                                e.getComponent(Renderable.class).getColor(),
+                                                position);
+                    }
                 }
             }
             case REGIONS -> {

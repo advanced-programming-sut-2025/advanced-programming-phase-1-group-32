@@ -5,6 +5,7 @@ import models.App;
 import models.Position;
 import models.Quest.Quest;
 import models.NPC.Character;
+import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.gameMap.GameMap;
 import models.gameMap.Tile;
@@ -177,7 +178,7 @@ public class Player extends Entity{
     }
 
     public Position getPosition() {
-        return position;
+        return getComponent(PositionComponent.class).get();
     }
 
     public void setPosition(Position position) {

@@ -2,6 +2,7 @@ package models;
 
 import models.entities.Entity;
 import models.entities.components.Growable;
+import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.EntityTag;
 import models.enums.TileType;
@@ -55,6 +56,8 @@ public class Game {
         //player farms
         for(int i = 0 ; i < players.size(); i++){
             players.get(i).addRegion(mainMap.getRegions().get(i));
+            players.get(i).setCurrentMap(mainMap);
+            players.get(i).getComponent(PositionComponent.class).setPosition(mainMap.getRegions().get(i).getCenter());
         }
     }
 
@@ -175,13 +178,13 @@ public class Game {
 
     public void thorTile(Tile tile) {
         if (tile.getContent() != null && tile.getContent().hasTag(EntityTag.CROP)) {
-            tile.setContent(null);
+            EntityPlacementSystem.emptyTile(tile);
             tile.setType(TileType.GRASS);
         }
 
         if (tile.getContent() != null &&tile.getContent().hasTag(EntityTag.TREE)) {
-                tile.setContent(App.entityRegistry.makeEntity("Burned Tree"));
-//            tile.setContent(null);
+            EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity("Burned Tree"), tile);
+//          tile.setContent(null);
             tile.setType(TileType.GRASS);
             // TODO: change it to coal
         }

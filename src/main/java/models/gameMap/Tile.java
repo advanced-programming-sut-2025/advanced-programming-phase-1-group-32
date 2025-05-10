@@ -31,13 +31,12 @@ public class Tile implements EntityObserver {
         }
     }
 
-    public void plant(Entity seed) {
-        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
-        this.setContent(plant);
-        this.type = TileType.PLANTED_GROUND;
-        Game game = App.getActiveGame();
-        game.getPlantedEntities().add(content);
-    }
+//    public void plant(Entity seed) {
+//        this.setContent(plant);
+//        this.type = TileType.PLANTED_GROUND;
+//        Game game = App.getActiveGame();
+//        game.getPlantedEntities().add(content);
+//    }
 
     public TileType getType() {
         return type;
@@ -89,6 +88,10 @@ public class Tile implements EntityObserver {
 
     public Player getOwner(){
         return this.region.getOwner();
+    }
+
+    public GameMap getMap() {
+        return map;
     }
 
     @Override

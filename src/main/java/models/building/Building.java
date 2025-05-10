@@ -1,6 +1,7 @@
 package models.building;
 
 import models.App;
+import models.entities.systems.EntityPlacementSystem;
 import models.gameMap.Tile;
 import models.entities.Entity;
 import models.entities.components.Placeable;
@@ -41,18 +42,17 @@ public class Building extends Entity {
                     worldTile.setType(exteriorTile);
                 }
                 if(exterior[i][j] == TileType.DOOR){
-                    worldTile.setContent(new Door(this.interior));
+                    EntityPlacementSystem.placeOnTile(new Door(this.interior), worldTile);
                 }
             }
         }
         for (Tile[] t2 : interior.getTiles()) {
             for (Tile t : t2) {
                 if(t.getType() == TileType.DOOR){
-                    t.setContent(new Door(worldMap));
+                    EntityPlacementSystem.placeOnTile(new Door(worldMap), t);
                 }
             }
         }
-
         worldMap.addEntity(this);
     }
 }

@@ -9,6 +9,7 @@ import models.crafting.RecipeType;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.systems.EntityPlacementSystem;
 import models.entities.workstations.ArtisanComponent;
 import models.enums.Direction;
 import models.enums.EntityTag;
@@ -335,7 +336,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsUse(Direction dir) {
-        Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+        Vec2 playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
         GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
         if(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null){
             return new Result(false, "nothing equipped");
@@ -472,7 +473,11 @@ public class GameMenuController implements Controller {
         }
 
 //        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
-        tile.plant(seed);
+
+        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+        tile.setType(TileType.PLANTED_GROUND);
+        EntityPlacementSystem.placeOnTile(plant, tile);
+
         return new Result(true, "planted succusfully");
     }
 

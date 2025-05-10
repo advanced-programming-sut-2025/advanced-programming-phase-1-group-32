@@ -1,6 +1,7 @@
 package models.entities;
 
 import models.App;
+import models.entities.systems.EntityPlacementSystem;
 import models.gameMap.Tile;
 import models.animal.Animal;
 import models.entities.components.Container;
@@ -186,7 +187,7 @@ public enum UseFunction {
 
             //TODO: make quality for fruits
             if (growable.isOneTime()) {
-                tile.setContent(null);
+                EntityPlacementSystem.emptyTile(tile);
                 tile.setType(TileType.DIRT);
                 inventory.addItem(entity);
             } else {

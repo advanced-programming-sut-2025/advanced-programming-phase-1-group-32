@@ -5,6 +5,7 @@ import models.Position;
 import models.entities.Entity;
 import models.entities.EntityList;
 import models.entities.components.EntityComponent;
+import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
 import java.security.SecureRandom;
@@ -77,9 +78,9 @@ public class GameMap {
             for (int j = 0; j < width; j++) {
                 if(Math.random() > 0.8){
                     if(Math.random() > 0.6){
-                        tiles[i][j].setContent(App.entityRegistry.makeEntity("Pine Tree"));
+                        EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity("Pine Tree"), tiles[i][j]);
                     }else{
-                        tiles[i][j].setContent(App.entityRegistry.makeEntity("Rock"));
+                        EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity("Rock"), tiles[i][j]);
                     }
                 }
             }

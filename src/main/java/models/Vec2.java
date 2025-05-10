@@ -36,9 +36,18 @@ public class Vec2{
     public void setY(double y) {
         this.y = y;
     }
+    public Vec2 add(int x, int y){
+        this.x += x;
+        this.y += y;
+        return this;
+    }
+    public Vec2 add(double x, double y){
+        this.x += x;
+        this.y += y;
+        return this;
+    }
     public Vec2 add(Vec2 v){
-        this.x += v.x;
-        this.y += v.y;
+        this.add(v.getX(), v.getY());
         return this;
     }
     public Vec2 subtract(Vec2 v){
