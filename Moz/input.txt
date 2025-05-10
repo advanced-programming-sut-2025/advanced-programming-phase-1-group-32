@@ -30,3 +30,4 @@ toggle map
 
 cheat build building 10 10 -force
 
+save game

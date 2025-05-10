@@ -19,10 +19,10 @@ public class AppState implements Serializable {
     private Account registeredAccount;
     private boolean stayLoggedIn  ;
     private Menu currentMenu;
-    private AppView view;
-    public EntityRegistry entityRegistry;
-    public RecipeRegistry recipeRegistry;
-    public MapRegistry mapRegistry;
+//    private AppView view;
+//    public EntityRegistry entityRegistry;
+//    public RecipeRegistry recipeRegistry;
+//    public MapRegistry mapRegistry;
     public Game activeGame;
 
     public AppState() {
@@ -34,10 +34,10 @@ public class AppState implements Serializable {
         this.registeredAccount = App.getRegisteredAccount();
         this.stayLoggedIn = App.isStayLoggedIn();
         this.currentMenu = App.getCurrentMenu();
-        this.view = App.getView();
-        this.entityRegistry = App.entityRegistry;
-        this.recipeRegistry = App.recipeRegistry;
-        this.mapRegistry = App.mapRegistry;
+//        this.view = App.getView();
+//        this.entityRegistry = App.entityRegistry;
+//        this.recipeRegistry = App.recipeRegistry;
+//        this.mapRegistry = App.mapRegistry;
         this.activeGame = App.activeGame;
     }
 
@@ -80,40 +80,40 @@ public class AppState implements Serializable {
     public void setCurrentMenu(Menu currentMenu) {
         this.currentMenu = currentMenu;
     }
+//
+//    public AppView getView() {
+//        return view;
+//    }
+//
+//    public void setView(AppView view) {
+//        this.view = view;
+//    }
+//
+//
+//
+//    public EntityRegistry getEntityRegistry() {
+//        return entityRegistry;
+//    }
+//
+//    public void setEntityRegistry(EntityRegistry entityRegistry) {
+//        this.entityRegistry = entityRegistry;
+//    }
+//
+//    public RecipeRegistry getRecipeRegistry() {
+//        return recipeRegistry;
+//    }
+//
+//    public void setRecipeRegistry(RecipeRegistry recipeRegistry) {
+//        this.recipeRegistry = recipeRegistry;
+//    }
 
-    public AppView getView() {
-        return view;
-    }
-
-    public void setView(AppView view) {
-        this.view = view;
-    }
-
-
-
-    public EntityRegistry getEntityRegistry() {
-        return entityRegistry;
-    }
-
-    public void setEntityRegistry(EntityRegistry entityRegistry) {
-        this.entityRegistry = entityRegistry;
-    }
-
-    public RecipeRegistry getRecipeRegistry() {
-        return recipeRegistry;
-    }
-
-    public void setRecipeRegistry(RecipeRegistry recipeRegistry) {
-        this.recipeRegistry = recipeRegistry;
-    }
-
-    public MapRegistry getMapRegistry() {
-        return mapRegistry;
-    }
-
-    public void setMapRegistry(MapRegistry mapRegistry) {
-        this.mapRegistry = mapRegistry;
-    }
+//    public MapRegistry getMapRegistry() {
+//        return mapRegistry;
+//    }
+//
+//    public void setMapRegistry(MapRegistry mapRegistry) {
+//        this.mapRegistry = mapRegistry;
+//    }
 
     public Game getActiveGame() {
         return activeGame;

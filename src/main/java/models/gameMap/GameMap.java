@@ -50,7 +50,7 @@ public class GameMap implements Serializable {
         }
         initializeMap();
     }
-    SecureRandom random = new SecureRandom();
+    transient SecureRandom random = new SecureRandom();
 
     private void generateRandomElements(int min ,int max) { //inclusive
         //TODO

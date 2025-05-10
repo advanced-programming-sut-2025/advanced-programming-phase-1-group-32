@@ -103,9 +103,9 @@ public class App implements Serializable {
         registeredAccount = state.getRegisteredAccount();
         stayLoggedIn = state.isStayLoggedIn();
         currentMenu = state.getCurrentMenu();
-        entityRegistry = state.entityRegistry;
-        recipeRegistry = state.recipeRegistry;
-        mapRegistry = state.mapRegistry;
+//        entityRegistry = state.entityRegistry;
+//        recipeRegistry = state.recipeRegistry;
+//        mapRegistry = state.mapRegistry;
         activeGame = state.activeGame;
     }
 
