@@ -227,7 +227,7 @@ public class GameMenu implements AppMenu {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
             } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
                 System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
-                                                                                    matcher.group("force") != null));
+                                                                                    matcher.group("name") ,matcher.group("force") != null));
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -240,7 +240,13 @@ public class GameMenu implements AppMenu {
             printMap(activeGame.getActiveMap());
             App.getView().getRenderer().render();
             App.getView().getRenderer().moveCurser(0, 0);
-            showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+
+            Player player = activeGame.getCurrentPlayer();
+            showInventory(player.getComponent(Inventory.class));
+            System.out.println("energy: " + player.getEnergy().getAmount());
+
+            Position position = player.getPosition();
+            System.out.println("position: " + position + " " + position.getMap());
 
             if(previousResult != null){
                 System.out.println(previousResult);

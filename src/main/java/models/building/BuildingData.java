@@ -3,15 +3,19 @@ package models.building;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Position;
+import models.entities.components.EntityComponent;
 import models.gameMap.Tile;
 import models.gameMap.Environment;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BuildingData {
     public static final BuildingData dummyBuilding = new BuildingData("dummy", "greenHouse", "greenHouseExterior", 7, 8, Environment.GREEN_HOUSE);
 
     @JsonProperty("name")
     public String name;
-    @JsonProperty("interiorMap")
+    @JsonProperty("interior")
     public String interiorMap;
     @JsonProperty("exterior")
     public String exterior;
@@ -21,14 +25,18 @@ public class BuildingData {
     public int height;
     @JsonProperty("environment")
     public Environment environment;
+    @JsonProperty("components")
+    public ArrayList<EntityComponent> components = new ArrayList<>();
 
-    public BuildingData(String name, String interiorMap, String exteriorMap, int width, int height, Environment environment) {
+    public BuildingData(String name, String interiorMap, String exteriorMap, int width, int height, Environment environment,
+                        EntityComponent... components) {
         this.name = name;
         this.interiorMap = interiorMap;
         this.width = width;
         this.height = height;
         this.environment = environment;
         this.exterior = exteriorMap;
+        this.components.addAll(Arrays.asList(components));
     }
 
     public BuildingData() {

@@ -6,9 +6,6 @@ public class Energy {
     private float modifier;
     private boolean isUnlimited;
 
-    public int getEnergy(){
-        return 0;
-    }
     public void changeEnergy(){
 
     }

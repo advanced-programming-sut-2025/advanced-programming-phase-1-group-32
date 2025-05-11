@@ -1265,10 +1265,14 @@ public class GameMenuController implements Controller {
         return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
                 " were given to " + currentPlayer.getAccount().getNickname());
     }
-    public Result cheatBuildBuilding(int x, int y, boolean force){
-        if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
-        if(force) BuildingData.dummyBuilding.clearArea(x, y);
-        Building building = new Building(BuildingData.dummyBuilding, new Position(x, y));
+    public Result cheatBuildBuilding(int x, int y, String name, boolean force){
+        BuildingData data = App.buildingRegistry.getData(name);
+        if(data == null){
+            return new Result(false, "no building exists with that name");
+        }
+        if(!force && data.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
+        if(force) data.clearArea(x, y);
+        Building building = new Building(data, new Position(x, y));
         return new Result(true, "placed");
     }
 }

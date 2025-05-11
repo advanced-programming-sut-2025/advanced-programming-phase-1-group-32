@@ -11,5 +11,12 @@ public class BuildingRegistry extends Registry <BuildingData> {
     @Override
     public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
         BuildingData[] buildings = mapper.treeToValue(jsonRoot, BuildingData[].class);
+        for (BuildingData b : buildings) {
+            registry.putIfAbsent(b.name, b);
+        }
+    }
+
+    public BuildingData getData(String name){
+        return registry.get(name);
     }
 }

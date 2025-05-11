@@ -1,11 +1,9 @@
 package models.shop;
 
-import models.NPC.Character;
+import models.NPC.NPC;
 
 public class ShopType {
     String name;
     String owner;
     String building;
-
-
 }

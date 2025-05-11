@@ -27,7 +27,10 @@ import models.entities.workstations.ArtisanComponent;
         @JsonSubTypes.Type(value = Pickable.class, name = "Pickable"),
         @JsonSubTypes.Type(value = Renderable.class, name = "Renderable"),
         @JsonSubTypes.Type(value = Container.class, name = "Container"),
-        @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent")
+        @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent"),
+        @JsonSubTypes.Type(value = PositionComponent.class, name = "PositionComponent"),
+        @JsonSubTypes.Type(value = AnimalHouse.class, name = "AnimalHouse")
+
 })
 abstract public class EntityComponent implements Cloneable {
     @JsonIgnore()

@@ -1,6 +1,7 @@
 package models.building;
 
 import models.App;
+import models.entities.components.EntityComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.gameMap.Tile;
 import models.entities.Entity;
@@ -20,7 +21,11 @@ public class Building extends Entity {
     private final Environment environment;
 
     public Building(BuildingData data, Position position) {
-        super("BUILDING", new Placeable(false));
+        super(data.name, new Placeable(false));
+        for (EntityComponent c : data.components) {
+            this.addComponent(c);
+        }
+
         this.interiorMapName = data.interiorMap;
         this.width = data.width;
         this.height = data.height;

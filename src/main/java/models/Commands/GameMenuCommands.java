@@ -71,7 +71,7 @@ public enum GameMenuCommands implements Commands {
     /* ------------------------------------------ Render Commands ------------------------------------------ */
     TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
     CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
-    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<x>\\S+)\\s+(?<y>\\S+)(?:\\s+(?<force>-force))?\\s*$"),
+    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------- NPC Commands -------------------------------------------- */
