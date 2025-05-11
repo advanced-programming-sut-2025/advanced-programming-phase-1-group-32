@@ -1,7 +1,6 @@
 package models.gameMap;
 
 import models.Position;
-import models.Tile;
 import models.player.Player;
 import views.inGame.Color;
 
@@ -16,19 +15,8 @@ public class MapRegion {
 
     public void addTile(Tile tile){
         //position is not double so we cant do this:
-        //this.center.multiply(this.tiles.size()).change(tile.getPosition()).multiply((double) 1 / (this.tiles.size() + 1));
-
-        if(tiles.contains(tile)) return;
+        this.center.multiply(this.tiles.size()).add(tile.getPosition()).multiply((double) 1 / (this.tiles.size() + 1));
         tiles.add(tile);
-
-        float x = 0, y = 0;
-        for(Tile t : tiles){
-            x += t.getCol();
-            y += t.getRow();
-        }
-        x /= tiles.size();
-        y /= tiles.size();
-        this.center = new Position((int) y, (int) x);
     }
     public boolean hasTile(Tile tile){
         return this.tiles.contains(tile);

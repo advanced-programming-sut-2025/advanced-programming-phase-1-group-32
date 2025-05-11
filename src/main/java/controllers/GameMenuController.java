@@ -9,8 +9,10 @@ import models.NPC.NpcFriendship;
 import models.NPC.Quest;
 import models.crafting.Recipe;
 import models.crafting.RecipeType;
+import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.systems.EntityPlacementSystem;
 import models.entities.workstations.ArtisanComponent;
 import models.enums.Direction;
 import models.enums.EntityTag;
@@ -19,8 +21,8 @@ import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
-import models.gameMap.Environment;
 import models.gameMap.GameMap;
+import models.gameMap.Tile;
 import models.player.Energy;
 import models.player.Gift;
 import models.player.Message;
@@ -31,7 +33,6 @@ import records.Result;
 import records.WalkProposal;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class GameMenuController implements Controller {
     @Override
@@ -169,7 +170,13 @@ public class GameMenuController implements Controller {
         Tile start = map.getTileByPosition(
                 game.getCurrentPlayer().getPosition()
         );
-        Tile goal = map.getTileByPosition(new Position(y, x));
+        Tile goal = map.getTileByPosition(new Position(x, y));
+        if(goal == null){
+            return new WalkProposal(false, "tile doesnt exist", 0, x, y);
+        }
+        if(start == null){
+            return new WalkProposal(false, "you cant be there", 0, x, y);
+        }
         if(start.equals(goal))
             return new WalkProposal(
                     false,
@@ -185,12 +192,20 @@ public class GameMenuController implements Controller {
     }
 
     public Result executeWalk(WalkProposal p) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
-        if(!p.isAllowed()) {
-            return new Result(false, "No walk was proposed");
-        }
-        player.setPosition(new Position(p.y(), p.x()));
+        Player player = App.getActiveGame().getCurrentPlayer();
+//        if(!p.isAllowed()) {
+//            return new Result(false, "No walk was proposed");
+//        }
+        player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
+        Entity entity = null;
+        Tile tile = App.activeGame.getActiveMap().getTileByPosition(p.y(), p.x());
+        if(tile != null && (entity = tile.getContent()) != null){
+            Placeable placeable = entity.getComponent(Placeable.class);
+            for(CollisionEvent c : placeable.getCollisionEvents()){
+                c.onEnter();
+            }
+        }
         return new Result(true, "you walked to "
                 + player.getPosition()
                 + " (-" + p.energyCost() + " energy)");
@@ -324,7 +339,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsUse(Direction dir) {
-        Position playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
+        Vec2 playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
         GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
         if(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null){
             return new Result(false, "nothing equipped");
@@ -337,7 +352,7 @@ public class GameMenuController implements Controller {
                 || playerPosition.getCol() + dir.dx > map.getWidth() || playerPosition.getCol() + dir.dx < 0
         )
             return new Result(false, "Invalid Direction");
-        Position position = new Position(playerPosition.getRow() + dir.dy, playerPosition.getCol() + dir.dx);
+        Position position = new Position(playerPosition.getCol() + dir.dx, playerPosition.getRow() + dir.dy);
         if(tool == null || (!tool.getTags().contains(EntityTag.TOOL)))
             return  new Result(false, "You should equip a tool first");
         return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
@@ -461,12 +476,16 @@ public class GameMenuController implements Controller {
         }
 
 //        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
-        tile.plant(seed);
+
+        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+        tile.setType(TileType.PLANTED_GROUND);
+        EntityPlacementSystem.placeOnTile(plant, tile);
+
         return new Result(true, "planted succusfully");
     }
 
     public Result showPlant(int col, int row) {
-        Position position = new Position(row, col);
+        Position position = new Position(col, row);
         Game game = App.getActiveGame();
         GameMap gameMap = game.getActiveMap();
         Tile tile = gameMap.getTileByPosition(position);
@@ -1186,18 +1205,23 @@ public class GameMenuController implements Controller {
 
     public Result handleRawInput(char c){
         Player player = App.getActiveGame().getCurrentPlayer();
+        WalkProposal p;
         switch (c){
             case 'a':
-                player.changePosition(-1, 0);
+                p = this.proposeWalk(player.getPosition().getCol() -1, player.getPosition().getRow());
+                executeWalk(p);
                 break;
             case 's':
-                player.changePosition(0, 1);
+                p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() + 1);
+                executeWalk(p);
                 break;
             case 'w':
-                player.changePosition(0, -1);
+                p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() - 1);
+                executeWalk(p);
                 break;
             case 'd':
-                player.changePosition(1, 0);
+                p = this.proposeWalk(player.getPosition().getCol() + 1, player.getPosition().getRow());
+                executeWalk(p);
                 break;
             case 'x':
                 switchInputType();
@@ -1244,7 +1268,7 @@ public class GameMenuController implements Controller {
     public Result cheatBuildBuilding(int x, int y, boolean force){
         if(!force && BuildingData.dummyBuilding.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
         if(force) BuildingData.dummyBuilding.clearArea(x, y);
-        Building building = new Building(BuildingData.dummyBuilding, new Position(y, x));
-        return new Result(true, "Placed");
+        Building building = new Building(BuildingData.dummyBuilding, new Position(x, y));
+        return new Result(true, "placed");
     }
 }

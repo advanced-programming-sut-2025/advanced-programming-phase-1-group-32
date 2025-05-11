@@ -1,16 +1,14 @@
 package models.building;
 
 import models.App;
-import models.Tile;
+import models.entities.systems.EntityPlacementSystem;
+import models.gameMap.Tile;
 import models.entities.Entity;
 import models.entities.components.Placeable;
-import models.entities.components.Renderable;
 import models.enums.TileType;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.Position;
-import views.inGame.Color;
-import views.inGame.Renderer;
 
 public class Building extends Entity {
     private GameMap interior;
@@ -43,9 +41,18 @@ public class Building extends Entity {
                 if(exteriorTile != null){
                     worldTile.setType(exteriorTile);
                 }
+                if(exterior[i][j] == TileType.DOOR){
+                    EntityPlacementSystem.placeOnTile(new Door(this.interior), worldTile);
+                }
             }
         }
-
+        for (Tile[] t2 : interior.getTiles()) {
+            for (Tile t : t2) {
+                if(t.getType() == TileType.DOOR){
+                    EntityPlacementSystem.placeOnTile(new Door(worldMap), t);
+                }
+            }
+        }
         worldMap.addEntity(this);
     }
 }

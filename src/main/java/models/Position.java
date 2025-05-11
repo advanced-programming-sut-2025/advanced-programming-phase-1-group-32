@@ -1,81 +1,65 @@
 package models;
 
-public class Position {
-//    private float col, row;
-    private int col, row; //changed it to integer
+import models.gameMap.GameMap;
 
-    public Position(int row, int col) {
-        this.row = row;
-        this.col = col;
+public class Position extends Vec2{
+    GameMap map;
+
+    public Position(double x, double y) {
+        super(x, y);
     }
-
-    public int getCol() {
-        return col;
-    }
-
-    public int getRow() {
-        return row;
+    public Position(int x, int y){
+        super(x, y);
     }
 
-    public Position change(int x, int y){
-        this.col += x;
-        this.row += y;
-        return this;
+    public GameMap getMap() {
+        return map;
     }
-    public Position change(Position position){
-        this.change(position.col, position.row);
-        return this;
-    }
-    public Position multiply(double d){
-        col = (int) (d * col);
-        row = (int) (d * row);
-        return this;
+
+    public void setMap(GameMap map) {
+        this.map = map;
     }
 
     @Override
     public String toString() {
-        return "<" + col + ", " + row + ">";
+        return "<" + getCol() + ", " + getRow() + ">";
     }
 
     public Position changeByDirection(String direction){
-        Position position = new Position(row, col);
-        switch(direction){
-            case "left":
-                position.col -= 1;
-                return position;
-
-            case "right":
-                position.col += 1;
-                return position;
-
-            case "up":
-                position.row -= 1;
-                return position;
-
-            case "down":
-                position.row += 1;
-                return position;
-
-            case "upleft":
-                position.col -= 1;
-                position.row -= 1;
-                return position;
-
-            case "upright":
-                position.col += 1;
-                position.row -= 1;
-                return position;
-
-            case "downleft":
-                position.col -= 1;
-                position.row += 1;
-                return position;
-
-            case "downright":
-                position.col += 1;
-                position.row += 1;
-                return position;
-        }
-        return null;
+        return switch (direction) {
+            case "left" -> {
+                add(-1, 0);
+                yield this;
+            }
+            case "right" -> {
+                add(1, 0);
+                yield this;
+            }
+            case "up" -> {
+                add(0, -1);
+                yield this;
+            }
+            case "down" -> {
+                add(0, 1);
+                yield this;
+            }
+            case "upleft" -> {
+                add(-1, -1);
+                yield this;
+            }
+            case "upright" -> {
+                add(1, -1);
+                yield this;
+            }
+            case "downleft" -> {
+                add(-1, 1);
+                yield this;
+            }
+            case "downright" -> {
+                add(1, 1);
+                yield this;
+            }
+            default -> null;
+        };
     }
 }

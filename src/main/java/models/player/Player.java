@@ -4,7 +4,12 @@ import models.Account;
 import models.App;
 import models.Position;
 import models.NPC.NPC;
-import models.Tile;
+import models.Quest.Quest;
+import models.NPC.Character;
+import models.entities.components.PositionComponent;
+import models.entities.components.Renderable;
+import models.gameMap.GameMap;
+import models.gameMap.Tile;
 import models.crafting.Recipe;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
@@ -13,6 +18,7 @@ import models.enums.SkillType;
 import models.gameMap.MapRegion;
 import models.NPC.NpcFriendship;
 import models.player.friendship.PlayerFriendship;
+import views.inGame.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +50,7 @@ public class Player extends Entity{
     private boolean haveNewSuitor = false;
 
     public Player(Account account){
-        super("Player", new Inventory(12));
+        super("Player", new Inventory(12), new Renderable('@',  new Color(255, 255, 50)));
         unlockedRecipes = new ArrayList<>(App.recipeRegistry.getUnlockedRecipes());
         for(SkillType s : SkillType.values()){
             skills.put(s, new Skill());
@@ -53,8 +59,22 @@ public class Player extends Entity{
         this.account = account;
     }
 
+    public GameMap getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(GameMap currentMap) {
+        if(this.currentMap != null){
+            this.currentMap.removeEntity(this);
+        }
+        this.currentMap = currentMap;
+        if(currentMap != null){
+            currentMap.addEntity(this);
+        }
+    }
+
     //TODO: this should change. Position will become a component
-    private Position position = new Position(0, 0);
+    private GameMap currentMap;
 
     public int getTrashcanLevel() {
         return trashcanLevel;
@@ -153,15 +173,15 @@ public class Player extends Entity{
 
     }
     public void changePosition(int x, int y){
-        this.position.change(x, y);
+        this.getPosition().add(x, y);
     }
 
     public Position getPosition() {
-        return position;
+        return getComponent(PositionComponent.class).get();
     }
 
     public void setPosition(Position position) {
-        this.position = position;
+        this.getPosition().set(position);
     }
 
     public Account getAccount() {
