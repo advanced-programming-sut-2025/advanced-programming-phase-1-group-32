@@ -1,29 +1,18 @@
 package models.animal;
 
 import models.App;
-import models.Position;
 import models.entities.Entity;
-import models.entities.components.EntityComponent;
 import models.entities.components.Renderable;
 import models.entities.components.Sellable;
-import models.enums.EntityTag;
 import models.enums.ProductQuality;
-import models.interfaces.Updatable;
-import models.player.Player;
-import models.player.friendship.AnimalFriendship;
 import views.inGame.Color;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public  class Animal extends Entity {
     private AnimalType animalType;
     private String name;
-    private ArrayList<String> produces;
     private Entity todayProduct;
-    private int daysBetweenProduces;
     private int daysPastLastProduce;
 
     // friendship
@@ -34,7 +23,10 @@ public  class Animal extends Entity {
     public Animal(String name) {
         super(name);
         this.addComponent(new Renderable('A', new Color(255, 255, 255)));
+    }
 
+    public Animal(AnimalData data){
+        super(data.name);
 
     }
 
@@ -54,12 +46,8 @@ public  class Animal extends Entity {
         this.name = name;
     }
 
-    public ArrayList<String> getProduces() {
-        return produces;
-    }
-
-    public void setProduces(ArrayList<String> produces) {
-        this.produces = produces;
+    public ArrayList<String> getProducts() {
+        return this.animalType.getProducts();
     }
 
     public Entity getTodayProduct() {
@@ -71,11 +59,7 @@ public  class Animal extends Entity {
     }
 
     public int getDaysBetweenProduces() {
-        return daysBetweenProduces;
-    }
-
-    public void setDaysBetweenProduces(int daysBetweenProduces) {
-        this.daysBetweenProduces = daysBetweenProduces;
+        return this.animalType.getDaysBetweenProduces();
     }
 
     public int getDaysPastLastProduce() {
@@ -143,7 +127,7 @@ public  class Animal extends Entity {
 
     public void setupTodayProduct() {
         Entity todayProduct = null;
-        if (daysPastLastProduce < daysBetweenProduces) {
+        if (daysPastLastProduce < getDaysBetweenProduces()) {
             daysPastLastProduce++;
             return;
         }
@@ -168,7 +152,7 @@ public  class Animal extends Entity {
 
     public Entity produceProduct(int whichOne) {
         double quality = ((double) friendshipLevel / 1000) * (0.5 + 0.5 * Math.random());
-        Entity product = App.entityRegistry.makeEntity(produces.get(whichOne));
+        Entity product = App.entityRegistry.makeEntity(getProducts().get(whichOne));
         product.getComponent(Sellable.class).setProductQuality(ProductQuality.getQuality(quality));
 
         return product;
@@ -184,5 +168,13 @@ public  class Animal extends Entity {
         result.append("---------------------------------------------------------------\n");
 
         return result.toString();
+    }
+
+    public int calculatePrice() {
+        int price = 0;
+        price = animalType.getCost();
+
+        price = (int) (price * (0.3 + (getFriendshipLevel() / 1000)));
+        return price;
     }
 }

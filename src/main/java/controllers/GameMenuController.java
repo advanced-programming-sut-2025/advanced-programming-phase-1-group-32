@@ -801,8 +801,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "Animal not found");
         }
 
-        //TODO: get the money
 
+        int price = animal.calculatePrice();
+        currentPlayer.getWallet().changeBalance(price);
         currentPlayer.getAnimals().remove(animal);
         //TODO: remove form his house if needed
 
