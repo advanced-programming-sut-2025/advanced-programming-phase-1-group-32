@@ -637,6 +637,8 @@ public class GameMenuController implements Controller {
         return new Result(true, "eated " + foodName + " successfully");
     }
 
+    /*-----------------------------------Animal commands----------------------------------------*/
+
     public Result buildAnimalHouse() {
         //TODO
         return null;
@@ -687,6 +689,7 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    /*----------------------------------------------------------------------------------------------*/
 
 
     public Result friendship() {

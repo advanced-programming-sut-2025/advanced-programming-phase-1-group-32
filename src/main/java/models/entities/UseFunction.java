@@ -212,7 +212,7 @@ public enum UseFunction {
             if(tool.getComponent(Container.class).getCharge() > 0)
                 return new Result(false, "milk pail is full");
             player.reduceEnergy(4);// on success and fail
-            if(target == null || ! (target instanceof Animal))
+            if(target == null )
                 return new Result(false, "you should select an animal");
             if(false/*TODO: if its not cow or goat*/)
                 return new Result(false, target.getName() + " doesn't produce milk.");
