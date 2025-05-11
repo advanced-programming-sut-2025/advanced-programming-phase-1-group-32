@@ -1,10 +1,12 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.enums.ProductQuality;
 
 public class Sellable extends EntityComponent{
     @JsonProperty("price")
     private int price;
+    private ProductQuality productQuality;
 
     public Sellable(int price) {
         this.price = price;
@@ -21,6 +23,14 @@ public class Sellable extends EntityComponent{
     }
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public ProductQuality getProductQuality() {
+        return productQuality;
+    }
+
+    public void setProductQuality(ProductQuality productQuality) {
+        this.productQuality = productQuality;
     }
 
     @Override

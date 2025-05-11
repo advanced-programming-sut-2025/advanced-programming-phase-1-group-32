@@ -1,8 +1,11 @@
 package models.animal;
 
+import models.App;
 import models.Position;
 import models.entities.Entity;
 import models.entities.components.Renderable;
+import models.entities.components.Sellable;
+import models.enums.ProductQuality;
 import models.interfaces.Updatable;
 import models.player.Player;
 import models.player.friendship.AnimalFriendship;
@@ -85,5 +88,64 @@ public  class Animal  {
 
     public void setFriendshipLevel(int friendshipLevel) {
         this.friendshipLevel = friendshipLevel;
+    }
+
+    public void addFriendshipLevel(int amount) {
+        this.friendshipLevel += amount;
+        if (this.friendshipLevel > 1000) {
+            this.friendshipLevel = 1000;
+        }
+
+    }
+
+    public void reduceFriendshipLevel(int amount) {
+        this.friendshipLevel -= amount;
+        if (this.friendshipLevel < 0) {
+            this.friendshipLevel = 0;
+        }
+    }
+
+    public void updatePerDay() {
+        setupTodayProduct();
+
+        if (!isFedToday) {
+            reduceFriendshipLevel(20);
+        }
+        isFedToday = false;
+
+        if (!isPetToday) {
+            reduceFriendshipLevel(10);
+        }
+        isPetToday = false;
+
+        //TODO: reduce if its out of house
+    }
+
+    public void setupTodayProduct() {
+        Entity todayProduct = null;
+        if (isFedToday) {
+            if (friendshipLevel > 100) {
+                double rand = Math.random() + 0.5;
+                double probability = (friendshipLevel + 150 * rand) / 1500;
+                if (Math.random() < probability) {
+                    todayProduct = produceProduct(1);
+                } else {
+                    todayProduct = produceProduct(0);
+                }
+            } else {
+                todayProduct = produceProduct(0);
+            }
+
+        }
+
+        setTodayProduct(todayProduct);
+    }
+
+    public Entity produceProduct(int whichOne) {
+        double quality = ((double) friendshipLevel / 1000) * (0.5 + 0.5 * Math.random());
+        Entity product = App.entityRegistry.makeEntity(produces.get(whichOne));
+        product.getComponent(Sellable.class).setProductQuality(ProductQuality.getQuality(quality));
+
+        return product;
     }
 }
