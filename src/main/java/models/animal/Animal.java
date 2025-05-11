@@ -3,8 +3,10 @@ package models.animal;
 import models.App;
 import models.Position;
 import models.entities.Entity;
+import models.entities.components.EntityComponent;
 import models.entities.components.Renderable;
 import models.entities.components.Sellable;
+import models.enums.EntityTag;
 import models.enums.ProductQuality;
 import models.interfaces.Updatable;
 import models.player.Player;
@@ -12,9 +14,10 @@ import models.player.friendship.AnimalFriendship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
-public  class Animal  {
+public  class Animal extends Entity {
     private AnimalType animalType;
     private String name;
     private ArrayList<String> produces;
@@ -23,9 +26,21 @@ public  class Animal  {
     private int daysPastLastProduce;
 
     // friendship
-    private boolean isPetToday;
-    private boolean isFedToday;
-    private int friendshipLevel;
+    private boolean isPetToday = false;
+    private boolean isFedToday = false;
+    private int friendshipLevel = 0;
+
+    public Animal(String name, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id) {
+        super(name);
+    }
+
+    public AnimalType getAnimalType() {
+        return animalType;
+    }
+
+    public void setAnimalType(AnimalType animalType) {
+        this.animalType = animalType;
+    }
 
     public String getName() {
         return name;
@@ -124,6 +139,11 @@ public  class Animal  {
 
     public void setupTodayProduct() {
         Entity todayProduct = null;
+        if (daysPastLastProduce < daysBetweenProduces) {
+            daysPastLastProduce++;
+            return;
+        }
+
         if (isFedToday) {
             if (friendshipLevel > 100) {
                 double rand = Math.random() + 0.5;

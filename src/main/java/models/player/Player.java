@@ -337,6 +337,10 @@ public class Player extends Entity{
             }
         }
 
+        for (Animal animal : animals) {
+            animal.updatePerDay();
+        }
+
     }
 
     //NPC functions

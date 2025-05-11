@@ -233,6 +233,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showProduces());
 
             } else if ((matcher = GameMenuCommands.COLLECT_PRODUCE.getMatcher(input)) != null) {
+                System.out.println(controller.collectProduces(matcher.group(1).trim()));
 
 
             } else if ((matcher = GameMenuCommands.SELL_ANIMAL.getMatcher(input)) != null) {

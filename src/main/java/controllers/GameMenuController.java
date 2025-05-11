@@ -752,8 +752,23 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result collectProduces() {
+    public Result collectProduces(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        Entity product = animal.getTodayProduct();
+
+        if (product == null) {
+            return new Result(false, "this animal does not have product today!");
+        }
+
+        animal.getAnimalType();
         //TODO
+
         return null;
     }
 
