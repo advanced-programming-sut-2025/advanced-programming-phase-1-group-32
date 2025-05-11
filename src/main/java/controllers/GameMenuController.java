@@ -20,7 +20,6 @@ import models.enums.*;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
 import models.enums.Weather;
-import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.player.Energy;
 import models.player.Gift;
@@ -32,7 +31,6 @@ import records.Result;
 import records.WalkProposal;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class GameMenuController implements Controller {
     @Override
@@ -698,8 +696,21 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result shephreAnimal() {
-        //TODO
+    public Result shepherdAnimal(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        //TODO: change its position
+        if (true /*TODO: check its out of home*/) {
+            if (!animal.isFedToday()) {
+                animal.setFedToday(true);
+                animal.addFriendshipLevel(8);
+            }
+        }
         return null;
     }
 
@@ -724,8 +735,21 @@ public class GameMenuController implements Controller {
     }
 
     public Result showProduces() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("Your available Produces:\n");
+
+        for (Animal animal : currentPlayer.getAnimals()) {
+            Entity product = animal.getTodayProduct();
+            if (product != null) {
+                message.append("Animal ").append(animal.getName()).append("\n");
+                message.append("Product ").append(product.getName()).append("\n");
+                message.append("Quality: ").append(product.getComponent(Sellable.class).getProductQuality()).append("\n");
+                message.append("-------------------------------------------------------------------\n");
+            }
+        }
+
+        return new Result(true, message.toString());
     }
 
     public Result collectProduces() {
@@ -733,9 +757,20 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result sellAnimal() {
-        //TODO
-        return null;
+    public Result sellAnimal(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        //TODO: get the money
+
+        currentPlayer.getAnimals().remove(animal);
+        //TODO: remove form his house if needed
+
+        return new Result(true, animal.getName() + " sold successfully!");
     }
 
     public Result fishing() {
