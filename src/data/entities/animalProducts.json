@@ -40,6 +40,105 @@
           "price": 95
         }
       ]
+    },
+    {
+      "name": "Duck Egg",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 95
+        }
+      ]
+    },
+    {
+      "name": "Duck Feather",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Wool",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 340
+        }
+      ]
+    },
+    {
+      "name": "Rabbit Leg",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 565
+        }
+      ]
+    },
+    {
+      "name": "Dinosaur Egg",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Cow Milk",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 125
+        }
+      ]
+    },
+    {
+      "name": "Cow Big Milk",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 190
+        }
+      ]
+    },
+    {
+      "name": "Goat Milk",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 225
+        }
+      ]
+    },
+    {
+      "name": "Goat Big Milk",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 345
+        }
+      ]
+    },
+    {
+      "name": "Sheep Wool",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 340
+        }
+      ]
+    },
+    {
+      "name": "Truffle",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 325
+        }
+      ]
     }
   ]
 

@@ -215,17 +215,33 @@ public enum UseFunction {
             player.reduceEnergy(4);// on success and fail
             if(target == null )
                 return new Result(false, "you should select an animal");
-            if(false/*TODO: if its not cow or goat*/)
+            if(!(target instanceof Animal))
+                return new Result(false, "you should select an animal");
+
+
+            Animal animal = (Animal) target;
+            if (!animal.getAnimalType().getNeededTool().equals("Milk pail")) {
                 return new Result(false, target.getName() + " doesn't produce milk.");
+            }
+
+            Entity product = animal.getTodayProduct();
+            if (product == null) {
+                return new Result(false, "It didn't produce milk today.");
+            }
+            animal.setTodayProduct(null);
             tool.getComponent(Container.class).fillContainer();
-            //TODO: should it improve farming skill?
+            Inventory inventory = player.getComponent(Inventory.class);
+            inventory.addItem(product);
+            player.getSkill(SkillType.FARMING).addExperience(5);
             return new Result(true, "Milk extracted successfully");
         }
     },
     COLLECT_WOOL{
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
-            return null;
+            player.reduceEnergy(4);
+
+            return new Result(true, "wool collected successfully");
         }
     },
 
