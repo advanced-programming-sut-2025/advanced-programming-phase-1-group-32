@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public  class Animal  {
+    private AnimalType animalType;
     private String name;
     private ArrayList<String> produces;
     private Entity todayProduct;
@@ -147,5 +148,17 @@ public  class Animal  {
         product.getComponent(Sellable.class).setProductQuality(ProductQuality.getQuality(quality));
 
         return product;
+    }
+
+    public String getDetail() {
+        StringBuilder result = new StringBuilder();
+        result.append("Type:" ).append(animalType).append("\n");
+        result.append("Name:").append(name).append("\n");
+        result.append("IsPetToday:").append(isPetToday).append("\n");
+        result.append("IsFedToday:").append(isFedToday).append("\n");
+        result.append("FriendshipLevel:").append(friendshipLevel).append("\n");
+        result.append("---------------------------------------------------------------\n");
+
+        return result.toString();
     }
 }

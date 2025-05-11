@@ -686,8 +686,16 @@ public class GameMenuController implements Controller {
     }
 
     public Result animals() {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        StringBuilder message = new StringBuilder("Your Animals:\n");
+
+        for (Animal animal : currentPlayer.getAnimals()) {
+            message.append(animal.getDetail());
+        }
+
+        return new Result(true, message.toString());
     }
 
     public Result shephreAnimal() {
@@ -695,9 +703,24 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result feedHay(){
-        //TODO
-        return null;
+    public Result feedHay(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if(!inventory.doesHaveItem("hay")) {
+            return new Result(false, "You don't have enough hay!");
+        }
+
+        inventory.takeFromInventory("hay", 1);
+
+        animal.setFedToday(true);
+
+        return new Result(true, "animal fed successfully");
     }
 
     public Result showProduces() {

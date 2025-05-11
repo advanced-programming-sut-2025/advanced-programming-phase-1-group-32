@@ -66,6 +66,14 @@ public class Player extends Entity{
         //TODO
     }
 
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<Animal> animals) {
+        this.animals = animals;
+    }
+
     public HashMap<Player, Entity> getSuitors() {
         return suitors;
     }
