@@ -12,6 +12,14 @@ public class Position extends Vec2{
         super(x, y);
     }
 
+    public GameMap getMap() {
+        return map;
+    }
+
+    public void setMap(GameMap map) {
+        this.map = map;
+    }
+
     @Override
     public String toString() {
         return "<" + getCol() + ", " + getRow() + ">";

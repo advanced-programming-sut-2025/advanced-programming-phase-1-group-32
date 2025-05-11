@@ -1,5 +1,6 @@
 package models.entities.systems;
 
+import models.Position;
 import models.entities.Entity;
 import models.entities.components.PositionComponent;
 import models.gameMap.GameMap;
@@ -18,10 +19,9 @@ public class EntityPlacementSystem {
         tile.getMap().addEntity(entity);
 
         if(entity.getComponent(PositionComponent.class) == null){
-            entity.addComponent(new PositionComponent(tile.getPosition()));
-        }else{
-            entity.getComponent(PositionComponent.class).setPosition(tile.getPosition());
+            entity.addComponent(new PositionComponent(0, 0));
         }
+        entity.getComponent(PositionComponent.class).setPosition(tile.getPosition()).setMap(tile.getMap());
         return new Result(true, "placed");
     }
     public static Result emptyTile(Tile tile){
@@ -32,6 +32,19 @@ public class EntityPlacementSystem {
             tileEntity.removeComponent(PositionComponent.class);
         }
         tile.setContent(null);
+        return new Result(true, "");
+    }
+    public static Result placeOnMap(Entity entity, Position position, GameMap map){
+        map.addEntity(entity);
+
+        if(entity.getComponent(PositionComponent.class) == null){
+            entity.addComponent(new PositionComponent(0, 0));
+        }
+        if(entity.getComponent(PositionComponent.class).getMap() != null){
+            entity.getComponent(PositionComponent.class).getMap().removeEntity(entity);
+        }
+        entity.getComponent(PositionComponent.class).setPosition(position).setMap(map);
+
         return new Result(true, "");
     }
 }

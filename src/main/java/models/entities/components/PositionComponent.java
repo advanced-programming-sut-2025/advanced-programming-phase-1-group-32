@@ -1,7 +1,9 @@
 package models.entities.components;
 
+import models.Game;
 import models.Position;
 import models.Vec2;
+import models.gameMap.GameMap;
 
 public class PositionComponent extends EntityComponent{
     private Position position;
@@ -45,17 +47,27 @@ public class PositionComponent extends EntityComponent{
         return position.getRow();
     }
 
-    public void setPosition(Vec2 position) {
+    public Position setPosition(Vec2 position) {
         this.position.setX(position.getX());
         this.position.setY(position.getY());
+        return this.position;
     }
 
-    public void setPosition(Position position){
+    public Position setPosition(Position position){
         this.position.setX(position.getCol());
         this.position.setY(position.getRow());
+        return this.position;
     }
 
-    @Override
+    public Position setMap(GameMap map){
+        position.setMap(map);
+        return position;
+    }
+    public GameMap getMap(){
+        return position.getMap();
+    }
+
+                           @Override
     public EntityComponent clone() {
         return new PositionComponent(this);
     }
