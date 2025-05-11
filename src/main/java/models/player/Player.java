@@ -10,7 +10,6 @@ import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.gameMap.GameMap;
 import models.gameMap.Tile;
-import models.Tile;
 import models.animal.Animal;
 import models.crafting.Recipe;
 import models.entities.Entity;
@@ -38,7 +37,6 @@ public class Player extends Entity{
     private ArrayList<Gift> giftLog = new ArrayList<>();
     private int giftId = 1;
     private ArrayList<Message> messageLog = new ArrayList<>();
-    private final ArrayList<TradeOffer> tradeOfferLog = null;
     private final ArrayList<Recipe> unlockedRecipes;
     private ArrayList<TradeOffer> trades = new ArrayList<>();
     private final Account account;

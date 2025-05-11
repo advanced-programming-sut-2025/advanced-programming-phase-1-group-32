@@ -47,3 +47,18 @@ cheat advance date 1d
 meet NPC Lia
 quests list
 quests finish -i 1
+
+
+
+buy animal -a chicken -n chicken1
+animals
+pet -n chicken1
+cheat set friendship -n chicken1 -c 00
+sell animal -n chicken1
+show inventory
+cheat give item "Hay" 20
+feed hay -n chicken1
+cheat advance date 1d
+produces
+collect produce -n chicken1
+

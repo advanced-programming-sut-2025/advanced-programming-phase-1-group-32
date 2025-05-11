@@ -1,0 +1,46 @@
+{
+  "common components": [
+    {
+      "type": "Pickable",
+      "maxStack": 8000000
+    }
+  ],
+
+  "required components": [
+    "Sellable"
+  ],
+  "common tags": [
+    "ANIMAL_PRODUCT"
+  ],
+
+  "entities": [
+    {
+      "name": "Hay",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "name": "Egg",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "Big Egg",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 95
+        }
+      ]
+    }
+  ]
+
+}

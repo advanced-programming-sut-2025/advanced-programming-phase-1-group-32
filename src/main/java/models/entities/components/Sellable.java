@@ -43,6 +43,7 @@ public class Sellable extends EntityComponent{
         if(!(other instanceof Sellable)) return false;
 
         Sellable otherSellable = (Sellable) other;
+        if (this.productQuality != otherSellable.productQuality) return false;
         return this.price == otherSellable.price;
     }
 }

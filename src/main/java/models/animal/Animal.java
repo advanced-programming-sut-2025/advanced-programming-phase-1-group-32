@@ -2,6 +2,7 @@ package models.animal;
 
 import models.App;
 import models.entities.Entity;
+import models.entities.components.Pickable;
 import models.entities.components.Renderable;
 import models.entities.components.Sellable;
 import models.enums.ProductQuality;
@@ -23,6 +24,12 @@ public  class Animal extends Entity {
     public Animal(String name) {
         super(name);
         this.addComponent(new Renderable('A', new Color(255, 255, 255)));
+    }
+
+    public Animal(AnimalType animalType, String name) {
+        super(name);
+        this.name = name;
+        this.animalType = animalType;
     }
 
     public Animal(AnimalData data){
@@ -155,16 +162,17 @@ public  class Animal extends Entity {
         Entity product = App.entityRegistry.makeEntity(getProducts().get(whichOne));
         product.getComponent(Sellable.class).setProductQuality(ProductQuality.getQuality(quality));
 
+        product.getComponent(Pickable.class).setStackSize(1);
         return product;
     }
 
     public String getDetail() {
         StringBuilder result = new StringBuilder();
-        result.append("Type:" ).append(animalType).append("\n");
-        result.append("Name:").append(name).append("\n");
-        result.append("IsPetToday:").append(isPetToday).append("\n");
-        result.append("IsFedToday:").append(isFedToday).append("\n");
-        result.append("FriendshipLevel:").append(friendshipLevel).append("\n");
+        result.append("Type: " ).append(animalType).append("\n");
+        result.append("Name: ").append(name).append("\n");
+        result.append("IsPetToday: ").append(isPetToday).append("\n");
+        result.append("IsFedToday: ").append(isFedToday).append("\n");
+        result.append("FriendshipLevel: ").append(friendshipLevel).append("\n");
         result.append("---------------------------------------------------------------\n");
 
         return result.toString();

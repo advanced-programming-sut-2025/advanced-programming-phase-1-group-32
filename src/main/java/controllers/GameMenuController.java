@@ -3,6 +3,7 @@ package controllers;
 import models.*;
 import models.Date;
 import models.animal.Animal;
+import models.animal.AnimalType;
 import models.building.Building;
 import models.building.BuildingData;
 import models.NPC.NPC;
@@ -664,9 +665,20 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result buyAnimal() {
-        //TODO
-        return null;
+    public Result buyAnimal(String animalTypeString, String animalName) {
+        Game game = App.getActiveGame();
+        Player player = game.getCurrentPlayer();
+
+        AnimalType animalType = AnimalType.getAnimalTypeByString(animalTypeString);
+        if(animalType == null) {
+            return new Result(false, "Invalid animal type");
+        }
+
+        // TODO: check almost everyThing
+
+        Animal animal = new Animal(animalType, animalName);
+        player.getAnimals().add(animal);
+        return new Result(true, animalName + " bought and added to your farm successfully");
     }
 
     public Result pet(String animalName) {
@@ -744,11 +756,11 @@ public class GameMenuController implements Controller {
         }
 
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
-        if(!inventory.doesHaveItem("hay")) {
+        if(!inventory.doesHaveItem("Hay")) {
             return new Result(false, "You don't have enough hay!");
         }
 
-        inventory.takeFromInventory("hay", 1);
+        inventory.takeFromInventory("Hay", 1);
 
         animal.setFedToday(true);
 
@@ -777,6 +789,8 @@ public class GameMenuController implements Controller {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+
         if(animal == null) {
             return new Result(false, "Animal not found");
         }
@@ -787,10 +801,14 @@ public class GameMenuController implements Controller {
             return new Result(false, "this animal does not have product today!");
         }
 
-        animal.getAnimalType();
-        //TODO
+        if (animal.getAnimalType().getNeededTool() != null) {
+            return new Result(false, "You cant collect this product without a tool!");
+        }
 
-        return null;
+        animal.setTodayProduct(null);
+        return inventory.addItem(product);
+
+//        return new Result(true, "product collected successfully");
     }
 
     public Result sellAnimal(String animalName) {

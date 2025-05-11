@@ -177,7 +177,7 @@ public class Inventory extends EntityComponent {
         if (entityAdded) {
             return new Result(true, "");
         } else {
-            return new Result(false, "");
+            return new Result(false, "v");
         }
     }
 

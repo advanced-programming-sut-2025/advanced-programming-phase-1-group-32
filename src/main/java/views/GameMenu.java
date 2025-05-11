@@ -214,6 +214,7 @@ public class GameMenu implements AppMenu {
             else if ((matcher = GameMenuCommands.BUILD_ANIMAL.getMatcher(input)) != null) {
 
             } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
+                System.out.println(controller.buyAnimal(matcher.group(1).trim(), matcher.group(2).trim()));
 
             } else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.pet(matcher.group(1).trim()));
@@ -240,6 +241,7 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.SELL_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.sellAnimal(matcher.group(1).trim()));
+
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 
