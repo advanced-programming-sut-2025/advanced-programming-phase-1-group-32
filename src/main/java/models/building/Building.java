@@ -2,12 +2,10 @@ package models.building;
 
 import models.App;
 import models.entities.components.EntityComponent;
-import models.entities.components.interiorComponent;
-import models.entities.systems.EntityPlacementSystem;
-import models.gameMap.Tile;
+import models.entities.components.PositionComponent;
+import models.entities.components.InteriorComponent;
 import models.entities.Entity;
 import models.entities.components.Placeable;
-import models.enums.TileType;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.Position;
@@ -24,8 +22,8 @@ public class Building extends Entity {
         }
 
         //TODO: should handle in above for, but :
-        this.addComponent(new interiorComponent(data.interiorMap, data.environment));
-
+        this.addComponent(new InteriorComponent(new GameMap(App.mapRegistry.getData(data.interiorMap), data.environment)));
+        this.addComponent(new PositionComponent(position));
 
         this.width = data.width;
         this.height = data.height;

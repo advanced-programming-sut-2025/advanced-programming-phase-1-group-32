@@ -47,7 +47,7 @@ public class Placeable extends EntityComponent{
         return isWalkable;
     }
 
-    public Result place(Position position, GameMap interior) {
+    public Result place(PositionComponent position, GameMap interior) {
         GameMap worldMap = App.getActiveGame().getMainMap();
 
         for(int i = 0 ; i < exterior.length ; i++){
@@ -65,6 +65,23 @@ public class Placeable extends EntityComponent{
         }
         return null; //TODO
     }
+    public Result place(PositionComponent position) {
+        GameMap activeMap = App.getActiveGame().getActiveMap();
+
+        for(int i = 0 ; i < exterior.length ; i++){
+            for(int j = 0 ; j < exterior[0].length; j++){
+                Tile activeTile = activeMap.getTileByPosition(j + position.getCol(), i + position.getRow());
+                TileType exteriorTile = exterior[i][j];
+
+                if(exteriorTile != null){
+                    activeTile.setType(exteriorTile);
+                }
+            }
+        }
+        return null; //TODO
+    }
+
+
 
     public ArrayList<CollisionEvent> getCollisionEvents() {
         return collisionFunctions;
