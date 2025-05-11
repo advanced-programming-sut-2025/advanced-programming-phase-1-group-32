@@ -2,6 +2,7 @@ package models.building;
 
 import models.App;
 import models.entities.components.EntityComponent;
+import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.gameMap.Tile;
 import models.entities.Entity;
