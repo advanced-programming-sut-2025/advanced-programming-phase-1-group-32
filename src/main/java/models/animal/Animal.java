@@ -11,6 +11,7 @@ import models.enums.ProductQuality;
 import models.interfaces.Updatable;
 import models.player.Player;
 import models.player.friendship.AnimalFriendship;
+import views.inGame.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,8 +31,11 @@ public  class Animal extends Entity {
     private boolean isFedToday = false;
     private int friendshipLevel = 0;
 
-    public Animal(String name, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id) {
+    public Animal(String name) {
         super(name);
+        this.addComponent(new Renderable('A', new Color(255, 255, 255)));
+
+
     }
 
     public AnimalType getAnimalType() {
