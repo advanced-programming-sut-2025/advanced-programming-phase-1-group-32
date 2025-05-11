@@ -1,6 +1,3078 @@
 [
   {
-    "dialogue": "Hi, Im Lia!",
+    "dialogue": "Hello, it's a sunny spring day. I could go for some squash.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter day. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter night. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter day. I could go for some squash. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter night. I could go for some pizza. I'm just thinking.",
+    "npcName": "Sebastian",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter day. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter night. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter day. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter night. I could go for some rock. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter day. I could go for some Iron. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter night. I could go for some coffee. Don't bother me!",
+    "npcName": "Abigael",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter day. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter night. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter day. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter night. I could go for some coffee. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter day. I could go for some beverages. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter night. I could go for some ترشی. What a wonderful time!",
+    "npcName": "Harvey",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring day. I could go for some grape. Hope you're well!",
     "npcName": "Lia",
     "season": "SPRING",
     "friendshipLevel": 0,
@@ -8,12 +3080,2043 @@
     "isDay": true
   },
   {
-    "dialogue": "I hate the rain...",
+    "dialogue": "Hello, it's a sunny spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall night. I could go for some grape. Hope you're well!",
     "npcName": "Lia",
     "season": "FALL",
     "friendshipLevel": 0,
     "weather": "RAINY",
     "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter day. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter night. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter day. I could go for some grape. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter night. I could go for some salad. Hope you're well!",
+    "npcName": "Lia",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy spring night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy spring night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SPRING",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy summer night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy summer night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "SUMMER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy fall night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy fall night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "FALL",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a sunny winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a rainy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a stormy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hello, it's a snowy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 0,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a sunny winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a rainy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a stormy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hey, it's a snowy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 1,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a sunny winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a rainy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a stormy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "Hi friend, it's a snowy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 2,
+    "weather": "SNOWY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a sunny winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SUNNY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a rainy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "RAINY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter day. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a stormy winter night. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "STORMY",
+    "isDay": false
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter day. I could go for some wood. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": true
+  },
+  {
+    "dialogue": "My dear friend, it's a snowy winter night. I could go for some spaghetti. Let's have some fun!",
+    "npcName": "Robin",
+    "season": "WINTER",
+    "friendshipLevel": 3,
+    "weather": "SNOWY",
+    "isDay": false
   }
 ]
-

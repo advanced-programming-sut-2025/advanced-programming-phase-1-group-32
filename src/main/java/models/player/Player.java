@@ -10,6 +10,8 @@ import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.gameMap.GameMap;
 import models.gameMap.Tile;
+import models.Tile;
+import models.animal.Animal;
 import models.crafting.Recipe;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
@@ -29,7 +31,7 @@ public class Player extends Entity{
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
     private int trashcanLevel;
-    private HashMap<NPC, NpcFriendship> npcFriendships = new HashMap<>();
+    private Map<NPC, NpcFriendship> npcFriendships = new HashMap<>();
     private final Map<Player, PlayerFriendship> playerFriendships = null;
     private HashMap<Player, Entity> suitors = new HashMap<>();
     private Player spouse;
@@ -42,6 +44,7 @@ public class Player extends Entity{
     private final Account account;
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
+    private ArrayList<Animal> animals = new ArrayList<>();
 
     // boolean for messages
     private boolean haveNewMessage = false;
@@ -82,6 +85,14 @@ public class Player extends Entity{
 
     public void addTrashcanLevel(int trashcanLevel) {
         //TODO
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<Animal> animals) {
+        this.animals = animals;
     }
 
     public HashMap<Player, Entity> getSuitors() {
@@ -333,25 +344,39 @@ public class Player extends Entity{
 
     public void updatePerDay() {
         getEnergy().updatePerDay();
-        for (NpcFriendship npcFriendship : npcFriendships.values()) {
-            npcFriendship.updatePerDay();
+        for (Map.Entry<NPC, NpcFriendship> npcFriendship : npcFriendships.entrySet()) {
+            npcFriendship.getValue().updatePerDay();
+            if (npcFriendship.getValue().getLevel() >= 3) {
+                NPC npc = npcFriendship.getKey();
+                String randomGift = npc.getRandomGift();
+                if (randomGift != null) {
+                    Entity gift = App.entityRegistry.makeEntity(randomGift);
+                    this.getComponent(Inventory.class).addItem(gift);
+                    System.out.println("gifted");
+                }
+
+            }
         }
+
+        for (Animal animal : animals) {
+            animal.updatePerDay();
+        }
+
     }
 
     //NPC functions
-
     public Map<NPC, NpcFriendship> getNpcFriendships() {
         return npcFriendships;
     }
 
-    public void setNpcFriendships(HashMap<NPC, NpcFriendship> npcFriendships) {
+    public void setNpcFriendships(Map<NPC, NpcFriendship> npcFriendships) {
         this.npcFriendships = npcFriendships;
     }
 
     public void addFriendshipByGift(NPC npc, Entity gift) {
         NpcFriendship npcFriendship = npcFriendships.get(npc);
         if(!npcFriendship.isWasGiftedToday()) {
-            if (npc.getFavorites().contains(gift)) {
+            if (npc.getFavorites().contains(gift.getName())) {
                 npcFriendship.addXp(200);
             } else {
                 npcFriendship.addXp(50);
@@ -359,6 +384,7 @@ public class Player extends Entity{
             npcFriendship.setWasGiftedToday(true);
         }
     }
+
 
     public String npcFriendshipDetails() {
         StringBuilder result = new StringBuilder();
@@ -372,6 +398,15 @@ public class Player extends Entity{
         }
 
         return result.toString();
+    }
+
+    public Animal findAnimal(String animalName) {
+        for (Animal animal : animals) {
+            if (animal.getName().equals(animalName)) {
+                return animal;
+            }
+        }
+        return null;
     }
 
 

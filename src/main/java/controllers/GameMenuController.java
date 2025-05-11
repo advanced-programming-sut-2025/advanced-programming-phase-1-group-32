@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import models.Date;
+import models.animal.Animal;
 import models.building.Building;
 import models.building.BuildingData;
 import models.NPC.NPC;
@@ -656,6 +657,8 @@ public class GameMenuController implements Controller {
         return new Result(true, "eated " + foodName + " successfully");
     }
 
+    /*-----------------------------------Animal commands----------------------------------------*/
+
     public Result buildAnimalHouse() {
         //TODO
         return null;
@@ -666,39 +669,144 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result pet() {
-        //TODO
-        return null;
+    public Result pet(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        // TODO: check distance
+
+        if (!animal.isPetToday()) {
+            animal.setPetToday(true);
+            animal.addFriendshipLevel(15);
+        }
+
+        return new Result(true, animal.getName() + " has pet successfully!");
+    }
+
+    public Result setAnimalFriendship(String animalName, int amount) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        if (amount < 0 || amount > 1000) {
+            return new Result(false, "Invalid amount. Must be between 0 and 1000");
+        }
+
+        animal.setFriendshipLevel(amount);
+
+        return new Result(true, "animal friendship set successfully!");
     }
 
     public Result animals() {
-        //TODO
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        StringBuilder message = new StringBuilder("Your Animals:\n");
+
+        for (Animal animal : currentPlayer.getAnimals()) {
+            message.append(animal.getDetail());
+        }
+
+        return new Result(true, message.toString());
+    }
+
+    public Result shepherdAnimal(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        //TODO: change its position
+        if (true /*TODO: check its out of home*/) {
+            if (!animal.isFedToday()) {
+                animal.setFedToday(true);
+                animal.addFriendshipLevel(8);
+            }
+        }
         return null;
     }
 
-    public Result shephreAnimal() {
-        //TODO
-        return null;
-    }
+    public Result feedHay(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
 
-    public Result feedHay(){
-        //TODO
-        return null;
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if(!inventory.doesHaveItem("hay")) {
+            return new Result(false, "You don't have enough hay!");
+        }
+
+        inventory.takeFromInventory("hay", 1);
+
+        animal.setFedToday(true);
+
+        return new Result(true, "animal fed successfully");
     }
 
     public Result showProduces() {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        StringBuilder message = new StringBuilder("Your available Produces:\n");
+
+        for (Animal animal : currentPlayer.getAnimals()) {
+            Entity product = animal.getTodayProduct();
+            if (product != null) {
+                message.append("Animal ").append(animal.getName()).append("\n");
+                message.append("Product ").append(product.getName()).append("\n");
+                message.append("Quality: ").append(product.getComponent(Sellable.class).getProductQuality()).append("\n");
+                message.append("-------------------------------------------------------------------\n");
+            }
+        }
+
+        return new Result(true, message.toString());
+    }
+
+    public Result collectProduces(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        Entity product = animal.getTodayProduct();
+
+        if (product == null) {
+            return new Result(false, "this animal does not have product today!");
+        }
+
+        animal.getAnimalType();
         //TODO
+
         return null;
     }
 
-    public Result collectProduces() {
-        //TODO
-        return null;
-    }
+    public Result sellAnimal(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
 
-    public Result sellAnimal() {
-        //TODO
-        return null;
+        //TODO: get the money
+
+        currentPlayer.getAnimals().remove(animal);
+        //TODO: remove form his house if needed
+
+        return new Result(true, animal.getName() + " sold successfully!");
     }
 
     public Result fishing() {
@@ -706,6 +814,7 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    /*----------------------------------------------------------------------------------------------*/
 
 
     public Result friendship() {
@@ -1157,11 +1266,17 @@ public class GameMenuController implements Controller {
         // TODO: check distance
 
         inventory.takeFromInventory(item.getName(), itemAmount);
+        int rewardNumber = quest.getRewardNumber();
+        NpcFriendship npcFriendship = currentPlayer.getNpcFriendships().get(quest.getNpc());
+        if (npcFriendship.getLevel() >= 2) {
+            rewardNumber *= 2;
+        }
+
 
         if (quest.getReward().equalsIgnoreCase("Gold")) {
-            currentPlayer.getWallet().changeBalance(quest.getRewardNumber());
+            currentPlayer.getWallet().changeBalance(rewardNumber);
             return new Result(true, "Quest finished successfully!\n" +
-                    "You got: " + quest.getRewardNumber() + "Golds");
+                    "You got: " + rewardNumber + "Golds");
         }
 
 
@@ -1169,13 +1284,13 @@ public class GameMenuController implements Controller {
             return new Result(false, "Item not have set yet");
         }
         Entity reward = App.entityRegistry.makeEntity(quest.getReward());
-        reward.getComponent(Pickable.class).setStackSize(quest.getRewardNumber());
+        reward.getComponent(Pickable.class).setStackSize(rewardNumber);
 
 
         inventory.addItem(reward);
 
         return new Result(true, "Quest finished successfully!\n" +
-                "You got: " + quest.getRewardNumber() + item.getName());
+                "You got: " + rewardNumber + item.getName());
     }
 
 
@@ -1255,7 +1370,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "Entity doesnt exist");
         }
         Entity entity = App.entityRegistry.makeEntity(name);
-        if(currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
+        if(!currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
             return new Result(false, "Your inventory doesn't have enough size");
         if(entity.getComponent(Pickable.class) == null){
             return new Result(false, "Entity isn't pickable");

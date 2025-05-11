@@ -210,6 +210,40 @@ public class GameMenu implements AppMenu {
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 
+            /* ------------------------------------------- NPC Commands -------------------------------------------- */
+            else if ((matcher = GameMenuCommands.BUILD_ANIMAL.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
+
+            } else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
+                System.out.println(controller.pet(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.SET_ANIMAL_FRIENDSHIP.getMatcher(input)) != null) {
+                System.out.println(controller.setAnimalFriendship(matcher.group(1).trim(),
+                        Integer.parseInt(matcher.group(2))));
+
+            } else if (GameMenuCommands.ANIMAL_INFO.getMatcher(input) != null) {
+                System.out.println(controller.animals());
+
+            } else if ((matcher = GameMenuCommands.SHEPHERD_ANIMAL.getMatcher(input)) != null) {
+                System.out.println(controller.shepherdAnimal(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.FEED_HAY.getMatcher(input)) != null) {
+                System.out.println(controller.feedHay(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.PRODUCES.getMatcher(input)) != null) {
+                System.out.println(controller.showProduces());
+
+            } else if ((matcher = GameMenuCommands.COLLECT_PRODUCE.getMatcher(input)) != null) {
+                System.out.println(controller.collectProduces(matcher.group(1).trim()));
+
+
+            } else if ((matcher = GameMenuCommands.SELL_ANIMAL.getMatcher(input)) != null) {
+                System.out.println(controller.sellAnimal(matcher.group(1).trim()));
+            }
+            /* -------------------------------------------------- -------------------------------------------------- */
+
+
             else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
                 System.out.println(controller.startTrade());
 
