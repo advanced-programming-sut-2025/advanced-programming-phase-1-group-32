@@ -59,6 +59,9 @@ public class Building extends Entity {
                 }
             }
         }
+
+        this.interior.setBuilding(this);
+
         worldMap.addEntity(this);
     }
 }

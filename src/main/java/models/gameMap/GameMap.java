@@ -2,6 +2,7 @@ package models.gameMap;
 
 import models.App;
 import models.Position;
+import models.building.Building;
 import models.entities.Entity;
 import models.entities.EntityList;
 import models.entities.components.EntityComponent;
@@ -19,6 +20,15 @@ public class GameMap {
     private Environment environment;
     private final EntityList entities = new EntityList();
     private final ArrayList<MapRegion> regions = new ArrayList<>();
+    private Building building = null;
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
 
     public ArrayList<Entity> getEntities() {
         return entities;
@@ -40,10 +50,6 @@ public class GameMap {
             if(e.getComponent(clazz) != null) out.add(e);
         }
         return out;
-    }
-
-    private GameMap(TileType[][] tileTypes){
-
     }
 
     public GameMap(MapData data, Environment environment){

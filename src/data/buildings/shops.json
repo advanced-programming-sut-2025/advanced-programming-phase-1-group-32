@@ -1,0 +1,27 @@
+[
+  {
+    "name" : "Stardrop",
+    "interior" : "greenHouse",
+    "exterior" : "greenHouseExterior",
+    "width" : 10,
+    "height" : 10,
+    "environment" : "BUILDING",
+    "components" : [
+      {
+        "type" : "AnimalHouse"
+      }
+    ]
+  }, {
+  "name" : "SDad",
+  "interior" : "greenHouse",
+  "exterior" : "greenHouseExterior",
+  "width" : 10,
+  "height" : 10,
+  "environment" : "BUILDING",
+  "components" : [
+    {
+      "type" : "AnimalHouse"
+    }
+  ]
+}
+]

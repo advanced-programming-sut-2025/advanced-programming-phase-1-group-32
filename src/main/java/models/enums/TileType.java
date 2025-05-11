@@ -11,6 +11,7 @@ public enum TileType {
     PLANTED_GROUND('.', new Color(107, 60, 21)),
     WALL('#', new Color(200, 200, 200)),
     DOOR('D', new Color(78, 52, 46)),
+    ROAD('.', new Color(158, 158, 158)),
     ;
 
     TileType(char character, Color color) {
