@@ -2,6 +2,7 @@ package controllers;
 
 import models.*;
 import models.Date;
+import models.animal.Animal;
 import models.building.Building;
 import models.building.BuildingData;
 import models.NPC.NPC;
@@ -649,9 +650,39 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result pet() {
-        //TODO
-        return null;
+    public Result pet(String animalName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        // TODO: check distance
+
+        if (!animal.isPetToday()) {
+            animal.setPetToday(true);
+            animal.addFriendshipLevel(15);
+        }
+
+        return new Result(true, animal.getName() + " has pet successfully!");
+    }
+
+    public Result setAnimalFriendship(String animalName, int amount) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Animal animal = currentPlayer.findAnimal(animalName);
+        if(animal == null) {
+            return new Result(false, "Animal not found");
+        }
+
+        if (amount < 0 || amount > 1000) {
+            return new Result(false, "Invalid amount. Must be between 0 and 1000");
+        }
+
+        animal.setFriendshipLevel(amount);
+
+        return new Result(true, "animal friendship set successfully!");
     }
 
     public Result animals() {

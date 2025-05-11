@@ -5,6 +5,7 @@ import models.App;
 import models.Position;
 import models.NPC.NPC;
 import models.Tile;
+import models.animal.Animal;
 import models.crafting.Recipe;
 import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
@@ -36,6 +37,7 @@ public class Player extends Entity{
     private final Account account;
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
+    private ArrayList<Animal> animals = new ArrayList<>();
 
     // boolean for messages
     private boolean haveNewMessage = false;
@@ -363,6 +365,15 @@ public class Player extends Entity{
         }
 
         return result.toString();
+    }
+
+    public Animal findAnimal(String animalName) {
+        for (Animal animal : animals) {
+            if (animal.getName().equals(animalName)) {
+                return animal;
+            }
+        }
+        return null;
     }
 
 

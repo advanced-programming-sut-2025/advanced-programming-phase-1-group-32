@@ -214,8 +214,11 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
 
             } else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
+                System.out.println(controller.pet(matcher.group(1).trim()));
 
             } else if ((matcher = GameMenuCommands.SET_ANIMAL_FRIENDSHIP.getMatcher(input)) != null) {
+                System.out.println(controller.setAnimalFriendship(matcher.group(1).trim(),
+                        Integer.parseInt(matcher.group(2))));
 
             } else if ((matcher = GameMenuCommands.ANIMAL_INFO.getMatcher(input)) != null) {
 
