@@ -2,6 +2,10 @@ package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.entities.CollisionEvent;
+import models.entities.Entity;
+import models.entities.systems.EntityPlacementSystem;
+import models.gameMap.Tile;
+import records.Result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +30,10 @@ public class Placeable extends EntityComponent{
 
     public boolean isWalkable() {
         return isWalkable;
+    }
+
+    public Result place(Entity entity, Tile tile) {
+        return EntityPlacementSystem.placeOnTile(entity, tile);
     }
 
     public ArrayList<CollisionEvent> getCollisionEvents() {

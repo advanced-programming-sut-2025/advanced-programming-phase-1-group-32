@@ -1,6 +1,5 @@
 package models.shop;
 
-import models.entities.Entity;
 import models.enums.Season;
 
 import java.util.ArrayList;
@@ -8,15 +7,22 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ShopData {
-    String shopName;
+    String name;
     private List<ShopProduct> permanentProducts = new ArrayList<>();
-    private List<ShopProduct> seasonalProducts = new ArrayList<>();
+    private HashMap<Season, List<ShopProduct>> seasonalProducts = new HashMap<>();
 
 
-    public AList<ShopProduct> getSeasonProducts(Season season) {
+    public ShopData() {
 
     }
 
+    public ArrayList<ShopProduct> getSeasonProducts(Season season) {
+        ArrayList<ShopProduct> res = new ArrayList<>(permanentProducts);
+        if(season == null)
+            return res;
+        res.addAll(seasonalProducts.get(season));
+        return res;
+    }
 
 
 

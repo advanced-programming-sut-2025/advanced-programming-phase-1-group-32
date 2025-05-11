@@ -7,6 +7,8 @@ import models.gameMap.GameMap;
 import models.gameMap.Tile;
 import records.Result;
 
+import javax.management.ImmutableDescriptor;
+
 public class EntityPlacementSystem {
     public static Result placeOnTile(Entity entity, Tile tile){
         Entity tileEntity = tile.getContent();

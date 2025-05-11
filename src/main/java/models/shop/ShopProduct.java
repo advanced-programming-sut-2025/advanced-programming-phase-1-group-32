@@ -8,18 +8,24 @@ import models.enums.Season;
 import javax.swing.*;
 
 public class ShopProduct {
-    private String name;
+    protected String name;
     private Season season;
-    private int dailyLimit;
-    private int todaySold;
+    protected int dailyLimit;
+    protected int todaySold;
+    private int price;
 
     private ShopProduct(){}
 
-    public ShopProduct(String name, Season season, int dailyLimit) {
+    protected ShopProduct(String name, int dailyLimit, int price) {
+        this(name, null, dailyLimit, price);
+    }
+
+    public ShopProduct(String name, Season season, int dailyLimit, int price) {
         this.name = name;
         this.season = season;
         this.dailyLimit = dailyLimit;
         this.todaySold = 0;
+        this.price = price;
     }
 
     public int getStock() {

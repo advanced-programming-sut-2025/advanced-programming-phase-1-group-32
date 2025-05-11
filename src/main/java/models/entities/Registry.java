@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import models.building.BuildingData;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
 
@@ -21,7 +22,7 @@ public abstract class Registry <T> {
     protected final Map<String, T> registry = new HashMap<>();
 
     abstract public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException;
-
+    abstract public T getData(String name);
     public void load(String pathStr){
         Path root = Paths.get(pathStr);
 

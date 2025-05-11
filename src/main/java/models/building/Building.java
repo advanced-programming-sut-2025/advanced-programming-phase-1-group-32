@@ -10,6 +10,7 @@ import models.enums.TileType;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
 import models.Position;
+import records.Result;
 
 public class Building extends Entity {
     private GameMap interior;
@@ -21,7 +22,8 @@ public class Building extends Entity {
     private final Environment environment;
 
     public Building(BuildingData data, Position position) {
-        super(data.name, new Placeable(false));
+        super(data.name);
+        this.addComponent(new Placeable(false));
         for (EntityComponent c : data.components) {
             this.addComponent(c);
         }

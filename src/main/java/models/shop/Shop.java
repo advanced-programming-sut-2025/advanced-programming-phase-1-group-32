@@ -1,10 +1,16 @@
 package models.shop;
 
-public class Shop
+import models.entities.components.EntityComponent;
+
+public class Shop extends EntityComponent
 {
 
     private ShopData data;
 
-    public
+    Shop() {
+
+    }
+
+
 
 }

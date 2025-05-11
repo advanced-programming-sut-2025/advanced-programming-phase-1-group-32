@@ -82,6 +82,17 @@ public enum GameMenuCommands implements Commands {
     QUEST_FINISH("\\s*quests\\s+finish\\s+-i\\s+(?<index>-?\\d+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
+    /* ------------------------------------------- Shop Commands ------------------------------------------- */
+    SHOW_ALL_PRODUCTS("^show\\s+all\\s+products$"),
+    SHOW_ALL_AVAILABLE("^show\\s+all\\s+available\\s+products$"),
+    PURCHASE("^purchase\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
+    CHEAT_ADD_DOLLARS("^cheat\\s+add\\s+(?<count>\\d+)\\s+dollars$"),
+    SELL_PRODUCT("^sell\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
+
+    /* -------------------------------------------------- -------------------------------------------------- */
+
+
+
 
     ;
 
