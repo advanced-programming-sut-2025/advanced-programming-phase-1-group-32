@@ -18,7 +18,6 @@ import java.util.Arrays;
 public class Placeable extends EntityComponent{
     private TileType[][] exterior;
 
-    private String exteriorMapName;
 
     @JsonProperty("isWalkable")
     private final boolean isWalkable;
@@ -26,10 +25,9 @@ public class Placeable extends EntityComponent{
     private ArrayList<CollisionEvent> collisionFunctions = new ArrayList<>();
 
 
-    public Placeable(TileType[][] exterior, String exteriorMapName) {
+    public Placeable(TileType[][] exterior) {
         this.isWalkable = false;
         this.exterior = exterior;
-        this.exteriorMapName = exteriorMapName;
     }
 
     public Placeable(boolean isWalkable, CollisionEvent... collisionFunctions) {
@@ -39,6 +37,7 @@ public class Placeable extends EntityComponent{
     private Placeable(Placeable other){
         this.isWalkable = other.isWalkable;
         this.collisionFunctions.addAll(other.collisionFunctions);
+        this.exterior = other.exterior;
     }
     public Placeable(){
         this(false);
@@ -81,6 +80,7 @@ public class Placeable extends EntityComponent{
         }
         return null; //TODO
     }
+
 
 
 

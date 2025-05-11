@@ -17,7 +17,7 @@ public class Building extends Entity {
     private final Environment environment;
 
     public Building(BuildingData data, Position position) {
-        super(data.name, new Placeable(App.mapRegistry.getData(data.exterior).getTypeMap(), data.exterior));
+        super(data.name, new Placeable(App.mapRegistry.getData(data.exterior).getTypeMap()));
         for (EntityComponent c : data.components) {
             this.addComponent(c);
         }
