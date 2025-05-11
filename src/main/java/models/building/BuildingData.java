@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Position;
 import models.entities.components.EntityComponent;
+import models.gameMap.GameMap;
+import models.gameMap.MapData;
 import models.gameMap.Tile;
 import models.gameMap.Environment;
 
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BuildingData {
-    public static final BuildingData dummyBuilding = new BuildingData("dummy", "greenHouse", "greenHouseExterior", 7, 8, Environment.GREEN_HOUSE);
+    public static final BuildingData dummyBuilding = new BuildingData("dummy", "greenHouse", "greenHouseExterior", Environment.GREEN_HOUSE);
 
     @JsonProperty("name")
     public String name;
@@ -19,24 +21,25 @@ public class BuildingData {
     public String interiorMap;
     @JsonProperty("exterior")
     public String exterior;
-    @JsonProperty("width")
     public int width;
-    @JsonProperty("height")
     public int height;
     @JsonProperty("environment")
     public Environment environment;
     @JsonProperty("components")
     public ArrayList<EntityComponent> components = new ArrayList<>();
 
-    public BuildingData(String name, String interiorMap, String exteriorMap, int width, int height, Environment environment,
+    public BuildingData(String name, String interiorMap, String exteriorMap, Environment environment,
                         EntityComponent... components) {
         this.name = name;
         this.interiorMap = interiorMap;
-        this.width = width;
-        this.height = height;
         this.environment = environment;
         this.exterior = exteriorMap;
         this.components.addAll(Arrays.asList(components));
+        MapData mapData = App.mapRegistry.getData(exteriorMap);
+
+
+        this.width = mapData.width;
+        this.height = mapData.height;
     }
 
     public BuildingData() {

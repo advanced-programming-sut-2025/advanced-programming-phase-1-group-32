@@ -18,7 +18,6 @@ public class Building extends Entity {
     private final String interiorMapName;
     private final String exteriorMapName;
     private final Position position;
-    private final int width, height;
     private final Environment environment;
 
     public Building(BuildingData data, Position position) {
@@ -28,8 +27,6 @@ public class Building extends Entity {
         }
 
         this.interiorMapName = data.interiorMap;
-        this.width = data.width;
-        this.height = data.height;
         this.environment = data.environment;
         this.position = position;
         this.exteriorMapName = data.exterior;
@@ -41,7 +38,7 @@ public class Building extends Entity {
 
         for(int i = 0 ; i < exterior.length ; i++){
             for(int j = 0 ; j < exterior[0].length; j++){
-                Tile worldTile = worldMap.getTileByPosition(j + position.getCol(), i + position.getRow());
+                Tile worldTile = worldMap.getTileByPosition(i + position.getRow(), j + position.getCol());
                 TileType exteriorTile = exterior[i][j];
 
                 if(exteriorTile != null){

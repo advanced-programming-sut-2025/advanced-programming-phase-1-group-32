@@ -14,7 +14,7 @@ public enum BiomeType {
     TOWN();
 
     public ArrayList<Spawnable> spawnData = new ArrayList<>();
-    public int totalWeight = 0;
+    public double totalWeight = 0;
 
     BiomeType(Spawnable... spawnables) {
         for (Spawnable s : spawnables) {
@@ -25,9 +25,9 @@ public enum BiomeType {
 
     public static class Spawnable{
         String entity;
-        int weight;
+        double weight;
 
-        public Spawnable(String entity, int weight) {
+        public Spawnable(String entity, double weight) {
             this.entity = entity;
             this.weight = weight;
         }

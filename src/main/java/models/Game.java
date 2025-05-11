@@ -13,10 +13,7 @@ import models.entities.systems.EntityPlacementSystem;
 import models.enums.EntityTag;
 import models.enums.TileType;
 import models.enums.Weather;
-import models.gameMap.Environment;
-import models.gameMap.GameMap;
-import models.gameMap.Tile;
-import models.gameMap.WorldMapType;
+import models.gameMap.*;
 import models.player.Player;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
@@ -31,7 +28,7 @@ public class Game {
     private Weather todayWeather;
     private Weather tomorrowWeather;
     private Date date = new Date();
-    private GameMap mainMap;
+    private WorldMap mainMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
     private ArrayList<Entity> plantedEntities = new ArrayList<>();
@@ -46,13 +43,19 @@ public class Game {
             addPlayer(new Player(account));
         }
 
+        App.setActiveGame(this);
+
         initGame();
+    }
+
+    public void setMainMap(WorldMap mainMap) {
+        this.mainMap = mainMap;
     }
 
     public void initGame() {
         setCurrentPlayer(players.get(0));
 
-        mainMap = new GameMap(WorldMapType.DEFAULT.getData(), Environment.GREEN_HOUSE);
+        mainMap = new WorldMap(WorldMapType.DEFAULT.getData());
         setActiveMap(mainMap);
 
         this.todayWeather = Weather.SUNNY;

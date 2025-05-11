@@ -13,6 +13,7 @@ import models.enums.Direction;
 import models.gameMap.GameMap;
 import models.gameMap.MapRegion;
 import models.gameMap.Tile;
+import models.gameMap.WorldMap;
 import models.player.Player;
 import records.Result;
 import records.WalkProposal;
@@ -262,6 +263,7 @@ public class GameMenu implements AppMenu {
             case DEFAULT -> {
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
+                        if(tile.getType() == null) continue;
                         Entity entity = tile.getContent();
                         if (entity != null) {
                             Renderable component = entity.getComponent(Renderable.class);
@@ -286,12 +288,17 @@ public class GameMenu implements AppMenu {
                 }
             }
             case REGIONS -> {
+                if(!(map instanceof WorldMap)){
+                    break;
+                }
+
+                WorldMap map1 = (WorldMap) map;
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
                         renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
                     }
                 }
-                for(MapRegion r : map.getRegions()){
+                for(MapRegion r : map1.getRegions()){
                     renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow(), r.getName(), Color.WHITE, position);
                     if(r.getOwner() != null){
                         renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, r.getOwner().getAccount().getNickname(), Color.WHITE, position);
