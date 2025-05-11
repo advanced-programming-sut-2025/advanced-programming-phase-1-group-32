@@ -1273,6 +1273,10 @@ public class GameMenuController implements Controller {
         if(!force && data.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
         if(force) data.clearArea(x, y);
         Building building = new Building(data, new Position(x, y));
+        building.getComponent(Placeable.class).place(
+                building.getComponent(PositionComponent.class),
+                building.getComponent(InteriorComponent.class).getMap()
+        );
         return new Result(true, "placed");
     }
 }
