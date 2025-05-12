@@ -4,9 +4,6 @@ public class Wallet {
     private int amount;
     private double balance;
 
-    public void changeAmount(){
-
-    }
 
     public int getAmount(){
         return 0;

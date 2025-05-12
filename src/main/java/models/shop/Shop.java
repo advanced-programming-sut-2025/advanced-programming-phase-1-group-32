@@ -15,6 +15,8 @@ public class Shop extends EntityComponent
     String name;
     private List<ShopProduct> permanentProducts;
     private HashMap<Season, List<ShopProduct>> seasonalProducts;
+    private int startHour;
+    private int endHour;
 
 
 

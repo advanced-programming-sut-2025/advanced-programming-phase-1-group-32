@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
+import models.App;
+import models.building.BuildingData;
 import models.entities.components.*;
 import models.enums.EntityTag;
 import models.enums.Material;
@@ -100,8 +102,13 @@ public class EntityRegistry extends Registry<Entity>{
 
     public Entity makeEntity(String name){
         Entity entity = this.registry.get(name.toLowerCase());
-        if(entity == null){
-            throw new RuntimeException("no entity found with the name " + name);
+
+        if(entity == null)
+        {
+            BuildingData data = App.buildingRegistry.getData(name);
+            if(data == null)
+                throw new RuntimeException("no entity found with the name " + name);
+//            return new Building(data);//TODO:
         }
         return entity.clone();
     }
