@@ -7,10 +7,12 @@ public enum TileType {
     WATER('#', new Color(50, 150, 255)),
     PLOWED('.', new Color(107, 60, 21)),
     DIRT('.', new Color(107, 60, 21)),
+    STONE('.', new Color(97, 97, 97)),
     WOOD('.', new Color(107, 60, 21)),
     PLANTED_GROUND('.', new Color(107, 60, 21)),
     WALL('#', new Color(200, 200, 200)),
     DOOR('D', new Color(78, 52, 46)),
+    ROAD('.', new Color(158, 158, 158)),
     ;
 
     TileType(char character, Color color) {

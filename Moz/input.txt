@@ -25,3 +25,10 @@ talk history -u AliAlm
 buy animal -a chicken -n chicken1
 cheat give item "Hay" 2000
 cheat set friendship -n chicken1 -c 1000
+
+tools equip Axe
+
+toggle map
+
+change input type
+

@@ -1,0 +1,72 @@
+package models.gameMap;
+
+import models.App;
+import models.Position;
+import models.building.Building;
+import models.building.BuildingData;
+import models.entities.systems.EntityPlacementSystem;
+import models.enums.TileType;
+
+import java.security.SecureRandom;
+import java.util.ArrayList;
+
+public class WorldMap extends GameMap{
+    private final ArrayList<MapRegion> regions = new ArrayList<>();
+    private final MapRegion[][] regionMap;
+    private final BiomeType[][] biomeMap;
+
+    public WorldMap(MapData data) {
+        super(data, Environment.OUTDOOR);
+
+        regionMap = data.getRegionMap();
+        if(data.regions != null){
+            this.regions.addAll(data.regions);
+        }
+        biomeMap = data.getBiomeMap();
+
+        App.getActiveGame().setMainMap(this);
+
+        for (MapData.MapLayerData<String>.ObjectData d : data.getBuildings()) {
+            BuildingData data1 = App.buildingRegistry.getData(d.value);
+            new Building(data1, new Position(d.x, d.y));
+        }
+
+        initializeMap();
+    }
+
+    public MapRegion getRegion(int x, int y){
+        if(x < 0 || x >= width || y < 0 || y > height){
+            return null;
+        }
+        return regionMap[y][x];
+    }
+    public MapRegion getRegion(Tile tile){
+        return getRegion(tile.getPosition().getCol(), tile.getPosition().getRow());
+    }
+
+    public ArrayList<MapRegion> getRegions() {
+        return regions;
+    }
+
+    private void initializeMap() {
+        SecureRandom random = new SecureRandom();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if(Math.random() > 0.8){
+                    BiomeType biome = biomeMap[i][j];
+                    if(biome!=null && tiles[i][j].getContent() == null && tiles[i][j].getType() != TileType.WALL){
+                        BiomeType.Spawnable spawnable = biome.spawnData.get(biome.spawnData.size()-1);
+
+                        for (BiomeType.Spawnable s : biome.spawnData) {
+                            if(Math.random() > s.weight / biome.totalWeight){
+                                spawnable = s;
+                            }
+                        }
+
+                        EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity(spawnable.entity), tiles[i][j]);
+                    }
+                }
+            }
+        }
+    }
+}

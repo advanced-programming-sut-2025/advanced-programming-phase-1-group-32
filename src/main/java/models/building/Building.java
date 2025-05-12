@@ -4,16 +4,23 @@ import models.App;
 import models.entities.components.EntityComponent;
 import models.entities.components.PositionComponent;
 import models.entities.components.InteriorComponent;
+import models.entities.components.PositionComponent;
+import models.entities.systems.EntityPlacementSystem;
+import models.gameMap.*;
 import models.entities.Entity;
 import models.entities.components.Placeable;
 import models.gameMap.Environment;
 import models.gameMap.GameMap;
+import models.enums.TileType;
 import models.Position;
 import records.Result;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Building extends Entity {
     private final Position position;
-    private final int width, height;
     private final Environment environment;
 
     public Building(BuildingData data, Position position) {
@@ -30,12 +37,6 @@ public class Building extends Entity {
         this.height = data.height;
         this.environment = data.environment;
         this.position = position;
-
-
-
-
-        App.getActiveGame().getMainMap().addEntity(this);
-
 
     }
 }

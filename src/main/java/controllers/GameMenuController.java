@@ -199,9 +199,9 @@ public class GameMenuController implements Controller {
 
     public Result executeWalk(WalkProposal p) {
         Player player = App.getActiveGame().getCurrentPlayer();
-//        if(!p.isAllowed()) {
-//            return new Result(false, "No walk was proposed");
-//        }
+        if(!p.isAllowed()) {
+            return new Result(false, "No walk was proposed");
+        }
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;

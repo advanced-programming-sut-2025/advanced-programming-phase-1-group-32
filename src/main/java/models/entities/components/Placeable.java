@@ -59,9 +59,6 @@ public class    Placeable extends EntityComponent{
                 if(exteriorTile != null){
                     worldTile.setType(exteriorTile);
                 }
-                if(exterior[i][j] == TileType.DOOR){
-                    EntityPlacementSystem.placeOnTile(new Door(interior), worldTile);
-                }
             }
         }
         return null; //TODO
