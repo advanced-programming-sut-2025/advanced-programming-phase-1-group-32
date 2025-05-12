@@ -1,0 +1,57 @@
+{
+  "common components": [
+    {
+      "type": "Pickable",
+      "maxStack": 8000000
+    }
+  ],
+  "required components": [
+    "Sellable"
+  ],
+  "common tags": [
+    "FISH"
+  ],
+  "entities": [
+    {
+      "name": "Ghostfish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 75
+        }
+      ]
+    },{
+      "name": "Flounder",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },{
+      "name": "Lionfish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },{
+      "name": "Herring",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 30
+        }
+      ]
+    },{
+      "name": "Legend",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 5000
+        }
+      ]
+    }
+  ]
+}

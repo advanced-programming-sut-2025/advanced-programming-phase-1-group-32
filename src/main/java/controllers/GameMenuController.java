@@ -873,7 +873,7 @@ public class GameMenuController implements Controller {
         return new Result(true, animal.getName() + " sold successfully!");
     }
 
-    public Result fishing() {
+    public Result fishing(String fishingPole) {
         //TODO
         return null;
     }

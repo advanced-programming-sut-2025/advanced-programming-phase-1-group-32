@@ -211,7 +211,7 @@ public class GameMenu implements AppMenu {
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 
-            /* ------------------------------------------- NPC Commands -------------------------------------------- */
+            /* ------------------------------------------- Animal Commands ----------------------------------------- */
             else if ((matcher = GameMenuCommands.BUILD_ANIMAL.getMatcher(input)) != null) {
 
             } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
@@ -242,6 +242,9 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.SELL_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.sellAnimal(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.FISHING.getMatcher(input)) != null) {
+                System.out.println(controller.fishing(matcher.group(1).trim()));
 
             }
             /* -------------------------------------------------- -------------------------------------------------- */

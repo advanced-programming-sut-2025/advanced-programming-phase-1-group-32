@@ -11,6 +11,7 @@ import models.entities.components.Growable;
 import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.EntityTag;
+import models.enums.Season;
 import models.enums.TileType;
 import models.enums.Weather;
 import models.gameMap.Environment;
@@ -18,6 +19,7 @@ import models.gameMap.GameMap;
 import models.gameMap.Tile;
 import models.gameMap.WorldMapType;
 import models.player.Player;
+import models.player.Skill;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
 
@@ -371,5 +373,34 @@ public class Game {
 
     public GameMap getMainMap() {
         return mainMap;
+    }
+
+    /**
+      this is the ugliest function of the project, it will take the season and fishing skill
+      and return name of available fish for fishing. I have done this to avoid making new classes
+      for fish...
+     */
+    public ArrayList<String> getAvailableFish(Season season, Skill fishingSkill) {
+        ArrayList<String> availableFish = new ArrayList<>();
+        switch (season) {
+            case SPRING -> {
+                availableFish.add("Ghostfish");
+                availableFish.add("Flounder");
+                availableFish.add("Lionfish");
+                availableFish.add("Herring");
+                if (fishingSkill.getLevel() >= 4) {
+                    availableFish.add("Legend");
+                }
+            }
+            case SUMMER -> {
+                //TODO: complete
+            }
+            case FALL -> {
+            }
+            case WINTER -> {
+            }
+        }
+
+        return availableFish;
     }
 }
