@@ -4,7 +4,6 @@ import models.*;
 import models.Date;
 import models.animal.Animal;
 import models.animal.AnimalType;
-import models.building.Building;
 import models.building.BuildingData;
 import models.NPC.NPC;
 import models.NPC.NpcFriendship;
@@ -828,17 +827,17 @@ public class GameMenuController implements Controller {
 
     public Result purchase(String productName, String count) {
         int amount = (count == null) ? 1 : Integer.parseInt(count);
-        Building activeBuilding = new Building(new BuildingData(), new Position(0, 0));//TODO: building in that
-        Shop shop = activeBuilding.getComponent(Shop.class);
-        if(shop == null)
-            return new Result(false, "This building isn't shop");
-        ShopProduct product = shop.getProductByName(productName);
-        if(product == null)
-            return new Result(false, "This shop doesn't have this product");
-        if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
-            return new Result(false, "This product isn't available in this season");
-        return BuyProductSystem.buyProduct(product, amount);
-
+//        Building activeBuilding = new Building(new BuildingData(), new Position(0, 0));//TODO: building in that
+//        Shop shop = activeBuilding.getComponent(Shop.class);
+//        if(shop == null)
+//            return new Result(false, "This building isn't shop");
+//        ShopProduct product = shop.getProductByName(productName);
+//        if(product == null)
+//            return new Result(false, "This shop doesn't have this product");
+//        if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
+//            return new Result(false, "This product isn't available in this season");
+//        return BuyProductSystem.buyProduct(product, amount);
+    return null;
     }
 
     public Result build(int x, int y, String productName) {
@@ -1492,11 +1491,11 @@ public class GameMenuController implements Controller {
         }
         if(!force && data.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
         if(force) data.clearArea(x, y);
-        Building building = new Building(data);
-        building.getComponent(Placeable.class).place(
-                new Position(x, y),
-                building
-        );
+//        Building building = new Building(data);
+//        building.getComponent(Placeable.class).place(
+//                new Position(x, y),
+//                building
+//        );
         return new Result(true, "placed");
     }
 

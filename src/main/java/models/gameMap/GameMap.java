@@ -35,7 +35,6 @@ public class GameMap {
     public void addEntity(Entity entity){
         if(entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getName() + " is getting " +
                 "added twice int the map.");
-
         this.entities.add(entity);
     }
     public void removeEntity(Entity entity){

@@ -2,8 +2,9 @@ package models.gameMap;
 
 import models.App;
 import models.Position;
-import models.building.Building;
+import models.Vec2;
 import models.building.BuildingData;
+import models.entities.Entity;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
@@ -25,10 +26,12 @@ public class WorldMap extends GameMap{
         biomeMap = data.getBiomeMap();
 
         App.getActiveGame().setMainMap(this);
+        App.getActiveGame().setActiveMap(this);
+
 
         for (MapData.MapLayerData<String>.ObjectData d : data.getBuildings()) {
-            BuildingData data1 = App.buildingRegistry.getData(d.value);
-            new Building(data1, new Position(d.x, d.y));
+            Entity building = App.entityRegistry.makeEntity(d.value);
+            EntityPlacementSystem.placeEntity(building, new Vec2(d.x, d.y));
         }
 
         initializeMap();

@@ -8,8 +8,16 @@ import models.gameMap.GameMap;
 public class PositionComponent extends EntityComponent{
     private Position position;
 
+
+    public PositionComponent(double x, double y, GameMap map){
+        position = new Position(x, y, map);
+    }
     public PositionComponent(double x, double y){
         position = new Position(x, y);
+    }
+
+    public PositionComponent(Vec2 position, GameMap map) {
+        this(position.getX(), position.getY(), map);
     }
 
     public PositionComponent(Vec2 position) {
@@ -21,7 +29,7 @@ public class PositionComponent extends EntityComponent{
     }
 
     public PositionComponent(PositionComponent other){
-        this(other.position);
+        this.position = new Position(other.getX(), other.getY(), other.getMap());
     }
 
     public PositionComponent() {

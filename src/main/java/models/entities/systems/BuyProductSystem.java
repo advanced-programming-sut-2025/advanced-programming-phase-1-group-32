@@ -1,6 +1,7 @@
 package models.entities.systems;
 
 import models.App;
+import models.Position;
 import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.Pickable;
@@ -42,7 +43,7 @@ public class BuyProductSystem {
     public static Result buildPlaceable(Entity e, int x, int y) {
         Placeable placeable = e.getComponent(Placeable.class);
         e.addComponent(new PositionComponent(x, y));
-        EntityPlacementSystem.placeEntity(e);
+        EntityPlacementSystem.placeEntity(e, new Position(x, y));
         //TODO: if can't place gets error else reduce costs
         return null;
     }

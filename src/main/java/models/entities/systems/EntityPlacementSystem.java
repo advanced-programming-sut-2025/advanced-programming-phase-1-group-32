@@ -3,7 +3,6 @@ package models.entities.systems;
 import models.App;
 import models.Position;
 import models.Vec2;
-import models.building.Building;
 import models.building.BuildingData;
 import models.building.Door;
 import models.entities.Entity;
@@ -11,9 +10,7 @@ import models.entities.components.InteriorComponent;
 import models.entities.components.Placeable;
 import models.entities.components.PositionComponent;
 import models.enums.TileType;
-import models.gameMap.GameMap;
-import models.gameMap.MapData;
-import models.gameMap.Tile;
+import models.gameMap.*;
 import records.Result;
 
 import javax.management.ImmutableDescriptor;
@@ -65,11 +62,16 @@ public class EntityPlacementSystem {
         Placeable placeable = entity.getComponent(Placeable.class);
         if(placeable == null)
             return new Result(false, "This entity isn't placeable");
+
+
         InteriorComponent interior = entity.getComponent(InteriorComponent.class);
         if(interior != null){
             buildBuilding(entity, position);
         }
-        return placeable.place(entity.getComponent(PositionComponent.class));
+
+        placeExterior(entity, position);
+
+        return new Result(true, "");
     }
 
     private static Result buildBuilding(Entity building, Vec2 position){
@@ -79,8 +81,10 @@ public class EntityPlacementSystem {
         MapData exteriorData = App.mapRegistry.getData(placeable.getExteriorName());
         MapData interiorData = App.mapRegistry.getData(interiorComponent.getInteriorName());
 
-        interiorComponent
+        //TODO environment?
+        interiorComponent.setInteriorMap(new GameMap(interiorData, Environment.BUILDING));
 
+        GameMap interiorMap = interiorComponent.getMap();
         GameMap worldMap = App.getActiveGame().getMainMap();
 
         if(exteriorData.getDoors() != null){
@@ -101,7 +105,7 @@ public class EntityPlacementSystem {
                 int dest = d.getProperty("destination").asInt;
                 Door door = new Door();
                 interiorDoors.putIfAbsent(id, door);
-                EntityPlacementSystem.placeOnTile(door, interior.getTileByPosition(d.y-1, d.x));
+                EntityPlacementSystem.placeOnTile(door, interiorMap.getTileByPosition(d.y-1, d.x));
                 inOutRefs.putIfAbsent(id, dest);
             }
 
@@ -112,9 +116,36 @@ public class EntityPlacementSystem {
                 interiorDoors.get(p.getKey()).setDestination(exteriorDoors.get(p.getValue()).getComponent(PositionComponent.class).get());
             }
 
-
         }
-        this.interior.setBuilding(this);
+        interiorMap.setBuilding(building);
 
+        return new Result(true, "");
+    }
+
+    private static Result placeExterior(Entity entity, Vec2 position){
+        GameMap activeMap = App.getActiveGame().getActiveMap();
+
+        if(entity.getComponent(Placeable.class).getExteriorName() == null){
+            return placeOnTile(entity, activeMap.getTileByPosition(position.getCol(), position.getRow()));
+        }
+
+        TileType[][] exterior = App.mapRegistry.getData(entity.getComponent(Placeable.class).getExteriorName()).getTypeMap();
+
+        for(int i = 0 ; i < exterior.length ; i++){
+            for(int j = 0 ; j < exterior[0].length; j++){
+                Tile activeTile = activeMap.getTileByPosition(i + position.getRow(), j + position.getCol());
+                TileType exteriorTile = exterior[i][j];
+
+                if(exteriorTile != null){
+                    activeTile.setType(exteriorTile);
+                }
+            }
+        }
+
+        activeMap.addEntity(entity);
+        entity.removeComponent(PositionComponent.class);
+        entity.addComponent(new PositionComponent(position, activeMap));
+
+        return new Result(true, "");
     }
 }
