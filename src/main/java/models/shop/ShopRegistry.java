@@ -1,4 +1,4 @@
-package models.building;
+package models.shop;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,17 +7,18 @@ import models.entities.Registry;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class BuildingRegistry extends Registry <BuildingData> {
+public class ShopRegistry extends Registry<ShopData> {
+
     @Override
     public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
-        BuildingData[] buildings = mapper.treeToValue(jsonRoot, BuildingData[].class);
-        for (BuildingData b : buildings) {
-            registry.putIfAbsent(b.name, b);
+        ShopData[] shopDatas = mapper.treeToValue(jsonRoot, ShopData[].class);
+        for (ShopData shopData : shopDatas) {
+            registry.putIfAbsent(shopData.name, shopData);
         }
     }
 
     @Override
-    public BuildingData getData(String name){
+    public ShopData getData(String name) {
         return registry.get(name);
     }
 }

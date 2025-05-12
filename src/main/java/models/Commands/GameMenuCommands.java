@@ -95,6 +95,13 @@ public enum GameMenuCommands implements Commands {
     PRODUCES("\\s*produces\\s*"),
     COLLECT_PRODUCE("\\s*collect\\s+produce\\s+-n\\s+(?<name>.+)\\s*"),
     SELL_ANIMAL("\\s*sell\\s+animal\\s+-n\\s+(?<name>.+)\\s*"),
+    /* ------------------------------------------- Shop Commands ------------------------------------------- */
+    SHOW_ALL_PRODUCTS("^show\\s+all\\s+products$"),
+    SHOW_ALL_AVAILABLE("^show\\s+all\\s+available\\s+products$"),
+    PURCHASE("^purchase\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
+    CHEAT_ADD_DOLLARS("^cheat\\s+add\\s+(?<count>\\d+)\\s+dollars$"),
+    SELL_PRODUCT("^sell\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
+
     /* -------------------------------------------------- -------------------------------------------------- */
 
 

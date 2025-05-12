@@ -2,10 +2,14 @@ package models.entities.systems;
 
 import models.Position;
 import models.entities.Entity;
+import models.entities.components.InteriorComponent;
+import models.entities.components.Placeable;
 import models.entities.components.PositionComponent;
 import models.gameMap.GameMap;
 import models.gameMap.Tile;
 import records.Result;
+
+import javax.management.ImmutableDescriptor;
 
 public class EntityPlacementSystem {
     public static Result placeOnTile(Entity entity, Tile tile){
@@ -46,5 +50,15 @@ public class EntityPlacementSystem {
         entity.getComponent(PositionComponent.class).setPosition(position).setMap(map);
 
         return new Result(true, "");
+    }
+
+    public static Result placeEntity(Entity entity) {
+        Placeable placeable = entity.getComponent(Placeable.class);
+        InteriorComponent interiorComponent = entity.getComponent(InteriorComponent.class);
+        if(placeable == null)
+            return new Result(false, "This entity isn't placeable");
+        if(interiorComponent == null)
+            return placeable.place(entity.getComponent(PositionComponent.class));
+        return placeable.place(entity.getComponent(PositionComponent.class), interiorComponent.getMap());
     }
 }
