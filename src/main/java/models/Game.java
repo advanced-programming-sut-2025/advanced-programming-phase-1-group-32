@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class Game {
@@ -253,8 +254,19 @@ public class Game {
             quest.reduceDaysToUnlocked();
         }
 
+        dailyThor();
 
-        //TODO
+        crowAttack();
+    }
+
+    public void crowAttack() {
+        for (Player player : players) {
+            ArrayList<Tile> tiles = new ArrayList<>(); //TODO: get planted tiles
+            for (int i = 0; i < Math.floor((double) tiles.size() / 16); i++) {
+                Tile tile = tiles.get((int) (Math.random() * tiles.size()));
+                //TODO
+            }
+        }
     }
 
     public void dailyThor() {

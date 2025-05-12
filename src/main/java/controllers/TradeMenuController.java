@@ -1,9 +1,7 @@
-package controllers.inGame;
+package controllers;
 
-import controllers.Controller;
 import models.App;
 import models.Game;
-import models.entities.Entity;
 import models.entities.components.Pickable;
 import models.enums.Menu;
 import models.player.Player;

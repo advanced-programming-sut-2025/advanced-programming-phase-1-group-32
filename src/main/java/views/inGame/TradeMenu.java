@@ -1,8 +1,6 @@
 package views.inGame;
 
-import controllers.Controller;
-import controllers.inGame.TradeMenuController;
-import models.Commands.GameMenuCommands;
+import controllers.TradeMenuController;
 import models.Commands.TradeMenuCommands;
 import views.AppMenu;
 

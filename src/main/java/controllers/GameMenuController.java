@@ -892,7 +892,7 @@ public class GameMenuController implements Controller {
 
         ArrayList<Entity> fishes = new ArrayList<>();
         ArrayList<String> availableFish = game.getAvailableFish(game.getDate().getSeason(), skill);
-        double poleEffect = 1; //TODO: get the effect
+        double poleEffect = 1; //TODO: get the effect and reduce Energy
         StringBuilder message = new StringBuilder("You got these fishes:\n");
 
         for (int i = 0; i < fishNumber; i++) {
