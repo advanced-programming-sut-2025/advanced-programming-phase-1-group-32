@@ -1,6 +1,12 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import models.App;
 import models.Position;
 import models.Vec2;
@@ -10,86 +16,49 @@ import models.entities.Entity;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 import models.gameMap.GameMap;
+import models.gameMap.MapData;
 import models.gameMap.Tile;
 import records.Result;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class    Placeable extends EntityComponent{
-    private TileType[][] exterior;
+@JsonDeserialize(using = PlaceableDeserializer.class)
+public class Placeable extends EntityComponent{
 
-
+    @JsonProperty("exteriorName")
+    private String exteriorName;
+//    @JsonProperty("exteriorMap")
+//    private TileType[][] exterior;
     @JsonProperty("isWalkable")
-    private final boolean isWalkable;
+    private boolean isWalkable;
     @JsonProperty("collisionFunctions")
     private ArrayList<CollisionEvent> collisionFunctions = new ArrayList<>();
 
-
-    public Placeable(TileType[][] exterior) {
-        this.isWalkable = false;
-        this.exterior = exterior;
-    }
-
-    public Placeable(boolean isWalkable, CollisionEvent... collisionFunctions) {
+    public Placeable(boolean isWalkable, TileType[][] exterior, String exteriorName, CollisionEvent... collisionFunctions) {
         this.isWalkable = isWalkable;
-        this.collisionFunctions.addAll(Arrays.asList(collisionFunctions));
+        if(collisionFunctions != null){
+            this.collisionFunctions.addAll(Arrays.asList(collisionFunctions));
+        }
+//        this.exterior = exterior;
+        this.exteriorName = exteriorName;
+    }
+    public Placeable(boolean isWalkable, CollisionEvent... collisionFunctions) {
+        this(isWalkable, null, null, collisionFunctions);
     }
     private Placeable(Placeable other){
         this.isWalkable = other.isWalkable;
         this.collisionFunctions.addAll(other.collisionFunctions);
-        this.exterior = other.exterior;
-    }
-    public Placeable(){
-        this(false);
+//        this.exterior = other.exterior;
+        this.exteriorName = other.exteriorName;
     }
 
     public boolean isWalkable() {
         return isWalkable;
     }
-
-    public Result place(Vec2 position, GameMap interior) {
-        GameMap worldMap = App.getActiveGame().getMainMap();
-
-        for(int i = 0 ; i < exterior.length ; i++){
-            for(int j = 0 ; j < exterior[0].length; j++){
-                Tile worldTile = worldMap.getTileByPosition(j + position.getCol(), i + position.getRow());
-                TileType exteriorTile = exterior[i][j];
-
-                if(exteriorTile != null){
-                    worldTile.setType(exteriorTile);
-                }
-                if(exterior[i][j] == TileType.DOOR){
-                    EntityPlacementSystem.placeOnTile(new Door(interior), worldTile);
-                }
-            }
-        }
-        return null; //TODO
-    }
-    public Result place(PositionComponent positionComponent, GameMap interior) {
-        return place(positionComponent.get(), interior);
-    }
-    public Result place(Vec2 position) {
-        GameMap activeMap = App.getActiveGame().getActiveMap();
-
-        for(int i = 0 ; i < exterior.length ; i++){
-            for(int j = 0 ; j < exterior[0].length; j++){
-                Tile activeTile = activeMap.getTileByPosition(j + position.getCol(), i + position.getRow());
-                TileType exteriorTile = exterior[i][j];
-
-                if(exteriorTile != null){
-                    activeTile.setType(exteriorTile);
-                }
-            }
-        }
-        return null; //TODO
-    }
-
-    public Result place(PositionComponent positionComponent) {
-        return place(positionComponent.get());
-    }
-
-
 
 
     public ArrayList<CollisionEvent> getCollisionEvents() {
@@ -103,8 +72,41 @@ public class    Placeable extends EntityComponent{
                 '}';
     }
 
+    public String getExteriorName() {
+        return exteriorName;
+    }
+//    public TileType[][] getExterior() {
+//        return exterior;
+//    }
+
+
     @Override
     public EntityComponent clone() {
         return new Placeable(this);
+    }
+}
+class PlaceableDeserializer extends JsonDeserializer<Placeable> {
+    @Override
+    public Placeable deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
+        JsonNode root = p.getCodec().readTree(p);
+
+        JsonNode isWalkableNode = root.get("isWalkable");
+        JsonNode collisionFunctionsNode = root.get("collisionFunctions");
+        JsonNode exteriorNameNode = root.get("exteriorName");
+        JsonNode exteriorMapNode = root.get("exteriorMap");
+
+
+        boolean isWalkable = false;
+        CollisionEvent[] collisionFunctions = null;
+        String exteriorName = null;
+        TileType[][] exterior = null;
+
+        if(isWalkableNode != null) isWalkable = isWalkableNode.asBoolean();
+        if(collisionFunctionsNode != null) collisionFunctions = p.getCodec().treeToValue(collisionFunctionsNode, CollisionEvent[].class);
+        if(exteriorNameNode != null) exteriorName = exteriorNameNode.asText();
+        if(exteriorMapNode != null) exterior = p.getCodec().treeToValue(exteriorMapNode, TileType[][].class);
+
+
+        return new Placeable(isWalkable, exterior,exteriorName, collisionFunctions);
     }
 }

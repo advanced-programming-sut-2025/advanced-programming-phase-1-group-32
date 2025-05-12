@@ -2,6 +2,7 @@ package models.enums;
 
 public enum EntityTag {
     TOOL,
+    FRUIT,
     ARTISAN,
     TREE,
     CROP,
@@ -12,4 +13,5 @@ public enum EntityTag {
     BREAKABLE_WITH_AXE,
     ANIMAL_PRODUCT,
     FISH,
+    BUILDING,
 }

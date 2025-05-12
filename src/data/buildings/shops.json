@@ -1,6 +1,26 @@
 [
   {
-    "name" : ""
+    "name" : "Blacksmith",
+    "startHour" : 9,
+    "endHour" : 16,
+    "permanentProducts" : [
+
+    ],
+    "seasonalProducts" :
+      {
+        "SPRING" : [
+
+        ],
+        "SUMMER" : [
+
+        ],
+        "FALL" : [
+
+        ],
+        "WINTER" : [
+
+        ]
+      }
   }
 
 

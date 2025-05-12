@@ -4,8 +4,6 @@ import models.*;
 import models.Date;
 import models.animal.Animal;
 import models.animal.AnimalType;
-import models.building.Building;
-import models.building.BuildingData;
 import models.NPC.NPC;
 import models.NPC.NpcFriendship;
 import models.NPC.Quest;
@@ -33,7 +31,6 @@ import models.player.Player;
 import models.player.*;
 import models.player.friendship.PlayerFriendship;
 import models.shop.Shop;
-import models.shop.ShopData;
 import models.shop.ShopProduct;
 import records.Result;
 import records.WalkProposal;
@@ -199,9 +196,9 @@ public class GameMenuController implements Controller {
 
     public Result executeWalk(WalkProposal p) {
         Player player = App.getActiveGame().getCurrentPlayer();
-//        if(!p.isAllowed()) {
-//            return new Result(false, "No walk was proposed");
-//        }
+        if(!p.isAllowed()) {
+            return new Result(false, "No walk was proposed");
+        }
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
@@ -828,7 +825,7 @@ public class GameMenuController implements Controller {
 
     public Result purchase(String productName, String count) {
         int amount = (count == null) ? 1 : Integer.parseInt(count);
-        Building activeBuilding = new Building(new BuildingData(), new Position(0, 0));//TODO: building in that
+        Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
         Shop shop = activeBuilding.getComponent(Shop.class);
         if(shop == null)
             return new Result(false, "This building isn't shop");
@@ -838,14 +835,12 @@ public class GameMenuController implements Controller {
         if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
             return new Result(false, "This product isn't available in this season");
         return BuyProductSystem.buyProduct(product, amount);
-
     }
 
     public Result build(int x, int y, String productName) {
-
-        Shop shop = new Shop(new ShopData());//TODO: get shop
-        Entity entity = shop.getProductByName(productName).getEntity();
-        return BuyProductSystem.buildPlaceable(entity, x, y);
+        Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        Shop shop = activeBuilding.getComponent(Shop.class);
+        return BuyProductSystem.buildPlaceable(shop.getProductByName(productName), x, y);
     }
 
 
@@ -1477,17 +1472,13 @@ public class GameMenuController implements Controller {
     }
 
     public Result cheatBuildBuilding(int x, int y, String name, boolean force){
-        BuildingData data = App.buildingRegistry.getData(name);
-        if(data == null){
+        Entity building = App.entityRegistry.makeEntity(name);
+        if(building == null || !building.hasTag(EntityTag.BUILDING))
             return new Result(false, "no building exists with that name");
-        }
-        if(!force && data.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
-        if(force) data.clearArea(x, y);
-        Building building = new Building(data, new Position(x, y));
-        building.getComponent(Placeable.class).place(
-                building.getComponent(PositionComponent.class),
-                building.getComponent(InteriorComponent.class).getMap()
-        );
+        if(!force && EntityPlacementSystem.canPlace(x, y, building.getComponent(Placeable.class)))
+            return new Result(true, "Can't place that there ma lord");
+        if(force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
+        EntityPlacementSystem.placeEntity(building, new Position(x, y));
         return new Result(true, "placed");
     }
 

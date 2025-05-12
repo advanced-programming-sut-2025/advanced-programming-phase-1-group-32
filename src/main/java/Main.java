@@ -66,7 +66,7 @@ public class Main {
         App.mapRegistry.load("src/data/maps");
         /* to check is Json entities ok or not */
         App.recipeRegistry.checkIngredients();
-        App.buildingRegistry.load("src/data/buildings");
+//        App.buildingRegistry.load("src/data/buildings");
 //        App.entityRegistry.listEntities();
 
         App.getView().log("Done.");

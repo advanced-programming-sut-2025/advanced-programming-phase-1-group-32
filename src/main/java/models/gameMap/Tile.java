@@ -14,29 +14,17 @@ public class Tile implements EntityObserver {
     private TileType type;
     final private Position position;
     private Entity content;
-    private final MapRegion region;
+//    private final MapRegion region;
     private final GameMap map;
 
-    public Tile(Position position, TileType type, MapRegion region, GameMap map) {
+    public Tile(Position position, TileType type/*, MapRegion region*/, GameMap map) {
         this.position = position;
         this.type = type;
-        this.region = region;
         this.map = map;
-        if(region != null){
-            region.addTile(this);
-        }
-
-        if(type == null){
-            throw new RuntimeException("Tile type can't be null");
-        }
+//        if(region != null){
+//            region.addTile(this);
+//        }
     }
-
-//    public void plant(Entity seed) {
-//        this.setContent(plant);
-//        this.type = TileType.PLANTED_GROUND;
-//        Game game = App.getActiveGame();
-//        game.getPlantedEntities().add(content);
-//    }
 
     public TileType getType() {
         return type;
@@ -83,11 +71,17 @@ public class Tile implements EntityObserver {
         }
     }
     public MapRegion getRegion() {
-        return region;
+        if(map instanceof WorldMap){
+            return ((WorldMap) map).getRegion(this);
+        }
+        else return null;
     }
 
     public Player getOwner(){
-        return this.region.getOwner();
+        if(map instanceof WorldMap){
+            return ((WorldMap) map).getRegion(this).getOwner();
+        }
+        else return null;
     }
 
     public GameMap getMap() {

@@ -5,8 +5,12 @@ import models.gameMap.GameMap;
 public class Position extends Vec2{
     GameMap map;
 
-    public Position(double x, double y) {
+    public Position(double x, double y, GameMap map){
         super(x, y);
+        this.map = map;
+    }
+    public Position(double x, double y) {
+        this(x, y, null);
     }
     public Position(int x, int y){
         super(x, y);

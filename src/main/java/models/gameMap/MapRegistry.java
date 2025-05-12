@@ -22,7 +22,7 @@ public class MapRegistry extends Registry<MapData>{
     public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
         String name = path.toString().substring(path.toString().lastIndexOf("/") + 1);
         name = name.substring(0, name.lastIndexOf("."));
-        this.registry.putIfAbsent(name , MapData.parse(path.toString()));
+        this.registry.putIfAbsent(name , MapData.parse(name, path.toString()));
     }
 
     public MapData getData(String name){

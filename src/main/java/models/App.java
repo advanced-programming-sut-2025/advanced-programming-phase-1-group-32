@@ -1,6 +1,5 @@
 package models;
 
-import models.building.BuildingRegistry;
 import models.crafting.RecipeRegistry;
 import models.entities.EntityRegistry;
 import models.enums.Menu;
@@ -18,9 +17,9 @@ public class App {
     private static final AppView view = new AppView();
     public static boolean shouldTerminate = false;
     public static EntityRegistry entityRegistry = new EntityRegistry();
+    public static EntityRegistry buildingRegistry = new EntityRegistry();
     public static RecipeRegistry recipeRegistry = new RecipeRegistry();
     public static MapRegistry mapRegistry = new MapRegistry();
-    public static BuildingRegistry buildingRegistry = new BuildingRegistry();
     public static Game activeGame = null;
 
     /***
