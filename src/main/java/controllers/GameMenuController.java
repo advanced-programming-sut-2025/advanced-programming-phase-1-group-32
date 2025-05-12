@@ -838,7 +838,6 @@ public class GameMenuController implements Controller {
         if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
             return new Result(false, "This product isn't available in this season");
         return BuyProductSystem.buyProduct(product, amount);
-
     }
 
     public Result build(int x, int y, String productName) {

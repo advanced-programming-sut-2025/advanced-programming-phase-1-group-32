@@ -7,6 +7,9 @@
   ],
   "required components" : [
   ],
+  "common tags" : [
+    "FRUIT"
+  ],
   "entities": [
     {
       "name": "Apricot",
