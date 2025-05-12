@@ -249,6 +249,11 @@ public class GameMenu implements AppMenu {
             }
             /* ------------------------------------------- cheat Commands ------------------------------------------ */
             else if ((matcher = GameMenuCommands.CHEAT_SKILL.getMatcher(input)) != null){
+                System.out.println(controller.cheatAddSkill(matcher.group(1).trim(),
+                        Integer.parseInt(matcher.group(2).trim())));
+
+            } else if ((matcher = GameMenuCommands.SKILL_STATUE.getMatcher(input)) != null) {
+                System.out.println(controller.skillStatue());
 
             }
 

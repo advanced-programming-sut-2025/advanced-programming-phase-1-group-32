@@ -1519,4 +1519,18 @@ public class GameMenuController implements Controller {
         return new Result(true, "added " + amount + " experience");
     }
 
+    public Result skillStatue(){
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        StringBuilder message = new StringBuilder("Your Skills:\n");
+        for (SkillType skillType : SkillType.values()) {
+            Skill skill = currentPlayer.getSkill(skillType);
+            message.append(skillType.name().toLowerCase()).append("\tLevel:").append(skill.getLevel())
+                    .append("\tExperience: ").append(skill.getExperience()).append("\n");
+        }
+
+        return new Result(true, message.toString());
+    }
+
 }
