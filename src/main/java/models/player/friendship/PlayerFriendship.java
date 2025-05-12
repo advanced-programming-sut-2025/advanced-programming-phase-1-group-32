@@ -87,9 +87,9 @@ public class PlayerFriendship {
         this.xp -= xp;
         if (this.xp < 0) {
             if (level == 0) {
-                xp = 0;
+                this.xp = 0;
             } else {
-                xp += 100 * level;
+                this.xp += 100 * level;
                 level--;
                 // TODO: I dont know what happen if they are married
             }

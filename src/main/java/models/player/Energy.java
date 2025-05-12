@@ -32,12 +32,9 @@ public class Energy {
     }
 
     public int getAmount() {
-        // TODO: check modifier effects
+        int amount = this.amount;
+        if (modifierDaysLeft > 0) amount = (int) (amount * modifier);
         return amount;
-    }
-
-    public void updateEnergy(){
-        // TODO: for daily updates
     }
 
     public void toggleUnlimited(){
@@ -53,5 +50,6 @@ public class Energy {
         if (modifierDaysLeft > 0) {
             modifierDaysLeft--;
         }
+        //TODO: other effects
     }
 }

@@ -139,7 +139,6 @@ public class TradeOffer {
             }
         }
 
-        //TODO: check more
         result.append("--------------------------------------------------------\n");
 
         return result.toString();

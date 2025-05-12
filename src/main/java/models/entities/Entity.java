@@ -186,7 +186,7 @@ public class Entity implements Cloneable{
             EntityComponent c2 = other.getComponent(c.getClass());
             if(c2 == null) return false;
 
-            if(!c2.isTheSame(c2))return false;
+            if(!c2.isTheSame(c))return false;
         }
         return true;
     }

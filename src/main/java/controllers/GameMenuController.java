@@ -851,11 +851,6 @@ public class GameMenuController implements Controller {
 
     /* -------------------------------------------------- -------------------------------------------------- */
 
-    public Result collectProduces() {
-        //TODO
-        return null;
-    }
-
     public Result sellAnimal(String animalName) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
@@ -950,20 +945,14 @@ public class GameMenuController implements Controller {
         }
 
         if (game.getFriendshipWith(giftedPlayer).getLevel() == 0) {
-//            return new Result(false, "Don't be cousin too soon:)");
+            return new Result(false, "Don't be cousin too soon:)");
         }
 
-        Entity item = App.entityRegistry.makeEntity(itemName);
-        if (item.getComponent(Pickable.class) == null) {
-            return new Result(false, "You can't gift this item!");
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!currentPlayer.getComponent(Inventory.class).doesHaveItem(itemName, amount)) {
+            return new Result(false, "You don't have " + amount + " items!");
         }
-        item.getComponent(Pickable.class).setStackSize(amount);
-
-        //TODO: check is there enough of the item and reduce
-//        if (!currentPlayer.getComponent(Inventory.class).doesHaveItem(itemName, amount)) {
-//            return new Result(false, "You don't have " + amount + " items!");
-//        }
-//        currentPlayer.getComponent(Inventory.class).removeItem(itemName, amount);
+        Entity item = inventory.takeFromInventory(itemName, amount);
 
         Gift gift = new Gift(currentPlayer, giftedPlayer, item, game.getDate());
         giftedPlayer.receiveGift(gift);
@@ -1007,7 +996,10 @@ public class GameMenuController implements Controller {
         if (rating < 3) playerFriendship.reduceXp((3 - rating) * 30 - 15);
         else playerFriendship.addXp((rating - 3) * 30 + 15);
 
-        return new Result(true, "Rated successfully!");
+        Entity item = gift.getContent().clone();
+        currentPlayer.getComponent(Inventory.class).addItem(item);
+
+        return new Result(true, "Rated and collected successfully!");
     }
 
     public Result giftHistory(String username) {
@@ -1294,7 +1286,6 @@ public class GameMenuController implements Controller {
             npcFriendship.addXp(20);
         }
 
-        //TODO
         return new Result(true, message);
     }
 

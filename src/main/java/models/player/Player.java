@@ -160,8 +160,8 @@ public class Player extends Entity{
     }
 
     public void addExperince(SkillType type, int amount) {
-        //TODO
-
+        Skill skill = getSkill(type);
+        skill.addExperience(amount);
     }
 
     public void addSuitor(Player suitor, Entity ring) {
@@ -246,7 +246,6 @@ public class Player extends Entity{
         gift.setId(giftId);
         giftId++;
         haveNewGift = true;
-        // TODO: add to box
     }
 
     public void receiveFlower() {
