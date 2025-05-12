@@ -4,7 +4,6 @@ import models.*;
 import models.Date;
 import models.animal.Animal;
 import models.animal.AnimalType;
-import models.building.BuildingData;
 import models.NPC.NPC;
 import models.NPC.NpcFriendship;
 import models.NPC.Quest;
@@ -32,7 +31,6 @@ import models.player.Player;
 import models.player.*;
 import models.player.friendship.PlayerFriendship;
 import models.shop.Shop;
-import models.shop.ShopData;
 import models.shop.ShopProduct;
 import records.Result;
 import records.WalkProposal;
@@ -1483,18 +1481,13 @@ public class GameMenuController implements Controller {
     }
 
     public Result cheatBuildBuilding(int x, int y, String name, boolean force){
-        BuildingData data = App.buildingRegistry.getData(name);
-        if(data == null){
+        Entity building = App.entityRegistry.makeEntity(name);
+        if(building == null || !building.hasTag(EntityTag.BUILDING))
             return new Result(false, "no building exists with that name");
-        }
-        if(!force && data.canPlace(x, y)) return new Result(true, "Can't place that there ma lord");
-        if(force) data.clearArea(x, y);
-        //TODO
-//        Building building = new Building(data);
-//        building.getComponent(Placeable.class).place(
-//                new Position(x, y),
-//                building
-//        );
+        if(!force && EntityPlacementSystem.canPlace(x, y, building.getComponent(Placeable.class)))
+            return new Result(true, "Can't place that there ma lord");
+        if(force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
+        EntityPlacementSystem.placeEntity(building, new Position(x, y));
         return new Result(true, "placed");
     }
 

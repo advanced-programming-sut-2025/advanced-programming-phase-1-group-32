@@ -10,7 +10,8 @@ public class ShopData {
     String name;
     List<ShopProduct> permanentProducts = new ArrayList<>();
     HashMap<Season, List<ShopProduct>> seasonalProducts = new HashMap<>();
-
+    private int startHour;
+    private int endHour;
 
     public ShopData() {
 

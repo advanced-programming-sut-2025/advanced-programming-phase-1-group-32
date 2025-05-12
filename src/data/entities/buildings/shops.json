@@ -3,6 +3,9 @@
     "InteriorComponent",
     "Placeable"
   ],
+  "common tags" : [
+    "BUILDING"
+  ],
   "entities" : [
     {
       "name": "Stardrop Saloon",

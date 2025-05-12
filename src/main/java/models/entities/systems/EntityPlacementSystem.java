@@ -3,7 +3,6 @@ package models.entities.systems;
 import models.App;
 import models.Position;
 import models.Vec2;
-import models.building.BuildingData;
 import models.building.Door;
 import models.entities.Entity;
 import models.entities.components.InteriorComponent;
@@ -13,7 +12,6 @@ import models.enums.TileType;
 import models.gameMap.*;
 import records.Result;
 
-import javax.management.ImmutableDescriptor;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,13 +63,16 @@ public class EntityPlacementSystem {
 
 
         InteriorComponent interior = entity.getComponent(InteriorComponent.class);
+        Result result = placeExterior(entity, position);
+        if(!result.isSuccessful())
+            return result;
+
         if(interior != null){
             buildBuilding(entity, position);
         }
 
-        placeExterior(entity, position);
 
-        return new Result(true, "");
+        return new Result(true, "placed");
     }
 
     private static Result buildBuilding(Entity building, Vec2 position){
@@ -148,4 +149,36 @@ public class EntityPlacementSystem {
 
         return new Result(true, "");
     }
+
+    public static boolean canPlace(int x, int y, Placeable placeable) {
+        GameMap map = App.getActiveGame().getActiveMap();
+        if (placeable.getExteriorName() == null) {
+            Tile tile = map.getTileByPosition(y, x);
+            return tile.getType().isWalkable && tile.getContent() == null ;
+        }
+        TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
+
+        for(int i = y; i < exterior.length; i++){
+            for(int j = x; j < exterior[0].length; j++){
+                if(exterior[i][j] != null){
+                    Tile tile = App.getActiveGame().getMainMap().getTileByPosition(y, x);
+                    if(tile == null || tile.getContent() != null) return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static void clearArea(int x, int y, Placeable placeable) {
+        GameMap map = App.getActiveGame().getActiveMap();
+
+        TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
+
+        for(int i = y; i < exterior.length + y; i++){
+            for(int j = x; j < exterior[0].length + x; j++){
+                Tile tile = App.getActiveGame().getMainMap().getTileByPosition(j, i);
+                if(tile.getContent() != null) tile.getContent().delete();
+            }
+        }
+    }
+
 }

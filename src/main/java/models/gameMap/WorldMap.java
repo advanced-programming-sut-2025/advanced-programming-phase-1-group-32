@@ -1,9 +1,7 @@
 package models.gameMap;
 
 import models.App;
-import models.Position;
 import models.Vec2;
-import models.building.BuildingData;
 import models.entities.Entity;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;

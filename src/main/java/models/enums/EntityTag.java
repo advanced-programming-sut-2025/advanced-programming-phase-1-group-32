@@ -13,4 +13,5 @@ public enum EntityTag {
     BREAKABLE_WITH_AXE,
     ANIMAL_PRODUCT,
     FISH,
+    BUILDING,
 }

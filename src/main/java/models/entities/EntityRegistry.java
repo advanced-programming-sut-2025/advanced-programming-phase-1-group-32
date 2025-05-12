@@ -1,30 +1,16 @@
 package models.entities;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import models.App;
-import models.building.BuildingData;
 import models.entities.components.*;
 import models.enums.EntityTag;
-import models.enums.Material;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class EntityRegistry extends Registry<Entity>{
 
@@ -105,10 +91,10 @@ public class EntityRegistry extends Registry<Entity>{
 
         if(entity == null)
         {
-            BuildingData data = App.buildingRegistry.getData(name);
+            Entity data = App.buildingRegistry.getData(name);
             if(data == null)
                 throw new RuntimeException("no entity found with the name " + name);
-//            return new Building(data);//TODO:
+            return data.clone();//TODO:
         }
         return entity.clone();
     }
