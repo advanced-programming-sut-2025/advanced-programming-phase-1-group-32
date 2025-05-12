@@ -913,6 +913,7 @@ public class GameMenuController implements Controller {
 
         }
 
+        skill.addExperience(5);
         return new Result(true, message.toString());
     }
 
@@ -1463,6 +1464,7 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    /*------------------------------------------cheat-------------------------------------------*/
     public Result cheatGiveItem(String name, int quantity){
         Player currentPlayer = App.getActiveGame().getCurrentPlayer();
         if(quantity <= 0) {
@@ -1482,6 +1484,7 @@ public class GameMenuController implements Controller {
         return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
                 " were given to " + currentPlayer.getAccount().getNickname());
     }
+
     public Result cheatBuildBuilding(int x, int y, String name, boolean force){
         BuildingData data = App.buildingRegistry.getData(name);
         if(data == null){
@@ -1496,4 +1499,24 @@ public class GameMenuController implements Controller {
         );
         return new Result(true, "placed");
     }
+
+    public Result cheatAddSkill(String name, int amount){
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        SkillType skillType = SkillType.getSkillType(name);
+        if(skillType == null){
+            return new Result(false, "Skill type not found");
+        }
+
+        Skill skill = currentPlayer.getSkill(skillType);
+        if (amount <= 0) {
+            skill.reset();
+            return new Result(true, "skill reset successfully!");
+        }
+
+        skill.addExperience(amount);
+
+        return new Result(true, "added " + amount + " experience");
+    }
+
 }

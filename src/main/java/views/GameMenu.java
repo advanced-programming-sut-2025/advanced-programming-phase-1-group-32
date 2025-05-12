@@ -247,7 +247,11 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.fishing(matcher.group(1).trim()));
 
             }
-            /* -------------------------------------------------- -------------------------------------------------- */
+            /* ------------------------------------------- cheat Commands ------------------------------------------ */
+            else if ((matcher = GameMenuCommands.CHEAT_SKILL.getMatcher(input)) != null){
+
+            }
+
 
 
             /* ------------------------------------------- Shop Commands ------------------------------------------- */

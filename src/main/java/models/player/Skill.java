@@ -10,8 +10,11 @@ public class Skill {
     }
 
     public void addExperience(int experience) {
-        //TODO
         this.experience += experience;
+        if (this.experience > 100 * this.level + 50) {
+            this.experience -= 100 * this.level + 50;
+            level++;
+        }
     }
 
     private void addLevel() {
@@ -20,5 +23,10 @@ public class Skill {
 
     public int getLevel() {
         return level;
+    }
+
+    public void reset() {
+        experience = 0;
+        level = 0;
     }
 }
