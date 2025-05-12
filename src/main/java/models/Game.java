@@ -405,11 +405,33 @@ public class Game {
                 }
             }
             case SUMMER -> {
-                //TODO: complete
+                availableFish.add("Tilapia");
+                availableFish.add("Dorado");
+                availableFish.add("Sunfish");
+                availableFish.add("Rainbow Trout");
+                if (fishingSkill.getLevel() >= 4) {
+                    availableFish.add("Crimsonfish");
+                }
+
             }
             case FALL -> {
+                availableFish.add("Salmon");
+                availableFish.add("Sardine");
+                availableFish.add("Shad");
+                availableFish.add("Blue Discus");
+                if (fishingSkill.getLevel() >= 4) {
+                    availableFish.add("Angler");
+                }
             }
             case WINTER -> {
+                availableFish.add("Midnight Carp");
+                availableFish.add("Squid");
+                availableFish.add("Tuna");
+                availableFish.add("Perch");
+                if (fishingSkill.getLevel() >= 4) {
+                    availableFish.add("Glacierfish");
+                }
+
             }
         }
 
