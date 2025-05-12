@@ -874,8 +874,46 @@ public class GameMenuController implements Controller {
     }
 
     public Result fishing(String fishingPole) {
-        //TODO
-        return null;
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+
+        if (!inventory.doesHaveItem(fishingPole)) {
+            return new Result(false, "You don't have this fishing pole!");
+        }
+
+        // TODO: check closeNess to water
+
+        Skill skill = currentPlayer.getSkill(SkillType.FISHING);
+        double fishNumberDouble = Math.random() * game.getTodayWeather().getFishingEffect();
+        fishNumberDouble *= (skill.getLevel() + 2);
+        int fishNumber = (int) Math.ceil(fishNumberDouble);
+        if (fishNumber > 6) fishNumber = 6;
+
+        ArrayList<Entity> fishes = new ArrayList<>();
+        ArrayList<String> availableFish = game.getAvailableFish(game.getDate().getSeason(), skill);
+        double poleEffect = 1; //TODO: get the effect
+        StringBuilder message = new StringBuilder("You got these fishes:\n");
+
+        for (int i = 0; i < fishNumber; i++) {
+            int random = (int) (Math.random() * availableFish.size());
+            String fishName = availableFish.get(random);
+            Entity entity = App.entityRegistry.makeEntity(fishName);
+
+            double qualityDouble = Math.random() * (skill.getLevel() + 2) * poleEffect;
+            qualityDouble /= (7 - game.getTodayWeather().getFishingEffect());
+
+            ProductQuality quality = ProductQuality.getQuality(qualityDouble);
+            entity.getComponent(Sellable.class).setProductQuality(quality);
+            entity.getComponent(Pickable.class).setStackSize(1);
+            fishes.add(entity);
+            inventory.addItem(entity);
+
+            message.append("Fish: ").append(fishName).append("\t Quality: ").append(quality).append("\n");
+
+        }
+
+        return new Result(true, message.toString());
     }
 
     /*----------------------------------------------------------------------------------------------*/

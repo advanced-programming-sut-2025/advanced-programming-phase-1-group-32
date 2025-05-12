@@ -62,3 +62,4 @@ cheat advance date 1d
 produces
 collect produce -n chicken1
 
+fishing -p pole
