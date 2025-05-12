@@ -17,14 +17,15 @@ public class ShopProduct {
     private Season season;
     protected int dailyLimit;
     protected int todaySold;
-    private HashMap<String, Integer> costs;
+    private int price;
+    private int woodCost;
+    private int stoneCost;
     /*
     * costs should be like this:
-    * "costs" : {
     *   "price" : 100,
     *   "wood" : 200,
     *   "stone" : 100
-    * }
+    *
     *
     *
     * */

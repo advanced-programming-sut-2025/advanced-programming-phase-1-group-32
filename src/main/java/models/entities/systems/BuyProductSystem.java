@@ -17,7 +17,7 @@ public class BuyProductSystem {
         Entity productEntity = product.getEntity();
 
         if(productEntity.getComponent(Pickable.class) != null) {
-            return buyPickable(productEntity, amount);
+            return buyPickable(product, amount);
         }
 
         if(productEntity.getComponent(Placeable.class) != null) {
@@ -27,12 +27,13 @@ public class BuyProductSystem {
         return new Result(false, "invalid Product!");
     }
 
-    private static Result buyPickable(Entity e, int amount) {
+    private static Result buyPickable(ShopProduct p, int amount) {
+        Entity e = p.getEntity();
         e.getComponent(Pickable.class).setStackSize(amount);
         Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
         if(inventory.canAddItem(e, amount)){
+
             inventory.addItem(e);
-            //TODO: handle costs
             return new Result(true, e.getName() +  " x(" + amount + ")" +  " added to your inventory!");
         }
         return new Result(false, "Your inventory doesn't have enough space");
