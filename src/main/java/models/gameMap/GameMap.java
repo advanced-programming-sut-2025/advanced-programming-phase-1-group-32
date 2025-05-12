@@ -2,7 +2,6 @@ package models.gameMap;
 
 import models.App;
 import models.Position;
-import models.building.Building;
 import models.entities.Entity;
 import models.entities.EntityList;
 import models.entities.components.EntityComponent;
@@ -19,13 +18,14 @@ public class GameMap {
     protected int width, height;
     protected Environment environment;
     protected final EntityList entities = new EntityList();
-    protected Building building = null;
+    protected Entity building = null;
+    protected final String mapDataName;
 
-    public Building getBuilding() {
+    public Entity getBuilding() {
         return building;
     }
 
-    public void setBuilding(Building building) {
+    public void setBuilding(Entity building) {
         this.building = building;
     }
 
@@ -57,6 +57,7 @@ public class GameMap {
         this.height = typeMap.length;
         this.width = typeMap[0].length;
         this.tiles = new Tile[height][width];
+        this.mapDataName = data.name;
 
         for(int i = 0 ; i < height ; i++){
             for(int j = 0 ; j < width ; j++){

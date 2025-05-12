@@ -4,31 +4,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Position;
 import models.Vec2;
+import models.building.Building;
 import models.building.Door;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 import models.gameMap.GameMap;
+import models.gameMap.MapData;
 import models.gameMap.Tile;
 import records.Result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class    Placeable extends EntityComponent{
     private TileType[][] exterior;
 
-
+    @JsonProperty("exterior")
+    private String exteriorName;
     @JsonProperty("isWalkable")
     private final boolean isWalkable;
     @JsonProperty("collisionFunctions")
     private ArrayList<CollisionEvent> collisionFunctions = new ArrayList<>();
 
 
-    public Placeable(TileType[][] exterior) {
+    public Placeable(TileType[][] exterior){
+        this(exterior, "");
+    }
+    public Placeable(TileType[][] exterior, String exteriorName) {
         this.isWalkable = false;
         this.exterior = exterior;
+        this.exteriorName = exteriorName;
     }
 
     public Placeable(boolean isWalkable, CollisionEvent... collisionFunctions) {
@@ -48,24 +57,6 @@ public class    Placeable extends EntityComponent{
         return isWalkable;
     }
 
-    public Result place(Vec2 position, GameMap interior) {
-        GameMap worldMap = App.getActiveGame().getMainMap();
-
-        for(int i = 0 ; i < exterior.length ; i++){
-            for(int j = 0 ; j < exterior[0].length; j++){
-                Tile worldTile = worldMap.getTileByPosition(j + position.getCol(), i + position.getRow());
-                TileType exteriorTile = exterior[i][j];
-
-                if(exteriorTile != null){
-                    worldTile.setType(exteriorTile);
-                }
-            }
-        }
-        return null; //TODO
-    }
-    public Result place(PositionComponent positionComponent, GameMap interior) {
-        return place(positionComponent.get(), interior);
-    }
     public Result place(Vec2 position) {
         GameMap activeMap = App.getActiveGame().getActiveMap();
 
@@ -86,9 +77,6 @@ public class    Placeable extends EntityComponent{
         return place(positionComponent.get());
     }
 
-
-
-
     public ArrayList<CollisionEvent> getCollisionEvents() {
         return collisionFunctions;
     }
@@ -98,6 +86,10 @@ public class    Placeable extends EntityComponent{
         return "Placeable{" +
                 "isWalkable=" + isWalkable +
                 '}';
+    }
+
+    public String getExteriorName() {
+        return exteriorName;
     }
 
     @Override

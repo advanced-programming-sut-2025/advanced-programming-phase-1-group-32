@@ -158,6 +158,7 @@ public class MapData{
     public Map<String, TileSet> tileSets = new HashMap<>();
     public ArrayList<MapRegion> regions = new ArrayList<>();
     public Map<Integer, TileData> tileMap = new HashMap<>();
+    public String name;
 
     @JsonCreator
     MapData(@JsonProperty("layers") MapLayer[] layersArray, @JsonProperty("tilesets") TileSetReference[] tileSetReferences) {
@@ -264,13 +265,14 @@ public class MapData{
         if(doorLayer == null) return null;
         return doorLayer.getObjectArray();
     }
-    public static MapData parse(String path){
+    public static MapData parse(String name, String path){
         Path file = Paths.get(path);
 
         JsonMapper mapper = new JsonMapper();
         MapData data;
         try {
             data = mapper.treeToValue(mapper.readTree(file.toFile()), MapData.class);
+            data.name = name;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

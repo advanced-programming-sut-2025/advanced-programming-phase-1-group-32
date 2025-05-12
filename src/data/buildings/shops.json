@@ -42,4 +42,19 @@
   "environment" : "BUILDING",
   "components" : []
 }
+  {
+    "name" : "Fish Shop",
+    "tags" : [],
+    "components" : [
+      {
+        "type" : "interior",
+        "name" : "blackSmithInterior"
+      },
+      {
+        "type" : "placeable",
+        "exterior" : "blackSmithExterior"
+      }
+    ]
+
+  }
 ]
