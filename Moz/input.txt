@@ -28,4 +28,5 @@ tools equip Axe
 
 toggle map
 
-cheat build building Coop 10 10 -force
+change input type
+

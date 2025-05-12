@@ -14,7 +14,6 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import models.building.Building;
 import models.enums.TileType;
 import views.inGame.Color;
 
@@ -28,6 +27,30 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+class ObjectPropertyDeserializer extends JsonDeserializer<MapData.ObjectProperty> {
+    @Override
+    public MapData.ObjectProperty deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        JsonNode node = p.getCodec().readTree(p);
+
+        MapData.ObjectProperty result = new MapData.ObjectProperty();
+        result.name = node.get("name").asText();
+        result.type = node.get("type").asText();
+
+        switch (result.type){
+            case "int" -> {
+                result.asInt = node.get("value").asInt();
+            }
+            case "double" -> {
+                result.asDouble = node.get("value").asDouble();
+            }
+            case "string" -> {
+                result.asString = node.get("value").asText();
+            }
+        }
+        return result;
+    }
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 class MapObject{
     @JsonProperty("gid")
@@ -38,6 +61,8 @@ class MapObject{
     int x;
     @JsonProperty("y")
     int y;
+    @JsonProperty("properties")
+    ArrayList<MapData.ObjectProperty> properties;
     TileData data;
 }
 enum LayerType{
@@ -121,57 +146,6 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
     }
 }
 
-class MapLayerData<T>{
-    public class ObjectData{
-        T value;
-        int x, y;
-
-        public ObjectData(T value, int x, int y) {
-            this.value = value;
-            this.x = x;
-            this.y = y;
-        }
-    }
-    public MapLayer layer;
-    public TileSet tileSet;
-    public Map<Integer, T> dataMap = new HashMap<>();
-    private T[][] dataArray;
-    private ArrayList<ObjectData> objectArray = new ArrayList<>();
-    private final Class<T> type;
-
-
-    public T[][] getDataArray() {
-        return dataArray;
-    }
-
-    public MapLayerData(Class<T> type, MapLayer layer, TileSet tileSet) {
-        this.layer = layer;
-        this.tileSet = tileSet;
-        this.type = type;
-    }
-    public ArrayList<ObjectData> getObjectArray(){
-        return objectArray;
-    }
-    public void populateData(){
-        switch (layer.type){
-            case tilelayer -> {
-                @SuppressWarnings("unchecked")
-                T[][] arr = (T[][]) Array.newInstance(type, layer.height, layer.width);
-                this.dataArray = arr;
-                for(int i = 0 ; i < layer.height ; i++){
-                    for(int j = 0 ; j < layer.width ; j++){
-                        dataArray[i][j] = dataMap.get(layer.data[i][j].globalId);
-                    }
-                }
-            }
-            case objectgroup -> {
-                for(MapObject o : layer.objects){
-                    objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y));
-                }
-            }
-        }
-    }
-}
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MapData{
     public int width, height;
@@ -180,6 +154,7 @@ public class MapData{
     public MapLayerData<MapRegion> regionsLayer = null;
     public MapLayerData<BiomeType> biomeLayer = null;
     public MapLayerData<String> buildingLayer = null;
+    public MapLayerData<String> doorLayer = null;
     public Map<String, TileSet> tileSets = new HashMap<>();
     public ArrayList<MapRegion> regions = new ArrayList<>();
     public Map<Integer, TileData> tileMap = new HashMap<>();
@@ -260,6 +235,13 @@ public class MapData{
                     }
                     buildingLayer.populateData();
                 }
+                case "door" -> {
+                    doorLayer = new MapLayerData<>(String.class, layers.get("door"), tileSets.get("objects"));
+                    for(TileData t : doorLayer.tileSet.tiles){
+                        doorLayer.dataMap.putIfAbsent(t.globalId, t.type);
+                    }
+                    doorLayer.populateData();
+                }
             }
         }
     }
@@ -278,6 +260,10 @@ public class MapData{
         if(buildingLayer == null) return null;
         return buildingLayer.getObjectArray();
     }
+    public ArrayList<MapLayerData<String>.ObjectData> getDoors(){
+        if(doorLayer == null) return null;
+        return doorLayer.getObjectArray();
+    }
     public static MapData parse(String path){
         Path file = Paths.get(path);
 
@@ -290,6 +276,78 @@ public class MapData{
         }
 
         return data;
+    }
+
+    @JsonDeserialize(using = ObjectPropertyDeserializer.class)
+    public static class ObjectProperty{
+        public String name;
+        public String type;
+        public int asInt;
+        public double asDouble;
+        public String asString;
+        public boolean asBoolean;
+    }
+
+    static public class MapLayerData<T>{
+        public class ObjectData{
+            T value;
+            public int x, y;
+            public ArrayList<ObjectProperty> properties = new ArrayList<>();
+
+            public ObjectData(T value, int x, int y, ArrayList<ObjectProperty> properties) {
+                this.value = value;
+                this.x = x;
+                this.y = y;
+                this.properties.addAll(properties);
+            }
+            public ObjectProperty getProperty(String name){
+                for (ObjectProperty p : properties) {
+                    if(p.name.equals(name)){
+                        return p;
+                    }
+                }
+                return null;
+            }
+        }
+        public MapLayer layer;
+        public TileSet tileSet;
+        public Map<Integer, T> dataMap = new HashMap<>();
+        private T[][] dataArray;
+        private ArrayList<ObjectData> objectArray = new ArrayList<>();
+        private final Class<T> type;
+
+
+        public T[][] getDataArray() {
+            return dataArray;
+        }
+
+        public MapLayerData(Class<T> type, MapLayer layer, TileSet tileSet) {
+            this.layer = layer;
+            this.tileSet = tileSet;
+            this.type = type;
+        }
+        public ArrayList<ObjectData> getObjectArray(){
+            return objectArray;
+        }
+        public void populateData(){
+            switch (layer.type){
+                case tilelayer -> {
+                    @SuppressWarnings("unchecked")
+                    T[][] arr = (T[][]) Array.newInstance(type, layer.height, layer.width);
+                    this.dataArray = arr;
+                    for(int i = 0 ; i < layer.height ; i++){
+                        for(int j = 0 ; j < layer.width ; j++){
+                            dataArray[i][j] = dataMap.get(layer.data[i][j].globalId);
+                        }
+                    }
+                }
+                case objectgroup -> {
+                    for(MapObject o : layer.objects){
+                        objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y, o.properties != null ? o.properties : new ArrayList<>()));
+                    }
+                }
+            }
+        }
     }
 }
 

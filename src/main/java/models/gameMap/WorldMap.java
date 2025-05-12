@@ -4,7 +4,6 @@ import models.App;
 import models.Position;
 import models.building.Building;
 import models.building.BuildingData;
-import models.building.BuildingRegistry;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
@@ -27,7 +26,7 @@ public class WorldMap extends GameMap{
 
         App.getActiveGame().setMainMap(this);
 
-        for (MapLayerData<String>.ObjectData d : data.getBuildings()) {
+        for (MapData.MapLayerData<String>.ObjectData d : data.getBuildings()) {
             BuildingData data1 = App.buildingRegistry.getData(d.value);
             new Building(data1, new Position(d.x, d.y));
         }

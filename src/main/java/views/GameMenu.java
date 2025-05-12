@@ -295,7 +295,9 @@ public class GameMenu implements AppMenu {
                 WorldMap map1 = (WorldMap) map;
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
-                        renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
+                        if(tile.getRegion() != null){
+                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
+                        }
                     }
                 }
                 for(MapRegion r : map1.getRegions()){
