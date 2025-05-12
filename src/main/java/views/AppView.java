@@ -69,6 +69,10 @@ public class AppView {
     public void log(String string){
         System.out.println(string);
     }
+    public void err(String string) {
+        System.err.println(string);
+    }
+
     public int getTerminalHeight(){
         return terminalSize.getRows();
     }

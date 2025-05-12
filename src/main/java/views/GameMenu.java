@@ -22,6 +22,7 @@ import views.inGame.Renderer;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameMenu implements AppMenu {
     private final GameMenuController controller = new GameMenuController();
@@ -210,6 +211,20 @@ public class GameMenu implements AppMenu {
             }
             /* -------------------------------------------------- -------------------------------------------------- */
 
+            /* ------------------------------------------- Shop Commands ------------------------------------------- */
+            else if ((matcher = GameMenuCommands.SHOW_ALL_AVAILABLE.getMatcher(input)) != null) {
+                System.out.println(controller.showAvailableProducts());
+            } else if ((matcher = GameMenuCommands.SHOW_ALL_PRODUCTS.getMatcher(input)) != null) {
+                System.out.println(controller.showAllProducts());
+            } else if ((matcher = GameMenuCommands.PURCHASE.getMatcher(input)) != null) {
+                handlePurchase(
+                        matcher.group("productName"),
+                        matcher.group("count"),
+                        scanner
+                );
+            }
+            /* -------------------------------------------------- -------------------------------------------------- */
+
             else if ((matcher = GameMenuCommands.START_TRADE.getMatcher(input)) != null) {
                 System.out.println(controller.startTrade());
 
@@ -300,6 +315,21 @@ public class GameMenu implements AppMenu {
                     }
                 }
             }
+        }
+    }
+
+    private void handlePurchase(String productName, String count, Scanner scanner) {
+        Pattern pattern = Pattern.compile(".+?(-?\\d+)[,\\s]+(-?\\d+).+");
+        Result result = controller.purchase(productName, count);
+        if(result.isSuccessful() && result.message() == null) {
+            System.out.println("enter x and y to build " + productName);
+            String input = scanner.nextLine().trim();
+            Matcher matcher = pattern.matcher(input);
+            if(!matcher.matches()) {
+                System.out.println("Invalid input! build canceled");
+                return;
+            }
+            System.out.println(controller.build());
         }
     }
 

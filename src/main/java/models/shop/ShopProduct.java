@@ -3,7 +3,11 @@ package models.shop;
 import models.App;
 import models.entities.Entity;
 import models.entities.EntityRegistry;
+import models.entities.components.Pickable;
+import models.entities.components.inventory.Inventory;
+import models.entities.components.inventory.InventorySlot;
 import models.enums.Season;
+import records.Result;
 
 import javax.swing.*;
 
@@ -35,10 +39,11 @@ public class ShopProduct {
         return dailyLimit - todaySold;
     }
 
-    public Entity buy(int amount) {
-        if(amount > getStock())
-            return null;
+    public void addSold(int amount) {
         todaySold += amount;
+    }
+
+    public Entity getEntity() {
         return App.entityRegistry.makeEntity(name);
     }
 
