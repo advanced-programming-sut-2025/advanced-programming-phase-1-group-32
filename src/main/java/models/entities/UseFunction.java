@@ -232,6 +232,7 @@ public enum UseFunction {
             tool.getComponent(Container.class).fillContainer();
             Inventory inventory = player.getComponent(Inventory.class);
             inventory.addItem(product);
+            animal.addFriendshipLevel(5);
             player.getSkill(SkillType.FARMING).addExperience(5);
             return new Result(true, "Milk extracted successfully");
         }
