@@ -10,13 +10,24 @@ import models.enums.Season;
 import records.Result;
 
 import javax.swing.*;
+import java.util.HashMap;
 
 public class ShopProduct {
     protected String name;
     private Season season;
     protected int dailyLimit;
     protected int todaySold;
-    private int price;
+    private HashMap<String, Integer> costs;
+    /*
+    * costs should be like this:
+    * "costs" : {
+    *   "price" : 100,
+    *   "wood" : 200,
+    *   "stone" : 100
+    * }
+    *
+    *
+    * */
 
     private ShopProduct(){}
 

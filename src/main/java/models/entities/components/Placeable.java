@@ -3,6 +3,7 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Position;
+import models.Vec2;
 import models.building.Door;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
@@ -15,7 +16,7 @@ import records.Result;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Placeable extends EntityComponent{
+public class    Placeable extends EntityComponent{
     private TileType[][] exterior;
 
 
@@ -47,7 +48,7 @@ public class Placeable extends EntityComponent{
         return isWalkable;
     }
 
-    public Result place(PositionComponent position, GameMap interior) {
+    public Result place(Vec2 position, GameMap interior) {
         GameMap worldMap = App.getActiveGame().getMainMap();
 
         for(int i = 0 ; i < exterior.length ; i++){
@@ -65,7 +66,10 @@ public class Placeable extends EntityComponent{
         }
         return null; //TODO
     }
-    public Result place(PositionComponent position) {
+    public Result place(PositionComponent positionComponent, GameMap interior) {
+        return place(positionComponent.get(), interior);
+    }
+    public Result place(Vec2 position) {
         GameMap activeMap = App.getActiveGame().getActiveMap();
 
         for(int i = 0 ; i < exterior.length ; i++){
@@ -79,6 +83,10 @@ public class Placeable extends EntityComponent{
             }
         }
         return null; //TODO
+    }
+
+    public Result place(PositionComponent positionComponent) {
+        return place(positionComponent.get());
     }
 
 

@@ -329,7 +329,9 @@ public class GameMenu implements AppMenu {
                 System.out.println("Invalid input! build canceled");
                 return;
             }
-            System.out.println(controller.build());
+            int x = Integer.parseInt(matcher.group(1));
+            int y = Integer.parseInt(matcher.group(2));
+            System.out.println(controller.build(x, y, productName));
         }
     }
 

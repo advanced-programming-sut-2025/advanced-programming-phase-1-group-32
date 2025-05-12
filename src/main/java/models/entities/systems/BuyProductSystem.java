@@ -1,9 +1,11 @@
 package models.entities.systems;
 
 import models.App;
+import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.Pickable;
 import models.entities.components.Placeable;
+import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
 import models.shop.ShopProduct;
 import records.Result;
@@ -30,14 +32,19 @@ public class BuyProductSystem {
         Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
         if(inventory.canAddItem(e, amount)){
             inventory.addItem(e);
+            //TODO: handle costs
             return new Result(true, e.getName() +  " x(" + amount + ")" +  " added to your inventory!");
         }
         return new Result(false, "Your inventory doesn't have enough space");
     }
 
 
-    private static Result buildPlaceable(Entity e) {
-
+    public static Result buildPlaceable(Entity e, int x, int y) {
+        Placeable placeable = e.getComponent(Placeable.class);
+        e.addComponent(new PositionComponent(x, y));
+        EntityPlacementSystem.placeEntity(e);
+        //TODO: if can't place gets error else reduce costs
+        return null;
     }
 
 

@@ -719,6 +719,9 @@ public class GameMenuController implements Controller {
 
     public Result build(int x, int y, String productName) {
 
+        Shop shop = new Shop(new ShopData());//TODO: get shop
+        Entity entity = shop.getProductByName(productName).getEntity();
+        return BuyProductSystem.buildPlaceable(entity, x, y);
     }
 
 
