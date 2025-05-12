@@ -64,4 +64,16 @@ public class ShopProduct {
         return this.season.equals(season);
     }
 
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public int getStoneCost() {
+        return stoneCost;
+    }
+
+    public int getWoodCost() {
+        return woodCost;
+    }
 }

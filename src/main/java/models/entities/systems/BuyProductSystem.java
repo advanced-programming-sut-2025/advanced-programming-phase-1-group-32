@@ -7,6 +7,7 @@ import models.entities.components.Pickable;
 import models.entities.components.Placeable;
 import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
+import models.player.Wallet;
 import models.shop.ShopProduct;
 import records.Result;
 
@@ -32,7 +33,10 @@ public class BuyProductSystem {
         e.getComponent(Pickable.class).setStackSize(amount);
         Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
         if(inventory.canAddItem(e, amount)){
-
+            Result result = handlePay(p, amount);
+            if(!result.isSuccessful())
+                return result;
+            p.addSold(amount);
             inventory.addItem(e);
             return new Result(true, e.getName() +  " x(" + amount + ")" +  " added to your inventory!");
         }
@@ -40,13 +44,34 @@ public class BuyProductSystem {
     }
 
 
-    public static Result buildPlaceable(Entity e, int x, int y) {
+    public static Result buildPlaceable(ShopProduct p, int x, int y) {
+        Entity e = p.getEntity();
         Placeable placeable = e.getComponent(Placeable.class);
         e.addComponent(new PositionComponent(x, y));
         EntityPlacementSystem.placeEntity(e);
         //TODO: if can't place gets error else reduce costs
-        return null;
+        Result result = handlePay(p, 1);
+        if(!result.isSuccessful())
+            return result;
+return null;
+
+
     }
 
+
+    private static Result handlePay(ShopProduct p, int amount) {
+        Wallet wallet = App.getActiveGame().getCurrentPlayer().getWallet();
+        Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
+        if(wallet.getBalance() < amount * p.getPrice())
+            return new Result(false, "You don't have enough money!");
+        if(!inventory.doesHaveItem("Wood", amount * p.getWoodCost()))
+            return new Result(false, "You don't have enough wood!");
+        if(!inventory.doesHaveItem("Stone", amount * p.getStoneCost()))
+            return new Result(false, "You don't have stone!");
+        wallet.changeBalance(-amount * p.getPrice());
+        inventory.takeFromInventory("Wood", amount * p.getWoodCost());
+        inventory.takeFromInventory("Stone", amount * p.getStoneCost());
+        return new Result(true, "paid successfully");
+    }
 
 }
