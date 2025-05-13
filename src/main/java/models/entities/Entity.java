@@ -56,6 +56,11 @@ public class Entity implements Cloneable{
             this.id = id;
         }
     }
+    public Entity() {
+        this.entityName = "Unnamed Entity";
+        this.id = entityCounter++;
+    }
+
     public Entity(String entityName, HashSet<EntityTag> tags, EntityComponent... components){
         this(entityName, new ArrayList<>(Arrays.asList(components)), tags, 0);
     }

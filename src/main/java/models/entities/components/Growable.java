@@ -79,6 +79,8 @@ public class Growable extends EntityComponent {
         return seed;
     }
 
+
+
     public ArrayList<Integer> getStages() {
         return stages;
     }
@@ -211,9 +213,6 @@ public class Growable extends EntityComponent {
             daysPastFromWatered = 0;
         }
 
-        if (daysPastFromWatered >= 2) {
-            //TODO
-        }
     }
 
     public Result canCollectProduct() {
