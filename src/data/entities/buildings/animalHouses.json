@@ -1,0 +1,108 @@
+{
+  "required components" : [
+    "AnimalHouse",
+    "InteriorComponent",
+    "Placeable"
+  ],
+
+  "entities" : [
+    {
+      "name" : "Coop",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "COOP",
+          "capacity" : "4"
+        }
+      ]
+
+    },{
+      "name" : "Big Coop",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "COOP",
+          "capacity" : "8"
+        }
+      ]
+    },{
+      "name" : "Deluxe Coop",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "COOP",
+          "capacity" : "12"
+        }
+      ]
+    },{
+      "name" : "Barn",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "BARN",
+          "capacity" : "4"
+        }
+      ]
+    },{
+      "name" : "Big Barn",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "BARN",
+          "capacity" : "8"
+        }
+      ]
+    },{
+      "name" : "Deluxe Barn",
+      "components" : [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "marniesRanchInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "marniesRanchExterior"
+        },{
+          "type" : "AnimalHouse",
+          "houseType" : "BARN",
+          "capacity" : "12"
+        }
+      ]
+    }
+  ]
+}
