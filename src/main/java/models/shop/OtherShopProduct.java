@@ -4,7 +4,7 @@ import models.App;
 import models.entities.Entity;
 import models.enums.Season;
 
-public class OtherShopProduct extends ShopProduct{
+public class OtherShopProduct extends ShopProduct {
     private Season season;
 
     public OtherShopProduct(String name, int dailyLimit) {
@@ -25,4 +25,10 @@ public class OtherShopProduct extends ShopProduct{
     public int getStoneCost() {
         return 0;
     }
+
+    public boolean isInSeason(Season season) {
+        return this.season.equals(season);
+    }
+
+
 }

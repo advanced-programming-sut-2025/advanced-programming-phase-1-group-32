@@ -1,5 +1,6 @@
 package models.shop;
 
+import models.animal.Animal;
 import models.entities.components.EntityComponent;
 import models.enums.Season;
 
@@ -7,15 +8,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Shop extends EntityComponent
-{
+public class Shop extends EntityComponent {
 
     String name;
+    //TODO: change these to write better in json:
     private List<ShopProduct> permanentProducts;
     private HashMap<Season, List<ShopProduct>> seasonalProducts;
     private int startHour;
     private int endHour;
-
 
 
     Shop() {
@@ -36,28 +36,50 @@ public class Shop extends EntityComponent
     public ArrayList<ShopProduct> getAvailableProducts(Season season) {
         ArrayList<ShopProduct> res = new ArrayList<>();
         res.addAll(permanentProducts.stream().filter(p -> !(p.getStock() == 0)).toList());
-        if(season == null)
+        if (season == null)
             return res;
         res.addAll(seasonalProducts.get(season).stream().filter(p -> !(p.getStock() == 0)).toList());
         return res;
     }
 
-    public ShopProduct getProductByName(String name) {
+    private ShopProduct getProductByName(String name) {
         for (ShopProduct product : permanentProducts) {
-            if(product.getEntity().getEntityName().equalsIgnoreCase(name))
+            if (product.getEntity().getEntityName().equalsIgnoreCase(name))
                 return product;
         }
         for (List<ShopProduct> value : seasonalProducts.values()) {
             for (ShopProduct product : value) {
-                if(product.getEntity().getEntityName().equalsIgnoreCase(name))
+                if (product.getEntity().getEntityName().equalsIgnoreCase(name))
                     return product;
             }
         }
         return null;
     }
 
+    public OtherShopProduct getOtherShopProduct(String name) {
+        ShopProduct product =  getProductByName(name);
+        if(product instanceof OtherShopProduct) {
+            return (OtherShopProduct) product;
+        }
+        return null;
+    }
 
-    public String allProducts(){
+    public BuildingShopProduct getBuildingShopProduct(String name) {
+        ShopProduct product = getProductByName(name);
+        if(product instanceof BuildingShopProduct)
+            return (BuildingShopProduct) product;
+        return null;
+    }
+
+    public AnimalShopProduct getAnimalShopProduct(String name) {
+        ShopProduct product = getProductByName(name);
+        if (product instanceof AnimalShopProduct)
+            return (AnimalShopProduct) product;
+        return null;
+    }
+
+
+    public String allProducts() {
         StringBuilder sb = new StringBuilder();
         sb.append("Permanent Products : \n");
         for (ShopProduct permanentProduct : permanentProducts) {
@@ -66,7 +88,7 @@ public class Shop extends EntityComponent
         sb.append("----------------------------------------------------------\n");
         for (Season value : Season.values()) {
 
-            if(seasonalProducts.get(value) != null) {
+            if (seasonalProducts.get(value) != null) {
                 sb.append(value.toString().charAt(0)
                         + value.toString().substring(1).toLowerCase() + " Products : \n");
                 for (ShopProduct shopProduct : seasonalProducts.get(value)) {

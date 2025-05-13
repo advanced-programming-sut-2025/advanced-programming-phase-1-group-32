@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import models.App;
 import models.entities.Entity;
 import models.entities.EntityRegistry;
+import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
@@ -39,15 +40,15 @@ abstract public class ShopProduct {
     protected int todaySold;
     protected int price;
     /*
-    * costs should be like this:
-    *   "price" : 100,
-    *   "wood" : 200,
-    *   "stone" : 100
-    *
-    *
-    *
-    *
-    * */
+     * costs should be like this:
+     *   "price" : 100,
+     *   "wood" : 200,
+     *   "stone" : 100
+     *
+     *
+     *
+     *
+     * */
 
     private ShopProduct() {
 
@@ -60,7 +61,7 @@ abstract public class ShopProduct {
     }
 
     public int getStock() {
-        if(dailyLimit < 0) {
+        if (dailyLimit < 0) {
             return -1;
         }
         return dailyLimit - todaySold;
@@ -75,7 +76,12 @@ abstract public class ShopProduct {
     }
 
     abstract public Entity getEntity();
+
     abstract public int getWoodCost();
+
     abstract public int getStoneCost();
+
+
+
 
 }

@@ -13,11 +13,12 @@ public enum Menu {
     TRADE_MENU(new TradeMenu()),
     ;
     private final AppMenu menu;
-    Menu(AppMenu menu){
+
+    Menu(AppMenu menu) {
         this.menu = menu;
     }
 
-    public void checker(Scanner scanner){
+    public void checker(Scanner scanner) {
         this.menu.checker(scanner);
     }
 
@@ -42,7 +43,7 @@ public enum Menu {
         }
         menuName = sb.toString();
         for (Menu menu : Menu.values()) {
-            if(menu.toString().replace(" ", "").toLowerCase().equals(menuName))
+            if (menu.toString().replace(" ", "").toLowerCase().equals(menuName))
                 return menu;
         }
         return null;

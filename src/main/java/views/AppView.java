@@ -19,8 +19,8 @@ public class AppView {
     //false is the typical terminal mode
     private boolean rawMode = false;
 
-    public AppView(){
-        try{
+    public AppView() {
+        try {
             terminal = TerminalBuilder.builder().system(true)
                     .jna(false)
                     .build();
@@ -38,8 +38,9 @@ public class AppView {
         scanner = new Scanner(System.in);
         renderer = new Renderer(this);
     }
+
     public void run() {
-        while(!App.shouldTerminate) {
+        while (!App.shouldTerminate) {
             App.getCurrentMenu().checker(scanner);
         }
     }
@@ -49,11 +50,11 @@ public class AppView {
     }
 
     public void switchInputType() {
-        try{
-            if(this.rawMode){
+        try {
+            if (this.rawMode) {
                 Attributes attributes = terminal.getAttributes();
                 this.terminal.close();
-            }else{
+            } else {
                 terminal.enterRawMode();
             }
             this.rawMode = !this.rawMode;
@@ -62,24 +63,28 @@ public class AppView {
         }
     }
 
-    public String inputWithPrompt(String prompt){
+    public String inputWithPrompt(String prompt) {
         System.out.println(prompt);
         return scanner.nextLine();
     }
-    public void log(String string){
+
+    public void log(String string) {
         System.out.println(string);
     }
+
     public void err(String string) {
         System.err.println(string);
     }
 
-    public int getTerminalHeight(){
+    public int getTerminalHeight() {
         return terminalSize.getRows();
     }
-    public int getTerminalWidth(){
+
+    public int getTerminalWidth() {
         return terminalSize.getColumns();
     }
-    public Terminal getTerminal(){
+
+    public Terminal getTerminal() {
         return terminal;
     }
 
@@ -87,7 +92,7 @@ public class AppView {
         return renderer;
     }
 
-    public Scanner getScanner(){
+    public Scanner getScanner() {
         return scanner;
     }
 }

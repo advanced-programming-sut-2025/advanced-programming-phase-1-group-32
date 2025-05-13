@@ -8,7 +8,7 @@ import models.entities.components.Placeable;
 import models.entities.components.inventory.Inventory;
 import models.player.Player;
 import models.player.Wallet;
-import models.shop.ShopProduct;
+import models.shop.*;
 import records.Result;
 
 public class ShopSystem {
@@ -19,18 +19,23 @@ public class ShopSystem {
 
 
 
-        if(productEntity.getComponent(Pickable.class) != null) {
+        if(productEntity.getComponent(Pickable.class) != null && product instanceof OtherShopProduct) {
             return buyPickable(product, amount);
         }
-
-        if(productEntity.getComponent(Placeable.class) != null) {
+/*
+        if(productEntity.getComponent(Placeable.class) != null && product instanceof BuildingShopProduct) {
             return new Result(true, null);
         }
-        App.getView().err("error: product " + productEntity.getEntityName() + " doesn't have placeable and pickable component");
+
+        if(product instanceof AnimalShopProduct) {
+            return new Result(true, null);
+        }*/
+
+        App.getView().err("error: product " + productEntity.getEntityName() + " doesn't belong to any states");
         return new Result(false, "invalid Product!");
     }
 
-    private static Result buyPickable(ShopProduct p, int amount) {
+    public static Result buyPickable(ShopProduct p, int amount) {
         Entity e = p.getEntity();
         e.getComponent(Pickable.class).setStackSize(amount);
         Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
@@ -47,19 +52,26 @@ public class ShopSystem {
 
 
     public static Result buildPlaceable(ShopProduct p, int x, int y) {
+        if(!(p instanceof BuildingShopProduct))
+            return new Result(false, "this can not be placed");
         Entity e = p.getEntity();
         Placeable placeable = e.getComponent(Placeable.class);
         EntityPlacementSystem.placeEntity(e, new Position(x, y));
         Player player = App.getActiveGame().getCurrentPlayer();
         player.addOwnedBuilding(e);
-        //TODO: if can't place gets error else reduce costs
+        //TODO: if can't place gets error
         Result result = handlePay(p, 1);
         if(!result.isSuccessful())
             return result;
         return null;
+    }
 
+
+    public static Result buyAnimal() {
 
     }
+
+
 
 
 

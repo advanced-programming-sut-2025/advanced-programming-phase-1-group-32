@@ -30,10 +30,11 @@ public class GameMenu implements AppMenu {
     private final GameMenuController controller = new GameMenuController();
     private Result previousResult = null;
 
-    private enum MapRenderType{
+    private enum MapRenderType {
         DEFAULT,
         REGIONS
     }
+
     MapRenderType mapRenderType = MapRenderType.DEFAULT;
 
     @Override
@@ -41,17 +42,17 @@ public class GameMenu implements AppMenu {
         renderGame();
 
         previousResult = null;
-        if(App.getView().isRawMode()){
+        if (App.getView().isRawMode()) {
             int c = 0;
             try {
-                if(App.getView().getTerminal().reader().peek(1000) > 0){
+                if (App.getView().getTerminal().reader().peek(1000) > 0) {
                     c = App.getView().getTerminal().reader().read();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             previousResult = controller.handleRawInput((char) c);
-        }else {
+        } else {
             String input = scanner.nextLine().trim();
             Matcher matcher;
             if (GameMenuCommands.DATE.getMatcher(input) != null) {
@@ -115,7 +116,7 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
                 showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
 
-            }else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
+            } else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
                 System.out.println(controller.cheatGiveItem(
                         matcher.group("name"),
                         Integer.parseInt(matcher.group("quantity"))
@@ -141,11 +142,10 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.ARTISAN_GET.getMatcher(input)) != null) {
                 System.out.println(controller.getArtisan(matcher.group("artisanName")));
 
-            }
-            else if ((matcher = GameMenuCommands.FERTILIZE.getMatcher(input)) != null ){
-                System.out.println(controller.fertilize(matcher.group(1).trim(),matcher.group(2) ));
+            } else if ((matcher = GameMenuCommands.FERTILIZE.getMatcher(input)) != null) {
+                System.out.println(controller.fertilize(matcher.group(1).trim(), matcher.group(2)));
 
-            } else if ((matcher = GameMenuCommands.TALK.getMatcher(input)) != null ) {
+            } else if ((matcher = GameMenuCommands.TALK.getMatcher(input)) != null) {
                 System.out.println(controller.talk(matcher.group(1).trim(), matcher.group(2).trim()));
 
             } else if ((matcher = GameMenuCommands.TALK_HISTORY.getMatcher(input)) != null) {
@@ -161,13 +161,13 @@ public class GameMenu implements AppMenu {
             } else if (GameMenuCommands.GIFT_LIST.getMatcher(input) != null) {
                 System.out.println(controller.giftList());
 
-            } else if ((matcher =GameMenuCommands.GIFT_RATE.getMatcher(input)) != null) {
+            } else if ((matcher = GameMenuCommands.GIFT_RATE.getMatcher(input)) != null) {
                 System.out.println(controller.giftRate(Integer.parseInt(matcher.group(1)),
                         Integer.parseInt(matcher.group(2))));
 
             } else if ((matcher = GameMenuCommands.GIFT_HISTORY.getMatcher(input)) != null) {
                 System.out.println(controller.giftHistory(matcher.group(1).trim()));
-                
+
             } else if ((matcher = GameMenuCommands.HUG.getMatcher(input)) != null) {
                 System.out.println(controller.hug(matcher.group(1).trim()));
 
@@ -217,14 +217,24 @@ public class GameMenu implements AppMenu {
             else if ((matcher = GameMenuCommands.BUILD_ANIMAL.getMatcher(input)) != null) {
 
             } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
-                AnimalPurchaseDetails details = controller.buyAnimal(matcher.group(1).trim(), matcher.group(2).trim());
-                System.out.println(details.message());
-                if (details.canBuy()) {
-                    String chosenName = scanner.nextLine();
-                    System.out.println(controller.chooseHouseForAnimal(details, chosenName));
-                }
+//                AnimalPurchaseDetails details = controller.buyAnimal(matcher.group(1).trim(), matcher.group(2).trim());
+//                System.out.println(details.message());
+//                if (details.canBuy()) {
+//                    String chosenName = scanner.nextLine();
+//                    System.out.println(controller.chooseHouseForAnimal(details, chosenName));
+//                }
+                System.out.println(controller.buyAnimal(
+                        matcher.group("animalName"),
+                        matcher.group("name"),
+                        matcher.group("house")
+                ));
 
-            } else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
+            }
+            else if((matcher = GameMenuCommands.SHOW_MY_ANIMAL_HOUSES.getMatcher(input)) != null) {
+                System.out.println(controller.showMyAnimalHouses());
+            }
+
+            else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.pet(matcher.group(1).trim()));
 
             } else if ((matcher = GameMenuCommands.SET_ANIMAL_FRIENDSHIP.getMatcher(input)) != null) {
@@ -255,7 +265,7 @@ public class GameMenu implements AppMenu {
 
             }
             /* ------------------------------------------- cheat Commands ------------------------------------------ */
-            else if ((matcher = GameMenuCommands.CHEAT_SKILL.getMatcher(input)) != null){
+            else if ((matcher = GameMenuCommands.CHEAT_SKILL.getMatcher(input)) != null) {
                 System.out.println(controller.cheatAddSkill(matcher.group(1).trim(),
                         Integer.parseInt(matcher.group(2).trim())));
 
@@ -297,7 +307,7 @@ public class GameMenu implements AppMenu {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
             } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
                 System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
-                                                                                    matcher.group("name") ,matcher.group("force") != null));
+                        matcher.group("name"), matcher.group("force") != null));
             } else if ((matcher = GameMenuCommands.ADD_MONEY.getMatcher(input)) != null) {
                 System.out.println(controller.addMoney(Integer.parseInt(matcher.group(1).trim())));
 
@@ -307,9 +317,10 @@ public class GameMenu implements AppMenu {
         }
 
     }
-    public void renderGame(){
+
+    public void renderGame() {
         Game activeGame = App.getActiveGame();
-        if(activeGame.isMapVisible()){
+        if (activeGame.isMapVisible()) {
             printMap(activeGame.getActiveMap());
             App.getView().getRenderer().render();
             App.getView().getRenderer().moveCurser(0, 0);
@@ -322,21 +333,22 @@ public class GameMenu implements AppMenu {
             System.out.println("position: " + position + " " + position.getMap());
             System.out.println("money: " + player.getWallet().getBalance());
 
-            if(previousResult != null){
+            if (previousResult != null) {
                 System.out.println(previousResult);
             }
         }
     }
+
     public void printMap(GameMap map) {
         Tile[][] tiles = map.getTiles();
         App.getView().getRenderer().clear();
         Position position = App.getActiveGame().getCurrentPlayer().getPosition();
         Renderer renderer = App.getView().getRenderer();
-        switch (mapRenderType){
+        switch (mapRenderType) {
             case DEFAULT -> {
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
-                        if(tile.getType() == null) continue;
+                        if (tile.getType() == null) continue;
                         Entity entity = tile.getContent();
                         if (entity != null) {
                             Renderable component = entity.getComponent(Renderable.class);
@@ -349,35 +361,35 @@ public class GameMenu implements AppMenu {
                         }
                     }
                 }
-                for(Entity e : map.getEntities()){
+                for (Entity e : map.getEntities()) {
                     PositionComponent positionComponent = e.getComponent(PositionComponent.class);
 
-                    if(e.getComponent(Renderable.class) != null){
+                    if (e.getComponent(Renderable.class) != null) {
                         renderer.mvAddchColored(positionComponent.getCol(), positionComponent.getRow(),
-                                                e.getComponent(Renderable.class).getCharacter(),
-                                                e.getComponent(Renderable.class).getColor(),
-                                                position);
+                                e.getComponent(Renderable.class).getCharacter(),
+                                e.getComponent(Renderable.class).getColor(),
+                                position);
                     }
                 }
             }
             case REGIONS -> {
-                if(!(map instanceof WorldMap)){
+                if (!(map instanceof WorldMap)) {
                     break;
                 }
 
                 WorldMap map1 = (WorldMap) map;
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
-                        if(tile.getRegion() != null){
+                        if (tile.getRegion() != null) {
                             renderer.mvAddchColored(tile.getCol(), tile.getRow(), '0', tile.getRegion().getColor(), position);
                         }
                     }
                 }
-                for(MapRegion r : map1.getRegions()){
+                for (MapRegion r : map1.getRegions()) {
                     renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow(), r.getName(), Color.WHITE, position);
-                    if(r.getOwner() != null){
+                    if (r.getOwner() != null) {
                         renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, r.getOwner().getAccount().getNickname(), Color.WHITE, position);
-                    }else{
+                    } else {
                         renderer.mvPrint(r.getCenter().getCol(), r.getCenter().getRow() + 1, "no owner", Color.WHITE, position);
                     }
                 }
@@ -388,11 +400,11 @@ public class GameMenu implements AppMenu {
     private void handlePurchase(String productName, String count, Scanner scanner) {
         Pattern pattern = Pattern.compile(".+?(-?\\d+)[,\\s]+(-?\\d+).+");
         Result result = controller.purchase(productName, count);
-        if(result.isSuccessful() && result.message() == null) {
+        if (result.isSuccessful() && result.message() == null) {
             System.out.println("enter x and y to build " + productName);
             String input = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(input);
-            if(!matcher.matches()) {
+            if (!matcher.matches()) {
                 System.out.println("Invalid input! build canceled");
                 return;
             }
@@ -404,7 +416,7 @@ public class GameMenu implements AppMenu {
 
     private void handleWalk(int x, int y, Scanner scanner) {
         WalkProposal proposal = controller.proposeWalk(x, y);
-        if(!proposal.isAllowed()) {
+        if (!proposal.isAllowed()) {
             System.out.println(proposal.message());
             return;
         }
@@ -413,24 +425,24 @@ public class GameMenu implements AppMenu {
                 proposal.energyCost()
         );
         String ans = scanner.nextLine().trim().toLowerCase();
-        if(ans.startsWith("y")) {
+        if (ans.startsWith("y")) {
             controller.executeWalk(proposal);
-        }
-        else {
+        } else {
             System.out.println("Walk cancelled");
         }
     }
-    public void showInventory(Inventory inventory){
+
+    public void showInventory(Inventory inventory) {
         int i = 1;
-        for(InventorySlot s : inventory.getSlots()){
+        for (InventorySlot s : inventory.getSlots()) {
             Entity entity = s.getEntity();
             System.out.printf("%-2d: ", i);
-            if(entity != null){
+            if (entity != null) {
                 System.out.printf("%s \t%d", entity.getEntityName(), entity.getComponent(Pickable.class).getStackSize());
-            }else{
+            } else {
                 System.out.print("-");
             }
-            if(App.getActiveGame().getCurrentPlayer().getActiveSlot() == s){
+            if (App.getActiveGame().getCurrentPlayer().getActiveSlot() == s) {
                 System.out.print(" <active>");
             }
             System.out.print("\n");
@@ -441,15 +453,15 @@ public class GameMenu implements AppMenu {
     public void toolsCommandParser(String input) {
         Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
         Matcher matcher;
-        if((matcher = GameMenuCommands.TOOLS_EQUIP.getMatcher(input)) != null) {
+        if ((matcher = GameMenuCommands.TOOLS_EQUIP.getMatcher(input)) != null) {
             System.out.println(controller.toolsEquip(matcher.group("toolName")));
-        } else if((matcher = GameMenuCommands.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
+        } else if ((matcher = GameMenuCommands.TOOLS_SHOW_CURRENT.getMatcher(input)) != null) {
             System.out.println(controller.toolsShowCurrent());
-        } else if((matcher = GameMenuCommands.TOOLS_AVAILABLE.getMatcher(input)) != null) {
+        } else if ((matcher = GameMenuCommands.TOOLS_AVAILABLE.getMatcher(input)) != null) {
             System.out.println(controller.toolsShowAvailable());
-        } else if((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
+        } else if ((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
             System.out.println(controller.toolsUpgrade(/*TODO*/));
-        } else if((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
+        } else if ((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
             System.out.println(controller.toolsUse(Direction.getDirection(Integer.parseInt(matcher.group("direction")))));
 
         } else {

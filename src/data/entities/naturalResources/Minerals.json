@@ -1,32 +1,37 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Placeable",
-      "isWalkable" : false
-    },{
-      "type" : "Renderable",
-      "char" : "m",
-      "color" : [150, 150, 150]
+      "type": "Placeable",
+      "isWalkable": false
+    },
+    {
+      "type": "Renderable",
+      "char": "m",
+      "color": [
+        150,
+        150,
+        150
+      ]
     }
   ],
-  "required components" : [
+  "required components": [
     "Harvestable"
   ],
-  "common tags" : [
+  "common tags": [
     "BREAKABLE_WITH_PICKAXE"
   ],
-  "entities" : [
+  "entities": [
     {
-      "name" : "Rock",
-      "components" : [
+      "name": "Rock",
+      "components": [
         {
-          "type" : "Harvestable",
-          "material" : "IRIDIUM",
-          "resources" : [
+          "type": "Harvestable",
+          "material": "IRIDIUM",
+          "resources": [
             {
-              "entity" : "stone",
-              "min" : 2,
-              "max" : 4
+              "entity": "stone",
+              "min": 2,
+              "max": 4
             }
           ]
         }

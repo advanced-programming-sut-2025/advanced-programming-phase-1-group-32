@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends Entity{
+public class Player extends Entity {
     private Energy energy = new Energy();
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
@@ -51,10 +51,10 @@ public class Player extends Entity{
     private boolean haveNewTrade = false;
     private boolean haveNewSuitor = false;
 
-    public Player(Account account){
-        super("Player", new Inventory(12), new Renderable('@',  new Color(255, 255, 50)));
+    public Player(Account account) {
+        super("Player", new Inventory(12), new Renderable('@', new Color(255, 255, 50)));
         unlockedRecipes = new ArrayList<>(App.recipeRegistry.getUnlockedRecipes());
-        for(SkillType s : SkillType.values()){
+        for (SkillType s : SkillType.values()) {
             skills.put(s, new Skill());
         }
 
@@ -66,11 +66,11 @@ public class Player extends Entity{
     }
 
     public void setCurrentMap(GameMap currentMap) {
-        if(this.currentMap != null){
+        if (this.currentMap != null) {
             this.currentMap.removeEntity(this);
         }
         this.currentMap = currentMap;
-        if(currentMap != null){
+        if (currentMap != null) {
             currentMap.addEntity(this);
         }
     }
@@ -140,7 +140,7 @@ public class Player extends Entity{
 
     public void reduceEnergy(int energyCost) {
         this.energy.setAmount(energy.getAmount() - energyCost);
-        if(energy.getAmount() < 0)
+        if (energy.getAmount() < 0)
             energy.setAmount(0);
     }
 
@@ -156,7 +156,7 @@ public class Player extends Entity{
         this.spouse = spouse;
     }
 
-    public Skill getSkill(SkillType type){
+    public Skill getSkill(SkillType type) {
         return this.skills.get(type);
     }
 
@@ -170,19 +170,23 @@ public class Player extends Entity{
         haveNewSuitor = true;
     }
 
-    public void addQuest(){
+    public void addQuest() {
 
     }
-    public void addTradeOffer(){
+
+    public void addTradeOffer() {
 
     }
-    public void addGift(){
+
+    public void addGift() {
 
     }
-    public void addMessage(){
+
+    public void addMessage() {
 
     }
-    public void changePosition(int x, int y){
+
+    public void changePosition(int x, int y) {
         this.getPosition().add(x, y);
     }
 
@@ -235,8 +239,8 @@ public class Player extends Entity{
     }
 
     public void makeMessagesSeen() {
-        for(Message message : messageLog){
-            if (message.getReceiver() == this){
+        for (Message message : messageLog) {
+            if (message.getReceiver() == this) {
                 message.setSeen(true);
             }
         }
@@ -255,8 +259,8 @@ public class Player extends Entity{
     }
 
     public TradeOffer findTradeOffer(int id) {
-        for(TradeOffer tradeOffer : trades){
-            if(tradeOffer.getId() == id){
+        for (TradeOffer tradeOffer : trades) {
+            if (tradeOffer.getId() == id) {
                 return tradeOffer;
             }
         }
@@ -291,19 +295,19 @@ public class Player extends Entity{
 
     public String newMessages() {
         StringBuilder result = new StringBuilder();
-        if(haveNewMessage){
+        if (haveNewMessage) {
             result.append("You have new Messages!\n");
             haveNewMessage = false;
         }
-        if(haveNewTrade){
+        if (haveNewTrade) {
             result.append("You have new Trade offers!\n");
             haveNewTrade = false;
         }
-        if(haveNewGift){
+        if (haveNewGift) {
             result.append("You have new Gift!\n");
             haveNewGift = false;
         }
-        if(haveNewSuitor){
+        if (haveNewSuitor) {
             result.append("You have new Suitor! Your suitors:");
             haveNewSuitor = false;
             for (Map.Entry<Player, Entity> entry : suitors.entrySet()) {
@@ -315,28 +319,29 @@ public class Player extends Entity{
         return result.toString();
     }
 
-    public boolean doesOwnTile(Tile tile){
+    public boolean doesOwnTile(Tile tile) {
         //TODO: should this return true? what should the region of tiles be in a building? null?
-        if(tile.getRegion() == null) return true;
+        if (tile.getRegion() == null) return true;
 
-        for(MapRegion r : ownedRegions){
-            if(r.hasTile(tile)) return true;
+        for (MapRegion r : ownedRegions) {
+            if (r.hasTile(tile)) return true;
         }
 
-        if(spouse == null) return false;
+        if (spouse == null) return false;
 
-        for(MapRegion r : spouse.ownedRegions){
-            if(r.hasTile(tile)) return true;
+        for (MapRegion r : spouse.ownedRegions) {
+            if (r.hasTile(tile)) return true;
         }
 
         return false;
     }
 
-    public void addRegion(MapRegion region){
+    public void addRegion(MapRegion region) {
         this.ownedRegions.add(region);
         region.setOwner(this);
     }
-    public void removeRegion(MapRegion region){
+
+    public void removeRegion(MapRegion region) {
         this.ownedRegions.remove(region);
     }
 
@@ -373,7 +378,7 @@ public class Player extends Entity{
 
     public void addFriendshipByGift(NPC npc, Entity gift) {
         NpcFriendship npcFriendship = npcFriendships.get(npc);
-        if(!npcFriendship.isWasGiftedToday()) {
+        if (!npcFriendship.isWasGiftedToday()) {
             if (npc.getFavorites().contains(gift.getEntityName())) {
                 npcFriendship.addXp(200);
             } else {
@@ -400,7 +405,7 @@ public class Player extends Entity{
 
     public Animal findAnimal(String animalName) {
         for (Animal animal : animals) {
-            if (animal.moz().equals(animalName)) {
+            if (animal.getName().equals(animalName)) {
                 return animal;
             }
         }

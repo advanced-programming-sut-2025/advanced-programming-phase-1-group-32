@@ -6,7 +6,7 @@ public class Energy {
     private float modifier;
     private boolean isUnlimited;
 
-    public void changeEnergy(){
+    public void changeEnergy() {
 
     }
 
@@ -37,7 +37,7 @@ public class Energy {
         return amount;
     }
 
-    public void toggleUnlimited(){
+    public void toggleUnlimited() {
         isUnlimited = !isUnlimited;
     }
 

@@ -14,7 +14,7 @@ public class Tile implements EntityObserver {
     private TileType type;
     final private Position position;
     private Entity content;
-//    private final MapRegion region;
+    //    private final MapRegion region;
     private final GameMap map;
 
     public Tile(Position position, TileType type/*, MapRegion region*/, GameMap map) {
@@ -39,11 +39,11 @@ public class Tile implements EntityObserver {
     }
 
     public void setContent(Entity content) {
-        if(this.content != null){
+        if (this.content != null) {
             this.content.removeObserveer(this);
         }
         this.content = content;
-        if(this.content != null){
+        if (this.content != null) {
             this.content.addObserver(this);
         }
     }
@@ -63,25 +63,25 @@ public class Tile implements EntityObserver {
     public Color getColor() {
         return this.type.color;
     }
-    public char getCharacter(){
+
+    public char getCharacter() {
         try {
             return this.type.character;
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
     }
+
     public MapRegion getRegion() {
-        if(map instanceof WorldMap){
+        if (map instanceof WorldMap) {
             return ((WorldMap) map).getRegion(this);
-        }
-        else return null;
+        } else return null;
     }
 
-    public Player getOwner(){
-        if(map instanceof WorldMap){
+    public Player getOwner() {
+        if (map instanceof WorldMap) {
             return ((WorldMap) map).getRegion(this).getOwner();
-        }
-        else return null;
+        } else return null;
     }
 
     public GameMap getMap() {

@@ -10,7 +10,7 @@ import views.inGame.Color;
 
 import java.util.ArrayList;
 
-public  class Animal extends Entity {
+public class Animal extends Entity {
     private AnimalType animalType;
     private String name;
     private Entity todayProduct;
@@ -32,7 +32,7 @@ public  class Animal extends Entity {
         this(animalType, null);
     }
 
-    public Animal(AnimalData data){
+    public Animal(AnimalData data) {
         super(data.name);
 
     }
@@ -46,7 +46,7 @@ public  class Animal extends Entity {
     }
 
 
-    public String moz() {
+    public String getName() {
         return name;
     }
 
@@ -169,7 +169,7 @@ public  class Animal extends Entity {
 
     public String getDetail() {
         StringBuilder result = new StringBuilder();
-        result.append("Type: " ).append(animalType).append("\n");
+        result.append("Type: ").append(animalType).append("\n");
         result.append("Name: ").append(name).append("\n");
         result.append("IsPetToday: ").append(isPetToday).append("\n");
         result.append("IsFedToday: ").append(isFedToday).append("\n");

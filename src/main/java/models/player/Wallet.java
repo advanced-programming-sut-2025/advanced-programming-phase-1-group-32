@@ -14,7 +14,7 @@ public class Wallet {
 
     public void reduceBalance(double balance) {
         this.balance -= balance;
-        if(balance < 0) {
+        if (balance < 0) {
             System.out.println("RIDIM: balance less than 0");
         }
     }
@@ -23,7 +23,7 @@ public class Wallet {
         this.balance += balance;
     }
 
-    public void changeBalance(double price){
+    public void changeBalance(double price) {
         this.balance += price;
     }
 

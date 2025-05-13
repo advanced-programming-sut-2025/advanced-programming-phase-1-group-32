@@ -1,13 +1,13 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Pickable",
-      "maxStack" : 16
+      "type": "Pickable",
+      "maxStack": 16
     }
   ],
-  "required components" : [
+  "required components": [
   ],
-  "common tags" : [
+  "common tags": [
     "FRUIT"
   ],
   "entities": [
@@ -182,6 +182,4 @@
       ]
     }
   ]
-
-
 }

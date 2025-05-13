@@ -63,26 +63,26 @@ public class LoginMenu implements AppMenu {
             String answerConfirm = matcher.group("answerConfirm");
 
             System.out.println(controller.pickQuestion(questionNumber, answer, answerConfirm));
-        } else if((matcher = LoginMenuCommands.LOGIN.getMatcher(input)) != null){
+        } else if ((matcher = LoginMenuCommands.LOGIN.getMatcher(input)) != null) {
             String username = matcher.group("username");
             String password = matcher.group("password");
             boolean stayLogged = matcher.group("stayLogged") != null;
 
             System.out.println(this.controller.login(username, password, stayLogged));
 
-        }else if((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null){
+        } else if ((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null) {
             ForgotPasswordFlow forgotPasswordFlow = new ForgotPasswordFlow();
             Result result = forgotPasswordFlow.handle(matcher.group("username"));
-            while(result.isSuccessful()){
+            while (result.isSuccessful()) {
                 System.out.println(result);
                 result = forgotPasswordFlow.handle(scanner.nextLine());
             }
             System.out.println(result);
-        }else if((matcher = LoginMenuCommands.EXIT.getMatcher(input)) != null){
+        } else if ((matcher = LoginMenuCommands.EXIT.getMatcher(input)) != null) {
             this.controller.exit();
         }
 
-        if(matcher == null) {
+        if (matcher == null) {
             System.out.println("invalid command");
         }
     }

@@ -9,7 +9,8 @@ public enum WorldMapType {
     WorldMapType(String mapName) {
         this.mapName = mapName;
     }
-    public MapData getData(){
+
+    public MapData getData() {
         return App.mapRegistry.getData(mapName);
     }
 

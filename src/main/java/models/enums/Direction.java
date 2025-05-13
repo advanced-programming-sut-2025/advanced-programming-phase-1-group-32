@@ -20,9 +20,9 @@ public enum Direction {
         this.key = key;
     }
 
-    public static Direction getDirection(int i){
-        for(Direction d : Direction.values()){
-            if(d.key == i){
+    public static Direction getDirection(int i) {
+        for (Direction d : Direction.values()) {
+            if (d.key == i) {
                 return d;
             }
         }

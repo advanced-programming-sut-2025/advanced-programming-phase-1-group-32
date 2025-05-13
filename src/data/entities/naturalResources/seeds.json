@@ -5,29 +5,32 @@
       "maxStack": 16
     }
   ],
-
   "required components": [
     "SeedComponent"
   ],
   "common tags": [
     "SEED"
   ],
-
   "entities": [
     {
       "name": "Jazz Seeds",
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": ["Blue Jazz"]
+          "growingPlants": [
+            "Blue Jazz"
+          ]
         }
       ]
-    },{
+    },
+    {
       "name": "Pine Seed",
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": ["Pine Tree"]
+          "growingPlants": [
+            "Pine Tree"
+          ]
         }
       ]
     },
@@ -36,10 +39,11 @@
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": ["Apricot Tree"]
+          "growingPlants": [
+            "Apricot Tree"
+          ]
         }
       ]
     }
   ]
-
 }

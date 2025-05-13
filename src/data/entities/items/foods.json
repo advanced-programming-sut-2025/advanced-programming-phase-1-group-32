@@ -1,65 +1,64 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Pickable",
-      "maxStack" : 16
+      "type": "Pickable",
+      "maxStack": 16
     }
   ],
-  "required components" : [
+  "required components": [
     "Edible"
   ],
-  "common tags" : [
+  "common tags": [
     "FOOD"
   ],
-  "entities" : [
+  "entities": [
     {
-      "name" : "Fried egg",
-      "components" : [
+      "name": "Fried egg",
+      "components": [
         {
-          "type" : "Edible",
-          "energy" : 50
+          "type": "Edible",
+          "energy": 50
         }
       ]
     },
     {
-      "name" : "Baked Fish",
-      "components" : [
+      "name": "Baked Fish",
+      "components": [
         {
-          "type" : "Edible",
-          "energy" : 75
-        }
-      ]
-
-    },
-    {
-      "name" : "Milk",
-      "components" : [
-        {
-          "type" : "Edible",
-          "energy" : 38
+          "type": "Edible",
+          "energy": 75
         }
       ]
     },
     {
-      "name" : "Large Milk",
-      "components" : [
+      "name": "Milk",
+      "components": [
         {
-          "type" : "Edible",
-          "energy" : 50
+          "type": "Edible",
+          "energy": 38
         }
       ]
     },
     {
-      "name" : "Goat Milk",
-      "components" : [
+      "name": "Large Milk",
+      "components": [
         {
-          "type" : "Edible",
-          "energy":  63
+          "type": "Edible",
+          "energy": 50
         }
       ]
     },
     {
-      "name" : "Large Goat Milk",
+      "name": "Goat Milk",
+      "components": [
+        {
+          "type": "Edible",
+          "energy": 63
+        }
+      ]
+    },
+    {
+      "name": "Large Goat Milk",
       "components": [
         {
           "type": "Edible",

@@ -1,23 +1,20 @@
 package models.shop;
 
+import models.animal.Animal;
+import models.animal.AnimalType;
 import models.entities.Entity;
 
-public class AnimalShopProduct extends ShopProduct {
-
-
+public class AnimalShopProduct extends ShopProduct<Animal> {
 
     private String requiredBuildingName;
-
-
 
     public AnimalShopProduct(String name, int dailyLimit) {
         super(name, dailyLimit);
     }
 
-
     @Override
-    public Entity getEntity() {
-return null;
+    public Animal getEntity() {
+        return new Animal(AnimalType.getAnimalTypeByString(this.name));
     }
 
     @Override
@@ -29,4 +26,6 @@ return null;
     public int getStoneCost() {
         return 0;
     }
+
+
 }

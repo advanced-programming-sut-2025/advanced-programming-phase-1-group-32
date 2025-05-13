@@ -27,25 +27,30 @@ public class GameMap {
     public ArrayList<Entity> getEntities() {
         return entities;
     }
-    public void addEntity(Entity entity){
-        if(entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
-                "added twice int the map.");
+
+    public void addEntity(Entity entity) {
+        if (entities.contains(entity))
+            throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
+                    "added twice int the map.");
         this.entities.add(entity);
     }
-    public void removeEntity(Entity entity){
-        if(!entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
-                "removed from the map, but it doesnt exist on the map");
+
+    public void removeEntity(Entity entity) {
+        if (!entities.contains(entity))
+            throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
+                    "removed from the map, but it doesnt exist on the map");
         this.entities.remove(entity);
     }
-    public ArrayList<Entity> getEntitiesWithComponent(Class<? extends EntityComponent> clazz){
+
+    public ArrayList<Entity> getEntitiesWithComponent(Class<? extends EntityComponent> clazz) {
         ArrayList<Entity> out = new ArrayList<>();
-        for(Entity e : entities){
-            if(e.getComponent(clazz) != null) out.add(e);
+        for (Entity e : entities) {
+            if (e.getComponent(clazz) != null) out.add(e);
         }
         return out;
     }
 
-    public GameMap(MapData data, Environment environment){
+    public GameMap(MapData data, Environment environment) {
         TileType[][] typeMap = data.getTypeMap();
         this.environment = environment;
         this.height = typeMap.length;
@@ -53,14 +58,14 @@ public class GameMap {
         this.tiles = new Tile[height][width];
         this.mapDataName = data.name;
 
-        for(int i = 0 ; i < height ; i++){
-            for(int j = 0 ; j < width ; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 tiles[i][j] = new Tile(new Position(j, i), typeMap[i][j], this);
             }
         }
     }
 
-    private void generateRandomElements(int min ,int max) { //inclusive
+    private void generateRandomElements(int min, int max) { //inclusive
         //TODO
     }
 
@@ -69,11 +74,11 @@ public class GameMap {
     }
 
     public Tile getTileByPosition(Position position) {
-        return getTileByPosition(position.getRow(),position.getCol());
+        return getTileByPosition(position.getRow(), position.getCol());
     }
 
     public Tile getTileByPosition(int row, int col) {
-        if(row >= tiles.length || row < 0 || col >= tiles[0].length || col < 0)
+        if (row >= tiles.length || row < 0 || col >= tiles[0].length || col < 0)
             return null;
         return tiles[row][col];
     }

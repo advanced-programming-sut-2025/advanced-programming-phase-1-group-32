@@ -161,7 +161,7 @@ public class TradeOffer {
 
         switch (getType()) {
             case 1 -> {
-                if(!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
+                if (!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
                     setAccepted(false);
                     return false;
                 }
@@ -171,14 +171,14 @@ public class TradeOffer {
                 }
 
                 //TODO: check
-                Entity item1 = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount() );
+                Entity item1 = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount());
                 Entity item2 = receiver.getComponent(Inventory.class).removeItem(getTargetItem(), getTargetItemAmount());
                 receiver.getComponent(Inventory.class).addItem(item1);
                 sender.getComponent(Inventory.class).addItem(item2);
 
             }
             case 2 -> {
-                if(!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
+                if (!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
                     setAccepted(false);
                     return false;
                 }

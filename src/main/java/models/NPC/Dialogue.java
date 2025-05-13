@@ -32,12 +32,29 @@ public class Dialogue {
     }
 
     // Getters
-    public String getDialogue() { return dialogue; }
-    public String getNpcName() { return npcName; }
-    public Season getSeason() {return season; }
-    public int getFriendshipLevel() { return friendshipLevel; }
-    public Weather getWeather() { return weather; }
-    public boolean isDay() { return isDay; }
+    public String getDialogue() {
+        return dialogue;
+    }
+
+    public String getNpcName() {
+        return npcName;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public int getFriendshipLevel() {
+        return friendshipLevel;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public boolean isDay() {
+        return isDay;
+    }
 
     public boolean checkConditions(Season season, int friendLevel, Weather weather, boolean isDay) {
         if (this.season != season) {

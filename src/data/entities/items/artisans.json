@@ -1,38 +1,32 @@
 {
-  "common components" :[
+  "common components": [
     {
-      "type" : "Pickable",
-      "maxStack" : 1
+      "type": "Pickable",
+      "maxStack": 1
     },
     {
-      "type" : "Placeable",
-      "isWalkable" : false
+      "type": "Placeable",
+      "isWalkable": false
     }
-
   ],
-
-  "required components" : [
+  "required components": [
     "ArtisanComponent"
   ],
-
-  "common tags" : [
-    "TOOL", "ARTISAN"
+  "common tags": [
+    "TOOL",
+    "ARTISAN"
   ],
-
-  "entities" : [
+  "entities": [
     {
-      "name" :"Bee House",
-      "components" : [
+      "name": "Bee House",
+      "components": [
         {
-          "type" : "ArtisanComponent",
-          "recipes" : [
+          "type": "ArtisanComponent",
+          "recipes": [
             "Honey"
           ]
         }
       ]
-
-
     }
   ]
-
 }

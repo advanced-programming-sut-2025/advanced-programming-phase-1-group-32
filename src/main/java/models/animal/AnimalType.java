@@ -35,13 +35,13 @@ public enum AnimalType {
             AnimalHouseLevel.NORMAL,
             "Milk pail"),
     Goat(4000,
-        1,
+            1,
             new ArrayList<>(Arrays.asList("Goat Milk", "Goat Big Milk")),
             AnimalHouseType.BARN,
             AnimalHouseLevel.BIG,
             "Milk pail"),
     Sheep(8000,
-        2,
+            2,
             new ArrayList<>(Arrays.asList("Sheep Wool")),
             AnimalHouseType.BARN,
             AnimalHouseLevel.DELUXE,
@@ -51,7 +51,8 @@ public enum AnimalType {
             new ArrayList<>(Arrays.asList("Truffle")),
             AnimalHouseType.BARN,
             AnimalHouseLevel.DELUXE,
-            null),;
+            null),
+    ;
 
     private final ArrayList<String> products;
     private final AnimalHouseType animalHouseType;

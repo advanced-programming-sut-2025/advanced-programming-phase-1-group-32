@@ -30,8 +30,9 @@ import models.player.Message;
 import models.player.Player;
 import models.player.*;
 import models.player.friendship.PlayerFriendship;
+import models.shop.AnimalShopProduct;
+import models.shop.OtherShopProduct;
 import models.shop.Shop;
-import models.shop.ShopProduct;
 import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
@@ -66,7 +67,7 @@ public class GameMenuController implements Controller {
         int index = players.indexOf(game.getCurrentPlayer());
 
         if (index == game.getPlayers().size() - 1) {
-             game.setCurrentPlayer(players.get(0));
+            game.setCurrentPlayer(players.get(0));
             advanceTime(1);
         } else {
             game.setCurrentPlayer(players.get(index + 1));
@@ -175,21 +176,21 @@ public class GameMenuController implements Controller {
                 game.getCurrentPlayer().getPosition()
         );
         Tile goal = map.getTileByPosition(new Position(x, y));
-        if(goal == null){
+        if (goal == null) {
             return new WalkProposal(false, "tile doesnt exist", 0, x, y);
         }
-        if(start == null){
+        if (start == null) {
             return new WalkProposal(false, "you cant be there", 0, x, y);
         }
-        if(start.equals(goal))
+        if (start.equals(goal))
             return new WalkProposal(
                     false,
                     "you are already in " + goal.getPosition(),
                     0, x, y
             );
         int distance = shortestPath(goal, start, map.getTiles()).size();
-        if(distance == 0)
-            return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x ,y);
+        if (distance == 0)
+            return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
         return new WalkProposal(true, "OK", distance / 20, x, y);
 
 
@@ -197,16 +198,16 @@ public class GameMenuController implements Controller {
 
     public Result executeWalk(WalkProposal p) {
         Player player = App.getActiveGame().getCurrentPlayer();
-        if(!p.isAllowed()) {
+        if (!p.isAllowed()) {
             return new Result(false, "No walk was proposed");
         }
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
         Tile tile = App.activeGame.getActiveMap().getTileByPosition(p.y(), p.x());
-        if(tile != null && (entity = tile.getContent()) != null){
+        if (tile != null && (entity = tile.getContent()) != null) {
             Placeable placeable = entity.getComponent(Placeable.class);
-            for(CollisionEvent c : placeable.getCollisionEvents()){
+            for (CollisionEvent c : placeable.getCollisionEvents()) {
                 c.onEnter();
             }
         }
@@ -225,14 +226,14 @@ public class GameMenuController implements Controller {
         cameFrom.put(src, null);
 
         int[][] directions = {
-                {0,1}, {1,0}, {0, -1}, {0, 1}
-                , {1,-1}, {1,1}, {-1,1}, {-1,-1} /* Comment this line to walk vertically and horizontally only*/
+                {0, 1}, {1, 0}, {0, -1}, {0, 1}
+                , {1, -1}, {1, 1}, {-1, 1}, {-1, -1} /* Comment this line to walk vertically and horizontally only*/
         };
 
         while (!queue.isEmpty()) {
             Tile current = queue.poll();
 
-            if(current.equals(destination))
+            if (current.equals(destination))
                 break;
 
 
@@ -240,10 +241,10 @@ public class GameMenuController implements Controller {
                 int newRow = current.getRow() + dir[0];
                 int newCol = current.getCol() + dir[1];
 
-                if(newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
+                if (newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
                     Tile neighbor = tiles[newRow][newCol];
-                    if(neighbor.getContent() == null || neighbor.getContent().getComponent(Placeable.class).isWalkable())
-                        if(!cameFrom.containsKey(neighbor)) {
+                    if (neighbor.getContent() == null || neighbor.getContent().getComponent(Placeable.class).isWalkable())
+                        if (!cameFrom.containsKey(neighbor)) {
                             queue.add(neighbor);
                             cameFrom.put(neighbor, current);
                         }
@@ -251,13 +252,13 @@ public class GameMenuController implements Controller {
             }
 
         }
-        if(!cameFrom.containsKey(destination)) {
+        if (!cameFrom.containsKey(destination)) {
             return Collections.emptyList();
         }
 
         List<Tile> path = new ArrayList<>();
         Tile current = destination;
-        while(current != null) {
+        while (current != null) {
             path.add(current);
             current = cameFrom.get(current);
         }
@@ -309,7 +310,7 @@ public class GameMenuController implements Controller {
     public Result toolsEquip(String toolName) {
         Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
         InventorySlot slot = player.getComponent(Inventory.class).getSlot(toolName);
-        if(slot == null)
+        if (slot == null)
             return new Result(false, "This tool doesn't exist in inventory");
         player.setActiveSlot(slot);
         return new Result(true, "Tool equipped successfully");
@@ -318,7 +319,7 @@ public class GameMenuController implements Controller {
     public Result toolsShowCurrent() {
         Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
         Entity active = player.getActiveSlot().getEntity();
-        if(active == null || !active.hasTag(EntityTag.TOOL))
+        if (active == null || !active.hasTag(EntityTag.TOOL))
             return new Result(false, "This is not a tool");
         return new Result(true, active.getEntityName());
 
@@ -329,7 +330,7 @@ public class GameMenuController implements Controller {
         ArrayList<Entity> tools = player.getComponent(Inventory.class).getItemsByTag(EntityTag.TOOL);
         if (tools.isEmpty())
             return new Result(false, "There is no tool in Backpack");
-        StringBuilder sb  = new StringBuilder("Tools available:");
+        StringBuilder sb = new StringBuilder("Tools available:");
         for (Entity tool : tools) {
             sb.append("\n").append(tool.getEntityName());
         }
@@ -345,20 +346,20 @@ public class GameMenuController implements Controller {
     public Result toolsUse(Direction dir) {
         Vec2 playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
         GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
-        if(App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null){
+        if (App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null) {
             return new Result(false, "nothing equipped");
         }
         Entity tool = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot().getEntity();
 
-        if(
+        if (
                 dir == null
-                || playerPosition.getRow() + dir.dy > map.getHeight() || playerPosition.getRow() + dir.dy < 0
-                || playerPosition.getCol() + dir.dx > map.getWidth() || playerPosition.getCol() + dir.dx < 0
+                        || playerPosition.getRow() + dir.dy > map.getHeight() || playerPosition.getRow() + dir.dy < 0
+                        || playerPosition.getCol() + dir.dx > map.getWidth() || playerPosition.getCol() + dir.dx < 0
         )
             return new Result(false, "Invalid Direction");
         Position position = new Position(playerPosition.getCol() + dir.dx, playerPosition.getRow() + dir.dy);
-        if(tool == null || (!tool.getTags().contains(EntityTag.TOOL)))
-            return  new Result(false, "You should equip a tool first");
+        if (tool == null || (!tool.getTags().contains(EntityTag.TOOL)))
+            return new Result(false, "You should equip a tool first");
         return tool.getComponent(Useable.class).use(map.getTileByPosition(position));
     }
 
@@ -367,13 +368,13 @@ public class GameMenuController implements Controller {
         Player player = game.getCurrentPlayer();
         int x = player.getPosition().getCol();
         int y = player.getPosition().getRow();
-        int[][] directions = {{1,0}, {1,-1},{1,1}, {0,1}, {0,-1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
-            if(tile == null) continue;
-            if(tile.getContent().getEntityName().equals(artisanName)) {
+            if (tile == null) continue;
+            if (tile.getContent().getEntityName().equals(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
-                if(artisan.isInProcess())/* TODO: should fix in phase2 (what if there is two artisan near player)*/
+                if (artisan.isInProcess())/* TODO: should fix in phase2 (what if there is two artisan near player)*/
                     return new Result(false, "another recipe already in process");
                 return artisan.addProcess(itemName);
             }
@@ -386,17 +387,17 @@ public class GameMenuController implements Controller {
         Player player = game.getCurrentPlayer();
         int x = player.getPosition().getCol();
         int y = player.getPosition().getRow();
-        int[][] directions = {{1,0}, {1,-1},{1,1}, {0,1}, {0,-1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
-            if(tile == null) continue;
+            if (tile == null) continue;
 
-            if(tile.getContent().getEntityName().equals(artisanName)) {
+            if (tile.getContent().getEntityName().equals(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
-                if(!artisan.isInProcess())
+                if (!artisan.isInProcess())
                     return new Result(false, "This artisan is empty!");
                 Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
-                if(!artisan.isProcessFinished())
+                if (!artisan.isProcessFinished())
                     return artisan.remainingTime();
                 Entity product = artisan.getProduct();
                 inventory.addItem(product);
@@ -408,7 +409,7 @@ public class GameMenuController implements Controller {
     /* --------------------------------------  -------------------------------------- */
 
     public Result craftInfo(String name) {
-        if(!App.entityRegistry.doesEntityExist(name)) {
+        if (!App.entityRegistry.doesEntityExist(name)) {
             return new Result(false, "There is no crop with name" + name);
         }
         Entity crop = App.entityRegistry.makeEntity(name);
@@ -467,7 +468,7 @@ public class GameMenuController implements Controller {
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
-        if(!player.getComponent(Inventory.class).doesHaveItem(seedDetails)){
+        if (!player.getComponent(Inventory.class).doesHaveItem(seedDetails)) {
             return new Result(false, "you don't have that seed");
         }
 
@@ -544,7 +545,7 @@ public class GameMenuController implements Controller {
         return new Result(true, "fertilized successfully!");
     }
 
-    public Result checkWater(){
+    public Result checkWater() {
         //TODO
         return null;
     }
@@ -557,7 +558,7 @@ public class GameMenuController implements Controller {
         ArrayList<Recipe> recipes = activePlayer.getUnlockedRecipes();
         StringBuilder sb = new StringBuilder();
         for (Recipe recipe : recipes) {
-            if(recipe.getType().equals(type))
+            if (recipe.getType().equals(type))
                 sb.append(recipe);
         }
         return new Result(true, sb.toString());
@@ -588,18 +589,18 @@ public class GameMenuController implements Controller {
         //TODO: should be in house
         Player player = App.getActiveGame().getCurrentPlayer();
         Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
-        if(recipe == null)
+        if (recipe == null)
             return new Result(false, "Invalid recipe name");
-        if(!player.hasRecipe(recipe))
+        if (!player.hasRecipe(recipe))
             return new Result(false, "You didn't unlocked this recipe");
-        if(!recipe.getType().equals(RecipeType.CRAFTING))
+        if (!recipe.getType().equals(RecipeType.CRAFTING))
             return new Result(false, "this is not a crafting recipe!");
-        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+        if (!recipe.canCraft(player.getComponent(Inventory.class)))
             return new Result(false, "you don't have enough items");
         Entity output = recipe.craft(player.getComponent(Inventory.class));
         //TODO: if inventory is full drop output on ground
         Result result = player.getComponent(Inventory.class).addItem(output);
-        if(!result.isSuccessful())
+        if (!result.isSuccessful())
             return new Result(false, "something wrong happened!");
 
         App.getActiveGame().getCurrentPlayer().reduceEnergy(2);
@@ -626,18 +627,18 @@ public class GameMenuController implements Controller {
 
         Player player = App.getActiveGame().getCurrentPlayer();
         Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
-        if(recipe == null)
+        if (recipe == null)
             return new Result(false, "Invalid recipe name");
-        if(!player.hasRecipe(recipe))
+        if (!player.hasRecipe(recipe))
             return new Result(false, "You didn't unlocked this recipe");
-        if(!recipe.getType().equals(RecipeType.COOKING))
+        if (!recipe.getType().equals(RecipeType.COOKING))
             return new Result(false, "this is not a cooking recipe!");
-        if(!recipe.canCraft(player.getComponent(Inventory.class)))
+        if (!recipe.canCraft(player.getComponent(Inventory.class)))
             return new Result(false, "you don't have enough items");
         Entity output = recipe.craft(player.getComponent(Inventory.class));
         //TODO: if inventory is full drop output on ground
         Result result = player.getComponent(Inventory.class).addItem(output);
-        if(!result.isSuccessful())
+        if (!result.isSuccessful())
             return new Result(false, "something wrong happened!");
 
         App.getActiveGame().getCurrentPlayer().reduceEnergy(3);
@@ -653,7 +654,7 @@ public class GameMenuController implements Controller {
         if (food == null)
             return new Result(false, "You don't have " + foodName);
         Edible edible = food.getComponent(Edible.class);
-        if(edible == null)
+        if (edible == null)
             return new Result(false, "This is not Edible");
         player.reduceEnergy(-edible.getEnergy());
         inventory.takeFromInventory(food, 1);
@@ -667,51 +668,73 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public AnimalPurchaseDetails buyAnimal(String animalTypeString, String animalName) {
+    public Result   buyAnimal(String animalTypeString, String animalName, String animalHouseName) {
+        //TODO: move some of these to buySystem later(alan khastam)
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Wallet wallet = currentPlayer.getWallet();
 
         AnimalType animalType = AnimalType.getAnimalTypeByString(animalTypeString);
-        if(animalType == null) {
-            return new AnimalPurchaseDetails(false, "Invalid animal type");
+        if (animalType == null) {
+            return new Result(false, "Invalid animal type");
         }
-
+//
+        if(currentPlayer.getPosition().getMap().getBuilding() == null)
+            return new Result(false, "you should be in a shop");
         Shop shop = currentPlayer.getPosition().getMap().getBuilding().getComponent(Shop.class);
-        if(!shop.getName().equals("Marnie's Ranch")) {
+        if(shop == null)
+            return new Result(false, "this building doesn't have shop");
+        AnimalShopProduct product = shop.getAnimalShopProduct(animalTypeString);
+        if(product == null)
+            return new Result(false, "this product doesn't exist");
+        if(product.getStock() == 0)
+            return new Result(false, "There isn't enough stock! go come tomorrow:)");
 
-        }
-
-
-
+//
         if (wallet.getBalance() < animalType.getCost()) {
-            return new AnimalPurchaseDetails(false, "You don't have enough money");
+            return new Result(false, "You don't have enough money");
         }
+        AnimalHouse animalHouse = currentPlayer.findAnimalHouse(animalHouseName);
+        if (animalHouse == null) {
+            return new Result(false, "You don't own " + animalHouseName);
+        }
+
+        if (!(animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
+                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity())) {
+            return new Result(false, "This house isn't appropriate for this animal");
+        }
+//
+
+        product.addSold(1);
+//
+        Animal animal = new Animal(animalType, animalName);
+        currentPlayer.getAnimals().add(animal);
+        animalHouse.addAnimal(animal);
+        wallet.reduceBalance(animalType.getCost());
+        EntityPlacementSystem.placeOnTile(animal, animalHouse.getEntity().getComponent(InteriorComponent.class).getMap().getTileByPosition(2, 2));
+        return new Result(true, animalName + " bought and added to your farm successfully");
+
+    }
+
+    public Result showMyAnimalHouses() {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
 
         StringBuilder message = new StringBuilder("Your available animal houses:");
-        boolean availableHouse = false;
 
         for (Entity building : currentPlayer.getOwnedBuildings()) {
             AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
             if (animalHouse != null) {
-                if (animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
-                        animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity()) {
-                    availableHouse = true;
-                    message.append("\n");
-                    message.append(animalHouse.getDetail());
-                }
+                message.append("\n");
+                message.append(animalHouse.getDetail());
             }
         }
-
-        if (!availableHouse) {
-            return new AnimalPurchaseDetails(false, "You don't have appropriate home!");
-        }
-        return new AnimalPurchaseDetails(true, message.toString(), animalName, animalType);
-
+        return new Result(true, message.toString());
 
     }
 
-    public Result chooseHouseForAnimal(AnimalPurchaseDetails details,String animalHouseName) {
+    //:/
+    public Result chooseHouseForAnimal(AnimalPurchaseDetails details, String animalHouseName) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Wallet wallet = currentPlayer.getWallet();
@@ -740,7 +763,7 @@ public class GameMenuController implements Controller {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
@@ -751,14 +774,14 @@ public class GameMenuController implements Controller {
             animal.addFriendshipLevel(15);
         }
 
-        return new Result(true, animal.moz() + " has pet successfully!");
+        return new Result(true, animal.getName() + " has pet successfully!");
     }
 
     public Result setAnimalFriendship(String animalName, int amount) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
@@ -788,7 +811,7 @@ public class GameMenuController implements Controller {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
@@ -806,12 +829,12 @@ public class GameMenuController implements Controller {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
-        if(!inventory.doesHaveItem("Hay")) {
+        if (!inventory.doesHaveItem("Hay")) {
             return new Result(false, "You don't have enough hay!");
         }
 
@@ -830,7 +853,7 @@ public class GameMenuController implements Controller {
         for (Animal animal : currentPlayer.getAnimals()) {
             Entity product = animal.getTodayProduct();
             if (product != null) {
-                message.append("Animal ").append(animal.moz()).append("\n");
+                message.append("Animal ").append(animal.getName()).append("\n");
                 message.append("Product ").append(product.getEntityName()).append("\n");
                 message.append("Quality: ").append(product.getComponent(Sellable.class).getProductQuality()).append("\n");
                 message.append("-------------------------------------------------------------------\n");
@@ -846,7 +869,7 @@ public class GameMenuController implements Controller {
         Animal animal = currentPlayer.findAnimal(animalName);
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
 
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
@@ -881,13 +904,13 @@ public class GameMenuController implements Controller {
         int amount = (count == null) ? 1 : Integer.parseInt(count);
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
         Shop shop = activeBuilding.getComponent(Shop.class);
-        if(shop == null)
+        if (shop == null)
             return new Result(false, "This building isn't shop");
-        ShopProduct product = shop.getProductByName(productName);
-        if(product == null)
+        OtherShopProduct product = shop.getOtherShopProduct(productName);
+        if (product == null)
             return new Result(false, "This shop doesn't have this product");
-//        if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
-//            return new Result(false, "This product isn't available in this season");
+        if (!product.isInSeason(App.getActiveGame().getDate().getSeason()))
+            return new Result(false, "This product isn't available in this season");
         return ShopSystem.buyProduct(product, amount);
     }
 
@@ -904,7 +927,7 @@ public class GameMenuController implements Controller {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
+        if (animal == null) {
             return new Result(false, "Animal not found");
         }
 
@@ -914,7 +937,7 @@ public class GameMenuController implements Controller {
         currentPlayer.getAnimals().remove(animal);
         //TODO: remove form his house if needed
 
-        return new Result(true, animal.moz() + " sold successfully!");
+        return new Result(true, animal.getName() + " sold successfully!");
     }
 
     public Result fishing(String fishingPole) {
@@ -1105,7 +1128,7 @@ public class GameMenuController implements Controller {
 
         PlayerFriendship playerFriendship = game.getFriendshipWith(huggedPlayer);
 
-        if(playerFriendship.getLevel() < 2) {
+        if (playerFriendship.getLevel() < 2) {
             return new Result(false, "too soon for a hug;)");
         }
 
@@ -1246,7 +1269,7 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result startTrade(){
+    public Result startTrade() {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         App.setCurrentMenu(Menu.TRADE_MENU);
@@ -1389,7 +1412,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "Quest with id " + questId + " not found");
         }
 
-        Result haveAccess  = quest.doesHaveAccess(currentPlayer);
+        Result haveAccess = quest.doesHaveAccess(currentPlayer);
         if (!haveAccess.isSuccessful()) {
             return haveAccess;
         }
@@ -1452,21 +1475,21 @@ public class GameMenuController implements Controller {
         //TODO
     }
 
-    public Result switchInputType(){
+    public Result switchInputType() {
         App.getView().switchInputType();
-        if(App.getView().isRawMode()){
+        if (App.getView().isRawMode()) {
             return new Result(true, "You are in raw mode");
-        }else{
+        } else {
             return new Result(true, "You are in normal mode");
         }
     }
 
-    public Result handleRawInput(char c){
+    public Result handleRawInput(char c) {
         Player player = App.getActiveGame().getCurrentPlayer();
         WalkProposal p;
-        switch (c){
+        switch (c) {
             case 'a':
-                p = this.proposeWalk(player.getPosition().getCol() -1, player.getPosition().getRow());
+                p = this.proposeWalk(player.getPosition().getCol() - 1, player.getPosition().getRow());
                 executeWalk(p);
                 break;
             case 's':
@@ -1499,24 +1522,24 @@ public class GameMenuController implements Controller {
         return new Result(true, "");
     }
 
-    public Result toggleMap(){
+    public Result toggleMap() {
         App.getActiveGame().toggleMapVisibility();
         return null;
     }
 
     /*------------------------------------------cheat-------------------------------------------*/
-    public Result cheatGiveItem(String name, int quantity){
+    public Result cheatGiveItem(String name, int quantity) {
         Player currentPlayer = App.getActiveGame().getCurrentPlayer();
-        if(quantity <= 0) {
+        if (quantity <= 0) {
             return new Result(false, "You should enter positive number!");
         }
-        if(!App.entityRegistry.doesEntityExist(name)){
+        if (!App.entityRegistry.doesEntityExist(name)) {
             return new Result(false, "Entity doesnt exist");
         }
         Entity entity = App.entityRegistry.makeEntity(name);
-        if(!currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
+        if (!currentPlayer.getComponent(Inventory.class).canAddItem(entity, quantity))
             return new Result(false, "Your inventory doesn't have enough size");
-        if(entity.getComponent(Pickable.class) == null){
+        if (entity.getComponent(Pickable.class) == null) {
             return new Result(false, "Entity isn't pickable");
         }
         entity.getComponent(Pickable.class).changeStackSize(quantity);
@@ -1525,17 +1548,17 @@ public class GameMenuController implements Controller {
                 " were given to " + currentPlayer.getAccount().getNickname());
     }
 
-    public Result cheatBuildBuilding(int x, int y, String name, boolean force){
+    public Result cheatBuildBuilding(int x, int y, String name, boolean force) {
         Entity building = App.entityRegistry.makeEntity(name);
-        if(building == null || !building.hasTag(EntityTag.BUILDING))
+        if (building == null || !building.hasTag(EntityTag.BUILDING))
             return new Result(false, "no building exists with that name");
-        if(!force && EntityPlacementSystem.canPlace(x, y, building.getComponent(Placeable.class)))
+        if (!force && EntityPlacementSystem.canPlace(x, y, building.getComponent(Placeable.class)))
             return new Result(true, "Can't place that there ma lord");
-        if(force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
+        if (force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
         EntityPlacementSystem.placeEntity(building, new Position(x, y));
 
         App.getActiveGame().getCurrentPlayer().addOwnedBuilding(building);
-        if(building.getComponent(AnimalHouse.class) != null){
+        if (building.getComponent(AnimalHouse.class) != null) {
             building.getComponent(AnimalHouse.class).setName("House" + (int) (Math.random() * 1000));
         }
 
@@ -1546,11 +1569,11 @@ public class GameMenuController implements Controller {
      * if you amount is 0 it will reset to 0 the skill
      * else it will add to it experience
      */
-    public Result cheatAddSkill(String name, int amount){
+    public Result cheatAddSkill(String name, int amount) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         SkillType skillType = SkillType.getSkillType(name);
-        if(skillType == null){
+        if (skillType == null) {
             return new Result(false, "Skill type not found");
         }
 
@@ -1565,7 +1588,7 @@ public class GameMenuController implements Controller {
         return new Result(true, "added " + amount + " experience");
     }
 
-    public Result skillStatue(){
+    public Result skillStatue() {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
 
@@ -1579,7 +1602,7 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result addMoney(int amount){
+    public Result addMoney(int amount) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         currentPlayer.getWallet().addBalance(amount);

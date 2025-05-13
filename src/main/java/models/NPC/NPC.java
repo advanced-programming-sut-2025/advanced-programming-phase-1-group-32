@@ -13,7 +13,10 @@ public class NPC {
     private ArrayList<Dialogue> dialogues = new ArrayList<>();
 
 
-    public NPC() {};
+    public NPC() {
+    }
+
+    ;
 
     public String getName() {
         return name;
@@ -36,10 +39,11 @@ public class NPC {
         this.dialogues = dialogues;
     }
 
-    public void giveQuestToPlayer(Player player){
+    public void giveQuestToPlayer(Player player) {
 
     }
-    public String talk(Player player){
+
+    public String talk(Player player) {
         return null;
     }
 

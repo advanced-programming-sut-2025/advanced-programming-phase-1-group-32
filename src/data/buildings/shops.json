@@ -1,12 +1,12 @@
 {
-  "required components" : [
+  "required components": [
     "InteriorComponent",
     "Placeable"
   ],
-  "common tags" : [
+  "common tags": [
     "BUILDING"
   ],
-  "entities" : [
+  "entities": [
     {
       "name": "Stardrop Saloon",
       "tags": [],

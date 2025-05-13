@@ -3,7 +3,7 @@ package models.shop;
 import models.App;
 import models.entities.Entity;
 
-public class BuildingShopProduct extends ShopProduct{
+public class BuildingShopProduct extends ShopProduct {
     private int woodCost;
     private int stoneCost;
 
@@ -13,8 +13,7 @@ public class BuildingShopProduct extends ShopProduct{
 
     @Override
     public Entity getEntity() {
-//        return App.buildingRegistry.makeEntity()
-        return null;
+        return App.buildingRegistry.makeEntity(this.name);
     }
 
     public int getStoneCost() {
@@ -24,4 +23,5 @@ public class BuildingShopProduct extends ShopProduct{
     public int getWoodCost() {
         return woodCost;
     }
+
 }

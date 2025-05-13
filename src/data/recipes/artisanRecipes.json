@@ -1,40 +1,48 @@
 {
-  "type" : "ARTISAN",
-  "recipes" : [
+  "type": "ARTISAN",
+  "recipes": [
     {
-      "name" : "Honey",
-      "hour" : 96,
-      "energy" : {"x" :  0, "y" : 75},
-      "price" : {"x" : 0, "y" : 350},
-      "ingredients" : [
-
+      "name": "Honey",
+      "hour": 96,
+      "energy": {
+        "x": 0,
+        "y": 75
+      },
+      "price": {
+        "x": 0,
+        "y": 350
+      },
+      "ingredients": [
       ],
-      "isUnlocked" : true
+      "isUnlocked": true
     },
     {
-      "name" : "Cheese",
-      "hour" : 3,
-      "energy" : {"x" :  0, "y" :  100},
-
-      "ingredients" : [
+      "name": "Cheese",
+      "hour": 3,
+      "energy": {
+        "x": 0,
+        "y": 100
+      },
+      "ingredients": [
         {
-          "contents" : [
-            "Milk", "Large Milk"
+          "contents": [
+            "Milk",
+            "Large Milk"
           ]
         }
       ]
     },
     {
-      "name" : "Goat Cheese",
-      "hour" : 3,
-      "ingredients" : [
+      "name": "Goat Cheese",
+      "hour": 3,
+      "ingredients": [
         {
-          "contents" : [
-            "Goat Milk", "Large Goat Milk"
+          "contents": [
+            "Goat Milk",
+            "Large Goat Milk"
           ]
         }
       ]
     }
-
   ]
 }
