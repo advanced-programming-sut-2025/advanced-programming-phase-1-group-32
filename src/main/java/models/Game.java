@@ -137,6 +137,11 @@ public class Game {
             e.printStackTrace(); // Prints the reason for failure
         }
 
+        // Put NPC on the Map
+        for (NPC npc : gameNPCs) {
+
+        }
+
         //TODO
     }
 
@@ -286,6 +291,8 @@ public class Game {
 
 
     }
+
+
 
     public void thorTile(Tile tile) {
         if (tile.getContent() != null && tile.getContent().hasTag(EntityTag.CROP)) {

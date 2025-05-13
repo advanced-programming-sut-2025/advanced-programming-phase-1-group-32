@@ -1,19 +1,22 @@
 package models.NPC;
 
+import models.entities.Entity;
 import models.enums.Season;
 import models.enums.Weather;
 import models.player.Player;
 
 import java.util.ArrayList;
 
-public class NPC {
+public class NPC extends Entity {
     private String name;
     private ArrayList<String> favorites = new ArrayList<>();
     private ArrayList<String> gifts = new ArrayList<>();
     private ArrayList<Dialogue> dialogues = new ArrayList<>();
 
 
-    public NPC() {};
+    public NPC() {
+        super("NPC");
+    };
 
     public String getName() {
         return name;
