@@ -88,6 +88,16 @@
           "maxCharge": 1
         }
       ]
+    },{
+      "name": "Shear",
+      "components": [
+        {
+          "type" : "Useable",
+          "useFunctions": [
+            "COLLECT_WOOL"
+          ]
+        }
+      ]
     }
   ]
 }

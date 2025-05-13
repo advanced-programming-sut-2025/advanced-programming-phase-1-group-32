@@ -241,6 +241,20 @@ public enum UseFunction {
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             player.reduceEnergy(4);
+            if(!(target instanceof Animal))
+                return new Result(false, "you should select an animal");
+
+            Animal animal = (Animal) target;
+            if (!animal.getAnimalType().getNeededTool().equals("Shear")) {
+                return new Result(false, "You can not collect wool from this animal");
+            }
+
+            animal.setTodayProduct(null);
+            Inventory inventory = player.getComponent(Inventory.class);
+            inventory.addItem(animal);
+            animal.addFriendshipLevel(5);
+            player.getSkill(SkillType.FARMING).addExperience(5);
+
 
             return new Result(true, "wool collected successfully");
         }
