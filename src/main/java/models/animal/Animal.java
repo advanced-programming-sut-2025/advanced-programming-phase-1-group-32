@@ -22,10 +22,14 @@ public  class Animal extends Entity {
     private int friendshipLevel = 0;
 
     public Animal(AnimalType animalType, String name) {
-        super(name);
+        super(animalType.name().toLowerCase());
         this.addComponent(new Renderable('A', new Color(255, 255, 255)));
         this.name = name;
         this.animalType = animalType;
+    }
+
+    public Animal(AnimalType animalType) {
+        this(animalType, null);
     }
 
     public Animal(AnimalData data){

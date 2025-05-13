@@ -12,7 +12,7 @@ import models.crafting.RecipeType;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
-import models.entities.systems.BuyProductSystem;
+import models.entities.systems.ShopSystem;
 import models.entities.systems.EntityPlacementSystem;
 import models.entities.workstations.ArtisanComponent;
 import models.enums.Direction;
@@ -677,7 +677,12 @@ public class GameMenuController implements Controller {
             return new AnimalPurchaseDetails(false, "Invalid animal type");
         }
 
-        //TODO: check that the player is in the correct shop (ALMAS)
+        Shop shop = currentPlayer.getPosition().getMap().getBuilding().getComponent(Shop.class);
+        if(!shop.getName().equals("Marnie's Ranch")) {
+
+        }
+
+
 
         if (wallet.getBalance() < animalType.getCost()) {
             return new AnimalPurchaseDetails(false, "You don't have enough money");
@@ -883,13 +888,13 @@ public class GameMenuController implements Controller {
             return new Result(false, "This shop doesn't have this product");
         if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
             return new Result(false, "This product isn't available in this season");
-        return BuyProductSystem.buyProduct(product, amount);
+        return ShopSystem.buyProduct(product, amount);
     }
 
     public Result build(int x, int y, String productName) {
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
         Shop shop = activeBuilding.getComponent(Shop.class);
-        return BuyProductSystem.buildPlaceable(shop.getProductByName(productName), x, y);
+        return ShopSystem.buildPlaceable(shop.getProductByName(productName), x, y);
     }
 
 

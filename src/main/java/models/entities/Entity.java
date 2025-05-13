@@ -15,6 +15,7 @@ import java.util.*;
 /***
  * ignoreUnknown is for fields which are in json but are not in the class. this tells jackson to ignore them
  */
+@JsonSubTypes()
 @JsonDeserialize(builder = Entity.Builder.class)
 //@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(

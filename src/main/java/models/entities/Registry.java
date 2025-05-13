@@ -14,9 +14,10 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public abstract class Registry <T> {
+
     protected final Map<String, T> registry = new HashMap<>();
 
-    abstract public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException;
+    abstract protected void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException;
     abstract public T getData(String name);
     public void load(String pathStr){
         Path root = Paths.get(pathStr);

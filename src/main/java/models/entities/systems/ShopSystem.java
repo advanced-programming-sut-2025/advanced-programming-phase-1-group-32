@@ -2,22 +2,22 @@ package models.entities.systems;
 
 import models.App;
 import models.Position;
-import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.Pickable;
 import models.entities.components.Placeable;
-import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
 import models.player.Player;
 import models.player.Wallet;
 import models.shop.ShopProduct;
 import records.Result;
 
-public class BuyProductSystem {
+public class ShopSystem {
     public static Result buyProduct(ShopProduct product, int amount) {
         if(amount > product.getStock() && product.getStock() >= 0)
             return new Result(false, "There isn't enough stock! go come tomorrow:)");
         Entity productEntity = product.getEntity();
+
+
 
         if(productEntity.getComponent(Pickable.class) != null) {
             return buyPickable(product, amount);
@@ -60,6 +60,7 @@ public class BuyProductSystem {
 
 
     }
+
 
 
     private static Result handlePay(ShopProduct p, int amount) {

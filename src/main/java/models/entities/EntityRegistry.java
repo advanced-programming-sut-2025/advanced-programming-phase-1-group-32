@@ -14,8 +14,20 @@ import java.util.Map;
 
 public class EntityRegistry extends Registry<Entity>{
 
+
+    public void addChild(EntityRegistry child) {
+        registry.putAll(child.registry);
+    }
+
+
+
+
+
+
+
+
     @Override
-    public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
+    protected void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
         ArrayList<Entity> entities = new ArrayList<>();
         if(jsonRoot.get("entities") == null){
             throw new RuntimeException("The structure of entity data file is invalid! (" + path.toString() + ")");

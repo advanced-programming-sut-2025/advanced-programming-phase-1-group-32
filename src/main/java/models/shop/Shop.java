@@ -80,7 +80,9 @@ public class Shop extends EntityComponent
         return sb.toString();
     }
 
-
+    public String getName() {
+        return name;
+    }
 
     @Override
     public EntityComponent clone() {
