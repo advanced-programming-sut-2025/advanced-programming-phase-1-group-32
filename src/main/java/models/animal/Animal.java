@@ -140,7 +140,7 @@ public  class Animal extends Entity {
         }
 
         if (isFedToday) {
-            if (friendshipLevel > 100) {
+            if (friendshipLevel > 100 && getProducts().size() > 1) {
                 double rand = Math.random() + 0.5;
                 double probability = (friendshipLevel + 150 * rand) / 1500;
                 if (Math.random() < probability) {

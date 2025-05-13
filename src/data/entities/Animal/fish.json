@@ -52,6 +52,126 @@
           "price": 5000
         }
       ]
+    },{
+      "name": "Tilapia",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 75
+        }
+      ]
+    },{
+      "name": "Dorado",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },{
+      "name": "Sunfish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 30
+        }
+      ]
+    },{
+      "name": "Rainbow Trout",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 65
+        }
+      ]
+    },{
+      "name": "Crimsonfish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 1500
+        }
+      ]
+    },{
+      "name": "Salmon",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 75
+        }
+      ]
+    },{
+      "name": "Sardine",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 40
+        }
+      ]
+    },{
+      "name": "Shad",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 60
+        }
+      ]
+    },{
+      "name": "Blue Discus",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 120
+        }
+      ]
+    },{
+      "name": "Angler",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 900
+        }
+      ]
+    },{
+      "name": "Glacierfish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 1000
+        }
+      ]
+    },{
+      "name": "Midnight Carp",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 150
+        }
+      ]
+    },{
+      "name": "Squid",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },{
+      "name": "Tuna",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },{
+      "name": "Perch",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 55
+        }
+      ]
     }
   ]
 }
