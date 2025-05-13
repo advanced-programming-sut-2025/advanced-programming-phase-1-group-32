@@ -96,7 +96,7 @@ public class PlayerFriendship {
         }
     }
 
-    public static String buildFriendshipMessage(Player currentPlayer,ArrayList<PlayerFriendship> playerFriendships) {
+    public static String buildFriendshipMessage(Player currentPlayer, ArrayList<PlayerFriendship> playerFriendships) {
         StringBuilder friendshipMessage = new StringBuilder("Your friendships: \n");
 
         for (PlayerFriendship playerFriendship : playerFriendships) {

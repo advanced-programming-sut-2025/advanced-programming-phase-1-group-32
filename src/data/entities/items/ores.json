@@ -1,27 +1,28 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Pickable"
+      "type": "Pickable"
     }
   ],
-  "required components" : [
+  "required components": [
     "Sellable"
   ],
-  "entities" : [
+  "entities": [
     {
-      "name" : "Gold",
-      "components" : [
+      "name": "Gold",
+      "components": [
         {
-          "type" : "Sellable",
-          "price" : 100
+          "type": "Sellable",
+          "price": 100
         }
       ]
-    },{
-      "name" : "Coal",
-      "components" : [
+    },
+    {
+      "name": "Coal",
+      "components": [
         {
-          "type" : "Sellable",
-          "price" : 10
+          "type": "Sellable",
+          "price": 10
         }
       ]
     }

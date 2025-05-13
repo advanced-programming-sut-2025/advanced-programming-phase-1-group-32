@@ -23,7 +23,7 @@ public enum BiomeType {
         }
     }
 
-    public static class Spawnable{
+    public static class Spawnable {
         String entity;
         double weight;
 

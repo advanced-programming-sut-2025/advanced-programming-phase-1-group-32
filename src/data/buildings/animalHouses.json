@@ -1,17 +1,16 @@
 {
-  "required components" : [
+  "required components": [
     "AnimalHouse",
     "InteriorComponent",
     "Placeable"
   ],
-  "common tags" : [
+  "common tags": [
     "BUILDING"
   ],
-
-  "entities" : [
+  "entities": [
     {
-      "name" : "Coop",
-      "components" : [
+      "name": "Coop",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -19,16 +18,17 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "COOP",
-          "level" : "NORMAL"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "COOP",
+          "level": "NORMAL"
         }
       ]
-
-    },{
-      "name" : "Big Coop",
-      "components" : [
+    },
+    {
+      "name": "Big Coop",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -36,15 +36,17 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "COOP",
-          "level" : "BIG"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "COOP",
+          "level": "BIG"
         }
       ]
-    },{
-      "name" : "Deluxe Coop",
-      "components" : [
+    },
+    {
+      "name": "Deluxe Coop",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -52,15 +54,17 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "COOP",
-          "level" : "DELUXE"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "COOP",
+          "level": "DELUXE"
         }
       ]
-    },{
-      "name" : "Barn",
-      "components" : [
+    },
+    {
+      "name": "Barn",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -68,15 +72,17 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "BARN",
-          "level" : "NORMAL"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "BARN",
+          "level": "NORMAL"
         }
       ]
-    },{
-      "name" : "Big Barn",
-      "components" : [
+    },
+    {
+      "name": "Big Barn",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -84,15 +90,17 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "BARN",
-          "level" : "BIG"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "BARN",
+          "level": "BIG"
         }
       ]
-    },{
-      "name" : "Deluxe Barn",
-      "components" : [
+    },
+    {
+      "name": "Deluxe Barn",
+      "components": [
         {
           "type": "InteriorComponent",
           "interiorName": "marniesRanchInterior"
@@ -100,10 +108,11 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
-        },{
-          "type" : "AnimalHouse",
-          "houseType" : "BARN",
-          "level" : "DELUXE"
+        },
+        {
+          "type": "AnimalHouse",
+          "houseType": "BARN",
+          "level": "DELUXE"
         }
       ]
     }

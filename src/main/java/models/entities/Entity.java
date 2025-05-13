@@ -2,12 +2,10 @@ package models.entities;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
 
-import java.awt.*;
 import java.util.*;
 
 
@@ -27,18 +25,18 @@ public class Entity implements Cloneable{
     @JsonProperty("id")
     private final int id;
     @JsonProperty("name")
-    private final String name;
+    private final String entityName;
     @JsonProperty("components")
     private final ArrayList<EntityComponent> components = new ArrayList<>();
     @JsonProperty("tags")
     private final HashSet<EntityTag> tags = new HashSet<>();
     private final Set<EntityObserver> observers = new HashSet<>();
 
-    public Entity(String name, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id){
-        if(name == null){
+    public Entity(String entityName, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id){
+        if(entityName == null){
             throw new RuntimeException("The entity name is null");
         }
-        this.name = name;
+        this.entityName = entityName;
 
         if(components != null){
             for(EntityComponent c : components) {
@@ -58,14 +56,14 @@ public class Entity implements Cloneable{
             this.id = id;
         }
     }
-    public Entity(String name, HashSet<EntityTag> tags, EntityComponent... components){
-        this(name, new ArrayList<>(Arrays.asList(components)), tags, 0);
+    public Entity(String entityName, HashSet<EntityTag> tags, EntityComponent... components){
+        this(entityName, new ArrayList<>(Arrays.asList(components)), tags, 0);
     }
-    public Entity(String name, EntityComponent... components){
-        this(name, null, components);
+    public Entity(String entityName, EntityComponent... components){
+        this(entityName, null, components);
     }
     private Entity(Builder b){
-        this(b.name, b.components, b.tags, b.id);
+        this(b.entityName, b.components, b.tags, b.id);
     }
     public ArrayList<EntityComponent> getComponents(){
         return components;
@@ -94,8 +92,8 @@ public class Entity implements Cloneable{
         }
     }
 
-    public String getName() {
-        return name;
+    public String getEntityName() {
+        return entityName;
     }
 
     public void addTag(EntityTag tag){
@@ -111,7 +109,7 @@ public class Entity implements Cloneable{
     @Override
     public String toString() {
         String out = "";
-        out += "name: " + name;
+        out += "name: " + entityName;
         out += "\nid: " + id;
         out += "\n  components:";
         for(EntityComponent c : components){
@@ -126,7 +124,7 @@ public class Entity implements Cloneable{
 
     @Override
     public Entity clone() {
-        Entity entity = new Builder().name(this.name).id(0).tags(this.tags).build();
+        Entity entity = new Builder().name(this.entityName).id(0).tags(this.tags).build();
         for(EntityComponent c : this.components){
             EntityComponent clonedComponent = c.clone();
             clonedComponent.setEntity(entity);
@@ -141,7 +139,7 @@ public class Entity implements Cloneable{
      */
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder{
-        private String name;
+        private String entityName;
         private String address;
         private int id;
         private ArrayList<EntityComponent> components = new ArrayList<>();
@@ -149,12 +147,12 @@ public class Entity implements Cloneable{
 
         private void reset(){
             this.id = 0;
-            this.name = null;
+            this.entityName = null;
             this.tags.clear();
             this.components.clear();
         }
 
-        public Builder name(String n)            { this.name = n; return this; }
+        public Builder name(String n)            { this.entityName = n; return this; }
         public Builder id(int n)                 { this.id = n; return this; }
         public Builder components(ArrayList<EntityComponent> c) { this.components.addAll(c); return this; }
         public Builder tags(HashSet<EntityTag> t) {this.tags.addAll(t); return this;}
@@ -180,7 +178,7 @@ public class Entity implements Cloneable{
     }
 
     public boolean isTheSameAs(Entity other){
-        if(!this.name.equals(other.name)) return false;
+        if(!this.entityName.equals(other.entityName)) return false;
 
         for(EntityComponent c : this.components){
             EntityComponent c2 = other.getComponent(c.getClass());

@@ -1,21 +1,19 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Pickable",
-      "maxStack" : 64
+      "type": "Pickable",
+      "maxStack": 64
     }
   ],
-  "entities" : [
+  "entities": [
     {
-      "name" : "Wood",
-      "components" : [
-
+      "name": "Wood",
+      "components": [
       ]
     },
     {
-      "name" : "Stone",
-      "components" : [
-
+      "name": "Stone",
+      "components": [
       ]
     }
   ]

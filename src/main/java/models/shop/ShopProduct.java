@@ -1,8 +1,10 @@
 package models.shop;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import models.App;
 import models.entities.Entity;
 import models.entities.EntityRegistry;
+import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.inventory.InventorySlot;
@@ -12,39 +14,54 @@ import records.Result;
 import javax.swing.*;
 import java.util.HashMap;
 
-public class ShopProduct {
+/*
+public interface ShopProduct {
+
+    int getStock();
+    int getPrice();
+    int getWoodCost();
+    int getStoneCost();
+    Entity getEntity();
+
+    void addSold(int amount);
+
+}
+*/
+
+
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = AnimalShopProduct.class, name = "Animal"),
+        @JsonSubTypes.Type(value = BuildingShopProduct.class, name = "Building"),
+        @JsonSubTypes.Type(value = OtherShopProduct.class, name = "Product")
+})
+abstract public class ShopProduct {
     protected String name;
-    private Season season;
     protected int dailyLimit;
     protected int todaySold;
-    private int price;
-    private int woodCost;
-    private int stoneCost;
+    protected int price;
     /*
-    * costs should be like this:
-    *   "price" : 100,
-    *   "wood" : 200,
-    *   "stone" : 100
-    *
-    *
-    *
-    * */
+     * costs should be like this:
+     *   "price" : 100,
+     *   "wood" : 200,
+     *   "stone" : 100
+     *
+     *
+     *
+     *
+     * */
 
-    private ShopProduct(){}
+    private ShopProduct() {
 
-    protected ShopProduct(String name, int dailyLimit) {
-        this(name, null, dailyLimit);
     }
 
-    public ShopProduct(String name, Season season, int dailyLimit) {
+    public ShopProduct(String name, int dailyLimit) {
         this.name = name;
-        this.season = season;
         this.dailyLimit = dailyLimit;
         this.todaySold = 0;
     }
 
     public int getStock() {
-        if(dailyLimit < 0) {
+        if (dailyLimit < 0) {
             return -1;
         }
         return dailyLimit - todaySold;
@@ -54,26 +71,17 @@ public class ShopProduct {
         todaySold += amount;
     }
 
-    public Entity getEntity() {
-        return App.entityRegistry.makeEntity(name);
-    }
-
-    public boolean isInSeason(Season season) {
-        if(this.season == null)
-            return true;
-        return this.season.equals(season);
-    }
-
-
     public int getPrice() {
         return this.price;
     }
 
-    public int getStoneCost() {
-        return stoneCost;
-    }
+    abstract public Entity getEntity();
 
-    public int getWoodCost() {
-        return woodCost;
-    }
+    abstract public int getWoodCost();
+
+    abstract public int getStoneCost();
+
+
+
+
 }

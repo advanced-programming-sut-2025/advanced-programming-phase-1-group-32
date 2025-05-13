@@ -5,13 +5,11 @@
       "isWalkable": true
     }
   ],
-
   "required components": [
   ],
   "common tags": [
     "FORAGING_CROP"
   ],
-
   "entities": [
     {
       "name": "Daffodil",
@@ -26,10 +24,11 @@
         },
         {
           "type": "Growable",
-          "seasons": ["SPRING"]
+          "seasons": [
+            "SPRING"
+          ]
         }
       ]
     }
   ]
-
 }

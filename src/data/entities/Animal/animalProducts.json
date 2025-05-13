@@ -5,14 +5,12 @@
       "maxStack": 8000000
     }
   ],
-
   "required components": [
     "Sellable"
   ],
   "common tags": [
     "ANIMAL_PRODUCT"
   ],
-
   "entities": [
     {
       "name": "Hay",
@@ -141,5 +139,4 @@
       ]
     }
   ]
-
 }

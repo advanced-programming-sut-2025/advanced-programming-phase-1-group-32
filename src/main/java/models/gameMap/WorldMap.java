@@ -9,7 +9,7 @@ import models.enums.TileType;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public class WorldMap extends GameMap{
+public class WorldMap extends GameMap {
     private final ArrayList<MapRegion> regions = new ArrayList<>();
     private final MapRegion[][] regionMap;
     private final BiomeType[][] biomeMap;
@@ -18,7 +18,7 @@ public class WorldMap extends GameMap{
         super(data, Environment.OUTDOOR);
 
         regionMap = data.getRegionMap();
-        if(data.regions != null){
+        if (data.regions != null) {
             this.regions.addAll(data.regions);
         }
         biomeMap = data.getBiomeMap();
@@ -35,13 +35,14 @@ public class WorldMap extends GameMap{
         initializeMap();
     }
 
-    public MapRegion getRegion(int x, int y){
-        if(x < 0 || x >= width || y < 0 || y > height){
+    public MapRegion getRegion(int x, int y) {
+        if (x < 0 || x >= width || y < 0 || y > height) {
             return null;
         }
         return regionMap[y][x];
     }
-    public MapRegion getRegion(Tile tile){
+
+    public MapRegion getRegion(Tile tile) {
         return getRegion(tile.getPosition().getCol(), tile.getPosition().getRow());
     }
 
@@ -53,13 +54,13 @@ public class WorldMap extends GameMap{
         SecureRandom random = new SecureRandom();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if(Math.random() > 0.8){
+                if (Math.random() > 0.8) {
                     BiomeType biome = biomeMap[i][j];
-                    if(biome!=null && tiles[i][j].getContent() == null && tiles[i][j].getType() != TileType.WALL){
-                        BiomeType.Spawnable spawnable = biome.spawnData.get(biome.spawnData.size()-1);
+                    if (biome != null && tiles[i][j].getContent() == null && tiles[i][j].getType() != TileType.WALL) {
+                        BiomeType.Spawnable spawnable = biome.spawnData.get(biome.spawnData.size() - 1);
 
                         for (BiomeType.Spawnable s : biome.spawnData) {
-                            if(Math.random() > s.weight / biome.totalWeight){
+                            if (Math.random() > s.weight / biome.totalWeight) {
                                 spawnable = s;
                             }
                         }

@@ -41,9 +41,11 @@ public enum Season {
         }
     };
 
-    public void updatePlant(){
+    public void updatePlant() {
 
-    };
+    }
+
+    ;
 
     public static Season nextSeason(Season season) {
         switch (season) {

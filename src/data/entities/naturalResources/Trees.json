@@ -1,41 +1,44 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Placeable",
-      "isWalkable" : false
-    },{
-      "type" : "Renderable",
-      "char" : "T",
-      "color" : [0, 255, 0]
+      "type": "Placeable",
+      "isWalkable": false
+    },
+    {
+      "type": "Renderable",
+      "char": "T",
+      "color": [
+        0,
+        255,
+        0
+      ]
     }
   ],
-
-  "required components" : [
+  "required components": [
     "Harvestable"
-
   ],
   "common tags": [
     "TREE",
     "BREAKABLE_WITH_AXE"
   ],
-
-  "entities" : [
+  "entities": [
     {
-      "name" : "Pine Tree",
-      "components" : [
+      "name": "Pine Tree",
+      "components": [
         {
-          "type" : "Harvestable",
-          "material" : "STONE",
-          "resources" : [
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
             {
-              "entity" : "Wood",
-              "min" : 5,
-              "max" : 10
-            },{
-              "entity" : "Pine seed",
-              "min" : 1,
-              "max" : 6,
-              "probability" : 0.5
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Pine seed",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
             }
           ]
         },
@@ -44,28 +47,39 @@
           "fruit": "Pine Tar",
           "oneTime": false,
           "regrowthTime": 5,
-          "stages": [7,7,7,7],
+          "stages": [
+            7,
+            7,
+            7,
+            7
+          ],
           "totalHarvestTime": 28,
-          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+          "seasons": [
+            "SPRING",
+            "SUMMER",
+            "FALL",
+            "WINTER"
+          ]
         }
       ]
     },
     {
-      "name" : "Apricot Tree",
-      "components" : [
+      "name": "Apricot Tree",
+      "components": [
         {
-          "type" : "Harvestable",
-          "material" : "STONE",
-          "resources" : [
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
             {
-              "entity" : "Wood",
-              "min" : 5,
-              "max" : 10
-            },{
-              "entity" : "Apricot Sapling",
-              "min" : 1,
-              "max" : 6,
-              "probability" : 0.5
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Apricot Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
             }
           ]
         },
@@ -74,23 +88,30 @@
           "fruit": "Apricot",
           "oneTime": false,
           "regrowthTime": 1,
-          "stages": [7,7,7,7],
+          "stages": [
+            7,
+            7,
+            7,
+            7
+          ],
           "totalHarvestTime": 28,
-          "seasons": ["SPRING"]
+          "seasons": [
+            "SPRING"
+          ]
         }
       ]
     },
     {
-      "name" : "Burned Tree",
-      "components" : [
+      "name": "Burned Tree",
+      "components": [
         {
-          "type" : "Harvestable",
-          "material" : "STONE",
-          "resources" : [
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
             {
-              "entity" : "Coal",
-              "min" : 3,
-              "max" : 7
+              "entity": "Coal",
+              "min": 3,
+              "max": 7
             }
           ]
         }

@@ -1,7 +1,5 @@
 package models.crafting;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.App;
@@ -10,9 +8,6 @@ import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
 public class Recipe {
@@ -87,7 +82,7 @@ public class Recipe {
         for (Ingredient ingredient : ingredients) {
             for (Entity entity : inventory.getEntities()) {
                 if(ingredient.isInIngredient(entity, inventory.getItemCount(entity))) {
-                    inventory.takeFromInventory(entity.getName(), ingredient.getAmount());
+                    inventory.takeFromInventory(entity.getEntityName(), ingredient.getAmount());
                     break;
                 }
             }

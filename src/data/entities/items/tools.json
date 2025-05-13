@@ -1,98 +1,103 @@
 {
-  "common components" : [
+  "common components": [
     {
-      "type" : "Pickable",
-      "maxStack" : 1
+      "type": "Pickable",
+      "maxStack": 1
     },
     {
-      "type" : "Upgradable",
-      "xp" : 0,
-      "level" : 0
+      "type": "Upgradable",
+      "xp": 0,
+      "level": 0
     }
-
   ],
-  "required components" : [
+  "required components": [
     "Useable"
   ],
   "common tags": [
     "TOOL"
   ],
-  "entities" : [
+  "entities": [
     {
-      "name" : "Axe",
-      "components" : [
+      "name": "Axe",
+      "components": [
         {
-          "type" : "Useable",
-          "useFunctions" : [
+          "type": "Useable",
+          "useFunctions": [
             "CHOP_TREE"
           ]
         }
       ]
-    },{
-      "name" : "Hoe",
-      "components" : [
+    },
+    {
+      "name": "Hoe",
+      "components": [
         {
-          "type" : "Useable",
-          "useFunctions" : [
+          "type": "Useable",
+          "useFunctions": [
             "PLOW"
           ]
         }
       ]
-    },{
-      "name" : "Scythe",
-      "components" : [
+    },
+    {
+      "name": "Scythe",
+      "components": [
         {
-          "type" : "Useable",
-          "useFunctions" : [
+          "type": "Useable",
+          "useFunctions": [
             "HARVEST_PLANTS"
           ]
         }
       ]
-    },{
-      "name" : "Pickaxe",
-      "components" : [
+    },
+    {
+      "name": "Pickaxe",
+      "components": [
         {
-          "type" : "Useable",
-          "useFunctions" : [
+          "type": "Useable",
+          "useFunctions": [
             "DE_PLOW",
             "MINE"
           ]
         }
       ]
-    },{
-      "name" : "Watering can",
+    },
+    {
+      "name": "Watering can",
       "components": [
         {
-          "type" : "Useable",
-          "useFunctions" : [
+          "type": "Useable",
+          "useFunctions": [
             "WATER_GROUND",
             "FILL_WATER"
           ]
         },
         {
-          "type" : "Container",
+          "type": "Container",
           "maxCharge": 40
         }
-
       ]
-    },{
+    },
+    {
       "name": "Milk pail",
       "components": [
         {
-          "type" : "Useable",
+          "type": "Useable",
           "useFunctions": [
             "EXTRACT_MILK"
           ]
-        },{
-          "type" : "Container",
+        },
+        {
+          "type": "Container",
           "maxCharge": 1
         }
       ]
-    },{
+    },
+    {
       "name": "Shear",
       "components": [
         {
-          "type" : "Useable",
+          "type": "Useable",
           "useFunctions": [
             "COLLECT_WOOL"
           ]

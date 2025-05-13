@@ -36,7 +36,7 @@ class ObjectPropertyDeserializer extends JsonDeserializer<MapData.ObjectProperty
         result.name = node.get("name").asText();
         result.type = node.get("type").asText();
 
-        switch (result.type){
+        switch (result.type) {
             case "int" -> {
                 result.asInt = node.get("value").asInt();
             }
@@ -52,7 +52,7 @@ class ObjectPropertyDeserializer extends JsonDeserializer<MapData.ObjectProperty
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class MapObject{
+class MapObject {
     @JsonProperty("gid")
     int gid;
     @JsonProperty("id")
@@ -65,13 +65,15 @@ class MapObject{
     ArrayList<MapData.ObjectProperty> properties;
     TileData data;
 }
-enum LayerType{
+
+enum LayerType {
     tilelayer,
     objectgroup
 }
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = MapLayerDeserializer.class)
-class MapLayer{
+class MapLayer {
     public String name;
     public int width;
     public int height;
@@ -87,35 +89,38 @@ class MapLayer{
         this.type = LayerType.tilelayer;
 
         this.data2d = new int[height][width];
-        for(int i = 0 ; i < height ; i++){
-            for(int j = 0 ; j < width ; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 this.data2d[i][j] = data[i * width + j];
             }
         }
     }
-    public MapLayer(String name, MapObject[] objects){
+
+    public MapLayer(String name, MapObject[] objects) {
         this.objects.addAll(Arrays.asList(objects));
         this.name = name;
         this.type = LayerType.objectgroup;
     }
-    public void parseData(Map<Integer, TileData> tileMap){
-        switch (type){
+
+    public void parseData(Map<Integer, TileData> tileMap) {
+        switch (type) {
             case tilelayer -> {
                 this.data = new TileData[height][width];
-                for(int i = 0 ; i < height ; i++){
-                    for(int j = 0 ; j < width ; j++){
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
                         data[i][j] = tileMap.get(data2d[i][j]);
                     }
                 }
             }
             case objectgroup -> {
-                for(MapObject o : objects){
+                for (MapObject o : objects) {
                     o.data = tileMap.get(o.gid);
                 }
             }
         }
     }
 }
+
 class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
     @Override
     public MapLayer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
@@ -124,7 +129,7 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
         String name = node.get("name").asText();
         LayerType type = LayerType.valueOf(node.get("type").asText());
 
-        switch (type){
+        switch (type) {
             case tilelayer -> {
                 int width = node.get("width").asInt();
                 int height = node.get("height").asInt();
@@ -147,9 +152,9 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MapData{
+public class MapData {
     public int width, height;
-    public Map<String,MapLayer> layers = new HashMap<>();
+    public Map<String, MapLayer> layers = new HashMap<>();
     public MapLayerData<TileType> mainLayer = null;
     public MapLayerData<MapRegion> regionsLayer = null;
     public MapLayerData<BiomeType> biomeLayer = null;
@@ -165,7 +170,7 @@ public class MapData{
         for (MapLayer m : layersArray) {
             this.layers.putIfAbsent(m.name, m);
         }
-        if((layers.get("ground")) == null){
+        if ((layers.get("ground")) == null) {
             throw new RuntimeException("no layer with the name \"ground\" was found in the layers. the map needs a ground layer.");
         }
 
@@ -173,7 +178,7 @@ public class MapData{
         this.height = layers.get("ground").height;
 
         XmlMapper mapper = new XmlMapper();
-        for(TileSetReference t : tileSetReferences){
+        for (TileSetReference t : tileSetReferences) {
             try {
                 TileSet tileset = mapper.readValue(new File(t.path.substring(t.path.lastIndexOf("../") + 3)), TileSet.class);
                 tileset.firstgid = t.firstgid;
@@ -182,23 +187,23 @@ public class MapData{
                 throw new RuntimeException(e);
             }
         }
-        if(tileSets.get("ground") == null){
+        if (tileSets.get("ground") == null) {
             throw new RuntimeException("no tileset with the name \"ground\" was found in the tilesets. the map needs a ground tileset.");
         }
-        for(TileSet t : tileSets.values()){
-            for(TileData d : t.tiles){
+        for (TileSet t : tileSets.values()) {
+            for (TileData d : t.tiles) {
                 d.globalId = d.id + t.firstgid;
                 tileMap.putIfAbsent(d.globalId, d);
             }
         }
         tileMap.putIfAbsent(0, new TileData());
 
-        for(MapLayer l : layers.values()){
+        for (MapLayer l : layers.values()) {
             l.parseData(tileMap);
-            switch (l.name){
+            switch (l.name) {
                 case "ground" -> {
-                    mainLayer = new MapLayerData<>(TileType.class ,layers.get("ground"), tileSets.get("ground"));
-                    for(TileData t : mainLayer.tileSet.tiles){
+                    mainLayer = new MapLayerData<>(TileType.class, layers.get("ground"), tileSets.get("ground"));
+                    for (TileData t : mainLayer.tileSet.tiles) {
                         try {
                             TileType type = TileType.valueOf(t.type);
                             mainLayer.dataMap.putIfAbsent(t.globalId, type);
@@ -210,7 +215,7 @@ public class MapData{
                 }
                 case "region" -> {
                     regionsLayer = new MapLayerData<>(MapRegion.class, layers.get("region"), tileSets.get("region"));
-                    for(TileData t : regionsLayer.tileSet.tiles){
+                    for (TileData t : regionsLayer.tileSet.tiles) {
                         MapRegion region = new MapRegion(t.type, new Color(Math.random(), Math.random(), Math.random()));
                         regions.add(region);
                         regionsLayer.dataMap.putIfAbsent(t.globalId, region);
@@ -219,7 +224,7 @@ public class MapData{
                 }
                 case "biome" -> {
                     biomeLayer = new MapLayerData<>(BiomeType.class, layers.get("biome"), tileSets.get("biome"));
-                    for(TileData t : biomeLayer.tileSet.tiles){
+                    for (TileData t : biomeLayer.tileSet.tiles) {
                         try {
                             BiomeType type = BiomeType.valueOf(t.type);
                             biomeLayer.dataMap.putIfAbsent(t.globalId, type);
@@ -231,14 +236,14 @@ public class MapData{
                 }
                 case "building" -> {
                     buildingLayer = new MapLayerData<>(String.class, layers.get("building"), tileSets.get("buildings"));
-                    for(TileData t : buildingLayer.tileSet.tiles){
+                    for (TileData t : buildingLayer.tileSet.tiles) {
                         buildingLayer.dataMap.putIfAbsent(t.globalId, t.type);
                     }
                     buildingLayer.populateData();
                 }
                 case "door" -> {
                     doorLayer = new MapLayerData<>(String.class, layers.get("door"), tileSets.get("objects"));
-                    for(TileData t : doorLayer.tileSet.tiles){
+                    for (TileData t : doorLayer.tileSet.tiles) {
                         doorLayer.dataMap.putIfAbsent(t.globalId, t.type);
                     }
                     doorLayer.populateData();
@@ -246,26 +251,32 @@ public class MapData{
             }
         }
     }
-    public TileType[][] getTypeMap(){
+
+    public TileType[][] getTypeMap() {
         return mainLayer.getDataArray();
     }
-    public MapRegion[][] getRegionMap(){
-        if(regionsLayer == null) return null;
+
+    public MapRegion[][] getRegionMap() {
+        if (regionsLayer == null) return null;
         return regionsLayer.getDataArray();
     }
-    public BiomeType[][] getBiomeMap(){
-        if(biomeLayer == null) return null;
+
+    public BiomeType[][] getBiomeMap() {
+        if (biomeLayer == null) return null;
         return biomeLayer.getDataArray();
     }
-    public ArrayList<MapLayerData<String>.ObjectData> getBuildings(){
-        if(buildingLayer == null) return null;
+
+    public ArrayList<MapLayerData<String>.ObjectData> getBuildings() {
+        if (buildingLayer == null) return null;
         return buildingLayer.getObjectArray();
     }
-    public ArrayList<MapLayerData<String>.ObjectData> getDoors(){
-        if(doorLayer == null) return null;
+
+    public ArrayList<MapLayerData<String>.ObjectData> getDoors() {
+        if (doorLayer == null) return null;
         return doorLayer.getObjectArray();
     }
-    public static MapData parse(String name, String path){
+
+    public static MapData parse(String name, String path) {
         Path file = Paths.get(path);
 
         JsonMapper mapper = new JsonMapper();
@@ -281,7 +292,7 @@ public class MapData{
     }
 
     @JsonDeserialize(using = ObjectPropertyDeserializer.class)
-    public static class ObjectProperty{
+    public static class ObjectProperty {
         public String name;
         public String type;
         public int asInt;
@@ -290,8 +301,8 @@ public class MapData{
         public boolean asBoolean;
     }
 
-    static public class MapLayerData<T>{
-        public class ObjectData{
+    static public class MapLayerData<T> {
+        public class ObjectData {
             T value;
             public int x, y;
             public ArrayList<ObjectProperty> properties = new ArrayList<>();
@@ -302,15 +313,17 @@ public class MapData{
                 this.y = y;
                 this.properties.addAll(properties);
             }
-            public ObjectProperty getProperty(String name){
+
+            public ObjectProperty getProperty(String name) {
                 for (ObjectProperty p : properties) {
-                    if(p.name.equals(name)){
+                    if (p.name.equals(name)) {
                         return p;
                     }
                 }
                 return null;
             }
         }
+
         public MapLayer layer;
         public TileSet tileSet;
         public Map<Integer, T> dataMap = new HashMap<>();
@@ -328,23 +341,25 @@ public class MapData{
             this.tileSet = tileSet;
             this.type = type;
         }
-        public ArrayList<ObjectData> getObjectArray(){
+
+        public ArrayList<ObjectData> getObjectArray() {
             return objectArray;
         }
-        public void populateData(){
-            switch (layer.type){
+
+        public void populateData() {
+            switch (layer.type) {
                 case tilelayer -> {
                     @SuppressWarnings("unchecked")
                     T[][] arr = (T[][]) Array.newInstance(type, layer.height, layer.width);
                     this.dataArray = arr;
-                    for(int i = 0 ; i < layer.height ; i++){
-                        for(int j = 0 ; j < layer.width ; j++){
+                    for (int i = 0; i < layer.height; i++) {
+                        for (int j = 0; j < layer.width; j++) {
                             dataArray[i][j] = dataMap.get(layer.data[i][j].globalId);
                         }
                     }
                 }
                 case objectgroup -> {
-                    for(MapObject o : layer.objects){
+                    for (MapObject o : layer.objects) {
                         objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y, o.properties != null ? o.properties : new ArrayList<>()));
                     }
                 }
@@ -355,7 +370,7 @@ public class MapData{
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JacksonXmlRootElement(localName = "tile")
-class TileData{
+class TileData {
     @JacksonXmlProperty(isAttribute = true)
     public int id;
     @JacksonXmlProperty(isAttribute = true)
@@ -365,13 +380,14 @@ class TileData{
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JacksonXmlRootElement(localName = "tileset")
-class TileSet{
+class TileSet {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "tile")
     public TileData[] tiles;
     public String name;
     public int firstgid;
 }
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 class TileSetReference {
     @JsonProperty("firstgid")

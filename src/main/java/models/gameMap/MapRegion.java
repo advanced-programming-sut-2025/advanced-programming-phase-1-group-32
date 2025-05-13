@@ -13,14 +13,16 @@ public class MapRegion {
     Color color;
     Position center = new Position(0, 0);
 
-    public void addTile(Tile tile){
+    public void addTile(Tile tile) {
         //position is not double so we cant do this:
         this.center.multiply(this.tiles.size()).add(tile.getPosition()).multiply((double) 1 / (this.tiles.size() + 1));
         tiles.add(tile);
     }
-    public boolean hasTile(Tile tile){
+
+    public boolean hasTile(Tile tile) {
         return this.tiles.contains(tile);
     }
+
     public ArrayList<Tile> getTiles() {
         return tiles;
     }
@@ -41,10 +43,12 @@ public class MapRegion {
     public String getName() {
         return name;
     }
-    public void setOwner(Player player){
+
+    public void setOwner(Player player) {
         this.owner = player;
     }
-    public Player getOwner(){
+
+    public Player getOwner() {
         return owner;
     }
 }

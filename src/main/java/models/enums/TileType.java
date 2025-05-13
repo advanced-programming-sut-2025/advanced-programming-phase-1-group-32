@@ -21,6 +21,7 @@ public enum TileType {
         this.color = color;
         this.isWalkable = true;
     }
+
     TileType(char character, Color color, boolean isWalkable) {
         this.character = character;
         this.color = color;

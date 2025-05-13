@@ -16,4 +16,5 @@ public class AnimalData {
         this.products = products;
         this.entityComponents = entityComponents;
     }
+
 }

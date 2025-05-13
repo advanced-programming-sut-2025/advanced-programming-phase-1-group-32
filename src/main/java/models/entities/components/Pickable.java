@@ -42,11 +42,11 @@ public class Pickable extends EntityComponent{
         if(stackSize == 0){
             entity.delete();
         }
-        if(stackSize < 0) throw new RuntimeException("The stackSize of " + entity.getName() + " became negative");
+        if(stackSize < 0) throw new RuntimeException("The stackSize of " + entity.getEntityName() + " became negative");
     }
     public Entity split(int amount){
-        if(amount > stackSize) throw new RuntimeException("Splitting more than the stack size in " + entity.getName());
-        if(amount == stackSize) throw new RuntimeException("Splitting the same amount as the stack size in" + entity.getName());
+        if(amount > stackSize) throw new RuntimeException("Splitting more than the stack size in " + entity.getEntityName());
+        if(amount == stackSize) throw new RuntimeException("Splitting the same amount as the stack size in" + entity.getEntityName());
 
         Entity copiedEntity = entity.clone();
         copiedEntity.getComponent(Pickable.class).setStackSize(amount);

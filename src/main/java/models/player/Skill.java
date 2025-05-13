@@ -4,7 +4,7 @@ public class Skill {
     private int experience;
     private int level;
 
-    public Skill(){
+    public Skill() {
         level = 0;
         experience = 0;
     }

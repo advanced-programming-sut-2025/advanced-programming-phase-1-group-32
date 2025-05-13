@@ -4,8 +4,7 @@ public enum Weather {
     SUNNY,
     RAINY,
     STORMY,
-    SNOWY
-    ;
+    SNOWY;
 
     public static Weather getweather(String weatherString) {
         for (Weather weather : Weather.values()) {

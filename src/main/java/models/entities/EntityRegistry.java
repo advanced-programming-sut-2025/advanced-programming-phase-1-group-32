@@ -14,8 +14,20 @@ import java.util.Map;
 
 public class EntityRegistry extends Registry<Entity>{
 
+
+    public void addChild(EntityRegistry child) {
+        registry.putAll(child.registry);
+    }
+
+
+
+
+
+
+
+
     @Override
-    public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
+    protected void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
         ArrayList<Entity> entities = new ArrayList<>();
         if(jsonRoot.get("entities") == null){
             throw new RuntimeException("The structure of entity data file is invalid! (" + path.toString() + ")");
@@ -62,7 +74,7 @@ public class EntityRegistry extends Registry<Entity>{
                         }
                     }
                     if(!found){
-                        throw new RuntimeException("The entity \"" + e.getName() +"\n in the data file " + path + " doesn't have the" +
+                        throw new RuntimeException("The entity \"" + e.getEntityName() +"\n in the data file " + path + " doesn't have the" +
                                 "required component: " + c.getClass());
                     }
                 }
@@ -72,7 +84,7 @@ public class EntityRegistry extends Registry<Entity>{
                     e.addTag(t);
                 }
             }
-            this.registry.putIfAbsent(e.getName().toLowerCase(), e);
+            this.registry.putIfAbsent(e.getEntityName().toLowerCase(), e);
         }
     }
 
