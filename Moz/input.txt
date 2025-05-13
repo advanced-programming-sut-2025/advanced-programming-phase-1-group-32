@@ -19,6 +19,7 @@ cheat give item "Scythe" 1
 add money -a 10000000
 show inventory
 cheat give item "Apple" 20
+cheat give item "Pine Seed" 20
 plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam
@@ -26,7 +27,7 @@ talk history -u AliAlm
 cheat build building Coop 10 10 -force
 
 
-tools equip Axe
+tools equip Hoe
 
 toggle map
 

@@ -69,5 +69,6 @@ fishing -p pole
 add skill farming -a 500
 skill statue
 
-
+cheat advance date 1d
+showplant -l <18,33>
 

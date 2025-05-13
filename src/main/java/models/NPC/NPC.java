@@ -7,7 +7,7 @@ import models.player.Player;
 
 import java.util.ArrayList;
 
-public class NPC extends Entity {
+public class NPC {
     private String name;
     private ArrayList<String> favorites = new ArrayList<>();
     private ArrayList<String> gifts = new ArrayList<>();
@@ -15,7 +15,7 @@ public class NPC extends Entity {
 
 
     public NPC() {
-        super("NPC");
+//        super("NPC");
     };
 
     public String getName() {

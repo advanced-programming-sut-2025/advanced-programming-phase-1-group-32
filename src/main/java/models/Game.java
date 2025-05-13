@@ -7,6 +7,7 @@ import models.NPC.NPC;
 import models.NPC.NpcFriendship;
 import models.NPC.Quest;
 import models.entities.Entity;
+import models.entities.EntityList;
 import models.entities.components.Growable;
 import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
@@ -24,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class Game {
@@ -34,7 +34,7 @@ public class Game {
     private WorldMap mainMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
-    private ArrayList<Entity> plantedEntities = new ArrayList<>();
+    private EntityList plantedEntities = new EntityList();
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private ArrayList<NPC> gameNPCs = new ArrayList<>();
     private boolean mapVisible = true;
@@ -178,7 +178,7 @@ public class Game {
         return plantedEntities;
     }
 
-    public void setPlantedEntities(ArrayList<Entity> plantedEntities) {
+    public void setPlantedEntities(EntityList plantedEntities) {
         this.plantedEntities = plantedEntities;
     }
 
@@ -252,6 +252,19 @@ public class Game {
 
         for (Entity entity : plantedEntities) {
             entity.getComponent(Growable.class).updatePerDay();
+        }
+
+        ArrayList<Entity> toDelete = new ArrayList<>();
+        for (Entity entity : plantedEntities) {
+            if (entity.getComponent(Growable.class).getDaysPastFromWatered() >= 2) {
+                toDelete.add(entity);
+            }
+        }
+
+        int size = toDelete.size();
+        for (int i = 0; i < size; i++) {
+            Entity entity = toDelete.get(i);
+            entity.delete();
         }
 
         for (Player player : players) {

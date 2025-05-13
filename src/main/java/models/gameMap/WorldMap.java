@@ -1,8 +1,10 @@
 package models.gameMap;
 
 import models.App;
+import models.Game;
 import models.Vec2;
 import models.entities.Entity;
+import models.entities.components.Growable;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
@@ -64,7 +66,13 @@ public class WorldMap extends GameMap{
                             }
                         }
 
-                        EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity(spawnable.entity), tiles[i][j]);
+                        Entity plant = App.entityRegistry.makeEntity(spawnable.entity );
+                        EntityPlacementSystem.placeOnTile(plant, tiles[i][j]);
+                        Game game = App.getActiveGame();
+                        if (plant.getComponent(Growable.class) != null) {
+                            game.getPlantedEntities().add(plant);
+                        }
+
                     }
                 }
             }
