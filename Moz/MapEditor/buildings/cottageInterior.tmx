@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="1" tileheight="1" infinite="0" nextlayerid="3" nextobjectid="4">
+ <tileset firstgid="1" source="../Tile sets/ground.tsx"/>
+ <tileset firstgid="17" source="../Tile sets/objects.tsx"/>
+ <layer id="1" name="ground" width="15" height="15">
+  <data encoding="csv">
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,4,4,4,4,4,4,4,4,4,4,4,4,4,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
+</data>
+ </layer>
+ <objectgroup id="2" name="door">
+  <object id="1" gid="17" x="6" y="15" width="1" height="1">
+   <properties>
+    <property name="destination" type="int" value="0"/>
+    <property name="id" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="3" gid="17" x="7" y="15" width="1" height="1">
+   <properties>
+    <property name="destination" type="int" value="1"/>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

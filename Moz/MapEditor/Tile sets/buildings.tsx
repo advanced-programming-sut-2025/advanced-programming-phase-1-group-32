@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.2" name="buildings" tilewidth="24" tileheight="20" tilecount="7" columns="0">
+<tileset version="1.8" tiledversion="1.8.2" name="buildings" tilewidth="12" tileheight="10" tilecount="8" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="15" type="Stardrop Saloon">
   <properties>
@@ -42,5 +42,8 @@
    <property name="building" value="blackSmith"/>
   </properties>
   <image width="6" height="4" source="../buildings/images/blackSmithExterior.png"/>
+ </tile>
+ <tile id="22" type="Cottage">
+  <image width="6" height="6" source="../buildings/images/cottageExterior.png"/>
  </tile>
 </tileset>

@@ -292,7 +292,7 @@ public class MapData{
 
     static public class MapLayerData<T>{
         public class ObjectData{
-            T value;
+            public T value;
             public int x, y;
             public ArrayList<ObjectProperty> properties = new ArrayList<>();
 

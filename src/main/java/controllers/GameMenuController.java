@@ -1223,7 +1223,7 @@ public class GameMenuController implements Controller {
 
         // do all the stuff in this function
         marriagePlayer.addSuitor(currentPlayer, ring);
-        inventory.removeItem(ring);
+        inventory.takeFromInventory(ring, 1);
 
         return new Result(true, "your request sent successfully!");
     }

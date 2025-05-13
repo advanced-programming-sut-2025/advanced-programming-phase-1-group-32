@@ -46,6 +46,7 @@ public class GameMenu implements AppMenu {
             try {
                 if(App.getView().getTerminal().reader().peek(1000) > 0){
                     c = App.getView().getTerminal().reader().read();
+                    System.out.println(c);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

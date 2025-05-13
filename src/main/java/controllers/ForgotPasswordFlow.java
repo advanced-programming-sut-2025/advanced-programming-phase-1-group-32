@@ -6,6 +6,7 @@ import models.enums.SecurityQuestions;
 import java.util.ArrayList;
 import records.Result;
 
+
 public class ForgotPasswordFlow {
     private record QuestionAnswerPair(SecurityQuestions question, String answer){};
 

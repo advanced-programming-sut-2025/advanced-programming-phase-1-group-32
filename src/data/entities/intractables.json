@@ -1,0 +1,17 @@
+{
+  "common tags" : [],
+  "required components" : [],
+  "common components" : [],
+  "entities" : [
+    {
+      "name" : "Fridge",
+      "tags" : [],
+      "components" : [
+        {
+          "type" : "Inventory",
+          "capacity" : 50
+        }
+      ]
+    }
+  ]
+}

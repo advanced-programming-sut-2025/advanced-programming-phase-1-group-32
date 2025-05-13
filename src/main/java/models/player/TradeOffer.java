@@ -170,12 +170,11 @@ public class TradeOffer {
                     return false;
                 }
 
-                //TODO: check
-                Entity item1 = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount() );
-                Entity item2 = receiver.getComponent(Inventory.class).removeItem(getTargetItem(), getTargetItemAmount());
+                //TODO: this used removeItem but it seemed buggy. i changed it to use takeItem;
+                Entity item1 = sender.getComponent(Inventory.class).takeFromInventory(getGivenItem(), getGivenItemAmount() );
+                Entity item2 = receiver.getComponent(Inventory.class).takeFromInventory(getTargetItem(), getTargetItemAmount());
                 receiver.getComponent(Inventory.class).addItem(item1);
                 sender.getComponent(Inventory.class).addItem(item2);
-
             }
             case 2 -> {
                 if(!sender.getComponent(Inventory.class).doesHaveItem(getGivenItem(), getGivenItemAmount())) {
@@ -187,7 +186,7 @@ public class TradeOffer {
                     return false;
                 }
 
-                Entity item = sender.getComponent(Inventory.class).removeItem(getGivenItem(), getGivenItemAmount());
+                Entity item = sender.getComponent(Inventory.class).takeFromInventory(getGivenItem(), getGivenItemAmount());
                 receiver.getComponent(Inventory.class).addItem(item);
                 receiver.getWallet().changeBalance(-price);
                 sender.getWallet().changeBalance(price);
@@ -206,7 +205,7 @@ public class TradeOffer {
                 sender.getWallet().changeBalance(-price);
                 receiver.getWallet().changeBalance(price);
 
-                Entity item = receiver.getComponent(Inventory.class).removeItem(getTargetItem(), getTargetItemAmount());
+                Entity item = receiver.getComponent(Inventory.class).takeFromInventory(getTargetItem(), getTargetItemAmount());
                 sender.getComponent(Inventory.class).addItem(item);
 
             }
