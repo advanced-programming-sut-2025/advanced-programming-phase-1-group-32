@@ -1,17 +1,12 @@
 package models.gameMap;
 
-import models.App;
 import models.Position;
 import models.entities.Entity;
 import models.entities.EntityList;
 import models.entities.components.EntityComponent;
-import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class GameMap {
     protected Tile[][] tiles;
@@ -33,12 +28,12 @@ public class GameMap {
         return entities;
     }
     public void addEntity(Entity entity){
-        if(entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getName() + " is getting " +
+        if(entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
                 "added twice int the map.");
         this.entities.add(entity);
     }
     public void removeEntity(Entity entity){
-        if(!entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getName() + " is getting " +
+        if(!entities.contains(entity)) throw new RuntimeException("you fucked up somewhere and now the entity " + entity.getEntityName() + " is getting " +
                 "removed from the map, but it doesnt exist on the map");
         this.entities.remove(entity);
     }

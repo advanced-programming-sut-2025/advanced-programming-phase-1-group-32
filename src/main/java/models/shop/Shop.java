@@ -1,9 +1,7 @@
 package models.shop;
 
-import models.App;
 import models.entities.components.EntityComponent;
 import models.enums.Season;
-import records.Result;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,12 +44,12 @@ public class Shop extends EntityComponent
 
     public ShopProduct getProductByName(String name) {
         for (ShopProduct product : permanentProducts) {
-            if(product.getEntity().getName().equalsIgnoreCase(name))
+            if(product.getEntity().getEntityName().equalsIgnoreCase(name))
                 return product;
         }
         for (List<ShopProduct> value : seasonalProducts.values()) {
             for (ShopProduct product : value) {
-                if(product.getEntity().getName().equalsIgnoreCase(name))
+                if(product.getEntity().getEntityName().equalsIgnoreCase(name))
                     return product;
             }
         }

@@ -320,7 +320,7 @@ public class GameMenuController implements Controller {
         Entity active = player.getActiveSlot().getEntity();
         if(active == null || !active.hasTag(EntityTag.TOOL))
             return new Result(false, "This is not a tool");
-        return new Result(true, active.getName());
+        return new Result(true, active.getEntityName());
 
     }
 
@@ -331,7 +331,7 @@ public class GameMenuController implements Controller {
             return new Result(false, "There is no tool in Backpack");
         StringBuilder sb  = new StringBuilder("Tools available:");
         for (Entity tool : tools) {
-            sb.append("\n").append(tool.getName());
+            sb.append("\n").append(tool.getEntityName());
         }
         return new Result(true, sb.toString());
 
@@ -371,7 +371,7 @@ public class GameMenuController implements Controller {
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if(tile == null) continue;
-            if(tile.getContent().getName().equals(artisanName)) {
+            if(tile.getContent().getEntityName().equals(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
                 if(artisan.isInProcess())/* TODO: should fix in phase2 (what if there is two artisan near player)*/
                     return new Result(false, "another recipe already in process");
@@ -391,7 +391,7 @@ public class GameMenuController implements Controller {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if(tile == null) continue;
 
-            if(tile.getContent().getName().equals(artisanName)) {
+            if(tile.getContent().getEntityName().equals(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
                 if(!artisan.isInProcess())
                     return new Result(false, "This artisan is empty!");
@@ -400,7 +400,7 @@ public class GameMenuController implements Controller {
                     return artisan.remainingTime();
                 Entity product = artisan.getProduct();
                 inventory.addItem(product);
-                return new Result(true, product.getName() + " added to your inventory successfully");
+                return new Result(true, product.getEntityName() + " added to your inventory successfully");
             }
         }
         return new Result(false, "There isn't any " + artisanName + " around you!");
@@ -420,7 +420,7 @@ public class GameMenuController implements Controller {
         Sellable sellable = crop.getComponent(Sellable.class);
 
         StringBuilder message = new StringBuilder();
-        message.append("Name: ").append(crop.getName()).append("\n").
+        message.append("Name: ").append(crop.getEntityName()).append("\n").
                 append("Source: ").append(growable.getSeed()).append("\n")
                 .append("Stages: ").append(growable.getStages()).append("\n")
                 .append("Total Harvest Time: ").append(growable.getTotalHarvestTime()).append("\n")
@@ -506,7 +506,7 @@ public class GameMenuController implements Controller {
 
 
         StringBuilder message = new StringBuilder();
-        message.append("Name: ").append(plantedEntity.getName()).append("\n");
+        message.append("Name: ").append(plantedEntity.getEntityName()).append("\n");
         message.append(plantedEntity.getComponent(Growable.class).getInfo());
         return new Result(true, message.toString());
     }
@@ -751,7 +751,7 @@ public class GameMenuController implements Controller {
             animal.addFriendshipLevel(15);
         }
 
-        return new Result(true, animal.getName() + " has pet successfully!");
+        return new Result(true, animal.moz() + " has pet successfully!");
     }
 
     public Result setAnimalFriendship(String animalName, int amount) {
@@ -830,8 +830,8 @@ public class GameMenuController implements Controller {
         for (Animal animal : currentPlayer.getAnimals()) {
             Entity product = animal.getTodayProduct();
             if (product != null) {
-                message.append("Animal ").append(animal.getName()).append("\n");
-                message.append("Product ").append(product.getName()).append("\n");
+                message.append("Animal ").append(animal.moz()).append("\n");
+                message.append("Product ").append(product.getEntityName()).append("\n");
                 message.append("Quality: ").append(product.getComponent(Sellable.class).getProductQuality()).append("\n");
                 message.append("-------------------------------------------------------------------\n");
             }
@@ -886,8 +886,8 @@ public class GameMenuController implements Controller {
         ShopProduct product = shop.getProductByName(productName);
         if(product == null)
             return new Result(false, "This shop doesn't have this product");
-        if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
-            return new Result(false, "This product isn't available in this season");
+//        if(!product.isInSeason(App.getActiveGame().getDate().getSeason()))
+//            return new Result(false, "This product isn't available in this season");
         return ShopSystem.buyProduct(product, amount);
     }
 
@@ -914,7 +914,7 @@ public class GameMenuController implements Controller {
         currentPlayer.getAnimals().remove(animal);
         //TODO: remove form his house if needed
 
-        return new Result(true, animal.getName() + " sold successfully!");
+        return new Result(true, animal.moz() + " sold successfully!");
     }
 
     public Result fishing(String fishingPole) {
@@ -986,7 +986,7 @@ public class GameMenuController implements Controller {
         }
 
         if (!game.checkPlayerDistance(currentPlayer, giftedPlayer)) {
-            return new Result(false, giftedPlayer.getName() + " is out of distance");
+            return new Result(false, giftedPlayer.getEntityName() + " is out of distance");
         }
 
         if (!App.entityRegistry.doesEntityExist(itemName)) {
@@ -1402,13 +1402,13 @@ public class GameMenuController implements Controller {
         int itemAmount = quest.getRequestNumber();
 
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
-        if (!inventory.doesHaveItem(item.getName(), itemAmount)) {
-            return new Result(false, "You dont have enough \"" + item.getName() + "\" items");
+        if (!inventory.doesHaveItem(item.getEntityName(), itemAmount)) {
+            return new Result(false, "You dont have enough \"" + item.getEntityName() + "\" items");
         }
 
         // TODO: check distance
 
-        inventory.takeFromInventory(item.getName(), itemAmount);
+        inventory.takeFromInventory(item.getEntityName(), itemAmount);
         int rewardNumber = quest.getRewardNumber();
         NpcFriendship npcFriendship = currentPlayer.getNpcFriendships().get(quest.getNpc());
         if (npcFriendship.getLevel() >= 2) {
@@ -1433,7 +1433,7 @@ public class GameMenuController implements Controller {
         inventory.addItem(reward);
 
         return new Result(true, "Quest finished successfully!\n" +
-                "You got: " + rewardNumber + item.getName());
+                "You got: " + rewardNumber + item.getEntityName());
     }
 
 

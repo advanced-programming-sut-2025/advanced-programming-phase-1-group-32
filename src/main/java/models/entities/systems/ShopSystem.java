@@ -26,7 +26,7 @@ public class ShopSystem {
         if(productEntity.getComponent(Placeable.class) != null) {
             return new Result(true, null);
         }
-        App.getView().err("error: product " + productEntity.getName() + " doesn't have placeable and pickable component");
+        App.getView().err("error: product " + productEntity.getEntityName() + " doesn't have placeable and pickable component");
         return new Result(false, "invalid Product!");
     }
 
@@ -40,7 +40,7 @@ public class ShopSystem {
                 return result;
             p.addSold(amount);
             inventory.addItem(e);
-            return new Result(true, e.getName() +  " x(" + amount + ")" +  " added to your inventory!");
+            return new Result(true, e.getEntityName() +  " x(" + amount + ")" +  " added to your inventory!");
         }
         return new Result(false, "Your inventory doesn't have enough space");
     }

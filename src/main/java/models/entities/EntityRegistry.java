@@ -74,7 +74,7 @@ public class EntityRegistry extends Registry<Entity>{
                         }
                     }
                     if(!found){
-                        throw new RuntimeException("The entity \"" + e.getName() +"\n in the data file " + path + " doesn't have the" +
+                        throw new RuntimeException("The entity \"" + e.getEntityName() +"\n in the data file " + path + " doesn't have the" +
                                 "required component: " + c.getClass());
                     }
                 }
@@ -84,7 +84,7 @@ public class EntityRegistry extends Registry<Entity>{
                     e.addTag(t);
                 }
             }
-            this.registry.putIfAbsent(e.getName().toLowerCase(), e);
+            this.registry.putIfAbsent(e.getEntityName().toLowerCase(), e);
         }
     }
 

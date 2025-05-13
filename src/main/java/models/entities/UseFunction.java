@@ -63,7 +63,7 @@ public enum UseFunction {
                 return new Result(false, "Nothing to mine!");
             }
             if(!mineral.hasTag(EntityTag.BREAKABLE_WITH_PICKAXE)){
-                return new Result(false, "you can't use a pickaxe on " + mineral.getName());
+                return new Result(false, "you can't use a pickaxe on " + mineral.getEntityName());
             }
 
             Harvestable harvestable = mineral.getComponent(Harvestable.class);
@@ -100,7 +100,7 @@ public enum UseFunction {
             }
 
             if(!tree.hasTag(EntityTag.BREAKABLE_WITH_AXE)){
-                return new Result(false, "you can't use an axe on " + tree.getName());
+                return new Result(false, "you can't use an axe on " + tree.getEntityName());
             }
 
             Harvestable harvestable = tree.getComponent(Harvestable.class);
@@ -221,7 +221,7 @@ public enum UseFunction {
 
             Animal animal = (Animal) target;
             if (!animal.getAnimalType().getNeededTool().equals("Milk pail")) {
-                return new Result(false, target.getName() + " doesn't produce milk.");
+                return new Result(false, target.getEntityName() + " doesn't produce milk.");
             }
 
             Entity product = animal.getTodayProduct();

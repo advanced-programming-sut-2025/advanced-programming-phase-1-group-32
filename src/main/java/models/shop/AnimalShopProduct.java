@@ -17,7 +17,7 @@ public class AnimalShopProduct extends ShopProduct {
 
     @Override
     public Entity getEntity() {
-
+return null;
     }
 
     @Override

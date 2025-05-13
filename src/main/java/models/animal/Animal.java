@@ -45,7 +45,8 @@ public  class Animal extends Entity {
         this.animalType = animalType;
     }
 
-    public String getName() {
+
+    public String moz() {
         return name;
     }
 

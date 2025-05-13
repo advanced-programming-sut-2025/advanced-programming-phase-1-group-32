@@ -13,7 +13,8 @@ public class BuildingShopProduct extends ShopProduct{
 
     @Override
     public Entity getEntity() {
-        return App.buildingRegistry.makeEntity()
+//        return App.buildingRegistry.makeEntity()
+        return null;
     }
 
     public int getStoneCost() {

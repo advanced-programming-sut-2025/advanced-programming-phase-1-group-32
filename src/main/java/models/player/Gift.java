@@ -77,7 +77,7 @@ public class Gift {
     }
 
     private String getString(StringBuilder result) {
-        result.append("Gift: ").append(content.getName()).append("\n");
+        result.append("Gift: ").append(content.getEntityName()).append("\n");
         result.append("Amount: ").append(content.getComponent(Pickable.class).getStackSize()).append("\n");
         result.append(date.toString()).append("\n");
         if (rating == -1) {

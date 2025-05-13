@@ -7,7 +7,6 @@ import models.entities.Entity;
 import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.EntityTag;
-import models.player.Player;
 import records.Result;
 
 import java.util.ArrayList;
@@ -138,7 +137,7 @@ public class Inventory extends EntityComponent {
         }
         Pickable pickable = entity.getComponent(Pickable.class);
         if (pickable == null) {
-            throw new RuntimeException("Tried to pick up " + entity.getName() + " which doesnt have a Pickable component");
+            throw new RuntimeException("Tried to pick up " + entity.getEntityName() + " which doesnt have a Pickable component");
         }
         boolean entityAdded = false;
         //add to existing stacks of the same item if possible
@@ -239,7 +238,7 @@ public class Inventory extends EntityComponent {
         // TODO: remove amount number of entity with entityName and return it
         Entity entity = null;
         for (InventorySlot s : slots) {
-            if (s.getEntity()!= null && s.getEntity().getName().equals(entityName)) {
+            if (s.getEntity()!= null && s.getEntity().getEntityName().equals(entityName)) {
                 s.setEntity(null);
             }
         }
@@ -278,7 +277,7 @@ public class Inventory extends EntityComponent {
     public Entity getItem(String name) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
-            if (s.getEntity() != null && s.getEntity().getName().equals(name)) {
+            if (s.getEntity() != null && s.getEntity().getEntityName().equals(name)) {
                 return s.getEntity();
             }
         }
@@ -297,7 +296,7 @@ public class Inventory extends EntityComponent {
 
     public InventorySlot getSlot(String name) {
         for (InventorySlot s : slots) {
-            if (s.getEntity() != null && s.getEntity().getName().equals(name)) {
+            if (s.getEntity() != null && s.getEntity().getEntityName().equals(name)) {
                 return s;
             }
         }
@@ -305,7 +304,7 @@ public class Inventory extends EntityComponent {
     }
 
     public InventorySlot getSlot(Entity e) {
-        return getSlot(e.getName());
+        return getSlot(e.getEntityName());
     }
 
 
@@ -344,7 +343,7 @@ public class Inventory extends EntityComponent {
 
         for (InventorySlot slot : slots) {
             Entity e = slot.getEntity();
-            if(e != null && e.getName().equalsIgnoreCase(entityName)) {
+            if(e != null && e.getEntityName().equalsIgnoreCase(entityName)) {
                 int stackSize = e.getComponent(Pickable.class).getStackSize();
                 if(stackSize < amount) {
                     e.getComponent(Pickable.class).setStackSize(0);
@@ -385,7 +384,7 @@ public class Inventory extends EntityComponent {
         int count = 0;
         for(InventorySlot s : slots){
             if(s.getEntity() != null){
-                if(s.getEntity().getName().equals(name)){
+                if(s.getEntity().getEntityName().equals(name)){
                     count += s.getEntity().getComponent(Pickable.class).getStackSize();
                 }
             }
@@ -394,7 +393,7 @@ public class Inventory extends EntityComponent {
     }
 
     public int getItemCount(Entity entity){
-        return getItemCount(entity.getName());
+        return getItemCount(entity.getEntityName());
     }
 
 

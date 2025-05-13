@@ -4,8 +4,6 @@ import models.Account;
 import models.App;
 import models.Position;
 import models.NPC.NPC;
-import models.NPC.Quest;
-import models.NPC.NPC;
 import models.entities.EntityList;
 import models.entities.components.AnimalHouse;
 import models.entities.components.PositionComponent;
@@ -376,7 +374,7 @@ public class Player extends Entity{
     public void addFriendshipByGift(NPC npc, Entity gift) {
         NpcFriendship npcFriendship = npcFriendships.get(npc);
         if(!npcFriendship.isWasGiftedToday()) {
-            if (npc.getFavorites().contains(gift.getName())) {
+            if (npc.getFavorites().contains(gift.getEntityName())) {
                 npcFriendship.addXp(200);
             } else {
                 npcFriendship.addXp(50);
@@ -402,7 +400,7 @@ public class Player extends Entity{
 
     public Animal findAnimal(String animalName) {
         for (Animal animal : animals) {
-            if (animal.getName().equals(animalName)) {
+            if (animal.moz().equals(animalName)) {
                 return animal;
             }
         }

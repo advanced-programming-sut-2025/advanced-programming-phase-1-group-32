@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.animal.Animal;
 import models.animal.AnimalHouseLevel;
 import models.animal.AnimalHouseType;
-import models.entities.Entity;
 
 import java.util.ArrayList;
 
@@ -74,7 +73,7 @@ public class AnimalHouse extends EntityComponent{
     public String getDetail () {
         StringBuilder detail = new StringBuilder();
         detail.append("Name: ").append(name).append("\t");
-        detail.append("Type: ").append(entity.getName()).append("\t");
+        detail.append("Type: ").append(entity.getEntityName()).append("\t");
         detail.append("Available capacity: ").append(getAvailableCapacity()).append("\t");
 
         return detail.toString();

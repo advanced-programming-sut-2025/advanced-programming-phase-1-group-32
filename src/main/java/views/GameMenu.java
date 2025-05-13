@@ -341,7 +341,7 @@ public class GameMenu implements AppMenu {
                         if (entity != null) {
                             Renderable component = entity.getComponent(Renderable.class);
                             if (component == null) {
-                                throw new RuntimeException("Entity " + entity.getName() + " is on the ground, but it doesn't have a Renderable component");
+                                throw new RuntimeException("Entity " + entity.getEntityName() + " is on the ground, but it doesn't have a Renderable component");
                             }
                             renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
                         } else {
@@ -426,7 +426,7 @@ public class GameMenu implements AppMenu {
             Entity entity = s.getEntity();
             System.out.printf("%-2d: ", i);
             if(entity != null){
-                System.out.printf("%s \t%d", entity.getName(), entity.getComponent(Pickable.class).getStackSize());
+                System.out.printf("%s \t%d", entity.getEntityName(), entity.getComponent(Pickable.class).getStackSize());
             }else{
                 System.out.print("-");
             }

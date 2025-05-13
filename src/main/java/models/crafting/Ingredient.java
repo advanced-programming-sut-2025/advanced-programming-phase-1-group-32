@@ -1,17 +1,13 @@
 package models.crafting;
 
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
-import models.entities.EntityRegistry;
 import models.enums.EntityTag;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Ingredient {
     private List<String> contents;
@@ -48,7 +44,7 @@ public class Ingredient {
 
     public boolean isInIngredient(Entity e, int availableAmount) {
         if (!contents.isEmpty()) {
-            return contents.contains(e.getName()) && availableAmount >= amount;
+            return contents.contains(e.getEntityName()) && availableAmount >= amount;
         }
 
         if (!validTags.isEmpty()) {
