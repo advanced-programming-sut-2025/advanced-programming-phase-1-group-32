@@ -485,6 +485,7 @@ public class GameMenuController implements Controller {
         tile.setType(TileType.PLANTED_GROUND);
         EntityPlacementSystem.placeOnTile(plant, tile);
 
+
         return new Result(true, "planted succusfully");
     }
 
