@@ -1,5 +1,6 @@
 package models.NPC;
 
+import models.entities.Entity;
 import models.enums.Season;
 import models.enums.Weather;
 import models.player.Player;
