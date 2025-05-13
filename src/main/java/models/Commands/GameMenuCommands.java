@@ -120,6 +120,7 @@ public enum GameMenuCommands implements Commands {
     /* ------------------------------------- Additional cheat Commands ------------------------------------- */
     CHEAT_SKILL("add skill (?<skill>\\S+) -a (?<amount>\\d+)"),
     SKILL_STATUE("skill statue"),
+    ADD_MONEY("add\\s+money\\s+-a\\s+(?<amount>\\d+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
 

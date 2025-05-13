@@ -32,6 +32,7 @@ import models.player.*;
 import models.player.friendship.PlayerFriendship;
 import models.shop.Shop;
 import models.shop.ShopProduct;
+import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
 
@@ -666,19 +667,67 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result buyAnimal(String animalTypeString, String animalName) {
+    public AnimalPurchaseDetails buyAnimal(String animalTypeString, String animalName) {
         Game game = App.getActiveGame();
-        Player player = game.getCurrentPlayer();
+        Player currentPlayer = game.getCurrentPlayer();
+        Wallet wallet = currentPlayer.getWallet();
 
         AnimalType animalType = AnimalType.getAnimalTypeByString(animalTypeString);
         if(animalType == null) {
-            return new Result(false, "Invalid animal type");
+            return new AnimalPurchaseDetails(false, "Invalid animal type");
         }
 
-        // TODO: check almost everyThing
+        //TODO: check that the player is in the correct shop (ALMAS)
 
-        Animal animal = new Animal(animalType, animalName);
-        player.getAnimals().add(animal);
+        if (wallet.getBalance() < animalType.getCost()) {
+            return new AnimalPurchaseDetails(false, "You don't have enough money");
+        }
+
+        StringBuilder message = new StringBuilder("Your available animal houses:");
+        boolean availableHouse = false;
+
+        for (Entity building : currentPlayer.getOwnedBuildings()) {
+            AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
+            if (animalHouse != null) {
+                if (animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
+                        animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity()) {
+                    availableHouse = true;
+                    message.append("\n");
+                    message.append(animalHouse.getDetail());
+                }
+            }
+        }
+
+        if (!availableHouse) {
+            return new AnimalPurchaseDetails(false, "You don't have appropriate home!");
+        }
+        return new AnimalPurchaseDetails(true, message.toString(), animalName, animalType);
+
+
+    }
+
+    public Result chooseHouseForAnimal(AnimalPurchaseDetails details,String animalHouseName) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Wallet wallet = currentPlayer.getWallet();
+        AnimalType animalType = details.animalType();
+        String animalName = details.animalName();
+
+        AnimalHouse animalHouse = currentPlayer.findAnimalHouse(animalHouseName);
+        if (animalHouse == null) {
+            return new Result(false, "You don't own " + animalHouseName);
+        }
+
+        if (!(animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
+                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity())) {
+            return new Result(false, "This house isn't appropriate for this animal");
+        }
+
+        Animal animal = new Animal(animalType, details.animalName());
+        currentPlayer.getAnimals().add(animal);
+        animalHouse.addAnimal(animal);
+        wallet.reduceBalance(animalType.getCost());
+        EntityPlacementSystem.placeOnTile(animal, animalHouse.getEntity().getComponent(InteriorComponent.class).getMap().getTileByPosition(2, 2));
         return new Result(true, animalName + " bought and added to your farm successfully");
     }
 
@@ -1479,9 +1528,19 @@ public class GameMenuController implements Controller {
             return new Result(true, "Can't place that there ma lord");
         if(force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
         EntityPlacementSystem.placeEntity(building, new Position(x, y));
+
+        App.getActiveGame().getCurrentPlayer().addOwnedBuilding(building);
+        if(building.getComponent(AnimalHouse.class) != null){
+            building.getComponent(AnimalHouse.class).setName("House" + (int) (Math.random() * 1000));
+        }
+
         return new Result(true, "placed");
     }
 
+    /**
+     * if you amount is 0 it will reset to 0 the skill
+     * else it will add to it experience
+     */
     public Result cheatAddSkill(String name, int amount){
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
@@ -1513,6 +1572,14 @@ public class GameMenuController implements Controller {
         }
 
         return new Result(true, message.toString());
+    }
+
+    public Result addMoney(int amount){
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        currentPlayer.getWallet().addBalance(amount);
+
+        return new Result(true, "Your money: " + currentPlayer.getWallet().getBalance());
     }
 
 }

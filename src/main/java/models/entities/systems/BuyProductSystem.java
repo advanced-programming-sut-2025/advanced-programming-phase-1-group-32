@@ -8,6 +8,7 @@ import models.entities.components.Pickable;
 import models.entities.components.Placeable;
 import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
+import models.player.Player;
 import models.player.Wallet;
 import models.shop.ShopProduct;
 import records.Result;
@@ -48,13 +49,14 @@ public class BuyProductSystem {
     public static Result buildPlaceable(ShopProduct p, int x, int y) {
         Entity e = p.getEntity();
         Placeable placeable = e.getComponent(Placeable.class);
-        e.addComponent(new PositionComponent(x, y));
         EntityPlacementSystem.placeEntity(e, new Position(x, y));
+        Player player = App.getActiveGame().getCurrentPlayer();
+        player.addOwnedBuilding(e);
         //TODO: if can't place gets error else reduce costs
         Result result = handlePay(p, 1);
         if(!result.isSuccessful())
             return result;
-return null;
+        return null;
 
 
     }

@@ -11,20 +11,77 @@ import java.util.ArrayList;
 public class AnimalHouse extends EntityComponent{
     @JsonProperty("houseType")
     private AnimalHouseType type;
-    @JsonProperty("capacity")
-    private int capacity;
-    private ArrayList<Animal> animals;
+    @JsonProperty("level")
+    private AnimalHouseLevel level;
+    private String name;
+    private ArrayList<Animal> animals = new ArrayList<>();
 
-    public AnimalHouse(AnimalHouseType type, int capacity) {
+    public AnimalHouse(AnimalHouseType type, AnimalHouseLevel level) {
         this.type = type;
-        this.capacity = capacity;
+        this.level = level;
+    }
+
+    public AnimalHouse(AnimalHouse other){
+        this.type = other.type;
+        this.level = other.level;
     }
 
     public AnimalHouse() {
     }
 
+    public AnimalHouseType getType() {
+        return type;
+    }
+
+    public void setType(AnimalHouseType type) {
+        this.type = type;
+    }
+
+    public int getCapacity() {
+        return level.getCapacity();
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<Animal> animals) {
+        this.animals = animals;
+    }
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
+    }
+
+    public int getAvailableCapacity() {
+        int occupiedCapacity = 0;
+        for (Animal animal : animals) {
+            occupiedCapacity ++;
+        }
+
+        return getCapacity() - occupiedCapacity;
+    }
+
+    public String getDetail () {
+        StringBuilder detail = new StringBuilder();
+        detail.append("Name: ").append(name).append("\t");
+        detail.append("Type: ").append(entity.getName()).append("\t");
+        detail.append("Available capacity: ").append(getAvailableCapacity()).append("\t");
+
+        return detail.toString();
+    }
+
     @Override
     public EntityComponent clone() {
-        return null;
+        return new AnimalHouse(this);
     }
 }

@@ -6,6 +6,8 @@ import models.Position;
 import models.NPC.NPC;
 import models.NPC.Quest;
 import models.NPC.NPC;
+import models.entities.EntityList;
+import models.entities.components.AnimalHouse;
 import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.gameMap.GameMap;
@@ -43,6 +45,7 @@ public class Player extends Entity{
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
+    private final EntityList ownedBuildings = new EntityList();
 
     // boolean for messages
     private boolean haveNewMessage = false;
@@ -406,6 +409,21 @@ public class Player extends Entity{
         return null;
     }
 
+    public void addOwnedBuilding(Entity building) {
+        this.ownedBuildings.add(building);
+    }
 
+    public EntityList getOwnedBuildings() {
+        return ownedBuildings;
+    }
 
+    public AnimalHouse findAnimalHouse(String animalHouseName) {
+        for (Entity building : ownedBuildings) {
+            AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
+            if (animalHouse != null && animalHouse.getName().equals(animalHouseName)) {
+                return animalHouse;
+            }
+        }
+        return null;
+    }
 }

@@ -15,6 +15,7 @@ import models.gameMap.MapRegion;
 import models.gameMap.Tile;
 import models.gameMap.WorldMap;
 import models.player.Player;
+import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
@@ -216,7 +217,12 @@ public class GameMenu implements AppMenu {
             else if ((matcher = GameMenuCommands.BUILD_ANIMAL.getMatcher(input)) != null) {
 
             } else if ((matcher = GameMenuCommands.BUY_ANIMAL.getMatcher(input)) != null) {
-                System.out.println(controller.buyAnimal(matcher.group(1).trim(), matcher.group(2).trim()));
+                AnimalPurchaseDetails details = controller.buyAnimal(matcher.group(1).trim(), matcher.group(2).trim());
+                System.out.println(details.message());
+                if (details.canBuy()) {
+                    String chosenName = scanner.nextLine();
+                    System.out.println(controller.chooseHouseForAnimal(details, chosenName));
+                }
 
             } else if ((matcher = GameMenuCommands.PET_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.pet(matcher.group(1).trim()));
@@ -292,6 +298,9 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
                 System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
                                                                                     matcher.group("name") ,matcher.group("force") != null));
+            } else if ((matcher = GameMenuCommands.ADD_MONEY.getMatcher(input)) != null) {
+                System.out.println(controller.addMoney(Integer.parseInt(matcher.group(1).trim())));
+
             } else {
                 System.out.println("Invalid Command!");
             }
@@ -311,6 +320,7 @@ public class GameMenu implements AppMenu {
 
             Position position = player.getPosition();
             System.out.println("position: " + position + " " + position.getMap());
+            System.out.println("money: " + player.getWallet().getBalance());
 
             if(previousResult != null){
                 System.out.println(previousResult);

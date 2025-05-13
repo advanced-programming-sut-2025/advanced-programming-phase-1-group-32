@@ -21,13 +21,9 @@ public  class Animal extends Entity {
     private boolean isFedToday = false;
     private int friendshipLevel = 0;
 
-    public Animal(String name) {
-        super(name);
-        this.addComponent(new Renderable('A', new Color(255, 255, 255)));
-    }
-
     public Animal(AnimalType animalType, String name) {
         super(name);
+        this.addComponent(new Renderable('A', new Color(255, 255, 255)));
         this.name = name;
         this.animalType = animalType;
     }

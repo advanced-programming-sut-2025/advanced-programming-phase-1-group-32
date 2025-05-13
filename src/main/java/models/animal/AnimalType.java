@@ -8,65 +8,66 @@ public enum AnimalType {
             0,
             new ArrayList<>(Arrays.asList("Egg", "Big Egg")),
             AnimalHouseType.COOP,
-            4,
+            AnimalHouseLevel.NORMAL,
             null),
     Duck(1200,
             1,
             new ArrayList<>(Arrays.asList("Duck Egg", "Duck Feather")),
             AnimalHouseType.COOP,
-            8,
+            AnimalHouseLevel.BIG,
             null),
     Rabbit(8000,
             3,
             new ArrayList<>(Arrays.asList("Wool", "Rabbit Leg")),
             AnimalHouseType.COOP,
-            12,
+            AnimalHouseLevel.DELUXE,
             null),
     Dinosaur(14000,
             6,
             new ArrayList<>(Arrays.asList("Dinosaur Egg")),
             AnimalHouseType.COOP,
-            8,
+            AnimalHouseLevel.BIG,
             null),
     Cow(1500,
             0,
             new ArrayList<>(Arrays.asList("Cow Milk", "Cow Big Milk")),
             AnimalHouseType.BARN,
-            4,
+            AnimalHouseLevel.NORMAL,
             "Milk pail"),
     Goat(4000,
         1,
             new ArrayList<>(Arrays.asList("Goat Milk", "Goat Big Milk")),
             AnimalHouseType.BARN,
-            8,
+            AnimalHouseLevel.BIG,
             "Milk pail"),
     Sheep(8000,
         2,
             new ArrayList<>(Arrays.asList("Sheep Wool")),
             AnimalHouseType.BARN,
-            12,
+            AnimalHouseLevel.DELUXE,
             ""),
     Pig(16000,
             0,
             new ArrayList<>(Arrays.asList("Truffle")),
             AnimalHouseType.BARN,
-            12,
+            AnimalHouseLevel.DELUXE,
             null),;
 
     private final ArrayList<String> products;
     private final AnimalHouseType animalHouseType;
     private final int cost;
     private final int daysBetweenProduces;
-    private final int neededCapacity;
+    private final AnimalHouseLevel houseLevel;
     private final String neededTool;
 
 
-    AnimalType(int cost, int daysBetweenProduces, ArrayList<String> products, AnimalHouseType animalHouseType, int neededCapacity, String neededTool) {
+    AnimalType(int cost, int daysBetweenProduces, ArrayList<String> products, AnimalHouseType animalHouseType,
+               AnimalHouseLevel animalHouseLevel, String neededTool) {
         this.cost = cost;
         this.daysBetweenProduces = daysBetweenProduces;
         this.products = products;
         this.animalHouseType = animalHouseType;
-        this.neededCapacity = neededCapacity;
+        this.houseLevel = animalHouseLevel;
         this.neededTool = neededTool;
     }
 
@@ -86,8 +87,8 @@ public enum AnimalType {
         return daysBetweenProduces;
     }
 
-    public int getNeededCapacity() {
-        return neededCapacity;
+    public AnimalHouseLevel getHouseLevel() {
+        return houseLevel;
     }
 
     public String getNeededTool() {

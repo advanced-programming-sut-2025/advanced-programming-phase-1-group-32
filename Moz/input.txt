@@ -16,15 +16,15 @@ cheat give item "Axe" 1
 cheat give item "Pickaxe" 1
 cheat give item "Hoe" 1
 cheat give item "Scythe" 1
+add money -a 10000000
 show inventory
 cheat give item "Apple" 20
 plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
-buy animal -a chicken -n chicken1
-cheat give item "Hay" 2000
-cheat set friendship -n chicken1 -c 1000
+cheat build building Coop 10 10 -force
+
 
 tools equip Axe
 

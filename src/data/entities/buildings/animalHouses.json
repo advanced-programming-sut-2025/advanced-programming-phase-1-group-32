@@ -4,6 +4,9 @@
     "InteriorComponent",
     "Placeable"
   ],
+  "common tags" : [
+    "BUILDING"
+  ],
 
   "entities" : [
     {
@@ -19,7 +22,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "COOP",
-          "capacity" : "4"
+          "level" : "NORMAL"
         }
       ]
 
@@ -36,7 +39,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "COOP",
-          "capacity" : "8"
+          "level" : "BIG"
         }
       ]
     },{
@@ -52,7 +55,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "COOP",
-          "capacity" : "12"
+          "level" : "DELUXE"
         }
       ]
     },{
@@ -68,7 +71,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "BARN",
-          "capacity" : "4"
+          "level" : "NORMAL"
         }
       ]
     },{
@@ -84,7 +87,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "BARN",
-          "capacity" : "8"
+          "level" : "BIG"
         }
       ]
     },{
@@ -100,7 +103,7 @@
         },{
           "type" : "AnimalHouse",
           "houseType" : "BARN",
-          "capacity" : "12"
+          "level" : "DELUXE"
         }
       ]
     }

@@ -65,3 +65,6 @@ collect produce -n chicken1
 fishing -p pole
 add skill farming -a 500
 skill statue
+
+
+
