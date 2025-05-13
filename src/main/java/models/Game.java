@@ -85,15 +85,15 @@ public class Game {
     public void initNPCs() {
         // create NPC
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            List<NPC> NPCs = mapper.readValue(
-                    new File("src/data/NPC/npcNames.json"),
-                    new TypeReference<List<NPC>>() {}
-            );
-            for (NPC npc : NPCs) {
-                gameNPCs.add(npc);
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<NPC> NPCs = objectMapper.readValue(new File("src/data/NPC/npcNames.json"),
+                    new TypeReference<List<NPC>>() {});
+
+            for (Entity npc : NPCs) {
+                NPC realNPC = new NPC(npc.getName());
+                gameNPCs.add(realNPC);
                 for (Player player : players) {
-                    player.getNpcFriendships().put(npc, new NpcFriendship());
+                    player.getNpcFriendships().put(realNPC, new NpcFriendship());
                 }
             }
 
@@ -139,7 +139,7 @@ public class Game {
 
         // Put NPC on the Map
         for (NPC npc : gameNPCs) {
-
+            
         }
 
         //TODO

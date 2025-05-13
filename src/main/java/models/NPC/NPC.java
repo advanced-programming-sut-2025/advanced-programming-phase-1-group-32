@@ -6,8 +6,10 @@ import models.enums.Weather;
 import models.player.Player;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class NPC {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class NPC extends Entity {
     private String name;
     private ArrayList<String> favorites = new ArrayList<>();
     private ArrayList<String> gifts = new ArrayList<>();
@@ -15,11 +17,15 @@ public class NPC {
 
 
     public NPC() {
-//        super("NPC");
-    };
+        super("NPC");
+    }
 
     public String getName() {
         return name;
+    }
+
+    public NPC(String name) {
+        this.name = name;
     }
 
     public ArrayList<String> getFavorites() {
