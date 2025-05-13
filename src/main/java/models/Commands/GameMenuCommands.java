@@ -7,7 +7,7 @@ public enum GameMenuCommands implements Commands {
     ENERGY_SHOW       ("\\s*energy\\s+show\\s*"),
     SHOW_INVENTORY    ("\\s*show\\s+inventory\\s*"),
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
-    CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
+    CHANGE_INPUT_TYPE ("^\\s*cit\\s*$"),
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
     EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
     CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
@@ -80,8 +80,8 @@ public enum GameMenuCommands implements Commands {
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------ Render Commands ------------------------------------------ */
-    TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
-    CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
+    TOGGLE_MAP        ("^\\s*tm\\s*$"),
+    CHANGE_MAP_RENDER ("^\\s*cmr\\s*$"),
     CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 

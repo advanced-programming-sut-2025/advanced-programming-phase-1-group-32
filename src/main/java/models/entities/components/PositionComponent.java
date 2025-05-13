@@ -67,6 +67,18 @@ public class PositionComponent extends EntityComponent{
         return this.position;
     }
 
+    public Position setPosition(int x, int y){
+        this.position.setX(x);
+        this.position.setY(y);
+        return this.position;
+    }
+
+    public Position setPosition(double x, double y){
+        this.position.setX(x);
+        this.position.setY(y);
+        return this.position;
+    }
+
     public Position setMap(GameMap map){
         position.setMap(map);
         return position;

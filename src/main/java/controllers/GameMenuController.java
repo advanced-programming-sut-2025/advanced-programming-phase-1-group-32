@@ -1250,7 +1250,7 @@ public class GameMenuController implements Controller {
 
         // do all the stuff in this function
         marriagePlayer.addSuitor(currentPlayer, ring);
-        inventory.removeItem(ring);
+        inventory.takeFromInventory(ring, 1);
 
         return new Result(true, "your request sent successfully!");
     }
@@ -1576,7 +1576,7 @@ public class GameMenuController implements Controller {
         if (!force && EntityPlacementSystem.canPlace(x, y, building.getComponent(Placeable.class)))
             return new Result(true, "Can't place that there ma lord");
         if (force) EntityPlacementSystem.clearArea(x, y, building.getComponent(Placeable.class));
-        EntityPlacementSystem.placeEntity(building, new Position(x, y));
+        EntityPlacementSystem.placeEntity(building, new Position(x, y), App.getActiveGame().getMainMap());
 
         App.getActiveGame().getCurrentPlayer().addOwnedBuilding(building);
         if (building.getComponent(AnimalHouse.class) != null) {

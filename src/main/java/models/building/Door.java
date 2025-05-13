@@ -17,10 +17,6 @@ public class Door extends Entity {
     public Door() {
         super("DOOR");
         this.addComponent(new Renderable('D', new Color(78, 52, 46)));
-    }
-    public void setDestination(Position position){
-        this.destination = position;
-
         this.addComponent( new Placeable(true, new CollisionEvent() {
             @Override
             public Result onEnter() {
@@ -29,5 +25,9 @@ public class Door extends Entity {
                 return new Result(false, "");
             }
         }));
+    }
+    public void setDestination(Position position){
+        this.destination = position;
+
     }
 }

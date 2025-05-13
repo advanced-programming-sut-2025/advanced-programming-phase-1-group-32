@@ -18,12 +18,6 @@ public class Inventory extends EntityComponent {
     @JsonProperty("capacity")
     private int capacity;
 
-    //I chose InventorySlot as input because using an Entity list would require placing null values
-    // in the save file for empty slots, which would be awkward.
-    /*TODO: this feels a bit wrong. the json should be like this
-     * "entities" : [12, 5, null, 2, null, 3, 10, null, null]
-     * but its like this :
-     * "entities" : [{"entity" : 12},{"entity" : 5}{}{"entity" : 2}... */
     public Inventory(int capacity) {
         this.slots = new ArrayList<>();
         for (int i = 0; i < capacity; i++) {
@@ -191,7 +185,6 @@ public class Inventory extends EntityComponent {
             throw new RuntimeException("Why would you transfer an entity which is null?");
         }
 
-
         if (destEntity == null) {
             destination.setEntity(sourceEntity);
             source.setEntity(null);
@@ -219,31 +212,25 @@ public class Inventory extends EntityComponent {
         return new Result(false, "");
     }
 
-    public Entity removeItem(InventorySlot slot) {
-        Entity entity = slot.getEntity();
-        slot.setEntity(null);
-        return entity;
-    }
+//    public Entity removeItem(Entity entity) {
+//        for (InventorySlot s : slots) {
+//            if (s.getEntity().equals(entity)) {
+//                s.setEntity(null);
+//            }
+//        }
+//        return entity;
+//    }
 
-    public Entity removeItem(Entity entity) {
-        for (InventorySlot s : slots) {
-            if (s.getEntity().equals(entity)) {
-                s.setEntity(null);
-            }
-        }
-        return entity;
-    }
-
-    public Entity removeItem(String entityName, int amount) {
-        // TODO: remove amount number of entity with entityName and return it
-        Entity entity = null;
-        for (InventorySlot s : slots) {
-            if (s.getEntity()!= null && s.getEntity().getEntityName().equals(entityName)) {
-                s.setEntity(null);
-            }
-        }
-        return entity;
-    }
+//    public Entity removeItem(String entityName, int amount) {
+//        // TODO: remove amount number of entity with entityName and return it
+//        Entity entity = null;
+//        for (InventorySlot s : slots) {
+//            if (s.getEntity()!= null && s.getEntity().getName().equals(entityName)) {
+//                s.setEntity(null);
+//            }
+//        }
+//        return entity;
+//    }
 
     public ArrayList<InventorySlot> getSlots() {
         return this.slots;
@@ -395,13 +382,6 @@ public class Inventory extends EntityComponent {
     public int getItemCount(Entity entity){
         return getItemCount(entity.getEntityName());
     }
-
-
-
-
-
-
-
 
     @Override
     public EntityComponent clone() {

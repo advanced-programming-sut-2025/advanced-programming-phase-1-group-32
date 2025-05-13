@@ -24,12 +24,15 @@ plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
-cheat build building Coop 10 10 -force
-
-
-tools equip Hoe
 
 toggle map
 
 change input type
 
+cheat build building Coop 10 10 -force
+
+tools equip Axe
+
+toggle map
+
+change input type

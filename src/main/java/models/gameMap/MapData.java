@@ -301,9 +301,9 @@ public class MapData {
         public boolean asBoolean;
     }
 
-    static public class MapLayerData<T> {
-        public class ObjectData {
-            T value;
+    static public class MapLayerData<T>{
+        public class ObjectData{
+            public T value;
             public int x, y;
             public ArrayList<ObjectProperty> properties = new ArrayList<>();
 

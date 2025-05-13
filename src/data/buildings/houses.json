@@ -1,0 +1,25 @@
+{
+  "required components" : [
+    "InteriorComponent",
+    "Placeable"
+  ],
+  "common tags" : [
+    "BUILDING"
+  ],
+  "entities" : [
+    {
+      "name": "Cottage",
+      "tags": [],
+      "components": [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "cottageInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "cottageExterior"
+        }
+      ]
+    }
+  ]
+}

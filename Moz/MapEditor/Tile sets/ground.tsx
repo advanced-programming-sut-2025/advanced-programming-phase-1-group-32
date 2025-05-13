@@ -7,5 +7,6 @@
  <tile id="3" type="WOOD"/>
  <tile id="4" type="WALL"/>
  <tile id="5" type="DOOR"/>
+ <tile id="6" type="ROAD"/>
  <tile id="7" type="STONE"/>
 </tileset>

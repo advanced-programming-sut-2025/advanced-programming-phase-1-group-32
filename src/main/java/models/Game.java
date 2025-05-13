@@ -7,8 +7,10 @@ import models.NPC.NPC;
 import models.NPC.NpcFriendship;
 import models.NPC.Quest;
 import models.entities.Entity;
+import models.entities.EntityRegistry;
 import models.entities.EntityList;
 import models.entities.components.Growable;
+import models.entities.components.InteriorComponent;
 import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.EntityTag;
@@ -25,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class Game {
@@ -71,14 +74,24 @@ public class Game {
             }
         }
 
+
         //player farms
+        Map<MapRegion, FarmDetails> farmsDetails = mainMap.getFarmsDetail();
+
         for(int i = 0 ; i < players.size(); i++){
-            players.get(i).addRegion(mainMap.getRegions().get(i));
-            players.get(i).setCurrentMap(mainMap);
-            players.get(i).addComponent(new PositionComponent(0, 0));
-            players.get(i).getComponent(PositionComponent.class).setPosition(mainMap.getRegions().get(i).getCenter());
+            MapRegion region = mainMap.getRegions().get(i);
+            Player player = players.get(i);
+            player.addRegion(region);
+            player.setCurrentMap(mainMap);
+
+            MapData.MapLayerData<String>.ObjectData houseDetails = farmsDetails.get(region).cottage;
+            player.setHouse(App.entityRegistry.makeEntity(houseDetails.value));
+            EntityPlacementSystem.placeEntity(player.getHouse(), new Vec2(houseDetails.x, houseDetails.y), mainMap);
+
+            EntityPlacementSystem.placeOnMap(player, new Position(2, 2), player.getHouse().getComponent(InteriorComponent.class).getMap());
         }
 
+        mainMap.initRandomElements();
         initNPCs();
     }
 
@@ -96,7 +109,6 @@ public class Game {
                     player.getNpcFriendships().put(realNPC, new NpcFriendship());
                 }
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -139,7 +151,7 @@ public class Game {
 
         // Put NPC on the Map
         for (NPC npc : gameNPCs) {
-            
+
         }
 
         //TODO
