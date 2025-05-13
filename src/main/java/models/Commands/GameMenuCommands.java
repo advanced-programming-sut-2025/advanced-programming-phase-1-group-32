@@ -2,23 +2,34 @@ package models.Commands;
 
 public enum GameMenuCommands implements Commands {
     WALK              ("^\\s*walk\\s+-l\\s+<\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>\\s*$"),
-    WEATHER           ("\\s*weather\\s*"),
-    CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
-    FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     NEXT_TURN         ("^\\s*next\\s+turn\\s*$"),
-    PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
-    SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
     ENERGY_SET        ("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
-    SET_WEATHER       ("cheat\\s+weather\\s*set\\s*(?<type>\\S+)\\s*"),
     ENERGY_SHOW       ("\\s*energy\\s+show\\s*"),
     SHOW_INVENTORY    ("\\s*show\\s+inventory\\s*"),
-    WEATHER_FORECAST  ("\\s*weather\\s*forecast\\s*"),
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
-    GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
     EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
     CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
+
+    /* ----------------------------------------- Plant commands ------------------------------------------- */
+    CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
+    FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+    PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
+    SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
+    GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
+    /* ----------------------------------------------------------------------------------------------------- */
+
+    /* ----------------------------------------- Plant commands ------------------------------------------- */
+
+    /* ----------------------------------------------------------------------------------------------------- */
+
+    /* ----------------------------------------- Weather commands ------------------------------------------- */
+    WEATHER           ("\\s*weather\\s*"),
+    SET_WEATHER       ("cheat\\s+weather\\s*set\\s*(?<type>\\S+)\\s*"),
+    WEATHER_FORECAST  ("\\s*weather\\s*forecast\\s*"),
+    /* ----------------------------------------------------------------------------------------------------- */
+
 
     /* --------------------------------------- Friendship commands ---------------------------------------- */
     TALK              ("\\s*talk\\s+-u\\s+(?<name>.+)\\s+-m\\s+(?<message>.+)\\s*"),
