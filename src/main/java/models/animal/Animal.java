@@ -2,10 +2,12 @@ package models.animal;
 
 import models.App;
 import models.entities.Entity;
+import models.entities.components.AnimalHouse;
 import models.entities.components.Pickable;
 import models.entities.components.Renderable;
 import models.entities.components.Sellable;
 import models.enums.ProductQuality;
+import models.player.Player;
 import views.inGame.Color;
 
 import java.util.ArrayList;
@@ -180,5 +182,17 @@ public  class Animal extends Entity {
 
         price = (int) (price * (0.3 + (getFriendshipLevel() / 1000)));
         return price;
+    }
+
+    public static Entity getHouse(Animal animal, Player player){
+        for(Entity building : player.getOwnedBuildings()){
+            AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
+            if(animalHouse != null){
+                if(animalHouse.getAnimals().contains(animal)){
+                    return building;
+                }
+            }
+        }
+        return null;
     }
 }

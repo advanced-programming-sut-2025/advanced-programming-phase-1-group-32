@@ -51,6 +51,9 @@ quests finish -i 1
 
 
 buy animal -a chicken -n chicken1
+House176
+shepherd animals -n chicken1 -l <12 , 17>
+
 animals
 pet -n chicken1
 cheat set friendship -n chicken1 -c 00

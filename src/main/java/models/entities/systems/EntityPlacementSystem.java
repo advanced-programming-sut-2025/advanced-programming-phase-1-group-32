@@ -150,9 +150,8 @@ public class EntityPlacementSystem {
         return new Result(true, "");
     }
 
-    public static boolean canPlace(int x, int y, Placeable placeable) {
-        GameMap map = App.getActiveGame().getActiveMap();
-        if (placeable.getExteriorName() == null) {
+    public static boolean canPlace(int x, int y, Placeable placeable, GameMap map) {
+        if (placeable == null || placeable.getExteriorName() == null) {
             Tile tile = map.getTileByPosition(y, x);
             return tile.getType().isWalkable && tile.getContent() == null ;
         }
@@ -167,6 +166,15 @@ public class EntityPlacementSystem {
             }
         }
         return true;
+    }
+    public static boolean canPlace(int x, int y, Placeable placeable) {
+        return canPlace(x, y, placeable, App.getActiveGame().getMainMap());
+    }
+    public static boolean canPlace(int x, int y, GameMap map) {
+        return canPlace(x, y, null, map);
+    }
+    public static boolean canPlace(int x, int y) {
+        return canPlace(x, y, null, App.getActiveGame().getMainMap());
     }
     public static void clearArea(int x, int y, Placeable placeable) {
         GameMap map = App.getActiveGame().getActiveMap();

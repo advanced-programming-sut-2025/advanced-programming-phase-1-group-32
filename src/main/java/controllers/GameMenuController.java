@@ -690,7 +690,8 @@ public class GameMenuController implements Controller {
             AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
             if (animalHouse != null) {
                 if (animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
-                        animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity()) {
+                        animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity() &&
+                        animalHouse.getAvailableCapacity() > 0) {
                     availableHouse = true;
                     message.append("\n");
                     message.append(animalHouse.getDetail());
@@ -719,7 +720,8 @@ public class GameMenuController implements Controller {
         }
 
         if (!(animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
-                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity())) {
+                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity() &&
+                animalHouse.getAvailableCapacity() > 0)) {
             return new Result(false, "This house isn't appropriate for this animal");
         }
 
@@ -727,7 +729,8 @@ public class GameMenuController implements Controller {
         currentPlayer.getAnimals().add(animal);
         animalHouse.addAnimal(animal);
         wallet.reduceBalance(animalType.getCost());
-        EntityPlacementSystem.placeOnTile(animal, animalHouse.getEntity().getComponent(InteriorComponent.class).getMap().getTileByPosition(2, 2));
+        EntityPlacementSystem.placeOnMap(animal, new Position(2, 2), animalHouse.getEntity()
+                .getComponent(InteriorComponent.class).getMap());
         return new Result(true, animalName + " bought and added to your farm successfully");
     }
 
@@ -779,22 +782,40 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-    public Result shepherdAnimal(String animalName) {
+    public Result shepherdAnimal(String animalName, int x, int y, boolean putInBuilding) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
         Animal animal = currentPlayer.findAnimal(animalName);
-        if(animal == null) {
-            return new Result(false, "Animal not found");
+
+        if(animal == null){
+            return new Result(false, "You don't own an animal named:" + animalName);
         }
 
-        //TODO: change its position
+        Entity building = Animal.getHouse(animal, currentPlayer);
+        if(building == null){
+            return new Result(false, "RIDI: in current playeri ke dadi owner animal nist");
+        }
+
+        if(putInBuilding){
+            EntityPlacementSystem.placeOnMap(animal, new Position(2, 2), building.getComponent(InteriorComponent.class)
+                    .getMap());
+
+            return new Result(true, animalName + " was put in it's building");
+        }
+
+        if(!EntityPlacementSystem.canPlace(x, y)) {
+            return new Result(false, "can't place the animal there");
+        }
+
+        EntityPlacementSystem.placeOnMap(animal, new Position(x, y), App.getActiveGame().getMainMap());
+
         if (true /*TODO: check its out of home*/) {
             if (!animal.isFedToday()) {
                 animal.setFedToday(true);
                 animal.addFriendshipLevel(8);
             }
         }
-        return null;
+        return new Result(true, "animal was moved");
     }
 
     public Result feedHay(String animalName) {

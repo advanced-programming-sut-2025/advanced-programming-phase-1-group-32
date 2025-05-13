@@ -235,8 +235,8 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.animals());
 
             } else if ((matcher = GameMenuCommands.SHEPHERD_ANIMAL.getMatcher(input)) != null) {
-                System.out.println(controller.shepherdAnimal(matcher.group(1).trim()));
-
+                System.out.println(controller.shepherdAnimal(matcher.group(1).trim(), Integer.parseInt(matcher.group(2).trim()),
+                        Integer.parseInt(matcher.group(3).trim()), false));
             } else if ((matcher = GameMenuCommands.FEED_HAY.getMatcher(input)) != null) {
                 System.out.println(controller.feedHay(matcher.group(1).trim()));
 
