@@ -480,6 +480,7 @@
     "project": "Stardew Valley.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "Tile sets/objects.tsx",
         "buildings/cottageInterior.tmx",
         "Tile sets/objects.tsx",
         "buildings/cottageExterior.tmx",

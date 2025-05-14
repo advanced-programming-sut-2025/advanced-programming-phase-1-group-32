@@ -1,29 +1,35 @@
 package models.entities.components.inventory;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.EntityTag;
-import records.Result;
 
 import java.util.ArrayList;
 
 public class Inventory extends EntityComponent {
     @JsonProperty("slots")
-    @JsonIdentityReference(alwaysAsId = true)
     private ArrayList<InventorySlot> slots = new ArrayList<>();
     @JsonProperty("capacity")
+    //with the current system there is no need for this field. but i'll keep it anyway
     private int capacity;
+    @JsonProperty("unlimited")
+    private boolean unlimited;
+
 
     public Inventory(int capacity) {
+        this(capacity, false);
+    }
+    public Inventory(int capacity, boolean unlimited) {
         this.slots = new ArrayList<>();
         for (int i = 0; i < capacity; i++) {
             this.slots.add(new InventorySlot());
         }
         this.capacity = capacity;
+
+        this.setUnlimited(unlimited);
     }
 
     public Inventory(ArrayList<InventorySlot> slots) {
@@ -31,29 +37,49 @@ public class Inventory extends EntityComponent {
         this.capacity = slots.size();
     }
 
+    public void setUnlimited(boolean unlimited) {
+        this.unlimited = unlimited;
+        if(unlimited){
+            while(slots.size() < 20){
+                slots.add(new InventorySlot());
+            }
+            if(getEmptySpace() == 0) addSlot();
+        }
+    }
+
+    public boolean getUnlimited() {
+        return unlimited;
+    }
+
     private Inventory(Inventory other) {
         this.capacity = other.capacity;
         for (int i = 0; i < capacity; i++) {
             this.slots.add(new InventorySlot());
         }
+        this.setUnlimited(other.unlimited);
     }
 
     public Inventory() {
         this(0);
     }
 
-    /***
-     * @param entity the entity you want to add
-     * @param slot the destination slot
-     */
-    public Result addItemToSlot(Entity entity, InventorySlot slot) {
-        Entity entity2 = slot.getEntity();
-        if (entity2 == null) {
-            slot.setEntity(entity);
-            return new Result(true, "");
+    public Entity addItemToSlot(Entity entity, InventorySlot slot) {
+        Pickable pickable = entity.getComponent(Pickable.class);
+        if(pickable == null){
+            throw new RuntimeException("trying to add a " + entity.getEntityName() + " to an slot, but it doesnt have a" +
+                    "component.");
         }
 
-        Pickable pickable = entity.getComponent(Pickable.class);
+        Entity entity2 = slot.getEntity();
+        if (entity2 == null) {
+            if(pickable.getStackSize() > pickable.getMaxStack()){
+                slot.setEntity(pickable.split(pickable.getMaxStack()));
+                return entity;
+            }
+            slot.setEntity(entity);
+            return null;
+        }
+
         if (entity2.isTheSameAs(entity)) {
             Pickable pickable2 = entity2.getComponent(Pickable.class);
             int leftSpace = pickable2.getMaxStack() - pickable2.getStackSize();
@@ -61,50 +87,16 @@ public class Inventory extends EntityComponent {
             pickable2.changeStackSize(picked);
             pickable.changeStackSize(-picked);
             if (pickable.getStackSize() == 0) {
-                return new Result(true, "");
+                return null;
             } else {
-                return new Result(false, "");
+                return entity;
             }
         }
 
-        return new Result(false, "");
+        return entity;
     }
-
-    /***
-     * @param entity the entity you want to add
-     * @param slotIndex the destination slot index
-     */
-    public Result addItemToSlot(Entity entity, int slotIndex) {
-        return this.addItemToSlot(entity, this.slots.get(slotIndex));
-    }
-
-    /***
-     * Adds the specified entity to the inventory. if the entity was completely added, it removes the entity from the source array
-     * @param entity the entity you want to pick up
-     * @param sourceList The list which contains the entity
-     */
-    public Result addItem(Entity entity, ArrayList<Entity> sourceList) {
-        Result result = this.addItem(entity);
-        if (result.isSuccessful()) {
-            sourceList.remove(entity);
-        }
-        return result;
-    }
-
-    /***
-     * adds the item which is in the specified slot to the inventory
-     * @param slot source slot
-     */
-    public Result addItem(InventorySlot slot) {
-        Result result = this.addItem(slot.getEntity());
-        if (slot.getEntity().getComponent(Pickable.class).getStackSize() == 0) {
-            slot.getEntity().delete();
-            slot.setEntity(null);
-        }
-        return result;
-    }
-
     public boolean canAddItem(Entity item, int amount) {
+        if(unlimited) return true;
         for (InventorySlot slot : slots) {
             if(slot.getEntity() != null && slot.getEntity().isTheSameAs(item)) {
                 Pickable slotPickable = slot.getEntity().getComponent(Pickable.class);
@@ -119,99 +111,77 @@ public class Inventory extends EntityComponent {
         return amount <= 0;
     }
 
-
-    /***
-     * This function is used when you don't care about the destination slot and just want to add an item to the inventory
-     * @param entity the entity you want to add. the stack size of the entity could be more than its maximum stack size
-     * @return returns successful result if the entity was completely added
-     */
-    public Result addItem(Entity entity) {
+    public Entity addItem(Entity entity) {
         if (entity == null) {
-            return new Result(false, "entity is null");
+            return null;
         }
         Pickable pickable = entity.getComponent(Pickable.class);
         if (pickable == null) {
             throw new RuntimeException("Tried to pick up " + entity.getEntityName() + " which doesnt have a Pickable component");
         }
-        boolean entityAdded = false;
+
         //add to existing stacks of the same item if possible
         for (InventorySlot s : this.slots) {
             Entity entity2 = s.getEntity();
             if (entity2 != null && entity2.isTheSameAs(entity)) {
-                Pickable pickable2 = entity2.getComponent(Pickable.class);
-                int leftSpace = pickable2.getMaxStack() - pickable2.getStackSize();
-                int picked = Math.min(leftSpace, pickable.getStackSize());
-                pickable2.changeStackSize(picked);
-                pickable.changeStackSize(-picked);
-                if (pickable.getStackSize() == 0) {
-                    entityAdded = true;
+                if((entity = addItemToSlot(entity, s)) == null){
                     break;
                 }
             }
-        }
-        if (entityAdded) {
-            return new Result(true, "");
         }
         //add to empty slots in inventory
         if (pickable.getStackSize() != 0) {
             for (InventorySlot s : slots) {
                 if (s.getEntity() == null) {
-                    if (pickable.getStackSize() > pickable.getMaxStack()) {
-                        s.setEntity(pickable.split(pickable.getMaxStack()));
-                    } else {
-                        s.setEntity(entity);
-                        entityAdded = true;
+                    if((entity = addItemToSlot(entity, s)) == null){
                         break;
                     }
                 }
 
             }
         }
-        if (entityAdded) {
-            return new Result(true, "");
-        } else {
-            return new Result(false, "v");
+        if(entity == null){
+            //add an extra slot
+            if(unlimited && getEmptySpace()==0){
+                this.addSlot();
+            }
+            return null;
         }
+
+        if(!unlimited) return entity;
+
+        //add slots
+        while(entity != null){
+            InventorySlot newSlot = this.addSlot();
+            entity = addItemToSlot(entity, newSlot);
+        }
+
+        //add an extra slot
+        this.addSlot();
+
+        return null;
     }
 
-    /***
-     * transfer from one the source slot to the destination slot
-     */
-    public Result transferToSlot(InventorySlot source, InventorySlot destination) {
-        Entity sourceEntity = source.getEntity();
-        Entity destEntity = destination.getEntity();
-
-        if (sourceEntity == null) {
-            throw new RuntimeException("Why would you transfer an entity which is null?");
+    public int getEmptySpace(){
+        int emptySlots = 0;
+        for(InventorySlot s : slots){
+            if(s.getEntity() == null){
+                emptySlots++;
+            }
         }
-
-        if (destEntity == null) {
-            destination.setEntity(sourceEntity);
-            source.setEntity(null);
-            return new Result(true, "");
-        }
-
-        if (sourceEntity.isTheSameAs(destEntity)) {
-            return new Result(false, "");
-        }
-
-        Pickable sourcePickable = sourceEntity.getComponent(Pickable.class);
-        Pickable destPickable = destEntity.getComponent(Pickable.class);
-
-        int leftSpace = destPickable.getMaxStack() - destPickable.getStackSize();
-        int picked = Math.min(leftSpace, sourcePickable.getStackSize());
-        sourcePickable.changeStackSize(-picked);
-        destPickable.changeStackSize(picked);
-
-        if (sourcePickable.getStackSize() == 0) {
-            source.setEntity(null);
-            sourceEntity.delete();
-            return new Result(true, "");
-        }
-
-        return new Result(false, "");
+        return emptySlots;
     }
-
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+        while (slots.size() < capacity){
+            slots.add(new InventorySlot());
+        }
+    }
+    public InventorySlot addSlot(){
+        InventorySlot newSlot = new InventorySlot();
+        this.slots.add(newSlot);
+        return newSlot;
+    }
 //    public Entity removeItem(Entity entity) {
 //        for (InventorySlot s : slots) {
 //            if (s.getEntity().equals(entity)) {
@@ -235,7 +205,6 @@ public class Inventory extends EntityComponent {
     public ArrayList<InventorySlot> getSlots() {
         return this.slots;
     }
-
     public ArrayList<Entity> getEntities() {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
@@ -245,7 +214,6 @@ public class Inventory extends EntityComponent {
         }
         return out;
     }
-
     public ArrayList<Entity> getItemsByTag(EntityTag tag) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
@@ -256,11 +224,6 @@ public class Inventory extends EntityComponent {
         return out;
     }
 
-    public boolean doesItemWithTagExist(EntityTag tag) {
-        return !this.getItemsByTag(tag).isEmpty();
-    }
-
-
     public Entity getItem(String name) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
@@ -270,7 +233,6 @@ public class Inventory extends EntityComponent {
         }
         return null;
     }
-
     public Entity getItem(Entity entity) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
@@ -289,14 +251,27 @@ public class Inventory extends EntityComponent {
         }
         return null;
     }
-
     public InventorySlot getSlot(Entity e) {
         return getSlot(e.getEntityName());
     }
 
+    private void removeExtraSpaces(){
+        if(unlimited){
+            while(slots.size() > 20 && (getEmptySpace() > 1)){
+                for(InventorySlot s : slots){
+                    if(s.getEntity() == null){
+                        slots.remove(s);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
     public Entity takeFromInventory(Entity entity, int amount){
         if(!this.doesHaveItem(entity)) return null;
+        if(getItemCount(entity) < amount) return null;
+
         Entity takenEntity = entity.clone();
         Pickable pickable = takenEntity.getComponent(Pickable.class);
         pickable.setStackSize(0);
@@ -307,7 +282,7 @@ public class Inventory extends EntityComponent {
             if(e.isTheSameAs(entity)){
                 int stackSize = e.getComponent(Pickable.class).getStackSize();
                 if(stackSize < amount){
-                    e.getComponent(Pickable.class).changeStackSize(-e.getComponent(Pickable.class).getStackSize());
+                    e.delete();
                     amount -= stackSize;
                     pickable.changeStackSize(stackSize);
                 }else{
@@ -320,32 +295,39 @@ public class Inventory extends EntityComponent {
             }
         }
 
+        removeExtraSpaces();
+
         return takenEntity;
     }
-
     public Entity takeFromInventory(String entityName, int amount) {
+        if(!this.doesHaveItem(entityName)) return null;
+        if(getItemCount(entityName) < amount) return null;
+
         Entity takenEntity = App.entityRegistry.makeEntity(entityName);
         Pickable pickable = takenEntity.getComponent(Pickable.class);
         pickable.setStackSize(0);
 
-        for (InventorySlot slot : slots) {
-            Entity e = slot.getEntity();
-            if(e != null && e.getEntityName().equalsIgnoreCase(entityName)) {
+        for (InventorySlot s : slots) {
+            Entity e = s.getEntity();
+            if(e == null) continue;
+            if(e.getEntityName().equalsIgnoreCase(entityName)){
                 int stackSize = e.getComponent(Pickable.class).getStackSize();
-                if(stackSize < amount) {
-                    e.getComponent(Pickable.class).setStackSize(0);
+                if(stackSize < amount){
+                    e.delete();
                     amount -= stackSize;
                     pickable.changeStackSize(stackSize);
-                } else {
+                }else{
                     e.getComponent(Pickable.class).changeStackSize(-amount);
                     pickable.changeStackSize(amount);
                     amount = 0;
                     break;
                 }
+
             }
         }
-        if(amount > 0)
-            return null;
+
+        removeExtraSpaces();
+
         return takenEntity;
     }
 
@@ -378,9 +360,16 @@ public class Inventory extends EntityComponent {
         }
         return count;
     }
-
     public int getItemCount(Entity entity){
-        return getItemCount(entity.getEntityName());
+        int count = 0;
+        for(InventorySlot s : slots){
+            if(s.getEntity() != null){
+                if(s.getEntity().isTheSameAs(entity)){
+                    count += s.getEntity().getComponent(Pickable.class).getStackSize();
+                }
+            }
+        }
+        return count;
     }
 
     @Override
