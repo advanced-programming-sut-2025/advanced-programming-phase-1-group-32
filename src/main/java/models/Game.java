@@ -250,6 +250,7 @@ public class Game {
             playerFriendship.updateDaily();
         }
 
+        /*-----------------update plants---------------------*/
         for (Entity entity : plantedEntities) {
             entity.getComponent(Growable.class).updatePerDay();
         }
@@ -264,8 +265,11 @@ public class Game {
         int size = toDelete.size();
         for (int i = 0; i < size; i++) {
             Entity entity = toDelete.get(i);
-            entity.delete();
+//            entity.delete();
         }
+
+        /*----------------------------------------------------*/
+
 
         for (Player player : players) {
             player.updatePerDay();
@@ -283,6 +287,7 @@ public class Game {
     public void crowAttack() {
         for (Player player : players) {
             ArrayList<Tile> tiles = new ArrayList<>(); //TODO: get planted tiles
+//            tiles = player.ma
             for (int i = 0; i < Math.floor((double) tiles.size() / 16); i++) {
                 Tile tile = tiles.get((int) (Math.random() * tiles.size()));
                 //TODO

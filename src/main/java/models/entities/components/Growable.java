@@ -183,10 +183,10 @@ public class Growable extends EntityComponent {
     public int getStage() {
         int count = 0;
         int stage = 0;
-        for (Integer i : stages) {
-            count += i;
+        for (int j = 0; j < stages.size(); j++) {
+            count += stages.get(j);
             stage++;
-            if (count >= totalHarvestTime) {
+            if (count >= daysPastFromPlant) {
                 return stage;
             }
         }
@@ -225,7 +225,7 @@ public class Growable extends EntityComponent {
         if (isOneTime() && daysPastFromPlant < totalHarvestTime) {
             return new Result(false, "Its not time to collect product");
         }
-        if (!isOneTime() || regrowthTime < daysPastFromRegrowth) {
+        if (!isOneTime() && daysPastFromRegrowth < regrowthTime) {
             return new Result(false, "Its not time to collect product");
         }
 
