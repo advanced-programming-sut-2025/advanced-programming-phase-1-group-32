@@ -17,6 +17,7 @@ public class Shop extends EntityComponent {
     private ArrayList<BuildingShopProduct> buildings;
     private ArrayList<AnimalShopProduct> animals;
     private ArrayList<OtherShopProduct> products;
+    private ArrayList<UpgradableShopProduct> upgrades;
     private int startHour;
     private int endHour;
 
@@ -36,6 +37,7 @@ public class Shop extends EntityComponent {
         this.buildings = new ArrayList<>(data.buildings);
         this.animals = new ArrayList<>(data.animals);
         this.products = new ArrayList<>(data.products);
+        this.upgrades = new ArrayList<>(data.upgrades);
     }
 
     private Shop(Shop other) {
@@ -45,6 +47,7 @@ public class Shop extends EntityComponent {
         this.buildings = new ArrayList<>(other.buildings);
         this.animals = new ArrayList<>(other.animals);
         this.products = new ArrayList<>(other.products);
+        this.upgrades = new ArrayList<>(other.upgrades);
     }
 
 
@@ -53,6 +56,7 @@ public class Shop extends EntityComponent {
         res.addAll(buildings);
         res.addAll(products);
         res.addAll(animals);
+        res.addAll(upgrades);
         return res;
     }
 
@@ -89,6 +93,13 @@ public class Shop extends EntityComponent {
         ShopProduct product = getProductByName(name);
         if (product instanceof AnimalShopProduct)
             return (AnimalShopProduct) product;
+        return null;
+    }
+
+    public UpgradableShopProduct getUpgradableShopProduct(String name) {
+        ShopProduct product = getProductByName(name);
+        if (product instanceof UpgradableShopProduct)
+            return (UpgradableShopProduct) product;
         return null;
     }
 

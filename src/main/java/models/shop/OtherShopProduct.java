@@ -12,8 +12,9 @@ public class OtherShopProduct extends ShopProduct {
     @JsonCreator
     public OtherShopProduct(@JsonProperty("name") String name,
                             @JsonProperty("dailyLimit") int dailyLimit,
+                            @JsonProperty("price") int price,
                             @JsonProperty("season") Season season) {
-        super(name, dailyLimit);
+        super(name, dailyLimit, price);
         this.season = season;
     }
 

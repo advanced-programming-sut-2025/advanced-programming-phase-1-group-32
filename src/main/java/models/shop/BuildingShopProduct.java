@@ -12,9 +12,10 @@ public class BuildingShopProduct extends ShopProduct {
     @JsonCreator
     public BuildingShopProduct(@JsonProperty("name") String name,
                                @JsonProperty("dailyLimit") int dailyLimit,
+                               @JsonProperty("price") int price,
                                @JsonProperty("woodCost") int woodCost,
                                @JsonProperty("stoneCost") int stoneCost) {
-        super(name, dailyLimit);
+        super(name, dailyLimit, price);
         this.woodCost = woodCost;
         this.stoneCost = stoneCost;
     }

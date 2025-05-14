@@ -34,6 +34,7 @@ import models.shop.AnimalShopProduct;
 import models.shop.OtherShopProduct;
 import models.shop.Shop;
 import models.shop.ShopProduct;
+import models.utils.StringUtils;
 import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
@@ -357,8 +358,16 @@ public class GameMenuController implements Controller {
 
     }
 
-    public Result toolsUpgrade() {
-        //TODO: workshop needed
+    public Result toolsUpgrade(String toolName) {
+        Entity building = App.getActiveGame().getActiveMap().getBuilding();
+        if(building == null)
+            return new Result(false, "You are not in a building");
+        Shop shop = building.getComponent(Shop.class);
+        if(shop == null)
+            return new Result(false, "This building isn't shop");
+        if(!StringUtils.isNamesEqual(shop.getName(), "blacksmith"))
+            return new Result(false, "You only can Upgrade in blacksmith");
+        //TODO
         return null;
     }
 

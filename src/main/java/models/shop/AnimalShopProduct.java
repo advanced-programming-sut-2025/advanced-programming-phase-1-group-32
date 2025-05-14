@@ -11,8 +11,9 @@ public class AnimalShopProduct extends ShopProduct {
 
     public AnimalShopProduct(@JsonProperty("name") String name,
                              @JsonProperty("dailyLimit") int dailyLimit,
+                             @JsonProperty("price") int price,
                              @JsonProperty("requiredBuildingName") String requiredBuildingName) {
-        super(name, dailyLimit);
+        super(name, dailyLimit, price);
         this.requiredBuildingName = requiredBuildingName;
     }
 

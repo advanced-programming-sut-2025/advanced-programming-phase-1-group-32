@@ -59,7 +59,8 @@ abstract public class ShopProduct {
 
     }
 
-    public ShopProduct(String name, int dailyLimit) {
+    public ShopProduct(String name, int dailyLimit, int price) {
+        this.price = price;
         this.name = name;
         this.dailyLimit = dailyLimit;
         this.todaySold = 0;

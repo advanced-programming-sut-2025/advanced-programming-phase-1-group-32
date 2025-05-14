@@ -13,6 +13,8 @@ public class ShopData {
     ArrayList<BuildingShopProduct> buildings = new ArrayList<>();
     ArrayList<AnimalShopProduct> animals = new ArrayList<>();
     ArrayList<OtherShopProduct> products = new ArrayList<>();
+    ArrayList<UpgradableShopProduct> upgrades = new ArrayList<>();
+
 
     public ShopData() {
 
@@ -64,5 +66,13 @@ public class ShopData {
 
     public void setProducts(ArrayList<OtherShopProduct> products) {
         this.products = products;
+    }
+
+    public ArrayList<UpgradableShopProduct> getUpgrades() {
+        return upgrades;
+    }
+
+    public void setUpgrades(ArrayList<UpgradableShopProduct> upgrades) {
+        this.upgrades = upgrades;
     }
 }
