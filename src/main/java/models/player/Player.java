@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends Entity {
+public class    Player extends Entity {
     private Energy energy = new Energy();
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();

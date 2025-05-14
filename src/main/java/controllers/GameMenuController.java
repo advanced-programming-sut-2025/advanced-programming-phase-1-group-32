@@ -411,7 +411,7 @@ public class GameMenuController implements Controller {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if (tile == null) continue;
 
-            if (tile.getContent().getEntityName().equals(artisanName)) {
+            if (tile.getContent().getEntityName().equalsIgnoreCase(artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
                 if (!artisan.isInProcess())
                     return new Result(false, "This artisan is empty!");
@@ -989,7 +989,7 @@ public class GameMenuController implements Controller {
         return ShopSystem.buyProduct(product, amount);
     }
 
-    public Result build(int x, int y, String productName) {
+    public Result buildBuilding(int x, int y, String productName) {
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
         if(activeBuilding == null)
             return new Result(false, "You are not in a building.");
@@ -999,6 +999,40 @@ public class GameMenuController implements Controller {
         return ShopSystem.buildPlaceable(shop.getBuildingShopProduct(productName), x, y);
     }
 
+    public Result sellProduct(String productName, String count) {
+        if(count == null)
+            return sellProduct(productName, -1);
+        return sellProduct(productName, Integer.parseInt(count));
+    }
+
+    private Result sellProduct(String productName, int count) {
+        Game game = App.getActiveGame();
+        Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getComponent(Inventory.class);
+        Entity product = inventory.getItem(productName);
+        if(product == null)
+            return new Result(false, "you don't have this Item");
+        Sellable sellable = product.getComponent(Sellable.class);
+        if(sellable == null)
+            return new Result(false, "You can't sell this Item");
+        if(count == -1)
+            count = inventory.getItemCount(productName); // default is all of products
+        if(!inventory.doesHaveItem(productName, count))
+            return new Result(false, "you don't have enough" + productName);
+        int[][] directions = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
+        int x = player.getPosition().getCol();
+        int y = player.getPosition().getRow();
+        for (int[] dir : directions) {
+            Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
+            if (tile == null) continue;
+            Entity bin = App.entityRegistry.makeEntity("shipping bin");
+            Entity tileContent = tile.getContent();
+            if(tileContent != null && tileContent.getEntityName().equals(bin.getEntityName())) {/*TODO: update shipping bin in end of day*/
+                tileContent.getComponent(Inventory.class).addItem(inventory.takeFromInventory(productName, count));
+            }
+        }
+        return new Result(false, "There is no shipping bin around you.");
+    }
 
     /* -------------------------------------------------- -------------------------------------------------- */
 

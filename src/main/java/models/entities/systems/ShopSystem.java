@@ -65,7 +65,7 @@ public class ShopSystem {
         p.addSold(1);
         Player player = App.getActiveGame().getCurrentPlayer();
         player.addOwnedBuilding(building);
-        return new Result(true, "building build successfully!");
+        return new Result(true, "building buildBuilding successfully!");
     }
 
 
