@@ -600,8 +600,8 @@ public class GameMenuController implements Controller {
             return new Result(false, "you don't have enough items");
         Entity output = recipe.craft(player.getComponent(Inventory.class));
         //TODO: if inventory is full drop output on ground
-        Result result = player.getComponent(Inventory.class).addItem(output);
-        if (!result.isSuccessful())
+        Entity entity = player.getComponent(Inventory.class).addItem(output);
+        if (entity != null)
             return new Result(false, "something wrong happened!");
 
         App.getActiveGame().getCurrentPlayer().reduceEnergy(2);
@@ -623,6 +623,16 @@ public class GameMenuController implements Controller {
         return null;
     }
 
+    public Result cheatTakeItem(String itemName, int amount){
+        Entity entity = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class).takeFromInventory(itemName, amount);
+        if(entity==null){
+            return new Result(true, itemName + " not in inventory");
+        }
+        return new Result(true, "removed " + entity.getComponent(Pickable.class).getStackSize() + " " + itemName + "from" +
+                "inventory");
+    }
+
+
     public Result cookingPrepare(String recipeName) {
         //TODO: it should handle player inventory and refrigerator inventory
 
@@ -638,8 +648,8 @@ public class GameMenuController implements Controller {
             return new Result(false, "you don't have enough items");
         Entity output = recipe.craft(player.getComponent(Inventory.class));
         //TODO: if inventory is full drop output on ground
-        Result result = player.getComponent(Inventory.class).addItem(output);
-        if (!result.isSuccessful())
+        Entity entity = player.getComponent(Inventory.class).addItem(output);
+        if (entity != null)
             return new Result(false, "something wrong happened!");
 
         App.getActiveGame().getCurrentPlayer().reduceEnergy(3);
@@ -905,7 +915,7 @@ public class GameMenuController implements Controller {
         }
 
         animal.setTodayProduct(null);
-        return inventory.addItem(product);
+        return new Result(inventory.addItem(product) == null, "");
 
 //        return new Result(true, "product collected successfully");
     }
@@ -1631,4 +1641,47 @@ public class GameMenuController implements Controller {
         return new Result(true, "Your money: " + currentPlayer.getWallet().getBalance());
     }
 
+    public Result toggleUnlimitedInventory(){
+        Inventory inventory = App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class);
+        inventory.setUnlimited(!inventory.getUnlimited());
+
+        return new Result(true, "your inventory is" + (inventory.getUnlimited() ? "" : " not") + " unlimited now.");
+    }
+
+    public Result putInFridge(String entityName, int amount, boolean put){
+        Entity entity = App.entityRegistry.getEntityDetails(entityName);
+        if(entity == null){
+            return new Result(false, "food doesn't exist");
+        }
+
+        if(entity.getComponent(Edible.class) == null){
+            return new Result(false, entityName + " isn't a food");
+        }
+
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Inventory fridge = player.getRefrigerator().getComponent(Inventory.class);
+        Inventory playerInventory = player.getComponent(Inventory.class);
+        Inventory source, destination;
+        if(put){
+            source = playerInventory;
+            destination = fridge;
+        }else{
+            source = fridge;
+            destination = playerInventory;
+        }
+
+        if(!destination.canAddItem(entity, amount)){
+            return new Result(false, "not enough space");
+        }
+
+        Entity takenEntity = source.takeFromInventory(entityName, amount);
+
+        if(takenEntity == null){
+            return new Result(false, "not enough " + entityName + " in " + (put ? "your inventory" : "fridge") + ".");
+        }
+
+        destination.addItem(takenEntity);
+
+        return new Result(true, amount + " " + entityName + " was " + (put ? "put in fridge" : "taken from fridge"));
+    }
 }

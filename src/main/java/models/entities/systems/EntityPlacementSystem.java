@@ -12,6 +12,7 @@ import models.enums.TileType;
 import models.gameMap.*;
 import records.Result;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,6 +87,21 @@ private static Result buildBuilding(Entity building, Vec2 position){
 
     //TODO environment?
     interiorComponent.setInteriorMap(new GameMap(interiorData, Environment.BUILDING));
+
+
+    ArrayList<MapData.MapLayerData<String>.ObjectData> entities = interiorData.getEntities();
+    if(entities != null){
+        for (MapData.MapLayerData<String>.ObjectData e : entities) {
+            String entityName = e.getProperty("entityName").asString;
+            if(!App.entityRegistry.doesEntityExist(entityName)){
+                throw new RuntimeException("no entity with tha name " + entityName + " exists. (in game map "
+                                            + interiorComponent.getInteriorName());
+            }
+
+            Entity entity = App.entityRegistry.makeEntity(entityName);
+            placeOnTile(entity, interiorComponent.getMap().getTileByPosition(e.y, e.x));
+        }
+    }
 
     GameMap interiorMap = interiorComponent.getMap();
     GameMap worldMap = App.getActiveGame().getMainMap();

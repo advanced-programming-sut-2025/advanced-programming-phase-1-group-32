@@ -5,6 +5,7 @@ import models.Game;
 import models.Vec2;
 import models.entities.Entity;
 import models.entities.components.Growable;
+import models.entities.components.InteriorComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.TileType;
 
@@ -24,8 +25,8 @@ public class WorldMap extends GameMap {
         super(data, Environment.OUTDOOR);
 
         regionMap = data.getRegionMap();
-        if (data.regions != null) {
-            this.regions.addAll(data.regions);
+        if (data.getRegions() != null) {
+            this.regions.addAll(data.getRegions());
         }
         biomeMap = data.getBiomeMap();
 

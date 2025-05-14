@@ -7,4 +7,9 @@
    <property name="id" type="int" value="-1"/>
   </properties>
  </tile>
+ <tile id="1" type="ENTITY">
+  <properties>
+   <property name="entityName" value=""/>
+  </properties>
+ </tile>
 </tileset>

@@ -87,6 +87,11 @@ public class Game {
             MapData.MapLayerData<String>.ObjectData houseDetails = farmsDetails.get(region).cottage;
             player.setHouse(App.entityRegistry.makeEntity(houseDetails.value));
             EntityPlacementSystem.placeEntity(player.getHouse(), new Vec2(houseDetails.x, houseDetails.y), mainMap);
+            for(Entity e : player.getHouse().getComponent(InteriorComponent.class).getMap().getEntities()){
+                if(e.getEntityName().equals("Fridge")){
+                    player.setRefrigerator(e);
+                }
+            }
 
             EntityPlacementSystem.placeOnMap(player, new Position(2, 2), player.getHouse().getComponent(InteriorComponent.class).getMap());
         }

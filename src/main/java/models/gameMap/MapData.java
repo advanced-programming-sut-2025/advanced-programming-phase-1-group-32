@@ -154,15 +154,16 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MapData {
     public int width, height;
-    public Map<String, MapLayer> layers = new HashMap<>();
-    public MapLayerData<TileType> mainLayer = null;
-    public MapLayerData<MapRegion> regionsLayer = null;
-    public MapLayerData<BiomeType> biomeLayer = null;
-    public MapLayerData<String> buildingLayer = null;
-    public MapLayerData<String> doorLayer = null;
-    public Map<String, TileSet> tileSets = new HashMap<>();
-    public ArrayList<MapRegion> regions = new ArrayList<>();
-    public Map<Integer, TileData> tileMap = new HashMap<>();
+    private Map<String, MapLayer> layers = new HashMap<>();
+    private MapLayerData<TileType> mainLayer = null;
+    private MapLayerData<MapRegion> regionsLayer = null;
+    private MapLayerData<BiomeType> biomeLayer = null;
+    private MapLayerData<String> buildingLayer = null;
+    private MapLayerData<String> doorLayer = null;
+    private MapLayerData<String> entityLayer = null;
+    private Map<String, TileSet> tileSets = new HashMap<>();
+    private ArrayList<MapRegion> regions = new ArrayList<>();
+    private Map<Integer, TileData> tileMap = new HashMap<>();
     public String name;
 
     @JsonCreator
@@ -248,6 +249,13 @@ public class MapData {
                     }
                     doorLayer.populateData();
                 }
+                case "entity" -> {
+                    entityLayer = new MapLayerData<>(String.class, layers.get("entity"), tileSets.get("objects"));
+                    for (TileData t : entityLayer.tileSet.tiles) {
+                        entityLayer.dataMap.putIfAbsent(t.globalId, t.type);
+                    }
+                    entityLayer.populateData();
+                }
             }
         }
     }
@@ -259,6 +267,10 @@ public class MapData {
     public MapRegion[][] getRegionMap() {
         if (regionsLayer == null) return null;
         return regionsLayer.getDataArray();
+    }
+
+    public ArrayList<MapRegion> getRegions(){
+        return this.regions;
     }
 
     public BiomeType[][] getBiomeMap() {
@@ -274,6 +286,10 @@ public class MapData {
     public ArrayList<MapLayerData<String>.ObjectData> getDoors() {
         if (doorLayer == null) return null;
         return doorLayer.getObjectArray();
+    }
+    public ArrayList<MapLayerData<String>.ObjectData> getEntities() {
+        if (entityLayer == null) return null;
+        return entityLayer.getObjectArray();
     }
 
     public static MapData parse(String name, String path) {

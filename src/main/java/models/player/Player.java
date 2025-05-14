@@ -9,7 +9,6 @@ import models.entities.components.AnimalHouse;
 import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.gameMap.GameMap;
-import models.gameMap.MapData;
 import models.gameMap.Tile;
 import models.animal.Animal;
 import models.crafting.Recipe;
@@ -46,6 +45,7 @@ public class Player extends Entity {
     private ArrayList<Animal> animals = new ArrayList<>();
     private final EntityList ownedBuildings = new EntityList();
     private Entity house;
+    private Entity refrigerator;
 
 
     // boolean for messages
@@ -68,6 +68,10 @@ public class Player extends Entity {
         return getPosition().getMap();
     }
 
+    public void setRefrigerator(Entity refrigerator) {
+        this.refrigerator = refrigerator;
+    }
+
     public void setCurrentMap(GameMap currentMap) {
         if(this.getCurrentMap() != null){
             this.getCurrentMap().removeEntity(this);
@@ -79,6 +83,10 @@ public class Player extends Entity {
     }
     public int getTrashcanLevel() {
         return trashcanLevel;
+    }
+
+    public Entity getRefrigerator() {
+        return refrigerator;
     }
 
     public void addTrashcanLevel(int trashcanLevel) {

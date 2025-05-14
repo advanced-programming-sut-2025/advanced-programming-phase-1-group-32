@@ -11,6 +11,7 @@ public enum GameMenuCommands implements Commands {
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
     EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
     CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
+    SHOW_FRIDGE_CONTENT("^\\s*show\\s+fridge\\s+content\\s*$"),
 
     /* ----------------------------------------- Plant commands ------------------------------------------- */
     CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
@@ -68,7 +69,7 @@ public enum GameMenuCommands implements Commands {
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+?)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
-    REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
+    REFRIGERATOR("^\\s*cooking\\s+refrigerator\\s+(?<action>put|pick)\\s+(?<item>.+)\\s+(?<amount>\\S+)\\s*$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
 
@@ -122,12 +123,9 @@ public enum GameMenuCommands implements Commands {
     CHEAT_SKILL("add skill (?<skill>\\S+) -a (?<amount>\\d+)"),
     SKILL_STATUE("skill statue"),
     ADD_MONEY("add\\s+money\\s+-a\\s+(?<amount>\\d+)\\s*"),
+    TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
+    CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$");
     /* -------------------------------------------------- -------------------------------------------------- */
-
-
-
-
-
     ;
 
     private final String pattern;

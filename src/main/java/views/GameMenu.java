@@ -96,6 +96,10 @@ public class GameMenu implements AppMenu {
                 int y = Integer.parseInt(matcher.group("y"));
                 handleWalk(x, y, scanner);
 
+            } else if ((matcher = GameMenuCommands.REFRIGERATOR.getMatcher(input)) != null) {
+                System.out.println(controller.putInFridge(matcher.group(2), Integer.parseInt(matcher.group(3)),
+                                                            matcher.group(1).equals("put")));
+
             } else if (GameMenuCommands.ENERGY_SHOW.getMatcher(input) != null) {
                 System.out.println(controller.energyShow());
 
@@ -125,6 +129,9 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.PLANT_SEED.getMatcher(input)) != null) {
                 System.out.println(controller.plant(matcher.group(1), matcher.group(2)));
+
+            } else if ((matcher = GameMenuCommands.TOGGLE_UNLIMITED_INVENTORY.getMatcher(input)) != null) {
+                System.out.println(controller.toggleUnlimitedInventory());
 
             } else if ((matcher = GameMenuCommands.SHOW_PLANT.getMatcher(input)) != null) {
                 int x = Integer.parseInt(matcher.group(1));
@@ -260,6 +267,12 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.SELL_ANIMAL.getMatcher(input)) != null) {
                 System.out.println(controller.sellAnimal(matcher.group(1).trim()));
+
+            } else if ((matcher = GameMenuCommands.CHEAT_TAKE_ITEM.getMatcher(input)) != null) {
+                System.out.println(controller.cheatTakeItem(matcher.group(1).trim(), Integer.parseInt(matcher.group(2).trim())));
+
+            } else if ((matcher = GameMenuCommands.SHOW_FRIDGE_CONTENT.getMatcher(input)) != null) {
+                showInventory(App.getActiveGame().getCurrentPlayer().getRefrigerator().getComponent(Inventory.class));
 
             } else if ((matcher = GameMenuCommands.FISHING.getMatcher(input)) != null) {
                 System.out.println(controller.fishing(matcher.group(1).trim()));

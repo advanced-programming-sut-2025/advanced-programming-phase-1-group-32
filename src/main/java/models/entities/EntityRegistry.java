@@ -111,11 +111,7 @@ public class EntityRegistry extends Registry<Entity>{
         return entity.clone();
     }
     public Entity getEntityDetails(String name){
-        Entity entity = this.registry.get(name.toLowerCase());
-        if(entity == null){
-            throw new RuntimeException("no entity found with the name " + name);
-        }
-        return entity;
+        return this.registry.get(name.toLowerCase());
     }
     public void listEntities(){
         for(Map.Entry<String, Entity> e : this.registry.entrySet()){
