@@ -189,12 +189,30 @@ public class GameMenuController implements Controller {
                     "you are already in " + goal.getPosition(),
                     0, x, y
             );
-        int distance = shortestPath(goal, start, map.getTiles()).size();
+        List<Tile> path = shortestPath(goal, start, map.getTiles());
+        int changedDir = getChangedDir(path);
+        int distance = path.size();
+        double energyCost = (double) distance / 20 + (double) changedDir / 2;
         if (distance == 0)
             return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
-        return new WalkProposal(true, "OK", (double) distance / 20, x, y);
+        return new WalkProposal(true, "OK", energyCost, x, y);
 
 
+    }
+
+    private static int getChangedDir(List<Tile> path) {
+        int changedDir = 0;
+        if(path.size() > 2) {
+            int[] currentDir = {path.get(1).getCol() - path.get(0).getCol(), path.get(1).getRow() - path.get(0).getRow()};
+            for(int i = 0; i + 1 < path.size(); i++) {
+                int[] newDir = {path.get(i + 1).getCol() - path.get(i).getCol(), path.get(i + 1).getRow() - path.get(i).getRow()};
+                if(newDir[0] != currentDir[0] || newDir[1] != currentDir[1]) {
+                    changedDir += 1;
+                    currentDir = newDir;
+                }
+            }
+        }
+        return changedDir;
     }
 
     public Result executeWalk(WalkProposal p) {
