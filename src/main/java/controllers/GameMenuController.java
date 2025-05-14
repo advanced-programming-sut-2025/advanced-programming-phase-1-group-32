@@ -33,6 +33,7 @@ import models.player.friendship.PlayerFriendship;
 import models.shop.AnimalShopProduct;
 import models.shop.OtherShopProduct;
 import models.shop.Shop;
+import models.shop.ShopProduct;
 import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
@@ -922,21 +923,46 @@ public class GameMenuController implements Controller {
 
     /* ------------------------------------------- Shop Commands ------------------------------------------- */
     public Result showAllProducts() {
-        //TODO: which building
-        return null;
+        Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        if(activeBuilding == null)
+            return new Result(false, "You are not in a building.");
+        Shop shop = activeBuilding.getComponent(Shop.class);
+        if(shop == null)
+            return new Result(false, "This building doesn't have shop");
+        return new Result(true, printProducts(shop.getAllProducts(), "All Products:"));
+    }
+
+    private String printProducts(List<ShopProduct> products, String... startLines) {
+        StringBuilder sb = new StringBuilder();
+        for (String line : startLines) {
+            sb.append(line).append("\n");
+        }
+
+        for (ShopProduct product : products) {
+            sb.append(product.toString()).append("\n");
+        }
+        sb.append("--------------------------------------------------");
+        return sb.toString();
     }
 
     public Result showAvailableProducts() {
-        //TODO: which building
-        return null;
+        Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        if(activeBuilding == null)
+            return new Result(false, "You are not in a building.");
+        Shop shop = activeBuilding.getComponent(Shop.class);
+        if(shop == null)
+            return new Result(false, "This building doesn't have shop");
+        return new Result(true, printProducts(shop.getAvailableProducts(), "Available Products:"));
     }
 
     public Result purchase(String productName, String count) {
         int amount = (count == null) ? 1 : Integer.parseInt(count);
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        if(activeBuilding == null)
+            return new Result(false, "You are not in a building.");
         Shop shop = activeBuilding.getComponent(Shop.class);
         if (shop == null)
-            return new Result(false, "This building isn't shop");
+            return new Result(false, "This building doesn't have shop");
         OtherShopProduct product = shop.getOtherShopProduct(productName);
         if (product == null)
             return new Result(false, "This shop doesn't have this product");
@@ -947,7 +973,11 @@ public class GameMenuController implements Controller {
 
     public Result build(int x, int y, String productName) {
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        if(activeBuilding == null)
+            return new Result(false, "You are not in a building.");
         Shop shop = activeBuilding.getComponent(Shop.class);
+        if(shop == null)
+            return new Result(false, "This building doesn't have shop");
         return ShopSystem.buildPlaceable(shop.getBuildingShopProduct(productName), x, y);
     }
 

@@ -3,17 +3,182 @@
     "name": "Blacksmith",
     "startHour": 9,
     "endHour": 16,
-    "permanentProducts": [
+    "products" : [
+
     ],
-    "seasonalProducts": {
-      "SPRING": [
-      ],
-      "SUMMER": [
-      ],
-      "FALL": [
-      ],
-      "WINTER": [
-      ]
-    }
+    "buildings" : [
+
+    ],
+    "animals" : [
+
+    ]
+  },
+  {
+    "name" : "Carpenter's Shop",
+    "startHour" : 9,
+    "endHour" : 20,
+    "products" : [
+      {
+        "type" : "Product",
+        "name" : "wood",
+        "dailyLimit" : -1,
+        "price" : 10
+      },
+      {
+        "type" : "Product",
+        "name" : "stone",
+        "dailyLimit" : -1,
+        "price" : 20
+      }
+    ],
+    "buildings": [
+      {
+        "type": "Building",
+        "name": "Barn",
+        "dailyLimit": 1,
+        "price": 6000,
+        "woodCost": 350,
+        "stoneCost": 150
+      },
+      {
+        "type": "Building",
+        "name": "Big Barn",
+        "dailyLimit": 1,
+        "price": 12000,
+        "woodCost": 450,
+        "stoneCost": 200
+      },
+      {
+        "type": "Building",
+        "name": "Deluxe Barn",
+        "dailyLimit": 1,
+        "price": 25000,
+        "woodCost": 550,
+        "stoneCost": 300
+      },
+      {
+        "type": "Building",
+        "name": "Coop",
+        "dailyLimit": 1,
+        "price": 4000,
+        "woodCost": 300,
+        "stoneCost": 100
+      },
+      {
+        "type": "Building",
+        "name": "Big Coop",
+        "dailyLimit": 1,
+        "price": 10000,
+        "woodCost": 400,
+        "stoneCost": 150
+      },
+      {
+        "type": "Building",
+        "name": "Deluxe Coop",
+        "dailyLimit": 1,
+        "price": 20000,
+        "woodCost": 500,
+        "stoneCost": 200
+      },
+      {
+        "type": "Building",
+        "name": "Well",
+        "dailyLimit": 1,
+        "price": 1000,
+        "woodCost": 0,
+        "stoneCost": 75
+      },
+      {
+        "type": "Building",
+        "name": "Shipping Bin",
+        "dailyLimit": -1,
+        "price": 250,
+        "woodCost": 150,
+        "stoneCost": 0
+      }
+    ]
+  },
+  {
+    "name" : "Marnie's Ranch",
+    "startHour" : 9,
+    "endHour" : 16,
+    "products" : [
+      {
+        "type" : "Product",
+        "name" : "Hay",
+        "dailyLimit" : -1,
+        "price" : 50
+      },
+      {
+        "type" : "Product",
+        "name" : "Milk Pail",
+        "dailyLimit" : 1,
+        "price" : 1000
+      },
+      {
+        "type" : "Product",
+        "name" : "Shears",
+        "dailyLimit" : 1,
+        "price" : 1000
+      }
+    ],
+    "animals": [
+      {
+        "type": "Animal",
+        "name": "Chicken",
+        "price": 800,
+        "requiredBuildingName": "Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Cow",
+        "price": 1500,
+        "requiredBuildingName": "Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Goat",
+        "price": 4000,
+        "requiredBuildingName": "Big Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Duck",
+        "price": 1200,
+        "requiredBuildingName": "Big Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Sheep",
+        "price": 8000,
+        "requiredBuildingName": "Deluxe Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Rabbit",
+        "price": 8000,
+        "requiredBuildingName": "Deluxe Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Dinosaur",
+        "price": 14000,
+        "requiredBuildingName": "Big Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Pig",
+        "price": 16000,
+        "requiredBuildingName": "Deluxe Barn",
+        "dailyLimit": 2
+      }
+    ]
   }
 ]

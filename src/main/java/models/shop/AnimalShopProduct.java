@@ -1,5 +1,6 @@
 package models.shop;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.animal.Animal;
 import models.animal.AnimalType;
 import models.entities.Entity;
@@ -8,8 +9,11 @@ public class AnimalShopProduct extends ShopProduct {
 
     private String requiredBuildingName;
 
-    public AnimalShopProduct(String name, int dailyLimit) {
+    public AnimalShopProduct(@JsonProperty("name") String name,
+                             @JsonProperty("dailyLimit") int dailyLimit,
+                             @JsonProperty("requiredBuildingName") String requiredBuildingName) {
         super(name, dailyLimit);
+        this.requiredBuildingName = requiredBuildingName;
     }
 
     @Override
@@ -27,5 +31,8 @@ public class AnimalShopProduct extends ShopProduct {
         return 0;
     }
 
-
+    @Override
+    public boolean isAvailable() {
+        return this.getStock() != 0;
+    }
 }

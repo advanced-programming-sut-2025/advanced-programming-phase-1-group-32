@@ -1,6 +1,7 @@
 package models.shop;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import models.App;
 import models.entities.Entity;
 import models.entities.EntityRegistry;
@@ -28,7 +29,11 @@ public interface ShopProduct {
 }
 */
 
-
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = AnimalShopProduct.class, name = "Animal"),
         @JsonSubTypes.Type(value = BuildingShopProduct.class, name = "Building"),
@@ -81,7 +86,15 @@ abstract public class ShopProduct {
 
     abstract public int getStoneCost();
 
+    abstract public boolean isAvailable();
 
-
-
+    @Override
+    public String toString() {
+        if(getStock() == 0) {
+            return name + " (Sold out)" ;
+        }
+        if(getStock() == -1)
+            return name;
+        return name + " x(" + this.getStock() + ")";
+    }
 }

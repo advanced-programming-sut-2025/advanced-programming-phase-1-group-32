@@ -4,6 +4,7 @@ import models.crafting.RecipeRegistry;
 import models.entities.EntityRegistry;
 import models.enums.Menu;
 import models.gameMap.MapRegistry;
+import models.shop.ShopRegistry;
 import views.AppView;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class App {
     public static EntityRegistry buildingRegistry = new EntityRegistry();
     public static RecipeRegistry recipeRegistry = new RecipeRegistry();
     public static MapRegistry mapRegistry = new MapRegistry();
+    public static ShopRegistry shopRegistry = new ShopRegistry();
     public static Game activeGame = null;
 
     /***

@@ -52,18 +52,20 @@ public class ShopSystem {
 
 
     public static Result buildPlaceable(ShopProduct p, int x, int y) {
+        if(p == null)
+            return new Result(false, "this building isn't available in this shop");
         if(!(p instanceof BuildingShopProduct))
             return new Result(false, "this can not be placed");
-        Entity e = p.getEntity();
-        Placeable placeable = e.getComponent(Placeable.class);
-        EntityPlacementSystem.placeEntity(e, new Position(x, y));
-        Player player = App.getActiveGame().getCurrentPlayer();
-        player.addOwnedBuilding(e);
-        //TODO: if can't place gets error
         Result result = handlePay(p, 1);
         if(!result.isSuccessful())
             return result;
-        return null;
+        Entity building = p.getEntity();
+        EntityPlacementSystem.placeEntity(building, new Position(x, y));
+        //TODO: if can't place gets error
+        p.addSold(1);
+        Player player = App.getActiveGame().getCurrentPlayer();
+        player.addOwnedBuilding(building);
+        return new Result(true, "building build successfully!");
     }
 
 

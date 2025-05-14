@@ -332,15 +332,8 @@ public class Inventory extends EntityComponent {
     }
 
     public boolean doesHaveItem(String name, int amount) {
-        Entity item = this.getItem(name);
-        if (item == null) {
-            return false;
-        }
-        if (item.getComponent(Pickable.class).getStackSize() > amount) {
-            return false;
-        }
-
-        return true;
+        int count = getItemCount(name);
+        return count >= amount;
     }
     public boolean doesHaveItem(String name) {
         return this.getItem(name) != null;

@@ -1,5 +1,7 @@
 package models.shop;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 import models.enums.Season;
@@ -7,8 +9,12 @@ import models.enums.Season;
 public class OtherShopProduct extends ShopProduct {
     private Season season;
 
-    public OtherShopProduct(String name, int dailyLimit) {
+    @JsonCreator
+    public OtherShopProduct(@JsonProperty("name") String name,
+                            @JsonProperty("dailyLimit") int dailyLimit,
+                            @JsonProperty("season") Season season) {
         super(name, dailyLimit);
+        this.season = season;
     }
 
     @Override
@@ -27,8 +33,20 @@ public class OtherShopProduct extends ShopProduct {
     }
 
     public boolean isInSeason(Season season) {
+        if(season == null || this.season == null)
+            return true;
         return this.season.equals(season);
     }
 
+    @Override
+    public boolean isAvailable() {
+        return this.getStock() != 0 && (season == null || App.getActiveGame().getDate().getSeason().equals(season));
+    }
 
+    @Override
+    public String toString() {
+        if(getStock() == 0 || season == null)
+            return super.toString();
+        return super.toString() + " available in " + season.toString();
+    }
 }

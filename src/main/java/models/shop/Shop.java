@@ -1,5 +1,8 @@
 package models.shop;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import models.App;
 import models.animal.Animal;
 import models.entities.components.EntityComponent;
 import models.enums.Season;
@@ -11,9 +14,9 @@ import java.util.List;
 public class Shop extends EntityComponent {
 
     String name;
-    //TODO: change these to write better in json:
-    private List<ShopProduct> permanentProducts;
-    private HashMap<Season, List<ShopProduct>> seasonalProducts;
+    private ArrayList<BuildingShopProduct> buildings;
+    private ArrayList<AnimalShopProduct> animals;
+    private ArrayList<OtherShopProduct> products;
     private int startHour;
     private int endHour;
 
@@ -22,36 +25,47 @@ public class Shop extends EntityComponent {
 
     }
 
-    public Shop(ShopData data) {
-        permanentProducts = new ArrayList<>(data.permanentProducts);
-        seasonalProducts = new HashMap<>(data.seasonalProducts);
+    @JsonCreator
+    public Shop(@JsonProperty("name") String name) {
+        this.name = name;
+        ShopData data = App.shopRegistry.getData(name);
+        this.startHour = data.startHour;
+        this.endHour = data.endHour;
+
+
+        this.buildings = new ArrayList<>(data.buildings);
+        this.animals = new ArrayList<>(data.animals);
+        this.products = new ArrayList<>(data.products);
     }
 
     private Shop(Shop other) {
-        this.permanentProducts = new ArrayList<>(other.permanentProducts);
-        this.seasonalProducts = new HashMap<>(other.seasonalProducts);
+        this.name = other.name;
+        this.startHour = other.startHour;
+        this.endHour = other.endHour;
+        this.buildings = new ArrayList<>(other.buildings);
+        this.animals = new ArrayList<>(other.animals);
+        this.products = new ArrayList<>(other.products);
     }
 
 
-    public ArrayList<ShopProduct> getAvailableProducts(Season season) {
-        ArrayList<ShopProduct> res = new ArrayList<>();
-        res.addAll(permanentProducts.stream().filter(p -> !(p.getStock() == 0)).toList());
-        if (season == null)
-            return res;
-        res.addAll(seasonalProducts.get(season).stream().filter(p -> !(p.getStock() == 0)).toList());
+    public List<ShopProduct> getAllProducts() {
+        List<ShopProduct> res = new ArrayList<>();
+        res.addAll(buildings);
+        res.addAll(products);
+        res.addAll(animals);
         return res;
     }
 
+    public List<ShopProduct> getAvailableProducts() {
+
+        return getAllProducts().stream().filter(ShopProduct::isAvailable).toList();
+
+    }
+
     private ShopProduct getProductByName(String name) {
-        for (ShopProduct product : permanentProducts) {
-            if (product.getEntity().getEntityName().equalsIgnoreCase(name))
+        for (ShopProduct product : getAllProducts()) {
+            if(product.name.equalsIgnoreCase(name))
                 return product;
-        }
-        for (List<ShopProduct> value : seasonalProducts.values()) {
-            for (ShopProduct product : value) {
-                if (product.getEntity().getEntityName().equalsIgnoreCase(name))
-                    return product;
-            }
         }
         return null;
     }
@@ -79,6 +93,7 @@ public class Shop extends EntityComponent {
     }
 
 
+    /*
     public String allProducts() {
         StringBuilder sb = new StringBuilder();
         sb.append("Permanent Products : \n");
@@ -98,7 +113,7 @@ public class Shop extends EntityComponent {
             }
         }
         return sb.toString();
-    }
+    }*/
 
     public String getName() {
         return name;
