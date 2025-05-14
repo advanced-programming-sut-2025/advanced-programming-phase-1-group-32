@@ -65,17 +65,17 @@ public class EntityRegistry extends Registry<Entity>{
                 }
             }
             if(requiredComponents != null){
-                for(String c : requiredComponents){
+                for(String component : requiredComponents){
                     boolean found = false;
                     for(EntityComponent ec : e.getComponents()){
-                        if(ec.getClass().getSimpleName().equalsIgnoreCase(c)){
+                        if(ec.getClass().getSimpleName().equalsIgnoreCase(component)){
                             found = true;
                             break;
                         }
                     }
                     if(!found){
                         throw new RuntimeException("The entity \"" + e.getEntityName() +"\n in the data file " + path + " doesn't have the" +
-                                "required component: " + c.getClass());
+                                "required component: " + component.getClass());
                     }
                 }
             }

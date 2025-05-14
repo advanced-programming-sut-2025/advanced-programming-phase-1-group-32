@@ -46,6 +46,10 @@
         {
           "type": "Placeable",
           "exteriorName": "marniesRanchExterior"
+        },
+        {
+          "type" : "Shop",
+          "name" : "Marnie's Ranch"
         }
       ]
     },

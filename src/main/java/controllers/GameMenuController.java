@@ -947,7 +947,11 @@ public class GameMenuController implements Controller {
 
     public Result build(int x, int y, String productName) {
         Entity activeBuilding = App.getActiveGame().getActiveMap().getBuilding();
+        if(activeBuilding == null)
+            return new Result(false, "You are not in a building.");
         Shop shop = activeBuilding.getComponent(Shop.class);
+        if(shop == null)
+            return new Result(false, "This building doesn't have shop");
         return ShopSystem.buildPlaceable(shop.getBuildingShopProduct(productName), x, y);
     }
 

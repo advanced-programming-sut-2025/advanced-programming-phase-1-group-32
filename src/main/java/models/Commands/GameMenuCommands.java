@@ -7,7 +7,7 @@ public enum GameMenuCommands implements Commands {
     ENERGY_SHOW       ("\\s*energy\\s+show\\s*"),
     SHOW_INVENTORY    ("\\s*show\\s+inventory\\s*"),
     ENERGY_UNLIMITED  ("\\s*energy\\s+unlimited\\s*"),
-    CHANGE_INPUT_TYPE ("^\\s*cit\\s*$"),
+    CHANGE_INPUT_TYPE ("^\\s*change\\s+input\\s+type\\s*$"),
     START_TRADE       ("^\\s*start\\s+trade\\s*$"),
     EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
     CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
@@ -69,7 +69,7 @@ public enum GameMenuCommands implements Commands {
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+?)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
-    REFRIGERATOR("^\\s*cooking\\s+refrigerator\\s+(?<action>put|pick)\\s+(?<item>.+)\\s+(?<amount>\\S+)\\s*$"),
+    REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
 
@@ -81,8 +81,8 @@ public enum GameMenuCommands implements Commands {
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------ Render Commands ------------------------------------------ */
-    TOGGLE_MAP        ("^\\s*tm\\s*$"),
-    CHANGE_MAP_RENDER ("^\\s*cmr\\s*$"),
+    TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
+    CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
     CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
@@ -114,6 +114,7 @@ public enum GameMenuCommands implements Commands {
     SHOW_ALL_PRODUCTS("^show\\s+all\\s+products$"),
     SHOW_ALL_AVAILABLE("^show\\s+all\\s+available\\s+products$"),
     PURCHASE("^purchase\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
+    BUILD_BUILDING("^build\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)$"),
     CHEAT_ADD_DOLLARS("^cheat\\s+add\\s+(?<count>\\d+)\\s+dollars$"),
     SELL_PRODUCT("^sell\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
 
@@ -126,6 +127,11 @@ public enum GameMenuCommands implements Commands {
     TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
     CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$");
     /* -------------------------------------------------- -------------------------------------------------- */
+
+
+
+
+
     ;
 
     private final String pattern;
