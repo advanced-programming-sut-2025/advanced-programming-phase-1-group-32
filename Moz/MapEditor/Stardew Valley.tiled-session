@@ -214,7 +214,7 @@
         },
         "buildings/cottageInterior.tmx": {
             "scale": 45,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 9.033333333333333,
                 "y": 7.855555555555555
@@ -480,7 +480,6 @@
     "project": "Stardew Valley.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "Tile sets/objects.tsx",
         "buildings/cottageInterior.tmx",
         "Tile sets/objects.tsx",
         "buildings/cottageExterior.tmx",

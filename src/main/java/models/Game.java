@@ -423,7 +423,7 @@ public class Game {
         return null;
     }
 
-    public GameMap getMainMap() {
+    public WorldMap getMainMap() {
         return mainMap;
     }
 

@@ -196,6 +196,9 @@ public static boolean canPlace(int x, int y, GameMap map) {
 public static boolean canPlace(int x, int y) {
     return canPlace(x, y, null, App.getActiveGame().getMainMap());
 }
+public static boolean canPlace(Tile tile){
+    return canPlace(tile.getCol(), tile.getRow());
+}
 public static void clearArea(int x, int y, Placeable placeable) {
     GameMap map = App.getActiveGame().getActiveMap();
 
