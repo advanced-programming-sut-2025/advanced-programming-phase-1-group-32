@@ -3,7 +3,7 @@ package records;
 public record WalkProposal(
         boolean isAllowed,
         String message,
-        int energyCost,
+        double energyCost,
         int x,
         int y
 ) {

@@ -1,7 +1,7 @@
 package models.player;
 
 public class Energy {
-    private int amount;
+    private double amount;
     private int modifierDaysLeft;
     private float modifier;
     private boolean isUnlimited;
@@ -16,7 +16,7 @@ public class Energy {
         isUnlimited = false;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -31,8 +31,8 @@ public class Energy {
         return isUnlimited;
     }
 
-    public int getAmount() {
-        int amount = this.amount;
+    public double getAmount() {
+        double amount = this.amount;
         if (modifierDaysLeft > 0) amount = (int) (amount * modifier);
         return amount;
     }

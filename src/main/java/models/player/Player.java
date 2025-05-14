@@ -153,7 +153,7 @@ public class Player extends Entity {
         this.energy = energy;
     }
 
-    public void reduceEnergy(int energyCost) {
+    public void reduceEnergy(double energyCost) {
         this.energy.setAmount(energy.getAmount() - energyCost);
         if (energy.getAmount() < 0)
             energy.setAmount(0);

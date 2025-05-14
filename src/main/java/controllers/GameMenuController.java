@@ -192,7 +192,7 @@ public class GameMenuController implements Controller {
         int distance = shortestPath(goal, start, map.getTiles()).size();
         if (distance == 0)
             return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
-        return new WalkProposal(true, "OK", distance / 20, x, y);
+        return new WalkProposal(true, "OK", (double) distance / 20, x, y);
 
 
     }
