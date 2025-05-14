@@ -8,14 +8,61 @@ import java.util.List;
 
 public class ShopData {
     String name;
-    List<ShopProduct> permanentProducts = new ArrayList<>();
-    HashMap<Season, List<ShopProduct>> seasonalProducts = new HashMap<>();
-    private int startHour;
-    private int endHour;
+    int startHour;
+    int endHour;
+    ArrayList<BuildingShopProduct> buildings = new ArrayList<>();
+    ArrayList<AnimalShopProduct> animals = new ArrayList<>();
+    ArrayList<OtherShopProduct> products = new ArrayList<>();
 
     public ShopData() {
 
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStartHour() {
+        return startHour;
+    }
+
+    public void setStartHour(int startHour) {
+        this.startHour = startHour;
+    }
+
+    public int getEndHour() {
+        return endHour;
+    }
+
+    public void setEndHour(int endHour) {
+        this.endHour = endHour;
+    }
+
+    public ArrayList<BuildingShopProduct> getBuildings() {
+        return buildings;
+    }
+
+    public void setBuildings(ArrayList<BuildingShopProduct> buildings) {
+        this.buildings = buildings;
+    }
+
+    public ArrayList<AnimalShopProduct> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<AnimalShopProduct> animals) {
+        this.animals = animals;
+    }
+
+    public ArrayList<OtherShopProduct> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<OtherShopProduct> products) {
+        this.products = products;
+    }
 }

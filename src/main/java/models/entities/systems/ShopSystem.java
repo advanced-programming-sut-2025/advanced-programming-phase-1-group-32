@@ -55,7 +55,6 @@ public class ShopSystem {
         if(!(p instanceof BuildingShopProduct))
             return new Result(false, "this can not be placed");
         Entity e = p.getEntity();
-        Placeable placeable = e.getComponent(Placeable.class);
         EntityPlacementSystem.placeEntity(e, new Position(x, y));
         Player player = App.getActiveGame().getCurrentPlayer();
         player.addOwnedBuilding(e);
@@ -63,7 +62,7 @@ public class ShopSystem {
         Result result = handlePay(p, 1);
         if(!result.isSuccessful())
             return result;
-        return null;
+        return new Result(true, "building build successfully!");
     }
 
 

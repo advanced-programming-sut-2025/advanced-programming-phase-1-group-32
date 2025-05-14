@@ -4,6 +4,7 @@ import models.entities.Entity;
 import models.entities.components.harvestable.Harvestable;
 import models.entities.components.inventory.Inventory;
 import models.entities.workstations.ArtisanComponent;
+import models.shop.Shop;
 
 /***
  * this helps jackson find child classes
@@ -30,7 +31,8 @@ import models.entities.workstations.ArtisanComponent;
         @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent"),
         @JsonSubTypes.Type(value = PositionComponent.class, name = "PositionComponent"),
         @JsonSubTypes.Type(value = AnimalHouse.class, name = "AnimalHouse"),
-        @JsonSubTypes.Type(value = InteriorComponent.class, name = "InteriorComponent")
+        @JsonSubTypes.Type(value = InteriorComponent.class, name = "InteriorComponent"),
+        @JsonSubTypes.Type(value = Shop.class, name = "Shop")
 
 
 })

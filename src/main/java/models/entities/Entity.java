@@ -154,9 +154,8 @@ public class Entity implements Cloneable{
 
         public Builder name(String n)            { this.entityName = n; return this; }
         public Builder id(int n)                 { this.id = n; return this; }
-        public Builder components(ArrayList<EntityComponent> c) { this.components.addAll(c); return this; }
+        public Builder components(ArrayList<EntityComponent> components) { this.components.addAll(components); return this; }
         public Builder tags(HashSet<EntityTag> t) {this.tags.addAll(t); return this;}
-
         public Entity build(){
             Entity entity = new Entity(this);
             reset();
