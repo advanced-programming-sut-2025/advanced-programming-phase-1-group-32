@@ -212,7 +212,6 @@ public class Growable extends EntityComponent {
         } else {
             daysPastFromWatered = 0;
         }
-
     }
 
     public Result canCollectProduct() {

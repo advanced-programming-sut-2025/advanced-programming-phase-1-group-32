@@ -1,7 +1,11 @@
 package models.entities.systems;
 
 import models.App;
+import models.Game;
 import models.entities.Entity;
+import models.entities.components.Growable;
+import models.enums.Direction;
+import models.enums.EntityTag;
 import models.gameMap.BiomeType;
 import models.gameMap.Tile;
 import models.gameMap.WorldMap;
@@ -28,9 +32,22 @@ public class ForageSpawnSystem {
             for(int j = 0 ; j < tiles[0].length; j++){
                 BiomeType biome = biomeMap[i][j];
 
+
+//                int neighbours = 0;
+//                for(Direction d : Direction.values()){
+//                    Tile neighbour = map.getTileByPosition(i + d.dy, j + d.dx);
+//                    if(neighbour == null) continue;
+//
+//                    Entity content = neighbour.getContent();
+//                    if(content == null) continue;
+//                    if(content.getComponent(Growable.class) != null || content.hasTag(EntityTag.FORAGING_CROP)){
+//                        neighbours += 1;
+//                    }
+//                }
+
                 if(!EntityPlacementSystem.canPlace(tiles[i][j])) continue;
 
-                if(random.nextFloat() > 0.02) continue;
+                if(random.nextFloat() > 0.01) continue;
 
                 if(candidates.get(biome) == null) continue;
 
@@ -40,4 +57,5 @@ public class ForageSpawnSystem {
             }
         }
     }
+
 }

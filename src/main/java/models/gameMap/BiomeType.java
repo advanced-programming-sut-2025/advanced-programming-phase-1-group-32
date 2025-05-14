@@ -70,8 +70,9 @@ public enum BiomeType {
         Map<BiomeType, ArrayList<Spawnable>> result = new HashMap<>();
         for(BiomeType b : BiomeType.values()){
             ArrayList<Spawnable> candidates = new ArrayList<>(b.yearRoundForageables);
-            if(b.seasonalForageables.get(season) == null) continue;
-            candidates.addAll(b.seasonalForageables.get(season));
+            if(b.seasonalForageables.get(season) != null){
+                candidates.addAll(b.seasonalForageables.get(season));
+            }
             result.put(b, candidates);
         }
         return result;
