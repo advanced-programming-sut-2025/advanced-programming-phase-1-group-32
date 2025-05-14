@@ -124,6 +124,7 @@ Desktop.ini
 
 test*
 test/
+!./src/test/**
 
 
 #zipfiles
