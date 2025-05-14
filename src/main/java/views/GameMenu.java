@@ -347,6 +347,9 @@ public class GameMenu implements AppMenu {
 
             Player player = activeGame.getCurrentPlayer();
             showInventory(player.getComponent(Inventory.class));
+            System.out.println("day : " + App.getActiveGame().getDate().getDay() +
+                    ", hour : " + App.getActiveGame().getDate().getHour() +
+                    ", season : " + App.getActiveGame().getDate().getSeason());
             System.out.println("energy: " + player.getEnergy().getAmount());
 
             Position position = player.getPosition();
