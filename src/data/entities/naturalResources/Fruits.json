@@ -2,7 +2,7 @@
   "common components": [
     {
       "type": "Pickable",
-      "maxStack": 16
+      "maxStack": 16000
     }
   ],
   "required components": [

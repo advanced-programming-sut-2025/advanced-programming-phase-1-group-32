@@ -1,6 +1,7 @@
 package models.entities;
 
 import models.App;
+import models.entities.components.Pickable;
 import models.entities.systems.EntityPlacementSystem;
 import models.gameMap.Tile;
 import models.animal.Animal;
@@ -191,8 +192,9 @@ public enum UseFunction {
                 tile.setType(TileType.DIRT);
                 inventory.addItem(entity);
             } else {
-                growable.setDaysPastFromRegrowth(0);
                 Entity fruit = growable.collectFruit();
+                growable.setDaysPastFromRegrowth(0);
+                fruit.getComponent(Pickable.class).setStackSize(1);
                 inventory.addItem(fruit);
             }
 

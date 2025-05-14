@@ -14,7 +14,7 @@ public enum GameMenuCommands implements Commands {
     SHOW_FRIDGE_CONTENT("^\\s*show\\s+fridge\\s+content\\s*$"),
 
     /* ----------------------------------------- Plant commands ------------------------------------------- */
-    CRAFTINFO         ("\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*"),
+    CRAFTINFO         ("^\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*$"),
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),

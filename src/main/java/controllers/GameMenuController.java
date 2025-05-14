@@ -483,7 +483,8 @@ public class GameMenuController implements Controller {
             return new Result(false, "There is no seed with name" + seedString);
         }
 
-        Position position = player.getPosition().changeByDirection(direction);
+        Position position = new Position(player.getPosition().getX(), player.getPosition().getY());
+        position.changeByDirection(direction);
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
@@ -497,6 +498,10 @@ public class GameMenuController implements Controller {
 
         if (tile == null || !tile.getType().equals(TileType.PLOWED)) {
             return new Result(false, "tile is unavailable for planting");
+        }
+
+        if (tile.getContent() != null || tile.getType().equals(TileType.PLANTED_GROUND)) {
+            return new Result(false, "tile isn't empty");
         }
 
 //        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
