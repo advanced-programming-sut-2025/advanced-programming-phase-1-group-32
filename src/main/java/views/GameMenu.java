@@ -15,7 +15,6 @@ import models.gameMap.MapRegion;
 import models.gameMap.Tile;
 import models.gameMap.WorldMap;
 import models.player.Player;
-import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
 import views.inGame.Color;
@@ -303,7 +302,7 @@ public class GameMenu implements AppMenu {
                         scanner
                 );
             } else if((matcher = GameMenuCommands.BUILD_BUILDING.getMatcher(input)) != null) {
-                System.out.println(controller.build(
+                System.out.println(controller.buildBuilding(
                         Integer.parseInt(matcher.group("x")),
                         Integer.parseInt(matcher.group("y")),
                         matcher.group("buildingName")
@@ -425,16 +424,16 @@ public class GameMenu implements AppMenu {
         Pattern pattern = Pattern.compile(".+?(-?\\d+)[,\\s]+(-?\\d+).+");
         Result result = controller.purchase(productName, count);
         if (result.isSuccessful() && result.message() == null) {
-            System.out.println("enter x and y to build " + productName);
+            System.out.println("enter x and y to buildBuilding " + productName);
             String input = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(input);
             if (!matcher.matches()) {
-                System.out.println("Invalid input! build canceled");
+                System.out.println("Invalid input! buildBuilding canceled");
                 return;
             }
             int x = Integer.parseInt(matcher.group(1));
             int y = Integer.parseInt(matcher.group(2));
-            System.out.println(controller.build(x, y, productName));
+            System.out.println(controller.buildBuilding(x, y, productName));
         }
         System.out.println(result);
     }

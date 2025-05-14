@@ -1,4 +1,4 @@
-# Maven build artifacts
+# Maven buildBuilding artifacts
 target/
 **/target/
 build/
