@@ -7,6 +7,7 @@ import models.entities.Entity;
 import models.entities.components.Growable;
 import models.entities.components.InteriorComponent;
 import models.entities.systems.EntityPlacementSystem;
+import models.entities.systems.ForageSpawnSystem;
 import models.enums.TileType;
 
 import java.security.SecureRandom;
@@ -64,31 +65,42 @@ public class WorldMap extends GameMap {
     }
 
     public void initRandomElements() {
-        SecureRandom random = new SecureRandom();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (Math.random() > 0.8) {
-                    BiomeType biome = biomeMap[i][j];
-                    if (biome != null && tiles[i][j].getContent() == null && tiles[i][j].getType() != TileType.WALL) {
-                        BiomeType.Spawnable spawnable = biome.spawnData.get(biome.spawnData.size() - 1);
-
-                        for (BiomeType.Spawnable s : biome.spawnData) {
-                            if (Math.random() > s.weight / biome.totalWeight) {
-                                spawnable = s;
-                            }
-                        }
-
-                        Entity plant = App.entityRegistry.makeEntity(spawnable.entity );
-                        EntityPlacementSystem.placeOnTile(plant, tiles[i][j]);
-                        Game game = App.getActiveGame();
-                        if (plant.getComponent(Growable.class) != null) {
-                            game.getPlantedEntities().add(plant);
-                        }
-
-                    }
-                }
-            }
+//        SecureRandom random = new SecureRandom();
+//        for (int i = 0; i < height; i++) {
+//            for (int j = 0; j < width; j++) {
+//                if (Math.random() > 0.8) {
+//                    BiomeType biome = biomeMap[i][j];
+//                    if (biome != null && tiles[i][j].getContent() == null && tiles[i][j].getType() != TileType.WALL) {
+//                        BiomeType.Spawnable spawnable = biome.spawnData.get(biome.spawnData.size() - 1);
+//
+//                        for (BiomeType.Spawnable s : biome.spawnData) {
+//                            if (Math.random() > s.weight / biome.totalWeight) {
+//                                spawnable = s;
+//                            }
+//                        }
+//
+//                        Entity plant = App.entityRegistry.makeEntity(spawnable.entity );
+//                        EntityPlacementSystem.placeOnTile(plant, tiles[i][j]);
+//                        Game game = App.getActiveGame();
+//                        if (plant.getComponent(Growable.class) != null) {
+//                            game.getPlantedEntities().add(plant);
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+        for(int i = 0 ; i < 20 ; i++){
+            ForageSpawnSystem.updatePerDay();
         }
+    }
+
+    public BiomeType[][] getBiomeMap() {
+        return biomeMap;
+    }
+
+    public MapRegion[][] getRegionMap() {
+        return regionMap;
     }
 
     public Map<MapRegion, FarmDetails> getFarmsDetail() {

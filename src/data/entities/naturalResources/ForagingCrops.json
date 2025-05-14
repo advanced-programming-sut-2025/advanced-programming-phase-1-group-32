@@ -3,6 +3,10 @@
     {
       "type": "Placeable",
       "isWalkable": true
+    },{
+      "type": "Renderable",
+      "char": "c",
+      "color": [160, 160, 40]
     }
   ],
   "required components": [
@@ -21,12 +25,6 @@
         {
           "type": "Edible",
           "energy": 0
-        },
-        {
-          "type": "Growable",
-          "seasons": [
-            "SPRING"
-          ]
         }
       ]
     }

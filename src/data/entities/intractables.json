@@ -9,8 +9,7 @@
       "components" : [
         {
           "type" : "Inventory",
-          "capacity" : 12,
-          "unlimited" : true
+          "capacity" : 50
         },{
           "type" : "Placeable",
           "isWalkable" : false
