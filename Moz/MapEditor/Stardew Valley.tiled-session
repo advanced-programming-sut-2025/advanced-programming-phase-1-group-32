@@ -129,6 +129,7 @@
             "scaleInDock": 1
         },
         "Tile sets/objects.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 59.7247,
             "scaleInEditor": 104.0134
         },
@@ -207,16 +208,16 @@
             "scale": 90,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.5277777777777777,
-                "y": 2.8500000000000005
+                "x": 3.005555555555555,
+                "y": 3.0055555555555555
             }
         },
         "buildings/cottageInterior.tmx": {
-            "scale": 63.90333333333333,
-            "selectedLayer": 1,
+            "scale": 45,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 7.503520943091127,
-                "y": 7.503520943091127
+                "x": 9.033333333333333,
+                "y": 7.855555555555555
             }
         },
         "buildings/fishShopExterior.tmx": {
@@ -335,11 +336,11 @@
             }
         },
         "defaultMap.tmx": {
-            "scale": 11,
-            "selectedLayer": 0,
+            "scale": 32,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 48.31818181818183,
-                "y": 60.68181818181819
+                "x": 22.484375,
+                "y": 9.484375
             }
         },
         "defaultMap.tmx#biome": {
@@ -480,6 +481,7 @@
     "property.type": "string",
     "recentFiles": [
         "buildings/cottageInterior.tmx",
+        "Tile sets/objects.tsx",
         "buildings/cottageExterior.tmx",
         "Tile sets/buildings.tsx",
         "defaultMap.tmx",
@@ -489,8 +491,7 @@
         "buildings/pierresGeneralStoreInterior.tmx",
         "buildings/stardropSaloonExterior.tmx",
         "buildings/stardropSaloonInterior.tmx",
-        "buildings/blackSmithExterior.tmx",
-        "Tile sets/objects.tsx"
+        "buildings/blackSmithExterior.tmx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
