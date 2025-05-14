@@ -1634,6 +1634,8 @@ public class GameMenuController implements Controller {
             case '7':
             case '8':
                 return toolsUse(Direction.getDirection(c - '0'));
+            case 'e':
+                return advanceTime(1);
             default:
                 break;
         }

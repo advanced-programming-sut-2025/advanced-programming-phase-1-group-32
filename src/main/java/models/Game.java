@@ -13,6 +13,8 @@ import models.entities.components.Growable;
 import models.entities.components.InteriorComponent;
 import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
+import models.entities.systems.ForageSpawnSystem;
+import models.entities.systems.GrowthSystem;
 import models.enums.EntityTag;
 import models.enums.Season;
 import models.enums.TileType;
@@ -37,7 +39,6 @@ public class Game {
     private WorldMap mainMap;
     private ArrayList<Player> players = new ArrayList<>();
     private Player currentPlayer;
-    private EntityList plantedEntities = new EntityList();
     private ArrayList<PlayerFriendship> playerFriendships = new ArrayList<>();
     private ArrayList<NPC> gameNPCs = new ArrayList<>();
     private boolean mapVisible = true;
@@ -191,14 +192,6 @@ public class Game {
 
     }
 
-    public ArrayList<Entity> getPlantedEntities() {
-        return plantedEntities;
-    }
-
-    public void setPlantedEntities(EntityList plantedEntities) {
-        this.plantedEntities = plantedEntities;
-    }
-
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -267,26 +260,9 @@ public class Game {
             playerFriendship.updateDaily();
         }
 
-        /*-----------------update plants---------------------*/
-        for (Entity entity : plantedEntities) {
-            entity.getComponent(Growable.class).updatePerDay();
-        }
+        GrowthSystem.updatePerDay(this);
 
-        ArrayList<Entity> toDelete = new ArrayList<>();
-        for (Entity entity : plantedEntities) {
-            if (entity.getComponent(Growable.class).getDaysPastFromWatered() >= 2) {
-                toDelete.add(entity);
-            }
-        }
-
-        int size = toDelete.size();
-        for (int i = 0; i < size; i++) {
-            Entity entity = toDelete.get(i);
-//            entity.delete();
-        }
-
-        /*----------------------------------------------------*/
-
+        ForageSpawnSystem.updatePerDay();
 
         for (Player player : players) {
             player.updatePerDay();
@@ -428,7 +404,7 @@ public class Game {
         return null;
     }
 
-    public GameMap getMainMap() {
+    public WorldMap getMainMap() {
         return mainMap;
     }
 

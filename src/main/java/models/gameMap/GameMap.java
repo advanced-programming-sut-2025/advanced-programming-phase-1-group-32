@@ -91,4 +91,8 @@ public class GameMap {
     public int getHeight() {
         return height;
     }
+
+    public <T extends EntityComponent> ArrayList<T> getComponentsOfType(Class<T> clazz){
+        return entities.getComponentsOfType(clazz);
+    }
 }

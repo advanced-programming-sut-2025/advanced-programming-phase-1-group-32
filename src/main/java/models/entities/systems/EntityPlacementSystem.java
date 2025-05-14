@@ -173,7 +173,7 @@ private static Result placeExterior(Entity entity, Vec2 position, GameMap map){
 public static boolean canPlace(int x, int y, Placeable placeable, GameMap map) {
     if (placeable == null || placeable.getExteriorName() == null) {
         Tile tile = map.getTileByPosition(y, x);
-        return tile.getType().isWalkable && tile.getContent() == null ;
+        return tile.getType().isWalkable && (tile.getContent() == null) ;
     }
     TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
 
@@ -195,6 +195,9 @@ public static boolean canPlace(int x, int y, GameMap map) {
 }
 public static boolean canPlace(int x, int y) {
     return canPlace(x, y, null, App.getActiveGame().getMainMap());
+}
+public static boolean canPlace(Tile tile){
+    return canPlace(tile.getCol(), tile.getRow());
 }
 public static void clearArea(int x, int y, Placeable placeable) {
     GameMap map = App.getActiveGame().getActiveMap();
