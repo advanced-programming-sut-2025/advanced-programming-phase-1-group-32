@@ -18,6 +18,7 @@ import models.entities.components.inventory.InventorySlot;
 import models.enums.SkillType;
 import models.gameMap.MapRegion;
 import models.NPC.NpcFriendship;
+import models.player.buff.Buff;
 import models.player.friendship.PlayerFriendship;
 import views.inGame.Color;
 
@@ -46,6 +47,7 @@ public class    Player extends Entity {
     private final EntityList ownedBuildings = new EntityList();
     private Entity house;
     private Entity refrigerator;
+    private Buff activeBuff;
 
 
     // boolean for messages
@@ -443,5 +445,13 @@ public class    Player extends Entity {
             }
         }
         return null;
+    }
+
+    public Buff getActiveBuff() {
+        return activeBuff;
+    }
+
+    public void setActiveBuff(Buff activeBuff) {
+        this.activeBuff = activeBuff;
     }
 }

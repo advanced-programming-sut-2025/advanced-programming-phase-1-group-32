@@ -32,8 +32,10 @@ public enum UseFunction {
             tile.setType(TileType.PLOWED);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            if(player.getActiveBuff() != null)
+                energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
             //TODO: weather effects?
-            player.reduceEnergy(Math.abs(energyCost));
+            player.reduceEnergy(Math.max(energyCost, 0));
             player.addExperince(SkillType.FARMING, 5);
             return new Result(true, "Ground converted to Hoed ground");
         }
@@ -50,6 +52,8 @@ public enum UseFunction {
             tile.setType(TileType.GRASS);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            if(player.getActiveBuff() != null)
+                energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
             //TODO: weather effects?
             player.reduceEnergy(Math.abs(energyCost));
             player.addExperince(SkillType.FARMING, 5);
@@ -70,6 +74,8 @@ public enum UseFunction {
             Harvestable harvestable = mineral.getComponent(Harvestable.class);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.MINING).getLevel() == 4 ? 1 : 0;
+            if(player.getActiveBuff() != null)
+                energyCost -= player.getActiveBuff().effectOnSkill(SkillType.MINING);
             //TODO: weather effects?
             player.reduceEnergy(Math.abs(energyCost));
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
@@ -107,6 +113,8 @@ public enum UseFunction {
             Harvestable harvestable = tree.getComponent(Harvestable.class);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FORAGING).getLevel() == 4 ? 1 : 0;
+            if(player.getActiveBuff() != null)
+                energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FORAGING);
             //TODO: weather effects?
             player.reduceEnergy(Math.max(energyCost, 0));
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
@@ -139,6 +147,8 @@ public enum UseFunction {
             tile.getContent().getComponent(Growable.class).setWateredToday(true);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+            if(player.getActiveBuff() != null)
+                energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
             player.reduceEnergy(Math.max(energyCost, 0));
             container.decreaseCharge();
             return new Result(true, "tile watered successfully");
@@ -151,6 +161,8 @@ public enum UseFunction {
                 tool.getComponent(Container.class).fillContainer();
                 int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
                 energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
+                if(player.getActiveBuff() != null)
+                    energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
                 player.reduceEnergy(Math.max(0, energyCost));
                 return new Result(true, "watering can filled successfully");
             }
@@ -247,7 +259,7 @@ public enum UseFunction {
                 return new Result(false, "you should select an animal");
 
             Animal animal = (Animal) target;
-            if (!animal.getAnimalType().getNeededTool().equals("Shear")) {
+            if (!animal.getAnimalType().getNeededTool().equals("Shears")) {
                 return new Result(false, "You can not collect wool from this animal");
             }
 
