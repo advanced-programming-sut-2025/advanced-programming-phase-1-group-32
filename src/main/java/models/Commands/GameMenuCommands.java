@@ -1,7 +1,7 @@
 package models.Commands;
 
 public enum GameMenuCommands implements Commands {
-    WALK              ("^\\s*walk\\s+-l\\s+<\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>\\s*$"),
+    WALK              ("^\\s*walk\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>?\\s*$"),
     NEXT_TURN         ("^\\s*next\\s+turn\\s*$"),
     ENERGY_SET        ("\\s*energy\\s+set\\s+-v\\s+(?<amount>\\d+)\\s*"),
     ENERGY_SHOW       ("\\s*energy\\s+show\\s*"),

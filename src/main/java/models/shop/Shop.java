@@ -64,7 +64,7 @@ public class Shop extends EntityComponent {
 
     private ShopProduct getProductByName(String name) {
         for (ShopProduct product : getAllProducts()) {
-            if(product.getEntity().getEntityName().equalsIgnoreCase(name))
+            if(product.name.equalsIgnoreCase(name))
                 return product;
         }
         return null;

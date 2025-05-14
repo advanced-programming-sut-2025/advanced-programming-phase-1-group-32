@@ -93,6 +93,8 @@ abstract public class ShopProduct {
         if(getStock() == 0) {
             return name + " (Sold out)" ;
         }
+        if(getStock() == -1)
+            return name;
         return name + " x(" + this.getStock() + ")";
     }
 }

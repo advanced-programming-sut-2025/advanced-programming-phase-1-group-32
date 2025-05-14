@@ -25,14 +25,16 @@ showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
 
-toggle map
-
-change input type
 
 cheat build building Coop 10 10 -force
 
 tools equip Axe
 
-toggle map
 
-change input type
+walk -l 7, 14
+y
+walk -l 52,53
+y
+
+
+

@@ -432,6 +432,7 @@ public class GameMenu implements AppMenu {
             int y = Integer.parseInt(matcher.group(2));
             System.out.println(controller.build(x, y, productName));
         }
+        System.out.println(result);
     }
 
     private void handleWalk(int x, int y, Scanner scanner) {

@@ -33,6 +33,8 @@ public class OtherShopProduct extends ShopProduct {
     }
 
     public boolean isInSeason(Season season) {
+        if(season == null || this.season == null)
+            return true;
         return this.season.equals(season);
     }
 
@@ -43,7 +45,7 @@ public class OtherShopProduct extends ShopProduct {
 
     @Override
     public String toString() {
-        if(getStock() == 0)
+        if(getStock() == 0 || season == null)
             return super.toString();
         return super.toString() + " available in " + season.toString();
     }
