@@ -14,6 +14,7 @@ public class LoginMenu implements AppMenu {
     @Override
     public void checker(Scanner scanner) {
         Matcher matcher;
+        if (!scanner.hasNextLine()) return;
         String input = scanner.nextLine();
 
         if ((matcher = LoginMenuCommands.REGISTER.getMatcher(input)) != null) {
@@ -30,7 +31,7 @@ public class LoginMenu implements AppMenu {
                 username = isNewUsername.message();
                 System.out.println("you should choose a new username, do you want to continue with" +
                         "this username? \"" + username + "\"\ntype \"go\" if you want to continue!");
-
+                if(!scanner.hasNextLine()) return;
                 String answer = scanner.nextLine();
                 if (!answer.equalsIgnoreCase("go")) return;
             }
@@ -42,10 +43,11 @@ public class LoginMenu implements AppMenu {
                     password = controller.generatePassword();
                     System.out.println("Your password is: " + password + "\n type \"random\" for another password\n" +
                             "type \"go\" if you want to continue");
-
+                    if(!scanner.hasNextLine()) return;
                     // get answers until valid one
                     answer = scanner.nextLine();
                     while (!answer.equalsIgnoreCase("go") && !answer.equalsIgnoreCase("random")) {
+                        if(!scanner.hasNextLine()) return;
                         answer = scanner.nextLine();
                     }
 
@@ -75,6 +77,7 @@ public class LoginMenu implements AppMenu {
             Result result = forgotPasswordFlow.handle(matcher.group("username"));
             while (result.isSuccessful()) {
                 System.out.println(result);
+                if(!scanner.hasNextLine()) return;
                 result = forgotPasswordFlow.handle(scanner.nextLine());
             }
             System.out.println(result);

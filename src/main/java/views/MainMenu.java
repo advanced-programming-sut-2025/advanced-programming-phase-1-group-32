@@ -11,6 +11,7 @@ public class MainMenu implements AppMenu {
 
     @Override
     public void checker(Scanner scanner) {
+        if (!scanner.hasNextLine()) return;
         String input = scanner.nextLine().trim();
         Matcher matcher;
         if ((matcher = MainMenuCommands.SHOW_CURRENT_MENU.getMatcher(input)) != null) {

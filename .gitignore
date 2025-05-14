@@ -124,7 +124,12 @@ Desktop.ini
 
 test*
 test/
-!./src/test/**
+
+
+# Exclude src/test from the ignore rules
+!src/test/
+!src/test/**
+
 
 
 #zipfiles

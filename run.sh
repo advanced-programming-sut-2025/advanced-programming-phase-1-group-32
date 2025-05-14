@@ -13,14 +13,23 @@ RESET='\033[0m'
 JAR_FILE='target/stardew-valley-1.0.0.jar'
 
 build() {
-    echo -e "${BLUE}${BOLD}Compiling ...${RESET}"
-    if ! output=$(mvn -B clean package -Dstyle.color=always 2>&1); then
-        echo -e "${RED}${BOLD}Maven build failed with errors:${RESET}"
-        echo -e ""
-        printf "%b\n" "${output}"
-        exit 1
-    fi
-    echo -e "${GREEN}${BOLD}Compiled Successfully!${RESET}"
+   echo -e "${BLUE}${BOLD}Compiling ...${RESET}"
+       local mvn_cmd
+
+       if [ "$1" = "test" ]; then
+           mvn_cmd=(mvn -B clean package -Dstyle.color=always)
+       else
+           mvn_cmd=(mvn -B clean package -Dstyle.color=always -DskipTests)
+       fi
+
+       if ! output=$("${mvn_cmd[@]}" 2>&1); then
+           echo -e "${RED}${BOLD}Maven build failed with errors:${RESET}"
+           echo ""
+           printf "%b\n" "${output}"
+           exit 1
+       fi
+
+       echo -e "${GREEN}${BOLD}Compiled Successfully!${RESET}"
 }
 
 run_app() {
@@ -49,7 +58,7 @@ elif [ $# -eq 1 ]; then
           exit 0
     fi
     
-    build
+    build "$1"
     run_app "$1"
 fi
 

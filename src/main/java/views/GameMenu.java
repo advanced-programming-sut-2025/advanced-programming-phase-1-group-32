@@ -54,6 +54,7 @@ public class GameMenu implements AppMenu {
             }
             previousResult = controller.handleRawInput((char) c);
         } else {
+            if (!scanner.hasNextLine()) return;
             String input = scanner.nextLine().trim();
             Matcher matcher;
             if (GameMenuCommands.DATE.getMatcher(input) != null) {

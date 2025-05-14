@@ -11,6 +11,7 @@ public class ProfileMenu implements AppMenu {
 
     @Override
     public void checker(Scanner scanner) {
+        if (!scanner.hasNextLine()) return;
         String input = scanner.nextLine().trim();
         Matcher matcher;
         if ((matcher = ProfileMenuCommands.MENU_ENTER.getMatcher(input)) != null) {
