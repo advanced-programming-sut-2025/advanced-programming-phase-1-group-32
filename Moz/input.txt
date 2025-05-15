@@ -27,6 +27,7 @@ talk history -u AliAlm
 
 cheat build building Coop 10 10 -force
 cheat give item "Jazz Seeds" 16
+walk -l 18, 32
 
 
 tools equip Axe
@@ -38,4 +39,5 @@ walk -l 52,53
 y
 
 
-
+toggle map
+change input type

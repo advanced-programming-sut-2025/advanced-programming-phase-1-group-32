@@ -73,3 +73,9 @@ cheat advance date 120d
 showplant -l <24,34>
 tools equip Scythe
 plant -s Jazz Seeds -d up
+
+
+cheat give item "" 20
+showplant -l <17,32>
+cheat toggle unlimited inventory
+fertilize -f Speed-Gro -d left

@@ -17,7 +17,7 @@ public enum GameMenuCommands implements Commands {
     CRAFTINFO         ("^\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*$"),
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
-    SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*"),
+    SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<\\s*(?<x>\\d+)\\s*,\\s*(?<y>\\d+)\\s*>\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+buildBuilding\\s*"),
     /* ----------------------------------------------------------------------------------------------------- */
 

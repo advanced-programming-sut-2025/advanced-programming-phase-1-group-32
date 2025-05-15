@@ -562,7 +562,8 @@ public class GameMenuController implements Controller {
 
 
         // get the position
-        Position position = currentPlayer.getPosition().changeByDirection(direction);
+        Position position = currentPlayer.getPosition();
+        position.changeByDirection(direction);
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
@@ -572,7 +573,7 @@ public class GameMenuController implements Controller {
         }
 
         // check existence of a plant
-        if (tile.getContent() != null || tile.getContent().getComponent(Growable.class).getInfo() != null) {
+        if (tile.getContent() == null || tile.getContent().getComponent(Growable.class).getInfo() == null) {
             return new Result(false, "Tile is not a planted ground");
         }
 
