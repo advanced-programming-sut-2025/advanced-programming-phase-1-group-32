@@ -2,18 +2,617 @@
   "type": "COOKING",
   "recipes": [
     {
-      "name" : "Fried egg",
-      "ingredients" : [
+      "name": "Fried egg",
+      "ingredients": [
         {
-          "contents" : [
+          "contents": [
             "egg"
           ],
-          "amount" : 1
+          "amount": 1
         }
       ],
-      "energy" : {
-        "x" : 0,
-        "y" : 50
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 0,
+        "y": 35
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Baked Fish",
+      "ingredients": [
+        {
+          "contents": [
+            "Sardine"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Salmon"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "wheat"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 75
+      },
+      "price": {
+        "x": 0,
+        "y": 100
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Salad",
+      "ingredients": [
+        {
+          "contents": [
+            "leek"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "dandelion"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 113
+      },
+      "price": {
+        "x": 0,
+        "y": 110
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Omelet",
+      "ingredients": [
+        {
+          "contents": [
+            "egg"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "milk"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 100
+      },
+      "price": {
+        "x": 0,
+        "y": 125
+      }
+    },
+    {
+      "name": "pumpkin pie",
+      "ingredients": [
+        {
+          "contents": [
+            "pumpking"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "milk"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "sugar"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 225
+      },
+      "price": {
+        "x": 0,
+        "y": 385
+      }
+    },
+    {
+      "name": "spaghetti",
+      "ingredients": [
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "tomato"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 75
+      },
+      "price": {
+        "x": 0,
+        "y": 120
+      }
+    },
+    {
+      "name": "pizza",
+      "ingredients": [
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "tomato"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "cheese"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 150
+      },
+      "price": {
+        "x": 0,
+        "y": 300
+      }
+    },
+    {
+      "name": "Tortilla",
+      "ingredients": [
+        {
+          "contents": [
+            "corn"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 0,
+        "y": 50
+      }
+    },
+    {
+      "name": "Maki Roll",
+      "ingredients": [
+        {
+          "contents": [
+            "any fish"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "rice"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "fiber"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 100
+      },
+      "price": {
+        "x": 0,
+        "y": 220
+      }
+    },
+    {
+      "name": "Triple Shot Espresso",
+      "ingredients": [
+        {
+          "contents": [
+            "coffee"
+          ],
+          "amount": 3
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 200
+      },
+      "price": {
+        "x": 0,
+        "y": 450
+      }
+    },
+    {
+      "name": "Cookie",
+      "ingredients": [
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "sugar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "egg"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 90
+      },
+      "price": {
+        "x": 0,
+        "y": 140
+      }
+    },
+    {
+      "name": "hash browns",
+      "ingredients": [
+        {
+          "contents": [
+            "potato"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "oil"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 90
+      },
+      "price": {
+        "x": 0,
+        "y": 120
+      }
+    },
+    {
+      "name": "pancakes",
+      "ingredients": [
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "egg"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 90
+      },
+      "price": {
+        "x": 0,
+        "y": 80
+      }
+    },
+    {
+      "name": "fruit salad",
+      "ingredients": [
+        {
+          "contents": [
+            "blueberry"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "melon"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "apricot"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 263
+      },
+      "price": {
+        "x": 0,
+        "y": 450
+      }
+    },
+    {
+      "name": "red plate",
+      "ingredients": [
+        {
+          "contents": [
+            "red cabbage"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "radish"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 240
+      },
+      "price": {
+        "x": 0,
+        "y": 400
+      }
+    },
+    {
+      "name": "bread",
+      "ingredients": [
+        {
+          "contents": [
+            "wheat flour"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 0,
+        "y": 60
+      }
+    },
+    {
+      "name": "salmon dinner",
+      "ingredients": [
+        {
+          "contents": [
+            "salmon"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Amaranth"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Kale"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 125
+      },
+      "price": {
+        "x": 0,
+        "y": 300
+      }
+    },
+    {
+      "name": "vegetable medley ",
+      "ingredients": [
+        {
+          "contents": [
+            "tomato"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "beet"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 165
+      },
+      "price": {
+        "x": 0,
+        "y": 120
+      }
+    },
+    {
+      "name": "farmer's lunch",
+      "ingredients": [
+        {
+          "contents": [
+            "omelet"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "parsnip"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 200
+      },
+      "price": {
+        "x": 0,
+        "y": 150
+      }
+    },
+    {
+      "name": "survival burger",
+      "ingredients": [
+        {
+          "contents": [
+            "bread"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "carrot"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "eggplant"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 125
+      },
+      "price": {
+        "x": 0,
+        "y": 180
+      }
+    },
+    {
+      "name": "dish O' the Sea",
+      "ingredients": [
+        {
+          "contents": [
+            "sardines"
+          ],
+          "amount": 2
+        },
+        {
+          "contents": [
+            "hash browns"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 150
+      },
+      "price": {
+        "x": 0,
+        "y": 220
+      }
+    },
+    {
+      "name": "seaform Pudding",
+      "ingredients": [
+        {
+          "contents": [
+            "Flounder"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "midnight carp"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 175
+      },
+      "price": {
+        "x": 0,
+        "y": 300
+      }
+    },
+    {
+      "name": "miner's treat",
+      "ingredients": [
+        {
+          "contents": [
+            "carrot"
+          ],
+          "amount": 2
+        },
+        {
+          "contents": [
+            "suger"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "milk"
+          ],
+          "amount": 1
+        }
+      ],
+      "energy": {
+        "x": 0,
+        "y": 125
+      },
+      "price": {
+        "x": 0,
+        "y": 200
       }
     }
   ]

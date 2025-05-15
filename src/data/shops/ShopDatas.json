@@ -1,0 +1,647 @@
+[
+  {
+    "name" : "Marnie's Ranch",
+    "startHour" : 9,
+    "endHour" : 16,
+    "products" : [
+      {
+        "type" : "Product",
+        "name" : "Hay",
+        "dailyLimit" : -1,
+        "price" : 50
+      },
+      {
+        "type" : "Product",
+        "name" : "Milk Pail",
+        "dailyLimit" : 1,
+        "price" : 1000
+      },
+      {
+        "type" : "Product",
+        "name" : "Shears",
+        "dailyLimit" : 1,
+        "price" : 1000
+      }
+    ],
+    "animals": [
+      {
+        "type": "Animal",
+        "name": "Chicken",
+        "price": 800,
+        "requiredBuildingName": "Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Cow",
+        "price": 1500,
+        "requiredBuildingName": "Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Goat",
+        "price": 4000,
+        "requiredBuildingName": "Big Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Duck",
+        "price": 1200,
+        "requiredBuildingName": "Big Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Sheep",
+        "price": 8000,
+        "requiredBuildingName": "Deluxe Barn",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Rabbit",
+        "price": 8000,
+        "requiredBuildingName": "Deluxe Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Dinosaur",
+        "price": 14000,
+        "requiredBuildingName": "Big Coop",
+        "dailyLimit": 2
+      },
+      {
+        "type": "Animal",
+        "name": "Pig",
+        "price": 16000,
+        "requiredBuildingName": "Deluxe Barn",
+        "dailyLimit": 2
+      }
+    ]
+  },
+  {
+    "name" : "Carpenter's Shop",
+    "startHour" : 9,
+    "endHour" : 20,
+    "products" : [
+      {
+        "type" : "Product",
+        "name" : "wood",
+        "dailyLimit" : -1,
+        "price" : 10
+      },
+      {
+        "type" : "Product",
+        "name" : "stone",
+        "dailyLimit" : -1,
+        "price" : 20
+      }
+    ],
+    "buildings": [
+      {
+        "type": "Building",
+        "name": "Barn",
+        "dailyLimit": 1,
+        "price": 6000,
+        "woodCost": 350,
+        "stoneCost": 150
+      },
+      {
+        "type": "Building",
+        "name": "Big Barn",
+        "dailyLimit": 1,
+        "price": 12000,
+        "woodCost": 450,
+        "stoneCost": 200
+      },
+      {
+        "type": "Building",
+        "name": "Deluxe Barn",
+        "dailyLimit": 1,
+        "price": 25000,
+        "woodCost": 550,
+        "stoneCost": 300
+      },
+      {
+        "type": "Building",
+        "name": "Coop",
+        "dailyLimit": 1,
+        "price": 4000,
+        "woodCost": 300,
+        "stoneCost": 100
+      },
+      {
+        "type": "Building",
+        "name": "Big Coop",
+        "dailyLimit": 1,
+        "price": 10000,
+        "woodCost": 400,
+        "stoneCost": 150
+      },
+      {
+        "type": "Building",
+        "name": "Deluxe Coop",
+        "dailyLimit": 1,
+        "price": 20000,
+        "woodCost": 500,
+        "stoneCost": 200
+      },
+      {
+        "type": "Building",
+        "name": "Well",
+        "dailyLimit": 1,
+        "price": 1000,
+        "woodCost": 0,
+        "stoneCost": 75
+      },
+      {
+        "type": "Building",
+        "name": "Shipping Bin",
+        "dailyLimit": -1,
+        "price": 250,
+        "woodCost": 150,
+        "stoneCost": 0
+      }
+    ]
+  },
+
+  {
+    "name": "Blacksmith",
+    "startHour": 9,
+    "endHour": 16,
+    "products" : [
+      {
+        "type" : "Product",
+        "name" : "Copper Ore",
+        "dailyLimit" : -1,
+        "price" : 75
+      },
+      {
+        "type" : "Product",
+        "name" : "Iron Ore",
+        "dailyLimit" : -1,
+        "price" : 150
+      },
+      {
+        "type" : "Product",
+        "name" : "Coal",
+        "dailyLimit" : -1,
+        "price" : 150
+      },
+      {
+        "type": "Product",
+        "name": "Gold Ore",
+        "dailyLimit": -1,
+        "price": 400
+      }
+    ],
+    "upgrades" : [
+      {
+        "type" : "Upgrade",
+        "name" : "COPPER",
+        "price" : 2000,
+        "ingredient" : "Copper Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "IRON",
+        "price" : 5000,
+        "ingredient" : "Iron Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "GOLD",
+        "price" : 10000,
+        "ingredient" : "Gold Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "IRIDIUM",
+        "price" : 25000,
+        "ingredient" : "Iridium Bar"
+      }
+    ]
+  },
+  {
+    "name" : "JojaMart",
+    "startHour" : 9,
+    "endHour" : 23,
+    "products" : [
+      {
+        "type" : "Product",
+        "name": "Joja Cola",
+        "price": 75,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Ancient Seed",
+        "price": 500,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Grass Starter",
+        "price": 125,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Sugar",
+        "price": 125,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Wheat Flour",
+        "price": 125,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Rice",
+        "price": 250,
+        "dailyLimit": -1
+      },
+
+
+
+      {
+        "type" : "Product",
+        "name": "Parsnip Seeds",
+        "season" : "SPRING",
+        "price": 25,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Bean Starter",
+        "season" : "SPRING",
+        "price": 75,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Cauliflower Seeds",
+        "season" : "SPRING",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Potato Seeds",
+        "season" : "SPRING",
+        "price": 62,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Strawberry Seeds",
+        "season" : "SPRING",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Tulip Bulb",
+        "season" : "SPRING",
+        "price": 25,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Kale Seeds",
+        "season" : "SPRING",
+        "price": 87,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Coffee Beans",
+        "season" : "SPRING",
+        "price": 200,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Carrot Seeds",
+        "season" : "SPRING",
+        "price": 5,
+        "dailyLimit": 10
+      },
+      {
+        "type" : "Product",
+        "name": "Rhubarb Seeds",
+        "season" : "SPRING",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Jazz Seeds",
+        "season" : "SPRING",
+        "price": 37,
+        "dailyLimit": 5
+      },
+
+
+
+
+      {
+        "type" : "Product",
+        "name": "Tomato Seeds",
+        "season" : "SUMMER",
+        "price": 62,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Pepper Seeds",
+        "season" : "SUMMER",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Wheat Seeds",
+        "season" : "SUMMER",
+        "price": 12,
+        "dailyLimit": 10
+      },
+      {
+        "type" : "Product",
+        "name": "Summer Squash Seeds",
+        "season" : "SUMMER",
+        "price": 10,
+        "dailyLimit": 10
+      },
+      {
+        "type" : "Product",
+        "name": "Radish Seeds",
+        "season" : "SUMMER",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Melon Seeds",
+        "season" : "SUMMER",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Hops Starter",
+        "season" : "SUMMER",
+        "price": 75,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Poppy Seeds",
+        "season" : "SUMMER",
+        "price": 125,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Spangle Seeds",
+        "season" : "SUMMER",
+        "price": 62,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Starfruit Seeds",
+        "season" : "SUMMER",
+        "price": 400,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Coffee Beans",
+        "season" : "SUMMER",
+        "price": 200,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Sunflower Seeds",
+        "season" : "SUMMER",
+        "price": 125,
+        "dailyLimit": 5
+      },
+
+
+
+      {
+        "type" : "Product",
+        "name": "Corn Seeds",
+        "season" : "FALL",
+        "price": 187,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Eggplant Seeds",
+        "season" : "FALL",
+        "price": 25,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Pumpkin Seeds",
+        "season" : "FALL",
+        "price": 125,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Broccoli Seeds",
+        "season" : "FALL",
+        "price": 15,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Amaranth Seeds",
+        "season" : "FALL",
+        "price": 87,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Grape Starter",
+        "season" : "FALL",
+        "price": 75,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Beet Seeds",
+        "season" : "FALL",
+        "price": 20,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Yam Seeds",
+        "season" : "FALL",
+        "price": 75,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Bok Choy Seeds",
+        "season" : "FALL",
+        "price": 62,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Cranberry Seeds",
+        "season" : "FALL",
+        "price": 300,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Sunflower Seeds",
+        "season" : "FALL",
+        "price": 125,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Fairy Seeds",
+        "season" : "FALL",
+        "price": 250,
+        "dailyLimit": 5
+      },
+      {
+        "type" : "Product",
+        "name": "Rare Seed",
+        "season" : "FALL",
+        "price": 1000,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Wheat Seeds",
+        "season" : "FALL",
+        "price": 12,
+        "dailyLimit": 5
+      },
+
+
+      {
+        "type" : "Product",
+        "name": "Powdermelon Seeds",
+        "season" : "WINTER",
+        "price": 20,
+        "dailyLimit": 10
+      }
+    ]
+  },
+
+  {
+    "name" : "Stardrop Saloon",
+    "startHour" : 12,
+    "endHour" : 24,
+    "products" : [
+      {
+        "type" : "Product",
+        "name": "Beer",
+        "price": 400,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Salad",
+        "price": 220,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Bread",
+        "price": 120,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Spaghetti",
+        "price": 240,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Pizza",
+        "price": 600,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Coffee",
+        "price": 300,
+        "dailyLimit": -1
+      },
+      {
+        "type" : "Product",
+        "name": "Hashbrowns Recipe",
+        "price": 50,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Omelet Recipe",
+        "price": 100,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Pancakes Recipe",
+        "price": 100,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Bread Recipe",
+        "price": 100,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Tortilla Recipe",
+        "price": 100,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Pizza Recipe",
+        "price": 150,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Maki Roll Recipe",
+        "price": 300,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Triple Shot Espresso Recipe",
+        "price": 5000,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Cookie Recipe",
+        "price": 300,
+        "dailyLimit": 1
+      }
+    ]
+  }
+]

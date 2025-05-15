@@ -1,5 +1,527 @@
 {
   "type": "CRAFTING",
   "recipes": [
+    {
+      "name": "Cherry Bomb",
+      "ingredients": [
+        {
+          "contents": [
+            "copper ore"
+          ],
+          "amount": 4
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 50
+      }
+    },
+    {
+      "name": "Bomb",
+      "ingredients": [
+        {
+          "contents": [
+            "iron ore"
+          ],
+          "amount": 4
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 50
+      }
+    },
+    {
+      "name": "Mega Bomb",
+      "ingredients": [
+        {
+          "contents": [
+            "gold ore"
+          ],
+          "amount": 4
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 50
+      }
+    },
+    {
+      "name": "Sprinkler",
+      "ingredients": [
+        {
+          "contents": [
+            "copper bar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "iron bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Quality Sprinkler",
+      "ingredients": [
+        {
+          "contents": [
+            "Iron bar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Gold bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Iridium Sprinkler",
+      "ingredients": [
+        {
+          "contents": [
+            "gold bar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "iridium bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Charcoal Klin",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 20
+        },
+        {
+          "contents": [
+            "Copper bar"
+          ],
+          "amount": 2
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Furnace",
+      "ingredients": [
+        {
+          "contents": [
+            "Copper ore"
+          ],
+          "amount": 20
+        },
+        {
+          "contents": [
+            "Stone"
+          ],
+          "amount": 25
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Scarecrow",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 50
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Fiber"
+          ],
+          "amount": 20
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Deluxe Scarecrow",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 50
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Fiber"
+          ],
+          "amount": 20
+        },
+        {
+          "contents": [
+            "iridium ore"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Bee House",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 40
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 8
+        },
+        {
+          "contents": [
+            "iron bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Cheese Press",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 45
+        },
+        {
+          "contents": [
+            "stone"
+          ],
+          "amount": 45
+        },
+        {
+          "contents": [
+            "copper bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Keg",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 30
+        },
+        {
+          "contents": [
+            "copper bar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "iron bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Loom",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 60
+        },
+        {
+          "contents": [
+            "fiber"
+          ],
+          "amount": 30
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Mayonnaise Machine",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 15
+        },
+        {
+          "contents": [
+            "stone"
+          ],
+          "amount": 15
+        },
+        {
+          "contents": [
+            "copper bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Oil Maker",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 100
+        },
+        {
+          "contents": [
+            "gold bar"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "iron bar"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      },
+      "isUnlocked" : true
+    },
+    {
+      "name": "Preserves Jar",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 50
+        },
+        {
+          "contents": [
+            "stone"
+          ],
+          "amount": 40
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 8
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Dehydrator",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 30
+        },
+        {
+          "contents": [
+            "stone"
+          ],
+          "amount": 20
+        },
+        {
+          "contents": [
+            "fiber"
+          ],
+          "amount": 30
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Grass Starter",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "fiber"
+          ],
+          "amount": 1
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Fish Smoker",
+      "ingredients": [
+        {
+          "contents": [
+            "wood"
+          ],
+          "amount": 50
+        },
+        {
+          "contents": [
+            "iron bar"
+          ],
+          "amount": 3
+        },
+        {
+          "contents": [
+            "coal"
+          ],
+          "amount": 10
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Mystic Tree Seed",
+      "ingredients": [
+        {
+          "contents": [
+            "acorn"
+          ],
+          "amount": 5
+        },
+        {
+          "contents": [
+            "maple seed"
+          ],
+          "amount": 5
+        },
+        {
+          "contents": [
+            "pine cone"
+          ],
+          "amount": 5
+        },
+        {
+          "contents": [
+            "mahogany seed"
+          ],
+          "amount": 5
+        }
+      ],
+      "price": {
+        "x": 0,
+        "y": 100
+      }
+    }
   ]
 }
