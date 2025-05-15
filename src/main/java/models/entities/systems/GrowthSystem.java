@@ -33,4 +33,12 @@ public class GrowthSystem {
             entity.delete();
         }
     }
+
+    public static void waterAll(Game game){
+        ArrayList<Growable> growables = game.getMainMap().getComponentsOfType(Growable.class);
+
+        for (Growable growable : growables) {
+            growable.setWateredToday(true);
+        }
+    }
 }

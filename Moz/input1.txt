@@ -85,7 +85,8 @@ skill statue
 
 
 
-cheat advance date 6d
+cheat advance date 1d
+cheat water all
 showplant -l <24,34>
 tools equip Scythe
 plant -s Jazz Seeds -d up
@@ -96,4 +97,5 @@ showplant -l <26,33>
 cheat toggle unlimited inventory
 fertilize -f Deluxe Retaining Soil -d down
 tools equip Watering can
+
 

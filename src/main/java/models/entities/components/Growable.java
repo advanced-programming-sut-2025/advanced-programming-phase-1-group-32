@@ -54,6 +54,7 @@ public class Growable extends EntityComponent {
         this.isFertilized = other.isFertilized;
         this.oneTime = other.oneTime;
         this.regrowthTime = other.regrowthTime;
+        this.stages = other.stages;
     }
 
     public Growable() {

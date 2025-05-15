@@ -293,6 +293,19 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.SKILL_STATUE.getMatcher(input)) != null) {
                 System.out.println(controller.skillStatue());
 
+            } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
+                System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
+                        matcher.group("name"), matcher.group("force") != null));
+            } else if ((matcher = GameMenuCommands.ADD_MONEY.getMatcher(input)) != null) {
+                System.out.println(controller.addMoney(Integer.parseInt(matcher.group(1).trim())));
+
+            } else if ((matcher = GameMenuCommands.CHEAT_SET_FRIENDSHIP.getMatcher(input)) != null) {
+                System.out.println(controller.cheatSetFriendship(Integer.parseInt(matcher.group(2)),
+                        Integer.parseInt(matcher.group(3)), matcher.group(1).trim()));
+
+            } else if (GameMenuCommands.CHEAT_WATER_ALL.getMatcher(input) != null) {
+                System.out.println(controller.waterAll());
+
             } else if ((matcher = GameMenuCommands.SELL_PRODUCT.getMatcher(input)) != null) {
                 System.out.println(controller.sellProduct(matcher.group("productName"), matcher.group("count")));
 
@@ -335,16 +348,6 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.CHANGE_MAP_RENDER.getMatcher(input)) != null) {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
-            } else if ((matcher = GameMenuCommands.CHEAT_BUILD_BUILDING.getMatcher(input)) != null) {
-                System.out.println(controller.cheatBuildBuilding(Integer.parseInt(matcher.group("x")), Integer.parseInt(matcher.group("y")),
-                        matcher.group("name"), matcher.group("force") != null));
-            } else if ((matcher = GameMenuCommands.ADD_MONEY.getMatcher(input)) != null) {
-                System.out.println(controller.addMoney(Integer.parseInt(matcher.group(1).trim())));
-
-            } else if ((matcher = GameMenuCommands.CHEAT_SET_FRIENDSHIP.getMatcher(input)) != null) {
-                System.out.println(controller.cheatSetFriendship(Integer.parseInt(matcher.group(2)),
-                        Integer.parseInt(matcher.group(3)), matcher.group(1).trim()));
-
             } else {
                 System.out.println("Invalid Command!");
             }

@@ -461,4 +461,14 @@ public class    Player extends Entity {
     public void setActiveBuff(Buff activeBuff) {
         this.activeBuff = activeBuff;
     }
+
+    public ArrayList<Tile> getOwnedTiles() {
+        //TODO
+        return null;
+    }
+
+    public ArrayList<Tile> getOwnedPlantedTiles() {
+        //TODO: PARSA
+        return null;
+    }
 }

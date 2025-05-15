@@ -12,6 +12,7 @@ import models.crafting.RecipeType;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.systems.GrowthSystem;
 import models.entities.systems.ShopSystem;
 import models.entities.systems.EntityPlacementSystem;
 import models.entities.workstations.ArtisanComponent;
@@ -463,7 +464,7 @@ public class GameMenuController implements Controller {
             message.append("Regrowth Time:\n");
         }
 
-        message.append("Base Sell Price: ").append(sellable.getPrice()).append("\n");
+        message.append("Base Sell Price: ").append(sellable.getBasePrice()).append("\n");
 
         if (edible != null) {
             message.append("""
@@ -1635,7 +1636,6 @@ public class GameMenuController implements Controller {
         return new Result(true, message.toString());
     }
 
-
     private void saveGame() {
         //TODO
     }
@@ -1800,6 +1800,13 @@ public class GameMenuController implements Controller {
         playerFriendship.setLevel(level);
         playerFriendship.setXp(xp);
         return new Result(true, "set!");
+    }
+
+    public Result waterAll() {
+        Game game = App.getActiveGame();
+        GrowthSystem.waterAll(game);
+
+        return new Result(true, "watered!");
     }
 
     /*-----------------------------------------------------------------------------------------*/

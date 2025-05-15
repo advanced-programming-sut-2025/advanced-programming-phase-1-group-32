@@ -122,7 +122,8 @@ public enum GameMenuCommands implements Commands {
     CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$"),
     CHEAT_SET_FRIENDSHIP("cheat\\s+-u\\s+(?<name>.+)\\s*level\\s*(?<level>\\d+)\\s*xp\\s*(?<xp>\\d+)\\s*"),
     CHEAT_BUILD_BUILDING("^\\s*cheat\\s+buildBuilding\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
-    CHEAT_SPAWN_ON_GROUND("^\\s*cheat\\s+spawn\\s+on\\s+ground\\s+-n\\s+(?<name>\\S+)\\s+-a\\s+(?<amount>\\S+)\\s*$");
+    CHEAT_SPAWN_ON_GROUND("^\\s*cheat\\s+spawn\\s+on\\s+ground\\s+-n\\s+(?<name>\\S+)\\s+-a\\s+(?<amount>\\S+)\\s*$"),
+    CHEAT_WATER_ALL("cheat water all"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
     ;
