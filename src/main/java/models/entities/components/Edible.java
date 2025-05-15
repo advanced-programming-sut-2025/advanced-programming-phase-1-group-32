@@ -1,10 +1,12 @@
 package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.player.buff.Buff;
 
 public class Edible extends EntityComponent{
     @JsonProperty("energy")
     private int energy;
+    private Buff buff;
 
     public Edible(int energy) {
         this.energy = energy;

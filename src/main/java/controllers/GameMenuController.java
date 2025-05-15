@@ -359,7 +359,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsUpgrade(String toolName) {
-        Entity building = App.getActiveGame().getActiveMap().getBuilding();
+        Entity building = App.getActiveGame().getCurrentPlayer().getCurrentMap().getBuilding();
         if(building == null)
             return new Result(false, "You are not in a building");
         Shop shop = building.getComponent(Shop.class);
