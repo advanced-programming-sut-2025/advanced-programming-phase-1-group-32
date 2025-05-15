@@ -7,8 +7,10 @@ import models.entities.Entity;
 
 public class UpgradableShopProduct extends ShopProduct {
 
-    String ingredient;
+    String ingredientName;
     int count = 5;
+    boolean isTrashCanAvailable = true;
+    double trashCanModifier = 0.5;
     @JsonCreator
     public UpgradableShopProduct(@JsonProperty("name") String name,
                                  @JsonProperty("dailyLimit") int dailyLimit,
@@ -17,8 +19,9 @@ public class UpgradableShopProduct extends ShopProduct {
                                  @JsonProperty("count") int count
     ) {
         super(name, dailyLimit, price);
-        this.ingredient = ingredient;
+        this.ingredientName = ingredient;
         this.count = count;
+        this.dailyLimit = 1;
     }
 
     @Override
@@ -39,5 +42,26 @@ public class UpgradableShopProduct extends ShopProduct {
     @Override
     public boolean isAvailable() {
         return false;
+    }
+
+    @Override
+    public void reset() {
+        super.reset();
+        this.isTrashCanAvailable = true;
+    }
+
+    public int getTrashCanPrice() {
+        if(!isTrashCanAvailable)
+            throw new RuntimeException("trashCan isn't available bro!");
+        isTrashCanAvailable = false;
+        return (int) (this.price * trashCanModifier);
+    }
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public int getIgredientCount() {
+        return this.count;
     }
 }

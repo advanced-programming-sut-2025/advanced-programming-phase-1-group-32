@@ -60,7 +60,7 @@ public class Main {
 
     private static void loadDatas() {
         App.getView().log("Loading Game...");
-        App.shopRegistry.load("./src/data/shopData");
+        App.shopRegistry.load("./src/data/shops");
         /* should load recipes first (because artisan has recipes) */
         App.recipeRegistry.loadRecipes("./src/data/recipes");
         App.entityRegistry.load("./src/data/entities");

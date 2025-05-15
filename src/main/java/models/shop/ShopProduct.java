@@ -37,7 +37,8 @@ public interface ShopProduct {
 @JsonSubTypes({
         @JsonSubTypes.Type(value = AnimalShopProduct.class, name = "Animal"),
         @JsonSubTypes.Type(value = BuildingShopProduct.class, name = "Building"),
-        @JsonSubTypes.Type(value = OtherShopProduct.class, name = "Product")
+        @JsonSubTypes.Type(value = OtherShopProduct.class, name = "Product"),
+        @JsonSubTypes.Type(value = UpgradableShopProduct.class, name = "Upgrade")
 })
 abstract public class ShopProduct {
     protected String name;
@@ -88,6 +89,10 @@ abstract public class ShopProduct {
     abstract public int getStoneCost();
 
     abstract public boolean isAvailable();
+
+    public void reset() {
+        this.todaySold = 0;
+    }
 
     @Override
     public String toString() {

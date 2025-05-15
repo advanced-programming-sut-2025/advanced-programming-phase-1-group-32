@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.animal.Animal;
 import models.entities.components.EntityComponent;
+import models.enums.Material;
 import models.enums.Season;
 
 import java.util.ArrayList;
@@ -96,8 +97,8 @@ public class Shop extends EntityComponent {
         return null;
     }
 
-    public UpgradableShopProduct getUpgradableShopProduct(String name) {
-        ShopProduct product = getProductByName(name);
+    public UpgradableShopProduct getUpgradableShopProduct(Material material) {
+        ShopProduct product = getProductByName(material.name());
         if (product instanceof UpgradableShopProduct)
             return (UpgradableShopProduct) product;
         return null;

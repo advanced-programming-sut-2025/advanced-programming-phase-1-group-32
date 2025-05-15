@@ -4,13 +4,56 @@
     "startHour": 9,
     "endHour": 16,
     "products" : [
-
+      {
+        "type" : "Product",
+        "name" : "Copper Ore",
+        "dailyLimit" : -1,
+        "price" : 75
+      },
+      {
+        "type" : "Product",
+        "name" : "Iron Ore",
+        "dailyLimit" : -1,
+        "price" : 150
+      },
+      {
+        "type" : "Product",
+        "name" : "Coal",
+        "dailyLimit" : -1,
+        "price" : 150
+      },
+      {
+        "type": "Product",
+        "name": "Gold Ore",
+        "dailyLimit": -1,
+        "price": 400
+      }
     ],
-    "buildings" : [
-
-    ],
-    "animals" : [
-
+    "upgrades" : [
+      {
+        "type" : "Upgrade",
+        "name" : "COPPER",
+        "price" : 2000,
+        "ingredient" : "Copper Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "IRON",
+        "price" : 5000,
+        "ingredient" : "Iron Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "GOLD",
+        "price" : 10000,
+          "ingredient" : "Gold Bar"
+      },
+      {
+        "type" : "Upgrade",
+        "name" : "IRIDIUM",
+        "price" : 25000,
+        "ingredient" : "Iridium Bar"
+      }
     ]
   },
   {

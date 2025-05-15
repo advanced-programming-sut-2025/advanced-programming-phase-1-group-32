@@ -5,7 +5,9 @@ import models.Position;
 import models.entities.Entity;
 import models.entities.components.Pickable;
 import models.entities.components.Placeable;
+import models.entities.components.Upgradable;
 import models.entities.components.inventory.Inventory;
+import models.enums.Material;
 import models.player.Player;
 import models.player.Wallet;
 import models.shop.*;
@@ -74,6 +76,33 @@ public class ShopSystem {
         return null;
     }
 
+
+    public static Result UpgradeTool(String toolName) {
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Inventory inventory = player.getComponent(Inventory.class);
+        Entity tool = inventory.getItem(toolName);
+        if(tool == null)
+            return new Result(false, "You don't have this tool!");
+        Upgradable upgradable = tool.getComponent(Upgradable.class);
+        Shop shop = player.getCurrentMap().getBuilding().getComponent(Shop.class);
+        Material nextLevel = Material.getMaterialByLevel(upgradable.getMaterial().getLevel() + 1);
+        if(nextLevel == null)
+            return new Result(false, "You can upgrade Iridium tool");
+        UpgradableShopProduct product = shop.getUpgradableShopProduct(nextLevel);
+        //TODO: handle trashcan
+        if(product.getStock() == 0)
+            return new Result(false, "you can't upgrade this material today! try again tomorrow");
+        if(!inventory.doesHaveItem(product.getIngredientName(), product.getIgredientCount()))
+            return new Result(false, "You don't have enough " + product.getIngredientName());
+        Result result = handlePay(product, 1);
+        if(!result.isSuccessful())
+            return result;
+        inventory.takeFromInventory(product.getIngredientName(), product.getIgredientCount());
+        upgradable.upgrade();
+        product.addSold(1);
+        return new Result(true, toolName + " successfully upgraded to " + nextLevel);
+
+    }
 
 
 
