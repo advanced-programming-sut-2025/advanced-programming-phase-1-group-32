@@ -492,7 +492,7 @@ public class GameMenu implements AppMenu {
     }
 
     public void toolsCommandParser(String input) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         Matcher matcher;
         if ((matcher = GameMenuCommands.TOOLS_EQUIP.getMatcher(input)) != null) {
             System.out.println(controller.toolsEquip(matcher.group("toolName")));

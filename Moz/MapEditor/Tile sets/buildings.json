@@ -8,53 +8,109 @@
  "margin":0,
  "name":"buildings",
  "spacing":0,
- "tilecount":7,
+ "tilecount":8,
  "tiledversion":"1.8.2",
- "tileheight":20,
+ "tileheight":10,
  "tiles":[
         {
          "id":15,
          "image":"..\/buildings\/images\/stardropSaloonExterior.png",
          "imageheight":7,
-         "imagewidth":10
+         "imagewidth":10,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"stardropSallon"
+                }],
+         "type":"Stardrop Saloon"
         }, 
         {
          "id":16,
          "image":"..\/buildings\/images\/pierresGeneralStoreExterior.png",
          "imageheight":10,
-         "imagewidth":12
+         "imagewidth":12,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"pierresGeneralStore"
+                }],
+         "type":"Pierre's General Store"
         }, 
         {
          "id":17,
          "image":"..\/buildings\/images\/marniesRanchExterior.png",
          "imageheight":7,
-         "imagewidth":8
+         "imagewidth":8,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"marniesRanch"
+                }],
+         "type":"Marnie's Ranch"
         }, 
         {
          "id":18,
          "image":"..\/buildings\/images\/jojaMartExterior.png",
          "imageheight":8,
-         "imagewidth":10
+         "imagewidth":10,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"jojaMart"
+                }],
+         "type":"Joja Mart"
         }, 
         {
          "id":19,
          "image":"..\/buildings\/images\/fishShopExterior.png",
          "imageheight":6,
-         "imagewidth":4
+         "imagewidth":4,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"fishShop"
+                }],
+         "type":"Fish Shop"
         }, 
         {
          "id":20,
          "image":"..\/buildings\/images\/carpentersShopExterior.png",
          "imageheight":5,
-         "imagewidth":7
+         "imagewidth":7,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"carpentersShop"
+                }],
+         "type":"Carpenters Shop"
         }, 
         {
          "id":21,
          "image":"..\/buildings\/images\/blackSmithExterior.png",
          "imageheight":4,
-         "imagewidth":6
+         "imagewidth":6,
+         "properties":[
+                {
+                 "name":"building",
+                 "type":"string",
+                 "value":"blackSmith"
+                }],
+         "type":"Black Smith"
+        }, 
+        {
+         "id":22,
+         "image":"..\/buildings\/images\/cottageExterior.png",
+         "imageheight":6,
+         "imagewidth":6,
+         "type":"Cottage"
         }],
- "tilewidth":24,
+ "tilewidth":12,
  "type":"tileset",
  "version":"1.8"
 }

@@ -57,11 +57,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/ground.tsx"
+         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/ground.json"
         }, 
         {
          "firstgid":17,
-         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/objects.tsx"
+         "source":"..\/..\/..\/Moz\/MapEditor\/Tile sets\/objects.json"
         }],
  "tilewidth":1,
  "type":"map",

@@ -1,16 +1,11 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
-    "activeFile": "defaultMap.tmx",
+    "activeFile": "Tile sets/region.json",
     "expandedProjectPaths": [
-        "buildings",
         ".",
-        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
-        "Tile sets"
+        "Tile sets",
+        "buildings",
+        "/home/parsa/Projects/University/AP/Stardew Valley/Moz"
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
             "scaleInDock": 53.4948,
@@ -181,32 +176,32 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 18.4921875,
-                "y": -13.5
+                "x": 3.0078125,
+                "y": 2.0078125
             }
         },
         "buildings/blackSmithInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 21.484375,
-                "y": -11.5
+                "x": 6.015625,
+                "y": 4.015625
             }
         },
         "buildings/carpentersShopExterior.tmx": {
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 18.9921875,
-                "y": -15.28125
+                "x": 3.5078125,
+                "y": 2.5
             }
         },
         "buildings/carpentersShopInterior.tmx": {
             "scale": 48.3075,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 22.491331573772186,
-                "y": -10.495264710448687
+                "x": 7.007193499974123,
+                "y": 5.019924442374372
             }
         },
         "buildings/carpentersShopInyrtiot.tmx": {
@@ -229,80 +224,80 @@
             "scale": 90,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 18.494444444444447,
-                "y": -12.5
+                "x": 3.005555555555555,
+                "y": 3.0055555555555555
             }
         },
         "buildings/cottageInterior.tmx": {
             "scale": 45,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 22.98888888888889,
-                "y": -8
+                "x": 7.500000000000002,
+                "y": 7.500000000000002
             }
         },
         "buildings/fishShopExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 17.5,
-                "y": -12.488888888888889
+                "x": 2.011111111111113,
+                "y": 3.011111111111111
             }
         },
         "buildings/fishShopInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 19.484375,
-                "y": -9.5
+                "x": 4.015625,
+                "y": 6.015625
             }
         },
         "buildings/jojaMartExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 20.5,
-                "y": -11.488888888888889
+                "x": 5.01111111111111,
+                "y": 4.011111111111111
             }
         },
         "buildings/jojaMartInterior.tmx": {
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 25.5,
-                "y": -7.478260869565217
+                "x": 10.021739130434783,
+                "y": 8.021739130434785
             }
         },
         "buildings/marniesRanchExterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 19.484375,
-                "y": -12
+                "x": 4.015625,
+                "y": 3.515625
             }
         },
         "buildings/marniesRanchInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 8.015625,
-                "y": 11.609375
+                "x": 23.484375,
+                "y": -8.5
             }
         },
         "buildings/pierresGeneralStoreExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 21.5,
-                "y": -10.488888888888889
+                "x": 6.01111111111111,
+                "y": 5.011111111111111
             }
         },
         "buildings/pierresGeneralStoreInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 27.484375,
-                "y": -5.5
+                "x": 12.015625,
+                "y": 10.015625
             }
         },
         "buildings/stardropExterior.tmx": {
@@ -325,8 +320,8 @@
             "scale": 96.615,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 20.49888733633494,
-                "y": -11.9960668633235
+                "x": 5.004398902861874,
+                "y": 3.5035967499870617
             }
         },
         "buildings/stardropSaloonExterior.tmx#objects": {
@@ -336,8 +331,8 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 27.484375,
-                "y": -5.5
+                "x": 12.015625,
+                "y": 10.015625
             }
         },
         "carpentersShopExterior.tmx": {
@@ -360,8 +355,8 @@
             "scale": 16,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 65.46875,
-                "y": 34.5
+                "x": 49.96875,
+                "y": 49.96875
             }
         },
         "defaultMap.tmx#biome": {
@@ -481,47 +476,14 @@
             }
         }
     },
-    "last.exportedFilePath": "/home/parsa/Projects/University/AP/Stardew Valley/src/data/maps",
-    "last.externalTilesetPath": "/home/parsa/Projects/University/AP/Stardew Valley/Moz/MapEditor/Tile sets",
-    "last.imagePath": "/home/parsa/Projects/University/AP/Stardew Valley/Moz/MapEditor/buildings/images",
-    "lastUsedTilesetExportFilter": "Tiled tileset files (*.tsx *.xml)",
-    "map.height": 6,
-    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
-    "map.layerDataFormat": null,
-    "map.tileHeight": 1,
-    "map.tileWidth": 1,
-    "map.width": 6,
     "openFiles": [
         "defaultMap.tmx",
         "Tile sets/buildings.tsx",
         "buildings/cottageExterior.tmx",
         "buildings/cottageInterior.tmx",
         "buildings/marniesRanchExterior.tmx",
-        "buildings/blackSmithExterior.tmx"
-    ],
-    "project": "Stardew Valley.tiled-project",
-    "property.type": "string",
-    "recentFiles": [
-        "buildings/marniesRanchInterior.tmx",
-        "buildings/pierresGeneralStoreInterior.tmx",
-        "buildings/stardropSaloonInterior.tmx",
-        "buildings/cottageInterior.tmx",
-        "buildings/fishShopInterior.tmx",
-        "buildings/cottageExterior.tmx",
-        "buildings/blackSmithInterior.tmx",
-        "buildings/stardropSaloonExterior.tmx",
-        "defaultMap.tmx",
-        "buildings/fishShopExterior.tmx",
-        "buildings/jojaMartExterior.tmx",
-        "buildings/marniesRanchExterior.tmx"
-    ],
-    "tileset.embedInMap": false,
-    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
-    "tileset.lastUsedFormat": "tsx",
-    "tileset.tileSize": {
-        "height": 1,
-        "width": 1
-    },
-    "tileset.type": 0
+        "buildings/blackSmithExterior.tmx",
+        "Tile sets/region.tsx",
+        "Tile sets/region.json"
+    ]
 }

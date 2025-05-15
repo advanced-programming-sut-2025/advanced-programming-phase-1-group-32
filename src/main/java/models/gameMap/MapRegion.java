@@ -7,11 +7,12 @@ import views.inGame.Color;
 import java.util.ArrayList;
 
 public class MapRegion {
-    String name;
-    Player owner;
-    ArrayList<Tile> tiles = new ArrayList<>();
-    Color color;
-    Position center = new Position(0, 0);
+    private String name;
+    private Player owner;
+    private ArrayList<Tile> tiles = new ArrayList<>();
+    private Color color;
+    private Position center = new Position(0, 0);
+    private boolean isFarm = false;
 
     public void addTile(Tile tile) {
         //position is not double so we cant do this:
@@ -27,9 +28,10 @@ public class MapRegion {
         return tiles;
     }
 
-    public MapRegion(String name, Color color) {
+    public MapRegion(String name, Color color, boolean isFarm) {
         this.name = name;
         this.color = color;
+        this.isFarm = isFarm;
     }
 
     public Color getColor() {
@@ -50,5 +52,9 @@ public class MapRegion {
 
     public Player getOwner() {
         return owner;
+    }
+
+    public boolean isFarm() {
+        return isFarm;
     }
 }

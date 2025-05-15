@@ -52,7 +52,7 @@ public class Useable extends EntityComponent{
 
 
     public Result use(Tile targetTile) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
 
         if(
                 Math.abs(player.getPosition().getCol() - targetTile.getCol()) > 2

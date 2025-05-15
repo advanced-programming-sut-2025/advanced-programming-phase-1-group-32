@@ -25,6 +25,7 @@ import models.player.Player;
 import models.player.Skill;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
+import records.GameStartingDetails;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,21 +48,18 @@ public class Game {
     private ArrayList<Quest> quests = new ArrayList<>();
     private int tradeId = 1000;
 
-    public Game(Account[] accounts) {
-        for (Account account : accounts) {
-            addPlayer(new Player(account));
-        }
+    public Game() {
 
-        App.setActiveGame(this);
-
-        initGame();
     }
 
     public void setMainMap(WorldMap mainMap) {
         this.mainMap = mainMap;
     }
 
-    public void initGame() {
+    public void initGame(GameStartingDetails details) {
+        for (Account account : details.accounts()) {
+            addPlayer(new Player(account));
+        }
         setCurrentPlayer(players.get(0));
 
         mainMap = new WorldMap(WorldMapType.DEFAULT.getData());
@@ -77,13 +75,11 @@ public class Game {
             }
         }
 
-
         //player farms
         Map<MapRegion, FarmDetails> farmsDetails = mainMap.getFarmsDetail();
 
-        for(int i = 0 ; i < players.size(); i++){
-            MapRegion region = mainMap.getRegions().get(i);
-            Player player = players.get(i);
+        for(Player player : players){
+            MapRegion region = details.selections().get(player.getAccount());
             player.addRegion(region);
             player.setCurrentMap(mainMap);
 
@@ -101,6 +97,7 @@ public class Game {
 
         mainMap.initRandomElements();
         initNPCs();
+
     }
 
     public void initNPCs() {

@@ -2,10 +2,12 @@ package controllers;
 
 import models.*;
 import models.enums.Menu;
-import models.player.Player;
+import models.gameMap.MapRegion;
+import models.gameMap.WorldMapType;
+import records.GameStartingDetails;
 import records.Result;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class MainMenuController implements Controller{
     @Override
@@ -39,12 +41,12 @@ public class MainMenuController implements Controller{
         return new Result(true, sb.toString());
     }
 
-    public Result newGame(String input) {
+    public GameStartingDetails newGame(String input) {
         String[] usernames = input.split("\\s");
         if(usernames.length == 0)
-            return new Result(false, "you should enter at least  1 username");
+            return new GameStartingDetails(false, "you should enter at least  1 username");
         if(usernames.length > 3)
-            return new Result(false, "You can't play with more than 3 players");
+            return new GameStartingDetails(false, "You can't play with more than 3 players");
 
         Account[] accounts = new Account[usernames.length + 1];
         accounts[0] = App.getLoggedInAccount();
@@ -52,20 +54,53 @@ public class MainMenuController implements Controller{
 
         for (int i = 0; i < usernames.length; i++) {
             if (Arrays.asList(accounts).contains(App.getUserByUsername(usernames[i])))
-                return new Result(false, "you should enter different users");
+                return new GameStartingDetails(false, "you should enter different users");
             accounts[i + 1] = App.getUserByUsername(usernames[i]);
             if (accounts[i + 1] == null)
                 sb.append("username ").append(usernames[i]).append(" doesn't exist\n");
         }
         if(!sb.isEmpty())
-            return new Result(false, sb.deleteCharAt(sb.length() - 1).toString());
+            return new GameStartingDetails(false, sb.deleteCharAt(sb.length() - 1).toString());
 
-        Game game = new Game(accounts);
+        ArrayList<MapRegion> availableRegions = new ArrayList<>();
+        for(MapRegion r : WorldMapType.DEFAULT.getData().getRegions()){
+            if(r.isFarm()){
+                availableRegions.add(r);
+            }
+        }
+
+        Queue<Account> notChosen = new LinkedList<>(Arrays.asList(accounts));
+
+        Map<Account, MapRegion> selections = new HashMap<>();
+        for(Account a : accounts){
+            selections.put(a, null);
+        }
+
+        return new GameStartingDetails(true, "choose your starting maps", accounts, notChosen, selections, availableRegions);
+    }
+    public Result chooseMap(GameStartingDetails details, String input){
+        MapRegion chosen = null;
+        for(MapRegion m : details.availableRegions()){
+            if(m.getName().equals(input)){
+                chosen = m;
+            }
+        }
+
+        if(chosen == null){
+            return new Result(false, "farm doesn't exist");
+        }
+
+        details.selections().put(details.notChosen().peek(), chosen);
+        details.availableRegions().remove(chosen);
+
+        return new Result(true, details.notChosen().poll().getNickname() + " chose " + chosen.getName());
+    }
+
+    public void startGame(GameStartingDetails details){
+        Game game = new Game();
         App.setActiveGame(game);
-        accounts[0].setActiveGame(game);
-
+        game.initGame(details);
         App.setCurrentMenu(Menu.GAME_MENU);
-        return new Result(true, "Game started!, You are in Game Menu now!");
     }
 
     public Result loadGame() {
