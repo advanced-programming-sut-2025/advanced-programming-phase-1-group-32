@@ -6,6 +6,7 @@ import models.Position;
 import models.NPC.NPC;
 import models.entities.EntityList;
 import models.entities.components.AnimalHouse;
+import models.entities.components.Growable;
 import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
 import models.enums.Weather;
@@ -19,6 +20,7 @@ import models.entities.components.inventory.InventorySlot;
 import models.enums.SkillType;
 import models.gameMap.MapRegion;
 import models.NPC.NpcFriendship;
+import models.gameMap.WorldMap;
 import models.player.buff.Buff;
 import models.player.friendship.PlayerFriendship;
 import views.inGame.Color;
@@ -49,6 +51,8 @@ public class    Player extends Entity {
     private Entity house;
     private Entity refrigerator;
     private Buff activeBuff;
+
+    private transient ArrayList<Tile> ownedTiles = null;
 
 
     // boolean for messages
@@ -358,6 +362,7 @@ public class    Player extends Entity {
 
     public void addRegion(MapRegion region) {
         this.ownedRegions.add(region);
+        this.getOwnedTiles();
         region.setOwner(this);
     }
 
@@ -463,12 +468,28 @@ public class    Player extends Entity {
     }
 
     public ArrayList<Tile> getOwnedTiles() {
-        //TODO
-        return null;
+        if(ownedTiles != null) return ownedTiles;
+
+        WorldMap map = App.activeGame.getMainMap();
+        ArrayList<Tile> result = new ArrayList<>();
+
+        for(Tile[] row : map.getTiles()){
+            for(Tile t : row){
+                if(ownedRegions.contains(t.getRegion())){
+                    result.add(t);
+                }
+            }
+        }
+        return result;
     }
 
     public ArrayList<Tile> getOwnedPlantedTiles() {
-        //TODO: PARSA
-        return null;
+        ArrayList<Tile> ownedTile = getOwnedTiles();
+        ArrayList<Tile> plantedTiles = new ArrayList<>();
+
+        for(Tile t : ownedTile){
+            if(t.getContent() != null && (t.getContent().getComponent(Growable.class) != null)) plantedTiles.add(t);
+        }
+        return plantedTiles;
     }
 }
