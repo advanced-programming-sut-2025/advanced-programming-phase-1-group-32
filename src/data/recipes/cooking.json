@@ -18,7 +18,8 @@
       "price": {
         "x": 0,
         "y": 35
-      }
+      },
+      "isUnlocked" : true
     },
     {
       "name": "Baked Fish",
@@ -49,7 +50,8 @@
       "price": {
         "x": 0,
         "y": 100
-      }
+      },
+      "isUnlocked" : true
     },
     {
       "name": "Salad",
@@ -74,7 +76,8 @@
       "price": {
         "x": 0,
         "y": 110
-      }
+      },
+      "isUnlocked" : true
     },
     {
       "name": "Olmelet",
