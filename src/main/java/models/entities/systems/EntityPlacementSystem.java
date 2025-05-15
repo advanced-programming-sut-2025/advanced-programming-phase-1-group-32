@@ -63,6 +63,7 @@ public static Result placeEntity(Entity entity, Vec2 position, GameMap map) {
         return new Result(false, "This entity isn't placeable");
 
     InteriorComponent interior = entity.getComponent(InteriorComponent.class);
+    if(interior != null) map = App.getActiveGame().getMainMap();
     Result result = placeExterior(entity, position, map);
     if(!result.isSuccessful())
         return result;
@@ -199,16 +200,22 @@ public static boolean canPlace(Tile tile){
     return canPlace(tile.getCol(), tile.getRow());
 }
 public static void clearArea(int x, int y, Placeable placeable) {
-    GameMap map = App.getActiveGame().getActiveMap();
+    GameMap map = App.getActiveGame().getMainMap();
 
-    TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
+    if(placeable.getExteriorName() != null){
+        TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
 
-    for(int i = y; i < exterior.length + y; i++){
-        for(int j = x; j < exterior[0].length + x; j++){
-            Tile tile = App.getActiveGame().getMainMap().getTileByPosition(j, i);
-            if(tile.getContent() != null) tile.getContent().delete();
+        for(int i = y; i < exterior.length + y; i++){
+            for(int j = x; j < exterior[0].length + x; j++){
+                Tile tile = map.getTileByPosition(i, j);
+                if(tile.getContent() != null) tile.getContent().delete();
+            }
         }
     }
+    else{
+        emptyTile(map.getTileByPosition(y, x));
+    }
+
 }
 
 }

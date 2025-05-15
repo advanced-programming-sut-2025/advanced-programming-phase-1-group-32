@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.App;
 import models.entities.components.*;
 import models.enums.EntityTag;
+import models.utils.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,18 +14,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class EntityRegistry extends Registry<Entity>{
-
-
     public void addChild(EntityRegistry child) {
         registry.putAll(child.registry);
     }
-
-
-
-
-
-
-
 
     @Override
     protected void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {
@@ -94,12 +86,12 @@ public class EntityRegistry extends Registry<Entity>{
     }
 
     public boolean doesEntityExist(String entityName){
-        Entity entity = this.registry.get(entityName.toLowerCase());
+        Entity entity = get(entityName.toLowerCase());
         return entity != null;
     }
 
     public Entity makeEntity(String name){
-        Entity entity = this.registry.get(name.toLowerCase());
+        Entity entity = get(name.toLowerCase());
 
         if(entity == null)
         {
@@ -111,7 +103,14 @@ public class EntityRegistry extends Registry<Entity>{
         return entity.clone();
     }
     public Entity getEntityDetails(String name){
-        return this.registry.get(name.toLowerCase());
+        return get(name.toLowerCase());
+    }
+
+    private Entity get(String name){
+        for(String key : registry.keySet()){
+            if(StringUtils.isNamesEqual(key , name)) return registry.get(key);
+        }
+        return null;
     }
     public void listEntities(){
         for(Map.Entry<String, Entity> e : this.registry.entrySet()){

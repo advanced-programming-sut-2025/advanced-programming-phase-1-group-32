@@ -1,16 +1,19 @@
 package models.entities.systems;
 
 import models.App;
+import models.Game;
 import models.Position;
 import models.entities.Entity;
 import models.entities.components.Pickable;
 import models.entities.components.Placeable;
+import models.entities.components.Sellable;
 import models.entities.components.Upgradable;
 import models.entities.components.inventory.Inventory;
 import models.enums.Material;
 import models.player.Player;
 import models.player.Wallet;
 import models.shop.*;
+import models.utils.StringUtils;
 import records.Result;
 
 public class ShopSystem {
@@ -18,8 +21,6 @@ public class ShopSystem {
         if(amount > product.getStock() && product.getStock() >= 0)
             return new Result(false, "There isn't enough stock! go come tomorrow:)");
         Entity productEntity = product.getEntity();
-
-
 
         if(productEntity.getComponent(Pickable.class) != null && product instanceof OtherShopProduct) {
             return buyPickable(product, amount);
@@ -62,7 +63,7 @@ public class ShopSystem {
         if(!result.isSuccessful())
             return result;
         Entity building = p.getEntity();
-        EntityPlacementSystem.placeEntity(building, new Position(x, y));
+        EntityPlacementSystem.placeEntity(building, new Position(x, y), App.getActiveGame().getMainMap());
         //TODO: if can't place gets error
         p.addSold(1);
         Player player = App.getActiveGame().getCurrentPlayer();
@@ -120,6 +121,34 @@ public class ShopSystem {
         inventory.takeFromInventory("Wood", amount * p.getWoodCost());
         inventory.takeFromInventory("Stone", amount * p.getStoneCost());
         return new Result(true, "paid successfully");
+    }
+
+    public static void updatePerDay(){
+        Game game = App.getActiveGame();
+
+        //TODO make this cleaner
+        //emptying player shipping bins
+        for(Player player : game.getPlayers()){
+            double totalEarning = 0;
+            for(Entity building : player.getOwnedBuildings()){
+                if(StringUtils.isNamesEqual(building.getEntityName(), "Shipping Bin")){
+                    Inventory inventory = building.getComponent(Inventory.class);
+
+                    for(Entity entity : inventory.getEntities()){
+                        Pickable pickable = entity.getComponent(Pickable.class);
+                        Sellable sellable = entity.getComponent(Sellable.class);
+
+                        if(pickable != null) totalEarning += sellable.getPrice() * pickable.getStackSize();
+                        else totalEarning += sellable.getPrice();
+                    }
+
+                    inventory.empty();
+                }
+            }
+            player.getWallet().addBalance(totalEarning);
+        }
+
+        //TODO reset shops
     }
 
 }

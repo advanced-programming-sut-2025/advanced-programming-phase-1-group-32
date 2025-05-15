@@ -78,6 +78,10 @@
         {
           "type": "Placeable",
           "exteriorName": "carpentersShopExterior"
+        },
+        {
+          "type" : "Shop",
+          "name" : "Carpenter's Shop"
         }
       ]
     },
