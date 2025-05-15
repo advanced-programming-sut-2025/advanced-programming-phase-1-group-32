@@ -120,7 +120,8 @@ public enum GameMenuCommands implements Commands {
     SKILL_STATUE("skill statue"),
     ADD_MONEY("add\\s+money\\s+-a\\s+(?<amount>\\d+)\\s*"),
     TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
-    CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$");
+    CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$"),
+    CHEAT_SET_FRIENDSHIP("cheat\\s+-u\\s+(?<name>.+)\\s*level\\s*(?<level>\\d+)\\s*xp\\s*(?<xp>\\d+)\\s*"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
 

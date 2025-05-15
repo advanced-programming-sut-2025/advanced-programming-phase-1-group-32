@@ -2,8 +2,11 @@ cheat advance date 1d
 cheat advance time 1h
 gift -u AliAlm -i Jazz Seeds -a 2
 talk -u AliAlm -m salam
-cheat advance date 1d
 
+cheat give item "Bouquet" 1
+cheat advance date 1d
+talk -u Female -m salam
+cheat -u Ilia level 2 xp 300
 friendships
 next turn
 next turn
@@ -11,7 +14,9 @@ gift list
 gift rate -i 1 -r 3
 gift history -u Ilia
 hug -u AliAlm
-flower -u AliAlm
+flower -u Female
+
+
 
 start trade
 start trade

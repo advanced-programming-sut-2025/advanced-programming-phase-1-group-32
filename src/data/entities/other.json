@@ -1,0 +1,19 @@
+{
+  "common components": [
+    {
+      "type": "Pickable",
+      "maxStack": 16000
+    }
+  ],
+  "required components": [
+
+  ],
+  "common tags": [
+
+  ],
+  "entities": [
+    {
+      "name": "Bouquet"
+    }
+  ]
+}

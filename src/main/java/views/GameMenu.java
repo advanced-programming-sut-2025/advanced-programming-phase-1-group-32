@@ -331,6 +331,10 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.ADD_MONEY.getMatcher(input)) != null) {
                 System.out.println(controller.addMoney(Integer.parseInt(matcher.group(1).trim())));
 
+            } else if ((matcher = GameMenuCommands.CHEAT_SET_FRIENDSHIP.getMatcher(input)) != null) {
+                System.out.println(controller.cheatSetFriendship(Integer.parseInt(matcher.group(2)),
+                        Integer.parseInt(matcher.group(3)), matcher.group(1).trim()));
+
             } else {
                 System.out.println("Invalid Command!");
             }

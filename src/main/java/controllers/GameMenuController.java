@@ -1325,13 +1325,17 @@ public class GameMenuController implements Controller {
             return new Result(false, "not time for flower");
         }
 
-        // TODO: check inventory and reduce
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!inventory.doesHaveItem("Bouquet")) {
+            return new Result(false, "You don't have bouquet!");
+        }
 
         if (playerFriendship.getLevel() == 2) {
             playerFriendship.setLevel(3);
             playerFriendship.setXp(0);
         }
 
+        inventory.takeFromInventory("Bouquet", 1);
         return new Result(true, "You have flowered " + floweredPlayer.getUsername() + "!");
     }
 
@@ -1778,6 +1782,27 @@ public class GameMenuController implements Controller {
 
         return new Result(true, "your inventory is" + (inventory.getUnlimited() ? "" : " not") + " unlimited now.");
     }
+
+    public Result cheatSetFriendship(int level, int xp, String name) {
+        Game game = App.getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        Player player = game.findPlayer(name);
+        if (player == null) {
+            return new Result(false, "Player not found");
+        }
+
+        if ((level + 1) * 100 < xp) {
+            return new Result(false, "dige cheat ham hadi dare:/");
+        }
+
+        PlayerFriendship playerFriendship = game.getFriendshipWith(player);
+        playerFriendship.setLevel(level);
+        playerFriendship.setXp(xp);
+        return new Result(true, "set!");
+    }
+
+    /*-----------------------------------------------------------------------------------------*/
+
 
     public Result putInFridge(String entityName, int amount, boolean put){
         Entity entity = App.entityRegistry.getEntityDetails(entityName);
