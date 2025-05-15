@@ -50,4 +50,6 @@ public class OtherShopProduct extends ShopProduct {
             return super.toString();
         return super.toString() + " available in " + season.toString();
     }
+
+
 }

@@ -27,6 +27,11 @@ public class Upgradable extends EntityComponent{
     public Material getMaterial() {
         return material;
     }
+    public void upgrade() {
+        if(material.getLevel() == 4)
+            return;
+        this.material = Material.getMaterialByLevel(material.getLevel() + 1);
+    }
 
     @Override
     public EntityComponent clone() {

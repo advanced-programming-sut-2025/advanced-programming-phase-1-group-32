@@ -20,4 +20,20 @@ public enum Material {
     public int getLevel() {
         return level;
     }
+
+    public static Material getMaterialByLevel(int level) {
+        if(level == 0)
+            return INITIAL;
+        for (Material value : Material.values()) {
+            if(value.getLevel() == level)
+                return value;
+        }
+        return null;
+    }
+
+
+    @Override
+    public String toString() {
+        return name().charAt(0) + name().substring(1).toLowerCase();
+    }
 }

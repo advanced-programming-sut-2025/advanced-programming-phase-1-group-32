@@ -367,8 +367,10 @@ public class GameMenuController implements Controller {
             return new Result(false, "This building isn't shop");
         if(!StringUtils.isNamesEqual(shop.getName(), "blacksmith"))
             return new Result(false, "You only can Upgrade in blacksmith");
-        //TODO
-        return null;
+
+        return ShopSystem.UpgradeTool(toolName);
+
+
     }
 
     public Result toolsUse(Direction dir) {

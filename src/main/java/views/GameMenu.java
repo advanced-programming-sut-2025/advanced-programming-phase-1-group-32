@@ -445,7 +445,7 @@ public class GameMenu implements AppMenu {
             return;
         }
         System.out.printf(
-                "It will cost %d energy, Proceed? (y/n)%n",
+                "It will cost %.02f energy, Proceed? (y/n)%n",
                 proposal.energyCost()
         );
         String ans = scanner.nextLine().trim().toLowerCase();
