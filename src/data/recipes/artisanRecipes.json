@@ -43,6 +43,76 @@
           ]
         }
       ]
+    },
+    {
+      "name" : "Beer",
+      "hour" : 24,
+      "energy" : {
+        "x": 0,
+        "y": 50
+      },
+      "price": {"x": 0, "y" :  200},
+      "ingredients" : [
+        {
+          "contents" : ["Wheat"],
+          "amount" : 1
+        }
+      ]
+    },
+    {
+      "name" : "Vinegar",
+      "energy" : {
+        "x" : 0,
+        "y" : 13
+      },
+      "hour" : 10,
+      "ingredients" : [
+        {
+          "contents" : ["Rice"],
+          "amount" : 1
+        }
+      ],
+      "price" :
+       {
+        "x": 0,
+        "y": 100
+        }
+      },
+    {
+      "name" : "Coffee",
+      "energy" : {
+        "x": 0,
+        "y" : 75
+      },
+      "hour" : 2,
+      "ingredients" : [
+        {
+          "contents": ["Coffee Bean"],
+          "amount" : 5
+        }
+      ],
+      "price" : {
+        "x" : 0,
+        "y" : 150
+      }
+    },
+    {
+      "name" : "Juice",
+      "energy" : {
+        "x" : 2,
+        "y" : 0
+      },
+      "hour" : 96,
+      "ingredients" : [
+        {
+          "validTags" : ["VEGETABLE"],
+          "amount" : 1
+        }
+      ],
+      "price" : {
+        "x" : 2.25,
+        "y": 0
+      }
     }
   ]
 }

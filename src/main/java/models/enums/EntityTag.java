@@ -8,6 +8,7 @@ public enum EntityTag {
     CROP,
     SEED,
     FOOD,
+    VEGETABLE,
     FORAGING_CROP,
     BREAKABLE_WITH_PICKAXE,
     BREAKABLE_WITH_AXE,
