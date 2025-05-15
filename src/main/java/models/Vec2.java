@@ -15,6 +15,9 @@ public class Vec2{
         this.x = x;
         this.y = y;
     }
+    public Vec2 copy(){
+        return new Vec2(x, y);
+    }
 
     public double getX() {
         return x;
@@ -27,6 +30,9 @@ public class Vec2{
     }
     public int getRow(){
         return (int) Math.round(this.y);
+    }
+    public double getDistance(Vec2 other){
+        return Math.hypot(x - other.x, y - other.y);
     }
 
     public void setX(double x) {

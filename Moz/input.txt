@@ -28,6 +28,11 @@ talk history -u AliAlm
 cheat toggle unlimited inventory
 
 
+cheat spawn on ground -n Apple -a 100
+
+
+toggle map
+
 cheat build building Coop 10 10 -force
 cheat give item "Jazz Seeds" 16
 walk -l 18, 32

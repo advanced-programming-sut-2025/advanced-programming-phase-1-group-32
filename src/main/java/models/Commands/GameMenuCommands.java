@@ -64,6 +64,7 @@ public enum GameMenuCommands implements Commands {
 
     /* ------------------------------------------- Item Commands ------------------------------------------- */
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
+    PICK_NEARBY_ITEMS("^\\s*pick\\s+nearby\\s+items\\s*$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+?)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
     REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
 
@@ -122,11 +123,8 @@ public enum GameMenuCommands implements Commands {
     TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
     CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$"),
     CHEAT_SET_FRIENDSHIP("cheat\\s+-u\\s+(?<name>.+)\\s*level\\s*(?<level>\\d+)\\s*xp\\s*(?<xp>\\d+)\\s*"),
+    CHEAT_SPAWN_ON_GROUND("^\\s*cheat\\s+spawn\\s+on\\s+ground\\s+-n\\s+(?<name>\\S+)\\s+-a\\s+(?<amount>\\S+)\\s*$");
     /* -------------------------------------------------- -------------------------------------------------- */
-
-
-
-
 
     ;
 

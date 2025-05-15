@@ -3,6 +3,8 @@ package models.entities.components.inventory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
+import models.entities.EntityList;
+import models.entities.EntityObserver;
 import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.EntityTag;
@@ -76,7 +78,8 @@ public class Inventory extends EntityComponent {
                 slot.setEntity(pickable.split(pickable.getMaxStack()));
                 return entity;
             }
-            slot.setEntity(entity);
+            slot.setEntity(entity.clone());
+            entity.delete();
             return null;
         }
 
@@ -110,6 +113,11 @@ public class Inventory extends EntityComponent {
         }
         return amount <= 0;
     }
+    public boolean canAddItem(Entity item) {
+        Pickable pickable = item.getComponent(Pickable.class);
+        if(pickable == null) return false;
+        return canAddItem(item, pickable.getStackSize());
+    }
 
     public Entity addItem(Entity entity) {
         if (entity == null) {
@@ -129,15 +137,16 @@ public class Inventory extends EntityComponent {
                 }
             }
         }
-        //add to empty slots in inventory
-        if (pickable.getStackSize() != 0) {
-            for (InventorySlot s : slots) {
-                if (s.getEntity() == null) {
-                    if((entity = addItemToSlot(entity, s)) == null){
-                        break;
+        if(entity != null){
+            //add to empty slots in inventory
+            if (pickable.getStackSize() != 0) {
+                for (InventorySlot s : slots) {
+                    if (s.getEntity() == null) {
+                        if((entity = addItemToSlot(entity, s)) == null){
+                            break;
+                        }
                     }
                 }
-
             }
         }
         if(entity == null){
@@ -161,7 +170,6 @@ public class Inventory extends EntityComponent {
 
         return null;
     }
-
     public int getEmptySpace(){
         int emptySlots = 0;
         for(InventorySlot s : slots){

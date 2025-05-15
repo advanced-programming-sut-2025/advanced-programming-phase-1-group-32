@@ -193,4 +193,7 @@ public class Entity implements Cloneable{
         return true;
     }
 
+    public Set<EntityObserver> getObservers() {
+        return observers;
+    }
 }

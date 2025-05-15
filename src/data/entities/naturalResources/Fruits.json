@@ -2,7 +2,11 @@
   "common components": [
     {
       "type": "Pickable",
-      "maxStack": 16000
+      "maxStack": 64
+    },{
+      "type" : "Renderable",
+      "char" : "e",
+      "color" : [250, 100, 20]
     }
   ],
   "required components": [

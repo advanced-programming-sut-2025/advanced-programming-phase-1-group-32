@@ -274,6 +274,28 @@ public enum UseFunction {
             return new Result(true, "wool collected successfully");
         }
     },
+    BREAK_PLACEABLES{
+        @Override
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+            Entity entity = tile.getContent();
+            if(entity == null){
+                return new Result(false, "nothing to break");
+            }
+            Pickable pickable = entity.getComponent(Pickable.class);
+            if(pickable == null){
+                return new Result(false, entity.getEntityName() + " is not a pickable");
+            }
+
+            Inventory inventory = player.getComponent(Inventory.class);
+            if(!inventory.canAddItem(entity)){
+                return new Result(false, "not enough space in inventory to pickup the " + entity.getEntityName());
+            }
+
+            inventory.addItem(entity);
+
+            return new Result(true, "broke and picked up the " + entity.getEntityName());
+        }
+    }
 
     ;
 

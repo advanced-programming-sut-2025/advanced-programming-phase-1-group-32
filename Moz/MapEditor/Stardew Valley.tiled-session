@@ -5,9 +5,9 @@
     },
     "activeFile": "defaultMap.tmx",
     "expandedProjectPaths": [
-        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
         "buildings",
         ".",
+        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
         "Tile sets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -216,8 +216,8 @@
             "scale": 45,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 9.033333333333333,
-                "y": 7.855555555555555
+                "x": 7.500000000000002,
+                "y": 7.500000000000002
             }
         },
         "buildings/fishShopExterior.tmx": {
@@ -336,11 +336,11 @@
             }
         },
         "defaultMap.tmx": {
-            "scale": 32,
-            "selectedLayer": 1,
+            "scale": 16,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 22.484375,
-                "y": 9.484375
+                "x": 49.96875,
+                "y": 49.96875
             }
         },
         "defaultMap.tmx#biome": {
@@ -475,23 +475,25 @@
         "defaultMap.tmx",
         "Tile sets/buildings.tsx",
         "buildings/cottageExterior.tmx",
-        "buildings/cottageInterior.tmx"
+        "buildings/cottageInterior.tmx",
+        "buildings/marniesRanchExterior.tmx",
+        "buildings/blackSmithExterior.tmx"
     ],
     "project": "Stardew Valley.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "buildings/blackSmithExterior.tmx",
+        "buildings/marniesRanchExterior.tmx",
         "buildings/cottageInterior.tmx",
-        "Tile sets/objects.tsx",
         "buildings/cottageExterior.tmx",
         "Tile sets/buildings.tsx",
         "defaultMap.tmx",
+        "Tile sets/objects.tsx",
         "buildings/blackSmithInterior.tmx",
         "Tile sets/ground.tsx",
         "buildings/cottage.tmx",
         "buildings/pierresGeneralStoreInterior.tmx",
-        "buildings/stardropSaloonExterior.tmx",
-        "buildings/stardropSaloonInterior.tmx",
-        "buildings/blackSmithExterior.tmx"
+        "buildings/stardropSaloonExterior.tmx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

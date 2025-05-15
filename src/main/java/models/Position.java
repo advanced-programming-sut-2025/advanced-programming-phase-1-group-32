@@ -13,7 +13,16 @@ public class Position extends Vec2{
         this(x, y, null);
     }
     public Position(int x, int y){
-        super(x, y);
+        this(x, y, null);
+    }
+    public Position(Vec2 vec){
+        this(vec.x, vec.y, null);
+    }
+    public Position(Vec2 vec, GameMap map){
+        this(vec.x, vec.y, map);
+    }
+    public Position copy(){
+        return new Position(super.copy(), map);
     }
 
     public GameMap getMap() {

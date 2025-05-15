@@ -277,6 +277,15 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.FISHING.getMatcher(input)) != null) {
                 System.out.println(controller.fishing(matcher.group(1).trim()));
 
+            } else if ((matcher = GameMenuCommands.PLACE_ITEM.getMatcher(input)) != null) {
+                System.out.println(controller.placeItem(matcher.group(1).trim(), Integer.parseInt(matcher.group(2))));
+
+            } else if ((matcher = GameMenuCommands.PICK_NEARBY_ITEMS.getMatcher(input)) != null) {
+                System.out.println(controller.pickupNearItems());
+
+            } else if ((matcher = GameMenuCommands.CHEAT_SPAWN_ON_GROUND.getMatcher(input)) != null) {
+                System.out.println(controller.cheatSpawnItem(matcher.group(1), Integer.parseInt(matcher.group(2))));
+
             }
             /* ------------------------------------------- cheat Commands ------------------------------------------ */
             else if ((matcher = GameMenuCommands.CHEAT_SKILL.getMatcher(input)) != null) {
