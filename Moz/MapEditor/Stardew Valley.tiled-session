@@ -95,6 +95,10 @@
             "dynamicWrapping": false,
             "scaleInDock": 64
         },
+        "Tile sets/biome.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
         "Tile sets/biome.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 64,
@@ -103,15 +107,23 @@
         "Tile sets/building.tsx": {
             "scaleInDock": 1
         },
+        "Tile sets/buildings.json": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
         "Tile sets/buildings.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 2,
             "scaleInEditor": 4
         },
+        "Tile sets/ground.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
         "Tile sets/ground.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 45,
-            "scaleInEditor": 128
+            "scaleInEditor": 4
         },
         "Tile sets/groundTileSet.tmx": {
             "scale": 6.802,
@@ -128,14 +140,23 @@
         "Tile sets/groundTileSet.tmx#region": {
             "scaleInDock": 1
         },
+        "Tile sets/objects.json": {
+            "scaleInDock": 1
+        },
         "Tile sets/objects.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 59.7247,
-            "scaleInEditor": 104.0134
+            "scaleInEditor": 4
+        },
+        "Tile sets/region.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 44.6207,
+            "scaleInEditor": 4
         },
         "Tile sets/region.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 45,
-            "scaleInEditor": 128
+            "scaleInEditor": 4
         },
         "blackSmithExterior.tmx": {
             "scale": 45,
@@ -160,32 +181,32 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.0078125,
-                "y": 2.0078125
+                "x": 18.4921875,
+                "y": -13.5
             }
         },
         "buildings/blackSmithInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.015625,
-                "y": 4.015625
+                "x": 21.484375,
+                "y": -11.5
             }
         },
         "buildings/carpentersShopExterior.tmx": {
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.5078125,
-                "y": 2.5078125
+                "x": 18.9921875,
+                "y": -15.28125
             }
         },
         "buildings/carpentersShopInterior.tmx": {
             "scale": 48.3075,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 7.007193499974123,
-                "y": 5.019924442374372
+                "x": 22.491331573772186,
+                "y": -10.495264710448687
             }
         },
         "buildings/carpentersShopInyrtiot.tmx": {
@@ -208,56 +229,56 @@
             "scale": 90,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.005555555555555,
-                "y": 3.0055555555555555
+                "x": 18.494444444444447,
+                "y": -12.5
             }
         },
         "buildings/cottageInterior.tmx": {
             "scale": 45,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 7.500000000000002,
-                "y": 7.500000000000002
+                "x": 22.98888888888889,
+                "y": -8
             }
         },
         "buildings/fishShopExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2.011111111111113,
-                "y": 3.011111111111111
+                "x": 17.5,
+                "y": -12.488888888888889
             }
         },
         "buildings/fishShopInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.015625,
-                "y": 6.015625
+                "x": 19.484375,
+                "y": -9.5
             }
         },
         "buildings/jojaMartExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5.01111111111111,
-                "y": 4.011111111111111
+                "x": 20.5,
+                "y": -11.488888888888889
             }
         },
         "buildings/jojaMartInterior.tmx": {
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 10.021739130434783,
-                "y": 8.021739130434785
+                "x": 25.5,
+                "y": -7.478260869565217
             }
         },
         "buildings/marniesRanchExterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.015625,
-                "y": 3.515625
+                "x": 19.484375,
+                "y": -12
             }
         },
         "buildings/marniesRanchInterior.tmx": {
@@ -265,23 +286,23 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 8.015625,
-                "y": 7.015625
+                "y": 11.609375
             }
         },
         "buildings/pierresGeneralStoreExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.01111111111111,
-                "y": 5.011111111111111
+                "x": 21.5,
+                "y": -10.488888888888889
             }
         },
         "buildings/pierresGeneralStoreInterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.015625,
-                "y": 10.015625
+                "x": 27.484375,
+                "y": -5.5
             }
         },
         "buildings/stardropExterior.tmx": {
@@ -304,8 +325,8 @@
             "scale": 96.615,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5.004398902861874,
-                "y": 3.5035967499870617
+                "x": 20.49888733633494,
+                "y": -11.9960668633235
             }
         },
         "buildings/stardropSaloonExterior.tmx#objects": {
@@ -315,8 +336,8 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.015625,
-                "y": 10.015625
+                "x": 27.484375,
+                "y": -5.5
             }
         },
         "carpentersShopExterior.tmx": {
@@ -337,10 +358,10 @@
         },
         "defaultMap.tmx": {
             "scale": 16,
-            "selectedLayer": 3,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 49.96875,
-                "y": 49.96875
+                "x": 65.46875,
+                "y": 34.5
             }
         },
         "defaultMap.tmx#biome": {
@@ -482,18 +503,18 @@
     "project": "Stardew Valley.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "buildings/blackSmithExterior.tmx",
-        "buildings/marniesRanchExterior.tmx",
-        "buildings/cottageInterior.tmx",
-        "buildings/cottageExterior.tmx",
-        "Tile sets/buildings.tsx",
-        "defaultMap.tmx",
-        "Tile sets/objects.tsx",
-        "buildings/blackSmithInterior.tmx",
-        "Tile sets/ground.tsx",
-        "buildings/cottage.tmx",
+        "buildings/marniesRanchInterior.tmx",
         "buildings/pierresGeneralStoreInterior.tmx",
-        "buildings/stardropSaloonExterior.tmx"
+        "buildings/stardropSaloonInterior.tmx",
+        "buildings/cottageInterior.tmx",
+        "buildings/fishShopInterior.tmx",
+        "buildings/cottageExterior.tmx",
+        "buildings/blackSmithInterior.tmx",
+        "buildings/stardropSaloonExterior.tmx",
+        "defaultMap.tmx",
+        "buildings/fishShopExterior.tmx",
+        "buildings/jojaMartExterior.tmx",
+        "buildings/marniesRanchExterior.tmx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
