@@ -140,7 +140,7 @@ public enum UseFunction {
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
             Container container =  tool.getComponent(Container.class);
-            if(!tile.getType().equals(TileType.PLANTED_GROUND /* TODO: is it true?*/))
+            if(tile.getContent() == null || tile.getContent().getComponent(Growable.class) == null)
                 return new Result(false, "you can't water this ground");
             tile.getContent().getComponent(Growable.class).setWateredToday(true);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();

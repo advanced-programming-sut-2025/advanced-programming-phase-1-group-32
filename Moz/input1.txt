@@ -69,13 +69,14 @@ fishing -p pole
 add skill farming -a 500
 skill statue
 
-cheat advance date 120d
+cheat advance date 6d
 showplant -l <24,34>
 tools equip Scythe
 plant -s Jazz Seeds -d up
 
 
-cheat give item "" 20
-showplant -l <17,32>
+cheat give item "Deluxe Retaining Soil" 20
+showplant -l <26,33>
 cheat toggle unlimited inventory
-fertilize -f Speed-Gro -d left
+fertilize -f Deluxe Retaining Soil -d down
+tools equip Watering can

@@ -562,7 +562,7 @@ public class GameMenuController implements Controller {
 
 
         // get the position
-        Position position = currentPlayer.getPosition();
+        Position position = new Position(currentPlayer.getPosition().getX(), currentPlayer.getPosition().getY());
         position.changeByDirection(direction);
         if (position == null) {
             return new Result(false, "type a valid direction");

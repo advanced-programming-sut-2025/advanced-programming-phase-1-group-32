@@ -15,6 +15,7 @@ toggle map
 cheat give item "Axe" 1
 cheat give item "Pickaxe" 1
 cheat give item "Hoe" 1
+cheat give item "Watering Can" 20
 cheat give item "Scythe" 1
 add money -a 10000000
 show inventory
