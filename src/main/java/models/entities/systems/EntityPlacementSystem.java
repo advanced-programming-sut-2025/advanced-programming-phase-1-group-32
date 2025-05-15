@@ -62,7 +62,6 @@ public static Result placeEntity(Entity entity, Vec2 position, GameMap map) {
     if(placeable == null)
         return new Result(false, "This entity isn't placeable");
 
-
     InteriorComponent interior = entity.getComponent(InteriorComponent.class);
     Result result = placeExterior(entity, position, map);
     if(!result.isSuccessful())

@@ -1773,4 +1773,84 @@ public class GameMenuController implements Controller {
 
         return new Result(true, amount + " " + entityName + " was " + (put ? "put in fridge" : "taken from fridge"));
     }
+    public Result placeItem(String name, int direction){
+        if(App.entityRegistry.getEntityDetails(name) == null){
+            return new Result(false, "entity doesn't exist");
+        }
+
+        Player player = App.getActiveGame().getCurrentPlayer();
+
+        Entity entity = player.getComponent(Inventory.class).takeFromInventory(name, 1);
+
+        if(entity == null){
+            return new Result(false, "you don't have " + name + " in your backpack");
+        }
+
+        Placeable placeable = entity.getComponent(Placeable.class);
+
+        if(placeable == null){
+            return new Result(false, name + " is not placeable");
+        }
+
+        Direction dir = Direction.getDirection(direction);
+
+        if(dir == null){
+            return new Result(false, "not a valid direction");
+        }
+
+        ;
+
+        return EntityPlacementSystem.placeEntity(entity, player.getPosition().copy().add(dir.dx, dir.dy));
+    }
+
+    public Result pickupNearItems(){
+        ArrayList<Pickable> pickables = new ArrayList<>(App.getActiveGame().getActiveMap().getComponentsOfType(Pickable.class));
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Position playerPos = player.getPosition();
+        GameMap map = playerPos.getMap();
+        Inventory inventory = player.getComponent(Inventory.class);
+
+        ArrayList<Entity> pickedUpItems = new ArrayList<>();
+
+
+        ArrayList<Entity> entitiesToRemove = new ArrayList<>();
+        for (Pickable pickable : pickables) {
+            Entity entity = pickable.getEntity();
+
+            if(playerPos.getDistance(entity.getComponent(PositionComponent.class).get()) > 2) continue;
+
+            if(!inventory.canAddItem(entity)) continue;
+
+            Entity leftOver = inventory.addItem(entity);
+            pickedUpItems.add(entity);
+        }
+
+        if(pickedUpItems.isEmpty()){
+            return new Result(false, "You picked up nothing dumbass");
+        }
+
+        StringBuilder out = new StringBuilder("you picked up:");
+        for(Entity entity : pickedUpItems){
+            out.append("\n").append(entity.getEntityName());
+        }
+
+        return new Result(true, out.toString());
+    }
+    public Result cheatSpawnItem(String name, int quantity){
+        Player currentPlayer = App.getActiveGame().getCurrentPlayer();
+        if (quantity <= 0) {
+            return new Result(false, "You should enter positive number!");
+        }
+        if (!App.entityRegistry.doesEntityExist(name)) {
+            return new Result(false, "Entity doesnt exist");
+        }
+        Entity entity = App.entityRegistry.makeEntity(name);
+        if (entity.getComponent(Pickable.class) == null) {
+            return new Result(false, "Entity isn't pickable");
+        }
+        entity.getComponent(Pickable.class).changeStackSize(quantity);
+        EntityPlacementSystem.placeOnMap(entity, currentPlayer.getPosition(), currentPlayer.getPosition().getMap());
+        return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
+                " was spawned on ground.");
+    }
 }

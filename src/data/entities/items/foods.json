@@ -3,6 +3,10 @@
     {
       "type": "Pickable",
       "maxStack": 16
+    },{
+      "type" : "Renderable",
+      "char" : "e",
+      "color" : [250, 100, 20]
     }
   ],
   "required components": [
