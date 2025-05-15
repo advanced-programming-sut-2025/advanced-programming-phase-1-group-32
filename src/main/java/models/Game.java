@@ -246,6 +246,9 @@ public class Game {
 
     public void updateGamePerHour() {
         // this function should update things related to game
+        for (Player player : players) {
+            player.updatePerHour();
+        }
         //TODO
     }
 

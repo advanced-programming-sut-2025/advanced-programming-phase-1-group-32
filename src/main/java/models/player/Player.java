@@ -8,6 +8,7 @@ import models.entities.EntityList;
 import models.entities.components.AnimalHouse;
 import models.entities.components.PositionComponent;
 import models.entities.components.Renderable;
+import models.enums.Weather;
 import models.gameMap.GameMap;
 import models.gameMap.Tile;
 import models.animal.Animal;
@@ -156,9 +157,11 @@ public class    Player extends Entity {
     }
 
     public void reduceEnergy(double energyCost) {
-        this.energy.setAmount(energy.getAmount() - energyCost);
-        if (energy.getAmount() < 0)
-            energy.setAmount(0);
+        this.energy.reduceEnergy(energyCost);
+    }
+
+    public void reduceEnergy(double energyCost , Weather weather) {
+        this.energy.reduceEnergy(energyCost * weather.getEnergyEffect());
     }
 
     public Wallet getWallet() {
@@ -382,6 +385,10 @@ public class    Player extends Entity {
             animal.updatePerDay();
         }
 
+    }
+
+    public void updatePerHour() {
+        this.getEnergy().updatePerHour();
     }
 
     //NPC functions

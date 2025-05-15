@@ -1,14 +1,12 @@
 package models.entities;
 
 import models.App;
-import models.entities.components.Pickable;
+import models.entities.components.*;
 import models.entities.systems.EntityPlacementSystem;
+import models.enums.ProductQuality;
 import models.gameMap.Tile;
 import models.animal.Animal;
-import models.entities.components.Container;
-import models.entities.components.Growable;
 import models.entities.components.harvestable.Harvestable;
-import models.entities.components.Upgradable;
 import models.entities.components.inventory.Inventory;
 import models.enums.EntityTag;
 import models.enums.SkillType;
@@ -34,8 +32,8 @@ public enum UseFunction {
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
                 energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
-            //TODO: weather effects?
-            player.reduceEnergy(Math.max(energyCost, 0));
+
+            player.reduceEnergy(Math.max(energyCost, 0), App.getActiveGame().getTodayWeather());
             player.addExperince(SkillType.FARMING, 5);
             return new Result(true, "Ground converted to Hoed ground");
         }
@@ -54,8 +52,8 @@ public enum UseFunction {
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
                 energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
-            //TODO: weather effects?
-            player.reduceEnergy(Math.abs(energyCost));
+
+            player.reduceEnergy(Math.abs(energyCost), App.getActiveGame().getTodayWeather());
             player.addExperince(SkillType.FARMING, 5);
             return new Result(true, "Hoed Ground converted to Grass");
         }
@@ -76,8 +74,8 @@ public enum UseFunction {
             energyCost -= player.getSkill(SkillType.MINING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
                 energyCost -= player.getActiveBuff().effectOnSkill(SkillType.MINING);
-            //TODO: weather effects?
-            player.reduceEnergy(Math.abs(energyCost));
+
+            player.reduceEnergy(Math.abs(energyCost), App.getActiveGame().getTodayWeather());
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
                 return new Result(false, "Your pickaxe cant mine that mineral. you need " + harvestable.getMaterial() + " pickaxe.");
             }
@@ -115,8 +113,8 @@ public enum UseFunction {
             energyCost -= player.getSkill(SkillType.FORAGING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
                 energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FORAGING);
-            //TODO: weather effects?
-            player.reduceEnergy(Math.max(energyCost, 0));
+
+            player.reduceEnergy(Math.max(energyCost, 0), App.getActiveGame().getTodayWeather());
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
                 return new Result(false, "Your axe cant chop that tree. you need " + harvestable.getMaterial() + " axe.");
             }
@@ -149,7 +147,7 @@ public enum UseFunction {
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
                 energyCost -= player.getActiveBuff().effectOnSkill(SkillType.FARMING);
-            player.reduceEnergy(Math.max(energyCost, 0));
+            player.reduceEnergy(Math.max(energyCost, 0), App.getActiveGame().getTodayWeather());
             container.decreaseCharge();
             return new Result(true, "tile watered successfully");
         }
@@ -198,15 +196,18 @@ public enum UseFunction {
 
             Inventory inventory = player.getComponent(Inventory.class);
 
-            //TODO: make quality for fruits
             if (growable.isOneTime()) {
                 EntityPlacementSystem.emptyTile(tile);
                 tile.setType(TileType.DIRT);
+                entity.getComponent(Sellable.class).
+                        setProductQuality(ProductQuality.getQuality(Math.random() * 0.5f));
                 inventory.addItem(entity);
             } else {
                 Entity fruit = growable.collectFruit();
                 growable.setDaysPastFromRegrowth(0);
                 fruit.getComponent(Pickable.class).setStackSize(1);
+                fruit.getComponent(Sellable.class).
+                        setProductQuality(ProductQuality.getQuality(Math.random() * 0.5f));
                 inventory.addItem(fruit);
             }
 
@@ -254,7 +255,7 @@ public enum UseFunction {
     COLLECT_WOOL{
         @Override
         protected Result use(Player player, Entity tool, Tile tile, Entity target) {
-            player.reduceEnergy(4);
+            player.reduceEnergy(4, App.getActiveGame().getTodayWeather());
             if(!(target instanceof Animal))
                 return new Result(false, "you should select an animal");
 

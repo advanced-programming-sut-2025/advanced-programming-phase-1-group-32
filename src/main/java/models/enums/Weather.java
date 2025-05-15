@@ -1,10 +1,18 @@
 package models.enums;
 
 public enum Weather {
-    SUNNY,
-    RAINY,
-    STORMY,
-    SNOWY;
+    SUNNY(1.5f, 1),
+    RAINY(1.2f, 1.5f),
+    STORMY(0.5f, 1),
+    SNOWY(1, 2);
+
+    private final double fishingEffect;
+    private final double energyEffect;
+
+    Weather(double fishingEffect, double energyEffect) {
+        this.fishingEffect = fishingEffect;
+        this.energyEffect = energyEffect;
+    }
 
     public static Weather getweather(String weatherString) {
         for (Weather weather : Weather.values()) {
@@ -16,19 +24,10 @@ public enum Weather {
     }
 
     public double getFishingEffect() {
-        switch (this) {
-            case SUNNY -> {
-                return 1.5;
-            }
-            case RAINY -> {
-                return 1.2;
-            }
-            case STORMY -> {
-                return 0.5;
-            }
-            default -> {
-                return 1;
-            }
-        }
+        return fishingEffect;
+    }
+
+    public double getEnergyEffect() {
+        return energyEffect;
     }
 }

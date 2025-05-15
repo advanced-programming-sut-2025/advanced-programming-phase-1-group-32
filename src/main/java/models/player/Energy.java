@@ -1,9 +1,14 @@
 package models.player;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Energy {
     private double amount;
+    private double maxEnergy;
+    private int maxEnergyChangeHoursLeft;
     private int modifierDaysLeft;
-    private float modifier;
+    private double modifier;
     private boolean isUnlimited;
 
     public void changeEnergy() {
@@ -22,8 +27,8 @@ public class Energy {
 
     public void addEnergy(int amount) {
         this.amount += amount;
-        if (this.amount > 0) {
-            this.amount = 200;
+        if (this.amount > maxEnergy) {
+            this.amount = maxEnergy;
         }
     }
 
@@ -33,7 +38,7 @@ public class Energy {
 
     public double getAmount() {
         double amount = this.amount;
-        if (modifierDaysLeft > 0) amount = (int) (amount * modifier);
+        if (isUnlimited) return Double.POSITIVE_INFINITY;
         return amount;
     }
 
@@ -41,15 +46,48 @@ public class Energy {
         isUnlimited = !isUnlimited;
     }
 
-    public void setModifier(float modifier, int daysLeft) {
+    public void setModifier(double modifier, int daysLeft) {
+        if (modifierDaysLeft >= daysLeft && this.modifier > modifier) {
+            return;
+        }
         this.modifier = modifier;
         this.modifierDaysLeft = daysLeft;
+    }
+
+
+    public void reduceEnergy(double energy) {
+        if (isUnlimited) return;
+        this.amount -= energy;
+        if (this.amount <= 0) {
+            this.amount = 0;
+        }
+    }
+
+    public void buff(double buff, int hoursLeft) {
+        maxEnergy = 200 + buff;
+        maxEnergyChangeHoursLeft = hoursLeft;
+    }
+
+    public void updatePerHour() {
+        if (maxEnergyChangeHoursLeft > 0) {
+            maxEnergyChangeHoursLeft -= 1;
+        }
+
+        if (maxEnergyChangeHoursLeft == 0) {
+            maxEnergy = 200;
+        }
     }
 
     public void updatePerDay() {
         if (modifierDaysLeft > 0) {
             modifierDaysLeft--;
         }
+        amount = maxEnergy;
+        if (modifierDaysLeft > 0) {
+            amount *= modifier;
+        }
         //TODO: other effects
     }
+
+
 }
