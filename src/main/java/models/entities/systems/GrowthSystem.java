@@ -22,7 +22,7 @@ public class GrowthSystem {
 
         ArrayList<Entity> toDelete = new ArrayList<>();
         for (Growable growable : growables) {
-            if (growable.getDaysPastFromWatered() >= 2) {
+            if (growable.getDaysPastFromWatered() >= 3) {
                 toDelete.add(growable.getEntity());
             }
         }

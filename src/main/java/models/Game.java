@@ -244,42 +244,6 @@ public class Game {
         return distance < 3;
     }
 
-    public void updateGamePerHour() {
-        // this function should update things related to game
-        for (Player player : players) {
-            player.updatePerHour();
-        }
-        //TODO
-    }
-
-    public void updateGamePerDay() {
-        // this function should update things related to game
-
-        // handling weather changes
-        todayWeather = tomorrowWeather;
-        tomorrowWeather = this.date.getSeason().getWeather();
-
-        for (PlayerFriendship playerFriendship : playerFriendships) {
-            playerFriendship.updateDaily();
-        }
-
-        GrowthSystem.updatePerDay(this);
-
-        ForageSpawnSystem.updatePerDay();
-
-        for (Player player : players) {
-            player.updatePerDay();
-        }
-
-        for (Quest quest : quests) {
-            quest.reduceDaysToUnlocked();
-        }
-
-        dailyThor();
-
-        crowAttack();
-    }
-
     public void crowAttack() {
         for (Player player : players) {
             ArrayList<Tile> tiles = new ArrayList<>(); //TODO: get planted tiles
@@ -461,4 +425,44 @@ public class Game {
 
         return availableFish;
     }
+
+
+
+    //TODO: important!! complete them
+    public void updateGamePerHour() {
+        // this function should update things related to game
+        for (Player player : players) {
+            player.updatePerHour();
+        }
+
+    }
+
+    public void updateGamePerDay() {
+        // this function should update things related to game
+
+        // handling weather changes
+        todayWeather = tomorrowWeather;
+        tomorrowWeather = this.date.getSeason().getWeather();
+
+        for (PlayerFriendship playerFriendship : playerFriendships) {
+            playerFriendship.updateDaily();
+        }
+
+        GrowthSystem.updatePerDay(this);
+
+        ForageSpawnSystem.updatePerDay();
+
+        for (Player player : players) {
+            player.updatePerDay();
+        }
+
+        for (Quest quest : quests) {
+            quest.reduceDaysToUnlocked();
+        }
+
+        dailyThor();
+
+        crowAttack();
+    }
+
 }

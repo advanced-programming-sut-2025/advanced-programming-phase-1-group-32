@@ -712,7 +712,7 @@ public class GameMenuController implements Controller {
         return null;
     }
 
-    public Result   buyAnimal(String animalTypeString, String animalName, String animalHouseName) {
+    public Result  buyAnimal(String animalTypeString, String animalName, String animalHouseName) {
         //TODO: move some of these to buySystem later(alan khastam)
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();

@@ -6,6 +6,7 @@ import models.Game;
 import models.entities.Entity;
 import models.enums.EntityTag;
 import models.enums.Season;
+import models.enums.Weather;
 import records.Result;
 
 import java.util.ArrayList;
@@ -211,6 +212,12 @@ public class Growable extends EntityComponent {
             daysPastFromWatered++;
         } else {
             daysPastFromWatered = 0;
+        }
+        setWateredToday(false);
+
+        Weather weather = App.getActiveGame().getTodayWeather();
+        if (weather == Weather.STORMY || weather == Weather.RAINY) {
+            setWateredToday(true);
         }
     }
 

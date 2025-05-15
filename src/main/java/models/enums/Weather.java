@@ -3,7 +3,7 @@ package models.enums;
 public enum Weather {
     SUNNY(1.5f, 1),
     RAINY(1.2f, 1.5f),
-    STORMY(0.5f, 1),
+    STORMY(0.5f, 1.5f),
     SNOWY(1, 2);
 
     private final double fishingEffect;
