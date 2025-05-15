@@ -547,17 +547,22 @@ public class GameMenuController implements Controller {
     }
 
     public Result fertilize(String fertilizerString, String direction) {
+        Game game = App.getLoggedInAccount().getActiveGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
         // get the fertilizer
         if (!App.entityRegistry.doesEntityExist(fertilizerString)) {
             return new Result(false, "There is no fertilizer with name" + fertilizerString);
         }
-        //TODO: get fertilizer
+        Entity fertilizer = App.entityRegistry.getEntityDetails(fertilizerString);
 
-        Game game = App.getLoggedInAccount().getActiveGame();
-        Player player = game.getCurrentPlayer();
+        if (!fertilizer.hasTag(EntityTag.FERTILIZER)) {
+            return new Result(false, "There is no fertilizer with name" + fertilizerString);
+        }
+
 
         // get the position
-        Position position = player.getPosition().changeByDirection(direction);
+        Position position = currentPlayer.getPosition().changeByDirection(direction);
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
@@ -567,14 +572,21 @@ public class GameMenuController implements Controller {
         }
 
         // check existence of a plant
-        if (tile.getType() != TileType.PLANTED_GROUND) {
+        if (tile.getContent() != null || tile.getContent().getComponent(Growable.class).getInfo() != null) {
             return new Result(false, "Tile is not a planted ground");
         }
 
-        // TODO: its effects :)
+        // check player has fertilizer
+        Inventory inventory = currentPlayer.getComponent(Inventory.class);
+        if (!inventory.doesHaveItem(fertilizer)) {
+            return new Result(false, "you don't have this fertilizer");
+        }
+
 
         // Fertilize!
+        inventory.takeFromInventory(fertilizer, 1);
         Entity plantedEntity = tile.getContent();
+        FertilizerFunction.fertilize(fertilizerString, plantedEntity.getComponent(Growable.class));
         plantedEntity.getComponent(Growable.class).setFertilized(true);
         return new Result(true, "fertilized successfully!");
     }

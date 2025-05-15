@@ -14,4 +14,5 @@ public enum EntityTag {
     ANIMAL_PRODUCT,
     FISH,
     BUILDING,
+    FERTILIZER,
 }

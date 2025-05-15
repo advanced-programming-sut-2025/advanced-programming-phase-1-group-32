@@ -23,6 +23,7 @@ public class Growable extends EntityComponent {
     @JsonProperty("totalHarvestTime")
     private int totalHarvestTime;
     private boolean wateredToday;
+    private int wateredFertilizedDays;
     private int daysPastFromWatered;
     @JsonProperty("canBecomeGiant")
     private boolean canBecomeGiant;
@@ -96,6 +97,18 @@ public class Growable extends EntityComponent {
 
     public int getDaysPastFromWatered() {
         return daysPastFromWatered;
+    }
+
+    public int getWateredFertilizedDays() {
+        return wateredFertilizedDays;
+    }
+
+    public void setWateredFertilizedDays(int wateredFertilizedDays) {
+        this.wateredFertilizedDays = wateredFertilizedDays;
+    }
+
+    public void addWateredFertilizedDays(int wateredFertilizedDays) {
+        this.wateredFertilizedDays += wateredFertilizedDays;
     }
 
     public void setDaysPastFromWatered(int daysPastFromWatered) {
@@ -208,17 +221,26 @@ public class Growable extends EntityComponent {
             }
         }
 
+        /*----------------------- Handle watered --------------------- */
         if (!isWateredToday()) {
             daysPastFromWatered++;
         } else {
             daysPastFromWatered = 0;
         }
-        setWateredToday(false);
+
+        if (wateredFertilizedDays > 0) {
+            wateredFertilizedDays--;
+        }else {
+            setWateredToday(false);
+        }
 
         Weather weather = App.getActiveGame().getTodayWeather();
         if (weather == Weather.STORMY || weather == Weather.RAINY) {
             setWateredToday(true);
         }
+        /*-------------------------------------------------------*/
+
+
     }
 
     public Result canCollectProduct() {

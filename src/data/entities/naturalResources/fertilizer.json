@@ -1,0 +1,28 @@
+{
+  "common components": [
+    {
+      "type": "Pickable",
+      "maxStack": 16000
+    }
+  ],
+  "required components": [
+
+  ],
+  "common tags": [
+    "FERTILIZER"
+  ],
+  "entities": [
+    {
+      "name": "Deluxe Retaining Soil"
+    },
+    {
+      "name": "Basic Retaining Soil"
+    },
+    {
+      "name": "Quality Retaining Soil"
+    },
+    {
+      "name": "Speed-Gro"
+    }
+  ]
+}

@@ -484,7 +484,7 @@ public class GameMenu implements AppMenu {
         } else if ((matcher = GameMenuCommands.TOOLS_AVAILABLE.getMatcher(input)) != null) {
             System.out.println(controller.toolsShowAvailable());
         } else if ((matcher = GameMenuCommands.TOOLS_UPGRADE.getMatcher(input)) != null) {
-            System.out.println(controller.toolsUpgrade(matcher.group("toolName"));
+            System.out.println(controller.toolsUpgrade(matcher.group("toolName")));
         } else if ((matcher = GameMenuCommands.TOOLS_USE.getMatcher(input)) != null) {
             System.out.println(controller.toolsUse(Direction.getDirection(Integer.parseInt(matcher.group("direction")))));
 
