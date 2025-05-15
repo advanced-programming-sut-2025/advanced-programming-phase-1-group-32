@@ -2,6 +2,8 @@ package views;
 
 import controllers.MainMenuController;
 import models.Commands.MainMenuCommands;
+import models.gameMap.MapRegion;
+import records.GameStartingDetails;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -23,7 +25,22 @@ public class MainMenu implements AppMenu {
         } else if ((matcher = MainMenuCommands.SHOW_MENUS.getMatcher(input)) != null) {
             System.out.println(controller.showMenus());
         } else if ((matcher = MainMenuCommands.NEW_GAME.getMatcher(input)) != null) {
-            System.out.println(controller.newGame(matcher.group("usernames")));
+            GameStartingDetails details = controller.newGame(matcher.group("usernames"));
+            System.out.println(details.message());
+
+            if(!details.success()) return;
+
+            while (!details.notChosen().isEmpty()){
+                System.out.println("available maps");
+                for(int i = 0 ; i < details.availableRegions().size(); i++){
+                    System.out.printf("%-2d- %s%n", i+1, details.availableRegions().get(i).getName());
+                }
+                System.out.println(controller.chooseMap(details, scanner.nextLine()));
+            }
+
+            System.out.println("game started!");
+
+            controller.startGame(details);
         } else if ((matcher = MainMenuCommands.LOAD_GAME.getMatcher(input)) != null) {
             System.out.println(controller.loadGame());
         } else {

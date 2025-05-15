@@ -11,6 +11,11 @@ show current menu
 show menus
 menu enter Game Menu
 game new -u Parsa AliAlm Female
+Mistvale Farm
+Willowridge Farm
+Emberroot Farm
+Suncrest Farm
+
 toggle map
 cheat give item "Axe" 1
 cheat give item "Pickaxe" 1

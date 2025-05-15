@@ -46,6 +46,9 @@ class ObjectPropertyDeserializer extends JsonDeserializer<MapData.ObjectProperty
             case "string" -> {
                 result.asString = node.get("value").asText();
             }
+            case "bool" -> {
+                result.asBoolean = node.get("value").asBoolean();
+            }
         }
         return result;
     }
@@ -178,7 +181,7 @@ public class MapData {
         this.width = layers.get("ground").width;
         this.height = layers.get("ground").height;
 
-        XmlMapper mapper = new XmlMapper();
+        JsonMapper mapper = new JsonMapper();
         for (TileSetReference t : tileSetReferences) {
             try {
                 TileSet tileset = mapper.readValue(new File(t.path.substring(t.path.lastIndexOf("../") + 3)), TileSet.class);
@@ -217,7 +220,7 @@ public class MapData {
                 case "region" -> {
                     regionsLayer = new MapLayerData<>(MapRegion.class, layers.get("region"), tileSets.get("region"));
                     for (TileData t : regionsLayer.tileSet.tiles) {
-                        MapRegion region = new MapRegion(t.type, new Color(Math.random(), Math.random(), Math.random()));
+                        MapRegion region = new MapRegion(t.type, new Color(Math.random(), Math.random(), Math.random()), t.getProperty("isFarm") != null);
                         regions.add(region);
                         regionsLayer.dataMap.putIfAbsent(t.globalId, region);
                     }
@@ -385,22 +388,32 @@ public class MapData {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JacksonXmlRootElement(localName = "tile")
 class TileData {
-    @JacksonXmlProperty(isAttribute = true)
+    @JsonProperty("id")
     public int id;
-    @JacksonXmlProperty(isAttribute = true)
+    @JsonProperty("type")
     public String type;
+    @JsonProperty("properties")
+    public ArrayList<MapData.ObjectProperty> properties;
     public int globalId;
+    public MapData.ObjectProperty getProperty(String name) {
+        if(this.properties == null) return null;
+        for (MapData.ObjectProperty p : properties) {
+            if (p.name.equals(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JacksonXmlRootElement(localName = "tileset")
 class TileSet {
-    @JacksonXmlElementWrapper(useWrapping = false)
-    @JacksonXmlProperty(localName = "tile")
+    @JsonProperty("tiles")
     public TileData[] tiles;
+    @JsonProperty("name")
     public String name;
+
     public int firstgid;
 }
 

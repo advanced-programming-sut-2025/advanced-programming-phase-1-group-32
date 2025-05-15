@@ -35,7 +35,6 @@ import models.shop.OtherShopProduct;
 import models.shop.Shop;
 import models.shop.ShopProduct;
 import models.utils.StringUtils;
-import records.AnimalPurchaseDetails;
 import records.Result;
 import records.WalkProposal;
 
@@ -328,7 +327,7 @@ public class GameMenuController implements Controller {
 
     /* ---------------------------------- Tools ---------------------------------- */
     public Result toolsEquip(String toolName) {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         InventorySlot slot = player.getComponent(Inventory.class).getSlot(toolName);
         if (slot == null)
             return new Result(false, "This tool doesn't exist in inventory");
@@ -337,7 +336,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsShowCurrent() {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         Entity active = player.getActiveSlot().getEntity();
         if (active == null || !active.hasTag(EntityTag.TOOL))
             return new Result(false, "This is not a tool");
@@ -346,7 +345,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsShowAvailable() {
-        Player player = App.getLoggedInAccount().getActiveGame().getCurrentPlayer();
+        Player player = App.getActiveGame().getCurrentPlayer();
         ArrayList<Entity> tools = player.getComponent(Inventory.class).getItemsByTag(EntityTag.TOOL);
         if (tools.isEmpty())
             return new Result(false, "There is no tool in Backpack");
@@ -374,12 +373,12 @@ public class GameMenuController implements Controller {
     }
 
     public Result toolsUse(Direction dir) {
-        Vec2 playerPosition = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getPosition();
-        GameMap map = App.getLoggedInAccount().getActiveGame().getActiveMap();
-        if (App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot() == null) {
+        Vec2 playerPosition = App.getActiveGame().getCurrentPlayer().getPosition();
+        GameMap map = App.getActiveGame().getActiveMap();
+        if (App.getActiveGame().getCurrentPlayer().getActiveSlot() == null) {
             return new Result(false, "nothing equipped");
         }
-        Entity tool = App.getLoggedInAccount().getActiveGame().getCurrentPlayer().getActiveSlot().getEntity();
+        Entity tool = App.getActiveGame().getCurrentPlayer().getActiveSlot().getEntity();
 
         if (
                 dir == null
@@ -549,7 +548,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result fertilize(String fertilizerString, String direction) {
-        Game game = App.getLoggedInAccount().getActiveGame();
+        Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();
 
         // get the fertilizer
@@ -793,31 +792,31 @@ public class GameMenuController implements Controller {
     }
 
     //:/
-    public Result chooseHouseForAnimal(AnimalPurchaseDetails details, String animalHouseName) {
-        Game game = App.getActiveGame();
-        Player currentPlayer = game.getCurrentPlayer();
-        Wallet wallet = currentPlayer.getWallet();
-        AnimalType animalType = details.animalType();
-        String animalName = details.animalName();
-
-        AnimalHouse animalHouse = currentPlayer.findAnimalHouse(animalHouseName);
-        if (animalHouse == null) {
-            return new Result(false, "You don't own " + animalHouseName);
-        }
-
-        if (!(animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
-                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity() &&
-                animalHouse.getAvailableCapacity() > 0)) {
-            return new Result(false, "This house isn't appropriate for this animal");
-        }
-
-        Animal animal = new Animal(animalType, details.animalName());
-        currentPlayer.getAnimals().add(animal);
-        animalHouse.addAnimal(animal);
-        wallet.reduceBalance(animalType.getCost());
-        EntityPlacementSystem.placeOnMap(animal, new Position(2, 2), animalHouse.getEntity()
-                .getComponent(InteriorComponent.class).getMap());
-        return new Result(true, animalName + " bought and added to your farm successfully");
+    public Result chooseHouseForAnimal(String animalHouseName) {
+//        Game game = App.getActiveGame();
+//        Player currentPlayer = game.getCurrentPlayer();
+//        Wallet wallet = currentPlayer.getWallet();
+//        AnimalType animalType = details.animalType();
+//        String animalName = details.animalName();
+//
+//        AnimalHouse animalHouse = currentPlayer.findAnimalHouse(animalHouseName);
+//        if (animalHouse == null) {
+//            return new Result(false, "You don't own " + animalHouseName);
+//        }
+//
+//        if (!(animalType.getAnimalHouseType().equals(animalHouse.getType()) &&
+//                animalType.getHouseLevel().getCapacity() <= animalHouse.getCapacity() &&
+//                animalHouse.getAvailableCapacity() > 0)) {
+//            return new Result(false, "This house isn't appropriate for this animal");
+//        }
+//
+//        Animal animal = new Animal(animalType, details.animalName());
+//        currentPlayer.getAnimals().add(animal);
+//        animalHouse.addAnimal(animal);
+//        wallet.reduceBalance(animalType.getCost());
+//        EntityPlacementSystem.placeOnMap(animal, new Position(2, 2), animalHouse.getEntity()
+//                .getComponent(InteriorComponent.class).getMap());
+        return new Result(true, " bought and added to your farm successfully");
     }
 
     public Result pet(String animalName) {
