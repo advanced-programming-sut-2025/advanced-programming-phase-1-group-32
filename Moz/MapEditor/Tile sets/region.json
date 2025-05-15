@@ -1,0 +1,71 @@
+{ "columns":4,
+ "image":"tileRegions.png",
+ "imageheight":4,
+ "imagewidth":4,
+ "margin":0,
+ "name":"region",
+ "spacing":0,
+ "tilecount":16,
+ "tiledversion":"1.8.2",
+ "tileheight":1,
+ "tiles":[
+        {
+         "id":0,
+         "properties":[
+                {
+                 "name":"isFarm",
+                 "type":"bool",
+                 "value":true
+                }],
+         "type":"Willowridge Farm"
+        }, 
+        {
+         "id":1,
+         "properties":[
+                {
+                 "name":"isFarm",
+                 "type":"bool",
+                 "value":true
+                }],
+         "type":"Emberroot Farm"
+        }, 
+        {
+         "id":2,
+         "properties":[
+                {
+                 "name":"isFarm",
+                 "type":"bool",
+                 "value":true
+                }],
+         "type":"Mistvale Farm"
+        }, 
+        {
+         "id":3,
+         "properties":[
+                {
+                 "name":"isFarm",
+                 "type":"bool",
+                 "value":true
+                }],
+         "type":"Suncrest Farm"
+        }, 
+        {
+         "id":4,
+         "type":"Fernhollow Woods"
+        }, 
+        {
+         "id":6,
+         "type":"Sunmist Lake"
+        }, 
+        {
+         "id":8,
+         "type":"Oakspire"
+        }, 
+        {
+         "id":12,
+         "type":"Zoro"
+        }],
+ "tilewidth":1,
+ "type":"tileset",
+ "version":"1.8"
+}

@@ -1,0 +1,27 @@
+{ "columns":4,
+ "image":"biomes.png",
+ "imageheight":4,
+ "imagewidth":4,
+ "margin":0,
+ "name":"biome",
+ "spacing":0,
+ "tilecount":16,
+ "tiledversion":"1.8.2",
+ "tileheight":1,
+ "tiles":[
+        {
+         "id":0,
+         "type":"FOREST"
+        }, 
+        {
+         "id":1,
+         "type":"MINE"
+        }, 
+        {
+         "id":2,
+         "type":"TOWN"
+        }],
+ "tilewidth":1,
+ "type":"tileset",
+ "version":"1.8"
+}
