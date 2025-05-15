@@ -31,6 +31,7 @@ import models.shop.Shop;
         @JsonSubTypes.Type(value = ArtisanComponent.class, name = "ArtisanComponent"),
         @JsonSubTypes.Type(value = PositionComponent.class, name = "PositionComponent"),
         @JsonSubTypes.Type(value = AnimalHouse.class, name = "AnimalHouse"),
+        @JsonSubTypes.Type(value = FishingPoleComponent.class, name = "FishingPoleComponent"),
         @JsonSubTypes.Type(value = InteriorComponent.class, name = "InteriorComponent"),
         @JsonSubTypes.Type(value = Shop.class, name = "Shop")
 

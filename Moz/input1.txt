@@ -54,6 +54,8 @@ buy animal -a chicken -n chicken1
 House176
 shepherd animals -n chicken1 -l <12 , 17>
 
+
+
 animals
 pet -n chicken1
 cheat set friendship -n chicken1 -c 00
@@ -65,9 +67,18 @@ cheat advance date 1d
 produces
 collect produce -n chicken1
 
-fishing -p pole
-add skill farming -a 500
+
+
+cheat give item "Bamboo Pole" 20
+cheat give item "Fiberglass Rod" 20
+cheat give item "Iridium Rod" 20
+cheat give item "Training Rod" 20
+fishing -p Iridium Rod
+fishing -p Training Rod
+add skill fishing -a 500
 skill statue
+
+
 
 cheat advance date 6d
 showplant -l <24,34>
@@ -80,3 +91,4 @@ showplant -l <26,33>
 cheat toggle unlimited inventory
 fertilize -f Deluxe Retaining Soil -d down
 tools equip Watering can
+

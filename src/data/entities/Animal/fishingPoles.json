@@ -1,0 +1,57 @@
+{
+  "common components": [
+    {
+      "type": "Pickable",
+      "maxStack": 16000
+    }
+  ],
+  "required components": [
+    "FishingPoleComponent"
+  ],
+  "common tags": [
+    "FERTILIZER"
+  ],
+  "entities": [
+    {
+      "name": "Training Rod",
+      "components": [
+        {
+          "type": "FishingPoleComponent",
+          "fishingPower": 0.1,
+          "energyNeeded": 8
+        }
+      ]
+    },
+    {
+      "name": "Bamboo Pole",
+      "components": [
+        {
+          "type": "FishingPoleComponent",
+          "fishingPower": 0.5,
+          "energyNeeded": 8
+        }
+      ]
+    },
+    {
+      "name": "Fiberglass Rod",
+      "components": [
+        {
+          "type": "FishingPoleComponent",
+          "fishingPower": 0.9,
+          "energyNeeded": 6
+        }
+      ]
+    },
+    {
+      "name": "Iridium Rod",
+      "components": [
+        {
+          "type": "FishingPoleComponent",
+          "fishingPower": 1.2,
+          "energyNeeded": 4
+        }
+      ]
+    }
+  ]
+}
+

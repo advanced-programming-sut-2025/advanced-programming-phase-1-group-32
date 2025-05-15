@@ -563,7 +563,7 @@ public class GameMenuController implements Controller {
 
         // get the position
         Position position = new Position(currentPlayer.getPosition().getX(), currentPlayer.getPosition().getY());
-        position.changeByDirection(direction);
+        position = position.changeByDirection(direction);
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
@@ -1089,7 +1089,25 @@ public class GameMenuController implements Controller {
             return new Result(false, "You don't have this fishing pole!");
         }
 
-        // TODO: check closeNess to water
+        Entity fishingPoleEntity = App.entityRegistry.makeEntity(fishingPole);
+        if(fishingPoleEntity == null || fishingPoleEntity.getComponent(FishingPoleComponent.class) == null) {
+            return new Result(false, "You can't get fish by " + fishingPole + "!");
+        }
+
+        // TODO: check this (parsa) & we can extract it as seperate method
+        boolean isCloseToWater = false;
+        int x = currentPlayer.getPosition().getCol();
+        int y = currentPlayer.getPosition().getRow();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Tile tile = game.getActiveMap().getTileByPosition(x - 1 + j, y - 1 + i);
+                if (tile != null && tile.getType().equals(TileType.WATER)) isCloseToWater = true;
+            }
+        }
+        if (!isCloseToWater) {
+            return new Result(false, "You are not close to water!");
+        }
+
 
         Skill skill = currentPlayer.getSkill(SkillType.FISHING);
         double fishNumberDouble = Math.random() * game.getTodayWeather().getFishingEffect();
@@ -1099,7 +1117,9 @@ public class GameMenuController implements Controller {
 
         ArrayList<Entity> fishes = new ArrayList<>();
         ArrayList<String> availableFish = game.getAvailableFish(game.getDate().getSeason(), skill);
-        double poleEffect = 1; //TODO: get the effect and reduce Energy
+        double poleEffect = fishingPoleEntity.getComponent(FishingPoleComponent.class).getFishingPower();
+        currentPlayer.reduceEnergy(fishingPoleEntity.getComponent(FishingPoleComponent.class).getEnergyNeeded(),
+                game.getTodayWeather());
         StringBuilder message = new StringBuilder("You got these fishes:\n");
 
         for (int i = 0; i < fishNumber; i++) {

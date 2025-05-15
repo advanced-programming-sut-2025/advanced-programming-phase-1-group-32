@@ -25,6 +25,8 @@ plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam
 talk history -u AliAlm
+cheat toggle unlimited inventory
+
 
 cheat build building Coop 10 10 -force
 cheat give item "Jazz Seeds" 16
