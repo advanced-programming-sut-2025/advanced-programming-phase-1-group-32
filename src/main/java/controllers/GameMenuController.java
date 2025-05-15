@@ -12,6 +12,7 @@ import models.crafting.RecipeType;
 import models.entities.CollisionEvent;
 import models.entities.Entity;
 import models.entities.components.*;
+import models.entities.systems.GrowthSystem;
 import models.entities.systems.ShopSystem;
 import models.entities.systems.EntityPlacementSystem;
 import models.entities.workstations.ArtisanComponent;
@@ -1799,6 +1800,13 @@ public class GameMenuController implements Controller {
         playerFriendship.setLevel(level);
         playerFriendship.setXp(xp);
         return new Result(true, "set!");
+    }
+
+    public Result waterAll() {
+        Game game = App.getActiveGame();
+        GrowthSystem.waterAll(game);
+
+        return new Result(true, "watered!");
     }
 
     /*-----------------------------------------------------------------------------------------*/

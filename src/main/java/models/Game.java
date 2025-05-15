@@ -28,6 +28,7 @@ import models.player.friendship.PlayerFriendship;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -247,10 +248,28 @@ public class Game {
     public void crowAttack() {
         for (Player player : players) {
             ArrayList<Tile> tiles = new ArrayList<>(); //TODO: get planted tiles
-//            tiles = player.ma
+            for (Tile[] tile : mainMap.getTiles()) {
+                tiles.addAll(Arrays.asList(tile));
+            }
+
             for (int i = 0; i < Math.floor((double) tiles.size() / 16); i++) {
+                if (Math.random() < 0.75) continue;
                 Tile tile = tiles.get((int) (Math.random() * tiles.size()));
-                //TODO
+                Entity entity = tile.getContent();
+                if (entity != null && (entity.hasTag(EntityTag.CROP) || entity.hasTag(EntityTag.FORAGING_CROP))) {
+
+                    tile.setContent(null);
+//                    System.out.println("DELETE THIS AT CROW ATTACK");
+                }
+                if (entity != null && entity.hasTag(EntityTag.TREE)) {
+                    Growable growable = entity.getComponent(Growable.class);
+                    if (growable.getDaysPastFromRegrowth() == growable.getRegrowthTime()) {
+                        growable.setRegrowthTime(growable.getRegrowthTime() - 1);
+                    }else if (growable.getTotalHarvestTime() == growable.getDaysPastFromPlant()) {
+                        growable.setDaysPastFromPlant(growable.getDaysPastFromPlant() - 1);
+                    }
+
+                }
             }
         }
     }
