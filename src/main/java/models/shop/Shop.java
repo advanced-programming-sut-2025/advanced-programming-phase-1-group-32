@@ -138,4 +138,12 @@ public class Shop extends EntityComponent {
     }
 
 
+    //TODO: should call in update per day for all shops 
+    public void reset() {
+        for (ShopProduct product : getAllProducts()) {
+            product.reset();
+        }
+    }
+
+
 }

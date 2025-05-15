@@ -1,5 +1,20 @@
 {
   "type": "COOKING",
   "recipes": [
+    {
+      "name" : "Fried egg",
+      "ingredients" : [
+        {
+          "contents" : [
+            "egg"
+          ],
+          "amount" : 1
+        }
+      ],
+      "energy" : {
+        "x" : 0,
+        "y" : 50
+      }
+    }
   ]
 }
