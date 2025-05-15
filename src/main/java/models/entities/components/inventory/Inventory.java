@@ -372,6 +372,12 @@ public class Inventory extends EntityComponent {
         }
         return count;
     }
+    public void empty(){
+        for(InventorySlot slot : slots){
+            if(slot.getEntity() == null) continue;
+            slot.getEntity().delete();
+        }
+    }
 
     @Override
     public EntityComponent clone() {

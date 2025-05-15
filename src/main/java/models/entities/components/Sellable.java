@@ -19,7 +19,10 @@ public class Sellable extends EntityComponent{
     }
 
     public int getPrice() {
-        return (int) (price * productQuality.getValue());
+        if(productQuality != null){
+            return (int) (price * productQuality.getValue());
+        }
+        return price;
     }
     public void setPrice(int price) {
         this.price = price;

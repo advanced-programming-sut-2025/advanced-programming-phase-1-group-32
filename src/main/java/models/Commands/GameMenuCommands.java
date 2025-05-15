@@ -80,7 +80,6 @@ public enum GameMenuCommands implements Commands {
     /* ------------------------------------------ Render Commands ------------------------------------------ */
     TOGGLE_MAP        ("^\\s*toggle\\s+map\\s*$"),
     CHANGE_MAP_RENDER ("^\\s*change\\s+map\\s+render\\s*$"),
-    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+buildBuilding\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------- NPC Commands -------------------------------------------- */
@@ -92,7 +91,6 @@ public enum GameMenuCommands implements Commands {
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------ Animal Commands ------------------------------------------ */
-    BUILD_ANIMAL("\\s*buildBuilding\\s+-a\\s+(?<buildingName>.+)\\s+-l\\s+<(?<x>\\d+)\\s+,\\s+(?<y>\\d+)>\\s*"),
     BUY_ANIMAL("\\s*buy\\s+animal\\s+-a\\s+(?<animalName>.+?)\\s+-n\\s+(?<name>.+?)\\s+-h(?<house>.+?)\\s*"),
     SHOW_MY_ANIMAL_HOUSES("^show\\s+my\\s+animal\\s+houses$"),
     PET_ANIMAL("\\s*pet\\s+-n\\s+(?<name>.+)\\s*"),
@@ -111,7 +109,7 @@ public enum GameMenuCommands implements Commands {
     SHOW_ALL_PRODUCTS("^show\\s+all\\s+products$"),
     SHOW_ALL_AVAILABLE("^show\\s+all\\s+available\\s+products$"),
     PURCHASE("^purchase\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
-    BUILD_BUILDING("^buildBuilding\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)$"),
+    BUILD_BUILDING("^buildBuilding\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>?$"),
     SELL_PRODUCT("^sell\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
@@ -123,6 +121,7 @@ public enum GameMenuCommands implements Commands {
     TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
     CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$"),
     CHEAT_SET_FRIENDSHIP("cheat\\s+-u\\s+(?<name>.+)\\s*level\\s*(?<level>\\d+)\\s*xp\\s*(?<xp>\\d+)\\s*"),
+    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+buildBuilding\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     CHEAT_SPAWN_ON_GROUND("^\\s*cheat\\s+spawn\\s+on\\s+ground\\s+-n\\s+(?<name>\\S+)\\s+-a\\s+(?<amount>\\S+)\\s*$");
     /* -------------------------------------------------- -------------------------------------------------- */
 

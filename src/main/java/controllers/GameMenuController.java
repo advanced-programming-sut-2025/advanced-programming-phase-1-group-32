@@ -1054,9 +1054,8 @@ public class GameMenuController implements Controller {
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if (tile == null) continue;
-            Entity bin = App.entityRegistry.makeEntity("shipping bin");
             Entity tileContent = tile.getContent();
-            if(tileContent != null && tileContent.getEntityName().equals(bin.getEntityName())) {/*TODO: update shipping bin in end of day*/
+            if(tileContent != null && StringUtils.isNamesEqual(tileContent.getEntityName(), "Shipping Bin")) {
                 tileContent.getComponent(Inventory.class).addItem(inventory.takeFromInventory(productName, count));
             }
         }

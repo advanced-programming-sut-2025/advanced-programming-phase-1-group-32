@@ -15,12 +15,12 @@ toggle map
 cheat give item "Axe" 1
 cheat give item "Pickaxe" 1
 cheat give item "Hoe" 1
-cheat give item "Watering Can" 20
+cheat give item "Watering Can" 1
 cheat give item "Scythe" 1
 add money -a 10000000
 show inventory
 cheat give item "Apple" 20
-cheat give item "Pine Seed" 20
+cheat give item "Wood" 1000
 plant -s Pine Seed -d right
 showplant -l <0,1>
 talk -u AliAlm -m salam

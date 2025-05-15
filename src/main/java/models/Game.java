@@ -15,6 +15,7 @@ import models.entities.components.PositionComponent;
 import models.entities.systems.EntityPlacementSystem;
 import models.entities.systems.ForageSpawnSystem;
 import models.entities.systems.GrowthSystem;
+import models.entities.systems.ShopSystem;
 import models.enums.EntityTag;
 import models.enums.Season;
 import models.enums.TileType;
@@ -451,6 +452,8 @@ public class Game {
         GrowthSystem.updatePerDay(this);
 
         ForageSpawnSystem.updatePerDay();
+
+        ShopSystem.updatePerDay();
 
         for (Player player : players) {
             player.updatePerDay();
