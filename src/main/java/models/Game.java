@@ -247,18 +247,15 @@ public class Game {
 
     public void crowAttack() {
         for (Player player : players) {
-            ArrayList<Tile> tiles = new ArrayList<>(); //TODO: get planted tiles
-            for (Tile[] tile : mainMap.getTiles()) {
-                tiles.addAll(Arrays.asList(tile));
-            }
+            ArrayList<Tile> tiles = player.getOwnedPlantedTiles();
+
 
             for (int i = 0; i < Math.floor((double) tiles.size() / 16); i++) {
                 if (Math.random() < 0.75) continue;
                 Tile tile = tiles.get((int) (Math.random() * tiles.size()));
                 Entity entity = tile.getContent();
                 if (entity != null && (entity.hasTag(EntityTag.CROP) || entity.hasTag(EntityTag.FORAGING_CROP))) {
-
-                    tile.setContent(null);
+                    entity.delete();
 //                    System.out.println("DELETE THIS AT CROW ATTACK");
                 }
                 if (entity != null && entity.hasTag(EntityTag.TREE)) {

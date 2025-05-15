@@ -21,6 +21,10 @@ public class Sellable extends EntityComponent{
     public int getPrice() {
         return (int) (price * productQuality.getValue());
     }
+
+    public int getBasePrice() {
+        return this.price;
+    }
     public void setPrice(int price) {
         this.price = price;
     }

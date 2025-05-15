@@ -462,7 +462,7 @@ public class GameMenuController implements Controller {
             message.append("Regrowth Time:\n");
         }
 
-        message.append("Base Sell Price: ").append(sellable.getPrice()).append("\n");
+        message.append("Base Sell Price: ").append(sellable.getBasePrice()).append("\n");
 
         if (edible != null) {
             message.append("""
@@ -1634,7 +1634,6 @@ public class GameMenuController implements Controller {
 
         return new Result(true, message.toString());
     }
-
 
     private void saveGame() {
         //TODO
