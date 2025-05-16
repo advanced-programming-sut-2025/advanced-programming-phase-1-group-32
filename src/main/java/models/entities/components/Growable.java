@@ -3,10 +3,13 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Game;
+import models.Position;
 import models.entities.Entity;
 import models.enums.EntityTag;
 import models.enums.Season;
 import models.enums.Weather;
+import models.gameMap.Tile;
+import models.utils.StringUtils;
 import records.Result;
 
 import java.util.ArrayList;
@@ -211,7 +214,7 @@ public class Growable extends EntityComponent {
     public void updatePerDay() {
         Game game = App.getActiveGame();
         Season season = game.getDate().getSeason();
-        if (this.getGrowingSeasons().contains(season)) {
+        if (isInGreenhouse() || this.getGrowingSeasons().contains(season)) {
             if (daysPastFromPlant < totalHarvestTime) {
                 daysPastFromPlant++;
                 if (daysPastFromPlant == totalHarvestTime) {
@@ -236,10 +239,12 @@ public class Growable extends EntityComponent {
         }
 
         Weather weather = App.getActiveGame().getTodayWeather();
-        if (weather == Weather.STORMY || weather == Weather.RAINY) {
-            setWateredToday(true);
+        if (!isInGreenhouse()) {
+            if (weather == Weather.STORMY || weather == Weather.RAINY) {
+                setWateredToday(true);
+            }
         }
-        /*-------------------------------------------------------*/
+        /*--------------------------------------------------------------*/
 
 
     }
@@ -275,6 +280,12 @@ public class Growable extends EntityComponent {
         }
 
         return null;
+    }
+
+    private boolean isInGreenhouse() {
+        Game game = App.getActiveGame();
+        Entity building = this.entity.getComponent(PositionComponent.class).getMap().getBuilding();
+        return StringUtils.isNamesEqual(building.getEntityName(), "greenhouse");
     }
 
 }
