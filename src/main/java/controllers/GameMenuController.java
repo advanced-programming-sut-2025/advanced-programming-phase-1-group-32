@@ -1974,4 +1974,23 @@ public class GameMenuController implements Controller {
 
         return new Result(true, "greenhouse built");
     }
+    public  Result showShippingBin(){
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Game game = App.getActiveGame();
+        Inventory inventory = player.getComponent(Inventory.class);
+
+        int[][] directions = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
+        int x = player.getPosition().getCol();
+        int y = player.getPosition().getRow();
+        for (int[] dir : directions) {
+            Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
+            if (tile == null) continue;
+            Entity tileContent = tile.getContent();
+            if(tileContent != null && StringUtils.isNamesEqual(tileContent.getEntityName(), "Shipping Bin")) {
+                return new Result(true, tileContent.getComponent(Inventory.class).toString());
+            }
+        }
+
+        return new Result(false, "no shipping bin found");
+    }
 }

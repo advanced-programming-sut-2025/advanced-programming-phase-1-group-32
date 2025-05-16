@@ -107,8 +107,8 @@ public enum BiomeType {
                     new Spawnable("Pine Tree", 10),
                     new Spawnable("Mahogany Tree", 10),
                     new Spawnable("Mushroom Tree", 10),
-                    new Spawnable("Broken Branch", 10)
-
+                    new Spawnable("Broken Branch", 10),
+                    new Spawnable("Wild Grass", 10)
             )
     ),
     MINE(

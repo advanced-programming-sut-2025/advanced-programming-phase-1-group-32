@@ -13,11 +13,13 @@
   ],
   "entities": [
     {
-      "name": "Bouquet"
-    },
-    {
-      "name" : "Wedding Ring",
-      "tags" : ["RING"]
+      "name": "Bouquet",
+      "tags" : [],
+      "components" : []
+    },    {
+      "name": "Wedding Ring",
+      "tags" : ["RING"],
+      "components" : []
     }
   ]
 }
