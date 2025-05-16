@@ -515,6 +515,10 @@ public class GameMenuController implements Controller {
             return new Result(false, "tile isn't empty");
         }
 
+        if(StringUtils.isNamesEqual(tile.getMap().getBuilding().getEntityName(), "greenhouse")){
+            //TODO greenhouse logic (planting in all seasons, cant plant trees, ...)
+        }
+
 //        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
 
         Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
@@ -1926,5 +1930,27 @@ public class GameMenuController implements Controller {
         EntityPlacementSystem.placeOnMap(entity, currentPlayer.getPosition(), currentPlayer.getPosition().getMap());
         return new Result(true, quantity + " " + name + (quantity > 1 ? "s" : "") +
                 " was spawned on ground.");
+    }
+    public Result buildGreenhouse(){
+        Player player = App.getActiveGame().getCurrentPlayer();
+
+        int wood = player.getComponent(Inventory.class).getItemCount("Wood");
+        double money = player.getWallet().getBalance();
+
+        if(money < 1000 || wood < 500){
+            return new Result(false, "not enough resources to rebuild the greenhouse");
+        }
+
+        Position position = player.getGreenHouse().getComponent(PositionComponent.class).get();
+        EntityPlacementSystem.removeExterior(player.getGreenHouse());
+
+        Entity greenhouse = App.entityRegistry.makeEntity("Greenhouse");
+
+        player.setGreenHouse(greenhouse);
+
+        EntityPlacementSystem.clearArea(position.getCol(), position.getRow(), greenhouse.getComponent(Placeable.class));
+        EntityPlacementSystem.placeEntity(greenhouse, position);
+
+        return new Result(true, "greenhouse built");
     }
 }

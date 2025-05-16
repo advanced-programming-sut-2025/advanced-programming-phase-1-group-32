@@ -104,6 +104,16 @@
           ]
         }
       ]
+    },{
+      "name": "Inspector",
+      "components": [
+        {
+          "type": "Useable",
+          "useFunctions": [
+            "INSPECT_ENTITY"
+          ]
+        }
+      ]
     }
   ]
 }

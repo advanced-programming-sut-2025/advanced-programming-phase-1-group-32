@@ -318,6 +318,8 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showAvailableProducts());
             } else if ((matcher = GameMenuCommands.SHOW_ALL_PRODUCTS.getMatcher(input)) != null) {
                 System.out.println(controller.showAllProducts());
+            } else if ((matcher = GameMenuCommands.BUILD_GREENHOUSE.getMatcher(input)) != null) {
+                System.out.println(controller.buildGreenhouse());
             } else if ((matcher = GameMenuCommands.PURCHASE.getMatcher(input)) != null) {
                 handlePurchase(
                         matcher.group("productName"),
@@ -389,16 +391,7 @@ public class GameMenu implements AppMenu {
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
                         if (tile.getType() == null) continue;
-                        Entity entity = tile.getContent();
-                        if (entity != null) {
-                            Renderable component = entity.getComponent(Renderable.class);
-                            if (component == null) {
-                                throw new RuntimeException("Entity " + entity.getEntityName() + " is on the ground, but it doesn't have a Renderable component");
-                            }
-                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
-                        } else {
-                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
-                        }
+                        renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
                     }
                 }
                 for (Entity e : map.getEntities()) {

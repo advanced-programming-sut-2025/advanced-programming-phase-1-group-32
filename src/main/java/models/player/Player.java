@@ -50,7 +50,9 @@ public class    Player extends Entity {
     private final EntityList ownedBuildings = new EntityList();
     private Entity house;
     private Entity refrigerator;
+    private Entity greenHouse;
     private Buff activeBuff;
+
 
     private transient ArrayList<Tile> ownedTiles = null;
 
@@ -491,5 +493,13 @@ public class    Player extends Entity {
             if(t.getContent() != null && (t.getContent().getComponent(Growable.class) != null)) plantedTiles.add(t);
         }
         return plantedTiles;
+    }
+
+    public Entity getGreenHouse() {
+        return greenHouse;
+    }
+
+    public void setGreenHouse(Entity greenHouse) {
+        this.greenHouse = greenHouse;
     }
 }

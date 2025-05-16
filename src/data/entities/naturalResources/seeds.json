@@ -3,6 +3,10 @@
     {
       "type": "Pickable",
       "maxStack": 16000
+    },{
+      "type" : "Renderable",
+      "char" : "s",
+      "color" : [240, 200, 30]
     }
   ],
   "required components": [
@@ -17,31 +21,367 @@
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": [
-            "Blue Jazz"
-          ]
+          "growingPlants": ["Blue Jazz"]
         }
       ]
     },
     {
-      "name": "Pine Seed",
+      "name": "Carrot Seeds",
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": [
-            "Pine Tree"
-          ]
+          "growingPlants": ["Carrot"]
         }
       ]
     },
     {
-      "name": "Apricot Sapling",
+      "name": "Cauliflower Seeds",
       "components": [
         {
           "type": "SeedComponent",
-          "growingPlants": [
-            "Apricot Tree"
-          ]
+          "growingPlants": ["Cauliflower"]
+        }
+      ]
+    },
+    {
+      "name": "Coffee Bean",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Coffee Bean"]
+        }
+      ]
+    },
+    {
+      "name": "Garlic Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Garlic"]
+        }
+      ]
+    },
+    {
+      "name": "Bean Starter",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Green Bean"]
+        }
+      ]
+    },
+    {
+      "name": "Kale Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Kale"]
+        }
+      ]
+    },
+    {
+      "name": "Parsnip Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Parsnip"]
+        }
+      ]
+    },
+    {
+      "name": "Potato Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Potato"]
+        }
+      ]
+    },
+    {
+      "name": "Rhubarb Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Rhubarb"]
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Strawberry"]
+        }
+      ]
+    },
+    {
+      "name": "Tulip Bulb",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Tulip"]
+        }
+      ]
+    },
+    {
+      "name": "Rice Shoot",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Unmilled Rice"]
+        }
+      ]
+    },
+    {
+      "name": "Blueberry Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Blueberry"]
+        }
+      ]
+    },
+    {
+      "name": "Corn Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Corn"]
+        }
+      ]
+    },
+    {
+      "name": "Hops Starter",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Hops"]
+        }
+      ]
+    },
+    {
+      "name": "Pepper Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Hot Pepper"]
+        }
+      ]
+    },
+    {
+      "name": "Melon Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Melon"]
+        }
+      ]
+    },
+    {
+      "name": "Poppy Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Poppy"]
+        }
+      ]
+    },
+    {
+      "name": "Radish Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Radish"]
+        }
+      ]
+    },
+    {
+      "name": "Red Cabbage Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Red Cabbage"]
+        }
+      ]
+    },
+    {
+      "name": "Starfruit Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Starfruit"]
+        }
+      ]
+    },
+    {
+      "name": "Spangle Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Summer Spangle"]
+        }
+      ]
+    },
+    {
+      "name": "Summer Squash Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Summer Squash"]
+        }
+      ]
+    },
+    {
+      "name": "Sunflower Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Sunflower"]
+        }
+      ]
+    },
+    {
+      "name": "Tomato Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Tomato"]
+        }
+      ]
+    },
+    {
+      "name": "Wheat Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Wheat"]
+        }
+      ]
+    },
+    {
+      "name": "Amaranth Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Amaranth"]
+        }
+      ]
+    },
+    {
+      "name": "Artichoke Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Artichoke"]
+        }
+      ]
+    },
+    {
+      "name": "Beet Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Beet"]
+        }
+      ]
+    },
+    {
+      "name": "Bok Choy Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Bok Choy"]
+        }
+      ]
+    },
+    {
+      "name": "Broccoli Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Broccoli"]
+        }
+      ]
+    },
+    {
+      "name": "Cranberry Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Cranberries"]
+        }
+      ]
+    },
+    {
+      "name": "Eggplant Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Eggplant"]
+        }
+      ]
+    },
+    {
+      "name": "Fairy Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Fairy Rose"]
+        }
+      ]
+    },
+    {
+      "name": "Grape Starter",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Grape"]
+        }
+      ]
+    },
+    {
+      "name": "Pumpkin Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Pumpkin"]
+        }
+      ]
+    },
+    {
+      "name": "Yam Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Yam"]
+        }
+      ]
+    },
+    {
+      "name": "Rare Seed",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Sweet Gem Berry"]
+        }
+      ]
+    },
+    {
+      "name": "Powdermelon Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Powdermelon"]
+        }
+      ]
+    },
+    {
+      "name": "Ancient Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Ancient Fruit"]
         }
       ]
     }

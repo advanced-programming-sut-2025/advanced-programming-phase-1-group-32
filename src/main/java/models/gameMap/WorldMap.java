@@ -41,6 +41,9 @@ public class WorldMap extends GameMap {
         for (MapData.MapLayerData<String>.ObjectData d : data.getBuildings()) {
             if(d.getProperty("type") != null && d.getProperty("type").asString.equals("playerHouse")){
                 farmsDetail.get(regionMap[d.y][d.x]).cottage = d;
+
+            }else if(d.value.equals("Abandoned Greenhouse")){
+                farmsDetail.get(regionMap[d.y][d.x]).abandonedGreenhouse = d;
             }else{
                 Entity building = App.entityRegistry.makeEntity(d.value);
                 EntityPlacementSystem.placeEntity(building, new Vec2(d.x, d.y));

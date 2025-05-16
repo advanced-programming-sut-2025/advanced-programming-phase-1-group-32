@@ -1,6 +1,7 @@
 package models.entities;
 
 import models.App;
+import models.Vec2;
 import models.entities.components.*;
 import models.entities.systems.EntityPlacementSystem;
 import models.enums.ProductQuality;
@@ -295,8 +296,31 @@ public enum UseFunction {
 
             return new Result(true, "broke and picked up the " + entity.getEntityName());
         }
-    }
+    },
+    INSPECT_ENTITY{
+        @Override
+        protected Result use(Player player, Entity tool, Tile tile, Entity target) {
+            Entity entity = tile.getContent();
+            StringBuilder out = new StringBuilder();
 
+            if(entity == null) {
+                ArrayList<Pickable> pickables = player.getPosition().getMap().getComponentsOfType(Pickable.class);
+                if(pickables == null) return new Result(true, "");
+
+                Vec2 tilePosition = tile.getPosition();
+
+                for(Pickable p : pickables){
+                    if(p.getEntity().getComponent(PositionComponent.class).get().getDistance(tilePosition) < 0.1){
+                        out.append(p.getEntity()).append("\n");
+                    }
+                }
+
+                return new Result(true, out.toString());
+            }
+
+            return new Result(true, entity.toString());
+        }
+    }
     ;
 
 

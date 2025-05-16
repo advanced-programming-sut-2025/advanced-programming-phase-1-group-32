@@ -51,9 +51,11 @@ public class ForageSpawnSystem {
 
                 if(candidates.get(biome) == null) continue;
 
-                Entity entity = App.entityRegistry.makeEntity(candidates.get(biome).get(random.nextInt(candidates.get(biome).size())).getEntity());
+                if(!candidates.get(biome).isEmpty()){
+                    Entity entity = App.entityRegistry.makeEntity(candidates.get(biome).get(random.nextInt(candidates.get(biome).size())).getEntity());
+                    EntityPlacementSystem.placeOnTile(entity, tiles[i][j]);
+                }
 
-                EntityPlacementSystem.placeOnTile(entity, tiles[i][j]);
             }
         }
     }

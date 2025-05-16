@@ -22,6 +22,28 @@
           "unlimited" : true
         }
       ]
+    }, {
+      "name": "Abandoned Greenhouse",
+      "tags": [],
+      "components": [
+        {
+          "type": "Placeable",
+          "exteriorName" : "wreckGreenhouseExterior"
+        }
+      ]
+    },{
+      "name": "Greenhouse",
+      "tags": [],
+      "components": [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "greenHouseInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "greenHouseExterior"
+        }
+      ]
     }
   ]
 }

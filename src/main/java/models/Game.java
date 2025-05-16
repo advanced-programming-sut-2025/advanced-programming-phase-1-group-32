@@ -84,8 +84,12 @@ public class Game {
             player.setCurrentMap(mainMap);
 
             MapData.MapLayerData<String>.ObjectData houseDetails = farmsDetails.get(region).cottage;
+            MapData.MapLayerData<String>.ObjectData greenHouseDetails = farmsDetails.get(region).abandonedGreenhouse;
+
             player.setHouse(App.entityRegistry.makeEntity(houseDetails.value));
             EntityPlacementSystem.placeEntity(player.getHouse(), new Vec2(houseDetails.x, houseDetails.y), mainMap);
+            player.setGreenHouse(App.entityRegistry.makeEntity(greenHouseDetails.value));
+            EntityPlacementSystem.placeEntity(player.getGreenHouse(), new Vec2(greenHouseDetails.x, greenHouseDetails.y), mainMap);
             for(Entity e : player.getHouse().getComponent(InteriorComponent.class).getMap().getEntities()){
                 if(e.getEntityName().equals("Fridge")){
                     player.setRefrigerator(e);
@@ -462,7 +466,7 @@ public class Game {
             playerFriendship.updateDaily();
         }
 
-        GrowthSystem.updatePerDay(this);
+        GrowthSystem.updatePerDay(this.mainMap);
 
         ForageSpawnSystem.updatePerDay();
 

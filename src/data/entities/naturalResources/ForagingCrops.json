@@ -14,7 +14,20 @@
   "common tags": [
     "FORAGING_CROP"
   ],
-  "entities": [
+  "entities":[
+    {
+      "name": "Common Mushroom",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 40
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
     {
       "name": "Daffodil",
       "components": [
@@ -25,6 +38,279 @@
         {
           "type": "Edible",
           "energy": 0
+        }
+      ]
+    },
+    {
+      "name": "Dandelion",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 40
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Leek",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 60
+        },
+        {
+          "type": "Edible",
+          "energy": 40
+        }
+      ]
+    },
+    {
+      "name": "Morel",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 150
+        },
+        {
+          "type": "Edible",
+          "energy": 20
+        }
+      ]
+    },
+    {
+      "name": "Salmonberry",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 5
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Spring Onion",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 8
+        },
+        {
+          "type": "Edible",
+          "energy": 13
+        }
+      ]
+    },
+    {
+      "name": "Wild Horseradish",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 50
+        },
+        {
+          "type": "Edible",
+          "energy": 13
+        }
+      ]
+    },
+    {
+      "name": "Fiddlehead Fern",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 90
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Grape",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Red Mushroom",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 75
+        },
+        {
+          "type": "Edible",
+          "energy": -50
+        }
+      ]
+    },
+    {
+      "name": "Spice Berry",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Sweet Pea",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 50
+        },
+        {
+          "type": "Edible",
+          "energy": 0
+        }
+      ]
+    },
+    {
+      "name": "Blackberry",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 25
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Chanterelle",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 160
+        },
+        {
+          "type": "Edible",
+          "energy": 75
+        }
+      ]
+    },
+    {
+      "name": "Hazelnut",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 40
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        }
+      ]
+    },
+    {
+      "name": "Purple Mushroom",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 90
+        },
+        {
+          "type": "Edible",
+          "energy": 30
+        }
+      ]
+    },
+    {
+      "name": "Wild Plum",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        }
+      ]
+    },
+    {
+      "name": "Crocus",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 60
+        },
+        {
+          "type": "Edible",
+          "energy": 0
+        }
+      ]
+    },
+    {
+      "name": "Crystal Fruit",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 150
+        },
+        {
+          "type": "Edible",
+          "energy": 63
+        }
+      ]
+    },
+    {
+      "name": "Holly",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        },
+        {
+          "type": "Edible",
+          "energy": -37
+        }
+      ]
+    },
+    {
+      "name": "Snow Yam",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        },
+        {
+          "type": "Edible",
+          "energy": 30
+        }
+      ]
+    },
+    {
+      "name": "Winter Root",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 70
+        },
+        {
+          "type": "Edible",
+          "energy": 25
         }
       ]
     }

@@ -69,7 +69,7 @@ public class Useable extends EntityComponent{
             if(!result.isSuccessful())
                 errors.append(result).append("\n");
             else
-                return new Result(true, "");
+                return result;
         }
         if(errors.isEmpty())
             return new Result(true, "Tool used successfully");
