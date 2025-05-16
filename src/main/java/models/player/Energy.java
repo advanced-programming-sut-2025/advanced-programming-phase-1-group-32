@@ -1,5 +1,7 @@
 package models.player;
 
+import models.App;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +12,7 @@ public class Energy {
     private int modifierDaysLeft;
     private double modifier;
     private boolean isUnlimited;
+    private boolean isGhashed = false;
 
     public void changeEnergy() {
 
@@ -37,7 +40,6 @@ public class Energy {
     }
 
     public double getAmount() {
-        double amount = this.amount;
         if (isUnlimited) return Double.POSITIVE_INFINITY;
         return amount;
     }
@@ -60,6 +62,8 @@ public class Energy {
         this.amount -= energy;
         if (this.amount <= 0) {
             this.amount = 0;
+            this.ghash();
+            App.activeGame.nextTurn();
         }
     }
 
@@ -79,15 +83,26 @@ public class Energy {
     }
 
     public void updatePerDay() {
-        if (modifierDaysLeft > 0) {
-            modifierDaysLeft--;
-        }
         amount = maxEnergy;
         if (modifierDaysLeft > 0) {
             amount *= modifier;
+            modifierDaysLeft--;
         }
+
+        isGhashed = false;
         //TODO: other effects
     }
 
+    public boolean isGhashed() {
+        return isGhashed;
+    }
 
+    public void setGhashed(boolean ghashed) {
+        isGhashed = ghashed;
+    }
+
+    private void ghash(){
+        this.isGhashed = true;
+        this.setModifier(0.75, 1);
+    }
 }

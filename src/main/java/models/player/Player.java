@@ -502,4 +502,8 @@ public class    Player extends Entity {
     public void setGreenHouse(Entity greenHouse) {
         this.greenHouse = greenHouse;
     }
+
+    public boolean isGhashed(){
+        return this.energy.isGhashed();
+    }
 }

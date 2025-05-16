@@ -50,7 +50,6 @@ public class Date {
         for (int i = 0 ; i < amount ; i++) {
             if (hour == 21) {
                 hour = 9;
-                game.updateGamePerDay();
                 addDay(1, game);
                 totalHours += 12;
             } else {

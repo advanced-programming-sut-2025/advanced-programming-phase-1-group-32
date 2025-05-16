@@ -239,12 +239,10 @@ public class Growable extends EntityComponent {
         }
 
         Weather weather = App.getActiveGame().getTodayWeather();
-        if (!isInGreenhouse()) {
-            if (weather == Weather.STORMY || weather == Weather.RAINY) {
-                setWateredToday(true);
-            }
+        if (weather == Weather.STORMY || weather == Weather.RAINY) {
+            setWateredToday(true);
         }
-        /*--------------------------------------------------------------*/
+        /*-------------------------------------------------------*/
 
 
     }
@@ -283,9 +281,8 @@ public class Growable extends EntityComponent {
     }
 
     private boolean isInGreenhouse() {
-        Game game = App.getActiveGame();
         Entity building = this.entity.getComponent(PositionComponent.class).getMap().getBuilding();
+        if (building == null) return false;
         return StringUtils.isNamesEqual(building.getEntityName(), "greenhouse");
     }
-
 }
