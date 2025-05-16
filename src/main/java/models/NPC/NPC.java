@@ -1,12 +1,14 @@
 package models.NPC;
 
 import models.entities.Entity;
+import models.entities.components.Renderable;
 import models.enums.Season;
 import models.enums.Weather;
 import models.player.Player;
 
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import views.inGame.Color;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NPC extends Entity {
@@ -16,16 +18,14 @@ public class NPC extends Entity {
     private ArrayList<Dialogue> dialogues = new ArrayList<>();
 
 
-    public NPC() {
-        super("NPC");
-    }
-
     public String getName() {
         return name;
     }
 
     public NPC(String name) {
+        super(name);
         this.name = name;
+        addComponent(new Renderable('N', new Color(255, 255 ,255)));
     }
 
     public ArrayList<String> getFavorites() {

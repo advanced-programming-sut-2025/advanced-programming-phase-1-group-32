@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Tile sets/region.json",
+    "activeFile": "bigMap.tmx",
     "expandedProjectPaths": [
-        ".",
+        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
         "Tile sets",
         "buildings",
-        "/home/parsa/Projects/University/AP/Stardew Valley/Moz"
+        "."
     ],
     "fileStates": {
         "": {
@@ -96,7 +96,8 @@
         },
         "Tile sets/biome.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 64,
+            "scaleInEditor": 1
         },
         "Tile sets/biome.tsx": {
             "dynamicWrapping": false,
@@ -108,7 +109,7 @@
         },
         "Tile sets/buildings.json": {
             "dynamicWrapping": true,
-            "scaleInDock": 1,
+            "scaleInDock": 3,
             "scaleInEditor": 8
         },
         "Tile sets/buildings.tsx": {
@@ -118,7 +119,8 @@
         },
         "Tile sets/ground.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 64,
+            "scaleInEditor": 73.9128
         },
         "Tile sets/ground.tsx": {
             "dynamicWrapping": false,
@@ -142,7 +144,7 @@
         },
         "Tile sets/objects.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 52.1279
         },
         "Tile sets/objects.tsx": {
             "dynamicWrapping": false,
@@ -152,7 +154,7 @@
         "Tile sets/region.json": {
             "dynamicWrapping": false,
             "scaleInDock": 44.6207,
-            "scaleInEditor": 4
+            "scaleInEditor": 143.7904
         },
         "Tile sets/region.tsx": {
             "dynamicWrapping": false,
@@ -160,11 +162,11 @@
             "scaleInEditor": 4
         },
         "bigMap.tmx": {
-            "scale": 16,
-            "selectedLayer": 3,
+            "scale": 13.6717,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 36.625,
-                "y": 38.53125
+                "x": 153.52882231178273,
+                "y": 133.08513206111894
             }
         },
         "blackSmithExterior.tmx": {
@@ -272,6 +274,14 @@
             "viewCenter": {
                 "x": 4.03125,
                 "y": 6.015625
+            }
+        },
+        "buildings/greenHouseExterior.tmx": {
+            "scale": 47.0159,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 4.636729276691501,
+                "y": 4.881327380737155
             }
         },
         "buildings/greenHouseInterior.tmx": {
@@ -523,28 +533,45 @@
     "map.tileWidth": 1,
     "map.width": 6,
     "openFiles": [
+        "Tile sets/biome.json",
+        "Tile sets/ground.json",
+        "Tile sets/region.json",
         "defaultMap.tmx",
-        "Tile sets/buildings.tsx",
-        "buildings/cottageExterior.tmx",
-        "buildings/cottageInterior.tmx",
+        "buildings/stardropSaloonInterior.tmx",
+        "buildings/stardropSaloonExterior.tmx",
+        "buildings/pierresGeneralStoreInterior.tmx",
+        "buildings/pierresGeneralStoreExterior.tmx",
+        "buildings/marniesRanchInterior.tmx",
         "buildings/marniesRanchExterior.tmx",
+        "buildings/jojaMartInterior.tmx",
+        "buildings/jojaMartExterior.tmx",
+        "buildings/fishShopInterior.tmx",
+        "buildings/cottageInterior.tmx",
+        "buildings/cottageExterior.tmx",
+        "buildings/carpentersShopInterior.tmx",
+        "buildings/carpentersShopExterior.tmx",
+        "buildings/blackSmithInterior.tmx",
         "buildings/blackSmithExterior.tmx",
-        "Tile sets/region.tsx",
-        "Tile sets/region.json"
+        "bigMap.tmx",
+        "buildings/wreckGreenhouseExterior.tmx",
+        "greenHouse.tmx",
+        "Tile sets/buildings.json",
+        "buildings/greenHouseInterior.tmx",
+        "buildings/greenHouseExterior.tmx"
     ],
     "project": "Stardew Valley.tiled-project",
     "recentFiles": [
-        "Tile sets/buildings.json",
-        "buildings/destroyedGreenhouse.tmx",
-        "buildings/fishShopExterior.tmx",
-        "buildings/marniesRanchInterior.tmx",
-        "buildings/pierresGeneralStoreInterior.tmx",
+        "Tile sets/biome.json",
+        "Tile sets/ground.json",
+        "Tile sets/region.json",
+        "defaultMap.tmx",
         "buildings/stardropSaloonInterior.tmx",
-        "buildings/cottageInterior.tmx",
-        "buildings/fishShopInterior.tmx",
-        "buildings/cottageExterior.tmx",
-        "buildings/blackSmithInterior.tmx",
         "buildings/stardropSaloonExterior.tmx",
-        "defaultMap.tmx"
+        "buildings/pierresGeneralStoreInterior.tmx",
+        "buildings/pierresGeneralStoreExterior.tmx",
+        "buildings/marniesRanchInterior.tmx",
+        "buildings/marniesRanchExterior.tmx",
+        "buildings/jojaMartInterior.tmx",
+        "buildings/jojaMartExterior.tmx"
     ]
 }

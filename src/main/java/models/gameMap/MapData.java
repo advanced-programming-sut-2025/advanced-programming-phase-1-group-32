@@ -70,6 +70,8 @@ class MapObject {
     int height;
     @JsonProperty("properties")
     ArrayList<MapData.ObjectProperty> properties;
+    @JsonProperty("type")
+    String type;
     TileData data;
 }
 
@@ -168,6 +170,7 @@ public class MapData {
     private MapLayerData<String> buildingLayer = null;
     private MapLayerData<String> doorLayer = null;
     private MapLayerData<String> entityLayer = null;
+    private MapLayerData<String> npcLayer = null;
     private Map<String, TileSet> tileSets = new HashMap<>();
     private ArrayList<MapRegion> regions = new ArrayList<>();
     private Map<Integer, TileData> tileMap = new HashMap<>();
@@ -263,6 +266,10 @@ public class MapData {
                     }
                     entityLayer.populateData();
                 }
+                case "npc" -> {
+                    npcLayer = new MapLayerData<>(String.class, layers.get("npc"), null);
+                    npcLayer.populateData();
+                }
             }
         }
     }
@@ -298,6 +305,10 @@ public class MapData {
         if (entityLayer == null) return null;
         return entityLayer.getObjectArray();
     }
+    public ArrayList<MapLayerData<String>.ObjectData> getNpcs() {
+        if (npcLayer == null) return null;
+        return npcLayer.getObjectArray();
+    }
 
     public static MapData parse(String name, String path) {
         Path file = Paths.get(path);
@@ -327,6 +338,7 @@ public class MapData {
     static public class MapLayerData<T>{
         public class ObjectData{
             public T value;
+            public String type;
             public int x, y;
             public ArrayList<ObjectProperty> properties = new ArrayList<>();
 
@@ -335,6 +347,13 @@ public class MapData {
                 this.x = x ;
                 this.y = y;
                 this.properties.addAll(properties);
+            }
+
+            public ObjectData(int x, int y, ArrayList<ObjectProperty> properties, String type) {
+                this.type = type;
+                this.x = x;
+                this.y = y;
+                this.properties = properties;
             }
 
             public ObjectProperty getProperty(String name) {
@@ -382,10 +401,15 @@ public class MapData {
                     }
                 }
                 case objectgroup -> {
-                    for (MapObject o : layer.objects) {
-                        objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y - (o.height - 1)
-                                , o.properties != null ? o.properties : new ArrayList<>()));
-                    }
+                        for (MapObject o : layer.objects) {
+                            if(!o.type.isEmpty()){
+                                objectArray.add(this.new ObjectData(o.x, o.y - (o.height - 1)
+                                        , o.properties != null ? o.properties : new ArrayList<>(), o.type));
+                            }else{
+                            objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y - (o.height - 1)
+                                    , o.properties != null ? o.properties : new ArrayList<>()));
+                            }
+                        }
                 }
             }
         }

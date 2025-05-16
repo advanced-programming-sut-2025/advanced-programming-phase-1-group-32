@@ -42,7 +42,7 @@ public class WorldMap extends GameMap {
             if(d.getProperty("type") != null && d.getProperty("type").asString.equals("playerHouse")){
                 farmsDetail.get(regionMap[d.y][d.x]).cottage = d;
 
-            }else if(d.value.equals("Abandoned Greenhouse")){
+            }else if(d.value != null && d.value.equals("Abandoned Greenhouse")){
                 farmsDetail.get(regionMap[d.y][d.x]).abandonedGreenhouse = d;
             }else{
                 Entity building = App.entityRegistry.makeEntity(d.value);
