@@ -384,6 +384,167 @@
           "growingPlants": ["Ancient Fruit"]
         }
       ]
+    },
+    {
+      "name": "Spring Mixed Seed",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Cauliflower" ,"Parsnip" ,"Potato" ,"Blue" ,"Jazz" ,"Tulip"]
+        }
+      ]
+    },
+    {
+      "name": "Summer Mixed Seed",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Corn", "Hot Pepper", "Radish", "Wheat", "Poppy", "Sunflower", "Summer Spangle"]
+        }
+      ]
+    },
+    {
+      "name": "Fall Mixed Seed",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Artichoke", "Corn", "Eggplant", "Pumpkin", "Sunflower", "Fairy Rose"]
+        }
+      ]
+    },
+    {
+      "name": "Winter Mixed Seed",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Powdermelon"]
+        }
+      ]
+    },{
+      "name": "Apricot Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Apricot Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Cherry Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Cherry Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Banana Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Banana Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Mango Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Mango Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Orange Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Orange Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Peach Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Peach Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Apple Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Apple Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Pomegranate Sapling",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Pomegranate Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Acorns",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Oak Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Maple Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Maple Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Pine Cones",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Pine Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Mahogany Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Mahogany Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Mushroom Tree Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Mushroom Tree"]
+        }
+      ]
+    },
+    {
+      "name": "Mystic Tree Seeds",
+      "components": [
+        {
+          "type": "SeedComponent",
+          "growingPlants": ["Mystic Tree"]
+        }
+      ]
     }
   ]
 }

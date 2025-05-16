@@ -1,15 +1,151 @@
 {
   "common components": [
     {
-      "type": "Pickable"
+      "type": "Pickable",
+      "maxStack" : "64"
     }
   ],
   "required components": [
     "Sellable"
   ],
-  "entities": [
+  "entities":[
+    {
+      "name": "Quartz",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 25
+        }
+      ]
+    },
+    {
+      "name": "Earth Crystal",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "Frozen Tear",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Fire Quartz",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Emerald",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Aquamarine",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 180
+        }
+      ]
+    },
+    {
+      "name": "Ruby",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Amethyst",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Topaz",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Jade",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 200
+        }
+      ]
+    },
+    {
+      "name": "Diamond",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Prismatic Shard",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 2000
+        }
+      ]
+    },
+    {
+      "name": "Copper",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "name": "Iron",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 10
+        }
+      ]
+    },
     {
       "name": "Gold",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 25
+        }
+      ]
+    },
+    {
+      "name": "Iriduim",
       "components": [
         {
           "type": "Sellable",
@@ -22,9 +158,10 @@
       "components": [
         {
           "type": "Sellable",
-          "price": 10
+          "price": 15
         }
       ]
     }
   ]
+
 }

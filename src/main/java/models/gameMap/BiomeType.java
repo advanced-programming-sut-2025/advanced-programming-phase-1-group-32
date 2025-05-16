@@ -30,7 +30,8 @@ public enum BiomeType {
                         new Spawnable("Tulip Bulb", 10),
                         new Spawnable("Rice Shoot", 10),
                         new Spawnable("Common Mushroom", 10),
-                        new Spawnable("Ancient Seeds", 10)
+                        new Spawnable("Ancient Seeds", 10),
+                        new Spawnable("Spring Mixed Seed", 10)
                 ),
                 Season.SUMMER, Arrays.asList(
                         new Spawnable("Fiddlehead Fern", 10),
@@ -53,7 +54,9 @@ public enum BiomeType {
                         new Spawnable("Tomato Seeds", 10),
                         new Spawnable("Wheat Seeds", 10),
                         new Spawnable("Common Mushroom", 10),
-                        new Spawnable("Ancient Seeds", 10)
+                        new Spawnable("Ancient Seeds", 10),
+                        new Spawnable("Summer Mixed Seed", 10)
+
                 ),
                 Season.FALL, Arrays.asList(
                         new Spawnable("Blackberry", 10),
@@ -74,7 +77,9 @@ public enum BiomeType {
                         new Spawnable("Yam Seeds", 10),
                         new Spawnable("Rare Seed", 10),
                         new Spawnable("Common Mushroom", 10),
-                        new Spawnable("Ancient Seeds", 10)
+                        new Spawnable("Ancient Seeds", 10),
+                        new Spawnable("Fall Mixed Seed", 10)
+
                 ),
                 Season.WINTER, Arrays.asList(
                         new Spawnable("Crocus", 10),
@@ -84,21 +89,43 @@ public enum BiomeType {
                         new Spawnable("Winter Root", 10),
                         new Spawnable("Powdermelon Seeds", 10),
                         new Spawnable("Common Mushroom", 10),
-                        new Spawnable("Ancient Seeds", 10)
+                        new Spawnable("Ancient Seeds", 10),
+                        new Spawnable("Winter Mixed Seed", 10)
+
                 )
             ),
             Arrays.asList(
                     new Spawnable("Common Mushroom", 10),
                     new Spawnable("Ancient Seeds", 10),
-                    new Spawnable("Pine Tree", 10),
-                    new Spawnable("Apricot Tree", 10)
+                    new Spawnable("Acorns", 10),
+                    new Spawnable("Maple Seeds", 10),
+                    new Spawnable("Pine Cones", 10),
+                    new Spawnable("Mahogany Seeds", 10),
+                    new Spawnable("Mushroom Tree Seeds", 10)
             )
     ),
     MINE(
             Map.of(
             ),
             Arrays.asList(
-                new Spawnable("Rock", 10)
+                    new Spawnable("Rock", 10),
+                    new Spawnable("Quartz Vein", 10),
+                    new Spawnable("Earth Crystal Node", 10),
+                    new Spawnable("Frozen Tear Cluster", 10),
+                    new Spawnable("Fire Quartz Node", 10),
+                    new Spawnable("Emerald Deposit", 10),
+                    new Spawnable("Aquamarine Vein", 10),
+                    new Spawnable("Ruby Deposit", 10),
+                    new Spawnable("Amethyst Node", 10),
+                    new Spawnable("Topaz Cluster", 10),
+                    new Spawnable("Jade Deposit", 10),
+                    new Spawnable("Diamond Node", 10),
+                    new Spawnable("Prismatic Shard Deposit", 10),
+                    new Spawnable("Copper Vein", 10),
+                    new Spawnable("Iron Vein", 10),
+                    new Spawnable("Gold Vein", 10),
+                    new Spawnable("Iridium Vein", 10),
+                    new Spawnable("Coal Node", 10)
             )
     ),
     TOWN(

@@ -3,15 +3,6 @@
     {
       "type": "Placeable",
       "isWalkable": false
-    },
-    {
-      "type": "Renderable",
-      "char": "m",
-      "color": [
-        105,
-        105,
-        105
-      ]
     }
   ],
   "required components": [
@@ -26,7 +17,7 @@
       "components": [
         {
           "type": "Harvestable",
-          "material": "IRIDIUM",
+          "material": "STONE",
           "resources": [
             {
               "entity": "stone",
@@ -34,6 +25,367 @@
               "max": 4
             }
           ]
+        },{
+          "type" : "Renderable",
+          "char" : "M",
+          "color" : [ 105, 105, 105]
+        }
+      ]
+    },
+    {
+      "name": "Quartz Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Quartz",
+              "min": 1,
+              "max": 3
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [255, 255, 255]
+        }
+      ]
+    },
+    {
+      "name": "Earth Crystal Node",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Earth Crystal",
+              "min": 1,
+              "max": 2
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [205, 133, 63]
+        }
+      ]
+    },
+    {
+      "name": "Frozen Tear Cluster",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Frozen Tear",
+              "min": 1,
+              "max": 2
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [135, 206, 250]
+        }
+      ]
+    },
+    {
+      "name": "Fire Quartz Node",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Fire Quartz",
+              "min": 1,
+              "max": 2
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [255, 69, 0]
+        }
+      ]
+    },
+    {
+      "name": "Emerald Deposit",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Emerald",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [0, 255, 127]
+        }
+      ]
+    },
+    {
+      "name": "Aquamarine Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Aquamarine",
+              "min": 1,
+              "max": 2
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [102, 205, 170]
+        }
+      ]
+    },
+    {
+      "name": "Ruby Deposit",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Ruby",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [220, 20, 60]
+        }
+      ]
+    },
+    {
+      "name": "Amethyst Node",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Amethyst",
+              "min": 1,
+              "max": 2
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [186, 85, 211]
+        }
+      ]
+    },
+    {
+      "name": "Topaz Cluster",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Topaz",
+              "min": 1,
+              "max": 3
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [255, 215, 0]
+        }
+      ]
+    },
+    {
+      "name": "Jade Deposit",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Jade",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [144, 238, 144]
+        }
+      ]
+    },
+    {
+      "name": "Diamond Node",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Diamond",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [173, 216, 230]
+        }
+      ]
+    },
+    {
+      "name": "Prismatic Shard Deposit",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Prismatic Shard",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [255, 105, 180]
+        }
+      ]
+    },
+    {
+      "name": "Copper Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "COPPER",
+          "resources": [
+            {
+              "entity": "Copper",
+              "min": 2,
+              "max": 5
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [184, 115, 51]
+        }
+      ]
+    },
+    {
+      "name": "Iron Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "IRON",
+          "resources": [
+            {
+              "entity": "Iron",
+              "min": 2,
+              "max": 5
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [192, 192, 192]
+        }
+      ]
+    },
+    {
+      "name": "Gold Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "GOLD",
+          "resources": [
+            {
+              "entity": "Gold",
+              "min": 2,
+              "max": 4
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [255, 223, 0]
+        }
+      ]
+    },
+    {
+      "name": "Iridium Vein",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "IRIDIUM",
+          "resources": [
+            {
+              "entity": "Iridium",
+              "min": 1,
+              "max": 3
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [138, 43, 226]
+        }
+      ]
+    },
+    {
+      "name": "Coal Node",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Coal",
+              "min": 2,
+              "max": 6
+            }
+          ]
+        },
+        {
+          "type": "Renderable",
+          "char": "M",
+          "color": [47, 79, 79]
         }
       ]
     }

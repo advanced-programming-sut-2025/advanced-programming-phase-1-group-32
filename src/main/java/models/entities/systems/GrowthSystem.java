@@ -19,6 +19,8 @@ public class GrowthSystem {
     public static void updatePerDay(GameMap map){
         ArrayList<Growable> growables = map.getComponentsOfType(Growable.class);
 
+        if(growables == null) return;
+
         for (Growable growable : growables) {
             growable.updatePerDay();
         }

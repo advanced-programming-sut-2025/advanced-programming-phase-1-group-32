@@ -83,7 +83,14 @@ public enum UseFunction {
             player.addExperince(SkillType.MINING, 5);
 
             ArrayList<Entity> harvestedEntities = harvestable.harvest();
+
+            if(mineral.getComponent(Forageable.class) != null){
+                player.getSkill(SkillType.FORAGING).addExperience(10);
+            }
+
             mineral.delete();
+
+
 
             for(Entity e : harvestedEntities){
                 player.getComponent(Inventory.class).addItem(e);

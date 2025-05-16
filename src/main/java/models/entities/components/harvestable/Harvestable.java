@@ -47,7 +47,7 @@ public class Harvestable extends EntityComponent {
         for(HarvestableResource r : resources){
             if(random.nextFloat() < r.probability){
                 Entity entity = App.entityRegistry.makeEntity(r.entity);
-                entity.getComponent(Pickable.class).setStackSize(random.nextInt(r.min, r.max));
+                entity.getComponent(Pickable.class).setStackSize(random.nextInt(r.min, r.max+1));
                 generatedEntities.add(entity);
             }
         }

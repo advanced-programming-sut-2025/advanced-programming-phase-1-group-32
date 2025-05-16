@@ -3,7 +3,9 @@ package models.entities.systems;
 import models.App;
 import models.Game;
 import models.entities.Entity;
+import models.entities.components.Forageable;
 import models.entities.components.Growable;
+import models.entities.components.Pickable;
 import models.enums.Direction;
 import models.enums.EntityTag;
 import models.gameMap.BiomeType;
@@ -53,6 +55,15 @@ public class ForageSpawnSystem {
 
                 if(!candidates.get(biome).isEmpty()){
                     Entity entity = App.entityRegistry.makeEntity(candidates.get(biome).get(random.nextInt(candidates.get(biome).size())).getEntity());
+
+                    Forageable forageable = new Forageable();
+                    //TODO spawn date
+                    //forageable.setDateAdded(App.getActiveGame().getDate());
+                    entity.addComponent(forageable);
+                    if(entity.getComponent(Pickable.class) != null){
+                        entity.getComponent(Pickable.class).setStackSize(1);
+                    }
+
                     EntityPlacementSystem.placeOnTile(entity, tiles[i][j]);
                 }
 

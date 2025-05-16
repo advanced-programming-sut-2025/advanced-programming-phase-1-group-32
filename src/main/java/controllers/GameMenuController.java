@@ -1899,6 +1899,14 @@ public class GameMenuController implements Controller {
 
             if(!inventory.canAddItem(entity)) continue;
 
+            if(entity.getComponent(Forageable.class) != null){
+                Forageable forageable = entity.getComponent(Forageable.class);
+                if(!forageable.isForaged()){
+                    player.getSkill(SkillType.FORAGING).addExperience(10);
+                }
+                forageable.setForaged(true);
+            }
+
             Entity leftOver = inventory.addItem(entity);
             pickedUpItems.add(entity);
         }
