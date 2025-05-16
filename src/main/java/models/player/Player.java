@@ -473,16 +473,16 @@ public class    Player extends Entity {
         if(ownedTiles != null) return ownedTiles;
 
         WorldMap map = App.activeGame.getMainMap();
-        ArrayList<Tile> result = new ArrayList<>();
+        ownedTiles = new ArrayList<>();
 
         for(Tile[] row : map.getTiles()){
             for(Tile t : row){
                 if(ownedRegions.contains(t.getRegion())){
-                    result.add(t);
+                    ownedTiles.add(t);
                 }
             }
         }
-        return result;
+        return ownedTiles;
     }
 
     public ArrayList<Tile> getOwnedPlantedTiles() {

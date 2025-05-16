@@ -526,6 +526,7 @@ public class GameMenuController implements Controller {
         EntityPlacementSystem.placeOnTile(plant, tile);
 
 
+
         return new Result(true, "planted succusfully");
     }
 
@@ -1390,7 +1391,9 @@ public class GameMenuController implements Controller {
         Entity ring = App.entityRegistry.makeEntity(ringName);
         Inventory inventory = currentPlayer.getComponent(Inventory.class);
 
-        //TODO: check that its ring preferably by tag
+        if (!ring.hasTag(EntityTag.RING)) {
+            return new Result(false, ringName + " is not a ring!");
+        }
 
         if (!inventory.doesHaveItem(ring)) {
             return new Result(false, "You don't have this ring!");
@@ -1515,6 +1518,9 @@ public class GameMenuController implements Controller {
         }
 
         //TODO: check distance
+        if (currentPlayer.getPosition().getDistance(npc.getComponent(PositionComponent.class).get()) > 2) {
+            return new Result(false, "You are too far from this NPC");
+        }
 
         String message = npc.getCorrectDialogue(game.getDate().getSeason(), npcFriendship.getLevel(),
                 game.getTodayWeather(), game.getDate().getHour() < 16);
@@ -1807,7 +1813,7 @@ public class GameMenuController implements Controller {
 
     public Result waterAll() {
         Game game = App.getActiveGame();
-        GrowthSystem.waterAll(game);
+        GrowthSystem.waterAll(game.getMainMap());
 
         return new Result(true, "watered!");
     }

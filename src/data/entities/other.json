@@ -14,6 +14,10 @@
   "entities": [
     {
       "name": "Bouquet"
+    },
+    {
+      "name" : "Wedding Ring",
+      "tags" : ["RING"]
     }
   ]
 }

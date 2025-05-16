@@ -170,7 +170,6 @@ public class Game {
             EntityPlacementSystem.placeOnMap(npc, new Position(data.x, data.y), mainMap);
         }
 
-        //TODO
     }
 
     public ArrayList<Quest> getQuests() {
@@ -265,7 +264,7 @@ public class Game {
                 Entity entity = tile.getContent();
                 if (entity != null && (entity.hasTag(EntityTag.CROP) || entity.hasTag(EntityTag.FORAGING_CROP))) {
                     entity.delete();
-//                    System.out.println("DELETE THIS AT CROW ATTACK");
+                    System.out.println("DELETE THIS AT CROW ATTACK");
                 }
                 if (entity != null && entity.hasTag(EntityTag.TREE)) {
                     Growable growable = entity.getComponent(Growable.class);
@@ -285,14 +284,15 @@ public class Game {
             return;
         }
 
-        ArrayList<Tile> affectedTiles = new ArrayList<>();
-        // TODO: add tiles to effect
+        for (Player player : players) {
+            ArrayList<Tile> affectedTiles = player.getOwnedTiles();
 
-        for (Tile tile : affectedTiles) {
-            thorTile(tile);
+            for (int i = 0; i < 5; i++) {
+                Tile tile = affectedTiles.get((int) (Math.random() * affectedTiles.size()));
+                thorTile(tile);
+            }
+
         }
-
-
     }
 
 

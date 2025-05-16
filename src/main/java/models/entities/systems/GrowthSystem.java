@@ -45,9 +45,10 @@ public class GrowthSystem {
         }
     }
 
-    public static void waterAll(Game game){
-        ArrayList<Growable> growables = game.getMainMap().getComponentsOfType(Growable.class);
+    public static void waterAll(GameMap map){
+        ArrayList<Growable> growables = map.getComponentsOfType(Growable.class);
 
+        if(growables == null) return;
         for (Growable growable : growables) {
             growable.setWateredToday(true);
         }
