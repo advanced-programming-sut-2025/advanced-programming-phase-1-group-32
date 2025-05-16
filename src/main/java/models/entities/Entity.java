@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
+import models.utils.StringUtils;
 
 import java.util.*;
 
@@ -182,7 +183,7 @@ public class Entity implements Cloneable{
     }
 
     public boolean isTheSameAs(Entity other){
-        if(!this.entityName.equals(other.entityName)) return false;
+        if(!StringUtils.isNamesEqual(this.entityName, other.entityName)) return false;
 
         for(EntityComponent c : this.components){
             EntityComponent c2 = other.getComponent(c.getClass());

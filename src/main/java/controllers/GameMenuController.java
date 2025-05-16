@@ -395,7 +395,7 @@ public class GameMenuController implements Controller {
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if (tile == null) continue;
-            if (tile.getContent().getEntityName().equals(artisanName)) {
+            if (StringUtils.isNamesEqual(tile.getContent().getEntityName(), artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
                 if (artisan.isInProcess())/* TODO: should fix in phase2 (what if there is two artisan near player)*/
                     return new Result(false, "another recipe already in process");
@@ -415,7 +415,7 @@ public class GameMenuController implements Controller {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if (tile == null) continue;
 
-            if (tile.getContent().getEntityName().equalsIgnoreCase(artisanName)) {
+            if (StringUtils.isNamesEqual(tile.getContent().getEntityName(), artisanName)) {
                 ArtisanComponent artisan = tile.getContent().getComponent(ArtisanComponent.class);
                 if (!artisan.isInProcess())
                     return new Result(false, "This artisan is empty!");

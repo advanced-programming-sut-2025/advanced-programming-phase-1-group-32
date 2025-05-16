@@ -82,8 +82,10 @@ public class EntityRegistry extends Registry<Entity>{
 
     @Override
     public Entity getData(String name) {
-        return registry.get(name);
+//        return registry.get(name);
+        return get(name);
     }
+
 
     public boolean doesEntityExist(String entityName){
         Entity entity = get(entityName.toLowerCase());

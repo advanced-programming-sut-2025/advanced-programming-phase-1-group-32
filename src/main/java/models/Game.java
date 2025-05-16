@@ -25,6 +25,7 @@ import models.player.Player;
 import models.player.Skill;
 import models.player.Wallet;
 import models.player.friendship.PlayerFriendship;
+import models.utils.StringUtils;
 import records.GameStartingDetails;
 
 import java.io.File;
@@ -91,7 +92,7 @@ public class Game {
             player.setGreenHouse(App.entityRegistry.makeEntity(greenHouseDetails.value));
             EntityPlacementSystem.placeEntity(player.getGreenHouse(), new Vec2(greenHouseDetails.x, greenHouseDetails.y), mainMap);
             for(Entity e : player.getHouse().getComponent(InteriorComponent.class).getMap().getEntities()){
-                if(e.getEntityName().equals("Fridge")){
+                if(StringUtils.isNamesEqual(e.getEntityName(), StringUtils.fridge)){
                     player.setRefrigerator(e);
                 }
             }

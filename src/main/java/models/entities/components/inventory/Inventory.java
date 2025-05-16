@@ -8,6 +8,7 @@ import models.entities.EntityObserver;
 import models.entities.components.EntityComponent;
 import models.entities.components.Pickable;
 import models.enums.EntityTag;
+import models.utils.StringUtils;
 
 import java.util.ArrayList;
 
@@ -235,7 +236,7 @@ public class Inventory extends EntityComponent {
     public Entity getItem(String name) {
         ArrayList<Entity> out = new ArrayList<>(slots.size());
         for (InventorySlot s : slots) {
-            if (s.getEntity() != null && s.getEntity().getEntityName().equals(name)) {
+            if (s.getEntity() != null && StringUtils.isNamesEqual(s.getEntity().getEntityName(), name)) {
                 return s.getEntity();
             }
         }
@@ -253,7 +254,7 @@ public class Inventory extends EntityComponent {
 
     public InventorySlot getSlot(String name) {
         for (InventorySlot s : slots) {
-            if (s.getEntity() != null && s.getEntity().getEntityName().equals(name)) {
+            if (s.getEntity() != null && StringUtils.isNamesEqual(s.getEntity().getEntityName(), name)) {
                 return s;
             }
         }
@@ -318,7 +319,7 @@ public class Inventory extends EntityComponent {
         for (InventorySlot s : slots) {
             Entity e = s.getEntity();
             if(e == null) continue;
-            if(e.getEntityName().equalsIgnoreCase(entityName)){
+            if(StringUtils.isNamesEqual(e.getEntityName(), entityName)) {
                 int stackSize = e.getComponent(Pickable.class).getStackSize();
                 if(stackSize < amount){
                     e.delete();
@@ -354,7 +355,7 @@ public class Inventory extends EntityComponent {
         int count = 0;
         for(InventorySlot s : slots){
             if(s.getEntity() != null){
-                if(s.getEntity().getEntityName().equals(name)){
+                if(StringUtils.isNamesEqual(s.getEntity().getEntityName(), name)){
                     count += s.getEntity().getComponent(Pickable.class).getStackSize();
                 }
             }

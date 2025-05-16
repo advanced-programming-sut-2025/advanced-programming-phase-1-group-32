@@ -4,6 +4,8 @@ import java.util.Locale;
 
 public class StringUtils {
 
+    public static String fridge = "Fridge";
+
     public static boolean isNamesEqual(String str1, String str2) {
         String normalizedString1 = str1.replaceAll("[\\s']+", "").toLowerCase();
         String normalizedString2 = str2.replaceAll("[\\s']+", "").toLowerCase();
