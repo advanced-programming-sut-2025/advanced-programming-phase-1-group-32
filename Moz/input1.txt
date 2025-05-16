@@ -88,7 +88,8 @@ skill statue
 cheat advance date 1d
 cheat water all
 showplant -l <24,34>
-tools equip Scythe
+tools equip Axe
+tools equip Inspector
 plant -s Jazz Seeds -d up
 
 
