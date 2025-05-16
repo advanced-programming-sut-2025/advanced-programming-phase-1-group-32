@@ -8,7 +8,7 @@
  "margin":0,
  "name":"buildings",
  "spacing":0,
- "tilecount":8,
+ "tilecount":9,
  "tiledversion":"1.8.2",
  "tileheight":10,
  "tiles":[
@@ -109,6 +109,13 @@
          "imageheight":6,
          "imagewidth":6,
          "type":"Cottage"
+        }, 
+        {
+         "id":23,
+         "image":"..\/buildings\/images\/wreckGreenhouseExterior.png",
+         "imageheight":7,
+         "imagewidth":6,
+         "type":"Abandoned Greenhouse"
         }],
  "tilewidth":12,
  "type":"tileset",

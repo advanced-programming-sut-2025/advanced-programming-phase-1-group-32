@@ -389,16 +389,7 @@ public class GameMenu implements AppMenu {
                 for (Tile[] value : tiles) {
                     for (Tile tile : value) {
                         if (tile.getType() == null) continue;
-                        Entity entity = tile.getContent();
-                        if (entity != null) {
-                            Renderable component = entity.getComponent(Renderable.class);
-                            if (component == null) {
-                                throw new RuntimeException("Entity " + entity.getEntityName() + " is on the ground, but it doesn't have a Renderable component");
-                            }
-                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), component.getCharacter(), component.getColor(), position);
-                        } else {
-                            renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
-                        }
+                        renderer.mvAddchColored(tile.getCol(), tile.getRow(), tile.getCharacter(), tile.getColor(), position);
                     }
                 }
                 for (Entity e : map.getEntities()) {

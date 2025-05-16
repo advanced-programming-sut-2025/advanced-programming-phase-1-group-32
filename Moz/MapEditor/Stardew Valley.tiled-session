@@ -1,4 +1,8 @@
 {
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
     "activeFile": "Tile sets/region.json",
     "expandedProjectPaths": [
         ".",
@@ -104,7 +108,8 @@
         },
         "Tile sets/buildings.json": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 8
         },
         "Tile sets/buildings.tsx": {
             "dynamicWrapping": true,
@@ -136,6 +141,7 @@
             "scaleInDock": 1
         },
         "Tile sets/objects.json": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "Tile sets/objects.tsx": {
@@ -152,6 +158,14 @@
             "dynamicWrapping": false,
             "scaleInDock": 45,
             "scaleInEditor": 4
+        },
+        "bigMap.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 21.63636363636364,
+                "y": 79.54545454545453
+            }
         },
         "blackSmithExterior.tmx": {
             "scale": 45,
@@ -176,7 +190,7 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.0078125,
+                "x": 1.046875,
                 "y": 2.0078125
             }
         },
@@ -184,7 +198,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.015625,
+                "x": 2.09375,
                 "y": 4.015625
             }
         },
@@ -192,15 +206,15 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.5078125,
-                "y": 2.5
+                "x": 1.546875,
+                "y": 2.5078125
             }
         },
         "buildings/carpentersShopInterior.tmx": {
             "scale": 48.3075,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 7.007193499974123,
+                "x": 4.409253221549449,
                 "y": 5.019924442374372
             }
         },
@@ -224,7 +238,7 @@
             "scale": 90,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 3.005555555555555,
+                "x": 1.6111111111111112,
                 "y": 3.0055555555555555
             }
         },
@@ -232,8 +246,16 @@
             "scale": 45,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 7.500000000000002,
-                "y": 7.500000000000002
+                "x": 4.733333333333333,
+                "y": 7.522222222222224
+            }
+        },
+        "buildings/destroyedGreenhouse.tmx": {
+            "scale": 32,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4.09375,
+                "y": 3.578125
             }
         },
         "buildings/fishShopExterior.tmx": {
@@ -248,7 +270,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.015625,
+                "x": 4.03125,
                 "y": 6.015625
             }
         },
@@ -256,7 +278,7 @@
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5.01111111111111,
+                "x": 5.022222222222222,
                 "y": 4.011111111111111
             }
         },
@@ -264,15 +286,15 @@
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 10.021739130434783,
-                "y": 8.021739130434785
+                "x": 10.043478260869565,
+                "y": 8.065217391304348
             }
         },
         "buildings/marniesRanchExterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.015625,
+                "x": 4.03125,
                 "y": 3.515625
             }
         },
@@ -280,15 +302,15 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 23.484375,
-                "y": -8.5
+                "x": 7.125,
+                "y": 7.015625
             }
         },
         "buildings/pierresGeneralStoreExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.01111111111111,
+                "x": 6.022222222222224,
                 "y": 5.011111111111111
             }
         },
@@ -296,7 +318,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.015625,
+                "x": 12.03125,
                 "y": 10.015625
             }
         },
@@ -320,7 +342,7 @@
             "scale": 96.615,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5.004398902861874,
+                "x": 4.999223723024375,
                 "y": 3.5035967499870617
             }
         },
@@ -331,8 +353,16 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.015625,
+                "x": 12.03125,
                 "y": 10.015625
+            }
+        },
+        "buildings/wreckGreenhouseExterior.tmx": {
+            "scale": 128,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3.1328125,
+                "y": 3.62109375
             }
         },
         "carpentersShopExterior.tmx": {
@@ -352,11 +382,11 @@
             }
         },
         "defaultMap.tmx": {
-            "scale": 16,
-            "selectedLayer": 1,
+            "scale": 11,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 49.96875,
-                "y": 49.96875
+                "x": 19.272727272727273,
+                "y": 47.772727272727266
             }
         },
         "defaultMap.tmx#biome": {
@@ -394,7 +424,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": -3.4222222222222225,
-                "y": 1.2777777777777786
+                "y": 1.2888888888888888
             }
         },
         "greenHouse.tmx#ground": {
@@ -476,6 +506,14 @@
             }
         }
     },
+    "last.exportedFilePath": "/home/parsa/Projects/University/AP/Stardew Valley/src/data/maps",
+    "last.imagePath": "/home/parsa/Projects/University/AP/Stardew Valley/Moz/MapEditor/buildings/images",
+    "map.height": 7,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 1,
+    "map.tileWidth": 1,
+    "map.width": 6,
     "openFiles": [
         "defaultMap.tmx",
         "Tile sets/buildings.tsx",
@@ -485,5 +523,20 @@
         "buildings/blackSmithExterior.tmx",
         "Tile sets/region.tsx",
         "Tile sets/region.json"
+    ],
+    "project": "Stardew Valley.tiled-project",
+    "recentFiles": [
+        "Tile sets/buildings.json",
+        "buildings/destroyedGreenhouse.tmx",
+        "buildings/fishShopExterior.tmx",
+        "buildings/marniesRanchInterior.tmx",
+        "buildings/pierresGeneralStoreInterior.tmx",
+        "buildings/stardropSaloonInterior.tmx",
+        "buildings/cottageInterior.tmx",
+        "buildings/fishShopInterior.tmx",
+        "buildings/cottageExterior.tmx",
+        "buildings/blackSmithInterior.tmx",
+        "buildings/stardropSaloonExterior.tmx",
+        "defaultMap.tmx"
     ]
 }

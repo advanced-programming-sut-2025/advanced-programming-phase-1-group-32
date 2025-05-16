@@ -8,14 +8,90 @@ import java.util.*;
 public enum BiomeType {
     FOREST(
             Map.of(
-                Season.SPRING,
-                Arrays.asList(
-                    new Spawnable("Daffodil", 10)
+                Season.SPRING, Arrays.asList(
+                        new Spawnable("Daffodil", 10),
+                        new Spawnable("Dandelion", 10),
+                        new Spawnable("Leek", 10),
+                        new Spawnable("Morel", 10),
+                        new Spawnable("Salmonberry", 10),
+                        new Spawnable("Spring Onion", 10),
+                        new Spawnable("Wild Horseradish", 10),
+                        new Spawnable("Jazz Seeds", 10),
+                        new Spawnable("Carrot Seeds", 10),
+                        new Spawnable("Cauliflower Seeds", 10),
+                        new Spawnable("Coffee Bean", 10),
+                        new Spawnable("Garlic Seeds", 10),
+                        new Spawnable("Bean Starter", 10),
+                        new Spawnable("Kale Seeds", 10),
+                        new Spawnable("Parsnip Seeds", 10),
+                        new Spawnable("Potato Seeds", 10),
+                        new Spawnable("Rhubarb Seeds", 10),
+                        new Spawnable("Strawberry Seeds", 10),
+                        new Spawnable("Tulip Bulb", 10),
+                        new Spawnable("Rice Shoot", 10),
+                        new Spawnable("Common Mushroom", 10),
+                        new Spawnable("Ancient Seeds", 10)
+                ),
+                Season.SUMMER, Arrays.asList(
+                        new Spawnable("Fiddlehead Fern", 10),
+                        new Spawnable("Grape", 10),
+                        new Spawnable("Red Mushroom", 10),
+                        new Spawnable("Spice Berry", 10),
+                        new Spawnable("Sweet Pea", 10),
+                        new Spawnable("Blueberry Seeds", 10),
+                        new Spawnable("Corn Seeds", 10),
+                        new Spawnable("Hops Starter", 10),
+                        new Spawnable("Pepper Seeds", 10),
+                        new Spawnable("Melon Seeds", 10),
+                        new Spawnable("Poppy Seeds", 10),
+                        new Spawnable("Radish Seeds", 10),
+                        new Spawnable("Red Cabbage Seeds", 10),
+                        new Spawnable("Starfruit Seeds", 10),
+                        new Spawnable("Spangle Seeds", 10),
+                        new Spawnable("Summer Squash Seeds", 10),
+                        new Spawnable("Sunflower Seeds", 10),
+                        new Spawnable("Tomato Seeds", 10),
+                        new Spawnable("Wheat Seeds", 10),
+                        new Spawnable("Common Mushroom", 10),
+                        new Spawnable("Ancient Seeds", 10)
+                ),
+                Season.FALL, Arrays.asList(
+                        new Spawnable("Blackberry", 10),
+                        new Spawnable("Chanterelle", 10),
+                        new Spawnable("Hazelnut", 10),
+                        new Spawnable("Purple Mushroom", 10),
+                        new Spawnable("Wild Plum", 10),
+                        new Spawnable("Amaranth Seeds", 10),
+                        new Spawnable("Artichoke Seeds", 10),
+                        new Spawnable("Beet Seeds", 10),
+                        new Spawnable("Bok Choy Seeds", 10),
+                        new Spawnable("Broccoli Seeds", 10),
+                        new Spawnable("Cranberry Seeds", 10),
+                        new Spawnable("Eggplant Seeds", 10),
+                        new Spawnable("Fairy Seeds", 10),
+                        new Spawnable("Grape Starter", 10),
+                        new Spawnable("Pumpkin Seeds", 10),
+                        new Spawnable("Yam Seeds", 10),
+                        new Spawnable("Rare Seed", 10),
+                        new Spawnable("Common Mushroom", 10),
+                        new Spawnable("Ancient Seeds", 10)
+                ),
+                Season.WINTER, Arrays.asList(
+                        new Spawnable("Crocus", 10),
+                        new Spawnable("Crystal Fruit", 10),
+                        new Spawnable("Holly", 10),
+                        new Spawnable("Snow Yam", 10),
+                        new Spawnable("Winter Root", 10),
+                        new Spawnable("Powdermelon Seeds", 10),
+                        new Spawnable("Common Mushroom", 10),
+                        new Spawnable("Ancient Seeds", 10)
                 )
             ),
             Arrays.asList(
-                new Spawnable("Pine Tree", 10),
-                new Spawnable("Apricot Tree", 10)
+                    new Spawnable("Common Mushroom", 10),
+                    new Spawnable("Ancient Seeds", 10),
+                    new Spawnable("Pine Tree", 10),
+                    new Spawnable("Apricot Tree", 10)
             )
     ),
     MINE(
@@ -33,8 +109,6 @@ public enum BiomeType {
                 )
             ),
             Arrays.asList(
-                new Spawnable("Pine Tree", 10),
-                new Spawnable("Apricot Tree", 10)
     ));
 
     public Map<Season, List<Spawnable>> seasonalForageables;

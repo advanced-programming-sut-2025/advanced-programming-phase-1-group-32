@@ -3,7 +3,8 @@ package models.gameMap;
 import models.App;
 
 public enum WorldMapType {
-    DEFAULT("defaultMap");
+    DEFAULT("bigMap"),
+    BIG("bigMap");
     private final String mapName;
 
     WorldMapType(String mapName) {

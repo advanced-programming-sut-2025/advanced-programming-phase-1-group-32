@@ -23,6 +23,8 @@ public static Result placeOnTile(Entity entity, Tile tile){
         return new Result(false, "tile is full");
     }
 
+    if(entity.getComponent(Placeable.class) == null) return placeOnMap(entity, tile.getPosition(), tile.getMap());
+
     tile.setContent(entity);
     entity.addObserver(tile);
     tile.getMap().addEntity(entity);

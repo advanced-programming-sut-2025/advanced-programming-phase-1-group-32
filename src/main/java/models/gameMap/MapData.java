@@ -64,6 +64,10 @@ class MapObject {
     int x;
     @JsonProperty("y")
     int y;
+    @JsonProperty("width")
+    int width;
+    @JsonProperty("height")
+    int height;
     @JsonProperty("properties")
     ArrayList<MapData.ObjectProperty> properties;
     TileData data;
@@ -175,7 +179,7 @@ public class MapData {
             this.layers.putIfAbsent(m.name, m);
         }
         if ((layers.get("ground")) == null) {
-            throw new RuntimeException("no layer with the name \"ground\" was found in the layers. the map needs a ground layer.");
+            throw new RuntimeException("no layer with the name \"ground\" was found in the layers of . the map needs a ground layer.");
         }
 
         this.width = layers.get("ground").width;
@@ -328,7 +332,7 @@ public class MapData {
 
             public ObjectData(T value, int x, int y, ArrayList<ObjectProperty> properties) {
                 this.value = value;
-                this.x = x;
+                this.x = x ;
                 this.y = y;
                 this.properties.addAll(properties);
             }
@@ -373,13 +377,14 @@ public class MapData {
                     this.dataArray = arr;
                     for (int i = 0; i < layer.height; i++) {
                         for (int j = 0; j < layer.width; j++) {
-                            dataArray[i][j] = dataMap.get(layer.data[i][j].globalId);
+                            dataArray[i][j] = dataMap.get(layer.data[i][j] != null ? layer.data[i][j].globalId : 0);
                         }
                     }
                 }
                 case objectgroup -> {
                     for (MapObject o : layer.objects) {
-                        objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y, o.properties != null ? o.properties : new ArrayList<>()));
+                        objectArray.add(this.new ObjectData(dataMap.get(o.gid), o.x, o.y - (o.height - 1)
+                                , o.properties != null ? o.properties : new ArrayList<>()));
                     }
                 }
             }

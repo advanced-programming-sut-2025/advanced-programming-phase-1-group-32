@@ -45,12 +45,10 @@ walk -l 18, 32
 
 tools equip Axe
 
-
-walk -l 7, 14
-y
-walk -l 52,53
-y
-
-
+toggle map
+cheat give item "Inspector" 1
+tools equip Inspector
+change input type
 toggle map
 change input type
+
