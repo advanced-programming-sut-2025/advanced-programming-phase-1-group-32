@@ -507,8 +507,8 @@ public class GameMenuController implements Controller {
         if (tile.getContent() != null || tile.getType().equals(TileType.PLANTED_GROUND)) {
             return new Result(false, "tile isn't empty");
         }
-
-        if(StringUtils.isNamesEqual(tile.getMap().getBuilding().getEntityName(), "greenhouse")){
+        Entity building = tile.getMap().getBuilding();
+        if(building != null && StringUtils.isNamesEqual(building.getEntityName(), "greenhouse")){
             //TODO greenhouse logic (planting in all seasons, cant plant trees, ...)
         }
 
