@@ -150,6 +150,8 @@ public enum UseFunction {
             Container container =  tool.getComponent(Container.class);
             if(tile.getContent() == null || tile.getContent().getComponent(Growable.class) == null)
                 return new Result(false, "you can't water this ground");
+            if(container.getCharge() == 0)
+                return new Result(false, "You should fill watering can first!");
             tile.getContent().getComponent(Growable.class).setWateredToday(true);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;

@@ -27,6 +27,8 @@ public class Container extends EntityComponent {
 
     public void decreaseCharge(int charge) {
         this.charge -= charge;
+        if(this.charge < 0)
+            this.charge = 0;
     }
     public void decreaseCharge() {
         decreaseCharge(1);
