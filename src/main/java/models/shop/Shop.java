@@ -19,13 +19,11 @@ public class Shop extends EntityComponent {
     private ArrayList<AnimalShopProduct> animals;
     private ArrayList<OtherShopProduct> products;
     private ArrayList<UpgradableShopProduct> upgrades;
-    private int startHour;
-    private int endHour;
+    public final int startHour;
+    public final int endHour;
 
 
-    Shop() {
 
-    }
 
     @JsonCreator
     public Shop(@JsonProperty("name") String name) {
@@ -143,6 +141,10 @@ public class Shop extends EntityComponent {
         for (ShopProduct product : getAllProducts()) {
             product.reset();
         }
+    }
+
+    public boolean isClosed() {
+        return App.getActiveGame().getDate().getHour() < startHour || App.getActiveGame().getDate().getHour() > endHour;
     }
 
 

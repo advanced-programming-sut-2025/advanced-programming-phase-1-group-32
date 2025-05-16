@@ -399,6 +399,9 @@ public class GameMenuController implements Controller {
         int x = player.getPosition().getCol();
         int y = player.getPosition().getRow();
         int[][] directions = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 1}, {-1, 0}, {-1, -1}};
+        Entity temp = App.entityRegistry.getData(artisanName);
+        if(temp == null || !temp.hasTag(EntityTag.ARTISAN))
+            return new Result(false, "This artisan doesn't exist!");
         for (int[] dir : directions) {
             Tile tile = game.getActiveMap().getTileByPosition(y + dir[0], x + dir[1]);
             if (tile == null) continue;
@@ -687,7 +690,6 @@ public class GameMenuController implements Controller {
 
 
     public Result cookingPrepare(String recipeName) {
-        //TODO: it should handle player inventory and refrigerator inventory
 
         Player player = App.getActiveGame().getCurrentPlayer();
         Recipe recipe = App.recipeRegistry.getRecipe(recipeName);
@@ -748,6 +750,8 @@ public class GameMenuController implements Controller {
         Shop shop = currentPlayer.getPosition().getMap().getBuilding().getComponent(Shop.class);
         if(shop == null)
             return new Result(false, "this building doesn't have shop");
+        if(shop.isClosed())
+            return new Result(false, "Shop is Closed! it's open between " +shop.startHour + "-" + shop.endHour);
         AnimalShopProduct product = shop.getAnimalShopProduct(animalTypeString);
         if(product == null)
             return new Result(false, "this product doesn't exist");
@@ -983,6 +987,8 @@ public class GameMenuController implements Controller {
         Shop shop = activeBuilding.getComponent(Shop.class);
         if(shop == null)
             return new Result(false, "This building doesn't have shop");
+        if(shop.isClosed())
+            return new Result(false, "Shop is Closed! it's open between " +shop.startHour + "-" + shop.endHour);
         return new Result(true, printProducts(shop.getAllProducts(), "All Products:"));
     }
 
@@ -1006,6 +1012,8 @@ public class GameMenuController implements Controller {
         Shop shop = activeBuilding.getComponent(Shop.class);
         if(shop == null)
             return new Result(false, "This building doesn't have shop");
+        if(shop.isClosed())
+            return new Result(false, "Shop is Closed! it's open between " +shop.startHour + "-" + shop.endHour);
         return new Result(true, printProducts(shop.getAvailableProducts(), "Available Products:"));
     }
 
@@ -1017,6 +1025,8 @@ public class GameMenuController implements Controller {
         Shop shop = activeBuilding.getComponent(Shop.class);
         if (shop == null)
             return new Result(false, "This building doesn't have shop");
+        if(shop.isClosed())
+            return new Result(false, "Shop is Closed! it's open between " +shop.startHour + "-" + shop.endHour);
         OtherShopProduct product = shop.getOtherShopProduct(productName);
         if (product == null)
             return new Result(false, "This shop doesn't have this product");
@@ -1032,6 +1042,8 @@ public class GameMenuController implements Controller {
         Shop shop = activeBuilding.getComponent(Shop.class);
         if(shop == null)
             return new Result(false, "This building doesn't have shop");
+        if(shop.isClosed())
+            return new Result(false, "Shop is Closed! it's open between " +shop.startHour + "-" + shop.endHour);
         return ShopSystem.buildPlaceable(shop.getBuildingShopProduct(productName), x, y);
     }
 
@@ -1666,22 +1678,29 @@ public class GameMenuController implements Controller {
         WalkProposal p;
         switch (c) {
             case 'a':
+            case 'A':
                 p = this.proposeWalk(player.getPosition().getCol() - 1, player.getPosition().getRow());
                 executeWalk(p);
                 break;
             case 's':
+            case 'S':
                 p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() + 1);
                 executeWalk(p);
                 break;
             case 'w':
+            case 'W':
                 p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() - 1);
                 executeWalk(p);
                 break;
             case 'd':
+            case 'D':
                 p = this.proposeWalk(player.getPosition().getCol() + 1, player.getPosition().getRow());
                 executeWalk(p);
                 break;
+
+
             case 'x':
+            case 'X':
                 switchInputType();
                 break;
             case '1':

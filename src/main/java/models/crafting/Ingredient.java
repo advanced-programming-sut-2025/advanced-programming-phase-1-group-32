@@ -53,6 +53,17 @@ public class Ingredient {
         return true;
     }
 
+    public boolean isInIngredient(Entity e) {
+        if (!contents.isEmpty()) {
+            return contents.contains(e.getEntityName());
+        }
+
+        if (!validTags.isEmpty()) {
+            return e.getTags().stream().anyMatch(validTags::contains);
+        }
+        return true;
+    }
+
 
     @Override
     public String toString() {
