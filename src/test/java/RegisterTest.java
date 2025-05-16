@@ -55,14 +55,15 @@ public class RegisterTest {
 
     @ParameterizedTest
     @CsvSource({
-            "register -u AliAlmasi -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g male, Account registered successfully!",
-            "register -u AliAlmasi2 -p CorP@ss1 CorP@ss1 -n AliAlm -e Ali@gmail.com -g male, Account registered successfully!",
-            "register -u AliAlmasi3 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gm.ail.com -g male, Account registered successfully!",
-            "register -u AliAlmasi4 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Al.i@gmail.com -g male, Account registered successfully!",
-            "register -u AliAlmasi5 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g female, Account registered successfully!"
+            "register -u Ali-Almasi -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g male",
+            "register -u AliAlmasi2 -p CorP@ss1 CorP@ss1 -n AliAlm -e Ali@gmail.com -g male",
+            "register -u AliAlmasi3 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gm.ail.com -g male",
+            "register -u AliAlmasi4 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Al.i@gmail.com -g male",
+            "register -u AliAlmasi5 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g female"
 
     })
-    void validInput(String input, String startExpected) {
+    void validInput(String input) {
+        String startExpected = "Account registered successfully!";
         setIn(input);
         scanner = new Scanner(System.in);
         menu.checker(scanner);
@@ -71,16 +72,18 @@ public class RegisterTest {
 
     }
 
-    @Test
-    void invalidUserName() {
-        setIn(makeRegisterCommand("AliAlm", "CorrectP@ss1", "CorrectP@ss1",
-                "AliAlm", "Ali@gmail.com", "male"));
+    @ParameterizedTest
+    @CsvSource({
+            "register -u Ali Almasi -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g male",
+            "register -u Ali_Almasi -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g male",
+    })
+    void usernameValidation(String input) {
+        setIn(input);
         scanner = new Scanner(System.in);
         menu.checker(scanner);
         String output = out.toString().trim();
-        String startExpected = "invalid Username";//TODO
-//        assertTrue(output.startsWith(startExpected), "your code output:\n" + output + "\nexpected:\n" + startExpected + "\n");
-        assertTrue(true);
+        String startExpected = "Username contains invalid characters";//TODO
+        assertTrue(output.startsWith(startExpected), "your code output:\n" + output + "\nexpected:\n" + startExpected + "\n");
     }
 
     @Test
@@ -96,14 +99,20 @@ public class RegisterTest {
     }
 
 
-    @Test
-    void invalidEmail1() {
-        setIn(makeRegisterCommand("AliAlmasi", "CorrectP@ss1", "CorrectP@ss1",
-                "AliAlm", "Ali@gmail..co.mmm", "male"));
+    @ParameterizedTest
+    @CsvSource({
+            "register -u AliAlm1 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.co.m -g male, \"m\" is too short",
+            "register -u AliAlm2 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gm..ail.com -g male, email should not contain \"..\"",
+            "register -u AliAlm3 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gma@il.com -g male, \"Ali@gma\" contains invalid characters",
+            "register -u AliAlm4 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmAil.com -g male, Account registered successfully!",
+            "register -u AliAlm5 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gail.om -g male, Account registered successfully!",
+            "register -u AliAlm6 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gl.com -g male, Account registered successfully!"
+    })
+    void emailValidation(String input, String startExpected) {
+        setIn(input);
         scanner = new Scanner(System.in);
         menu.checker(scanner);
         String output = out.toString().trim();
-        String startExpected = "email should not contain \"..\"";
         assertTrue(output.startsWith(startExpected), "your code output:\n" + output + "\nexpected:\n" + startExpected + "\n");
     }
 }
