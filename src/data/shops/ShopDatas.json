@@ -643,5 +643,436 @@
         "dailyLimit": 1
       }
     ]
+  },
+  {
+    "name" : "Fish Shop",
+    "startHour" : 9,
+    "endHour" : 17,
+    "products" : [
+      {
+        "type" : "Product",
+        "name": "Fish Smoker (Recipe)",
+        "price": 10000,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Trout Soup",
+        "price": 250,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Bamboo Pole",
+        "price": 500,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Training Rod",
+        "price": 25,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Fiberglass Rod",
+        "price": 1800,
+        "dailyLimit": 1
+      },
+      {
+        "type" : "Product",
+        "name": "Iridium Rod",
+        "price": 7500,
+        "dailyLimit": 1
+      }
+    ]
+  },
+  {
+    "name" : "Pierre's General Store",
+    "startHour" : 9,
+    "endHour" : 17,
+    "products": [
+      {
+        "type": "Product",
+        "name": "Rice",
+        "price": 200,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Wheat Flour",
+        "price": 100,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Bouquet",
+        "price": 1000,
+        "dailyLimit": 2
+      },
+      {
+        "type": "Product",
+        "name": "Wedding Ring",
+        "price": 10000,
+        "dailyLimit": 2
+      },
+      {
+        "type": "Product",
+        "name": "Dehydrator (Recipe)",
+        "price": 10000,
+        "dailyLimit": 1
+      },
+      {
+        "type": "Product",
+        "name": "Grass Starter (Recipe)",
+        "price": 1000,
+        "dailyLimit": 1
+      },
+      {
+        "type": "Product",
+        "name": "Sugar",
+        "price": 100,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Oil",
+        "price": 200,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Vinegar",
+        "price": 200,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Deluxe Retaining Soil",
+        "price": 150,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Grass Starter",
+        "price": 100,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Speed-Gro",
+        "price": 100,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Apple Sapling",
+        "price": 4000,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Apricot Sapling",
+        "price": 2000,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Cherry Sapling",
+        "price": 3400,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Orange Sapling",
+        "price": 4000,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Peach Sapling",
+        "price": 6000,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Pomegranate Sapling",
+        "price": 6000,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Basic Retaining Soil",
+        "price": 100,
+        "dailyLimit": -1
+      },
+      {
+        "type": "Product",
+        "name": "Quality Retaining Soil",
+        "price": 150,
+        "dailyLimit": -1
+      },
+
+
+      {
+        "type": "Product",
+        "name": "Large Pack",
+        "price": 2000,
+        "dailyLimit": 1
+      },
+      {
+        "type": "Product",
+        "name": "Deluxe Pack",
+        "price": 10000,
+        "dailyLimit": 1
+      },
+
+
+
+      {
+        "type": "Product",
+        "name": "Parsnip Seeds",
+        "season" : "SPRING",
+        "price": 20,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Bean Starter",
+        "season" : "SPRING",
+        "price": 60,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Cauliflower Seeds",
+        "season" : "SPRING",
+        "price": 80,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Potato Seeds",
+        "season" : "SPRING",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Tulip Bulb",
+        "season" : "SPRING",
+        "price": 20,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Kale Seeds",
+        "season" : "SPRING",
+        "price": 70,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Jazz Seeds",
+        "season" : "SPRING",
+        "price": 30,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Garlic Seeds",
+        "season" : "SPRING",
+        "price": 40,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Rice Shoot",
+        "season" : "SPRING",
+        "price": 40,
+        "dailyLimit": 5
+      },
+
+
+
+
+      {
+        "type": "Product",
+        "name": "Melon Seeds",
+        "season" : "SUMMER",
+        "price": 80,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Tomato Seeds",
+        "season" : "SUMMER",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Blueberry Seeds",
+        "season" : "SUMMER",
+        "price": 80,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Pepper Seeds",
+        "season" : "SUMMER",
+        "price": 40,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Wheat Seeds",
+        "season" : "SUMMER",
+        "price": 10,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Radish Seeds",
+        "season" : "SUMMER",
+        "price": 40,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Poppy Seeds",
+        "season" : "SUMMER",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Spangle Seeds",
+        "season" : "SUMMER",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Hops Starter",
+        "season" : "SUMMER",
+        "price": 60,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Corn Seeds",
+        "season" : "SUMMER",
+        "price": 150,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Sunflower Seeds",
+        "season" : "SUMMER",
+        "price": 200,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Red Cabbage Seeds",
+        "season" : "SUMMER",
+        "price": 100,
+        "dailyLimit": 5
+      },
+
+
+
+      {
+        "type": "Product",
+        "name": "Eggplant Seeds",
+        "season" : "FALL",
+        "price": 20,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Corn Seeds",
+        "season" : "FALL",
+        "price": 150,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Pumpkin Seeds",
+        "season" : "FALL",
+        "price": 100,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Bok Choy Seeds",
+        "season" : "FALL",
+        "price": 50,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Yam Seeds",
+        "season" : "FALL",
+        "price": 60,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Cranberry Seeds",
+        "season" : "FALL",
+        "price": 240,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Sunflower Seeds",
+        "season" : "FALL",
+        "price": 200,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Fairy Seeds",
+        "season" : "FALL",
+        "price": 200,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Amaranth Seeds",
+        "season" : "FALL",
+        "price": 70,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Grape Starter",
+        "season" : "FALL",
+        "price": 60,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Wheat Seeds",
+        "season" : "FALL",
+        "price": 10,
+        "dailyLimit": 5
+      },
+      {
+        "type": "Product",
+        "name": "Artichoke Seeds",
+        "season" : "FALL",
+        "price": 30,
+        "dailyLimit": 5
+      }
+      
+
+
+
+
+    ]
+
   }
 ]
