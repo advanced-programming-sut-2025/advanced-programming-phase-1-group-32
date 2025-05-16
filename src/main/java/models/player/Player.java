@@ -51,6 +51,7 @@ public class    Player extends Entity {
     private Entity house;
     private Entity refrigerator;
     private Entity greenHouse;
+    private Entity trashcan;
     private Buff activeBuff;
 
 
@@ -69,6 +70,8 @@ public class    Player extends Entity {
         for (SkillType s : SkillType.values()) {
             skills.put(s, new Skill());
         }
+
+        this.trashcan = App.entityRegistry.makeEntity("Trashcan");
 
         this.account = account;
     }

@@ -20,6 +20,14 @@
       "name": "Wedding Ring",
       "tags" : ["RING"],
       "components" : []
+    },    {
+      "name": "Trashcan",
+      "components" : [
+        {
+          "type" : "Upgradable",
+          "level" : "STONE"
+        }
+      ]
     }
   ]
 }

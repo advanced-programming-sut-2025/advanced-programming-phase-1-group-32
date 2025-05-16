@@ -2002,4 +2002,11 @@ public class GameMenuController implements Controller {
 
         return new Result(false, "no shipping bin found");
     }
+    public Result trashItem(String name, int amount){
+        Player player = App.getActiveGame().getCurrentPlayer();
+        Entity entity = player.getComponent(Inventory.class).takeFromInventory(name, player.getComponent(Inventory.class).getItemCount(name));
+        entity.delete();
+        //TODO
+        return new Result(false, "");
+    }
 }

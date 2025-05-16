@@ -351,6 +351,8 @@ public class GameMenu implements AppMenu {
 
             } else if ((matcher = GameMenuCommands.CHANGE_MAP_RENDER.getMatcher(input)) != null) {
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
+            } else if ((matcher = GameMenuCommands.TRASH_ITEM.getMatcher(input)) != null) {
+                System.out.println(controller.trashItem(matcher.group("name").trim(), Integer.parseInt(matcher.group("amount").trim())));
             } else {
                 System.out.println("Invalid Command!");
             }
