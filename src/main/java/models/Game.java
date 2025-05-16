@@ -199,7 +199,19 @@ public class Game {
     }
 
     public void nextTurn(){
+        ArrayList<Player> players = getPlayers();
+        int index = players.indexOf(getCurrentPlayer());
 
+        if (index == getPlayers().size() - 1) {
+            setCurrentPlayer(players.get(0));
+            date.addHour(1, this);
+        } else {
+            setCurrentPlayer(players.get(index + 1));
+        }
+
+        if (currentPlayer.isGhashed()) {
+            nextTurn();
+        }
     }
 
     public Player getCurrentPlayer() {

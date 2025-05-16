@@ -64,16 +64,7 @@ public class GameMenuController implements Controller {
 
     public Result nextTurn() {
         Game game = App.getActiveGame();
-        ArrayList<Player> players = game.getPlayers();
-        Player currentPlayer = game.getCurrentPlayer();
-        int index = players.indexOf(game.getCurrentPlayer());
-
-        if (index == game.getPlayers().size() - 1) {
-            game.setCurrentPlayer(players.get(0));
-            advanceTime(1);
-        } else {
-            game.setCurrentPlayer(players.get(index + 1));
-        }
+        game.nextTurn();
 
         StringBuilder message = new StringBuilder();
         message.append("You are playing as ").append(game.getCurrentPlayer().getAccount().getNickname());
@@ -113,7 +104,6 @@ public class GameMenuController implements Controller {
 
         // this function will update data about game.Date
         date.addHour(amount, game);
-        game.setDate(date);
 
         return new Result(true, "We've traveled through time for " + amount + " hours!");
     }

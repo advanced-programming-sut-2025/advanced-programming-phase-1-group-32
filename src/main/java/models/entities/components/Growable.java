@@ -277,4 +277,13 @@ public class Growable extends EntityComponent {
         return null;
     }
 
+<<<<<<< Updated upstream
+=======
+    private boolean isInGreenhouse() {
+        Entity building = this.entity.getComponent(PositionComponent.class).getMap().getBuilding();
+        if (building == null) return false;
+        return StringUtils.isNamesEqual(building.getEntityName(), "greenhouse");
+    }
+
+>>>>>>> Stashed changes
 }
