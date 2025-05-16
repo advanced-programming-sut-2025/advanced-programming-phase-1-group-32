@@ -35,7 +35,7 @@
               "max": 10
             },
             {
-              "entity": "Pine seed",
+              "entity": "Pine Cones",
               "min": 1,
               "max": 6,
               "probability": 0.5
@@ -47,23 +47,12 @@
           "fruit": "Pine Tar",
           "oneTime": false,
           "regrowthTime": 5,
-          "stages": [
-            7,
-            7,
-            7,
-            7
-          ],
+          "stages": [7, 7, 7, 7],
           "totalHarvestTime": 28,
-          "seasons": [
-            "SPRING",
-            "SUMMER",
-            "FALL",
-            "WINTER"
-          ]
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
         }
       ]
-    },
-    {
+    },{
       "name": "Apricot Tree",
       "components": [
         {
@@ -88,16 +77,412 @@
           "fruit": "Apricot",
           "oneTime": false,
           "regrowthTime": 1,
-          "stages": [
-            7,
-            7,
-            7,
-            7
-          ],
+          "stages": [7, 7, 7, 7],
           "totalHarvestTime": 28,
-          "seasons": [
-            "SPRING"
+          "seasons": ["SPRING"]
+        }
+      ]
+    },
+    {
+      "name": "Cherry Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Cherry Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
           ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Cherry",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING"]
+        }
+      ]
+    },
+    {
+      "name": "Banana Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Banana Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Banana",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SUMMER"]
+        }
+      ]
+    },
+    {
+      "name": "Mango Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Mango Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Mango",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SUMMER"]
+        }
+      ]
+    },
+    {
+      "name": "Orange Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Orange Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Orange",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SUMMER"]
+        }
+      ]
+    },
+    {
+      "name": "Peach Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Peach Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Peach",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SUMMER"]
+        }
+      ]
+    },
+    {
+      "name": "Apple Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Apple Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Apple",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["FALL"]
+        }
+      ]
+    },
+    {
+      "name": "Pomegranate Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Pomegranate Sapling",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Pomegranate",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["FALL"]
+        }
+      ]
+    },
+    {
+      "name": "Oak Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Acorns",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Oak Resin",
+          "oneTime": false,
+          "regrowthTime": 7,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+        }
+      ]
+    },
+    {
+      "name": "Maple Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Maple Seeds",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Maple Syrup",
+          "oneTime": false,
+          "regrowthTime": 9,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+        }
+      ]
+    },
+    {
+      "name": "Pine Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Pine Cones",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Pine Tar",
+          "oneTime": false,
+          "regrowthTime": 5,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+        }
+      ]
+    },
+    {
+      "name": "Mahogany Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Mahogany Seeds",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Sap",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+        }
+      ]
+    },
+    {
+      "name": "Mushroom Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Mushroom Tree Seeds",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Common Mushroom",
+          "oneTime": false,
+          "regrowthTime": 1,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
+        }
+      ]
+    },
+    {
+      "name": "Mystic Tree",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "entity": "Mystic Tree Seeds",
+              "min": 1,
+              "max": 6,
+              "probability": 0.5
+            }
+          ]
+        },
+        {
+          "type": "Growable",
+          "fruit": "Mystic Syrup",
+          "oneTime": false,
+          "regrowthTime": 7,
+          "stages": [7, 7, 7, 7],
+          "totalHarvestTime": 28,
+          "seasons": ["SPRING", "SUMMER", "FALL", "WINTER"]
         }
       ]
     },
@@ -114,6 +499,25 @@
               "max": 7
             }
           ]
+        }
+      ]
+    },{
+      "name": "Broken branch",
+      "components": [
+        {
+          "type": "Harvestable",
+          "material": "STONE",
+          "resources": [
+            {
+              "entity": "Wood",
+              "min": 1,
+              "max": 3
+            }
+          ]
+        },    {
+          "type": "Renderable",
+          "char": "-",
+          "color": [69, 46, 14]
         }
       ]
     }

@@ -46,6 +46,7 @@ public class EntityList extends ArrayList<Entity> implements EntityObserver {
 
     @SuppressWarnings("unchecked")
     public <T extends EntityComponent> ArrayList<T> getComponentsOfType(Class<T> clazz){
+        components.putIfAbsent(clazz, new ArrayList<>());
         return (ArrayList<T>) components.get(clazz);
     }
 }

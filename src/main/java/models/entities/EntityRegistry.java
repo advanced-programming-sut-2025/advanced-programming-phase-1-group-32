@@ -53,7 +53,7 @@ public class EntityRegistry extends Registry<Entity>{
         for(Entity e : entities){
             if(commonComponents != null){
                 for(EntityComponent c : commonComponents){
-                    e.addComponent(c);
+                    e.addComponent(c.clone());
                 }
             }
             if(requiredComponents != null){

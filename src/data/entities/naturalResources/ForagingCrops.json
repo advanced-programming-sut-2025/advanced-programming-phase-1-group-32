@@ -1,8 +1,8 @@
 {
   "common components": [
     {
-      "type": "Placeable",
-      "isWalkable": true
+      "type": "Pickable",
+      "maxStack" : 8000000
     },{
       "type": "Renderable",
       "char": "c",

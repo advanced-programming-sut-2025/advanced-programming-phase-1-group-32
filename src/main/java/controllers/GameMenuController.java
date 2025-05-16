@@ -1685,6 +1685,8 @@ public class GameMenuController implements Controller {
             case '8':
                 return toolsUse(Direction.getDirection(c - '0'));
             case 'e':
+                return pickupNearItems();
+            case 't':
                 return advanceTime(1);
             default:
                 break;
@@ -1883,6 +1885,7 @@ public class GameMenuController implements Controller {
 
     public Result pickupNearItems(){
         ArrayList<Pickable> pickables = new ArrayList<>(App.getActiveGame().getActiveMap().getComponentsOfType(Pickable.class));
+        if(pickables == null) return new Result(false, "You picked up nothing dumbass");
         Player player = App.getActiveGame().getCurrentPlayer();
         Position playerPos = player.getPosition();
         GameMap map = playerPos.getMap();
@@ -1941,6 +1944,7 @@ public class GameMenuController implements Controller {
     }
     public Result buildGreenhouse(){
         Player player = App.getActiveGame().getCurrentPlayer();
+        player.getOwnedPlantedTiles();
 
         int wood = player.getComponent(Inventory.class).getItemCount("Wood");
         double money = player.getWallet().getBalance();

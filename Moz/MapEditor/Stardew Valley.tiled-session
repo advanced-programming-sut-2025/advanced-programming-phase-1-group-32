@@ -165,8 +165,8 @@
             "scale": 13.6717,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 153.52882231178273,
-                "y": 133.08513206111894
+                "x": 149.94477643599552,
+                "y": 149.98134833268722
             }
         },
         "blackSmithExterior.tmx": {
@@ -192,7 +192,7 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1.046875,
+                "x": 3,
                 "y": 2.0078125
             }
         },
@@ -200,7 +200,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2.09375,
+                "x": 6,
                 "y": 4.015625
             }
         },
@@ -208,7 +208,7 @@
             "scale": 64,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1.546875,
+                "x": 3.5,
                 "y": 2.5078125
             }
         },
@@ -216,7 +216,7 @@
             "scale": 48.3075,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.409253221549449,
+                "x": 7.017543859649123,
                 "y": 5.019924442374372
             }
         },
@@ -240,7 +240,7 @@
             "scale": 90,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1.6111111111111112,
+                "x": 3.000000000000001,
                 "y": 3.0055555555555555
             }
         },
@@ -248,8 +248,8 @@
             "scale": 45,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4.733333333333333,
-                "y": 7.522222222222224
+                "x": 7.511111111111111,
+                "y": 7.500000000000002
             }
         },
         "buildings/destroyedGreenhouse.tmx": {
@@ -272,7 +272,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.03125,
+                "x": 4,
                 "y": 6.015625
             }
         },
@@ -280,23 +280,23 @@
             "scale": 47.0159,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.636729276691501,
-                "y": 4.881327380737155
+                "x": 3.0202548499550144,
+                "y": 3.5200857582222174
             }
         },
         "buildings/greenHouseInterior.tmx": {
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.913043478260869,
-                "y": 9.67391304347826
+                "x": 5,
+                "y": 7.499999999999998
             }
         },
         "buildings/jojaMartExterior.tmx": {
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 5.022222222222222,
+                "x": 5,
                 "y": 4.011111111111111
             }
         },
@@ -304,15 +304,15 @@
             "scale": 23,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 10.043478260869565,
-                "y": 8.065217391304348
+                "x": 10,
+                "y": 8.021739130434785
             }
         },
         "buildings/marniesRanchExterior.tmx": {
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.03125,
+                "x": 4,
                 "y": 3.515625
             }
         },
@@ -320,7 +320,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 7.125,
+                "x": 8,
                 "y": 7.015625
             }
         },
@@ -328,7 +328,7 @@
             "scale": 45,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6.022222222222224,
+                "x": 6.000000000000002,
                 "y": 5.011111111111111
             }
         },
@@ -336,7 +336,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.03125,
+                "x": 12,
                 "y": 10.015625
             }
         },
@@ -371,7 +371,7 @@
             "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 12.03125,
+                "x": 12,
                 "y": 10.015625
             }
         },
@@ -403,8 +403,8 @@
             "scale": 11,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 19.272727272727273,
-                "y": 47.772727272727266
+                "x": 50,
+                "y": 49.95454545454546
             }
         },
         "defaultMap.tmx#biome": {

@@ -101,7 +101,7 @@ public class Game {
 
         mainMap.initRandomElements();
         initNPCs();
-
+        currentPlayer.getOwnedTiles();
     }
 
     public void initNPCs() {
@@ -112,7 +112,7 @@ public class Game {
                     new TypeReference<List<NPC>>() {});
 
             for (Entity npc : NPCs) {
-                NPC realNPC = new NPC(npc.getEntityName());
+            NPC realNPC = new NPC(npc.getEntityName());
                 gameNPCs.add(realNPC);
                 for (Player player : players) {
                     player.getNpcFriendships().put(realNPC, new NpcFriendship());

@@ -14,6 +14,14 @@ public class Forageable extends EntityComponent{
     public Date getDateAdded() {
         return dateAdded;
     }
+    public Forageable(Forageable other){
+        this.foraged = other.foraged;
+        //TODO
+        this.dateAdded = other.dateAdded;
+    }
+
+    public Forageable() {
+    }
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
@@ -25,6 +33,6 @@ public class Forageable extends EntityComponent{
 
     @Override
     public EntityComponent clone() {
-        return null;
+        return new Forageable(this);
     }
 }
