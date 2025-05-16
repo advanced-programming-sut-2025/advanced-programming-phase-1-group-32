@@ -16,4 +16,5 @@ public enum EntityTag {
     FISH,
     BUILDING,
     FERTILIZER,
+    RING
 }

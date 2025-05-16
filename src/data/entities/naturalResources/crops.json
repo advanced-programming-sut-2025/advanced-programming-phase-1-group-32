@@ -37,7 +37,9 @@
             2
           ],
           "totalHarvestTime": 7,
-          "canBecomeGiant": false
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
         },
         {
           "type": "Edible",
@@ -48,11 +50,1209 @@
           "price": 50
         }
       ]
+    },
+    {
+      "name": "Carrot",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Carrot Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 3,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 75
+        },
+        {
+          "type": "Sellable",
+          "price": 35
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Cauliflower Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            2,
+            4,
+            4,
+            1
+          ],
+          "totalHarvestTime": 12,
+          "canBecomeGiant": true,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 75
+        },
+        {
+          "type": "Sellable",
+          "price": 175
+        }
+      ]
+    },
+    {
+      "name": "Coffee Bean",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Coffee Bean",
+          "seasons": [
+            "SPRING",
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            2,
+            2,
+            3,
+            2
+          ],
+          "totalHarvestTime": 10,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 2
+        },
+        {
+          "type": "Sellable",
+          "price": 15
+        }
+      ]
+    },
+    {
+      "name": "Garlic",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Garlic Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 4,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 20
+        },
+        {
+          "type": "Sellable",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Green Bean",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Bean Starter",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            3,
+            4
+          ],
+          "totalHarvestTime": 10,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 3
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 40
+        }
+      ]
+    },
+    {
+      "name": "Kale",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Kale Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            2,
+            2,
+            1
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 50
+        },
+        {
+          "type": "Sellable",
+          "price": 110
+        }
+      ]
+    },
+    {
+      "name": "Parsnip",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Parsnip Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 4,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 35
+        }
+      ]
+    },
+    {
+      "name": "Potato",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Potato Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            2,
+            1
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Rhubarb",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Rhubarb Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            2,
+            2,
+            2,
+            3,
+            4
+          ],
+          "totalHarvestTime": 13,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Sellable",
+          "price": 220
+        }
+      ]
+    },
+    {
+      "name": "Strawberry",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Strawberry Seeds",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 4
+        },
+        {
+          "type": "Edible",
+          "energy": 50
+        },
+        {
+          "type": "Sellable",
+          "price": 120
+        }
+      ]
+    },
+    {
+      "name": "Tulip",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Tulip Bulb",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 30
+        }
+      ]
+    },
+    {
+      "name": "Unmilled Rice",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Rice Shoot",
+          "seasons": [
+            "SPRING"
+          ],
+          "stages": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 3
+        },
+        {
+          "type": "Sellable",
+          "price": 30
+        }
+      ]
+    },
+    {
+      "name": "Blueberry",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Blueberry Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            3,
+            3,
+            4,
+            2
+          ],
+          "totalHarvestTime": 13,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 4
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "Corn",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Corn Seeds",
+          "seasons": [
+            "SUMMER",
+            "FALL"
+          ],
+          "stages": [
+            2,
+            3,
+            3,
+            3,
+            3
+          ],
+          "totalHarvestTime": 14,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 4
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "Hops",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Hops Starter",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            1,
+            2,
+            3,
+            4
+          ],
+          "totalHarvestTime": 11,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 1
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 25
+        }
+      ]
+    },
+    {
+      "name": "Hot Pepper",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Pepper Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 5,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 3
+        },
+        {
+          "type": "Edible",
+          "energy": 13
+        },
+        {
+          "type": "Sellable",
+          "price": 40
+        }
+      ]
+    },
+    {
+      "name": "Melon",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Melon Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            2,
+            3,
+            3,
+            3
+          ],
+          "totalHarvestTime": 12,
+          "canBecomeGiant": true,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 113
+        },
+        {
+          "type": "Sellable",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Poppy",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Poppy Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "totalHarvestTime": 7,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 140
+        }
+      ]
+    },
+    {
+      "name": "Radish",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Radish Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            2,
+            1,
+            2,
+            1
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 90
+        }
+      ]
+    },
+    {
+      "name": "Red Cabbage",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Red Cabbage Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            2,
+            1,
+            2,
+            2,
+            2
+          ],
+          "totalHarvestTime": 9,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 75
+        },
+        {
+          "type": "Sellable",
+          "price": 260
+        }
+      ]
+    },
+    {
+      "name": "Starfruit",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Starfruit Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            2,
+            3,
+            2,
+            3,
+            3
+          ],
+          "totalHarvestTime": 13,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 125
+        },
+        {
+          "type": "Sellable",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Summer Spangle",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Spangle Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            2,
+            3,
+            1
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 90
+        }
+      ]
+    },
+    {
+      "name": "Summer Squash",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Summer Squash Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            2,
+            1
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 3
+        },
+        {
+          "type": "Edible",
+          "energy": 63
+        },
+        {
+          "type": "Sellable",
+          "price": 45
+        }
+      ]
+    },
+    {
+      "name": "Sunflower",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Sunflower Seeds",
+          "seasons": [
+            "SUMMER",
+            "FALL"
+          ],
+          "stages": [
+            1,
+            2,
+            3,
+            2
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Tomato",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Tomato Seeds",
+          "seasons": [
+            "SUMMER"
+          ],
+          "stages": [
+            2,
+            2,
+            2,
+            2,
+            3
+          ],
+          "totalHarvestTime": 11,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 4
+        },
+        {
+          "type": "Edible",
+          "energy": 20
+        },
+        {
+          "type": "Sellable",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Wheat",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Wheat Seeds",
+          "seasons": [
+            "SUMMER",
+            "FALL"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 4,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Sellable",
+          "price": 25
+        }
+      ]
+    },
+    {
+      "name": "Amaranth",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Amaranth Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "totalHarvestTime": 7,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 50
+        },
+        {
+          "type": "Sellable",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "name": "Artichoke",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Artichoke Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            2,
+            2,
+            1,
+            2,
+            1
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 30
+        },
+        {
+          "type": "Sellable",
+          "price": 160
+        }
+      ]
+    },
+    {
+      "name": "Beet",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Beet Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "totalHarvestTime": 6,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 30
+        },
+        {
+          "type": "Sellable",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Bok Choy",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Bok Choy Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 4,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 25
+        },
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Broccoli",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Broccoli Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "totalHarvestTime": 8,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 4
+        },
+        {
+          "type": "Edible",
+          "energy": 63
+        },
+        {
+          "type": "Sellable",
+          "price": 70
+        }
+      ]
+    },
+    {
+      "name": "Cranberries",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Cranberry Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            2,
+            1,
+            1,
+            2
+          ],
+          "totalHarvestTime": 7,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 5
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        },
+        {
+          "type": "Sellable",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Eggplant",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Eggplant Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "totalHarvestTime": 5,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 5
+        },
+        {
+          "type": "Edible",
+          "energy": 20
+        },
+        {
+          "type": "Sellable",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Fairy Rose",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Fairy Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            4,
+            4,
+            3
+          ],
+          "totalHarvestTime": 12,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 290
+        }
+      ]
+    },
+    {
+      "name": "Grape",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Grape Starter",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            1,
+            2,
+            3,
+            3
+          ],
+          "totalHarvestTime": 10,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 3
+        },
+        {
+          "type": "Edible",
+          "energy": 38
+        },
+        {
+          "type": "Sellable",
+          "price": 80
+        }
+      ]
+    },
+    {
+      "name": "Pumpkin",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Pumpkin Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            2,
+            3,
+            4,
+            3
+          ],
+          "totalHarvestTime": 13,
+          "canBecomeGiant": true,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Sellable",
+          "price": 320
+        }
+      ]
+    },
+    {
+      "name": "Yam",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Yam Seeds",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            1,
+            3,
+            3,
+            3
+          ],
+          "totalHarvestTime": 10,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 45
+        },
+        {
+          "type": "Sellable",
+          "price": 160
+        }
+      ]
+    },
+    {
+      "name": "Sweet Gem Berry",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Rare Seed",
+          "seasons": [
+            "FALL"
+          ],
+          "stages": [
+            2,
+            4,
+            6,
+            6,
+            6
+          ],
+          "totalHarvestTime": 24,
+          "canBecomeGiant": false,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Sellable",
+          "price": 3000
+        }
+      ]
+    },
+    {
+      "name": "Powdermelon",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Powdermelon Seeds",
+          "seasons": [
+            "WINTER"
+          ],
+          "stages": [
+            1,
+            2,
+            1,
+            2,
+            1
+          ],
+          "totalHarvestTime": 7,
+          "canBecomeGiant": true,
+          "oneTime": true,
+          "regrowthTime": 0
+        },
+        {
+          "type": "Edible",
+          "energy": 63
+        },
+        {
+          "type": "Sellable",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Ancient Fruit",
+      "components": [
+        {
+          "type": "Growable",
+          "seed": "Ancient Seeds",
+          "seasons": [
+            "SPRING",
+            "SUMMER",
+            "FALL"
+          ],
+          "stages": [
+            2,
+            7,
+            7,
+            7,
+            5
+          ],
+          "totalHarvestTime": 28,
+          "canBecomeGiant": false,
+          "oneTime": false,
+          "regrowthTime": 7
+        },
+        {
+          "type": "Sellable",
+          "price": 550
+        }
+      ]
     }
   ]
 }
-
-
-
-
-

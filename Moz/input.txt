@@ -53,4 +53,5 @@ toggle map
 cheat give item "Wood" 1000
 build greenhouse
 change input type
-
+x
+toggle map

@@ -7,6 +7,7 @@ public class Date {
     private Season season;
     private int day;
     private int hour;
+    private int totalHours;
 
     public Date(int day, int hour) {
         this.day = day;
@@ -16,6 +17,14 @@ public class Date {
         this.season = Season.SPRING;
         this.day = 1;
         this.hour = 9;
+        this.totalHours = 0;
+    }
+
+    public Date(Date other) {
+        this.season = other.season;
+        this.day = other.day;
+        this.hour = other.hour;
+        this.totalHours = other.totalHours;
     }
 
     public Season getSeason() {
@@ -43,9 +52,11 @@ public class Date {
                 hour = 9;
                 game.updateGamePerDay();
                 addDay(1, game);
+                totalHours += 12;
             } else {
                 game.updateGamePerHour();
                 hour++;
+                totalHours ++;
             }
         }
     }
