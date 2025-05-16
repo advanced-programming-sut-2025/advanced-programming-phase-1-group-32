@@ -4,11 +4,9 @@ import controllers.GameMenuController;
 import models.*;
 import models.Commands.GameMenuCommands;
 import models.entities.Entity;
-import models.entities.components.Pickable;
 import models.entities.components.PositionComponent;
 import models.entities.components.inventory.Inventory;
 import models.entities.components.Renderable;
-import models.entities.components.inventory.InventorySlot;
 import models.enums.Direction;
 import models.gameMap.GameMap;
 import models.gameMap.MapRegion;
@@ -437,11 +435,11 @@ public class GameMenu implements AppMenu {
         Pattern pattern = Pattern.compile(".+?(-?\\d+)[,\\s]+(-?\\d+).+");
         Result result = controller.purchase(productName, count);
         if (result.isSuccessful() && result.message() == null) {
-            System.out.println("enter x and y to buildBuilding " + productName);
+            System.out.println("enter x and y to build " + productName);
             String input = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(input);
             if (!matcher.matches()) {
-                System.out.println("Invalid input! buildBuilding canceled");
+                System.out.println("Invalid input! build canceled");
                 return;
             }
             int x = Integer.parseInt(matcher.group(1));

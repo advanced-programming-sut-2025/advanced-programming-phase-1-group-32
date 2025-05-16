@@ -20,7 +20,7 @@ public enum GameMenuCommands implements Commands {
     FERTILIZE         ("fertilize\\s+-f\\s+(?<name>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<\\s*(?<x>\\d+)\\s*,\\s*(?<y>\\d+)\\s*>\\s*"),
-    GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+buildBuilding\\s*"),
+    GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
     /* ----------------------------------------------------------------------------------------------------- */
 
     /* ----------------------------------------- Weather commands ------------------------------------------- */
@@ -111,7 +111,7 @@ public enum GameMenuCommands implements Commands {
     SHOW_ALL_PRODUCTS("^show\\s+all\\s+products$"),
     SHOW_ALL_AVAILABLE("^show\\s+all\\s+available\\s+products$"),
     PURCHASE("^purchase\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
-    BUILD_BUILDING("^buildBuilding\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>?$"),
+    BUILD_BUILDING("^build\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+<?\\s*(?<x>-?\\d+)\\s*,\\s*(?<y>-?\\d+)\\s*>?$"),
     SELL_PRODUCT("^sell\\s+(?<productName>[^-]+?\\s*)(-n\\s+(?<count>\\d+))?$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
@@ -123,7 +123,7 @@ public enum GameMenuCommands implements Commands {
     TOGGLE_UNLIMITED_INVENTORY("^\\s*cheat\\s+toggle\\s+unlimited\\s+inventory\\s*$"),
     CHEAT_TAKE_ITEM("^\\s*cheat\\s+take\\s+item\\s+\"\\s+(?<item>\\S+)\\s+\"\\s+(?<amount>\\d+)\\s*$"),
     CHEAT_SET_FRIENDSHIP("cheat\\s+-u\\s+(?<name>.+)\\s*level\\s*(?<level>\\d+)\\s*xp\\s*(?<xp>\\d+)\\s*"),
-    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+buildBuilding\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
+    CHEAT_BUILD_BUILDING("^\\s*cheat\\s+build\\s+building\\s+(?<name>\\S+)\\s+(?<x>-?\\d+)\\s+(?<y>-?\\d+)(?:\\s+(?<force>-force))?\\s*$"),
     CHEAT_SPAWN_ON_GROUND("^\\s*cheat\\s+spawn\\s+on\\s+ground\\s+-n\\s+(?<name>\\S+)\\s+-a\\s+(?<amount>\\S+)\\s*$"),
     CHEAT_WATER_ALL("cheat water all"),
     /* -------------------------------------------------- -------------------------------------------------- */
