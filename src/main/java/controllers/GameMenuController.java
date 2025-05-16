@@ -833,7 +833,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "Animal not found");
         }
 
-        // TODO: check distance
+        if(currentPlayer.getPosition().getDistance(animal.getComponent(PositionComponent.class).get()) > 2) {
+            return new Result(false, "You are too far from this animal!");
+        }
 
         if (!animal.isPetToday()) {
             animal.setPetToday(true);
@@ -1517,7 +1519,6 @@ public class GameMenuController implements Controller {
             return new Result(false, "NPC with name " + npcName + " not found");
         }
 
-        //TODO: check distance
         if (currentPlayer.getPosition().getDistance(npc.getComponent(PositionComponent.class).get()) > 2) {
             return new Result(false, "You are too far from this NPC");
         }
@@ -1604,7 +1605,9 @@ public class GameMenuController implements Controller {
             return new Result(false, "You dont have enough \"" + item.getEntityName() + "\" items");
         }
 
-        // TODO: check distance
+        if(currentPlayer.getPosition().getDistance(quest.getNpc().getComponent(PositionComponent.class).get()) > 2) {
+            return new Result(false, "You are too far from this NPC");
+        }
 
         inventory.takeFromInventory(item.getEntityName(), itemAmount);
         int rewardNumber = quest.getRewardNumber();
