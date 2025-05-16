@@ -380,6 +380,27 @@ public class Inventory extends EntityComponent {
     }
 
     @Override
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        int i = 1;
+        for (InventorySlot s : getSlots()) {
+            Entity entity = s.getEntity();
+            out.append(String.format("%-2d: ", i));
+            if (entity != null) {
+                out.append(String.format("%s \t%d", entity.getEntityName(), entity.getComponent(Pickable.class).getStackSize()));
+            } else {
+                out.append(String.format("-"));
+            }
+            if (App.getActiveGame().getCurrentPlayer().getActiveSlot() == s) {
+                out.append(String.format(" <active>"));
+            }
+            out.append(String.format("\n"));
+            i++;
+        }
+        return out.toString();
+    }
+
+    @Override
     public EntityComponent clone() {
         return new Inventory(this);
     }

@@ -5,10 +5,10 @@
     },
     "activeFile": "bigMap.tmx",
     "expandedProjectPaths": [
-        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
         "Tile sets",
         "buildings",
-        "."
+        ".",
+        "/home/parsa/Projects/University/AP/Stardew Valley/Moz"
     ],
     "fileStates": {
         "": {
@@ -162,11 +162,11 @@
             "scaleInEditor": 4
         },
         "bigMap.tmx": {
-            "scale": 13.6717,
-            "selectedLayer": 4,
+            "scale": 3,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 149.94477643599552,
-                "y": 149.98134833268722
+                "x": 150,
+                "y": 150.16666666666663
             }
         },
         "blackSmithExterior.tmx": {
@@ -554,7 +554,6 @@
         "buildings/blackSmithExterior.tmx",
         "bigMap.tmx",
         "buildings/wreckGreenhouseExterior.tmx",
-        "greenHouse.tmx",
         "Tile sets/buildings.json",
         "buildings/greenHouseInterior.tmx",
         "buildings/greenHouseExterior.tmx"

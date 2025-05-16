@@ -119,7 +119,7 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.toggleMap());
 
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {
-                showInventory(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class));
+                System.out.println(App.getActiveGame().getCurrentPlayer().getComponent(Inventory.class).toString());
 
             } else if ((matcher = GameMenuCommands.CHEAT_GIVE_ITEM.getMatcher(input)) != null) {
                 System.out.println(controller.cheatGiveItem(
@@ -270,7 +270,10 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.cheatTakeItem(matcher.group(1).trim(), Integer.parseInt(matcher.group(2).trim())));
 
             } else if ((matcher = GameMenuCommands.SHOW_FRIDGE_CONTENT.getMatcher(input)) != null) {
-                showInventory(App.getActiveGame().getCurrentPlayer().getRefrigerator().getComponent(Inventory.class));
+                System.out.println(App.getActiveGame().getCurrentPlayer().getRefrigerator().getComponent(Inventory.class));
+
+            } else if ((matcher = GameMenuCommands.SHOW_SHIPPING_BIN_CONTENT.getMatcher(input)) != null) {
+                System.out.println(controller.showShippingBin());
 
             } else if ((matcher = GameMenuCommands.FISHING.getMatcher(input)) != null) {
                 System.out.println(controller.fishing(matcher.group(1).trim()));
@@ -365,7 +368,7 @@ public class GameMenu implements AppMenu {
             App.getView().getRenderer().moveCurser(0, 0);
 
             Player player = activeGame.getCurrentPlayer();
-            showInventory(player.getComponent(Inventory.class));
+            System.out.println(player.getComponent(Inventory.class));
             System.out.println("day : " + App.getActiveGame().getDate().getDay() +
                     ", hour : " + App.getActiveGame().getDate().getHour() +
                     ", season : " + App.getActiveGame().getDate().getSeason());
@@ -463,24 +466,6 @@ public class GameMenu implements AppMenu {
             controller.executeWalk(proposal);
         } else {
             System.out.println("Walk cancelled");
-        }
-    }
-
-    public void showInventory(Inventory inventory) {
-        int i = 1;
-        for (InventorySlot s : inventory.getSlots()) {
-            Entity entity = s.getEntity();
-            System.out.printf("%-2d: ", i);
-            if (entity != null) {
-                System.out.printf("%s \t%d", entity.getEntityName(), entity.getComponent(Pickable.class).getStackSize());
-            } else {
-                System.out.print("-");
-            }
-            if (App.getActiveGame().getCurrentPlayer().getActiveSlot() == s) {
-                System.out.print(" <active>");
-            }
-            System.out.print("\n");
-            i++;
         }
     }
 
