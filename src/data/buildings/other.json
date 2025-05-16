@@ -31,6 +31,19 @@
           "exteriorName" : "wreckGreenhouseExterior"
         }
       ]
+    },{
+      "name": "Greenhouse",
+      "tags": [],
+      "components": [
+        {
+          "type": "InteriorComponent",
+          "interiorName": "greenHouseInterior"
+        },
+        {
+          "type": "Placeable",
+          "exteriorName": "greenHouseExterior"
+        }
+      ]
     }
   ]
 }

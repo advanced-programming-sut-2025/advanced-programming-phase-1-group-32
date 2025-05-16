@@ -160,11 +160,11 @@
             "scaleInEditor": 4
         },
         "bigMap.tmx": {
-            "scale": 5.5,
-            "selectedLayer": 2,
+            "scale": 16,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 21.63636363636364,
-                "y": 79.54545454545453
+                "x": 36.625,
+                "y": 38.53125
             }
         },
         "blackSmithExterior.tmx": {
@@ -272,6 +272,14 @@
             "viewCenter": {
                 "x": 4.03125,
                 "y": 6.015625
+            }
+        },
+        "buildings/greenHouseInterior.tmx": {
+            "scale": 23,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 6.913043478260869,
+                "y": 9.67391304347826
             }
         },
         "buildings/jojaMartExterior.tmx": {

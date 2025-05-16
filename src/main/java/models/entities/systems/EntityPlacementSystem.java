@@ -6,6 +6,7 @@ import models.Vec2;
 import models.building.Door;
 import models.entities.Entity;
 import models.entities.components.InteriorComponent;
+import models.entities.components.Pickable;
 import models.entities.components.Placeable;
 import models.entities.components.PositionComponent;
 import models.enums.TileType;
@@ -37,7 +38,15 @@ public static Result placeOnTile(Entity entity, Tile tile){
 }
 public static Result emptyTile(Tile tile){
     Entity tileEntity = tile.getContent();
+    ArrayList<Pickable> pickables = tile.getMap().getComponentsOfType(Pickable.class);
     if(tileEntity != null){
+        //TODO o(n ^ 123123123)
+        for(int z = 0; z < pickables.size(); z++){
+            Pickable pickable = pickables.get(z);
+            if(pickable.getEntity().getComponent(PositionComponent.class).get().getDistance(tile.getPosition()) < 0.1){
+                pickable.getEntity().delete();
+            }
+        }
         tileEntity.removeObserveer(tile);
         tile.getMap().removeEntity(tileEntity);
         tileEntity.removeComponent(PositionComponent.class);
@@ -171,6 +180,32 @@ private static Result placeExterior(Entity entity, Vec2 position, GameMap map){
 
     return new Result(true, "");
 }
+public static Result removeExterior(Entity entity){
+    Position position = entity.getComponent(PositionComponent.class).get();
+    GameMap map = position.getMap();
+
+    if(entity.getComponent(Placeable.class).getExteriorName() == null){
+        return emptyTile(map.getTileByPosition(position.getCol(), position.getRow()));
+    }
+
+    TileType[][] exterior = App.mapRegistry.getData(entity.getComponent(Placeable.class).getExteriorName()).getTypeMap();
+
+    for(int i = 0 ; i < exterior.length ; i++){
+        for(int j = 0 ; j < exterior[0].length; j++){
+            Tile activeTile = map.getTileByPosition(i + position.getRow(), j + position.getCol());
+            TileType exteriorTile = exterior[i][j];
+
+            if (exteriorTile != null) {
+                activeTile.setType(TileType.DIRT);
+            }
+        }
+    }
+
+    map.removeEntity(entity);
+    entity.removeComponent(PositionComponent.class);
+
+    return new Result(true, "");
+}
 
 public static boolean canPlace(int x, int y, Placeable placeable, GameMap map) {
     if (placeable == null || placeable.getExteriorName() == null) {
@@ -205,11 +240,19 @@ public static void clearArea(int x, int y, Placeable placeable) {
     GameMap map = App.getActiveGame().getMainMap();
 
     if(placeable.getExteriorName() != null){
+        ArrayList<Pickable> pickables = map.getComponentsOfType(Pickable.class);
         TileType[][] exterior = App.mapRegistry.getData(placeable.getExteriorName()).getTypeMap();
 
         for(int i = y; i < exterior.length + y; i++){
             for(int j = x; j < exterior[0].length + x; j++){
                 Tile tile = map.getTileByPosition(i, j);
+                //TODO o(n ^ 123123123)
+                for(int z = 0; z < pickables.size(); z++){
+                    Pickable pickable = pickables.get(z);
+                    if(pickable.getEntity().getComponent(PositionComponent.class).get().getDistance(tile.getPosition()) < 0.1){
+                        pickable.getEntity().delete();
+                    }
+                }
                 if(tile.getContent() != null) tile.getContent().delete();
             }
         }
@@ -217,7 +260,6 @@ public static void clearArea(int x, int y, Placeable placeable) {
     else{
         emptyTile(map.getTileByPosition(y, x));
     }
-
 }
 
 }

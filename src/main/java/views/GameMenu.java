@@ -318,6 +318,8 @@ public class GameMenu implements AppMenu {
                 System.out.println(controller.showAvailableProducts());
             } else if ((matcher = GameMenuCommands.SHOW_ALL_PRODUCTS.getMatcher(input)) != null) {
                 System.out.println(controller.showAllProducts());
+            } else if ((matcher = GameMenuCommands.BUILD_GREENHOUSE.getMatcher(input)) != null) {
+                System.out.println(controller.buildGreenhouse());
             } else if ((matcher = GameMenuCommands.PURCHASE.getMatcher(input)) != null) {
                 handlePurchase(
                         matcher.group("productName"),

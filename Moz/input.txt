@@ -50,5 +50,7 @@ cheat give item "Inspector" 1
 tools equip Inspector
 change input type
 toggle map
+cheat give item "Wood" 1000
+build greenhouse
 change input type
 

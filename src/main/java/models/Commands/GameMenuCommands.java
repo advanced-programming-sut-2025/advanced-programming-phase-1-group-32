@@ -12,6 +12,7 @@ public enum GameMenuCommands implements Commands {
     EAT_FOOD          ("^eat\\s+(?<foodName>.+)$"),
     CHEAT_THOR        ("^\\s*cheat\\s+Thor\\s+-l\\s+<(?<x>\\d+),(?<y>\\d+)>\\s*$"),
     SHOW_FRIDGE_CONTENT("^\\s*show\\s+fridge\\s+content\\s*$"),
+    BUILD_GREENHOUSE  ("^\\s*build\\s+greenhouse\\s*$"),
 
     /* ----------------------------------------- Plant commands ------------------------------------------- */
     CRAFTINFO         ("^\\s*craftinfo\\s+-n\\s+(?<name>.+)\\s*$"),
