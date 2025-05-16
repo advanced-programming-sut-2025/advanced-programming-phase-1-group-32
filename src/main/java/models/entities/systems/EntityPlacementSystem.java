@@ -68,7 +68,7 @@ public static Result placeOnMap(Entity entity, Position position, GameMap map){
     return new Result(true, "");
 }
 
-public static Result placeEntity(Entity entity, Vec2 position, GameMap map) {
+public static Result    placeEntity(Entity entity, Vec2 position, GameMap map) {
     Placeable placeable = entity.getComponent(Placeable.class);
     if(placeable == null)
         return new Result(false, "This entity isn't placeable");
@@ -158,7 +158,7 @@ private static Result buildBuilding(Entity building, Vec2 position){
 
 private static Result placeExterior(Entity entity, Vec2 position, GameMap map){
     if(entity.getComponent(Placeable.class).getExteriorName() == null){
-        return placeOnTile(entity, map.getTileByPosition(position.getCol(), position.getRow()));
+        return placeOnTile(entity, map.getTileByPosition(position.getRow(), position.getCol()));
     }
 
     TileType[][] exterior = App.mapRegistry.getData(entity.getComponent(Placeable.class).getExteriorName()).getTypeMap();
