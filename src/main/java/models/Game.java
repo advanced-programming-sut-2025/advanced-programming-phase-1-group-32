@@ -298,16 +298,16 @@ public class Game {
 
 
     public void thorTile(Tile tile) {
-        if (tile.getContent() != null && tile.getContent().hasTag(EntityTag.CROP)) {
+        if (tile.getContent() != null &&
+                (tile.getContent().hasTag(EntityTag.CROP) || tile.getContent().hasTag(EntityTag.FORAGING_CROP))) {
             EntityPlacementSystem.emptyTile(tile);
-            tile.setType(TileType.GRASS);
+            tile.setType(TileType.DIRT);
         }
 
-        if (tile.getContent() != null &&tile.getContent().hasTag(EntityTag.TREE)) {
+        if (tile.getContent() != null && tile.getContent().hasTag(EntityTag.TREE)) {
+            EntityPlacementSystem.emptyTile(tile);
             EntityPlacementSystem.placeOnTile(App.entityRegistry.makeEntity("Burned Tree"), tile);
-//          tile.setContent(null);
-            tile.setType(TileType.GRASS);
-            // TODO: change it to coal
+            tile.setType(TileType.DIRT);
         }
 
     }

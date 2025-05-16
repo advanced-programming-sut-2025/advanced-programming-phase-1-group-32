@@ -499,7 +499,7 @@ public class GameMenuController implements Controller {
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
-        if (!player.getComponent(Inventory.class).doesHaveItem(seedDetails)) {
+        if (!player.getComponent(Inventory.class).doesHaveItem(seedDetails.getEntityName())) {
             return new Result(false, "you don't have that seed");
         }
 
