@@ -20,8 +20,13 @@ public class ShopSystem {
     public static Result buyProduct(ShopProduct product, int amount) {
         if(amount > product.getStock() && product.getStock() >= 0)
             return new Result(false, "There isn't enough stock! go come tomorrow:)");
-        if(product.getName().contains("Recipe")) {
+        if(product.getName().toLowerCase().contains("(recipe)")) {
+            Result result = handlePay(product, 1);
+            if(!result.isSuccessful())
+                return result;
+            product.addSold(1);
             App.getActiveGame().getCurrentPlayer().addRecipe(product.getName().replace("(Recipe)", ""));
+            return new Result(true, "recipe added successfully");
         }
 
 
