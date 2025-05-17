@@ -60,7 +60,6 @@ public class RegisterTest {
             "register -u AliAlmasi3 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gm.ail.com -g male",
             "register -u AliAlmasi4 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Al.i@gmail.com -g male",
             "register -u AliAlmasi5 -p CorrectP@ss1 CorrectP@ss1 -n AliAlm -e Ali@gmail.com -g female"
-
     })
     void validInput(String input) {
         String startExpected = "Account registered successfully!";

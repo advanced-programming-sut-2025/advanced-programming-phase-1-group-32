@@ -5,6 +5,8 @@ import controllers.LoginMenuController;
 import records.Result;
 import models.Commands.LoginMenuCommands;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -75,8 +77,13 @@ public class LoginMenu implements AppMenu {
         } else if ((matcher = LoginMenuCommands.FORGOT_PASSWORD.getMatcher(input)) != null) {
             ForgotPasswordFlow forgotPasswordFlow = new ForgotPasswordFlow();
             Result result = forgotPasswordFlow.handle(matcher.group("username"));
+            Queue<String> messages = new LinkedList<>();
+            messages.add(result.message());
             while (result.isSuccessful()) {
-                System.out.println(result);
+                if(!result.message().isEmpty()) System.out.println(messages.poll());
+                if(!scanner.hasNextLine()){
+                    continue;
+                }
                 result = forgotPasswordFlow.handle(scanner.nextLine());
             }
             System.out.println(result);

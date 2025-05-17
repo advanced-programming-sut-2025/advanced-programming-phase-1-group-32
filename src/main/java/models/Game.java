@@ -464,8 +464,6 @@ public class Game {
         return availableFish;
     }
 
-
-
     //TODO: important!! complete them
     public void updateGamePerHour() {
         // this function should update things related to game

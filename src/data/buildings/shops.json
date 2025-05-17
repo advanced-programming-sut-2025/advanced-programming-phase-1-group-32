@@ -18,6 +18,9 @@
         {
           "type": "Placeable",
           "exteriorName": "stardropSaloonExterior"
+        },{
+          "type" : "Shop",
+          "name" : "Stardrop Saloon"
         }
       ]
     },
@@ -32,6 +35,9 @@
         {
           "type": "Placeable",
           "exteriorName": "pierresGeneralStoreExterior"
+        },{
+          "type" : "Shop",
+          "name" : "Pierre's General Store"
         }
       ]
     },
@@ -64,6 +70,9 @@
         {
           "type": "Placeable",
           "exteriorName": "jojaMartExterior"
+        },{
+          "type" : "Shop",
+          "name" : "JojaMart"
         }
       ]
     },
@@ -96,6 +105,10 @@
         {
           "type": "Placeable",
           "exteriorName": "blackSmithExterior"
+        },
+        {
+          "type" : "Shop",
+          "name" : "Blacksmith"
         }
       ]
     },
@@ -110,6 +123,10 @@
         {
           "type": "Placeable",
           "exteriorName": "fishShopExterior"
+        },
+        {
+          "type" : "Shop",
+          "name" : "Fish Shop"
         }
       ]
     }
