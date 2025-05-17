@@ -187,8 +187,6 @@ public class GameMenuController implements Controller {
         if (distance == 0)
             return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
         return new WalkProposal(true, "OK", energyCost, x, y);
-
-
     }
 
     private static int getChangedDir(List<Tile> path) {

@@ -77,7 +77,6 @@ public class LoginMenu implements AppMenu {
             Result result = forgotPasswordFlow.handle(matcher.group("username"));
             while (result.isSuccessful()) {
                 System.out.println(result);
-                if(!scanner.hasNextLine()) return;
                 result = forgotPasswordFlow.handle(scanner.nextLine());
             }
             System.out.println(result);
