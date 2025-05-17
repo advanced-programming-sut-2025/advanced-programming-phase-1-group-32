@@ -353,20 +353,11 @@ public class    Player extends Entity {
     }
 
     public boolean doesOwnTile(Tile tile) {
-        //TODO: should this return true? what should the region of tiles be in a building? null?
         if (tile.getRegion() == null) return true;
 
-        for (MapRegion r : ownedRegions) {
-            if (r.hasTile(tile)) return true;
-        }
+        Player tileOwner = tile.getOwner();
 
-        if (spouse == null) return false;
-
-        for (MapRegion r : spouse.ownedRegions) {
-            if (r.hasTile(tile)) return true;
-        }
-
-        return false;
+        return tileOwner == null || tileOwner == this || (this.spouse != null && tileOwner == this.spouse);
     }
 
     public void addRegion(MapRegion region) {

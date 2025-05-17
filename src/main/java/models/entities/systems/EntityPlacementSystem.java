@@ -99,7 +99,6 @@ private static Result buildBuilding(Entity building, Vec2 position){
     //TODO environment?
     interiorComponent.setInteriorMap(new GameMap(interiorData, Environment.BUILDING));
 
-
     ArrayList<MapData.MapLayerData<String>.ObjectData> entities = interiorData.getEntities();
     if(entities != null){
         for (MapData.MapLayerData<String>.ObjectData e : entities) {
@@ -127,6 +126,8 @@ private static Result buildBuilding(Entity building, Vec2 position){
             int dest = d.getProperty("destination").asInt;
             Door door = new Door();
             exteriorDoors.putIfAbsent(id, door);
+            emptyTile(worldMap.getTileByPosition(position.getRow() + d.y - 1, position.getCol() + d.x));
+            worldMap.getTileByPosition(position.getRow() + d.y - 1, position.getCol() + d.x).setType(TileType.WOOD);
             EntityPlacementSystem.placeOnTile(door, worldMap.getTileByPosition(position.getRow() + d.y - 1, position.getCol() + d.x));
             outInRefs.putIfAbsent(id, dest);
         }
@@ -135,6 +136,8 @@ private static Result buildBuilding(Entity building, Vec2 position){
             int dest = d.getProperty("destination").asInt;
             Door door = new Door();
             interiorDoors.putIfAbsent(id, door);
+            emptyTile(interiorMap.getTileByPosition(d.y-1, d.x));
+            interiorMap.getTileByPosition(d.y-1, d.x).setType(TileType.WOOD);
             EntityPlacementSystem.placeOnTile(door, interiorMap.getTileByPosition(d.y-1, d.x));
             inOutRefs.putIfAbsent(id, dest);
         }
