@@ -186,6 +186,8 @@ public class GameMenu implements AppMenu {
             } else if ((matcher = GameMenuCommands.EAT_FOOD.getMatcher(input)) != null) {
                 App.getView().log(controller.eat(matcher.group("foodName")));
 
+            } else if ((matcher = GameMenuCommands.HELP_READING_MAP.getMatcher(input)) != null) {
+                App.getView().log(controller.helpReadingMap());
             }
             /* ------------------------------------------ Recipe Commands ------------------------------------------ */
             else if ((matcher = GameMenuCommands.CRAFTING_SHOW_RECIPES.getMatcher(input)) != null) {

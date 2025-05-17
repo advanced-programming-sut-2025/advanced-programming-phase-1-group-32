@@ -22,6 +22,7 @@ public enum GameMenuCommands implements Commands {
     PLANT_SEED        ("\\s*plant\\s+-s\\s+(?<seed>.+)\\s+-d\\s+(?<direction>\\S+)\\s*"),
     SHOW_PLANT        ("\\s*showplant\\s+-l\\s+<\\s*(?<x>\\d+)\\s*,\\s*(?<y>\\d+)\\s*>\\s*"),
     GREEN_HOUSE_BUILD ("\\s*greenhouse\\s+build\\s*"),
+    HELP_READING_MAP("^help\\s+reading\\s+map$"),
     /* ----------------------------------------------------------------------------------------------------- */
 
     /* ----------------------------------------- Weather commands ------------------------------------------- */

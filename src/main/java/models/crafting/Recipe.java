@@ -8,6 +8,7 @@ import models.entities.Entity;
 import models.entities.components.Edible;
 import models.entities.components.Sellable;
 import models.entities.components.inventory.Inventory;
+import models.player.Energy;
 
 import java.util.ArrayList;
 
@@ -97,7 +98,11 @@ public class Recipe {
             entity.addComponent(new Sellable((int) (basePrice * price.getX() + price.getY())));
         }
         if(energy != null) {
-            entity.addComponent(new Edible((int) (baseEnergy * energy.getX() + energy.getY())));
+            if(entity.getComponent(Edible.class) != null){
+                entity.getComponent(Edible.class).setEnergy((int) (baseEnergy * energy.getX() + energy.getY()));
+            }else{
+                entity.addComponent(new Edible((int) (baseEnergy * energy.getX() + energy.getY())));
+            }
         }
 
 

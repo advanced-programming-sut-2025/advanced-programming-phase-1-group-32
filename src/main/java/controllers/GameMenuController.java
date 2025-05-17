@@ -278,8 +278,18 @@ public class GameMenuController implements Controller {
     }
 
     public Result helpReadingMap() {
-        //TODO
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb
+                .append("T : tree").append("\n")
+                .append("c : foraging crops").append("\n")
+                .append("C : crops").append("\n")
+                .append("E : Edible").append("\n")
+                .append("A : Artisan").append("\n")
+                .append("S : Sebastian \n")
+                .append("H : Harvey\n")
+                .append("L : Lia\n")
+                .append("R : Robin");
+        return new Result(true, sb.toString());
     }
 
     public Result energyShow() {
@@ -714,7 +724,7 @@ public class GameMenuController implements Controller {
     }
 
     public Result eat(String foodName) {
-        //TODO: buff
+
         Player player = App.getActiveGame().getCurrentPlayer();
         Inventory inventory = player.getComponent(Inventory.class);
         Entity food = inventory.getItem(foodName);
@@ -2019,4 +2029,5 @@ public class GameMenuController implements Controller {
         //TODO
         return new Result(false, "");
     }
+
 }

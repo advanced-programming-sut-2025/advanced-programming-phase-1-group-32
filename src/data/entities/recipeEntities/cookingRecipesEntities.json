@@ -1,67 +1,170 @@
 {
+  "common components" : [
+    {
+      "type" : "Edible",
+      "energy" : 0
+    }
+  ],
   "entities": [
     {
-      "name": "Cherry Bomb"
+      "name": "Fried egg"
     },
     {
-      "name": "Bomb"
+      "name": "Baked Fish"
     },
     {
-      "name": "Mega Bomb"
+      "name": "Salad"
     },
     {
-      "name": "Sprinkler"
+      "name": "Olmelet"
     },
     {
-      "name": "Quality Sprinkler"
+      "name": "pumpkin pie"
     },
     {
-      "name": "Iridium Sprinkler"
+      "name": "spaghetti"
     },
     {
-      "name": "Charcoal Klin"
+      "name": "pizza"
     },
     {
-      "name": "Furnace"
+      "name": "Tortilla"
     },
     {
-      "name": "Scarecrow"
+      "name": "Maki Roll"
     },
     {
-      "name": "Deluxe Scarecrow"
+      "name": "Triple Shot Espresso",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 12,
+          "buff" : {
+            "buffTime" : 5,
+            "energyBuff": 100
+          }
+
+        }
+      ]
     },
     {
-      "name": "Bee House"
+      "name": "Cookie"
     },
     {
-      "name": "Cheese Press"
+      "name": "hash browns",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 5,
+            "skillType" : "FARMING"
+          }
+        }
+      ]
     },
     {
-      "name": "Keg"
+      "name": "pancakes",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 11,
+            "skillType" : "FORAGING"
+          }
+        }
+      ]
     },
     {
-      "name": "Loom"
+      "name": "fruit salad"
     },
     {
-      "name": "Mayonnaise Machine"
+      "name": "red plate",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 3,
+            "energyBuff" : 50
+          }
+        }
+      ]
     },
     {
-      "name": "Oil Maker"
+      "name": "bread"
     },
     {
-      "name": "Preserves Jar"
+      "name": "salmon dinner"
     },
     {
-      "name": "Dehydrator"
+      "name": "vegetable medley "
     },
     {
-      "name": "Grass Starter"
+      "name": "farmer's lunch",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 5,
+            "skillType" : "FARMING"
+          }
+        }
+      ]
     },
     {
-      "name": "Fish Smoker"
+      "name": "survival burger",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 5,
+            "skillType" : "FORAGING"
+          }
+        }
+      ]
     },
     {
-      "name": "Mystic Tree Seed"
+      "name": "dish O' the Sea",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 5,
+            "skillType" : "FISHING"
+          }
+        }
+      ]
+    },
+    {
+      "name": "seaform Pudding",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 10,
+            "skillType" : "FISHING"
+          }
+        }
+      ]
+    },
+    {
+      "name": "miner's treat",
+      "components" : [
+        {
+          "type" : "Edible",
+          "energy" : 0,
+          "buff" : {
+            "buffTime" : 5,
+            "skillType" : "MINING"
+          }
+        }
+      ]
     }
   ]
 }
