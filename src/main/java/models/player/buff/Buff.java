@@ -1,11 +1,30 @@
 package models.player.buff;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import models.App;
 import models.Date;
+import models.entities.components.*;
+import models.entities.components.harvestable.Harvestable;
+import models.entities.components.inventory.Inventory;
+import models.entities.workstations.ArtisanComponent;
 import models.enums.SkillType;
+import models.shop.Shop;
 
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = EnergyBuff.class, name = "EnergyBuff"),
+        @JsonSubTypes.Type(value = SkillBuff.class, name = "SkillBuff"),
+})
 abstract public class Buff {
     protected Date startDate;
+    @JsonProperty("buffTime")
     protected int buffTime;
     abstract public double effectOnMaxEnergy();
     abstract public int effectOnSkill(SkillType skillType);

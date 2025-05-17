@@ -1,13 +1,14 @@
 package models.player.buff;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.SkillType;
 
 public class SkillBuff extends Buff{
-
+    @JsonProperty("skillType")
     SkillType skillType;
 
-    public SkillBuff(SkillType skillType, int energyBuff) {
-        super(energyBuff);
+    public SkillBuff(SkillType skillType, int buffTime) {
+        super(buffTime);
         this.skillType = skillType;
     }
 
