@@ -2,9 +2,11 @@ package models.player;
 
 import models.App;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+public class Energy implements Serializable{
 
     private double amount;
     private double maxEnergy;
@@ -63,7 +65,7 @@ import java.util.HashMap;
         if (this.amount <= 0) {
             this.amount = 0;
             this.ghash();
-            App.activeGame.nextTurn();
+            App.getActiveGame().nextTurn();
         }
     }
 

@@ -5,6 +5,7 @@ import models.enums.Gender;
 import models.enums.SecurityQuestions;
 import records.Result;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

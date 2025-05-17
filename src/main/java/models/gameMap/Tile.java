@@ -10,19 +10,17 @@ import models.enums.TileType;
 import models.player.Player;
 import views.inGame.Color;
 
+import java.io.Serializable;
+
 public class Tile implements Serializable, EntityObserver {    private TileType type;
     final private Position position;
     private Entity content;
-    //    private final MapRegion region;
     private final GameMap map;
 
     public Tile(Position position, TileType type/*, MapRegion region*/, GameMap map) {
         this.position = position;
         this.type = type;
         this.map = map;
-//        if(region != null){
-//            region.addTile(this);
-//        }
     }
 
     public TileType getType() {

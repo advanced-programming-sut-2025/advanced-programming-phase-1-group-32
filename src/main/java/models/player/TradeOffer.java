@@ -7,6 +7,8 @@ import models.entities.Entity;
 import models.entities.components.inventory.Inventory;
 import models.player.friendship.PlayerFriendship;
 
+import java.io.Serializable;
+
 public class TradeOffer implements Serializable {
     private final Player sender;
     private final Player receiver;

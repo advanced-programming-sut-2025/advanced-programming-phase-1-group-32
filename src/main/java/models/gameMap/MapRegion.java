@@ -4,6 +4,7 @@ import models.Position;
 import models.player.Player;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MapRegion implements Serializable {

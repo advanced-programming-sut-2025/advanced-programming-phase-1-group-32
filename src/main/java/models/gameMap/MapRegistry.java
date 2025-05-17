@@ -8,7 +8,7 @@ import models.entities.Registry;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class MapRegistry extends Registry<MapData> implements Serializable {
+public class MapRegistry extends Registry<MapData> {
     private static class MapNode {
         @JsonProperty("name")
         public String name;

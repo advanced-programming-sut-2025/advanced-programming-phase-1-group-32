@@ -39,6 +39,7 @@ import models.utils.StringUtils;
 import records.Result;
 import records.WalkProposal;
 
+import java.io.*;
 import java.util.*;
 
 public class GameMenuController implements Controller {    @Override
@@ -213,7 +214,7 @@ public class GameMenuController implements Controller {    @Override
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
-        Tile tile = App.activeGame.getActiveMap().getTileByPosition(p.y(), p.x());
+        Tile tile = App.getActiveGame().getActiveMap().getTileByPosition(p.y(), p.x());
         if (tile != null && (entity = tile.getContent()) != null) {
             Placeable placeable = entity.getComponent(Placeable.class);
             for (CollisionEvent c : placeable.getCollisionEvents()) {
@@ -1660,10 +1661,6 @@ public class GameMenuController implements Controller {    @Override
         return new Result(true, message.toString());
     }
 
-    private void saveGame() {
-        //TODO
-    }
-
     public Result switchInputType() {
         App.getView().switchInputType();
         if (App.getView().isRawMode()) {
@@ -2015,7 +2012,24 @@ public class GameMenuController implements Controller {    @Override
         Entity entity = player.getComponent(Inventory.class).takeFromInventory(name, player.getComponent(Inventory.class).getItemCount(name));
         if(entity == null) return new Result(false, "");
         entity.delete();
-        //TODO
+        //TODO: Parsa
         return new Result(false, "");
+    }
+
+    public Result saveGame(){
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("testSave.ser"));
+            out.writeObject(App.getActiveGame());
+            out.close();
+
+
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("testSave.ser"));
+            Game game = (Game) in.readObject();
+            return new Result(true, "saved!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

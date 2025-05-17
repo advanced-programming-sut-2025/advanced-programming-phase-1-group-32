@@ -4,6 +4,7 @@ import controllers.TradeMenuController;
 import models.Commands.TradeMenuCommands;
 import views.AppMenu;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 

@@ -6,6 +6,7 @@ import models.enums.Season;
 import models.enums.Weather;
 import models.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import views.inGame.Color;

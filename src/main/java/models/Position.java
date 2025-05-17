@@ -2,6 +2,8 @@ package models;
 
 import models.gameMap.GameMap;
 
+import java.io.Serializable;
+
 public class Position extends Vec2 implements Serializable {
     GameMap map;
 

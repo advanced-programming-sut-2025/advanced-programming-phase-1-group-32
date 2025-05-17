@@ -6,6 +6,7 @@ import models.entities.EntityList;
 import models.entities.components.EntityComponent;
 import models.enums.TileType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class GameMap implements Serializable {

@@ -2,6 +2,7 @@ package views.inGame;
 
 import models.App;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 public class CharacterTexture implements Serializable {

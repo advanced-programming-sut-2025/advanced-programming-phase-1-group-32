@@ -26,7 +26,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GameMenu implements Serializable, AppMenu {    private final GameMenuController controller = new GameMenuController();
+public class GameMenu implements AppMenu {    private final GameMenuController controller = new GameMenuController();
     private Result previousResult = null;
 
     private enum MapRenderType {
@@ -355,6 +355,8 @@ public class GameMenu implements Serializable, AppMenu {    private final GameMe
                 this.mapRenderType = MapRenderType.values()[(mapRenderType.ordinal() + 1) % MapRenderType.values().length];
             } else if ((matcher = GameMenuCommands.TRASH_ITEM.getMatcher(input)) != null) {
                 App.getView().log(controller.trashItem(matcher.group("name").trim(), Integer.parseInt(matcher.group("amount").trim())));
+            } else if ((matcher = GameMenuCommands.SAVE_GAME.getMatcher(input)) != null) {
+                App.getView().log(controller.saveGame());
             } else {
                 App.getView().log("Invalid Command!");
             }

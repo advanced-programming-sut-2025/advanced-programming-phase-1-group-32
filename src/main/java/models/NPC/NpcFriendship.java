@@ -1,5 +1,7 @@
 package models.NPC;
 
+import java.io.Serializable;
+
 public class NpcFriendship implements Serializable {
     private boolean wasMetToday;
     private boolean wasGiftedToday;

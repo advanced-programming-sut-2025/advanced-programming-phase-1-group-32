@@ -6,7 +6,7 @@ import models.Commands.ProfileMenuCommands;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class ProfileMenu implements Serializable, AppMenu {    private final ProfileMenuController controller = new ProfileMenuController();
+public class ProfileMenu implements AppMenu {    private final ProfileMenuController controller = new ProfileMenuController();
 
     @Override
     public void checker(Scanner scanner) {

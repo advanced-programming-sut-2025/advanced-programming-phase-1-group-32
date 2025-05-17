@@ -5,6 +5,8 @@ import models.animal.Animal;
 import models.animal.AnimalType;
 import models.entities.Entity;
 
+import java.io.Serializable;
+
 public class AnimalShopProduct extends ShopProduct implements Serializable {
 
     private String requiredBuildingName;

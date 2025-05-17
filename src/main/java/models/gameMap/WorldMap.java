@@ -10,6 +10,7 @@ import models.entities.systems.EntityPlacementSystem;
 import models.entities.systems.ForageSpawnSystem;
 import models.enums.TileType;
 
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class WorldMap extends GameMap implements Serializable {
     private final ArrayList<MapRegion> regions = new ArrayList<>();
     private final MapRegion[][] regionMap;
     private final BiomeType[][] biomeMap;
-    private final Map<MapRegion, FarmDetails> farmsDetail = new HashMap<>();
+    private transient final Map<MapRegion, FarmDetails> farmsDetail = new HashMap<>();
 
     public WorldMap(MapData data) {
         super(data, Environment.OUTDOOR);

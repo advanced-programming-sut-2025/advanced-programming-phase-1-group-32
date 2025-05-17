@@ -7,28 +7,36 @@ import models.gameMap.MapRegistry;
 import models.shop.ShopRegistry;
 import views.AppView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class App implements Serializable {
-    private final static ArrayList<Account> accountList = new ArrayList<>();
-    private static Account loggedInAccount = null;
-    private static Account registeredAccount = null;
-    private static boolean stayLoggedIn   = false;
-    private static Menu currentMenu = Menu.LOGIN_MENU;
-    private static final AppView view = new AppView();
+    private final ArrayList<Account> accountList = new ArrayList<>();
+    private Account loggedInAccount = null;
+    private Account registeredAccount = null;
+    private boolean stayLoggedIn   = false;
+    private Menu currentMenu = Menu.LOGIN_MENU;
+    private final AppView view = new AppView();
+    public Game activeGame = null;
     public static boolean shouldTerminate = false;
     public static EntityRegistry entityRegistry = new EntityRegistry();
     public static EntityRegistry buildingRegistry = new EntityRegistry();
     public static RecipeRegistry recipeRegistry = new RecipeRegistry();
     public static MapRegistry mapRegistry = new MapRegistry();
     public static ShopRegistry shopRegistry = new ShopRegistry();
-    public static Game activeGame = null;
+
+    private static App instance;
+
+    public static App getInstance(){
+        if(instance == null) instance = new App();
+        return instance;
+    }
 
     /***
      * Returns null if the username doesn't exist.
      */
     public static Account getUserByUsername(String username){
-        for(Account a : accountList){
+        for(Account a : getInstance().accountList){
             if(a.getUsername().equals(username)){
                 return a;
             }
@@ -37,19 +45,19 @@ public class App implements Serializable {
     }
 
     public static boolean getStayLoggedIn() {
-        return stayLoggedIn;
+        return getInstance().stayLoggedIn;
     }
 
     public static void setStayLoggedIn(boolean stayLoggedIn) {
-        App.stayLoggedIn = stayLoggedIn;
+        getInstance().stayLoggedIn = stayLoggedIn;
     }
 
     public static Menu getCurrentMenu() {
-        return currentMenu;
+        return getInstance().currentMenu;
     }
 
     public static void setCurrentMenu(Menu currentMenu) {
-        App.currentMenu = currentMenu;
+        getInstance().currentMenu = currentMenu;
     }
 
     public static boolean doesUsernameExist(String username){
@@ -57,39 +65,39 @@ public class App implements Serializable {
     }
 
     public static Account getLoggedInAccount() {
-        return loggedInAccount;
+        return getInstance().loggedInAccount;
     }
 
     public static void setLoggedInAccount(Account loggedInAccount) {
-        App.loggedInAccount = loggedInAccount;
+        getInstance().loggedInAccount = loggedInAccount;
     }
 
     public static void start(){
-        view.run();
+        getInstance().view.run();
     }
 
     public static AppView getView(){
-        return view;
+        return getInstance().view;
     }
 
     public static Account getRegisteredAccount() {
-        return registeredAccount;
+        return getInstance().registeredAccount;
     }
 
     public static void setRegisteredAccount(Account registeredAccount) {
-        App.registeredAccount = registeredAccount;
+        getInstance().registeredAccount = registeredAccount;
     }
 
     public static void addAccount(Account account){
-        accountList.add(account);
+        getInstance().accountList.add(account);
     }
 
     public static Game getActiveGame() {
-        return activeGame;
+        return getInstance().activeGame;
     }
 
     public static void setActiveGame(Game activeGame) {
-        App.activeGame = activeGame;
+        getInstance().activeGame = activeGame;
     }
 
 }

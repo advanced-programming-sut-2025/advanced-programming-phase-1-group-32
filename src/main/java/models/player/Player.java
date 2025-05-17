@@ -25,6 +25,7 @@ import models.player.buff.Buff;
 import models.player.friendship.PlayerFriendship;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class Player extends Entity implements Serializable {
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<Recipe> unlockedRecipes;
     private ArrayList<TradeOffer> trades = new ArrayList<>();
-    private final Account account;
+    private transient final Account account;
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
@@ -480,7 +481,7 @@ public class Player extends Entity implements Serializable {
     public ArrayList<Tile> getOwnedTiles() {
         if(ownedTiles != null) return ownedTiles;
 
-        WorldMap map = App.activeGame.getMainMap();
+        WorldMap map = App.getActiveGame().getMainMap();
         ownedTiles = new ArrayList<>();
 
         for(Tile[] row : map.getTiles()){

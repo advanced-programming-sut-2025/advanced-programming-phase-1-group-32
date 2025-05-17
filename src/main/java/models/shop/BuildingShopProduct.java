@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 
+import java.io.Serializable;
+
 public class BuildingShopProduct extends ShopProduct implements Serializable {
     private int woodCost;
     private int stoneCost;

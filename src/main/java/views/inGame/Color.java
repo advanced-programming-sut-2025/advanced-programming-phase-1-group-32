@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 @JsonDeserialize(using = ColorDeserializer.class)
 public class Color implements Serializable {

@@ -12,6 +12,8 @@ import models.entities.workstations.ArtisanComponent;
 import models.enums.SkillType;
 import models.shop.Shop;
 
+import java.io.Serializable;
+
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -22,7 +24,7 @@ import models.shop.Shop;
         @JsonSubTypes.Type(value = EnergyBuff.class, name = "EnergyBuff"),
         @JsonSubTypes.Type(value = SkillBuff.class, name = "SkillBuff"),
 })
-abstract public class Buff {
+abstract public class Buff implements Serializable {
     protected Date startDate;
     @JsonProperty("buffTime")
     protected int buffTime;

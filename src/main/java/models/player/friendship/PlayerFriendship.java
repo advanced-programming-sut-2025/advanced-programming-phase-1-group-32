@@ -2,6 +2,7 @@ package models.player.friendship;
 
 import models.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

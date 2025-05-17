@@ -162,7 +162,7 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MapData implements Serializable {
+public class MapData {
     public int width, height;
     private Map<String, MapLayer> layers = new HashMap<>();
     private MapLayerData<TileType> mainLayer = null;

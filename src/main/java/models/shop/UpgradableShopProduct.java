@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 
+import java.io.Serializable;
+
 public class UpgradableShopProduct extends ShopProduct implements Serializable {
 
     String ingredientName;

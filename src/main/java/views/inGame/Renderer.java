@@ -4,6 +4,7 @@ import models.App;
 import models.Position;
 import views.AppView;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 

@@ -6,6 +6,8 @@ import models.App;
 import models.entities.Entity;
 import models.enums.Season;
 
+import java.io.Serializable;
+
 public class OtherShopProduct extends ShopProduct implements Serializable {
     private Season season;
 

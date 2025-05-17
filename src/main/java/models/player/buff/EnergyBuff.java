@@ -5,6 +5,8 @@ import models.App;
 import models.Date;
 import models.enums.SkillType;
 
+import java.io.Serializable;
+
 public class EnergyBuff extends Buff implements Serializable {
 
     //TODO : handle max energy

@@ -3,6 +3,8 @@ package models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 public class Vec2 implements Serializable {
     protected double x;
     protected double y;
