@@ -85,7 +85,7 @@ public class Entity implements Cloneable{
     public <T extends EntityComponent> void addComponent(T component) {
         Class<? extends EntityComponent> clazz = component.getClass();
         if(this.getComponent(clazz) != null){
-            return;
+            removeComponent(clazz);
         }
         this.components.add(component);
     }
