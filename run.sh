@@ -34,8 +34,10 @@ build() {
 
 run_app() {
     if [ $# -eq 1 ]; then
-      if [[ "$1" == "debug" ]]; then
+      if [ "$1" = "debug" ]; then
         mvnDebug exec:java 2>&1
+      elif [ "$1" = "test" ]; then
+        mvn clean test
       else
         (cat "$1"; cat -) | mvn exec:java 2>&1
       fi
