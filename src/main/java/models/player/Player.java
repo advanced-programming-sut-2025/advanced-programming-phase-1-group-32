@@ -25,11 +25,12 @@ import models.player.buff.Buff;
 import models.player.friendship.PlayerFriendship;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class    Player extends Entity {
+public class Player extends Entity implements Serializable {
     private Energy energy = new Energy();
     private Wallet wallet = new Wallet();
     private final Map<SkillType, Skill> skills = new HashMap<>();
@@ -43,7 +44,8 @@ public class    Player extends Entity {
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<Recipe> unlockedRecipes;
     private ArrayList<TradeOffer> trades = new ArrayList<>();
-    private final Account account;
+    private transient Account account;
+    private final String accountUsername;
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
@@ -74,6 +76,8 @@ public class    Player extends Entity {
         this.trashcan = App.entityRegistry.makeEntity("Trashcan");
 
         this.account = account;
+
+        this.accountUsername = account.getUsername();
     }
 
     public GameMap getCurrentMap() {
@@ -82,6 +86,10 @@ public class    Player extends Entity {
 
     public void setRefrigerator(Entity refrigerator) {
         this.refrigerator = refrigerator;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void setCurrentMap(GameMap currentMap) {
@@ -313,7 +321,7 @@ public class    Player extends Entity {
     }
 
     public String getUsername() {
-        return account.getUsername();
+        return accountUsername;
     }
 
     public ArrayList<Recipe> getUnlockedRecipes() {
@@ -480,7 +488,7 @@ public class    Player extends Entity {
     public ArrayList<Tile> getOwnedTiles() {
         if(ownedTiles != null) return ownedTiles;
 
-        WorldMap map = App.activeGame.getMainMap();
+        WorldMap map = App.getActiveGame().getMainMap();
         ownedTiles = new ArrayList<>();
 
         for(Tile[] row : map.getTiles()){

@@ -18,7 +18,7 @@ import records.Result;
 import java.util.ArrayList;
 
 
-public enum     UseFunction {
+public enum UseFunction {
     PLOW () {
         @Override
         protected Result use(Player player,Entity tool, Tile tile, Entity target) {

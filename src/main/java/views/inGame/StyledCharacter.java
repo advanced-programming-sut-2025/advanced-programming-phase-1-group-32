@@ -1,6 +1,8 @@
 package views.inGame;
 
-public class StyledCharacter {
+import java.io.Serializable;
+
+public class StyledCharacter implements Serializable {
     public char character;
     public Color color;
 

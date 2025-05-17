@@ -7,6 +7,7 @@ import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
 import models.utils.StringUtils;
 
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -19,19 +20,18 @@ import java.util.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property  = "id")
-public class Entity implements Cloneable{
-    private static int entityCounter = 1;
+public class Entity implements Serializable, Cloneable{    private static int entityCounter = 1;
 
     //jsonProperty tells jackson to serialize and deserialize according to these names
     @JsonProperty("id")
-    private final int id;
+    private int id;
     @JsonProperty("name")
-    private final String entityName;
+    private String entityName;
     @JsonProperty("components")
-    private final ArrayList<EntityComponent> components = new ArrayList<>();
+    private ArrayList<EntityComponent> components = new ArrayList<>();
     @JsonProperty("tags")
-    private final HashSet<EntityTag> tags = new HashSet<>();
-    private final Set<EntityObserver> observers = new HashSet<>();
+    private HashSet<EntityTag> tags = new HashSet<>();
+    private ArrayList<EntityObserver> observers = new ArrayList<>();
 
     public Entity(String entityName, ArrayList<EntityComponent> components, HashSet<EntityTag> tags, int id){
         if(entityName == null){
@@ -177,7 +177,8 @@ public class Entity implements Cloneable{
     }
 
     public void delete(){
-        for(EntityObserver observer : observers){
+        ArrayList<EntityObserver> copy = new ArrayList<>(observers);
+        for(EntityObserver observer : copy){
             observer.onDelete(this);
         }
     }

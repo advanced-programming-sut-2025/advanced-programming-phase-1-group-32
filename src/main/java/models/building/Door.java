@@ -12,7 +12,9 @@ import models.player.Player;
 import records.Result;
 import views.inGame.Color;
 
-public class Door extends Entity {
+import java.io.Serializable;
+
+public class Door extends Entity implements Serializable {
     private Position destination;
     public Door() {
         super("DOOR");

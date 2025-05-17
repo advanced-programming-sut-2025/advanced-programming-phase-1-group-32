@@ -10,8 +10,7 @@ import models.enums.SecurityQuestions;
 import java.security.SecureRandom;
 import java.util.*;
 
-public class LoginMenuController implements Controller{
-    @Override
+public class LoginMenuController implements Controller{    @Override
     public Result changeMenu(String menuName) {
         //TODO
         return null;

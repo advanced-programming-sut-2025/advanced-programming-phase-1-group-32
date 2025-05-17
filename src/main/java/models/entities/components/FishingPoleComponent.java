@@ -2,7 +2,9 @@ package models.entities.components;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FishingPoleComponent extends EntityComponent {
+import java.io.Serializable;
+
+public class FishingPoleComponent extends EntityComponent implements Serializable {
     @JsonProperty("fishingPower")
     private double fishingPower;
     @JsonProperty("energyNeeded")

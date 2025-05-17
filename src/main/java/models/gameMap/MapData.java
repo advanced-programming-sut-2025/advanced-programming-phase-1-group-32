@@ -19,6 +19,7 @@ import views.inGame.Color;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;

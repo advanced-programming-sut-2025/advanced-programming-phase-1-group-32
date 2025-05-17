@@ -30,13 +30,14 @@ import records.GameStartingDetails;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 
-public class Game {
+public class Game implements Serializable {
     private Weather todayWeather;
     private Weather tomorrowWeather;
     private Date date = new Date();

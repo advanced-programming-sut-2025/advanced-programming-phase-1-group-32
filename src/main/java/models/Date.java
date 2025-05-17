@@ -3,8 +3,9 @@ package models;
 import models.enums.WeekDay;
 import models.enums.Season;
 
-public class Date implements Cloneable{
-    private Season season;
+import java.io.Serializable;
+
+public class Date implements Serializable, Cloneable{    private Season season;
     private int day;
     private int hour;
     private int totalHours;

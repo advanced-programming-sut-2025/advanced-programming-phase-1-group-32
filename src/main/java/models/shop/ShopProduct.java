@@ -13,6 +13,7 @@ import models.enums.Season;
 import records.Result;
 
 import javax.swing.*;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /*
@@ -40,7 +41,7 @@ public interface ShopProduct {
         @JsonSubTypes.Type(value = OtherShopProduct.class, name = "Product"),
         @JsonSubTypes.Type(value = UpgradableShopProduct.class, name = "Upgrade")
 })
-abstract public class ShopProduct {
+abstract public class ShopProduct implements Serializable {
     protected String name;
     protected int dailyLimit;
     protected int todaySold;

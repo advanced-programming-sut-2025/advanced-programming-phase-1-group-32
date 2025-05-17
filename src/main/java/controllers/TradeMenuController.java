@@ -9,7 +9,6 @@ import models.player.TradeOffer;
 import records.Result;
 
 public class TradeMenuController implements Controller {
-
     public Result trade(String username, String type, String itemName, int amount, boolean isBuyByMoney, double price, String targetItemName, int targetItemAmount) {
         Game game = App.getActiveGame();
         Player currentPlayer = game.getCurrentPlayer();

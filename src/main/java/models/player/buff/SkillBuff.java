@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.SkillType;
 
-public class SkillBuff extends Buff{
+import java.io.Serializable;
+
+public class SkillBuff extends Buff implements Serializable {
+    @JsonProperty("skillType")
     SkillType skillType;
 
     @JsonCreator

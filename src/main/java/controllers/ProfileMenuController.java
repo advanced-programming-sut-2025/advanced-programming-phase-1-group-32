@@ -5,8 +5,7 @@ import models.App;
 import records.Result;
 import models.enums.Menu;
 
-public class ProfileMenuController implements Controller{
-    @Override
+public class ProfileMenuController implements Controller{    @Override
     public Result changeMenu(String menuName) {
         Menu menu = Menu.getMenu(menuName);
         if(menu == null)

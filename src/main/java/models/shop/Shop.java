@@ -8,11 +8,12 @@ import models.entities.components.EntityComponent;
 import models.enums.Material;
 import models.enums.Season;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Shop extends EntityComponent {
+public class Shop extends EntityComponent implements Serializable {
 
     String name;
     private ArrayList<BuildingShopProduct> buildings;

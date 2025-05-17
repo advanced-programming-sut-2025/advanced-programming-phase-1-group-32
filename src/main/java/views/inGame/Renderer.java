@@ -4,11 +4,12 @@ import models.App;
 import models.Position;
 import views.AppView;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
 
-public class Renderer {
+public class Renderer implements Serializable {
     private final String resetCode = "\u001B[0m";
     private final String fgColorCode = "\u001B[38;2;%d;%d;%dm";
     private final String bgColorCode = "\u001B[48;2;%d;%d;%dm";

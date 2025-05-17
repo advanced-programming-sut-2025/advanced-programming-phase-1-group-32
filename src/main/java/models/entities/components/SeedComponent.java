@@ -5,9 +5,10 @@ import models.App;
 import models.entities.Entity;
 import models.enums.Season;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SeedComponent extends EntityComponent{
+public class SeedComponent extends EntityComponent implements Serializable {
     @JsonProperty("growingPlants")
     private ArrayList<String> growingPlants = new ArrayList<>();
     @JsonProperty("canBeForaging")

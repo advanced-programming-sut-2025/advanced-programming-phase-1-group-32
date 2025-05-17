@@ -12,9 +12,10 @@ import models.gameMap.Tile;
 import models.utils.StringUtils;
 import records.Result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Growable extends EntityComponent {
+public class Growable extends EntityComponent implements Serializable {
     @JsonProperty("seasons")
     private ArrayList<Season> growingSeasons = new ArrayList<>();
     @JsonProperty("fruit")

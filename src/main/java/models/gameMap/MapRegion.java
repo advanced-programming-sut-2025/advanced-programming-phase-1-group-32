@@ -4,9 +4,10 @@ import models.Position;
 import models.player.Player;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MapRegion {
+public class MapRegion implements Serializable {
     private String name;
     private Player owner;
     private ArrayList<Tile> tiles = new ArrayList<>();

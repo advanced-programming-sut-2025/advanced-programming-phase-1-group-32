@@ -16,9 +16,10 @@ import models.gameMap.MapRegistry;
 import models.gameMap.Tile;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 @JsonDeserialize(using = InteriorComponentDeserializer.class)
-public class InteriorComponent extends EntityComponent {
+public class InteriorComponent extends EntityComponent implements Serializable {
     private GameMap interiorMap;
     private String interiorName;
 

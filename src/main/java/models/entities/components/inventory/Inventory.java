@@ -10,9 +10,10 @@ import models.entities.components.Pickable;
 import models.enums.EntityTag;
 import models.utils.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory extends EntityComponent {
+public class Inventory extends EntityComponent implements Serializable {
     @JsonProperty("slots")
     private ArrayList<InventorySlot> slots = new ArrayList<>();
     @JsonProperty("capacity")

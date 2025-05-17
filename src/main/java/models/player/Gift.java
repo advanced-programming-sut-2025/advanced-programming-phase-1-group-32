@@ -4,7 +4,9 @@ import models.Date;
 import models.entities.Entity;
 import models.entities.components.Pickable;
 
-public class Gift {
+import java.io.Serializable;
+
+public class Gift implements Serializable {
     private final Player sender;
     private final Player receiver;
     private final Entity content;

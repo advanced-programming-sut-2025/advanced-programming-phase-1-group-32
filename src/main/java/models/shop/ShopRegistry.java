@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import models.entities.Registry;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Path;
 
-public class ShopRegistry extends Registry<ShopData> {
+public class ShopRegistry extends Registry<ShopData> implements Serializable {
 
     @Override
     public void loadJson(JsonNode jsonRoot, ObjectMapper mapper, Path path) throws IOException {

@@ -7,9 +7,10 @@ import models.entities.UseFunction;
 import models.player.Player;
 import records.Result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Useable extends EntityComponent{
+public class Useable extends EntityComponent implements Serializable {
     @JsonProperty("useFunctions")
     private final ArrayList<UseFunction> functions = new ArrayList<>();
 

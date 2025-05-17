@@ -3,7 +3,9 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.entities.Entity;
 
-public class Pickable extends EntityComponent{
+import java.io.Serializable;
+
+public class Pickable extends EntityComponent implements Serializable {
     @JsonProperty("maxStack")
     private int maxStack;
     @JsonProperty("stackSize")

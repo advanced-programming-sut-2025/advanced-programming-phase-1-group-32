@@ -9,11 +9,12 @@ import models.enums.EntityTag;
 import models.utils.StringUtils;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class EntityRegistry extends Registry<Entity>{
+public class EntityRegistry extends Registry<Entity> {
     public void addChild(EntityRegistry child) {
         registry.putAll(child.registry);
     }

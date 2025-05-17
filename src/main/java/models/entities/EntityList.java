@@ -2,12 +2,17 @@ package models.entities;
 
 import models.entities.components.EntityComponent;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EntityList extends ArrayList<Entity> implements EntityObserver {
-    private final Map<Class<? extends EntityComponent>, ArrayList<EntityComponent>> components = new HashMap<>();
+public class EntityList extends ArrayList<Entity> implements EntityObserver{
+    private Map<Class<? extends EntityComponent>, ArrayList<EntityComponent>> components = new HashMap<>();
 
     @Override
     public boolean add(Entity entity) {
@@ -50,3 +55,4 @@ public class EntityList extends ArrayList<Entity> implements EntityObserver {
         return (ArrayList<T>) components.get(clazz);
     }
 }
+

@@ -101,3 +101,5 @@ tools use -d 4
 tools use -d 8
 tools use -d 6
 tools use -d 2
+
+save game

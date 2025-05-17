@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.io.Serializable;
+
 @JsonDeserialize(builder = HarvestableResource.Builder.class)
-public class HarvestableResource{
+public class HarvestableResource implements Serializable {
     @JsonProperty("entity")
     String entity;
     @JsonProperty("probability")

@@ -5,7 +5,9 @@ import models.Position;
 import models.Vec2;
 import models.gameMap.GameMap;
 
-public class PositionComponent extends EntityComponent{
+import java.io.Serializable;
+
+public class PositionComponent extends EntityComponent implements Serializable {
     private Position position;
 
 

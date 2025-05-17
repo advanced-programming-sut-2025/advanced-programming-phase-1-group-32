@@ -2,9 +2,10 @@ package views.inGame;
 
 import models.App;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class CharacterTexture {
+public class CharacterTexture implements Serializable {
     int width, height;
     public StyledCharacter[][] data;
 

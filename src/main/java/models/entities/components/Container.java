@@ -3,7 +3,9 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Container extends EntityComponent {
+import java.io.Serializable;
+
+public class Container extends EntityComponent implements Serializable {
 
     private int maxCharge;
     private int charge;

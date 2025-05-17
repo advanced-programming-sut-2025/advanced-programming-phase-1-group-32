@@ -3,7 +3,9 @@ package models.NPC;
 import models.player.Player;
 import records.Result;
 
-public class Quest {
+import java.io.Serializable;
+
+public class Quest implements Serializable {
     private String npcName;
     private NPC npc;
     private int id;

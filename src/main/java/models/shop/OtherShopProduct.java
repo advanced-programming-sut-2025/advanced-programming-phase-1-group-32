@@ -6,7 +6,9 @@ import models.App;
 import models.entities.Entity;
 import models.enums.Season;
 
-public class OtherShopProduct extends ShopProduct {
+import java.io.Serializable;
+
+public class OtherShopProduct extends ShopProduct implements Serializable {
     private Season season;
 
     @JsonCreator

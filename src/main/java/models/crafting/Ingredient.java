@@ -7,10 +7,11 @@ import models.entities.Entity;
 import models.enums.EntityTag;
 import models.utils.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ingredient {
+public class Ingredient implements Serializable {
     private List<String> contents;
     private List<EntityTag> validTags;
     private int amount = 1;

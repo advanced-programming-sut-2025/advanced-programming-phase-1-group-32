@@ -11,10 +11,11 @@ import models.entities.components.inventory.Inventory;
 import models.player.Energy;
 import models.utils.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @JsonDeserialize(builder = Recipe.Builder.class)
-public class Recipe {
+public class Recipe implements Serializable {
     /* TODO recipe name should be an Item too*/
     private final String name;
     private final ArrayList<Ingredient> ingredients;
