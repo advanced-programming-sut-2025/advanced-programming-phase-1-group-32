@@ -37,7 +37,7 @@ public enum GameMenuCommands implements Commands {
     FRIENDSHIPS       ("\\s*friendships\\s*"),
     GIFT              ("\\s*gift\\s+-u\\s+(?<username>.+)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>\\d+)\\s*"),
     GIFT_LIST         ("\\s*gift\\s+list\\s*"),
-    GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>(-)\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
+    GIFT_RATE         ("\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>-?\\d+)\\s*-r\\s+(?<rate>-?\\d+)\\s*"),
     GIFT_HISTORY      ("\\s*gift\\s+history\\s+-u(?<username>.+)\\s*"),
     HUG               ("\\s*hug\\s+-u\\s+(?<username>.+)\\s*"),
     FLOWER            ("\\s*flower\\s+-u\\s+(?<username>.+)\\s*"),
@@ -69,7 +69,7 @@ public enum GameMenuCommands implements Commands {
     PLACE_ITEM("^place\\s+item\\s+-n\\s+(?<itemName>.+?)\\s+-d\\s+(?<direction>.+)$"),
     PICK_NEARBY_ITEMS("^\\s*pick\\s+nearby\\s+items\\s*$"),
     CHEAT_GIVE_ITEM   ("^\\s*cheat\\s+give\\s+item\\s+\"\\s*(?<name>.+?)\\s*\"\\s+(?<quantity>-?\\d+)\\s*$"),
-    REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)$"),
+    REFRIGERATOR("^cooking\\s+refrigerator\\s+(?<what>put|pick)\\s+(?<item>.+)\\s+(?<amount>\\d+)$"),
 
     /* -------------------------------------------------- -------------------------------------------------- */
 
@@ -94,7 +94,7 @@ public enum GameMenuCommands implements Commands {
     /* -------------------------------------------------- -------------------------------------------------- */
 
     /* ------------------------------------------ Animal Commands ------------------------------------------ */
-    BUY_ANIMAL("\\s*buy\\s+animal\\s+-a\\s+(?<animalName>.+?)\\s+-n\\s+(?<name>.+?)\\s+-h(?<house>.+?)\\s*"),
+    BUY_ANIMAL("\\s*buy\\s+animal\\s+-a\\s+(?<animalName>.+?)\\s+-n\\s+(?<name>.+?)\\s+-h\\s*(?<house>.+?)\\s*"),
     SHOW_MY_ANIMAL_HOUSES("^show\\s+my\\s+animal\\s+houses$"),
     PET_ANIMAL("\\s*pet\\s+-n\\s+(?<name>.+)\\s*"),
     SET_ANIMAL_FRIENDSHIP("\\s*cheat\\s+set\\s+friendship\\s+" +

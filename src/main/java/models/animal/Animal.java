@@ -2,10 +2,7 @@ package models.animal;
 
 import models.App;
 import models.entities.Entity;
-import models.entities.components.AnimalHouse;
-import models.entities.components.Pickable;
-import models.entities.components.Renderable;
-import models.entities.components.Sellable;
+import models.entities.components.*;
 import models.enums.ProductQuality;
 import models.player.Player;
 import views.inGame.Color;
@@ -132,7 +129,9 @@ public class Animal extends Entity {
         }
         isPetToday = false;
 
-        //TODO: reduce if its out of house
+        if(getComponent(PositionComponent.class).getMap().getBuilding() == null){
+            reduceFriendshipLevel(20);
+        }
     }
 
     public void setupTodayProduct() {

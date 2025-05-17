@@ -208,9 +208,9 @@ public class GameMenuController implements Controller {
 
     public Result executeWalk(WalkProposal p) {
         Player player = App.getActiveGame().getCurrentPlayer();
-        if (!p.isAllowed()) {
-            return new Result(false, "No walk was proposed");
-        }
+//        if (!p.isAllowed()) {
+//            return new Result(false, "No walk was proposed");
+//        }
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
@@ -492,11 +492,15 @@ public class GameMenuController implements Controller {
         if (position == null) {
             return new Result(false, "type a valid direction");
         }
-        if (!player.getComponent(Inventory.class).doesHaveItem(seedDetails.getEntityName())) {
+        if (!player.getComponent(Inventory.class).doesHaveItem(seedString)) {
             return new Result(false, "you don't have that seed");
         }
 
-        Entity seed = player.getComponent(Inventory.class).takeFromInventory(seedDetails, 1);
+
+        if(!player.getComponent(Inventory.class).doesHaveItem(seedString)){
+            return new Result(false, "you don't have that seed");
+        }
+        Entity seed = App.entityRegistry.getEntityDetails(seedString);
 
         Tile tile = game.getActiveMap().getTileByPosition(position);
 
@@ -508,17 +512,25 @@ public class GameMenuController implements Controller {
             return new Result(false, "tile isn't empty");
         }
         Entity building = tile.getMap().getBuilding();
-        if(building != null && StringUtils.isNamesEqual(building.getEntityName(), "greenhouse")){
-            //TODO greenhouse logic (planting in all seasons, cant plant trees, ...)
+
+        boolean canPlant = true;
+        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+
+        if(!plant.getComponent(Growable.class).getGrowingSeasons().contains(game.getDate().getSeason())){
+            canPlant = false;
         }
 
-//        Entity plant = App.entityRegistry.makeEntity(seed.getComponent(SeedComponent.class).getGrowingPlant());
+        if(building != null && StringUtils.isNamesEqual(building.getEntityName(), "greenhouse")){
+            canPlant = true;
+        }
 
-        Entity plant = seed.getComponent(SeedComponent.class).getGrowingPlant();
+        if(!canPlant){
+            return new Result(false, "You can't plant a " + plant.getEntityName() + " in this season");
+        }
+
+        seed = player.getComponent(Inventory.class).takeFromInventory(seedString, 1);
         tile.setType(TileType.PLANTED_GROUND);
         EntityPlacementSystem.placeOnTile(plant, tile);
-
-
 
         return new Result(true, "planted succusfully");
     }
@@ -1150,7 +1162,7 @@ public class GameMenuController implements Controller {
 
         }
 
-        skill.addExperience(5);
+        skill.addExperience(10);
         return new Result(true, message.toString());
     }
 
@@ -1962,7 +1974,6 @@ public class GameMenuController implements Controller {
     }
     public Result buildGreenhouse(){
         Player player = App.getActiveGame().getCurrentPlayer();
-        player.getOwnedPlantedTiles();
 
         int wood = player.getComponent(Inventory.class).getItemCount("Wood");
         double money = player.getWallet().getBalance();
@@ -1980,6 +1991,9 @@ public class GameMenuController implements Controller {
 
         EntityPlacementSystem.clearArea(position.getCol(), position.getRow(), greenhouse.getComponent(Placeable.class));
         EntityPlacementSystem.placeEntity(greenhouse, position);
+
+        player.getWallet().reduceBalance(1000);
+        player.getComponent(Inventory.class).takeFromInventory("Wood", 500);
 
         return new Result(true, "greenhouse built");
     }
@@ -2005,6 +2019,7 @@ public class GameMenuController implements Controller {
     public Result trashItem(String name, int amount){
         Player player = App.getActiveGame().getCurrentPlayer();
         Entity entity = player.getComponent(Inventory.class).takeFromInventory(name, player.getComponent(Inventory.class).getItemCount(name));
+        if(entity == null) return new Result(false, "");
         entity.delete();
         //TODO
         return new Result(false, "");

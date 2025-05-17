@@ -18,6 +18,7 @@ public class AppView {
     private final Renderer renderer;
     //false is the typical terminal mode
     private boolean rawMode = false;
+    private String previusMessage = "";
 
     public AppView() {
         try {
@@ -68,8 +69,13 @@ public class AppView {
         return scanner.nextLine();
     }
 
-    public void log(String string) {
-        System.out.println(string);
+    public void log(Object o) {
+        if(o != null){
+            System.out.println(o.toString());
+            previusMessage = o.toString();
+        }
+    }
+    public void log() {
     }
 
     public void err(String string) {
@@ -94,5 +100,9 @@ public class AppView {
 
     public Scanner getScanner() {
         return scanner;
+    }
+
+    public String getPreviusMessage() {
+        return previusMessage;
     }
 }

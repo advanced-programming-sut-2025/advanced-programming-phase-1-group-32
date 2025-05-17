@@ -12,6 +12,9 @@
         220,
         40
       ]
+    },{
+      "type" : "Pickable",
+      "maxStack" : 800000
     }
   ],
   "required components": [

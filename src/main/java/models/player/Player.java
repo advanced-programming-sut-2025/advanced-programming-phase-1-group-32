@@ -189,6 +189,10 @@ public class    Player extends Entity {
         return this.skills.get(type);
     }
 
+    public Map<SkillType, Skill> getSkills() {
+        return skills;
+    }
+
     public void addExperince(SkillType type, int amount) {
         Skill skill = getSkill(type);
         skill.addExperience(amount);
@@ -457,7 +461,7 @@ public class    Player extends Entity {
     public AnimalHouse findAnimalHouse(String animalHouseName) {
         for (Entity building : ownedBuildings) {
             AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
-            if (animalHouse != null && animalHouse.getName().equals(animalHouseName)) {
+            if (animalHouse != null && animalHouse.getName().equals(animalHouseName.trim())) {
                 return animalHouse;
             }
         }

@@ -1,6 +1,6 @@
 package models.Commands;
 
-public enum ProfileMenuCommands implements Commands{
+public enum     ProfileMenuCommands implements Commands{
     USER_INFO         ("^user\\s+info$"),
     MENU_ENTER        ("^menu\\s+enter\\s+(?<menuName>.+)"),
     CHANGE_EMAIL      ("^change\\s+email\\s+-e(?<email>.+)$"),

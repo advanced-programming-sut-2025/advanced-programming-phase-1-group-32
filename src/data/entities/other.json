@@ -1,9 +1,6 @@
 {
   "common components": [
-    {
-      "type": "Pickable",
-      "maxStack": 16000
-    }
+
   ],
   "required components": [
 
@@ -15,11 +12,21 @@
     {
       "name": "Bouquet",
       "tags" : [],
-      "components" : []
+      "components" : [
+        {
+          "type": "Pickable",
+          "maxStack": 1
+        }
+      ]
     },    {
       "name": "Wedding Ring",
       "tags" : ["RING"],
-      "components" : []
+      "components" : [
+        {
+          "type": "Pickable",
+          "maxStack": 1
+        }
+      ]
     },    {
       "name": "Trashcan",
       "components" : [
@@ -31,7 +38,7 @@
     },
     {
       "name": "Burned Tree",
-      "tags": ["BREAKABLE_WITH_AXE", "TREE"],
+      "tags": ["BREAKABLE_WITH_AXE"],
       "components": [
         {
           "type": "Harvestable",
@@ -52,6 +59,9 @@
             38,
             25
           ]
+        },    {
+          "type": "Placeable",
+          "isWalkable" : false
         }
       ]
     }

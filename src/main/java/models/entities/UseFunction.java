@@ -18,7 +18,7 @@ import records.Result;
 import java.util.ArrayList;
 
 
-public enum UseFunction {
+public enum     UseFunction {
     PLOW () {
         @Override
         protected Result use(Player player,Entity tool, Tile tile, Entity target) {
@@ -48,7 +48,7 @@ public enum UseFunction {
             if(tile.getType() != TileType.PLOWED){
                 return new Result(false, "you can only de_plow plowed ground");
             }
-            tile.setType(TileType.GRASS);
+            tile.setType(TileType.DIRT);
             int energyCost = 5 - tool.getComponent(Upgradable.class).getMaterial().getLevel();
             energyCost -= player.getSkill(SkillType.FARMING).getLevel() == 4 ? 1 : 0;
             if(player.getActiveBuff() != null)
@@ -80,9 +80,11 @@ public enum UseFunction {
             if(harvestable.getMaterial().getLevel() > tool.getComponent(Upgradable.class).getMaterial().getLevel()){
                 return new Result(false, "Your pickaxe cant mine that mineral. you need " + harvestable.getMaterial() + " pickaxe.");
             }
-            player.addExperince(SkillType.MINING, 5);
+            player.addExperince(SkillType.MINING, 10);
 
             ArrayList<Entity> harvestedEntities = harvestable.harvest();
+
+//            if(player.getSkill(SkillType.MINING))
 
             if(mineral.getComponent(Forageable.class) != null){
                 player.getSkill(SkillType.FORAGING).addExperience(10);
@@ -221,9 +223,7 @@ public enum UseFunction {
                 inventory.addItem(fruit);
             }
 
-            player.addExperince(SkillType.FARMING, 5);
-
-            //TODO: reduce energy
+            player.addExperince(SkillType.FARMING, 10);
 
 
 
