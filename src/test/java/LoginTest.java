@@ -79,7 +79,6 @@ public class LoginTest {
         checkExpected("logged in successfully");
     }
 
-    @Test
 
 
 
