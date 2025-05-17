@@ -1,5 +1,6 @@
 package models.player.buff;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.Date;
@@ -8,10 +9,11 @@ import models.enums.SkillType;
 public class EnergyBuff extends Buff{
 
     //TODO : handle max energy
-    @JsonProperty("energyBuff")
     private double energyBuff;
 
-    public EnergyBuff(double energyBuff, int buffTime) {
+
+    @JsonCreator
+    public EnergyBuff(@JsonProperty("energyBuff") double energyBuff, @JsonProperty("buffTime") int buffTime) {
         super(buffTime);
         this.energyBuff = energyBuff;
     }

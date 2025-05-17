@@ -52,4 +52,10 @@ public class Edible extends EntityComponent{
 
         return this.energy == otherEdible.energy;
     }
+
+    public void setBuff() {
+        if(buff == null)
+            return;
+        buff.setBuff();
+    }
 }

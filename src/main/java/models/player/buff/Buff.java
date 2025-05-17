@@ -32,7 +32,6 @@ abstract public class Buff {
 
     public Buff(int buffTime) {
         this.buffTime = buffTime;
-        this.startDate = App.getActiveGame().getDate().clone();
     }
 
     public int remainingTime() {
@@ -42,6 +41,12 @@ abstract public class Buff {
         if(pastTime > buffTime)
             return 0;
         return buffTime - pastTime;
+    }
+
+    public void setBuff() {
+        this.startDate = App.getActiveGame().getDate().clone();
+        App.getActiveGame().getCurrentPlayer().setActiveBuff(this);
+        App.getActiveGame().getCurrentPlayer().getEnergy().buff(this.effectOnMaxEnergy(), this.remainingTime());
     }
 
 }

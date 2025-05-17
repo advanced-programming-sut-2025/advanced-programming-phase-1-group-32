@@ -40,6 +40,7 @@
           "type" : "Edible",
           "energy" : 12,
           "buff" : {
+            "type" : "EnergyBuff",
             "buffTime" : 5,
             "energyBuff": 100
           }
@@ -57,6 +58,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 5,
             "skillType" : "FARMING"
           }
@@ -70,6 +72,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 11,
             "skillType" : "FORAGING"
           }
@@ -86,6 +89,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "EnergyBuff",
             "buffTime" : 3,
             "energyBuff" : 50
           }
@@ -108,6 +112,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 5,
             "skillType" : "FARMING"
           }
@@ -121,6 +126,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 5,
             "skillType" : "FORAGING"
           }
@@ -134,6 +140,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 5,
             "skillType" : "FISHING"
           }
@@ -147,6 +154,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 10,
             "skillType" : "FISHING"
           }
@@ -160,6 +168,7 @@
           "type" : "Edible",
           "energy" : 0,
           "buff" : {
+            "type" : "SkillBuff",
             "buffTime" : 5,
             "skillType" : "MINING"
           }

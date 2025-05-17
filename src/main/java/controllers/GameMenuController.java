@@ -733,6 +733,7 @@ public class GameMenuController implements Controller {
         Edible edible = food.getComponent(Edible.class);
         if (edible == null)
             return new Result(false, "This is not Edible");
+        edible.setBuff();
         player.reduceEnergy(-edible.getEnergy());
         inventory.takeFromInventory(food, 1);
         return new Result(true, "eated " + foodName + " successfully");
