@@ -5,10 +5,10 @@
     },
     "activeFile": "bigMap.tmx",
     "expandedProjectPaths": [
-        "Tile sets",
-        "buildings",
         ".",
-        "/home/parsa/Projects/University/AP/Stardew Valley/Moz"
+        "Tile sets",
+        "/home/parsa/Projects/University/AP/Stardew Valley/Moz",
+        "buildings"
     ],
     "fileStates": {
         "": {
@@ -249,7 +249,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 7.511111111111111,
-                "y": 7.522222222222224
+                "y": 7.500000000000002
             }
         },
         "buildings/destroyedGreenhouse.tmx": {
@@ -357,11 +357,11 @@
             }
         },
         "buildings/stardropSaloonExterior.tmx": {
-            "scale": 96.615,
+            "scale": 32,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 4.999223723024375,
-                "y": 3.5035967499870617
+                "x": 6.75,
+                "y": 4.359375
             }
         },
         "buildings/stardropSaloonExterior.tmx#objects": {
