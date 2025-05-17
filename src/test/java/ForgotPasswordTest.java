@@ -22,7 +22,7 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class ForgotPasswordTest implements Serializable {
+public class ForgotPasswordTest {
     private ForgotPasswordFlow flow;
     private Account account = new Account(Gender.MALE, "test@gmail.com", "AliAlm", "TestPass#403","AliAlmasi");
 

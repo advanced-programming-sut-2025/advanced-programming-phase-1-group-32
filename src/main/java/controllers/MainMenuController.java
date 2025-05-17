@@ -4,9 +4,13 @@ import models.*;
 import models.enums.Menu;
 import models.gameMap.MapRegion;
 import models.gameMap.WorldMapType;
+import models.player.Player;
 import records.GameStartingDetails;
 import records.Result;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.*;
 
 public class MainMenuController implements Controller{    @Override
@@ -103,8 +107,21 @@ public class MainMenuController implements Controller{    @Override
     }
 
     public Result loadGame() {
-        //TODO
-        return null;
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("testSave.ser"));
+            Game game = (Game) in.readObject();
+            ArrayList<Player> players = game.getPlayers();
+            for(Player player : players){
+                player.setAccount(App.getUserByUsername(player.getUsername()));
+            }
+            App.setActiveGame(game);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        App.setCurrentMenu(Menu.GAME_MENU);
+        return new Result(true, "loaded!");
     }
 
 

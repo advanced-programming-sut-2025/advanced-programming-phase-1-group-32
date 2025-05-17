@@ -27,8 +27,6 @@ cheat give item "Scythe" 1
 cheat give item "Training Rod" 1
 cheat give item "Kale Seeds" 5
 
-save game
-
 cheat toggle unlimited inventory
 cheat give item "Wood" 501
 
@@ -103,3 +101,5 @@ tools use -d 4
 tools use -d 8
 tools use -d 6
 tools use -d 2
+
+save game

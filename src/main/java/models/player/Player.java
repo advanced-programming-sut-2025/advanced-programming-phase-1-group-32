@@ -44,7 +44,8 @@ public class Player extends Entity implements Serializable {
     private ArrayList<Message> messageLog = new ArrayList<>();
     private final ArrayList<Recipe> unlockedRecipes;
     private ArrayList<TradeOffer> trades = new ArrayList<>();
-    private transient final Account account;
+    private transient Account account;
+    private final String accountUsername;
     private InventorySlot activeSlot;
     private final ArrayList<MapRegion> ownedRegions = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
@@ -75,6 +76,8 @@ public class Player extends Entity implements Serializable {
         this.trashcan = App.entityRegistry.makeEntity("Trashcan");
 
         this.account = account;
+
+        this.accountUsername = account.getUsername();
     }
 
     public GameMap getCurrentMap() {
@@ -83,6 +86,10 @@ public class Player extends Entity implements Serializable {
 
     public void setRefrigerator(Entity refrigerator) {
         this.refrigerator = refrigerator;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public void setCurrentMap(GameMap currentMap) {
@@ -314,7 +321,7 @@ public class Player extends Entity implements Serializable {
     }
 
     public String getUsername() {
-        return account.getUsername();
+        return accountUsername;
     }
 
     public ArrayList<Recipe> getUnlockedRecipes() {

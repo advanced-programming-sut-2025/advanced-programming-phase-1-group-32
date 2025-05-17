@@ -11,20 +11,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EntityList extends ArrayList<Entity> implements EntityObserver, Serializable{
+public class EntityList extends ArrayList<Entity> implements EntityObserver{
     private Map<Class<? extends EntityComponent>, ArrayList<EntityComponent>> components = new HashMap<>();
-
-    public EntityList(Collection<? extends Entity> c) {
-        super(c);
-    }
-
-    public EntityList() {
-        super();
-    }
-
-    public EntityList(int initialCapacity) {
-        super(initialCapacity);
-    }
 
     @Override
     public boolean add(Entity entity) {
@@ -65,32 +53,6 @@ public class EntityList extends ArrayList<Entity> implements EntityObserver, Ser
     public <T extends EntityComponent> ArrayList<T> getComponentsOfType(Class<T> clazz){
         components.putIfAbsent(clazz, new ArrayList<>());
         return (ArrayList<T>) components.get(clazz);
-    }
-
-    @Serial
-    @SuppressWarnings("unchecked")
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        // First, read in your own fields (this populates 'components')
-        in.defaultReadObject();
-
-        // Now rebuild the list itself
-        int size = in.readInt();
-        for (int i = 0; i < size; i++) {
-            Entity e = (Entity) in.readObject();
-
-            // Use your overridden add() to:
-            //  1) add it into the ArrayList
-            //  2) re‐attach your EntityObserver
-            //  3) re‐populate your components map
-            super.add(e);
-            e.addObserver(this);
-            for (EntityComponent c : e.getComponents()) {
-                components
-                        .computeIfAbsent(c.getClass(), k -> new ArrayList<>())
-                        .add(c);
-            }
-        }
     }
 }
 
