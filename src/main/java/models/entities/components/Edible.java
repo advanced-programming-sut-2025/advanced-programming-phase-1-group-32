@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.player.buff.Buff;
 
-public class Edible extends EntityComponent{
+import java.io.Serializable;
+
+public class Edible extends EntityComponent implements Serializable {
     @JsonProperty("energy")
     private int energy;
     @JsonProperty("buff")

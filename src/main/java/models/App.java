@@ -9,7 +9,7 @@ import views.AppView;
 
 import java.util.ArrayList;
 
-public class App {
+public class App implements Serializable {
     private final static ArrayList<Account> accountList = new ArrayList<>();
     private static Account loggedInAccount = null;
     private static Account registeredAccount = null;

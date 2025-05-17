@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class WorldMap extends GameMap {
+public class WorldMap extends GameMap implements Serializable {
     private final ArrayList<MapRegion> regions = new ArrayList<>();
     private final MapRegion[][] regionMap;
     private final BiomeType[][] biomeMap;

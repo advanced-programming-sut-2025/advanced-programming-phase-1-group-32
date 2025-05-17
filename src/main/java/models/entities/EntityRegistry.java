@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class EntityRegistry extends Registry<Entity>{
+public class EntityRegistry extends Registry<Entity> implements Serializable {
     public void addChild(EntityRegistry child) {
         registry.putAll(child.registry);
     }

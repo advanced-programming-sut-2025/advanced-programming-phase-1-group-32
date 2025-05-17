@@ -3,7 +3,9 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.Date;
 
-public class Forageable extends EntityComponent{
+import java.io.Serializable;
+
+public class Forageable extends EntityComponent implements Serializable {
     private boolean foraged = false;
     private Date dateAdded = null;
 

@@ -5,7 +5,7 @@ import models.animal.Animal;
 import models.animal.AnimalType;
 import models.entities.Entity;
 
-public class AnimalShopProduct extends ShopProduct {
+public class AnimalShopProduct extends ShopProduct implements Serializable {
 
     private String requiredBuildingName;
 

@@ -3,7 +3,7 @@ package models.player.buff;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.SkillType;
 
-public class SkillBuff extends Buff{
+public class SkillBuff extends Buff implements Serializable {
     @JsonProperty("skillType")
     SkillType skillType;
 

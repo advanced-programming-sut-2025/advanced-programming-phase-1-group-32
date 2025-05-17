@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Account {
+public class Account implements Serializable {
     private static final Pattern validUsernameCharacters = Pattern.compile("^[a-zA-Z0-9-]*$");
     private static final Pattern emailGroupingPattern    = Pattern.compile("^(?<mail>\\S+)@(?<domain>\\S+)\\.(?<tld>\\S+)$");
     private static final Pattern validMailCharacters     = Pattern.compile("^[a-zA-Z0-9._-]+$");

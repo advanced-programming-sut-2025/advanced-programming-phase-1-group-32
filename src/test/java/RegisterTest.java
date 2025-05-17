@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RegisterTest {
+public class RegisterTest implements Serializable {
 
     private LoginMenu menu;
     private final PrintStream originalOut = System.out;

@@ -21,13 +21,14 @@ import models.gameMap.Tile;
 import records.Result;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 @JsonDeserialize(using = PlaceableDeserializer.class)
-public class Placeable extends EntityComponent{
+public class Placeable extends EntityComponent implements Serializable {
 
     @JsonProperty("exteriorName")
     private String exteriorName;

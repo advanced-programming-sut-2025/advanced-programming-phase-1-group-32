@@ -5,7 +5,7 @@ import models.player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerFriendship {
+public class PlayerFriendship implements Serializable {
     private final ArrayList<Player> friends;
     private int level;
     private int xp = 0;

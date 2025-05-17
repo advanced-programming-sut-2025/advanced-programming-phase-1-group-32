@@ -7,9 +7,10 @@ import models.enums.ProductQuality;
 import models.player.Player;
 import views.inGame.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Animal extends Entity {
+public class Animal extends Entity implements Serializable {
     private AnimalType animalType;
     private String name;
     private Entity todayProduct;
@@ -30,12 +31,7 @@ public class Animal extends Entity {
     public Animal(AnimalType animalType) {
         this(animalType, null);
     }
-
-    public Animal(AnimalData data) {
-        super(data.name);
-
-    }
-
+    
     public AnimalType getAnimalType() {
         return animalType;
     }

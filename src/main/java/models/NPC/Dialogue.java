@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.Season;
 import models.enums.Weather;
 
-public class Dialogue {
+public class Dialogue implements Serializable {
     private final String dialogue;
     private final String npcName;
 

@@ -7,8 +7,7 @@ import views.AppMenu;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class TradeMenu implements AppMenu {
-    @Override
+public class TradeMenu implements Serializable, AppMenu {    @Override
     public void checker(Scanner scanner) {
         TradeMenuController controller = new TradeMenuController();
         String input = scanner.nextLine().trim();

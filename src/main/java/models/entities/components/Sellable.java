@@ -3,7 +3,9 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.ProductQuality;
 
-public class Sellable extends EntityComponent{
+import java.io.Serializable;
+
+public class Sellable extends EntityComponent implements Serializable {
     @JsonProperty("price")
     private int price;
     private ProductQuality productQuality;

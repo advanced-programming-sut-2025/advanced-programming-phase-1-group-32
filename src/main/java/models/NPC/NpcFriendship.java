@@ -1,6 +1,6 @@
 package models.NPC;
 
-public class NpcFriendship {
+public class NpcFriendship implements Serializable {
     private boolean wasMetToday;
     private boolean wasGiftedToday;
     private int timeSinceFriend;

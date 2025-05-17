@@ -7,6 +7,7 @@ import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
 import models.utils.StringUtils;
 
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -19,8 +20,7 @@ import java.util.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property  = "id")
-public class Entity implements Cloneable{
-    private static int entityCounter = 1;
+public class Entity implements Serializable, Cloneable{    private static int entityCounter = 1;
 
     //jsonProperty tells jackson to serialize and deserialize according to these names
     @JsonProperty("id")

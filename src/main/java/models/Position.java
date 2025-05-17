@@ -2,7 +2,7 @@ package models;
 
 import models.gameMap.GameMap;
 
-public class Position extends Vec2{
+public class Position extends Vec2 implements Serializable {
     GameMap map;
 
     public Position(double x, double y, GameMap map){

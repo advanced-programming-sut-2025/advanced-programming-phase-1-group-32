@@ -10,8 +10,7 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class LoginMenu implements AppMenu {
-    private final LoginMenuController controller = new LoginMenuController();
+public class LoginMenu implements Serializable, AppMenu {    private final LoginMenuController controller = new LoginMenuController();
 
     @Override
     public void checker(Scanner scanner) {

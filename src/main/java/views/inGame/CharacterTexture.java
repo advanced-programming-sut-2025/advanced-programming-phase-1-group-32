@@ -4,7 +4,7 @@ import models.App;
 
 import java.util.Arrays;
 
-public class CharacterTexture {
+public class CharacterTexture implements Serializable {
     int width, height;
     public StyledCharacter[][] data;
 

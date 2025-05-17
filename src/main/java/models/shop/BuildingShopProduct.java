@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 
-public class BuildingShopProduct extends ShopProduct {
+public class BuildingShopProduct extends ShopProduct implements Serializable {
     private int woodCost;
     private int stoneCost;
 

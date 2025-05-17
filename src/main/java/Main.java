@@ -8,7 +8,7 @@ import views.inGame.StyledCharacter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Serializable {
     public static void main(String[] args) throws InterruptedException {
         /* load Jsons */
         loadDatas();

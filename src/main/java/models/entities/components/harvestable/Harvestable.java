@@ -15,11 +15,12 @@ import models.entities.components.Pickable;
 import models.enums.Material;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
 
-public class Harvestable extends EntityComponent {
+public class Harvestable extends EntityComponent implements Serializable {
     @JsonProperty("material")
     private Material material;
     @JsonProperty("resources")

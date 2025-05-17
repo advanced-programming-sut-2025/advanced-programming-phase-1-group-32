@@ -6,6 +6,8 @@ import models.entities.components.inventory.Inventory;
 import models.entities.workstations.ArtisanComponent;
 import models.shop.Shop;
 
+import java.io.Serializable;
+
 /***
  * this helps jackson find child classes
  */
@@ -37,7 +39,7 @@ import models.shop.Shop;
 
 
 })
-abstract public class EntityComponent implements Cloneable {
+abstract public class EntityComponent implements Cloneable, Serializable {
     @JsonIgnore()
     protected Entity entity = null;
 

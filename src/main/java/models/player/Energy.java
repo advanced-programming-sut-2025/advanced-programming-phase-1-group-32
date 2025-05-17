@@ -5,7 +5,7 @@ import models.App;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Energy {
+
     private double amount;
     private double maxEnergy;
     private int maxEnergyChangeHoursLeft;

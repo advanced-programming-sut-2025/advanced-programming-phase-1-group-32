@@ -2,11 +2,12 @@ package models.entities;
 
 import models.entities.components.EntityComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EntityList extends ArrayList<Entity> implements EntityObserver {
+public class EntityList extends ArrayList<Entity> implements EntityObserver, Serializable {
     private final Map<Class<? extends EntityComponent>, ArrayList<EntityComponent>> components = new HashMap<>();
 
     @Override

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Shop extends EntityComponent {
+public class Shop extends EntityComponent implements Serializable {
 
     String name;
     private ArrayList<BuildingShopProduct> buildings;

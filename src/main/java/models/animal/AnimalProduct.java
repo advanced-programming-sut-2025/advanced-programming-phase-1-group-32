@@ -2,7 +2,9 @@ package models.animal;
 
 import models.entities.Entity;
 
-public class AnimalProduct {
+import java.io.Serializable;
+
+public class AnimalProduct implements Serializable {
     private final Entity item;
     private final double baseProbability;
     private final boolean moreWhenHappy;        // oonaee ke ba afzayesh khoshhaly ehtemaleshoon bishtare

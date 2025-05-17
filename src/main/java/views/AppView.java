@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Scanner;
 
-public class AppView {
+public class AppView implements Serializable {
     private final Scanner scanner;
     private final Terminal terminal;
     private Size terminalSize;

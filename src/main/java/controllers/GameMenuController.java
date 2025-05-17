@@ -41,8 +41,7 @@ import records.WalkProposal;
 
 import java.util.*;
 
-public class GameMenuController implements Controller {
-    @Override
+public class GameMenuController implements Controller {    @Override
     public Result changeMenu(String menuName) {
         return null;
     }

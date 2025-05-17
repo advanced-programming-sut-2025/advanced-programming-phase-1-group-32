@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 
-public class UpgradableShopProduct extends ShopProduct {
+public class UpgradableShopProduct extends ShopProduct implements Serializable {
 
     String ingredientName;
     int count = 5;

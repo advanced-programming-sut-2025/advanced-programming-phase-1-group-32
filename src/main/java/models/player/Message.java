@@ -6,7 +6,7 @@ import models.Game;
 
 import java.util.ArrayList;
 
-public class Message {
+public class Message implements Serializable {
     private final Player sender;
     private final Player receiver;
     private final String message;

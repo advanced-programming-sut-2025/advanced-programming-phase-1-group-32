@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Game {
+public class Game implements Serializable {
     private Weather todayWeather;
     private Weather tomorrowWeather;
     private Date date = new Date();

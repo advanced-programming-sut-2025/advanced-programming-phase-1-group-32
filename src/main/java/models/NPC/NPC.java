@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import views.inGame.Color;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NPC extends Entity {
+public class NPC extends Entity implements Serializable {
     private String name;
     private ArrayList<String> favorites = new ArrayList<>();
     private ArrayList<String> gifts = new ArrayList<>();

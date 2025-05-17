@@ -2,7 +2,7 @@ package models.utils;
 
 import java.util.Locale;
 
-public class StringUtils {
+public class StringUtils implements Serializable {
 
     public static String fridge = "Fridge";
 

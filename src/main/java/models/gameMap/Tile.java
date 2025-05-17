@@ -10,8 +10,7 @@ import models.enums.TileType;
 import models.player.Player;
 import views.inGame.Color;
 
-public class Tile implements EntityObserver {
-    private TileType type;
+public class Tile implements Serializable, EntityObserver {    private TileType type;
     final private Position position;
     private Entity content;
     //    private final MapRegion region;

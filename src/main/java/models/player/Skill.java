@@ -2,7 +2,7 @@ package models.player;
 
 import models.enums.SkillType;
 
-public class Skill {
+public class Skill implements Serializable {
     private int experience;
     private int level;
 

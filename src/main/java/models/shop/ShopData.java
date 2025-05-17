@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ShopData {
+public class ShopData implements Serializable {
     String name;
     int startHour;
     int endHour;

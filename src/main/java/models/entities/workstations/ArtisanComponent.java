@@ -11,13 +11,14 @@ import models.entities.components.Sellable;
 import models.entities.components.inventory.Inventory;
 import records.Result;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class ArtisanComponent extends EntityComponent {
+public class ArtisanComponent extends EntityComponent implements Serializable {
 
     /* Hard Codes :/ */
     private static Map<String, Integer> ingredientToPrice = new HashMap<>();

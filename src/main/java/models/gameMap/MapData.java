@@ -19,6 +19,7 @@ import views.inGame.Color;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -161,7 +162,7 @@ class MapLayerDeserializer extends JsonDeserializer<MapLayer> {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MapData {
+public class MapData implements Serializable {
     public int width, height;
     private Map<String, MapLayer> layers = new HashMap<>();
     private MapLayerData<TileType> mainLayer = null;

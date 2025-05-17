@@ -5,9 +5,10 @@ import models.animal.Animal;
 import models.animal.AnimalHouseLevel;
 import models.animal.AnimalHouseType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AnimalHouse extends EntityComponent{
+public class AnimalHouse extends EntityComponent implements Serializable {
     @JsonProperty("houseType")
     private AnimalHouseType type;
     @JsonProperty("level")

@@ -8,7 +8,7 @@ import models.enums.TileType;
 
 import java.util.ArrayList;
 
-public class GameMap {
+public class GameMap implements Serializable {
     protected Tile[][] tiles;
     protected int width, height;
     protected Environment environment;

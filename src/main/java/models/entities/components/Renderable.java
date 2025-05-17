@@ -5,7 +5,9 @@ import models.App;
 import models.Position;
 import views.inGame.Color;
 
-public class Renderable extends EntityComponent{
+import java.io.Serializable;
+
+public class Renderable extends EntityComponent implements Serializable {
     @JsonProperty("char")
     protected char character;
     @JsonProperty("color")

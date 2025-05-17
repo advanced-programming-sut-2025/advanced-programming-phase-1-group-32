@@ -4,7 +4,9 @@ import models.App;
 import models.Date;
 import models.entities.Entity;
 
-public class ItemProcess{
+import java.io.Serializable;
+
+public class ItemProcess implements Serializable {
     private Entity output;
     private Date startTime;
     int day;

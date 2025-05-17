@@ -1,6 +1,6 @@
 package models.player;
 
-public class Wallet {
+public class Wallet implements Serializable {
     private double balance;
 
 

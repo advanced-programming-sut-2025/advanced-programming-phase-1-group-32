@@ -26,8 +26,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GameMenu implements AppMenu {
-    private final GameMenuController controller = new GameMenuController();
+public class GameMenu implements Serializable, AppMenu {    private final GameMenuController controller = new GameMenuController();
     private Result previousResult = null;
 
     private enum MapRenderType {

@@ -3,7 +3,9 @@ package models.entities.components;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import models.enums.Material;
 
-public class Upgradable extends EntityComponent{
+import java.io.Serializable;
+
+public class Upgradable extends EntityComponent implements Serializable {
     @JsonProperty("xp")
     int xp;
     @JsonProperty("level")

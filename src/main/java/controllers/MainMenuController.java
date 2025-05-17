@@ -9,8 +9,7 @@ import records.Result;
 
 import java.util.*;
 
-public class MainMenuController implements Controller{
-    @Override
+public class MainMenuController implements Controller{    @Override
     public Result changeMenu(String menuName) {
         Menu menu = Menu.getMenu(menuName);
         if(menu == null)

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.IOException;
 
 @JsonDeserialize(using = ColorDeserializer.class)
-public class Color {
+public class Color implements Serializable {
     public static final Color BLACK = new Color(0, 0, 0);
     public static final Color WHITE = new Color(256, 256, 256);
 

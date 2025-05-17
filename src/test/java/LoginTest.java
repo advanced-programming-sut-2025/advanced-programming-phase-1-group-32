@@ -16,7 +16,7 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginTest {
+public class LoginTest implements Serializable {
 
     private Account account1 = new Account(Gender.MALE, "test@gmail.com", "AliAlm", "TestPass#403","AliAlmasi");
     private Account account2 = new Account(Gender.MALE, "test@gmail.com", "AliAlm", "TestPass#403","AliAlmasi2");
