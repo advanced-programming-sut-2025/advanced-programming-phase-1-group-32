@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import models.App;
 import models.Vec2;
 import models.entities.Entity;
+import models.entities.components.Edible;
+import models.entities.components.Sellable;
 import models.entities.components.inventory.Inventory;
 
 import java.util.ArrayList;
@@ -78,15 +80,29 @@ public class Recipe {
     *Should check can craft before it
     **/
     public Entity craft(Inventory inventory) {
+        Entity baseEntity = null;
         for (Ingredient ingredient : ingredients) {
             for (Entity entity : inventory.getEntities()) {
                 if(ingredient.isInIngredient(entity, inventory.getItemCount(entity))) {
                     inventory.takeFromInventory(entity.getEntityName(), ingredient.getAmount());
+                    baseEntity = entity;
                     break;
                 }
             }
         }
-        return App.entityRegistry.makeEntity(name);
+        int basePrice = baseEntity.getComponent(Sellable.class) != null ? baseEntity.getComponent(Sellable.class).getPrice() : 0;
+        int baseEnergy = baseEntity.getComponent(Edible.class) != null ? baseEntity.getComponent(Edible.class).getEnergy() : 0;
+        Entity entity = App.entityRegistry.makeEntity(name);
+        if(price != null) {
+            entity.addComponent(new Sellable((int) (basePrice * price.getX() + price.getY())));
+        }
+        if(energy != null) {
+            entity.addComponent(new Edible((int) (baseEnergy * energy.getX() + energy.getY())));
+        }
+
+
+            
+        return entity;
     }
 
     @Override

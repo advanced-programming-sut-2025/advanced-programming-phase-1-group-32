@@ -1,0 +1,67 @@
+{
+  "entities": [
+    {
+      "name": "Cherry Bomb"
+    },
+    {
+      "name": "Bomb"
+    },
+    {
+      "name": "Mega Bomb"
+    },
+    {
+      "name": "Sprinkler"
+    },
+    {
+      "name": "Quality Sprinkler"
+    },
+    {
+      "name": "Iridium Sprinkler"
+    },
+    {
+      "name": "Charcoal Klin"
+    },
+    {
+      "name": "Furnace"
+    },
+    {
+      "name": "Scarecrow"
+    },
+    {
+      "name": "Deluxe Scarecrow"
+    },
+    {
+      "name": "Bee House"
+    },
+    {
+      "name": "Cheese Press"
+    },
+    {
+      "name": "Keg"
+    },
+    {
+      "name": "Loom"
+    },
+    {
+      "name": "Mayonnaise Machine"
+    },
+    {
+      "name": "Oil Maker"
+    },
+    {
+      "name": "Preserves Jar"
+    },
+    {
+      "name": "Dehydrator"
+    },
+    {
+      "name": "Grass Starter"
+    },
+    {
+      "name": "Fish Smoker"
+    },
+    {
+      "name": "Mystic Tree Seed"
+    }
+  ]
+}
