@@ -328,6 +328,14 @@ public class    Player extends Entity {
         return unlockedRecipes.contains(recipe);
     }
 
+    public void addRecipe(String recipeName) {
+      addRecipe(App.recipeRegistry.getRecipe(recipeName));
+    }
+
+    public void addRecipe(Recipe recipe) {
+        unlockedRecipes.add(recipe);
+    }
+
     public String newMessages() {
         StringBuilder result = new StringBuilder();
         if (haveNewMessage) {

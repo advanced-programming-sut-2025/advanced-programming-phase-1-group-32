@@ -20,7 +20,14 @@ public class ShopSystem {
     public static Result buyProduct(ShopProduct product, int amount) {
         if(amount > product.getStock() && product.getStock() >= 0)
             return new Result(false, "There isn't enough stock! go come tomorrow:)");
+        if(product.getName().contains("Recipe")) {
+            App.getActiveGame().getCurrentPlayer().addRecipe(product.getName().replace("(Recipe)", ""));
+        }
+
+
+
         Entity productEntity = product.getEntity();
+
 
         if(productEntity.getComponent(Pickable.class) != null && product instanceof OtherShopProduct) {
             return buyPickable(product, amount);

@@ -36,11 +36,12 @@ public enum SkillType {
             )
     );
 
+
     SkillType(Map<Integer, List<String>> recipes) {
         this.recipes = recipes;
     }
 
-    Map<Integer, ArrayList<String>> recipes;
+    Map<Integer, List<String>> recipes;
     public static SkillType getSkillType(String input) {
         for (SkillType type : SkillType.values()) {
             if (type.toString().equalsIgnoreCase(input)) {

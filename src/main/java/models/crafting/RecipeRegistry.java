@@ -7,6 +7,7 @@ import models.App;
 import models.entities.Entity;
 import models.entities.components.EntityComponent;
 import models.enums.EntityTag;
+import models.utils.StringUtils;
 import records.Result;
 
 import java.io.File;
@@ -67,7 +68,12 @@ public class RecipeRegistry {
     }
 
     public Recipe getRecipe(String name) {
-        return registry.get(name);
+//        return registry.get(name);
+        for (String s : registry.keySet()) {
+            if(StringUtils.isNamesEqual(s, name))
+                return registry.get(s);
+        }
+        return null;
     }
 
     public void checkIngredients() {
