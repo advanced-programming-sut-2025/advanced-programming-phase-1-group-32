@@ -47,154 +47,521 @@
       "isUnlocked": true
     },
     {
-      "name" : "Beer",
-      "hour" : 24,
-      "energy" : {
+      "name": "Beer",
+      "hour": 24,
+      "energy": {
         "x": 0,
         "y": 50
       },
-      "price": {"x": 0, "y" :  200},
-      "ingredients" : [
+      "price": {
+        "x": 0,
+        "y": 200
+      },
+      "ingredients": [
         {
-          "contents" : ["Wheat"],
-          "amount" : 1
+          "contents": [
+            "Wheat"
+          ],
+          "amount": 1
         }
       ],
       "isUnlocked": true
     },
     {
-      "name" : "Vinegar",
-      "energy" : {
-        "x" : 0,
-        "y" : 13
+      "name": "Vinegar",
+      "energy": {
+        "x": 0,
+        "y": 13
       },
-      "hour" : 10,
-      "ingredients" : [
+      "hour": 10,
+      "ingredients": [
         {
-          "contents" : ["Rice"],
-          "amount" : 1
+          "contents": [
+            "Rice"
+          ],
+          "amount": 1
         }
       ],
       "isUnlocked": true,
-      "price" :
-       {
+      "price": {
         "x": 0,
         "y": 100
-        }
-      },
-    {
-      "name" : "Coffee",
-      "energy" : {
-        "x": 0,
-        "y" : 75
-      },
-      "hour" : 2,
-      "ingredients" : [
-        {
-          "contents": ["Coffee Bean"],
-          "amount" : 5
-        }
-      ],
-      "isUnlocked": true,
-      "price" : {
-        "x" : 0,
-        "y" : 150
       }
     },
     {
-      "name" : "Juice",
-      "energy" : {
-        "x" : 2,
-        "y" : 0
+      "name": "Coffee",
+      "energy": {
+        "x": 0,
+        "y": 75
       },
-      "hour" : 96,
-      "ingredients" : [
+      "hour": 2,
+      "ingredients": [
         {
-          "validTags" : ["VEGETABLE"],
-          "amount" : 1
+          "contents": [
+            "Coffee Bean"
+          ],
+          "amount": 5
         }
       ],
       "isUnlocked": true,
-      "price" : {
-        "x" : 2.25,
+      "price": {
+        "x": 0,
+        "y": 150
+      }
+    },
+    {
+      "name": "Juice",
+      "energy": {
+        "x": 2,
+        "y": 0
+      },
+      "hour": 96,
+      "ingredients": [
+        {
+          "validTags": [
+            "VEGETABLE"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true,
+      "price": {
+        "x": 2.25,
         "y": 0
       }
     },
     {
-      "name" : "Copper Bar",
-      "hour" : 4,
-      "ingredients" : [
+      "name": "Copper Bar",
+      "hour": 4,
+      "ingredients": [
         {
-          "contents" : ["Copper Ore"],
-          "amount" : 5
+          "contents": [
+            "Copper Ore"
+          ],
+          "amount": 5
         },
         {
-          "contents" : ["COAL"],
-          "amount" : 1
+          "contents": [
+            "COAL"
+          ],
+          "amount": 1
         }
       ],
-      "isUnlocked" : true,
-      "price" : {
-        "x" : 10,
-        "y" : 0
+      "isUnlocked": true,
+      "price": {
+        "x": 10,
+        "y": 0
       }
     },
     {
-      "name" : "Iron Bar",
-      "hour" : 4,
-      "ingredients" : [
+      "name": "Iron Bar",
+      "hour": 4,
+      "ingredients": [
         {
-          "contents" : ["Iron Ore"],
-          "amount" : 5
+          "contents": [
+            "Iron Ore"
+          ],
+          "amount": 5
         },
         {
-          "contents" : ["COAL"],
-          "amount" : 1
+          "contents": [
+            "COAL"
+          ],
+          "amount": 1
         }
       ],
-      "isUnlocked" : true,
-      "price" : {
-        "x" : 10,
-        "y" : 0
+      "isUnlocked": true,
+      "price": {
+        "x": 10,
+        "y": 0
       }
     },
     {
-      "name" : "Gold Bar",
-      "hour" : 4,
-      "ingredients" : [
+      "name": "Gold Bar",
+      "hour": 4,
+      "ingredients": [
         {
-          "contents" : ["Gold Ore"],
-          "amount" : 5
+          "contents": [
+            "Gold Ore"
+          ],
+          "amount": 5
         },
         {
-          "contents" : ["COAL"],
-          "amount" : 1
+          "contents": [
+            "COAL"
+          ],
+          "amount": 1
         }
       ],
-      "isUnlocked" : true,
-      "price" : {
-        "x" : 10,
-        "y" : 0
+      "isUnlocked": true,
+      "price": {
+        "x": 10,
+        "y": 0
       }
     },
     {
-      "name" : "Iridium Bar",
-      "hour" : 4,
-      "ingredients" : [
+      "name": "Iridium Bar",
+      "hour": 4,
+      "ingredients": [
         {
-          "contents" : ["Iridium Ore"],
-          "amount" : 5
+          "contents": [
+            "Iridium Ore"
+          ],
+          "amount": 5
         },
         {
-          "contents" : ["COAL"],
-          "amount" : 1
+          "contents": [
+            "COAL"
+          ],
+          "amount": 1
         }
       ],
-      "isUnlocked" : true,
-      "price" : {
-        "x" : 10,
-        "y" : 0
+      "isUnlocked": true,
+      "price": {
+        "x": 10,
+        "y": 0
       }
+    },
+    {
+      "name": "Mead",
+      "hour": 10,
+      "energy": {
+        "x": 0,
+        "y": 100
+      },
+      "price": {
+        "x": 0,
+        "y": 300
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Honey"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Pale Ale",
+      "hour": 72,
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 0,
+        "y": 300
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Hops"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Wine",
+      "hour": 168,
+      "energy": {
+        "x": 1.75,
+        "y": 0
+      },
+      "price": {
+        "x": 3,
+        "y": 0
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "FRUIT"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Pickles",
+      "hour": 6,
+      "energy": {
+        "x": 1.75,
+        "y": 0
+      },
+      "price": {
+        "x": 2,
+        "y": 50
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "VEGETABLE"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Jelly",
+      "hour": 72,
+      "energy": {
+        "x": 2,
+        "y": 0
+      },
+      "price": {
+        "x": 2,
+        "y": 50
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "FRUIT"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Truffle Oil",
+      "hour": 6,
+      "energy": {
+        "x": 0,
+        "y": 38
+      },
+      "price": {
+        "x": 0,
+        "y": 1065
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Truffle"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Oil",
+      "hour": 6,
+      "energy": {
+        "x": 0,
+        "y": 13
+      },
+      "price": {
+        "x": 0,
+        "y": 100
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Corn",
+            "Sunflower Seeds",
+            "Sunflower"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Smoked Fish",
+      "hour": 1,
+      "energy": {
+        "x": 1.5,
+        "y": 0
+      },
+      "price": {
+        "x": 2,
+        "y": 0
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "FISH"
+          ],
+          "amount": 1
+        },
+        {
+          "contents": [
+            "Coal"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Coal",
+      "hour": 1,
+      "ingredients": [
+        {
+          "contents": [
+            "Wood"
+          ],
+          "amount": 10
+        }
+      ],
+      "isUnlocked": true,
+      "price": {
+        "x": 0,
+        "y": 50
+      }
+    },
+    {
+      "name": "Mayonnaise",
+      "hour": 3,
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 0,
+        "y": 190
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Egg",
+            "Large Egg"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Duck Mayonnaise",
+      "hour": 3,
+      "energy": {
+        "x": 0,
+        "y": 75
+      },
+      "price": {
+        "x": 0,
+        "y": 375
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Duck Egg"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Dinosaur Mayonnaise",
+      "hour": 3,
+      "energy": {
+        "x": 0,
+        "y": 125
+      },
+      "price": {
+        "x": 0,
+        "y": 800
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Dinosaur Egg"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Cloth",
+      "hour": 4,
+      "energy": {
+        "x": 0,
+        "y": 0
+      },
+      "price": {
+        "x": 0,
+        "y": 470
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Wool"
+          ],
+          "amount": 1
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Dried Mushrooms",
+      "hour": 8,
+      "energy": {
+        "x": 0,
+        "y": 50
+      },
+      "price": {
+        "x": 7.5,
+        "y": 25
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "MUSHROOM"
+          ],
+          "amount": 5
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Dried Fruit",
+      "hour": 8,
+      "energy": {
+        "x": 0,
+        "y": 0
+      },
+      "price": {
+        "x": 7.5,
+        "y": 25
+      },
+      "ingredients": [
+        {
+          "validTags": [
+            "FRUIT"
+          ],
+          "amount": 5
+        }
+      ],
+      "isUnlocked": true
+    },
+    {
+      "name": "Raisins",
+      "hour": 8,
+      "energy": {
+        "x": 0,
+        "y": 125
+      },
+      "price": {
+        "x": 0,
+        "y": 600
+      },
+      "ingredients": [
+        {
+          "contents": [
+            "Grapes"
+          ],
+          "amount": 5
+        }
+      ],
+      "isUnlocked": true
     }
   ]
 }
