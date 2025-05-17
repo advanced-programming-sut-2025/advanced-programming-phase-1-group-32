@@ -25,10 +25,9 @@ public enum ProductQuality {
             return ProductQuality.SILVER;
         } else if (value >= 0.7f && value < 0.9f) {
             return ProductQuality.GOLD;
-        } else if (value >= 0.9f) {
+        } else {
             return ProductQuality.IRIDIUM;
         }
 
-        return null;
     }
 }

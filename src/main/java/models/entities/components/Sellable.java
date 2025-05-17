@@ -13,6 +13,7 @@ public class Sellable extends EntityComponent{
     }
     private Sellable(Sellable other){
         this.price = other.price;
+        this.productQuality = other.productQuality;
     }
     public Sellable(){
         this(0);

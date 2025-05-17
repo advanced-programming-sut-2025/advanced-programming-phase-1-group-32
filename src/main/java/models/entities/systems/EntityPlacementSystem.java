@@ -37,16 +37,16 @@ public static Result placeOnTile(Entity entity, Tile tile){
     return new Result(true, "placed");
 }
 public static Result emptyTile(Tile tile){
-    Entity tileEntity = tile.getContent();
     ArrayList<Pickable> pickables = tile.getMap().getComponentsOfType(Pickable.class);
-    if(tileEntity != null){
-        //TODO o(n ^ 123123123)
-        for(int z = 0; z < pickables.size(); z++){
-            Pickable pickable = pickables.get(z);
-            if(pickable.getEntity().getComponent(PositionComponent.class).get().getDistance(tile.getPosition()) < 0.1){
-                pickable.getEntity().delete();
-            }
+    //TODO o(n ^ 123123123)
+    for(int z = 0; z < pickables.size(); z++){
+        Pickable pickable = pickables.get(z);
+        if(pickable.getEntity().getComponent(PositionComponent.class).get().getDistance(tile.getPosition()) < 0.1){
+            pickable.getEntity().delete();
         }
+    }
+    Entity tileEntity = tile.getContent();
+    if(tileEntity != null){
         tileEntity.removeObserveer(tile);
         tile.getMap().removeEntity(tileEntity);
         tileEntity.removeComponent(PositionComponent.class);

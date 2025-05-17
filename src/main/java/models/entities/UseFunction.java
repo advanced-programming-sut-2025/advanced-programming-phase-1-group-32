@@ -209,10 +209,12 @@ public enum     UseFunction {
             Inventory inventory = player.getComponent(Inventory.class);
 
             if (growable.isOneTime()) {
+
                 EntityPlacementSystem.emptyTile(tile);
                 tile.setType(TileType.DIRT);
                 entity.getComponent(Sellable.class).
                         setProductQuality(ProductQuality.getQuality(Math.random() * 0.5f));
+                entity.getComponent(Pickable.class).setStackSize(1);
                 inventory.addItem(entity);
             } else {
                 Entity fruit = growable.collectFruit();
