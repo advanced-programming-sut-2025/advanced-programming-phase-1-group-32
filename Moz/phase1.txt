@@ -101,3 +101,19 @@ tools use -d 4
 tools use -d 8
 tools use -d 6
 tools use -d 2
+
+walk -l 5,14
+y
+walk -l 150,150
+y
+
+walk -l 141, 146
+y
+
+add money -a 10000
+cheat advance time 5h
+
+purchase Omelet (Recipe)
+
+cheat give item "Milk" 1
+cheat give item "egg" 1

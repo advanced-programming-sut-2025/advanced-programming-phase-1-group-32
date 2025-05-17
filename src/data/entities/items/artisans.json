@@ -31,6 +31,132 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Cheese Press",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Cheese",
+            "Goat Cheese"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Keg",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Beer",
+            "Vinegar",
+            "Coffee",
+            "Juice",
+            "Mead",
+            "Pale Ale",
+            "Wine"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Dehydrator",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Dried Mushrooms",
+            "Dried Fruit",
+            "Raisins"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Charcoal Klin",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Coal"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Loom",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Cloth"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Mayonnaise Machine",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Mayonnaise",
+            "Duck Mayonnaise",
+            "Dinosaur Mayonnaise"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Oil Maker",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Truffle Oil",
+            "Oil"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Preserves Jar",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Pickles",
+            "Jelly"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Fish Smoker",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Smoked Fish"
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Furnace",
+      "components": [
+        {
+          "type": "ArtisanComponent",
+          "recipes": [
+            "Copper Ore",
+            "Iron Ore",
+            "Gold Ore",
+            "Irirdium Ore"
+          ]
+        }
+      ]
     }
   ]
 }
