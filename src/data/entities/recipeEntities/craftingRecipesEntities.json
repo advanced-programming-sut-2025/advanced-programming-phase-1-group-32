@@ -1,5 +1,10 @@
 {
-
+  "common components" : [
+    {
+      "type" : "Pickable",
+      "maxStack" : 64
+    }
+  ],
   "entities": [
     {
       "name": "Cherry Bomb"

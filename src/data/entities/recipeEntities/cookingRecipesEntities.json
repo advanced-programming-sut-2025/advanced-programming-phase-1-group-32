@@ -3,6 +3,10 @@
     {
       "type" : "Edible",
       "energy" : 0
+    },
+    {
+      "type" : "Pickable",
+      "maxStack" : 64
     }
   ],
   "entities": [

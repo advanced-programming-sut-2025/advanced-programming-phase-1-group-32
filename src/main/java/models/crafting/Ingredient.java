@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import models.App;
 import models.entities.Entity;
 import models.enums.EntityTag;
+import models.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class Ingredient {
 
     public boolean isInIngredient(Entity e, int availableAmount) {
         if (!contents.isEmpty()) {
-            return contents.contains(e.getEntityName()) && availableAmount >= amount;
+            return contents.stream().anyMatch(s -> StringUtils.isNamesEqual(s, e.getEntityName())) && availableAmount >= amount;
         }
 
         if (!validTags.isEmpty()) {

@@ -124,6 +124,8 @@ public class Inventory extends EntityComponent {
         if (entity == null) {
             return null;
         }
+        if(entity.getComponent(Pickable.class).getStackSize() == 0)
+            entity.getComponent(Pickable.class).setStackSize(1);
         Pickable pickable = entity.getComponent(Pickable.class);
         if (pickable == null) {
             throw new RuntimeException("Tried to pick up " + entity.getEntityName() + " which doesnt have a Pickable component");
@@ -170,6 +172,10 @@ public class Inventory extends EntityComponent {
         this.addSlot();
 
         return null;
+    }
+    public Entity addItem(Entity entity, int quantity) {
+        entity.getComponent(Pickable.class).setStackSize(quantity);
+        return addItem(entity);
     }
     public int getEmptySpace(){
         int emptySlots = 0;
