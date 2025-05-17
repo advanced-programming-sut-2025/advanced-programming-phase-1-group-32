@@ -186,9 +186,9 @@ public class GameMenuController implements Controller {
         double energyCost = (double) distance / 20 + (double) changedDir / 2;
         if (distance == 0)
             return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
+        if (!player.doesOwnTile(goal))
+            return new WalkProposal(false, "you can't go in " + goal.getOwner().getAccount().getNickname() + "'s farm", 0, x, y);
         return new WalkProposal(true, "OK", energyCost, x, y);
-
-
     }
 
     private static int getChangedDir(List<Tile> path) {
@@ -208,9 +208,9 @@ public class GameMenuController implements Controller {
 
     public Result executeWalk(WalkProposal p) {
         Player player = App.getActiveGame().getCurrentPlayer();
-//        if (!p.isAllowed()) {
-//            return new Result(false, "No walk was proposed");
-//        }
+        if (!p.isAllowed()) {
+            return new Result(false, p.message());
+        }
         player.setPosition(new Position(p.x(), p.y()));
         player.reduceEnergy(p.energyCost());
         Entity entity = null;
@@ -253,7 +253,8 @@ public class GameMenuController implements Controller {
 
                 if (newCol >= 0 && newCol < cols && newRow >= 0 && newRow < rows) {
                     Tile neighbor = tiles[newRow][newCol];
-                    if (neighbor.getContent() == null || neighbor.getContent().getComponent(Placeable.class).isWalkable())
+                    if ((neighbor.getContent() == null || neighbor.getContent().getComponent(Placeable.class).isWalkable()) &&
+                            (neighbor.getType() != null && neighbor.getType().isWalkable))
                         if (!cameFrom.containsKey(neighbor)) {
                             queue.add(neighbor);
                             cameFrom.put(neighbor, current);
@@ -274,8 +275,6 @@ public class GameMenuController implements Controller {
         }
         Collections.reverse(path);
         return path;
-
-
     }
 
     public Result helpReadingMap() {
@@ -1682,23 +1681,19 @@ public class GameMenuController implements Controller {
             case 'a':
             case 'A':
                 p = this.proposeWalk(player.getPosition().getCol() - 1, player.getPosition().getRow());
-                executeWalk(p);
-                break;
+                return executeWalk(p);
             case 's':
             case 'S':
                 p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() + 1);
-                executeWalk(p);
-                break;
+                return executeWalk(p);
             case 'w':
             case 'W':
                 p = this.proposeWalk(player.getPosition().getCol(), player.getPosition().getRow() - 1);
-                executeWalk(p);
-                break;
+                return executeWalk(p);
             case 'd':
             case 'D':
                 p = this.proposeWalk(player.getPosition().getCol() + 1, player.getPosition().getRow());
-                executeWalk(p);
-                break;
+                return executeWalk(p);
 
 
             case 'x':
