@@ -22,6 +22,7 @@ public class Energy {
         this.amount = 200;
         this.modifierDaysLeft = 0;
         isUnlimited = false;
+        this.maxEnergy = 200;
     }
 
     public void setAmount(double amount) {
