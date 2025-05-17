@@ -24,75 +24,82 @@ import static org.mockito.Mockito.*;
 
 public class ForgotPasswordTest {
     private ForgotPasswordFlow flow;
-    private final Account mockAccount =  new Account(Gender.MALE, "test@gmail.com", "AliAlm", "TestPass#403","AliAlmasi");
-    private static final String USERNAME = "testUser";
-    private static final String PASSWORD = "ValidPassword123";
-    private static final Map<SecurityQuestions, String> securityAnswers = new HashMap<>();
-    private Scanner scanner;
-    private LoginMenu menu;
-    private final PrintStream originalOut = System.out;
-    private final InputStream originalIn = System.in;
-    private ByteArrayOutputStream out;
+    private Account account = new Account(Gender.MALE, "test@gmail.com", "AliAlm", "TestPass#403","AliAlmasi");
 
     @BeforeEach
     void setup() {
-        App.setLoggedInAccount(null);
-        App.addAccount(mockAccount);
+        flow = new ForgotPasswordFlow();
 
-        menu = new LoginMenu();
-        out = new ByteArrayOutputStream();
-        mockAccount.getSecurityAnswers().put(SecurityQuestions.COLOR, "meow1");
-        mockAccount.getSecurityAnswers().put(SecurityQuestions.PET, "meow2");
 
-        out = new ByteArrayOutputStream();
-        App.setCurrentMenu(Menu.LOGIN_MENU);
-        App.setLoggedInAccount(null);
-        menu = new LoginMenu();
+        Map<SecurityQuestions, String> securityAnswers = new HashMap<>();
+        account.getSecurityAnswers().put(SecurityQuestions.COLOR, "blue");
+        account.getSecurityAnswers().put(SecurityQuestions.PET, "cat");
 
-        System.setOut(new PrintStream(out));
+
     }
-    @AfterEach
-    void restoreStreams() {
-        System.setOut(originalOut);
-        System.setIn(originalIn);
-    }
-
-    private void setIn(String input) {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-    }
-    private void checkStartExpected(String startExpected) {
-        scanner = new Scanner(System.in);
-        App.getCurrentMenu().checker(scanner);
-        String output = out.toString().trim();
-        assertTrue(output.startsWith(startExpected), "your code output:\n" + output + "\nexpected:\n" + startExpected + "\n");
-    }
-    private void checkExpectedContains(String startExpected) {
-        scanner = new Scanner(System.in);
-        App.getCurrentMenu().checker(scanner);
-        String output = out.toString().trim();
-        assertTrue(output.contains(startExpected), "your code output:\n" + output + "\nexpected:\n" + startExpected + "\n");
-    }
-
-    private void checkExpected(String expected) {
-        scanner = new Scanner(System.in);
-        App.getCurrentMenu().checker(scanner);
-        String output = out.toString().trim();
-        assertEquals(expected, output, "your code output:\n" + output + "\nexpected:\n" + expected + "\n");
-    }
-
-
 
     @Test
     void testForgotPassword(){
-        checkExpectedContains("invalid");
-        checkExpectedContains("invalid");
-        checkExpectedContains("exist");
-        checkExpectedContains(SecurityQuestions.COLOR.getQuestion());
-        checkExpectedContains("wrong");
-        checkExpectedContains("correct");
-        checkExpectedContains(SecurityQuestions.PET.getQuestion());
-        checkExpectedContains("wrong");
-        checkExpectedContains("correct");
-        checkExpectedContains("enter");
+        try (MockedStatic<App> mockedApp = mockStatic(App.class)) {
+            mockedApp.when(() -> App.getUserByUsername("AliAlmasi")).thenReturn(account);
+
+            Result result = flow.handle("Alilmasi");
+            assertEquals("username doesn't exist!", result.message());
+
+            result = flow.handle("AliAlmasi");
+            assertTrue(result.message().contains("answer the questions"));
+            assertTrue(result.message().contains(flow.getCurrentQuestion().getQuestion()));
+
+            result = flow.handle("asd");
+            assertTrue(result.message().contains("wrong"));
+
+
+            result = flow.handle(account.getSecurityAnswers().get(flow.getCurrentQuestion()));
+            assertTrue(result.message().contains("correct"));
+            assertTrue(result.message().contains(flow.getCurrentQuestion().getQuestion()));
+
+            result = flow.handle("asd");
+            assertTrue(result.message().contains("wrong"));
+
+            result = flow.handle(account.getSecurityAnswers().get(flow.getCurrentQuestion()));
+            assertTrue(result.message().contains("correct"));
+            assertTrue(result.message().contains("enter a new password"));
+
+            result = flow.handle("random");
+            assertTrue(result.message().contains("confirm your new password"));
+
+            result = flow.handle("n");
+            result = flow.handle("asd");
+            assertTrue(result.message().contains(Account.isPasswordValid("asd").message()));
+
+            result = flow.handle("asdasdasd");
+            assertTrue(result.message().contains(Account.isPasswordValid("asdasdasd").message()));
+
+            result = flow.handle("asdasdasd123");
+            assertTrue(result.message().contains(Account.isPasswordValid("asdasdasd123").message()));
+
+            result = flow.handle("asdasd@asd123");
+            assertTrue(result.message().contains(Account.isPasswordValid("asdasd@asd123").message()));
+
+            result = flow.handle("Parsa@1145");
+            assertTrue(result.message().contains("re-enter your new password:"));
+
+            result = flow.handle("Parsa@");
+            assertTrue(result.message().contains("passwords don't match"));
+
+            result = flow.handle("Parsa@13");
+            assertTrue(result.message().contains("passwords don't match"));
+
+            result = flow.handle("back");
+            assertTrue(result.message().contains("enter a password"));
+
+            result = flow.handle("Parsa@1145");
+            assertTrue(result.message().contains("re-enter your new password:"));
+
+            result = flow.handle("Parsa@1145");
+            assertTrue(result.message().contains("password was set"));
+
+            assertTrue(account.isPasswordCorrect("Parsa@1145"));
+        }
     }
 }

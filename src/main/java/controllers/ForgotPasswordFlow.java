@@ -34,10 +34,6 @@ public class ForgotPasswordFlow {
                 currentQuestion = 0;
                 return new Result(true, "answer the questions one by one (give an empty answer to cancel the process)\n" +
                         questionAnswerPairs.get(currentQuestion).question.toString());
-            case 1:
-
-                state++;
-                return new Result(true, questionAnswerPairs.get(currentQuestion).question.toString());
             case 2:
                 if(input.isEmpty()){
                     return new Result(false, "the process was canceled");
@@ -53,8 +49,7 @@ public class ForgotPasswordFlow {
                     return new Result(true, "the answers were correct! now "+
                             "enter a new password (enter \"random\" for a random password):");
                 }
-                state--;
-                return new Result(true, "correct!");
+                return new Result(true, "correct!\n" + questionAnswerPairs.get(currentQuestion).question.toString());
             case 3:
                 if(input.equals("random")){
                     newPassword = LoginMenuController.generatePassword();
@@ -88,6 +83,10 @@ public class ForgotPasswordFlow {
             default:
                 return null;
         }
+    }
+    public SecurityQuestions getCurrentQuestion(){
+        if(currentQuestion >= questionAnswerPairs.size()) return null;
+        return questionAnswerPairs.get(currentQuestion).question;
     }
 }
 
