@@ -182,9 +182,9 @@ public class GameMenuController implements Controller {
             );
         List<Tile> path = shortestPath(goal, start, map.getTiles());
         int changedDir = getChangedDir(path);
-        int distance = path.size();
-        double energyCost = (double) distance / 20 + (double) changedDir / 2;
-        if (distance == 0)
+        int distance = path.size() - 1;
+        double energyCost =  (double) distance / 20+ (double) changedDir / 2;
+        if (distance <= 0)
             return new WalkProposal(false, "you can't reach " + goal.getPosition(), 0, x, y);
         if (!player.doesOwnTile(goal))
             return new WalkProposal(false, "you can't go in " + goal.getOwner().getAccount().getNickname() + "'s farm", 0, x, y);
@@ -193,7 +193,7 @@ public class GameMenuController implements Controller {
 
     private static int getChangedDir(List<Tile> path) {
         int changedDir = 0;
-        if(path.size() > 2) {
+        if(path.size() > 3) {
             int[] currentDir = {path.get(1).getCol() - path.get(0).getCol(), path.get(1).getRow() - path.get(0).getRow()};
             for(int i = 0; i + 1 < path.size(); i++) {
                 int[] newDir = {path.get(i + 1).getCol() - path.get(i).getCol(), path.get(i + 1).getRow() - path.get(i).getRow()};
@@ -236,8 +236,8 @@ public class GameMenuController implements Controller {
         cameFrom.put(src, null);
 
         int[][] directions = {
-                {0, 1}, {1, 0}, {0, -1}, {0, 1}
-                , {1, -1}, {1, 1}, {-1, 1}, {-1, -1} /* Comment this line to walk vertically and horizontally only*/
+                {0, 1}, {1, 0}, {0, -1}, {-1, 0}
+//                , {1, -1}, {1, 1}, {-1, 1}, {-1, -1} /* Comment this line to walk vertically and horizontally only*/
         };
 
         while (!queue.isEmpty()) {
