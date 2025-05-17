@@ -186,9 +186,15 @@ public class    Player extends Entity {
         return this.skills.get(type);
     }
 
+    public Map<SkillType, Skill> getSkills() {
+        return skills;
+    }
+
     public void addExperince(SkillType type, int amount) {
         Skill skill = getSkill(type);
-        skill.addExperience(amount);
+        int levelUp = skill.addExperience(amount);
+
+
     }
 
     public void addSuitor(Player suitor, Entity ring) {
@@ -319,6 +325,14 @@ public class    Player extends Entity {
         return unlockedRecipes.contains(recipe);
     }
 
+    public void addRecipe(String recipeName) {
+      addRecipe(App.recipeRegistry.getRecipe(recipeName));
+    }
+
+    public void addRecipe(Recipe recipe) {
+        unlockedRecipes.add(recipe);
+    }
+
     public String newMessages() {
         StringBuilder result = new StringBuilder();
         if (haveNewMessage) {
@@ -346,20 +360,11 @@ public class    Player extends Entity {
     }
 
     public boolean doesOwnTile(Tile tile) {
-        //TODO: should this return true? what should the region of tiles be in a building? null?
         if (tile.getRegion() == null) return true;
 
-        for (MapRegion r : ownedRegions) {
-            if (r.hasTile(tile)) return true;
-        }
+        Player tileOwner = tile.getOwner();
 
-        if (spouse == null) return false;
-
-        for (MapRegion r : spouse.ownedRegions) {
-            if (r.hasTile(tile)) return true;
-        }
-
-        return false;
+        return tileOwner == null || tileOwner == this || (this.spouse != null && tileOwner == this.spouse);
     }
 
     public void addRegion(MapRegion region) {
@@ -456,7 +461,7 @@ public class    Player extends Entity {
     public AnimalHouse findAnimalHouse(String animalHouseName) {
         for (Entity building : ownedBuildings) {
             AnimalHouse animalHouse = building.getComponent(AnimalHouse.class);
-            if (animalHouse != null && animalHouse.getName().equals(animalHouseName)) {
+            if (animalHouse != null && animalHouse.getName().equals(animalHouseName.trim())) {
                 return animalHouse;
             }
         }

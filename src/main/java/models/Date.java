@@ -3,7 +3,7 @@ package models;
 import models.enums.WeekDay;
 import models.enums.Season;
 
-public class Date {
+public class Date implements Cloneable{
     private Season season;
     private int day;
     private int hour;
@@ -75,5 +75,10 @@ public class Date {
     @Override
     public String toString() {
         return "Day: " + day + "  Hour: " + hour + "  Season: " + season.name().toLowerCase();
+    }
+
+    @Override
+    public Date clone() {
+        return new Date(this);
     }
 }

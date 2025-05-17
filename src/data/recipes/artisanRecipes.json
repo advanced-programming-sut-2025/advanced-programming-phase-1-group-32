@@ -30,7 +30,8 @@
             "Large Milk"
           ]
         }
-      ]
+      ],
+      "isUnlocked": true
     },
     {
       "name": "Goat Cheese",
@@ -42,7 +43,8 @@
             "Large Goat Milk"
           ]
         }
-      ]
+      ],
+      "isUnlocked": true
     },
     {
       "name" : "Beer",
@@ -57,7 +59,8 @@
           "contents" : ["Wheat"],
           "amount" : 1
         }
-      ]
+      ],
+      "isUnlocked": true
     },
     {
       "name" : "Vinegar",
@@ -72,6 +75,7 @@
           "amount" : 1
         }
       ],
+      "isUnlocked": true,
       "price" :
        {
         "x": 0,
@@ -91,6 +95,7 @@
           "amount" : 5
         }
       ],
+      "isUnlocked": true,
       "price" : {
         "x" : 0,
         "y" : 150
@@ -109,6 +114,7 @@
           "amount" : 1
         }
       ],
+      "isUnlocked": true,
       "price" : {
         "x" : 2.25,
         "y": 0

@@ -20,7 +20,7 @@ public class MainMenuController implements Controller{
         if (menu.equals(Menu.GAME_MENU))
             return new Result(false, "Use \"game new -u <username1> [username2] [username3]\"\n to enter this menu");
         App.setCurrentMenu(menu);
-        return new Result(false, "You are in " + menu + " now");
+        return new Result(true, "You are in " + menu + " now");
     }
 
     public Result logout() {

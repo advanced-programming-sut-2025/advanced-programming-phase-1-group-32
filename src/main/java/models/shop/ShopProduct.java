@@ -94,6 +94,10 @@ abstract public class ShopProduct {
         this.todaySold = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         if(getStock() == 0) {
@@ -103,4 +107,5 @@ abstract public class ShopProduct {
             return name;
         return name + " x(" + this.getStock() + ")";
     }
+
 }

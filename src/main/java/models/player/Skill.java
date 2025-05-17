@@ -1,5 +1,7 @@
 package models.player;
 
+import models.enums.SkillType;
+
 public class Skill {
     private int experience;
     private int level;
@@ -9,14 +11,16 @@ public class Skill {
         experience = 0;
     }
 
-    public void addExperience(int experience) {
-        if (level == 4) return;
+    public int addExperience(int experience) {
+        if (level == 4) return 0;
+        int currentLevel = level;
         this.experience += experience;
         while (this.experience >= 100 * this.level + 50) {
             this.experience -= 100 * this.level + 50;
             level++;
             if (level == 4) this.experience = 0;
         }
+        return level - currentLevel;
     }
 
     private void addLevel() {

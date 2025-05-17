@@ -18,3 +18,86 @@ Suncrest Farm
 
 cheat build building shippingbin 221 236 -force
 cheat build building shippingbin 223 236 -force
+
+cheat give item "Hoe" 1
+cheat give item "Inspector" 1
+cheat give item "Pickaxe" 1
+cheat give item "Watering can" 1
+cheat give item "Scythe" 1
+cheat give item "Training Rod" 1
+cheat give item "Kale Seeds" 5
+
+cheat toggle unlimited inventory
+cheat give item "Wood" 501
+
+tools equip Hoe
+energy unlimited
+
+add money -a 1001
+
+build greenhouse
+
+walk -l <7,14>
+y
+walk -l <240, 219>
+y
+walk -l <3, 9>
+y
+
+tools use -d 1
+tools use -d 4
+tools use -d 7
+tools use -d 8
+tools use -d 9
+tools use -d 6
+tools use -d 3
+tools use -d 2
+
+plant -s Kale Seeds -d right
+plant -s Kale Seeds -d left
+plant -s Kale Seeds -d up
+plant -s Kale Seeds -d down
+
+tools equip Watering can
+walk -l <5,2>
+Y
+
+tools use -d 8
+
+walk -l <3, 9>
+y
+
+tools use -d 4
+tools use -d 8
+tools use -d 6
+tools use -d 2
+
+cheat advance date 3d
+
+tools use -d 4
+tools use -d 8
+tools use -d 6
+tools use -d 2
+
+cheat advance date 3d
+
+tools use -d 4
+tools use -d 8
+tools use -d 6
+tools use -d 2
+
+cheat advance date 3d
+
+toggle map
+
+showplant -l <4,9>
+showplant -l <3,8>
+showplant -l <2,9>
+showplant -l <3,10>
+
+tools equip Scythe
+
+tools use -d 4
+tools use -d 8
+tools use -d 6
+tools use -d 2

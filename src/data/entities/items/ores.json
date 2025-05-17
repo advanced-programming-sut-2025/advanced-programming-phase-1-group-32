@@ -161,6 +161,15 @@
           "price": 15
         }
       ]
+    },
+    {
+      "name": "Copper ore",
+      "components": [
+        {
+          "type": "Sellable",
+          "price": 15
+        }
+      ]
     }
   ]
 

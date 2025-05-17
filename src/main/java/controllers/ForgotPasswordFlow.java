@@ -4,6 +4,8 @@ import models.Account;
 import models.App;
 import models.enums.SecurityQuestions;
 import java.util.ArrayList;
+import java.util.Map;
+
 import records.Result;
 
 
@@ -11,7 +13,7 @@ public class ForgotPasswordFlow {
     private record QuestionAnswerPair(SecurityQuestions question, String answer){};
 
     Account account;
-    ArrayList<QuestionAnswerPair> questionAnswerPairs;
+    ArrayList<QuestionAnswerPair> questionAnswerPairs = new ArrayList<>();
     String newPassword;
     int state = 0;
     int currentQuestion = 0;
@@ -25,14 +27,15 @@ public class ForgotPasswordFlow {
                     return new Result(false, "username doesn't exist!");
                 }
 
-                state++;
-                return new Result(true, "answer the questions one by one (give an empty answer to cancel the process)");
-            case 1:
-                if(currentQuestion == questionAnswerPairs.size()){
-                    state = 3;
-                    return new Result(true, "the answers were correct! now "+
-                                            "enter a new password (enter \"random\" for a random password):");
+                state = 2;
+                for (Map.Entry<SecurityQuestions, String> entry : account.getSecurityAnswers().entrySet()) {
+                    this.questionAnswerPairs.add(new QuestionAnswerPair(entry.getKey(), entry.getValue()));
                 }
+                currentQuestion = 0;
+                return new Result(true, "answer the questions one by one (give an empty answer to cancel the process)\n" +
+                        questionAnswerPairs.get(currentQuestion).question.toString());
+            case 1:
+
                 state++;
                 return new Result(true, questionAnswerPairs.get(currentQuestion).question.toString());
             case 2:
@@ -41,10 +44,15 @@ public class ForgotPasswordFlow {
                 }
 
                 if(!input.equals(questionAnswerPairs.get(currentQuestion).answer)){
-                    return new Result(false, "wrong answer! try again");
+                    return new Result(true, "wrong answer! try again");
                 }
 
                 currentQuestion++;
+                if(currentQuestion == questionAnswerPairs.size()){
+                    state = 3;
+                    return new Result(true, "the answers were correct! now "+
+                            "enter a new password (enter \"random\" for a random password):");
+                }
                 state--;
                 return new Result(true, "correct!");
             case 3:
@@ -54,6 +62,9 @@ public class ForgotPasswordFlow {
                     return new Result(true, "confirm your new password: " + newPassword +" (y/n)");
                 }
                 newPassword = input;
+                if(!Account.isPasswordValid(newPassword).isSuccessful()){
+                    return new Result(true, Account.isPasswordValid(newPassword).message() + ". try again");
+                }
                 state = 5;
                 return new Result(true, "re-enter your new password:");
             case 4:
@@ -66,7 +77,7 @@ public class ForgotPasswordFlow {
                 }
             case 5:
                 if(input.equals(newPassword)){
-                    App.getLoggedInAccount().setPassword(newPassword);
+                    account.setPassword(newPassword);
                     return new Result(false, "password was set!");
                 }
                 if(input.equals("back")){

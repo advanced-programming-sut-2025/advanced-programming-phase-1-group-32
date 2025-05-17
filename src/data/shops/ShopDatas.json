@@ -590,49 +590,49 @@
       },
       {
         "type" : "Product",
-        "name": "Hashbrowns Recipe",
+        "name": "Hashbrowns (Recipe)",
         "price": 50,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Omelet Recipe",
+        "name": "Omelet (Recipe)",
         "price": 100,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Pancakes Recipe",
+        "name": "Pancakes (Recipe)",
         "price": 100,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Bread Recipe",
+        "name": "Bread (Recipe)",
         "price": 100,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Tortilla Recipe",
+        "name": "Tortilla (Recipe)",
         "price": 100,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Pizza Recipe",
+        "name": "Pizza (Recipe)",
         "price": 150,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Maki Roll Recipe",
+        "name": "Maki Roll (Recipe)",
         "price": 300,
         "dailyLimit": 1
       },
       {
         "type" : "Product",
-        "name": "Triple Shot Espresso Recipe",
+        "name": "Triple Shot Espresso (Recipe)",
         "price": 5000,
         "dailyLimit": 1
       },

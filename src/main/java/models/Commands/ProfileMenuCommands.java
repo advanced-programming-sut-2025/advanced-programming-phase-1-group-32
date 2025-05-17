@@ -1,10 +1,10 @@
 package models.Commands;
 
-public enum ProfileMenuCommands implements Commands{
+public enum     ProfileMenuCommands implements Commands{
     USER_INFO         ("^user\\s+info$"),
     MENU_ENTER        ("^menu\\s+enter\\s+(?<menuName>.+)"),
     CHANGE_EMAIL      ("^change\\s+email\\s+-e(?<email>.+)$"),
-    CHANGE_PASSWORD   ("^change\\s+password\\s+-p\\s+(?<newPassword>.+)\\s+-o(?<pldPassword>.+)$"),
+    CHANGE_PASSWORD   ("^change\\s+password\\s+-p\\s+(?<newPassword>.+?)\\s+-o\\s+(?<oldPassword>.+)$"),
     CHANGE_USERNAME   ("^change\\s+username\\s+-u\\s+(?<username>.+)$"),
     CHANGE_NICKNAME   ("^change\\s+nickname\\s+-u\\s+(?<nickname>.+)$"),
     SHOW_CURRENT_MENU ("^show\\s+current\\s+menu$"),
