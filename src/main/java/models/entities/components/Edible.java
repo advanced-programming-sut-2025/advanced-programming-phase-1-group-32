@@ -42,9 +42,8 @@ public class Edible extends EntityComponent{
 
     @Override
     public boolean isTheSame(EntityComponent other) {
-        if(!(other instanceof Edible)) return false;
+        if(!(other instanceof Edible otherEdible)) return false;
 
-        Edible otherEdible = (Edible) other;
         return this.energy == otherEdible.energy;
     }
 }

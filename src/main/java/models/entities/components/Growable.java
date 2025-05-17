@@ -280,6 +280,7 @@ public class Growable extends EntityComponent {
         return null;
     }
 
+
     private boolean isInGreenhouse() {
         Entity building = this.entity.getComponent(PositionComponent.class).getMap().getBuilding();
         if (building == null) return false;
