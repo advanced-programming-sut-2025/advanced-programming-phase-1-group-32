@@ -12,7 +12,7 @@ public class ItemProcess{
 
     public ItemProcess(Entity output, int day, int hour) {
         this.output = output;
-        startTime = App.getActiveGame().getDate();
+        startTime = App.getActiveGame().getDate().clone();
         this.day = day;
         this.hour = hour;
         if(hour != 0 && day != 0)

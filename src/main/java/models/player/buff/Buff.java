@@ -13,7 +13,7 @@ abstract public class Buff {
 
     public Buff(int buffTime) {
         this.buffTime = buffTime;
-        this.startDate = App.getActiveGame().getDate();
+        this.startDate = App.getActiveGame().getDate().clone();
     }
 
     public int remainingTime() {
