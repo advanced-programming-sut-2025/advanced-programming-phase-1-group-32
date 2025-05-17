@@ -195,7 +195,9 @@ public class    Player extends Entity {
 
     public void addExperince(SkillType type, int amount) {
         Skill skill = getSkill(type);
-        skill.addExperience(amount);
+        int levelUp = skill.addExperience(amount);
+
+
     }
 
     public void addSuitor(Player suitor, Entity ring) {

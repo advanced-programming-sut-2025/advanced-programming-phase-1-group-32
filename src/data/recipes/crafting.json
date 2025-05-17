@@ -358,7 +358,8 @@
       "price": {
         "x": 0,
         "y": 0
-      }
+      },
+      "isUnlocked" : true
     },
     {
       "name": "Oil Maker",
@@ -385,8 +386,7 @@
       "price": {
         "x": 0,
         "y": 0
-      },
-      "isUnlocked" : true
+      }
     },
     {
       "name": "Preserves Jar",
