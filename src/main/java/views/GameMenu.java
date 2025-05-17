@@ -110,13 +110,13 @@ public class GameMenu implements AppMenu {
             } else if (GameMenuCommands.ENERGY_UNLIMITED.getMatcher(input) != null) {
                 App.getView().log(controller.energyUnlimited());
 
-            } else if (GameMenuCommands.CHANGE_INPUT_TYPE.getMatcher(input) != null) {
+            } else if (input.toLowerCase().equals("cit") || GameMenuCommands.CHANGE_INPUT_TYPE.getMatcher(input) != null) {
                 App.getView().log(controller.switchInputType());
 
             } else if ((matcher = GameMenuCommands.CRAFTINFO.getMatcher(input)) != null) {
                 App.getView().log(controller.craftInfo(matcher.group(1).trim()));
 
-            } else if ((matcher = GameMenuCommands.TOGGLE_MAP.getMatcher(input)) != null) {
+            } else if (input.toLowerCase().equals("tm") || (matcher = GameMenuCommands.TOGGLE_MAP.getMatcher(input)) != null) {
                 App.getView().log(controller.toggleMap());
 
             } else if ((matcher = GameMenuCommands.SHOW_INVENTORY.getMatcher(input)) != null) {

@@ -203,25 +203,29 @@
         "type" : "Upgrade",
         "name" : "COPPER",
         "price" : 2000,
-        "ingredient" : "Copper Bar"
+        "ingredient" : "Copper Bar",
+        "count" : 5
       },
       {
         "type" : "Upgrade",
         "name" : "IRON",
         "price" : 5000,
-        "ingredient" : "Iron Bar"
+        "ingredient" : "Iron Bar",
+        "count" : 5
       },
       {
         "type" : "Upgrade",
         "name" : "GOLD",
         "price" : 10000,
-        "ingredient" : "Gold Bar"
+        "ingredient" : "Gold Bar",
+        "count" : 5
       },
       {
         "type" : "Upgrade",
         "name" : "IRIDIUM",
         "price" : 25000,
-        "ingredient" : "Iridium Bar"
+        "ingredient" : "Iridium Bar",
+        "count" : 5
       }
     ]
   },
@@ -638,7 +642,7 @@
       },
       {
         "type" : "Product",
-        "name": "Cookie Recipe",
+        "name": "Cookie (Recipe)",
         "price": 300,
         "dailyLimit": 1
       }

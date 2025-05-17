@@ -9,6 +9,7 @@ import models.entities.components.Edible;
 import models.entities.components.Sellable;
 import models.entities.components.inventory.Inventory;
 import models.player.Energy;
+import models.utils.StringUtils;
 
 import java.util.ArrayList;
 
@@ -86,7 +87,8 @@ public class Recipe {
             for (Entity entity : inventory.getEntities()) {
                 if(ingredient.isInIngredient(entity, inventory.getItemCount(entity))) {
                     inventory.takeFromInventory(entity.getEntityName(), ingredient.getAmount());
-                    baseEntity = entity;
+                    if(!StringUtils.isNamesEqual(entity.getEntityName(), "coal"))
+                        baseEntity = entity;
                     break;
                 }
             }

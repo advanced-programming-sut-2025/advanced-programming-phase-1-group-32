@@ -119,6 +119,82 @@
         "x" : 2.25,
         "y": 0
       }
+    },
+    {
+      "name" : "Copper Bar",
+      "hour" : 4,
+      "ingredients" : [
+        {
+          "contents" : ["Copper Ore"],
+          "amount" : 5
+        },
+        {
+          "contents" : ["COAL"],
+          "amount" : 1
+        }
+      ],
+      "isUnlocked" : true,
+      "price" : {
+        "x" : 10,
+        "y" : 0
+      }
+    },
+    {
+      "name" : "Iron Bar",
+      "hour" : 4,
+      "ingredients" : [
+        {
+          "contents" : ["Iron Ore"],
+          "amount" : 5
+        },
+        {
+          "contents" : ["COAL"],
+          "amount" : 1
+        }
+      ],
+      "isUnlocked" : true,
+      "price" : {
+        "x" : 10,
+        "y" : 0
+      }
+    },
+    {
+      "name" : "Gold Bar",
+      "hour" : 4,
+      "ingredients" : [
+        {
+          "contents" : ["Gold Ore"],
+          "amount" : 5
+        },
+        {
+          "contents" : ["COAL"],
+          "amount" : 1
+        }
+      ],
+      "isUnlocked" : true,
+      "price" : {
+        "x" : 10,
+        "y" : 0
+      }
+    },
+    {
+      "name" : "Iridium Bar",
+      "hour" : 4,
+      "ingredients" : [
+        {
+          "contents" : ["Iridium Ore"],
+          "amount" : 5
+        },
+        {
+          "contents" : ["COAL"],
+          "amount" : 1
+        }
+      ],
+      "isUnlocked" : true,
+      "price" : {
+        "x" : 10,
+        "y" : 0
+      }
     }
   ]
 }

@@ -118,7 +118,7 @@
       ]
     },
     {
-      "name": "Copper",
+      "name": "Copper ore",
       "components": [
         {
           "type": "Sellable",
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "name": "Iron",
+      "name": "Iron ore",
       "components": [
         {
           "type": "Sellable",
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "name": "Gold",
+      "name": "Gold ore",
       "components": [
         {
           "type": "Sellable",
@@ -145,7 +145,7 @@
       ]
     },
     {
-      "name": "Iriduim",
+      "name": "Iriduim ore",
       "components": [
         {
           "type": "Sellable",
@@ -155,15 +155,6 @@
     },
     {
       "name": "Coal",
-      "components": [
-        {
-          "type": "Sellable",
-          "price": 15
-        }
-      ]
-    },
-    {
-      "name": "Copper ore",
       "components": [
         {
           "type": "Sellable",
